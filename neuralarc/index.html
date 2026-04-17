@@ -52,8 +52,8 @@ img { max-width: 100%; display: block; }
 .grid-bg {
   position: fixed; inset: 0; z-index: -2; pointer-events: none;
   background-image:
-    linear-gradient(rgba(79,70,229,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,70,229,0.07) 1px, transparent 1px);
+    linear-gradient(rgba(79,70,229,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,70,229,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: gridShift 20s linear infinite;
 }
@@ -64,20 +64,22 @@ img { max-width: 100%; display: block; }
 
 /* Radial glow blobs */
 .glow-blob {
-  position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.3; z-index: -1; pointer-events: none;
+  position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.25; z-index: -1; pointer-events: none;
 }
-.glow-blob.a { width: 500px; height: 500px; background: var(--accent-start); top: -10%; left: -5%; animation: blobA 12s ease-in-out infinite alternate; }
-.glow-blob.b { width: 400px; height: 400px; background: var(--accent-end); bottom: 10%; right: -5%; animation: blobB 14s ease-in-out infinite alternate; }
-@keyframes blobA { to { transform: translate(60px, 80px) scale(1.15); } }
-@keyframes blobB { to { transform: translate(-40px, -60px) scale(1.1); } }
+.glow-blob.a { width: 600px; height: 600px; background: var(--accent-start); top: -10%; left: -8%; animation: blobA 12s ease-in-out infinite alternate; }
+.glow-blob.b { width: 500px; height: 500px; background: var(--accent-end); bottom: 5%; right: -8%; animation: blobB 14s ease-in-out infinite alternate; }
+.glow-blob.c { width: 350px; height: 350px; background: #6366f1; top: 40%; left: 50%; animation: blobC 16s ease-in-out infinite alternate; }
+@keyframes blobA { to { transform: translate(80px, 100px) scale(1.15); } }
+@keyframes blobB { to { transform: translate(-50px, -80px) scale(1.1); } }
+@keyframes blobC { to { transform: translate(-60px, 40px) scale(0.9); } }
 
 /* ===== Particle dots (CSS-only) ===== */
 .particles {
   position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
 }
 .particles span {
-  position: absolute; display: block; width: 3px; height: 3px; border-radius: 50%;
-  background: rgba(168,85,247,0.5);
+  position: absolute; display: block; border-radius: 50%;
+  background: rgba(168,85,247,0.45);
   animation: float linear infinite;
 }
 @keyframes float {
@@ -91,28 +93,28 @@ img { max-width: 100%; display: block; }
 .glass {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
-  border-radius: 16px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: background .3s, transform .3s, box-shadow .3s;
 }
 .glass:hover {
   background: var(--bg-card-hover);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(79,70,229,0.15);
+  box-shadow: 0 16px 48px rgba(79,70,229,0.15);
 }
 
 /* ===== Nav ===== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 16px 0;
-  background: rgba(12,12,26,0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(12,12,26,0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: padding .3s;
+  transition: padding .3s, background .3s;
 }
-nav.scrolled { padding: 10px 0; }
+nav.scrolled { padding: 10px 0; background: rgba(12,12,26,0.92); }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
   max-width: 1200px; margin: 0 auto; padding: 0 24px;
@@ -124,16 +126,23 @@ nav.scrolled { padding: 10px 0; }
 .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
 .nav-links a {
   font-size: 0.9rem; font-weight: 500; color: var(--text-dim); transition: color .3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--gradient); transition: width .3s;
 }
 .nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { width: 100%; }
 
 /* Language toggle */
 .lang-btn {
-  padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border-card);
+  padding: 6px 16px; border-radius: 8px; border: 1px solid var(--border-card);
   background: var(--bg-card); color: var(--text); cursor: pointer;
-  font-size: 0.82rem; font-weight: 600; transition: background .3s, border-color .3s;
+  font-size: 0.82rem; font-weight: 600; transition: all .3s;
+  backdrop-filter: blur(8px);
 }
-.lang-btn:hover { background: var(--bg-card-hover); border-color: rgba(168,85,247,0.4); }
+.lang-btn:hover { background: rgba(168,85,247,0.15); border-color: rgba(168,85,247,0.4); }
 
 /* Mobile menu */
 .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
@@ -142,147 +151,305 @@ nav.scrolled { padding: 10px 0; }
 .hero {
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
   text-align: center; padding: 140px 24px 80px;
-  position: relative;
+  position: relative; overflow: hidden;
 }
-.hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.25; margin-bottom: 20px; }
-.hero p { max-width: 600px; margin: 0 auto 36px; font-size: 1.1rem; color: var(--text-dim); }
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('photos/hero_dashboard.png') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(12,12,26,0.85) 0%,
+    rgba(12,12,26,0.7) 40%,
+    rgba(12,12,26,0.92) 100%
+  );
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 800; line-height: 1.2; margin-bottom: 24px; }
+.hero p.hero-desc { max-width: 620px; margin: 0 auto 40px; font-size: 1.15rem; color: var(--text-dim); line-height: 1.8; }
+.hero-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+/* Animated gradient border on hero */
+.hero::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-start), var(--accent-end), transparent);
+}
+
+/* Stats bar under hero */
+.hero-stats {
+  display: flex; justify-content: center; gap: 48px; margin-top: 60px;
+  flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-size: 2.2rem; font-weight: 800;
+  background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-stat .label { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+
 .btn-primary {
-  display: inline-block; padding: 14px 36px; border-radius: 12px;
+  display: inline-block; padding: 15px 38px; border-radius: 14px;
   background: var(--gradient); color: #fff; font-weight: 600; font-size: 1rem;
   transition: transform .3s, box-shadow .3s; border: none; cursor: pointer;
+  position: relative; overflow: hidden;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,70,229,0.4); }
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,70,229,0.45); }
+.btn-primary:hover::before { opacity: 1; }
+
 .btn-outline {
-  display: inline-block; padding: 14px 36px; border-radius: 12px;
+  display: inline-block; padding: 15px 38px; border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.15); color: var(--text); font-weight: 600; font-size: 1rem;
-  margin-left: 14px; transition: background .3s, border-color .3s; cursor: pointer; background: transparent;
+  transition: all .3s; cursor: pointer; background: transparent;
 }
-.btn-outline:hover { background: rgba(255,255,255,0.06); border-color: rgba(168,85,247,0.5); }
+.btn-outline:hover { background: rgba(255,255,255,0.06); border-color: rgba(168,85,247,0.5); transform: translateY(-2px); }
 
 /* ===== Section common ===== */
-section { padding: 100px 0; }
+section { padding: 110px 0; }
 .section-label {
-  text-transform: uppercase; font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
-  color: var(--accent-end); margin-bottom: 10px;
+  text-transform: uppercase; font-size: 0.78rem; font-weight: 700; letter-spacing: 3px;
+  color: var(--accent-end); margin-bottom: 12px;
 }
-.section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin-bottom: 16px; }
-.section-desc { color: var(--text-dim); max-width: 580px; margin-bottom: 50px; }
+.section-title { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 700; margin-bottom: 18px; }
+.section-desc { color: var(--text-dim); max-width: 600px; margin-bottom: 56px; font-size: 1.05rem; }
 .section-desc.center { margin-left: auto; margin-right: auto; text-align: center; }
 .section-title.center, .section-label.center { text-align: center; }
 
 /* ===== Features Grid ===== */
-.features-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+.features-section { position: relative; }
+.features-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
 }
-.feature-card { padding: 36px 28px; }
+.features-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.feature-card { padding: 32px 24px; }
 .feature-icon {
   width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
-  background: var(--gradient); margin-bottom: 20px; font-size: 1.5rem;
+  background: var(--gradient); margin-bottom: 18px; font-size: 1.4rem;
 }
-.feature-card h3 { font-size: 1.15rem; margin-bottom: 10px; font-weight: 600; }
-.feature-card p { color: var(--text-dim); font-size: 0.92rem; }
+.feature-card h3 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; }
+.feature-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
+
+.features-image {
+  position: relative; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.features-image img { width: 100%; display: block; }
+.features-image::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+  pointer-events: none;
+}
+/* floating glow behind product image */
+.features-image::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 80%; height: 80%; background: var(--gradient); filter: blur(60px); opacity: 0.2; z-index: -1;
+}
 
 /* ===== Use Cases ===== */
 .use-cases-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
 }
 .use-card { padding: 0; overflow: hidden; }
 .use-card-header {
-  height: 160px; display: flex; align-items: flex-end; padding: 20px 24px;
+  height: 180px; display: flex; align-items: flex-end; padding: 24px 28px;
   position: relative;
 }
 .use-card-header::before {
-  content: ''; position: absolute; inset: 0;
-  opacity: 0.25;
+  content: ''; position: absolute; inset: 0; opacity: 0.2;
 }
 .use-card:nth-child(1) .use-card-header::before { background: linear-gradient(135deg, #4f46e5, #6366f1); }
 .use-card:nth-child(2) .use-card-header::before { background: linear-gradient(135deg, #7c3aed, #a855f7); }
 .use-card:nth-child(3) .use-card-header::before { background: linear-gradient(135deg, #a855f7, #ec4899); }
-.use-card-header h3 { position: relative; z-index: 1; font-size: 1.3rem; }
-.use-card-body { padding: 24px; }
-.use-card-body p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 14px; }
+.use-card-header h3 { position: relative; z-index: 1; font-size: 1.35rem; }
+.use-card-body { padding: 28px; }
+.use-card-body p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 16px; line-height: 1.7; }
 .use-card-body ul { list-style: none; padding: 0; }
 .use-card-body li {
-  padding: 6px 0; font-size: 0.88rem; color: var(--text-dim);
-  display: flex; align-items: center; gap: 8px;
+  padding: 7px 0; font-size: 0.88rem; color: var(--text-dim);
+  display: flex; align-items: center; gap: 10px;
 }
-.use-card-body li::before { content: '→'; color: var(--accent-end); font-weight: 700; }
+.use-card-body li::before { content: '\2192'; color: var(--accent-end); font-weight: 700; }
 
 /* ===== Pricing ===== */
 .pricing-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
   align-items: start;
 }
-.price-card { padding: 40px 32px; text-align: center; position: relative; }
+.price-card { padding: 44px 34px; text-align: center; position: relative; }
 .price-card.featured {
   border-color: rgba(168,85,247,0.3);
   background: rgba(168,85,247,0.06);
+  transform: scale(1.03);
 }
+.price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
 .price-badge {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: var(--gradient); color: #fff; font-size: 0.75rem; font-weight: 700;
-  padding: 4px 16px; border-radius: 20px;
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gradient); color: #fff; font-size: 0.78rem; font-weight: 700;
+  padding: 5px 18px; border-radius: 20px;
 }
 .price-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
 .price-card .price {
-  font-size: 2.6rem; font-weight: 800; margin: 16px 0 6px;
+  font-size: 2.8rem; font-weight: 800; margin: 18px 0 6px;
 }
-.price-card .period { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 24px; display: block; }
-.price-card ul { list-style: none; text-align: left; margin-bottom: 28px; }
+.price-card .period { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 28px; display: block; }
+.price-card ul { list-style: none; text-align: left; margin-bottom: 32px; }
 .price-card li {
-  padding: 8px 0; font-size: 0.9rem; color: var(--text-dim); border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 9px 0; font-size: 0.9rem; color: var(--text-dim); border-bottom: 1px solid rgba(255,255,255,0.04);
   display: flex; align-items: center; gap: 10px;
 }
-.price-card li::before { content: '✓'; color: #a855f7; font-weight: 700; }
-.price-card .btn-primary { width: 100%; text-align: center; }
-.price-card .btn-outline { width: 100%; text-align: center; margin-left: 0; }
+.price-card li::before { content: '\2713'; color: #a855f7; font-weight: 700; }
+.price-card .btn-primary, .price-card .btn-outline { width: 100%; text-align: center; margin-left: 0; }
+
+/* ===== Team ===== */
+.team-section { position: relative; }
+.team-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+}
+.team-image {
+  position: relative; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.team-image img { width: 100%; display: block; }
+.team-image::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+  pointer-events: none;
+}
+.team-content h2 { margin-bottom: 20px; }
+.team-content p { color: var(--text-dim); margin-bottom: 20px; line-height: 1.8; font-size: 1.02rem; }
+.team-highlights { list-style: none; padding: 0; margin-top: 28px; }
+.team-highlights li {
+  padding: 10px 0; display: flex; align-items: center; gap: 12px;
+  color: var(--text-dim); font-size: 0.95rem;
+}
+.team-highlights li::before { content: '\2713'; color: var(--accent-end); font-weight: 700; font-size: 1.1rem; }
+
+/* Office image */
+.office-banner {
+  position: relative; border-radius: 24px; overflow: hidden; margin-top: 56px;
+  max-height: 360px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+}
+.office-banner img { width: 100%; height: 360px; object-fit: cover; display: block; }
+.office-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(12,12,26,0.7));
+  pointer-events: none;
+}
+.office-banner::before {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 24px;
+  pointer-events: none; z-index: 1;
+}
 
 /* ===== Contact ===== */
 .contact-wrapper {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
 }
-.contact-info h2 { font-size: 1.8rem; margin-bottom: 16px; }
-.contact-info p { color: var(--text-dim); margin-bottom: 24px; }
-.contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--text-dim); font-size: 0.92rem; }
+.contact-info h2 { font-size: 1.9rem; margin-bottom: 18px; }
+.contact-info p { color: var(--text-dim); margin-bottom: 28px; line-height: 1.8; }
+.contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; color: var(--text-dim); font-size: 0.92rem; }
 .contact-detail .icon-circle {
-  width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: var(--bg-card); border: 1px solid var(--border-card); font-size: 1rem;
+  width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-card); border: 1px solid var(--border-card); font-size: 1.1rem;
+  flex-shrink: 0;
 }
-.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; padding: 36px; }
 .contact-form input, .contact-form textarea {
-  width: 100%; padding: 14px 18px; border-radius: 12px;
-  border: 1px solid var(--border-card); background: var(--bg-card);
+  width: 100%; padding: 15px 18px; border-radius: 12px;
+  border: 1px solid var(--border-card); background: rgba(255,255,255,0.03);
   color: var(--text); font-family: inherit; font-size: 0.95rem;
-  backdrop-filter: blur(8px); transition: border-color .3s;
+  transition: border-color .3s, box-shadow .3s;
   outline: none;
 }
-.contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent-end); }
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: var(--accent-end);
+  box-shadow: 0 0 0 3px rgba(168,85,247,0.1);
+}
 .contact-form textarea { min-height: 130px; resize: vertical; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 /* ===== Footer ===== */
 footer {
-  padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.05);
   text-align: center; color: var(--text-dim); font-size: 0.85rem;
 }
 
-/* ===== Animations on scroll ===== */
+/* ===== Floating BGM Button ===== */
+.bgm-btn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--gradient); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(79,70,229,0.4);
+  transition: transform .3s, box-shadow .3s;
+  color: #fff; font-size: 1.3rem;
+}
+.bgm-btn:hover { transform: scale(1.1); box-shadow: 0 6px 32px rgba(79,70,229,0.55); }
+.bgm-btn.playing .bgm-icon { animation: pulse-music 1s ease-in-out infinite; }
+@keyframes pulse-music {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ===== Scroll Reveal ===== */
 .reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity .7s ease, transform .7s ease;
+  opacity: 0; transform: translateY(36px);
+  transition: opacity .8s cubic-bezier(0.16, 1, 0.3, 1), transform .8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0; transform: translateX(-40px);
+  transition: opacity .8s cubic-bezier(0.16, 1, 0.3, 1), transform .8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0; transform: translateX(40px);
+  transition: opacity .8s cubic-bezier(0.16, 1, 0.3, 1), transform .8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { transition-delay: 0s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+
+/* ===== Divider ===== */
+.section-divider {
+  height: 1px; border: none; margin: 0;
+  background: linear-gradient(90deg, transparent, rgba(79,70,229,0.3), rgba(168,85,247,0.3), transparent);
+}
 
 /* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .features-layout, .team-layout { grid-template-columns: 1fr; gap: 40px; }
+  .features-image { order: -1; }
+}
 @media (max-width: 768px) {
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(12,12,26,0.95); backdrop-filter: blur(20px); padding: 20px 24px; gap: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-links {
+    display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(12,12,26,0.96); backdrop-filter: blur(24px); padding: 24px;
+    gap: 18px; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
   .nav-links.open { display: flex; }
   .menu-toggle { display: block; }
   .hero { padding-top: 120px; }
+  .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+  .hero-stats { gap: 28px; }
+  .hero-stat .num { font-size: 1.6rem; }
   .contact-wrapper { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .btn-outline { margin-left: 0; margin-top: 10px; }
-  .hero-btns { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .office-banner img { height: 220px; }
 }
 </style>
 </head>
@@ -292,7 +459,14 @@ footer {
 <div class="grid-bg"></div>
 <div class="glow-blob a"></div>
 <div class="glow-blob b"></div>
+<div class="glow-blob c"></div>
 <div class="particles" id="particles"></div>
+
+<!-- ===== BGM Button ===== -->
+<button class="bgm-btn" id="bgmBtn" title="Toggle Music" aria-label="Toggle background music">
+  <span class="bgm-icon">&#9835;</span>
+</button>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
 
 <!-- ===== Navigation ===== -->
 <nav id="navbar">
@@ -301,11 +475,12 @@ footer {
       <img src="logos/logo_final.png" alt="NeuralArc Logo">
       <span>NeuralArc</span>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#features" data-i18n="nav_features">產品功能</a></li>
       <li><a href="#usecases" data-i18n="nav_usecases">應用場景</a></li>
       <li><a href="#pricing" data-i18n="nav_pricing">方案價格</a></li>
+      <li><a href="#team" data-i18n="nav_team">團隊介紹</a></li>
       <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
       <li><button class="lang-btn" id="langToggle">EN</button></li>
     </ul>
@@ -314,52 +489,76 @@ footer {
 
 <!-- ===== Hero ===== -->
 <section class="hero" id="hero">
-  <div class="container">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
     <p class="section-label" data-i18n="hero_label">下一代 AI 數據分析平台</p>
     <h1 data-i18n="hero_title">讓數據說話<br>用 <span class="grad-text">AI 驅動決策</span></h1>
-    <p data-i18n="hero_desc">NeuralArc 弧智科技運用先進的深度學習與自然語言處理技術，將複雜的企業數據轉化為清晰可行的商業洞察。</p>
+    <p class="hero-desc" data-i18n="hero_desc">NeuralArc 弧智科技運用先進的深度學習與自然語言處理技術，將複雜的企業數據轉化為清晰可行的商業洞察。</p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary" data-i18n="hero_cta">預約免費 Demo</a>
       <a href="#features" class="btn-outline" data-i18n="hero_cta2">了解更多</a>
     </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num" data-i18n="stat1_num">200+</div>
+        <div class="label" data-i18n="stat1_label">企業客戶</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" data-i18n="stat2_num">50M+</div>
+        <div class="label" data-i18n="stat2_label">日處理資料筆數</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" data-i18n="stat3_num">99.9%</div>
+        <div class="label" data-i18n="stat3_label">系統可用性</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" data-i18n="stat4_num">40%</div>
+        <div class="label" data-i18n="stat4_label">平均效率提升</div>
+      </div>
+    </div>
   </div>
 </section>
 
+<hr class="section-divider">
+
 <!-- ===== Features ===== -->
-<section id="features">
+<section id="features" class="features-section">
   <div class="container">
     <p class="section-label center reveal" data-i18n="feat_label">核心功能</p>
     <h2 class="section-title center reveal" data-i18n="feat_title">為企業打造的 AI 分析引擎</h2>
     <p class="section-desc center reveal" data-i18n="feat_desc">從資料接入到洞察輸出，一站式解決方案覆蓋全流程。</p>
-    <div class="features-grid">
 
-      <div class="glass feature-card reveal">
-        <div class="feature-icon">🧠</div>
-        <h3 data-i18n="f1_title">智能語義分析</h3>
-        <p data-i18n="f1_desc">支援自然語言查詢，直接用中英文提問即可從 TB 級資料庫中獲取精準答案，無需撰寫 SQL。</p>
+    <div class="features-layout">
+      <div class="features-grid stagger-children">
+        <div class="glass feature-card reveal">
+          <div class="feature-icon">&#129504;</div>
+          <h3 data-i18n="f1_title">智能語義分析</h3>
+          <p data-i18n="f1_desc">支援自然語言查詢，直接用中英文提問即可從 TB 級資料庫中獲取精準答案，無需撰寫 SQL。</p>
+        </div>
+        <div class="glass feature-card reveal">
+          <div class="feature-icon">&#128202;</div>
+          <h3 data-i18n="f2_title">即時視覺化儀表板</h3>
+          <p data-i18n="f2_desc">動態拖拽式儀表板，支援 50+ 圖表類型，資料變更時自動更新，秒級回應。</p>
+        </div>
+        <div class="glass feature-card reveal">
+          <div class="feature-icon">&#128279;</div>
+          <h3 data-i18n="f3_title">多源資料整合</h3>
+          <p data-i18n="f3_desc">一鍵連接 MySQL、PostgreSQL、Snowflake、BigQuery 等 30+ 資料來源，自動偵測 Schema。</p>
+        </div>
+        <div class="glass feature-card reveal">
+          <div class="feature-icon">&#128737;</div>
+          <h3 data-i18n="f4_title">企業級安全合規</h3>
+          <p data-i18n="f4_desc">SOC 2 Type II 認證、端到端加密、細粒度角色權限控制，滿足金融與醫療產業合規需求。</p>
+        </div>
       </div>
-
-      <div class="glass feature-card reveal">
-        <div class="feature-icon">📊</div>
-        <h3 data-i18n="f2_title">即時視覺化儀表板</h3>
-        <p data-i18n="f2_desc">動態拖拽式儀表板，支援 50+ 圖表類型，資料變更時自動更新，秒級回應。</p>
+      <div class="features-image reveal-right">
+        <img src="photos/product.png" alt="NeuralArc AI Dashboard" loading="lazy">
       </div>
-
-      <div class="glass feature-card reveal">
-        <div class="feature-icon">🔗</div>
-        <h3 data-i18n="f3_title">多源資料整合</h3>
-        <p data-i18n="f3_desc">一鍵連接 MySQL、PostgreSQL、Snowflake、BigQuery 等 30+ 資料來源，自動偵測 Schema。</p>
-      </div>
-
-      <div class="glass feature-card reveal">
-        <div class="feature-icon">🛡️</div>
-        <h3 data-i18n="f4_title">企業級安全合規</h3>
-        <p data-i18n="f4_desc">SOC 2 Type II 認證、端到端加密、細粒度角色權限控制，滿足金融與醫療產業合規需求。</p>
-      </div>
-
     </div>
   </div>
 </section>
+
+<hr class="section-divider">
 
 <!-- ===== Use Cases ===== -->
 <section id="usecases">
@@ -408,6 +607,8 @@ footer {
     </div>
   </div>
 </section>
+
+<hr class="section-divider">
 
 <!-- ===== Pricing ===== -->
 <section id="pricing">
@@ -466,19 +667,52 @@ footer {
   </div>
 </section>
 
+<hr class="section-divider">
+
+<!-- ===== Team ===== -->
+<section id="team" class="team-section">
+  <div class="container">
+    <p class="section-label center reveal" data-i18n="tm_label">團隊介紹</p>
+    <h2 class="section-title center reveal" data-i18n="tm_title">由頂尖 AI 人才驅動</h2>
+    <p class="section-desc center reveal" data-i18n="tm_desc">我們的團隊匯集來自 Google、Meta、台大的頂尖工程師與資料科學家。</p>
+
+    <div class="team-layout">
+      <div class="team-image reveal-left">
+        <img src="photos/team.png" alt="NeuralArc Team" loading="lazy">
+      </div>
+      <div class="team-content reveal-right">
+        <h2 class="section-title" data-i18n="tm_content_title">專注創新，成就非凡</h2>
+        <p data-i18n="tm_p1">NeuralArc 成立於 2023 年，致力於用最前沿的 AI 技術解決企業數據分析的痛點。我們相信數據的力量，更相信好的工具能讓每個人都成為數據分析師。</p>
+        <p data-i18n="tm_p2">團隊成員平均擁有 10 年以上的 AI / ML 工程經驗，涵蓋自然語言處理、電腦視覺、大規模分散式系統等關鍵領域。</p>
+        <ul class="team-highlights">
+          <li data-i18n="tm_h1">核心團隊來自 Google Brain、Meta AI Research</li>
+          <li data-i18n="tm_h2">累計發表 50+ 頂會論文（NeurIPS / ICML / ACL）</li>
+          <li data-i18n="tm_h3">已獲 A 輪融資，估值超過 NT$ 15 億</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="office-banner reveal" style="margin-top:56px">
+      <img src="photos/office.png" alt="NeuralArc Office" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
 <!-- ===== Contact ===== -->
 <section id="contact">
   <div class="container">
     <div class="contact-wrapper">
-      <div class="contact-info reveal">
+      <div class="contact-info reveal-left">
         <p class="section-label" data-i18n="ct_label">聯絡我們</p>
         <h2 class="section-title" data-i18n="ct_title">與我們聊聊您的數據挑戰</h2>
         <p data-i18n="ct_desc">無論您正在評估 AI 分析方案，或想了解 NeuralArc 如何為您的產業帶來價值，我們的團隊都很樂意提供協助。</p>
-        <div class="contact-detail"><span class="icon-circle">📧</span> <span>contact@neuralarc.ai</span></div>
-        <div class="contact-detail"><span class="icon-circle">📞</span> <span>+886-2-7750-8888</span></div>
-        <div class="contact-detail"><span class="icon-circle">📍</span> <span data-i18n="ct_addr">台北市信義區松仁路 100 號 18 樓</span></div>
+        <div class="contact-detail"><span class="icon-circle">&#9993;</span> <span>contact@neuralarc.ai</span></div>
+        <div class="contact-detail"><span class="icon-circle">&#9742;</span> <span>+886-2-7750-8888</span></div>
+        <div class="contact-detail"><span class="icon-circle">&#128205;</span> <span data-i18n="ct_addr">台北市信義區松仁路 100 號 18 樓</span></div>
       </div>
-      <form class="glass contact-form reveal" onsubmit="event.preventDefault(); alert(currentLang === 'en' ? 'Thank you! We will contact you shortly.' : '感謝您的留言，我們將盡快回覆！')">
+      <form class="glass contact-form reveal-right" onsubmit="event.preventDefault(); alert(currentLang === 'en' ? 'Thank you! We will contact you shortly.' : '感謝您的留言，我們將盡快回覆！')">
         <div class="form-row">
           <input type="text" data-i18n-placeholder="form_name" placeholder="姓名" required>
           <input type="email" data-i18n-placeholder="form_email" placeholder="Email" required>
@@ -501,46 +735,77 @@ footer {
 <script>
 /* ===== Particle Generator ===== */
 (function(){
-  const c = document.getElementById('particles');
-  for (let i = 0; i < 30; i++) {
-    const s = document.createElement('span');
+  var c = document.getElementById('particles');
+  for (var i = 0; i < 40; i++) {
+    var s = document.createElement('span');
     s.style.left = Math.random() * 100 + '%';
-    s.style.animationDuration = (8 + Math.random() * 14) + 's';
-    s.style.animationDelay = Math.random() * 10 + 's';
-    s.style.width = s.style.height = (2 + Math.random() * 3) + 'px';
+    s.style.animationDuration = (8 + Math.random() * 16) + 's';
+    s.style.animationDelay = Math.random() * 12 + 's';
+    var size = (2 + Math.random() * 3) + 'px';
+    s.style.width = size;
+    s.style.height = size;
+    s.style.background = Math.random() > 0.5
+      ? 'rgba(168,85,247,0.4)'
+      : 'rgba(79,70,229,0.4)';
     c.appendChild(s);
   }
 })();
 
 /* ===== Nav scroll shrink ===== */
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', function() {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
 
 /* ===== Mobile menu ===== */
-document.getElementById('menuToggle').addEventListener('click', () => {
+document.getElementById('menuToggle').addEventListener('click', function() {
   document.getElementById('navLinks').classList.toggle('open');
 });
 
 /* ===== Scroll reveal ===== */
-const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-}, { threshold: 0.15 });
-reveals.forEach(el => revealObserver.observe(el));
+var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(function(el) { revealObserver.observe(el); });
+
+/* ===== BGM Toggle ===== */
+(function(){
+  var btn = document.getElementById('bgmBtn');
+  var audio = document.getElementById('bgmAudio');
+  var playing = false;
+  btn.addEventListener('click', function() {
+    if (playing) {
+      audio.pause();
+      btn.classList.remove('playing');
+    } else {
+      audio.play().catch(function(){});
+      btn.classList.add('playing');
+    }
+    playing = !playing;
+  });
+})();
 
 /* ===== i18n ===== */
-let currentLang = 'zh';
-const i18n = {
+var currentLang = 'zh';
+var i18n = {
   en: {
-    nav_features: 'Features', nav_usecases: 'Use Cases', nav_pricing: 'Pricing', nav_contact: 'Contact',
+    nav_features: 'Features', nav_usecases: 'Use Cases', nav_pricing: 'Pricing', nav_team: 'Team', nav_contact: 'Contact',
     hero_label: 'NEXT-GEN AI DATA ANALYTICS PLATFORM',
     hero_title: 'Let Data Speak.<br><span class="grad-text">AI-Powered Decisions.</span>',
     hero_desc: 'NeuralArc leverages advanced deep learning and NLP to transform complex enterprise data into clear, actionable business insights.',
     hero_cta: 'Book a Free Demo', hero_cta2: 'Learn More',
+    stat1_num: '200+', stat1_label: 'Enterprise Clients',
+    stat2_num: '50M+', stat2_label: 'Daily Records Processed',
+    stat3_num: '99.9%', stat3_label: 'System Uptime',
+    stat4_num: '40%', stat4_label: 'Avg. Efficiency Gain',
     feat_label: 'CORE FEATURES', feat_title: 'An AI Analytics Engine Built for Enterprise',
     feat_desc: 'End-to-end solution from data ingestion to insight delivery.',
-    f1_title: 'Semantic AI Queries', f1_desc: 'Ask questions in plain English or Chinese to query TB-scale databases instantly — no SQL needed.',
+    f1_title: 'Semantic AI Queries', f1_desc: 'Ask questions in plain English or Chinese to query TB-scale databases instantly \u2014 no SQL needed.',
     f2_title: 'Real-Time Dashboards', f2_desc: 'Drag-and-drop dashboards with 50+ chart types. Auto-refresh on data changes with sub-second latency.',
     f3_title: 'Multi-Source Integration', f3_desc: 'One-click connectors for MySQL, PostgreSQL, Snowflake, BigQuery and 30+ data sources with auto schema detection.',
     f4_title: 'Enterprise Security', f4_desc: 'SOC 2 Type II certified, end-to-end encryption, and granular RBAC to meet financial and healthcare compliance.',
@@ -557,41 +822,49 @@ const i18n = {
     p2_badge: 'Most Popular', p2_name: 'Pro', p2_period: '/ month (20% off annually)', p2_a: 'Up to 25 users', p2_b: 'Unlimited data sources', p2_c: 'Advanced AI + custom model training', p2_d: 'Collaborative dashboards & scheduled reports', p2_e: 'Priority live support', p2_f: 'API access',
     p3_name: 'Enterprise', p3_price: 'Custom', p3_period: 'Tailored to your needs', p3_a: 'Unlimited users', p3_b: 'Private cloud / on-premise', p3_c: 'Dedicated AI model training', p3_d: 'SSO & SAML integration', p3_e: 'Dedicated Customer Success Manager', p3_f: '99.99% SLA guarantee',
     p_cta_start: 'Start Free Trial', p_cta_pro: 'Upgrade Now', p_cta_ent: 'Contact Sales',
+    tm_label: 'OUR TEAM', tm_title: 'Powered by World-Class AI Talent',
+    tm_desc: 'Our team brings together top engineers and data scientists from Google, Meta, and National Taiwan University.',
+    tm_content_title: 'Focused on Innovation, Delivering Excellence',
+    tm_p1: 'Founded in 2023, NeuralArc is dedicated to solving enterprise data analytics pain points with cutting-edge AI. We believe in the power of data, and that great tools can make everyone a data analyst.',
+    tm_p2: 'Team members average 10+ years of AI/ML engineering experience spanning NLP, computer vision, and large-scale distributed systems.',
+    tm_h1: 'Core team from Google Brain & Meta AI Research',
+    tm_h2: '50+ publications at top conferences (NeurIPS / ICML / ACL)',
+    tm_h3: 'Series A funded, valued at over NT$1.5 billion',
     ct_label: 'CONTACT US', ct_title: 'Let\'s Talk About Your Data Challenges',
     ct_desc: 'Whether you\'re evaluating AI analytics solutions or want to learn how NeuralArc can create value for your industry, our team is here to help.',
     ct_addr: '18F, No. 100, Songren Rd., Xinyi Dist., Taipei',
     form_name: 'Name', form_email: 'Email', form_company: 'Company', form_msg: 'Describe your needs or questions...',
     form_submit: 'Send Message',
-    footer: '&copy; 2026 NeuralArc. All rights reserved.'
+    footer: '\u00a9 2026 NeuralArc. All rights reserved.'
   }
 };
 
 /* Cache original Chinese text */
-const zhCache = {};
-document.querySelectorAll('[data-i18n]').forEach(el => { zhCache[el.dataset.i18n] = el.innerHTML; });
-const zhPlaceholders = {};
-document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { zhPlaceholders[el.dataset.i18nPlaceholder] = el.placeholder; });
+var zhCache = {};
+document.querySelectorAll('[data-i18n]').forEach(function(el) { zhCache[el.dataset.i18n] = el.innerHTML; });
+var zhPlaceholders = {};
+document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) { zhPlaceholders[el.dataset.i18nPlaceholder] = el.placeholder; });
 
 function setLang(lang) {
   currentLang = lang;
   if (lang === 'en') {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.dataset.i18n;
       if (i18n.en[key]) el.innerHTML = i18n.en[key];
     });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.dataset.i18nPlaceholder;
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.dataset.i18nPlaceholder;
       if (i18n.en[key]) el.placeholder = i18n.en[key];
     });
-    document.getElementById('langToggle').textContent = '中文';
+    document.getElementById('langToggle').textContent = '\u4e2d\u6587';
     document.documentElement.lang = 'en';
   } else {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.dataset.i18n;
       if (zhCache[key]) el.innerHTML = zhCache[key];
     });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.dataset.i18nPlaceholder;
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.dataset.i18nPlaceholder;
       if (zhPlaceholders[key]) el.placeholder = zhPlaceholders[key];
     });
     document.getElementById('langToggle').textContent = 'EN';
@@ -599,13 +872,13 @@ function setLang(lang) {
   }
 }
 
-document.getElementById('langToggle').addEventListener('click', () => {
+document.getElementById('langToggle').addEventListener('click', function() {
   setLang(currentLang === 'zh' ? 'en' : 'zh');
 });
 
 /* ===== Smooth scroll for nav links ===== */
-document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
-  a.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); });
+document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
 });
 </script>
 </body>

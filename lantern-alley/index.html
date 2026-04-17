@@ -7,166 +7,348 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0f0b07;--bg2:#1a140d;--card:#1e1710;--gold:#e8a838;--gold2:#d4943a;--lantern:#e85c2a;--warm:#f5d6a8;--text:#c9b99a;--muted:#7a6b55;--border:#2a2218}
-body{font-family:'Noto Sans TC','Noto Serif JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-a{color:var(--gold);text-decoration:none;transition:color .2s}
+:root{
+  --bg:#0f0b07;--bg2:#1a140d;--card:#1e1710;--card2:#241c13;
+  --gold:#e8a838;--gold2:#d4943a;--lantern:#e85c2a;
+  --warm:#f5d6a8;--text:#c9b99a;--muted:#7a6b55;--border:#2a2218;
+  --serif:'Noto Serif JP',serif;--sans:'Noto Sans TC','Noto Serif JP',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
 a:hover{color:var(--lantern)}
+img{max-width:100%;display:block}
 
-/* Nav */
-nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(15,11,7,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 0}
-nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+/* ---- Scroll reveal ---- */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
+
+/* ---- Nav ---- */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:0;transition:background .4s,padding .4s}
+nav.scrolled{background:rgba(15,11,7,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:1200px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:12px}
-.nav-logo img{height:40px}
-.nav-logo span{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:2px}
-.nav-links{display:flex;gap:28px;font-size:14px;letter-spacing:1px}
-.nav-links a{color:var(--muted)}
+.nav-logo img{height:38px;transition:filter .3s}
+.nav-logo img:hover{filter:brightness(1.2)}
+.nav-logo span{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--gold);letter-spacing:3px}
+.nav-right{display:flex;align-items:center;gap:32px}
+.nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+.nav-links a{color:var(--muted);position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
 .nav-links a:hover{color:var(--gold)}
-.lang-switch{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px}
-.lang-switch:hover{border-color:var(--gold);color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.lang-switch{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:11px;letter-spacing:1px;transition:all .3s;font-family:var(--sans)}
+.lang-switch:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,168,56,.08)}
 
-/* Hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#1a100a 50%,var(--bg) 100%);position:relative;padding:120px 24px 80px}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 40%,rgba(232,92,42,.08) 0%,transparent 60%);pointer-events:none}
-.hero-logo{width:180px;height:180px;margin-bottom:32px;filter:drop-shadow(0 0 40px rgba(232,168,56,.3));animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.hero h1{font-family:'Noto Serif JP',serif;font-size:52px;font-weight:700;color:var(--gold);letter-spacing:8px;margin-bottom:8px;text-shadow:0 0 60px rgba(232,168,56,.2)}
-.hero .sub{font-size:18px;color:var(--muted);letter-spacing:6px;margin-bottom:40px}
-.hero .desc{font-size:15px;color:var(--text);max-width:500px;line-height:2;margin-bottom:48px}
-.cta{display:inline-block;background:linear-gradient(135deg,var(--lantern),var(--gold));color:#0f0b07;font-weight:700;padding:14px 40px;border-radius:8px;font-size:15px;letter-spacing:2px;transition:transform .2s,box-shadow .2s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,92,42,.3);color:#0f0b07}
+/* ---- Hero ---- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero_alley.png') center/cover no-repeat;transform:scale(1.05);will-change:transform;transition:transform .1s linear}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,11,7,.55) 0%,rgba(15,11,7,.7) 50%,rgba(15,11,7,.92) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:700px}
+.hero-logo{width:140px;height:140px;margin:0 auto 28px;filter:drop-shadow(0 0 50px rgba(232,168,56,.35));animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
+.hero h1{font-family:var(--serif);font-size:60px;font-weight:700;color:var(--gold);letter-spacing:10px;margin-bottom:6px;text-shadow:0 2px 40px rgba(232,168,56,.25)}
+.hero .sub{font-size:16px;color:rgba(201,185,154,.6);letter-spacing:8px;margin-bottom:36px;text-transform:uppercase}
+.hero .desc{font-size:15px;color:var(--text);line-height:2.2;margin-bottom:48px;opacity:.85}
+.cta{display:inline-block;background:linear-gradient(135deg,var(--lantern),var(--gold));color:#0f0b07;font-weight:700;padding:15px 44px;border-radius:4px;font-size:14px;letter-spacing:3px;text-transform:uppercase;transition:all .35s;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold),var(--lantern));opacity:0;transition:opacity .35s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(232,92,42,.35);color:#0f0b07}
+.cta:hover::before{opacity:1}
+.cta span{position:relative;z-index:1}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;animation:bounce 2s ease-in-out infinite}
+.hero-scroll svg{width:24px;height:24px;stroke:var(--muted);opacity:.5}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-/* Section */
-.section{max-width:1100px;margin:0 auto;padding:80px 24px}
-.section-title{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--gold);text-align:center;margin-bottom:12px;letter-spacing:4px}
-.section-sub{text-align:center;color:var(--muted);font-size:13px;letter-spacing:3px;margin-bottom:48px}
-.divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 48px}
+/* ---- Section base ---- */
+.section{max-width:1200px;margin:0 auto;padding:100px 32px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-title{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--gold);letter-spacing:5px;margin-bottom:8px}
+.section-sub{color:var(--muted);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px}
+.divider{width:40px;height:1px;background:var(--gold);margin:0 auto;opacity:.5}
 
-/* Menu */
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.menu-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color .3s,transform .3s}
-.menu-card:hover{border-color:var(--gold2);transform:translateY(-4px)}
-.menu-cat{font-size:11px;color:var(--lantern);letter-spacing:3px;margin-bottom:12px;text-transform:uppercase}
-.menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px dotted var(--border)}
+/* ---- Photo banner between sections ---- */
+.photo-banner{width:100%;height:400px;position:relative;overflow:hidden}
+.photo-banner img{width:100%;height:100%;object-fit:cover;transition:transform .1s linear;will-change:transform}
+.photo-banner .overlay{position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,transparent 20%,transparent 80%,var(--bg) 100%)}
+
+/* ---- Menu ---- */
+.menu-intro{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:56px;align-items:center}
+.menu-intro-photo{border-radius:8px;overflow:hidden;position:relative;height:360px}
+.menu-intro-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.menu-intro-photo:hover img{transform:scale(1.05)}
+.menu-intro-photo .photo-label{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(transparent,rgba(15,11,7,.85));font-size:12px;color:var(--muted);letter-spacing:2px}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:0;overflow:hidden;transition:all .4s cubic-bezier(.22,1,.36,1)}
+.menu-card:hover{border-color:var(--gold2);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.menu-card-photo{height:200px;overflow:hidden;position:relative}
+.menu-card-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.menu-card:hover .menu-card-photo img{transform:scale(1.08)}
+.menu-card-photo .photo-tag{position:absolute;top:12px;left:12px;background:rgba(15,11,7,.8);backdrop-filter:blur(8px);color:var(--lantern);font-size:10px;letter-spacing:2px;padding:5px 12px;border-radius:3px;text-transform:uppercase}
+.menu-card-body{padding:24px}
+.menu-cat{font-size:10px;color:var(--lantern);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase}
+.menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(42,34,24,.6)}
 .menu-item:last-child{border-bottom:none}
-.menu-name{font-size:15px;font-weight:700;color:var(--warm)}
-.menu-name small{font-size:11px;color:var(--muted);font-weight:300;display:block;margin-top:2px}
-.menu-price{font-size:14px;color:var(--gold);font-weight:700;white-space:nowrap}
+.menu-name{font-size:14px;font-weight:700;color:var(--warm)}
+.menu-name small{font-size:11px;color:var(--muted);font-weight:300;display:block;margin-top:3px}
+.menu-price{font-family:var(--serif);font-size:14px;color:var(--gold);font-weight:700;white-space:nowrap}
 
-/* Features */
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.feat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;text-align:center;transition:border-color .3s}
-.feat-card:hover{border-color:var(--gold2)}
-.feat-icon{font-size:36px;margin-bottom:16px}
-.feat-title{font-size:16px;font-weight:700;color:var(--warm);margin-bottom:8px}
-.feat-desc{font-size:13px;color:var(--muted);line-height:1.8}
+/* ---- Features ---- */
+.feat-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px}
+.feat-photo{position:relative;overflow:hidden}
+.feat-photo img{width:100%;height:100%;object-fit:cover;min-height:600px}
+.feat-photo .overlay{position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--bg) 100%)}
+.feat-content{display:flex;flex-direction:column;justify-content:center;padding:60px 56px;background:var(--bg)}
+.feat-content .section-header{text-align:left;margin-bottom:40px}
+.feat-content .section-title{text-align:left}
+.feat-content .section-sub{text-align:left}
+.feat-content .divider{margin:0;margin-top:16px}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.feat-card{padding:24px;border-left:2px solid var(--border);transition:all .4s}
+.feat-card:hover{border-left-color:var(--gold);background:rgba(30,23,16,.5)}
+.feat-icon{font-size:28px;margin-bottom:12px}
+.feat-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--warm);margin-bottom:8px;letter-spacing:1px}
+.feat-desc{font-size:12px;color:var(--muted);line-height:1.9}
 
-/* Info */
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.info-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
-.info-label{font-size:11px;color:var(--lantern);letter-spacing:2px;margin-bottom:10px}
-.info-content{font-size:14px;color:var(--text);line-height:2}
+/* ---- Sake banner ---- */
+.sake-section{position:relative;padding:100px 0;overflow:hidden}
+.sake-section .bg{position:absolute;inset:0}
+.sake-section .bg img{width:100%;height:100%;object-fit:cover}
+.sake-section .bg .overlay{position:absolute;inset:0;background:rgba(15,11,7,.82)}
+.sake-content{position:relative;z-index:2;max-width:600px;margin:0 auto;text-align:center;padding:0 32px}
+.sake-content blockquote{font-family:var(--serif);font-size:22px;color:var(--warm);line-height:2;letter-spacing:2px;font-style:italic;margin-bottom:20px}
+.sake-content .attr{font-size:12px;color:var(--muted);letter-spacing:3px}
 
-/* Footer */
-footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
-footer .logo-sm{height:30px;margin-bottom:12px;opacity:.5}
+/* ---- Info ---- */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;transition:all .4s}
+.info-card:hover{border-color:var(--gold2);transform:translateY(-4px)}
+.info-icon{font-size:24px;margin-bottom:16px}
+.info-label{font-size:10px;color:var(--lantern);letter-spacing:3px;margin-bottom:14px;text-transform:uppercase}
+.info-content{font-size:13px;color:var(--text);line-height:2.2}
 
-/* Responsive */
+/* ---- Footer ---- */
+footer{border-top:1px solid var(--border);background:var(--bg)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:60px 32px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start}
+.footer-brand{display:flex;flex-direction:column;gap:12px}
+.footer-brand img{height:50px;opacity:.6}
+.footer-brand p{font-size:12px;color:var(--muted);line-height:1.8}
+.footer-col h4{font-family:var(--serif);font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px}
+.footer-col p,.footer-col a{font-size:12px;color:var(--muted);line-height:2.2;display:block}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{text-align:center;padding:20px 32px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;letter-spacing:1px}
+
+/* ---- BGM Button ---- */
+.bgm-btn{position:fixed;bottom:28px;right:28px;z-index:999;width:48px;height:48px;border-radius:50%;background:rgba(30,23,16,.9);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(8px)}
+.bgm-btn:hover{border-color:var(--gold);background:rgba(30,23,16,1);transform:scale(1.08)}
+.bgm-btn svg{width:18px;height:18px;fill:var(--muted);transition:fill .3s}
+.bgm-btn.playing svg{fill:var(--gold)}
+.bgm-btn.playing{border-color:var(--gold2);box-shadow:0 0 20px rgba(232,168,56,.15)}
+.bgm-bars{display:flex;align-items:flex-end;gap:2px;height:14px}
+.bgm-bar{width:2.5px;background:var(--muted);border-radius:1px;transition:background .3s}
+.bgm-btn.playing .bgm-bar{background:var(--gold);animation:barAnim .8s ease-in-out infinite alternate}
+.bgm-bar:nth-child(1){height:6px;animation-delay:0s}
+.bgm-bar:nth-child(2){height:10px;animation-delay:.15s}
+.bgm-bar:nth-child(3){height:4px;animation-delay:.3s}
+.bgm-bar:nth-child(4){height:12px;animation-delay:.1s}
+.bgm-bar:nth-child(5){height:7px;animation-delay:.25s}
+@keyframes barAnim{0%{height:3px}100%{height:14px}}
+
+/* ---- Mobile nav toggle ---- */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-toggle span{display:block;width:20px;height:2px;background:var(--muted);margin:4px 0;transition:all .3s}
+
+/* ---- Responsive ---- */
+@media(max-width:960px){
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .feat-layout{grid-template-columns:1fr}
+  .feat-photo{height:350px}
+  .feat-photo img{min-height:350px}
+  .feat-photo .overlay{background:linear-gradient(180deg,transparent 60%,var(--bg) 100%)}
+  .feat-content{padding:40px 32px}
+  .footer-inner{grid-template-columns:1fr}
+  .menu-intro{grid-template-columns:1fr}
+  .menu-intro-photo{height:260px}
+}
 @media(max-width:640px){
-  .hero h1{font-size:32px;letter-spacing:4px}
+  .hero h1{font-size:36px;letter-spacing:5px}
+  .hero .sub{font-size:13px;letter-spacing:5px}
   .nav-links{display:none}
-  .section{padding:60px 16px}
+  .nav-toggle{display:block}
+  .section{padding:70px 20px}
+  .menu-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr}
+  .photo-banner{height:250px}
+  .hero-logo{width:100px;height:100px}
 }
 </style>
 </head>
 <body>
 
-<nav>
+<!-- Audio -->
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<!-- Nav -->
+<nav id="navbar">
   <div class="inner">
     <div class="nav-logo">
       <img src="logos/logo_final.png" alt="燈籠橫丁">
       <span id="nav-brand">燈籠橫丁</span>
     </div>
-    <div class="nav-links">
-      <a href="#menu" id="nav-menu">菜單</a>
-      <a href="#features" id="nav-feat">特色</a>
-      <a href="#info" id="nav-info">店鋪資訊</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#menu" id="nav-menu">菜單</a>
+        <a href="#features" id="nav-feat">特色</a>
+        <a href="#info" id="nav-info">店鋪資訊</a>
+      </div>
+      <button class="lang-switch" onclick="toggleLang()">EN / 中</button>
+      <button class="nav-toggle" onclick="this.classList.toggle('active')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="lang-switch" onclick="toggleLang()">EN / 中</button>
   </div>
 </nav>
 
-<section class="hero">
-  <img src="logos/logo_final.png" alt="Lantern Alley" class="hero-logo">
-  <h1 id="hero-title">燈籠橫丁</h1>
-  <div class="sub" id="hero-sub">Lantern Alley</div>
-  <div class="desc" id="hero-desc">
-    隱身巷弄的溫暖燈火，一盞燈籠引你入座。<br>
-    嚴選食材、職人手藝，佐以精釀清酒，<br>
-    在這裡，每一口都是旅程。
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="logos/logo_final.png" alt="Lantern Alley" class="hero-logo reveal">
+    <h1 class="reveal reveal-delay-1" id="hero-title">燈籠橫丁</h1>
+    <div class="sub reveal reveal-delay-1" id="hero-sub">Lantern Alley</div>
+    <div class="desc reveal reveal-delay-2" id="hero-desc">
+      隱身巷弄的溫暖燈火，一盞燈籠引你入座。<br>
+      嚴選食材、職人手藝，佐以精釀清酒，<br>
+      在這裡，每一口都是旅程。
+    </div>
+    <a href="#menu" class="cta reveal reveal-delay-3" id="hero-cta"><span>探索菜單</span></a>
   </div>
-  <a href="#menu" class="cta" id="hero-cta">探索菜單</a>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
 </section>
 
+<!-- Menu -->
 <section class="section" id="menu">
-  <div class="section-title" id="menu-title">嚴選菜單</div>
-  <div class="section-sub" id="menu-sub">CURATED MENU</div>
-  <div class="divider"></div>
+  <div class="section-header reveal">
+    <div class="section-title" id="menu-title">嚴選菜單</div>
+    <div class="section-sub" id="menu-sub">CURATED MENU</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="menu-intro">
+    <div class="menu-intro-photo reveal">
+      <img src="photos/food_sashimi.png" alt="Sashimi">
+      <div class="photo-label" id="photo-label-1">主廚嚴選 · 每日直送鮮魚</div>
+    </div>
+    <div class="menu-intro-photo reveal reveal-delay-1">
+      <img src="photos/food_yakitori.png" alt="Yakitori">
+      <div class="photo-label" id="photo-label-2">備長炭直火 · 職人串燒</div>
+    </div>
+  </div>
+
   <div class="menu-grid">
-    <div class="menu-card">
-      <div class="menu-cat" id="cat1">刺身 · 生食</div>
-      <div class="menu-item"><span class="menu-name" id="m1">綜合刺身五點盛<small id="m1s">主廚嚴選當日鮮魚</small></span><span class="menu-price">$580</span></div>
-      <div class="menu-item"><span class="menu-name" id="m2">炙燒鮭魚腹<small id="m2s">輕炙油脂、入口即化</small></span><span class="menu-price">$380</span></div>
-      <div class="menu-item"><span class="menu-name" id="m3">海膽軍艦<small id="m3s">北海道直送</small></span><span class="menu-price">$420</span></div>
+    <div class="menu-card reveal">
+      <div class="menu-card-photo">
+        <img src="photos/food_sashimi.png" alt="Sashimi">
+        <div class="photo-tag" id="cat1">刺身 · 生食</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-item"><span class="menu-name" id="m1">綜合刺身五點盛<small id="m1s">主廚嚴選當日鮮魚</small></span><span class="menu-price">$580</span></div>
+        <div class="menu-item"><span class="menu-name" id="m2">炙燒鮭魚腹<small id="m2s">輕炙油脂、入口即化</small></span><span class="menu-price">$380</span></div>
+        <div class="menu-item"><span class="menu-name" id="m3">海膽軍艦<small id="m3s">北海道直送</small></span><span class="menu-price">$420</span></div>
+      </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-cat" id="cat2">串燒 · 炭火</div>
-      <div class="menu-item"><span class="menu-name" id="m4">備長炭雞腿串<small id="m4s">皮脆肉嫩、鹽味</small></span><span class="menu-price">$120</span></div>
-      <div class="menu-item"><span class="menu-name" id="m5">和牛骰子燒<small id="m5s">A5 等級、蒜味醬油</small></span><span class="menu-price">$480</span></div>
-      <div class="menu-item"><span class="menu-name" id="m6">明太子雞翅<small id="m6s">酥炸、博多風味</small></span><span class="menu-price">$180</span></div>
+    <div class="menu-card reveal reveal-delay-1">
+      <div class="menu-card-photo">
+        <img src="photos/food_yakitori.png" alt="Yakitori">
+        <div class="photo-tag" id="cat2">串燒 · 炭火</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-item"><span class="menu-name" id="m4">備長炭雞腿串<small id="m4s">皮脆肉嫩、鹽味</small></span><span class="menu-price">$120</span></div>
+        <div class="menu-item"><span class="menu-name" id="m5">和牛骰子燒<small id="m5s">A5 等級、蒜味醬油</small></span><span class="menu-price">$480</span></div>
+        <div class="menu-item"><span class="menu-name" id="m6">明太子雞翅<small id="m6s">酥炸、博多風味</small></span><span class="menu-price">$180</span></div>
+      </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-cat" id="cat3">酒飲 · 精選</div>
-      <div class="menu-item"><span class="menu-name" id="m7">獺祭 純米大吟釀<small id="m7s">山口縣・二割三分</small></span><span class="menu-price">$320</span></div>
-      <div class="menu-item"><span class="menu-name" id="m8">橫丁特調 Highball<small id="m8s">角瓶威士忌 × 氣泡</small></span><span class="menu-price">$180</span></div>
-      <div class="menu-item"><span class="menu-name" id="m9">柚子沙瓦<small id="m9s">四國直送柚子、微甜</small></span><span class="menu-price">$160</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="features">
-  <div class="section-title" id="feat-title">橫丁特色</div>
-  <div class="section-sub" id="feat-sub">WHY LANTERN ALLEY</div>
-  <div class="divider"></div>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-icon">🔥</div>
-      <div class="feat-title" id="f1t">備長炭直火</div>
-      <div class="feat-desc" id="f1d">堅持使用紀州備長炭，900°C 高溫炙烤，鎖住食材原味，炭香四溢。</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🍶</div>
-      <div class="feat-title" id="f2t">清酒嚴選</div>
-      <div class="feat-desc" id="f2d">與日本酒藏直接合作，常備 20 款以上銘柄，從入門到珍稀一應俱全。</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🏮</div>
-      <div class="feat-title" id="f3t">橫丁氛圍</div>
-      <div class="feat-desc" id="f3d">復刻東京思い出横丁的巷弄燈火，吧台座席、低語笑聲，最純粹的居酒屋體驗。</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🐟</div>
-      <div class="feat-title" id="f4t">每日直送</div>
-      <div class="feat-desc" id="f4d">凌晨漁港直送鮮魚，當日未售完即不供應，只為呈現最佳鮮度。</div>
+    <div class="menu-card reveal reveal-delay-2">
+      <div class="menu-card-photo">
+        <img src="photos/sake.png" alt="Sake">
+        <div class="photo-tag" id="cat3">酒飲 · 精選</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-item"><span class="menu-name" id="m7">獺祭 純米大吟釀<small id="m7s">山口縣・二割三分</small></span><span class="menu-price">$320</span></div>
+        <div class="menu-item"><span class="menu-name" id="m8">橫丁特調 Highball<small id="m8s">角瓶威士忌 × 氣泡</small></span><span class="menu-price">$180</span></div>
+        <div class="menu-item"><span class="menu-name" id="m9">柚子沙瓦<small id="m9s">四國直送柚子、微甜</small></span><span class="menu-price">$160</span></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Features -->
+<section id="features">
+  <div class="feat-layout">
+    <div class="feat-photo">
+      <img src="photos/interior.png" alt="Interior" id="featImg">
+      <div class="overlay"></div>
+    </div>
+    <div class="feat-content">
+      <div class="section-header reveal">
+        <div class="section-title" id="feat-title">橫丁特色</div>
+        <div class="section-sub" id="feat-sub">WHY LANTERN ALLEY</div>
+        <div class="divider"></div>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card reveal">
+          <div class="feat-icon">&#x1F525;</div>
+          <div class="feat-title" id="f1t">備長炭直火</div>
+          <div class="feat-desc" id="f1d">堅持使用紀州備長炭，900&#xB0;C 高溫炙烤，鎖住食材原味，炭香四溢。</div>
+        </div>
+        <div class="feat-card reveal reveal-delay-1">
+          <div class="feat-icon">&#x1F376;</div>
+          <div class="feat-title" id="f2t">清酒嚴選</div>
+          <div class="feat-desc" id="f2d">與日本酒藏直接合作，常備 20 款以上銘柄，從入門到珍稀一應俱全。</div>
+        </div>
+        <div class="feat-card reveal reveal-delay-2">
+          <div class="feat-icon">&#x1F3EE;</div>
+          <div class="feat-title" id="f3t">橫丁氛圍</div>
+          <div class="feat-desc" id="f3d">復刻東京思い出横丁的巷弄燈火，吧台座席、低語笑聲，最純粹的居酒屋體驗。</div>
+        </div>
+        <div class="feat-card reveal reveal-delay-3">
+          <div class="feat-icon">&#x1F41F;</div>
+          <div class="feat-title" id="f4t">每日直送</div>
+          <div class="feat-desc" id="f4d">凌晨漁港直送鮮魚，當日未售完即不供應，只為呈現最佳鮮度。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sake quote banner -->
+<div class="sake-section">
+  <div class="bg">
+    <img src="photos/sake.png" alt="Sake">
+    <div class="overlay"></div>
+  </div>
+  <div class="sake-content reveal">
+    <blockquote id="sake-quote">「一杯入魂，<br>酒與料理的對話，<br>在燈籠下靜靜發生。」</blockquote>
+    <div class="attr" id="sake-attr">— 燈籠橫丁 —</div>
+  </div>
+</div>
+
+<!-- Info -->
 <section class="section" id="info">
-  <div class="section-title" id="info-title">店鋪資訊</div>
-  <div class="section-sub" id="info-sub">VISIT US</div>
-  <div class="divider"></div>
+  <div class="section-header reveal">
+    <div class="section-title" id="info-title">店鋪資訊</div>
+    <div class="section-sub" id="info-sub">VISIT US</div>
+    <div class="divider"></div>
+  </div>
   <div class="info-grid">
-    <div class="info-card">
+    <div class="info-card reveal">
+      <div class="info-icon">&#x1F553;</div>
       <div class="info-label" id="il1">營業時間</div>
       <div class="info-content" id="ic1">
         週二 — 週六　18:00 — 01:00<br>
@@ -174,14 +356,16 @@ footer .logo-sm{height:30px;margin-bottom:12px;opacity:.5}
         週一公休
       </div>
     </div>
-    <div class="info-card">
+    <div class="info-card reveal reveal-delay-1">
+      <div class="info-icon">&#x1F4CD;</div>
       <div class="info-label" id="il2">地址</div>
       <div class="info-content" id="ic2">
         台中市西區模範街 28 巷 7 號<br>
         （巷口認燈籠）
       </div>
     </div>
-    <div class="info-card">
+    <div class="info-card reveal reveal-delay-2">
+      <div class="info-icon">&#x1F4DE;</div>
       <div class="info-label" id="il3">預約</div>
       <div class="info-content" id="ic3">
         電話：04-2302-XXXX<br>
@@ -192,20 +376,101 @@ footer .logo-sm{height:30px;margin-bottom:12px;opacity:.5}
   </div>
 </section>
 
+<!-- Footer -->
 <footer>
-  <img src="logos/logo_final.png" alt="" class="logo-sm"><br>
-  <span id="footer-text">© 2026 燈籠橫丁 Lantern Alley — All Rights Reserved</span>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logos/logo_final.png" alt="燈籠橫丁">
+      <p id="footer-tagline">隱身巷弄的溫暖燈火。<br>A warm glow hidden in the alley.</p>
+    </div>
+    <div class="footer-col">
+      <h4 id="footer-hours-label">營業時間</h4>
+      <p id="footer-hours">週二 — 週六　18:00 — 01:00<br>週日　17:00 — 23:00<br>週一公休</p>
+    </div>
+    <div class="footer-col">
+      <h4 id="footer-contact-label">聯絡我們</h4>
+      <p>04-2302-XXXX</p>
+      <a href="#">LINE@：@lanternalley</a>
+      <a href="#">Instagram：@lanternalley</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span id="footer-text">&copy; 2026 燈籠橫丁 Lantern Alley &mdash; All Rights Reserved</span>
+  </div>
 </footer>
 
+<!-- BGM Button -->
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" aria-label="Toggle music">
+  <div class="bgm-bars">
+    <div class="bgm-bar"></div>
+    <div class="bgm-bar"></div>
+    <div class="bgm-bar"></div>
+    <div class="bgm-bar"></div>
+    <div class="bgm-bar"></div>
+  </div>
+</button>
+
 <script>
+/* ---- Parallax ---- */
+const heroBg = document.getElementById('heroBg');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const heroH = window.innerHeight;
+      if (scrollY < heroH * 1.5) {
+        heroBg.style.transform = `scale(1.05) translateY(${scrollY * 0.35}px)`;
+      }
+      // Nav background
+      document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+/* ---- Scroll reveal ---- */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ---- BGM ---- */
+const bgm = document.getElementById('bgm');
+const bgmBtn = document.getElementById('bgmBtn');
+let bgmPlaying = false;
+function toggleBgm() {
+  if (bgmPlaying) { bgm.pause(); bgmBtn.classList.remove('playing'); }
+  else { bgm.volume = 0.3; bgm.play(); bgmBtn.classList.add('playing'); }
+  bgmPlaying = !bgmPlaying;
+}
+
+/* ---- Smooth scroll for nav links ---- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ---- i18n ---- */
 let lang = 'zh';
 const i18n = {
   zh: {
     'nav-brand':'燈籠橫丁','nav-menu':'菜單','nav-feat':'特色','nav-info':'店鋪資訊',
     'hero-title':'燈籠橫丁','hero-sub':'Lantern Alley',
     'hero-desc':'隱身巷弄的溫暖燈火，一盞燈籠引你入座。<br>嚴選食材、職人手藝，佐以精釀清酒，<br>在這裡，每一口都是旅程。',
-    'hero-cta':'探索菜單',
+    'hero-cta':'<span>探索菜單</span>',
     'menu-title':'嚴選菜單','menu-sub':'CURATED MENU',
+    'photo-label-1':'主廚嚴選 · 每日直送鮮魚','photo-label-2':'備長炭直火 · 職人串燒',
     'cat1':'刺身 · 生食','cat2':'串燒 · 炭火','cat3':'酒飲 · 精選',
     'm1':'綜合刺身五點盛','m1s':'主廚嚴選當日鮮魚',
     'm2':'炙燒鮭魚腹','m2s':'輕炙油脂、入口即化',
@@ -221,18 +486,23 @@ const i18n = {
     'f2t':'清酒嚴選','f2d':'與日本酒藏直接合作，常備 20 款以上銘柄，從入門到珍稀一應俱全。',
     'f3t':'橫丁氛圍','f3d':'復刻東京思い出横丁的巷弄燈火，吧台座席、低語笑聲，最純粹的居酒屋體驗。',
     'f4t':'每日直送','f4d':'凌晨漁港直送鮮魚，當日未售完即不供應，只為呈現最佳鮮度。',
+    'sake-quote':'「一杯入魂，<br>酒與料理的對話，<br>在燈籠下靜靜發生。」','sake-attr':'— 燈籠橫丁 —',
     'info-title':'店鋪資訊','info-sub':'VISIT US',
     'il1':'營業時間','ic1':'週二 — 週六　18:00 — 01:00<br>週日　17:00 — 23:00<br>週一公休',
     'il2':'地址','ic2':'台中市西區模範街 28 巷 7 號<br>（巷口認燈籠）',
     'il3':'預約','ic3':'電話：04-2302-XXXX<br>LINE@：@lanternalley<br>建議提前預約，吧台座可現場候位',
+    'footer-tagline':'隱身巷弄的溫暖燈火。<br>A warm glow hidden in the alley.',
+    'footer-hours-label':'營業時間','footer-hours':'週二 — 週六　18:00 — 01:00<br>週日　17:00 — 23:00<br>週一公休',
+    'footer-contact-label':'聯絡我們',
     'footer-text':'© 2026 燈籠橫丁 Lantern Alley — All Rights Reserved'
   },
   en: {
     'nav-brand':'Lantern Alley','nav-menu':'Menu','nav-feat':'Features','nav-info':'Visit',
     'hero-title':'Lantern Alley','hero-sub':'燈籠橫丁',
     'hero-desc':'A warm glow hidden in the alley, one lantern guides you to your seat.<br>Handpicked ingredients, artisan craft, paired with fine sake —<br>here, every bite is a journey.',
-    'hero-cta':'Explore Menu',
+    'hero-cta':'<span>Explore Menu</span>',
     'menu-title':'Curated Menu','menu-sub':'嚴選菜單',
+    'photo-label-1':'Chef\'s Selection · Daily Fresh Catch','photo-label-2':'Binchotan Fire · Artisan Yakitori',
     'cat1':'SASHIMI · RAW','cat2':'YAKITORI · CHARCOAL','cat3':'DRINKS · SELECTION',
     'm1':'Chef\'s Sashimi Platter','m1s':'Five cuts of the freshest daily catch',
     'm2':'Torched Salmon Belly','m2s':'Lightly seared, melt-in-your-mouth',
@@ -248,21 +518,25 @@ const i18n = {
     'f2t':'Curated Sake','f2d':'Direct partnerships with Japanese breweries. 20+ labels always in stock, from entry-level to rare finds.',
     'f3t':'Yokocho Vibes','f3d':'Recreating Tokyo\'s Omoide Yokocho — counter seats, hushed laughter, the purest izakaya experience.',
     'f4t':'Daily Fresh','f4d':'Pre-dawn harbor delivery. If it doesn\'t sell out today, it\'s not served — freshness above all.',
+    'sake-quote':'"One sip, one soul —<br>a quiet conversation<br>between food and sake, under lantern light."','sake-attr':'— Lantern Alley —',
     'info-title':'Visit Us','info-sub':'店鋪資訊',
     'il1':'HOURS','ic1':'Tue — Sat　18:00 — 01:00<br>Sun　17:00 — 23:00<br>Closed on Monday',
     'il2':'LOCATION','ic2':'No. 7, Lane 28, Mofan St., West Dist.<br>Taichung City<br>(Look for the lanterns)',
     'il3':'RESERVATIONS','ic3':'Tel: 04-2302-XXXX<br>LINE@: @lanternalley<br>Advance booking recommended. Bar seats: walk-in OK.',
+    'footer-tagline':'A warm glow hidden in the alley.<br>隱身巷弄的溫暖燈火。',
+    'footer-hours-label':'Hours','footer-hours':'Tue — Sat　18:00 — 01:00<br>Sun　17:00 — 23:00<br>Closed Monday',
+    'footer-contact-label':'Contact',
     'footer-text':'© 2026 Lantern Alley 燈籠橫丁 — All Rights Reserved'
   }
 };
-function toggleLang(){
-  lang = lang==='zh'?'en':'zh';
+function toggleLang() {
+  lang = lang === 'zh' ? 'en' : 'zh';
   const d = i18n[lang];
-  Object.keys(d).forEach(id=>{
+  Object.keys(d).forEach(id => {
     const el = document.getElementById(id);
-    if(el) el.innerHTML = d[id];
+    if (el) el.innerHTML = d[id];
   });
-  document.documentElement.lang = lang==='zh'?'zh-TW':'en';
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
 }
 </script>
 </body>

@@ -12,6 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --cream: #faf6f0;
+      --cream-dark: #f3ebe0;
       --brown: #5c3d2e;
       --gold: #c8956c;
       --gold-light: #e0c4a8;
@@ -20,205 +21,301 @@
       --text: #4a3728;
       --text-light: #7a6558;
       --white: #ffffff;
-      --shadow: 0 4px 20px rgba(92, 61, 46, 0.08);
-      --shadow-hover: 0 8px 32px rgba(92, 61, 46, 0.14);
-      --radius: 16px;
-      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(92, 61, 46, 0.08);
+      --shadow-hover: 0 12px 40px rgba(92, 61, 46, 0.16);
+      --radius: 18px;
+      --radius-sm: 12px;
     }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Noto Sans TC', sans-serif;
       background: var(--cream);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       font-weight: 300;
       overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
-    a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    a { color: var(--gold); text-decoration: none; transition: color .25s; }
     a:hover { color: var(--brown); }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--brown); }
 
     /* ===== Utilities ===== */
-    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 100px 0; }
-    .section-title { text-align: center; margin-bottom: 60px; }
-    .section-title h2 { font-size: 2.4rem; margin-bottom: 8px; }
-    .section-title p { color: var(--text-light); font-size: 1.05rem; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 110px 0; }
+    .section-title { text-align: center; margin-bottom: 64px; }
+    .section-title h2 { font-size: 2.6rem; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .section-title p { color: var(--text-light); font-size: 1.08rem; max-width: 500px; margin: 0 auto; }
     .divider {
-      width: 60px; height: 3px; background: var(--gold);
-      margin: 16px auto 0; border-radius: 2px;
+      width: 56px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      margin: 18px auto 0; border-radius: 2px;
     }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== Nav ===== */
     nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: rgba(250, 246, 240, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(92, 61, 46, 0.06);
-      transition: box-shadow .3s;
+      background: transparent; transition: all .4s;
     }
-    nav.scrolled { box-shadow: 0 2px 20px rgba(92, 61, 46, 0.1); }
+    nav.scrolled {
+      background: rgba(250, 246, 240, 0.95);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(92, 61, 46, 0.1);
+    }
     nav .container {
       display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
+      height: 76px;
     }
     .nav-logo {
       display: flex; align-items: center; gap: 12px;
       font-family: 'Playfair Display', serif; font-size: 1.3rem;
-      color: var(--brown); font-weight: 700;
+      color: var(--cream); font-weight: 700; transition: color .4s;
     }
-    .nav-logo img { height: 40px; width: 40px; object-fit: contain; }
+    nav.scrolled .nav-logo { color: var(--brown); }
+    .nav-logo img { height: 42px; width: 42px; object-fit: contain; border-radius: 50%; }
     .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-links a {
-      color: var(--brown-light); font-size: 0.92rem; font-weight: 400;
-      transition: color .2s; letter-spacing: 0.02em;
+      color: rgba(250,246,240,0.85); font-size: 0.92rem; font-weight: 400;
+      transition: color .3s; letter-spacing: 0.02em;
     }
-    .nav-links a:hover { color: var(--brown); }
+    nav.scrolled .nav-links a { color: var(--brown-light); }
+    .nav-links a:hover { color: var(--gold); }
     .lang-btn {
-      background: var(--brown); color: var(--cream); border: none;
-      padding: 6px 16px; border-radius: 20px; cursor: pointer;
+      background: rgba(250,246,240,0.2); color: var(--cream); border: 1px solid rgba(250,246,240,0.3);
+      padding: 6px 18px; border-radius: 20px; cursor: pointer;
       font-size: 0.85rem; font-family: 'Noto Sans TC', sans-serif;
-      font-weight: 500; transition: all .2s;
+      font-weight: 500; transition: all .3s; backdrop-filter: blur(8px);
     }
-    .lang-btn:hover { background: var(--gold); }
+    nav.scrolled .lang-btn {
+      background: var(--brown); color: var(--cream); border-color: var(--brown);
+    }
+    .lang-btn:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
 
-    /* Mobile menu */
+    /* Hamburger */
     .hamburger {
       display: none; background: none; border: none; cursor: pointer;
       flex-direction: column; gap: 5px; padding: 4px;
     }
     .hamburger span {
-      display: block; width: 24px; height: 2px; background: var(--brown);
+      display: block; width: 24px; height: 2px; background: var(--cream);
       border-radius: 2px; transition: all .3s;
     }
+    nav.scrolled .hamburger span { background: var(--brown); }
+
+    /* ===== BGM Button ===== */
+    .bgm-btn {
+      position: fixed; bottom: 32px; right: 32px; z-index: 200;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--brown); color: var(--cream); border: none;
+      cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(58, 37, 24, 0.3);
+      transition: all .3s; overflow: hidden;
+    }
+    .bgm-btn:hover { background: var(--gold); transform: scale(1.08); }
+    .bgm-btn.playing { animation: pulse-ring 2s infinite; }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 6px 24px rgba(58,37,24,0.3), 0 0 0 0 rgba(200,149,108,0.4); }
+      70% { box-shadow: 0 6px 24px rgba(58,37,24,0.3), 0 0 0 16px rgba(200,149,108,0); }
+      100% { box-shadow: 0 6px 24px rgba(58,37,24,0.3), 0 0 0 0 rgba(200,149,108,0); }
+    }
+    .bgm-bars {
+      display: flex; gap: 3px; align-items: flex-end; height: 20px;
+    }
+    .bgm-bars span {
+      display: block; width: 3px; background: var(--cream); border-radius: 2px;
+      transition: height .2s;
+    }
+    .bgm-btn:not(.playing) .bgm-bars span { height: 4px !important; }
+    .bgm-btn.playing .bgm-bars span:nth-child(1) { animation: bar1 .8s ease-in-out infinite; }
+    .bgm-btn.playing .bgm-bars span:nth-child(2) { animation: bar2 .8s ease-in-out infinite .1s; }
+    .bgm-btn.playing .bgm-bars span:nth-child(3) { animation: bar3 .8s ease-in-out infinite .2s; }
+    .bgm-btn.playing .bgm-bars span:nth-child(4) { animation: bar4 .8s ease-in-out infinite .3s; }
+    @keyframes bar1 { 0%,100%{height:8px} 50%{height:18px} }
+    @keyframes bar2 { 0%,100%{height:14px} 50%{height:6px} }
+    @keyframes bar3 { 0%,100%{height:10px} 50%{height:20px} }
+    @keyframes bar4 { 0%,100%{height:16px} 50%{height:8px} }
 
     /* ===== Hero ===== */
     .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      background: linear-gradient(135deg, var(--cream) 0%, #f3ebe0 50%, #ecdfd0 100%);
-      position: relative; overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; text-align: center;
     }
-    .hero::before {
-      content: ''; position: absolute; top: -40%; right: -20%;
-      width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 149, 108, 0.12) 0%, transparent 70%);
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('photos/hero_pourover.png') center/cover no-repeat;
     }
-    .hero::after {
-      content: ''; position: absolute; bottom: -30%; left: -10%;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(92, 61, 46, 0.06) 0%, transparent 70%);
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(58, 37, 24, 0.45) 0%,
+        rgba(92, 61, 46, 0.35) 40%,
+        rgba(200, 149, 108, 0.2) 100%
+      );
     }
-    .hero .container {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-      align-items: center; position: relative; z-index: 1;
+    .hero-content {
+      position: relative; z-index: 1; max-width: 720px; padding: 0 24px;
     }
-    .hero-text h1 {
-      font-size: 3.4rem; line-height: 1.25; margin-bottom: 12px;
+    .hero-logo-mark {
+      width: 80px; height: 80px; object-fit: contain; border-radius: 50%;
+      margin: 0 auto 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
-    .hero-text h1 span { color: var(--gold); }
     .hero-subtitle {
-      font-family: 'Playfair Display', serif; font-size: 1.3rem;
-      color: var(--gold); margin-bottom: 24px; font-style: italic;
+      font-family: 'Playfair Display', serif; font-size: 1.2rem;
+      color: var(--gold-light); margin-bottom: 16px; font-style: italic;
+      letter-spacing: 0.04em;
     }
-    .hero-text p {
-      font-size: 1.08rem; color: var(--text-light); margin-bottom: 36px;
-      max-width: 480px;
+    .hero-content h1 {
+      font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px;
+      color: var(--cream); text-shadow: 0 2px 24px rgba(0,0,0,0.15);
     }
+    .hero-content h1 span { color: var(--gold-light); }
+    .hero-desc {
+      font-size: 1.1rem; color: rgba(250,246,240,0.85); margin-bottom: 40px;
+      max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.85;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
-      display: inline-block; padding: 14px 36px;
-      background: var(--brown); color: var(--cream);
-      border-radius: 30px; font-weight: 500; font-size: 1rem;
-      transition: all .3s; border: 2px solid var(--brown);
+      display: inline-block; padding: 15px 40px;
+      background: var(--gold); color: var(--white);
+      border-radius: 32px; font-weight: 500; font-size: 1rem;
+      transition: all .3s; border: 2px solid var(--gold);
+      letter-spacing: 0.02em;
     }
-    .btn-primary:hover {
-      background: transparent; color: var(--brown);
-    }
+    .btn-primary:hover { background: var(--cream); color: var(--brown); border-color: var(--cream); }
     .btn-outline {
-      display: inline-block; padding: 14px 36px;
-      background: transparent; color: var(--brown);
-      border-radius: 30px; font-weight: 500; font-size: 1rem;
-      transition: all .3s; border: 2px solid var(--brown); margin-left: 12px;
+      display: inline-block; padding: 15px 40px;
+      background: transparent; color: var(--cream);
+      border-radius: 32px; font-weight: 500; font-size: 1rem;
+      transition: all .3s; border: 2px solid rgba(250,246,240,0.5);
     }
-    .btn-outline:hover { background: var(--brown); color: var(--cream); }
-    .hero-visual {
-      display: flex; justify-content: center; align-items: center;
+    .btn-outline:hover { background: var(--cream); color: var(--brown); border-color: var(--cream); }
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 1; animation: float-down 2s ease-in-out infinite;
+      color: rgba(250,246,240,0.6); font-size: 0.85rem; text-align: center;
     }
-    .hero-img-wrapper {
-      width: 420px; height: 420px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 20px 60px rgba(200, 149, 108, 0.25);
-      position: relative;
-    }
-    .hero-img-wrapper::before {
-      content: '☕'; font-size: 8rem; opacity: 0.9;
+    .scroll-hint span { display: block; font-size: 1.4rem; margin-bottom: 4px; }
+    @keyframes float-down {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
     }
 
-    /* ===== Beans ===== */
+    /* ===== Beans Section ===== */
     .beans { background: var(--white); }
+    .beans-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; margin-bottom: 60px;
+    }
+    .beans-photo {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); aspect-ratio: 4/3;
+    }
+    .beans-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .beans-intro-text h3 {
+      font-size: 1.6rem; margin-bottom: 16px;
+    }
+    .beans-intro-text p {
+      color: var(--text-light); font-size: 1rem; margin-bottom: 12px;
+    }
     .beans-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
     }
     .bean-card {
       background: var(--cream); border-radius: var(--radius);
-      padding: 36px 28px; text-align: center;
-      box-shadow: var(--shadow); transition: all .3s;
-      border: 1px solid rgba(200, 149, 108, 0.1);
+      padding: 32px 24px; text-align: center;
+      box-shadow: var(--shadow); transition: all .35s;
+      border: 1px solid rgba(200, 149, 108, 0.08);
     }
     .bean-card:hover {
-      transform: translateY(-6px); box-shadow: var(--shadow-hover);
+      transform: translateY(-8px); box-shadow: var(--shadow-hover);
     }
     .bean-icon {
-      width: 72px; height: 72px; border-radius: 50%;
+      width: 68px; height: 68px; border-radius: 50%;
       background: linear-gradient(135deg, var(--gold-light), var(--gold));
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; font-size: 2rem;
+      margin: 0 auto 18px; font-size: 1.8rem;
+      box-shadow: 0 4px 16px rgba(200,149,108,0.2);
     }
-    .bean-card h3 { font-size: 1.25rem; margin-bottom: 4px; }
+    .bean-card h3 { font-size: 1.2rem; margin-bottom: 4px; }
     .bean-origin {
-      color: var(--gold); font-size: 0.88rem; font-weight: 500;
+      color: var(--gold); font-size: 0.86rem; font-weight: 500;
       margin-bottom: 12px; display: block;
     }
-    .bean-card p { color: var(--text-light); font-size: 0.93rem; line-height: 1.65; }
+    .bean-card p { color: var(--text-light); font-size: 0.92rem; line-height: 1.7; }
     .bean-tags { margin-top: 16px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .bean-tag {
-      background: rgba(200, 149, 108, 0.15); color: var(--gold);
-      padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;
+      background: rgba(200, 149, 108, 0.12); color: var(--gold);
+      padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 500;
     }
 
     /* ===== Brewing ===== */
-    .brewing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
+    .brewing-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
     }
+    .brewing-photo {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); aspect-ratio: 3/4;
+    }
+    .brewing-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .brewing-methods { display: flex; flex-direction: column; gap: 24px; }
     .brew-card {
-      text-align: center; padding: 40px 24px;
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: var(--shadow); transition: all .3s;
+      padding: 28px; border-radius: var(--radius);
+      background: var(--white); box-shadow: var(--shadow);
+      transition: all .35s; display: flex; gap: 20px; align-items: flex-start;
     }
-    .brew-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .brew-card:hover { transform: translateX(6px); box-shadow: var(--shadow-hover); }
     .brew-icon {
-      font-size: 3rem; margin-bottom: 20px;
+      font-size: 2rem; flex-shrink: 0;
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+      display: flex; align-items: center; justify-content: center;
     }
-    .brew-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
-    .brew-card p { color: var(--text-light); font-size: 0.9rem; }
+    .brew-info { flex: 1; }
+    .brew-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .brew-info p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 10px; }
     .brew-steps {
-      margin-top: 16px; text-align: left; padding-left: 0; list-style: none;
-      counter-reset: step;
+      list-style: none; counter-reset: step; padding: 0;
     }
     .brew-steps li {
-      counter-increment: step; padding: 6px 0; font-size: 0.88rem;
-      color: var(--text-light); display: flex; gap: 10px; align-items: baseline;
+      counter-increment: step; padding: 4px 0; font-size: 0.86rem;
+      color: var(--text-light); display: flex; gap: 8px; align-items: baseline;
     }
     .brew-steps li::before {
-      content: counter(step); background: var(--gold);
-      color: var(--white); width: 22px; height: 22px; border-radius: 50%;
+      content: counter(step); background: var(--gold); color: var(--white);
+      width: 20px; height: 20px; border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ===== Roasting Banner ===== */
+    .roasting-banner {
+      position: relative; min-height: 400px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .roasting-banner-bg {
+      position: absolute; inset: 0;
+      background: url('photos/roasting.png') center/cover no-repeat;
+    }
+    .roasting-banner-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(58,37,24,0.7), rgba(92,61,46,0.5));
+    }
+    .roasting-banner-content {
+      position: relative; z-index: 1; text-align: center;
+      max-width: 600px; padding: 60px 24px;
+    }
+    .roasting-banner-content h2 {
+      color: var(--cream); font-size: 2.4rem; margin-bottom: 16px;
+    }
+    .roasting-banner-content p {
+      color: rgba(250,246,240,0.85); font-size: 1.05rem; line-height: 1.8;
     }
 
     /* ===== Subscription ===== */
@@ -228,23 +325,24 @@
       gap: 28px; align-items: start;
     }
     .plan-card {
-      border-radius: var(--radius); padding: 40px 32px;
+      border-radius: var(--radius); padding: 40px 30px;
       background: var(--cream); text-align: center;
-      box-shadow: var(--shadow); transition: all .3s;
+      box-shadow: var(--shadow); transition: all .35s;
       border: 2px solid transparent; position: relative;
     }
-    .plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .plan-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
     .plan-card.featured {
       border-color: var(--gold);
       background: linear-gradient(180deg, #fdf9f3 0%, var(--cream) 100%);
     }
     .plan-badge {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--gold); color: var(--white); padding: 4px 20px;
-      border-radius: 20px; font-size: 0.8rem; font-weight: 700;
-      display: none;
+      background: linear-gradient(90deg, var(--gold), #d4a27a); color: var(--white);
+      padding: 5px 22px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;
+      display: none; box-shadow: 0 4px 12px rgba(200,149,108,0.3);
     }
     .plan-card.featured .plan-badge { display: block; }
+    .plan-icon { font-size: 2.4rem; margin-bottom: 12px; }
     .plan-name { font-size: 1.3rem; margin-bottom: 6px; }
     .plan-price {
       font-size: 2.6rem; font-weight: 700; color: var(--brown);
@@ -254,12 +352,15 @@
     .plan-desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 24px; }
     .plan-features { list-style: none; text-align: left; margin-bottom: 28px; }
     .plan-features li {
-      padding: 8px 0; font-size: 0.92rem; color: var(--text);
+      padding: 9px 0; font-size: 0.92rem; color: var(--text);
       border-bottom: 1px solid rgba(92, 61, 46, 0.06);
       display: flex; align-items: center; gap: 10px;
     }
     .plan-features li::before {
-      content: '✓'; color: var(--gold); font-weight: 700; font-size: 1rem;
+      content: ''; display: inline-block; width: 18px; height: 18px; flex-shrink: 0;
+      background: var(--gold); border-radius: 50%;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/14px no-repeat;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/14px no-repeat;
     }
     .btn-plan {
       display: inline-block; width: 100%; padding: 14px;
@@ -281,78 +382,107 @@
     }
     .about-img {
       border-radius: var(--radius); overflow: hidden;
-      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-      height: 420px; display: flex; align-items: center; justify-content: center;
-      font-size: 6rem; box-shadow: var(--shadow);
+      box-shadow: 0 12px 48px rgba(92,61,46,0.15); aspect-ratio: 4/5;
     }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
     .about-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    .about-text p { color: var(--text-light); margin-bottom: 16px; font-size: 1rem; }
+    .about-text p { color: var(--text-light); margin-bottom: 16px; font-size: 1rem; line-height: 1.85; }
     .about-stats {
-      display: flex; gap: 40px; margin-top: 32px;
+      display: flex; gap: 36px; margin-top: 36px;
     }
-    .stat { text-align: center; }
+    .stat {
+      text-align: center; padding: 20px 24px; background: var(--white);
+      border-radius: var(--radius-sm); box-shadow: var(--shadow);
+      flex: 1;
+    }
     .stat-num {
       font-family: 'Playfair Display', serif; font-size: 2.2rem;
       color: var(--gold); font-weight: 700;
     }
-    .stat-label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+    .stat-label { font-size: 0.84rem; color: var(--text-light); margin-top: 4px; }
 
     /* ===== Footer ===== */
     footer {
       background: var(--brown-dark); color: rgba(250, 246, 240, 0.7);
-      padding: 60px 0 30px;
+      padding: 70px 0 30px;
     }
     .footer-grid {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px; margin-bottom: 40px;
+      gap: 40px; margin-bottom: 48px;
     }
     .footer-brand h3 {
-      color: var(--cream); font-size: 1.4rem; margin-bottom: 12px;
+      color: var(--cream); font-size: 1.4rem; margin-bottom: 14px;
     }
-    .footer-brand p { font-size: 0.9rem; line-height: 1.8; }
-    footer h4 { color: var(--gold-light); font-size: 0.95rem; margin-bottom: 16px; letter-spacing: 0.05em; }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.85; }
+    footer h4 {
+      color: var(--gold-light); font-size: 0.92rem; margin-bottom: 18px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
     footer ul { list-style: none; }
-    footer ul li { margin-bottom: 10px; }
-    footer ul a { color: rgba(250, 246, 240, 0.6); font-size: 0.9rem; }
+    footer ul li { margin-bottom: 11px; }
+    footer ul a { color: rgba(250, 246, 240, 0.6); font-size: 0.9rem; transition: color .25s; }
     footer ul a:hover { color: var(--gold); }
     .footer-bottom {
-      border-top: 1px solid rgba(250, 246, 240, 0.1);
-      padding-top: 24px; text-align: center; font-size: 0.85rem;
+      border-top: 1px solid rgba(250, 246, 240, 0.08);
+      padding-top: 26px; text-align: center; font-size: 0.84rem;
+      color: rgba(250,246,240,0.4);
     }
 
     /* ===== Responsive ===== */
-    @media (max-width: 900px) {
-      .hero .container { grid-template-columns: 1fr; text-align: center; }
-      .hero-text p { margin-left: auto; margin-right: auto; }
-      .hero-visual { order: -1; }
-      .hero-img-wrapper { width: 280px; height: 280px; }
-      .hero-img-wrapper::before { font-size: 5rem; }
-      .hero-text h1 { font-size: 2.6rem; }
+    @media (max-width: 960px) {
+      .beans-intro { grid-template-columns: 1fr; }
+      .beans-photo { max-height: 360px; }
+      .brewing-layout { grid-template-columns: 1fr; }
+      .brewing-photo { max-height: 400px; order: -1; }
       .about .container { grid-template-columns: 1fr; }
-      .about-img { height: 280px; font-size: 4rem; }
+      .about-img { max-height: 400px; aspect-ratio: auto; }
       .about-stats { justify-content: center; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-content h1 { font-size: 2.8rem; }
     }
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .nav-links.open {
         display: flex; flex-direction: column;
-        position: absolute; top: 72px; left: 0; width: 100%;
+        position: absolute; top: 76px; left: 0; width: 100%;
         background: rgba(250, 246, 240, 0.98); padding: 24px;
         box-shadow: 0 12px 24px rgba(0,0,0,0.08); gap: 16px;
         backdrop-filter: blur(12px);
       }
+      .nav-links.open a { color: var(--brown-light) !important; }
+      .nav-links.open .lang-btn { background: var(--brown) !important; color: var(--cream) !important; border-color: var(--brown) !important; }
       .hamburger { display: flex; }
-      .hero-text h1 { font-size: 2rem; }
-      .section { padding: 60px 0; }
-      .section-title h2 { font-size: 1.8rem; }
-      .btn-outline { margin-left: 0; margin-top: 12px; }
+      .hero-content h1 { font-size: 2.1rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .section { padding: 70px 0; }
+      .section-title h2 { font-size: 1.9rem; }
       .footer-grid { grid-template-columns: 1fr; }
-      .about-stats { flex-wrap: wrap; gap: 24px; }
+      .about-stats { flex-wrap: wrap; gap: 16px; }
+      .about-stats .stat { flex: 1 1 120px; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+      .roasting-banner { min-height: 300px; }
+      .roasting-banner-content h2 { font-size: 1.8rem; }
+      .bgm-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
     }
   </style>
 </head>
 <body>
+
+<!-- ===== AUDIO ===== -->
+<audio id="bgmAudio" loop preload="none">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ===== BGM BUTTON ===== -->
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" aria-label="Toggle BGM">
+  <div class="bgm-bars">
+    <span style="height:8px"></span>
+    <span style="height:14px"></span>
+    <span style="height:10px"></span>
+    <span style="height:16px"></span>
+  </div>
+</button>
 
 <!-- ===== NAV ===== -->
 <nav id="navbar">
@@ -376,36 +506,48 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-text">
-      <p class="hero-subtitle" data-zh="每一杯，都是清晨的第一道光" data-en="Every cup, the first light of dawn">每一杯，都是清晨的第一道光</p>
-      <h1 data-zh="在晨霧中<br>遇見<span>珈琲</span>的溫度" data-en="Discover the <span>Warmth</span><br>of Coffee at Dawn">在晨霧中<br>遇見<span>珈琲</span>的溫度</h1>
-      <p data-zh="我們走遍世界產區，精心挑選每一顆生豆，以職人之心小批量手工烘焙，只為呈現咖啡最純粹的風味。" data-en="We travel the world's finest origins, handpicking each green bean and artisan-roasting in small batches to bring you coffee in its purest form.">我們走遍世界產區，精心挑選每一顆生豆，以職人之心小批量手工烘焙，只為呈現咖啡最純粹的風味。</p>
-      <div>
-        <a href="#plans" class="btn-primary" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</a>
-        <a href="#beans" class="btn-outline" data-zh="探索豆款" data-en="Explore Beans">探索豆款</a>
-      </div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <img src="logos/logo_final.png" alt="Logo" class="hero-logo-mark">
+    <p class="hero-subtitle" data-zh="每一杯，都是清晨的第一道光" data-en="Every cup, the first light of dawn">每一杯，都是清晨的第一道光</p>
+    <h1 data-zh="在晨霧中<br>遇見<span>珈琲</span>的溫度" data-en="Discover the <span>Warmth</span><br>of Coffee at Dawn">在晨霧中<br>遇見<span>珈琲</span>的溫度</h1>
+    <p class="hero-desc" data-zh="我們走遍世界產區，精心挑選每一顆生豆，以職人之心小批量手工烘焙，只為呈現咖啡最純粹的風味。" data-en="We travel the world's finest origins, handpicking each green bean and artisan-roasting in small batches to bring you coffee in its purest form.">我們走遍世界產區，精心挑選每一顆生豆，以職人之心小批量手工烘焙，只為呈現咖啡最純粹的風味。</p>
+    <div class="hero-btns">
+      <a href="#plans" class="btn-primary" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</a>
+      <a href="#beans" class="btn-outline" data-zh="探索豆款" data-en="Explore Beans">探索豆款</a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img-wrapper"></div>
-    </div>
+  </div>
+  <div class="scroll-hint">
+    <span data-zh="&#8595;" data-en="&#8595;">&#8595;</span>
+    <small data-zh="向下探索" data-en="Scroll to explore">向下探索</small>
   </div>
 </section>
 
 <!-- ===== BEANS ===== -->
 <section class="beans section" id="beans">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <h2 data-zh="精選豆款" data-en="Our Single Origins">精選豆款</h2>
       <p data-zh="來自世界各地的風土，一杯一故事" data-en="Terroir from around the world, a story in every cup">來自世界各地的風土，一杯一故事</p>
       <div class="divider"></div>
     </div>
-    <div class="beans-grid">
 
-      <div class="bean-card">
-        <div class="bean-icon">🇪🇹</div>
+    <div class="beans-intro reveal">
+      <div class="beans-photo">
+        <img src="photos/beans.png" alt="Roasted coffee beans in burlap sack" loading="lazy">
+      </div>
+      <div class="beans-intro-text">
+        <h3 data-zh="從產地到杯中" data-en="From Origin to Cup">從產地到杯中</h3>
+        <p data-zh="我們與全球 12 個產區的小農莊園建立直接貿易關係，確保每一批生豆都符合精品咖啡的嚴格標準。每顆豆子都經過手工挑選，剔除瑕疵豆，只留下最完美的風味。" data-en="We maintain direct trade relationships with smallholder estates across 12 origins worldwide, ensuring every lot meets specialty-grade standards. Each bean is hand-sorted to remove defects, leaving only the purest flavors.">我們與全球 12 個產區的小農莊園建立直接貿易關係，確保每一批生豆都符合精品咖啡的嚴格標準。每顆豆子都經過手工挑選，剔除瑕疵豆，只留下最完美的風味。</p>
+        <p data-zh="從海拔 1,600 到 2,100 公尺的高地莊園，每一支豆子都帶著獨特的風土印記。" data-en="From highland estates at 1,600 to 2,100 meters altitude, each lot carries a unique terroir fingerprint.">從海拔 1,600 到 2,100 公尺的高地莊園，每一支豆子都帶著獨特的風土印記。</p>
+      </div>
+    </div>
+
+    <div class="beans-grid">
+      <div class="bean-card reveal">
+        <div class="bean-icon">&#127466;&#127481;</div>
         <h3 data-zh="耶加雪菲 日曬" data-en="Yirgacheffe Natural">耶加雪菲 日曬</h3>
-        <span class="bean-origin" data-zh="衣索比亞 · 海拔 1,900m" data-en="Ethiopia · 1,900m Altitude">衣索比亞 · 海拔 1,900m</span>
+        <span class="bean-origin" data-zh="衣索比亞 &middot; 海拔 1,900m" data-en="Ethiopia &middot; 1,900m Altitude">衣索比亞 &middot; 海拔 1,900m</span>
         <p data-zh="飽滿的藍莓與熱帶水果香氣，尾韻帶有淡淡的巧克力甜感，層次豐富。" data-en="Rich blueberry and tropical fruit aromas with a lingering chocolate sweetness. Wonderfully layered.">飽滿的藍莓與熱帶水果香氣，尾韻帶有淡淡的巧克力甜感，層次豐富。</p>
         <div class="bean-tags">
           <span class="bean-tag" data-zh="藍莓" data-en="Blueberry">藍莓</span>
@@ -414,10 +556,10 @@
         </div>
       </div>
 
-      <div class="bean-card">
-        <div class="bean-icon">🇬🇹</div>
+      <div class="bean-card reveal">
+        <div class="bean-icon">&#127468;&#127481;</div>
         <h3 data-zh="安提瓜 花神" data-en="Antigua La Flor">安提瓜 花神</h3>
-        <span class="bean-origin" data-zh="瓜地馬拉 · 海拔 1,600m" data-en="Guatemala · 1,600m Altitude">瓜地馬拉 · 海拔 1,600m</span>
+        <span class="bean-origin" data-zh="瓜地馬拉 &middot; 海拔 1,600m" data-en="Guatemala &middot; 1,600m Altitude">瓜地馬拉 &middot; 海拔 1,600m</span>
         <p data-zh="火山土壤賦予的厚實醇度，帶有焦糖堅果風味，適合喜歡溫暖口感的你。" data-en="Volcanic soil gives it full body with caramel and nutty notes. Perfect for those who love a warm, comforting cup.">火山土壤賦予的厚實醇度，帶有焦糖堅果風味，適合喜歡溫暖口感的你。</p>
         <div class="bean-tags">
           <span class="bean-tag" data-zh="焦糖" data-en="Caramel">焦糖</span>
@@ -426,10 +568,10 @@
         </div>
       </div>
 
-      <div class="bean-card">
-        <div class="bean-icon">🇵🇦</div>
+      <div class="bean-card reveal">
+        <div class="bean-icon">&#127477;&#127462;</div>
         <h3 data-zh="翡翠莊園 藝伎" data-en="Hacienda Esmeralda Geisha">翡翠莊園 藝伎</h3>
-        <span class="bean-origin" data-zh="巴拿馬 · 海拔 1,750m" data-en="Panama · 1,750m Altitude">巴拿馬 · 海拔 1,750m</span>
+        <span class="bean-origin" data-zh="巴拿馬 &middot; 海拔 1,750m" data-en="Panama &middot; 1,750m Altitude">巴拿馬 &middot; 海拔 1,750m</span>
         <p data-zh="茉莉花與佛手柑的優雅香氣，入口如絲綢般滑順，被譽為咖啡界的香檳。" data-en="Elegant jasmine and bergamot aromatics, silky smooth on the palate. Hailed as the champagne of coffee.">茉莉花與佛手柑的優雅香氣，入口如絲綢般滑順，被譽為咖啡界的香檳。</p>
         <div class="bean-tags">
           <span class="bean-tag" data-zh="茉莉" data-en="Jasmine">茉莉</span>
@@ -438,10 +580,10 @@
         </div>
       </div>
 
-      <div class="bean-card">
-        <div class="bean-icon">🇨🇴</div>
+      <div class="bean-card reveal">
+        <div class="bean-icon">&#127464;&#127476;</div>
         <h3 data-zh="薇拉 蜜處理" data-en="Huila Honey Process">薇拉 蜜處理</h3>
-        <span class="bean-origin" data-zh="哥倫比亞 · 海拔 1,800m" data-en="Colombia · 1,800m Altitude">哥倫比亞 · 海拔 1,800m</span>
+        <span class="bean-origin" data-zh="哥倫比亞 &middot; 海拔 1,800m" data-en="Colombia &middot; 1,800m Altitude">哥倫比亞 &middot; 海拔 1,800m</span>
         <p data-zh="蜜處理帶來的甜感與紅糖風味交織，口感圓潤飽滿，是日常飲用的絕佳選擇。" data-en="Honey processing lends a delicate sweetness interwoven with brown sugar notes. Rounded and full-bodied, ideal for daily drinking.">蜜處理帶來的甜感與紅糖風味交織，口感圓潤飽滿，是日常飲用的絕佳選擇。</p>
         <div class="bean-tags">
           <span class="bean-tag" data-zh="紅糖" data-en="Brown Sugar">紅糖</span>
@@ -449,7 +591,6 @@
           <span class="bean-tag" data-zh="莓果" data-en="Berry">莓果</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -457,73 +598,91 @@
 <!-- ===== BREWING ===== -->
 <section class="section" id="brewing">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <h2 data-zh="沖煮指南" data-en="Brewing Methods">沖煮指南</h2>
       <p data-zh="找到最適合你的沖煮方式" data-en="Find the perfect brewing style for you">找到最適合你的沖煮方式</p>
       <div class="divider"></div>
     </div>
-    <div class="brewing-grid">
-
-      <div class="brew-card">
-        <div class="brew-icon">🫖</div>
-        <h3 data-zh="手沖 Pour Over" data-en="Pour Over">手沖 Pour Over</h3>
-        <p data-zh="最能展現單品咖啡的風味層次" data-en="Best for showcasing single origin flavors">最能展現單品咖啡的風味層次</p>
-        <ol class="brew-steps">
-          <li data-zh="研磨至中細度（如砂糖）" data-en="Grind to medium-fine (like table salt)">研磨至中細度（如砂糖）</li>
-          <li data-zh="92°C 熱水悶蒸 30 秒" data-en="Bloom with 92°C water for 30s">92°C 熱水悶蒸 30 秒</li>
-          <li data-zh="繞圈注水，總時間 2:30" data-en="Pour in circles, total time 2:30">繞圈注水，總時間 2:30</li>
-        </ol>
+    <div class="brewing-layout">
+      <div class="brewing-photo reveal">
+        <img src="photos/latte_art.png" alt="Beautiful latte art" loading="lazy">
       </div>
-
-      <div class="brew-card">
-        <div class="brew-icon">☕</div>
-        <h3 data-zh="義式 Espresso" data-en="Espresso">義式 Espresso</h3>
-        <p data-zh="濃縮精華，奶咖基底的最佳選擇" data-en="Concentrated essence, perfect base for milk drinks">濃縮精華，奶咖基底的最佳選擇</p>
-        <ol class="brew-steps">
-          <li data-zh="研磨至極細度" data-en="Grind to extra-fine">研磨至極細度</li>
-          <li data-zh="填壓 18g，萃取 25-30 秒" data-en="Tamp 18g, extract 25-30 seconds">填壓 18g，萃取 25-30 秒</li>
-          <li data-zh="產出 36ml 金黃色 crema" data-en="Yield 36ml with golden crema">產出 36ml 金黃色 crema</li>
-        </ol>
+      <div class="brewing-methods">
+        <div class="brew-card reveal">
+          <div class="brew-icon">&#129750;</div>
+          <div class="brew-info">
+            <h3 data-zh="手沖 Pour Over" data-en="Pour Over">手沖 Pour Over</h3>
+            <p data-zh="最能展現單品咖啡的風味層次" data-en="Best for showcasing single origin flavors">最能展現單品咖啡的風味層次</p>
+            <ol class="brew-steps">
+              <li data-zh="研磨至中細度（如砂糖）" data-en="Grind to medium-fine (like table salt)">研磨至中細度（如砂糖）</li>
+              <li data-zh="92&deg;C 熱水悶蒸 30 秒" data-en="Bloom with 92&deg;C water for 30s">92&deg;C 熱水悶蒸 30 秒</li>
+              <li data-zh="繞圈注水，總時間 2:30" data-en="Pour in circles, total time 2:30">繞圈注水，總時間 2:30</li>
+            </ol>
+          </div>
+        </div>
+        <div class="brew-card reveal">
+          <div class="brew-icon">&#9749;</div>
+          <div class="brew-info">
+            <h3 data-zh="義式 Espresso" data-en="Espresso">義式 Espresso</h3>
+            <p data-zh="濃縮精華，奶咖基底的最佳選擇" data-en="Concentrated essence, perfect base for milk drinks">濃縮精華，奶咖基底的最佳選擇</p>
+            <ol class="brew-steps">
+              <li data-zh="研磨至極細度" data-en="Grind to extra-fine">研磨至極細度</li>
+              <li data-zh="填壓 18g，萃取 25-30 秒" data-en="Tamp 18g, extract 25-30 seconds">填壓 18g，萃取 25-30 秒</li>
+              <li data-zh="產出 36ml 金黃色 crema" data-en="Yield 36ml with golden crema">產出 36ml 金黃色 crema</li>
+            </ol>
+          </div>
+        </div>
+        <div class="brew-card reveal">
+          <div class="brew-icon">&#127994;</div>
+          <div class="brew-info">
+            <h3 data-zh="冷萃 Cold Brew" data-en="Cold Brew">冷萃 Cold Brew</h3>
+            <p data-zh="低溫慢萃，口感絲滑無酸澀" data-en="Slow cold extraction for silky smooth results">低溫慢萃，口感絲滑無酸澀</p>
+            <ol class="brew-steps">
+              <li data-zh="粗研磨，粉水比 1:8" data-en="Coarse grind, 1:8 coffee-to-water ratio">粗研磨，粉水比 1:8</li>
+              <li data-zh="冷藏浸泡 12-18 小時" data-en="Refrigerate and steep 12-18 hours">冷藏浸泡 12-18 小時</li>
+              <li data-zh="過濾後可加冰或牛奶享用" data-en="Filter, then serve over ice or with milk">過濾後可加冰或牛奶享用</li>
+            </ol>
+          </div>
+        </div>
+        <div class="brew-card reveal">
+          <div class="brew-icon">&#8987;</div>
+          <div class="brew-info">
+            <h3 data-zh="愛樂壓 AeroPress" data-en="AeroPress">愛樂壓 AeroPress</h3>
+            <p data-zh="旅行良伴，快速又乾淨的風味" data-en="Travel-friendly, quick and clean flavors">旅行良伴，快速又乾淨的風味</p>
+            <ol class="brew-steps">
+              <li data-zh="中細研磨，倒入 15g 咖啡粉" data-en="Medium-fine grind, add 15g coffee">中細研磨，倒入 15g 咖啡粉</li>
+              <li data-zh="注入 85&deg;C 水 200ml，攪拌" data-en="Pour 200ml at 85&deg;C, stir gently">注入 85&deg;C 水 200ml，攪拌</li>
+              <li data-zh="靜置 1 分鐘後壓下" data-en="Wait 1 min, then press down steadily">靜置 1 分鐘後壓下</li>
+            </ol>
+          </div>
+        </div>
       </div>
-
-      <div class="brew-card">
-        <div class="brew-icon">🏺</div>
-        <h3 data-zh="冷萃 Cold Brew" data-en="Cold Brew">冷萃 Cold Brew</h3>
-        <p data-zh="低溫慢萃，口感絲滑無酸澀" data-en="Slow cold extraction for silky smooth results">低溫慢萃，口感絲滑無酸澀</p>
-        <ol class="brew-steps">
-          <li data-zh="粗研磨，粉水比 1:8" data-en="Coarse grind, 1:8 coffee-to-water ratio">粗研磨，粉水比 1:8</li>
-          <li data-zh="冷藏浸泡 12-18 小時" data-en="Refrigerate and steep 12-18 hours">冷藏浸泡 12-18 小時</li>
-          <li data-zh="過濾後可加冰或牛奶享用" data-en="Filter, then serve over ice or with milk">過濾後可加冰或牛奶享用</li>
-        </ol>
-      </div>
-
-      <div class="brew-card">
-        <div class="brew-icon">⏳</div>
-        <h3 data-zh="愛樂壓 AeroPress" data-en="AeroPress">愛樂壓 AeroPress</h3>
-        <p data-zh="旅行良伴，快速又乾淨的風味" data-en="Travel-friendly, quick and clean flavors">旅行良伴，快速又乾淨的風味</p>
-        <ol class="brew-steps">
-          <li data-zh="中細研磨，倒入 15g 咖啡粉" data-en="Medium-fine grind, add 15g coffee">中細研磨，倒入 15g 咖啡粉</li>
-          <li data-zh="注入 85°C 水 200ml，攪拌" data-en="Pour 200ml at 85°C, stir gently">注入 85°C 水 200ml，攪拌</li>
-          <li data-zh="靜置 1 分鐘後壓下" data-en="Wait 1 min, then press down steadily">靜置 1 分鐘後壓下</li>
-        </ol>
-      </div>
-
     </div>
+  </div>
+</section>
+
+<!-- ===== ROASTING BANNER ===== -->
+<section class="roasting-banner">
+  <div class="roasting-banner-bg"></div>
+  <div class="roasting-banner-content reveal">
+    <h2 data-zh="小批量手工烘焙" data-en="Small-Batch Artisan Roasting">小批量手工烘焙</h2>
+    <p data-zh="每一批豆子都經過反覆杯測與調整，只為找到最完美的烘焙曲線。我們相信慢工出細活，用時間與溫度換取每一口的感動。" data-en="Every lot undergoes repeated cupping and fine-tuning to find the perfect roast curve. We believe in the slow craft -- trading time and temperature for the emotion in every sip.">每一批豆子都經過反覆杯測與調整，只為找到最完美的烘焙曲線。我們相信慢工出細活，用時間與溫度換取每一口的感動。</p>
   </div>
 </section>
 
 <!-- ===== SUBSCRIPTION ===== -->
 <section class="subscription section" id="plans">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <h2 data-zh="訂閱方案" data-en="Subscription Plans">訂閱方案</h2>
       <p data-zh="讓好咖啡定期送到你家門口" data-en="Great coffee delivered to your doorstep regularly">讓好咖啡定期送到你家門口</p>
       <div class="divider"></div>
     </div>
     <div class="plans-grid">
 
-      <div class="plan-card">
-        <div class="plan-badge" data-zh="人氣推薦" data-en="Popular">人氣推薦</div>
+      <div class="plan-card reveal">
+        <div class="plan-badge" data-zh="入門首選" data-en="Starter">入門首選</div>
+        <div class="plan-icon">&#9728;&#65039;</div>
         <h3 class="plan-name" data-zh="晨光入門" data-en="Morning Light">晨光入門</h3>
         <div class="plan-price">NT$450 <small data-zh="/月" data-en="/mo">/月</small></div>
         <p class="plan-desc" data-zh="適合剛開始探索精品咖啡的你" data-en="Perfect for those just starting their specialty coffee journey">適合剛開始探索精品咖啡的你</p>
@@ -536,8 +695,9 @@
         <a href="#" class="btn-plan" data-zh="選擇方案" data-en="Choose Plan">選擇方案</a>
       </div>
 
-      <div class="plan-card featured">
+      <div class="plan-card featured reveal">
         <div class="plan-badge" data-zh="人氣推薦" data-en="Most Popular">人氣推薦</div>
+        <div class="plan-icon">&#127787;&#65039;</div>
         <h3 class="plan-name" data-zh="霧中漫步" data-en="Haze Walker">霧中漫步</h3>
         <div class="plan-price">NT$780 <small data-zh="/月" data-en="/mo">/月</small></div>
         <p class="plan-desc" data-zh="最受歡迎的方案，品味與價值兼具" data-en="Our most popular plan, the best balance of taste and value">最受歡迎的方案，品味與價值兼具</p>
@@ -551,8 +711,9 @@
         <a href="#" class="btn-plan" data-zh="選擇方案" data-en="Choose Plan">選擇方案</a>
       </div>
 
-      <div class="plan-card">
-        <div class="plan-badge" data-zh="人氣推薦" data-en="Popular">人氣推薦</div>
+      <div class="plan-card reveal">
+        <div class="plan-badge" data-zh="極致體驗" data-en="Premium">極致體驗</div>
+        <div class="plan-icon">&#9729;&#65039;</div>
         <h3 class="plan-name" data-zh="雲端珈琲師" data-en="Cloud Barista">雲端珈琲師</h3>
         <div class="plan-price">NT$1,280 <small data-zh="/月" data-en="/mo">/月</small></div>
         <p class="plan-desc" data-zh="為真正的咖啡愛好者打造的極致體驗" data-en="The ultimate experience for true coffee enthusiasts">為真正的咖啡愛好者打造的極致體驗</p>
@@ -573,11 +734,13 @@
 <!-- ===== ABOUT ===== -->
 <section class="about section" id="about">
   <div class="container">
-    <div class="about-img">🏔️</div>
-    <div class="about-text">
+    <div class="about-img reveal">
+      <img src="photos/cafe_interior.png" alt="Bright minimalist cafe interior" loading="lazy">
+    </div>
+    <div class="about-text reveal">
       <h2 data-zh="關於晨霧珈琲" data-en="About Morning Haze">關於晨霧珈琲</h2>
       <p data-zh="2018 年，創辦人陳以晨在一次造訪衣索比亞咖啡產區的旅途中，清晨五點的山谷間瀰漫著薄霧，空氣中飄散著咖啡花的清香。那一刻，他決定要把這份感動帶回台灣。" data-en="In 2018, founder Chen Yi-Chen visited Ethiopian coffee origins. At five in the morning, mist drifted through the valley, carrying the delicate scent of coffee blossoms. In that moment, he knew he had to bring this feeling home to Taiwan.">2018 年，創辦人陳以晨在一次造訪衣索比亞咖啡產區的旅途中，清晨五點的山谷間瀰漫著薄霧，空氣中飄散著咖啡花的清香。那一刻，他決定要把這份感動帶回台灣。</p>
-      <p data-zh="晨霧珈琲堅持小批量手工烘焙，每一批豆子都經過反覆杯測與調整，只為找到最完美的烘焙曲線。我們相信，一杯好咖啡不只是飲品，更是一段與自己對話的時光。" data-en="Morning Haze insists on small-batch artisan roasting. Every lot undergoes repeated cupping and adjustment to find the perfect roast profile. We believe great coffee is more than a beverage — it's a moment of quiet conversation with yourself.">晨霧珈琲堅持小批量手工烘焙，每一批豆子都經過反覆杯測與調整，只為找到最完美的烘焙曲線。我們相信，一杯好咖啡不只是飲品，更是一段與自己對話的時光。</p>
+      <p data-zh="晨霧珈琲堅持小批量手工烘焙，每一批豆子都經過反覆杯測與調整，只為找到最完美的烘焙曲線。我們相信，一杯好咖啡不只是飲品，更是一段與自己對話的時光。" data-en="Morning Haze insists on small-batch artisan roasting. Every lot undergoes repeated cupping and adjustment to find the perfect roast profile. We believe great coffee is more than a beverage -- it's a moment of quiet conversation with yourself.">晨霧珈琲堅持小批量手工烘焙，每一批豆子都經過反覆杯測與調整，只為找到最完美的烘焙曲線。我們相信，一杯好咖啡不只是飲品，更是一段與自己對話的時光。</p>
       <div class="about-stats">
         <div class="stat">
           <div class="stat-num">6+</div>
@@ -623,9 +786,9 @@
       <div>
         <h4 data-zh="聯絡資訊" data-en="Contact">聯絡資訊</h4>
         <ul>
-          <li><a href="#">hello@morninghaze.coffee</a></li>
+          <li><a href="mailto:hello@morninghaze.coffee">hello@morninghaze.coffee</a></li>
           <li><a href="#" data-zh="台北市大安區復興南路一段 82 號" data-en="No. 82, Sec. 1, Fuxing S. Rd, Da'an, Taipei">台北市大安區復興南路一段 82 號</a></li>
-          <li><a href="#">02-2771-0518</a></li>
+          <li><a href="tel:0227710518">02-2771-0518</a></li>
         </ul>
       </div>
     </div>
@@ -656,9 +819,26 @@
     });
   }
 
-  // ===== Navbar scroll shadow =====
+  // ===== BGM Toggle =====
+  const bgmAudio = document.getElementById('bgmAudio');
+  const bgmBtn = document.getElementById('bgmBtn');
+  let bgmPlaying = false;
+
+  function toggleBgm() {
+    if (bgmPlaying) {
+      bgmAudio.pause();
+      bgmBtn.classList.remove('playing');
+    } else {
+      bgmAudio.play().catch(() => {});
+      bgmBtn.classList.add('playing');
+    }
+    bgmPlaying = !bgmPlaying;
+  }
+
+  // ===== Navbar scroll =====
+  const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
   // ===== Mobile menu =====
@@ -666,29 +846,44 @@
     document.getElementById('navLinks').classList.toggle('open');
   }
 
-  // Close mobile menu on link click
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('open');
     });
   });
 
-  // ===== Scroll reveal animation =====
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  // ===== Scroll Reveal =====
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        // Stagger sibling reveals
+        const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+        let idx = Array.from(siblings).indexOf(entry.target);
+        if (idx < 0) idx = 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, idx * 100);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-  document.querySelectorAll('.bean-card, .brew-card, .plan-card, .about-img, .about-text').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
   });
+
+  // ===== Parallax hero on scroll =====
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroBg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px) scale(1.05)';
+      }
+    });
+    // Initial scale
+    heroBg.style.transform = 'scale(1.05)';
+    heroBg.style.transition = 'transform 0.1s linear';
+  }
 </script>
 
 </body>

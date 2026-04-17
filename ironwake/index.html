@@ -13,13 +13,13 @@
 
     :root {
       --bg: #0a0a0a;
-      --bg-card: #141414;
+      --bg-card: #111111;
       --bg-card-hover: #1a1a1a;
       --fire-start: #ff4d00;
       --fire-end: #ff8c00;
-      --fire-glow: rgba(255, 77, 0, 0.3);
+      --fire-glow: rgba(255, 77, 0, 0.35);
       --text: #f0f0f0;
-      --text-muted: #999;
+      --text-muted: #aaa;
       --text-dim: #666;
       --font-body: 'Noto Sans TC', sans-serif;
       --font-display: 'Oswald', sans-serif;
@@ -40,7 +40,6 @@
 
     /* ===== UTILITY ===== */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .fire-gradient { background: linear-gradient(135deg, var(--fire-start), var(--fire-end)); }
     .fire-text {
       background: linear-gradient(135deg, var(--fire-start), var(--fire-end));
       -webkit-background-clip: text;
@@ -48,28 +47,39 @@
       background-clip: text;
     }
 
+    .section-header { text-align: center; margin-bottom: 64px; }
+
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
     }
 
     .section-subtitle {
       color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 48px;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--fire-start), var(--fire-end));
+      margin: 20px auto 0;
+      border-radius: 2px;
     }
 
     .btn {
       display: inline-block;
-      padding: 14px 36px;
+      padding: 16px 42px;
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       border: none;
       border-radius: 4px;
@@ -80,12 +90,12 @@
     .btn-fire {
       background: linear-gradient(135deg, var(--fire-start), var(--fire-end));
       color: #fff;
-      box-shadow: 0 4px 24px var(--fire-glow);
+      box-shadow: 0 4px 30px var(--fire-glow);
     }
 
     .btn-fire:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(255, 77, 0, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 40px rgba(255, 77, 0, 0.55);
     }
 
     .btn-outline {
@@ -97,6 +107,7 @@
     .btn-outline:hover {
       background: linear-gradient(135deg, var(--fire-start), var(--fire-end));
       color: #fff;
+      border-color: transparent;
     }
 
     /* ===== NAVBAR ===== */
@@ -104,17 +115,23 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(10, 10, 10, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 77, 0, 0.15);
-      transition: background 0.3s;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 77, 0, 0.1);
+      transition: all 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.97);
+      border-bottom-color: rgba(255, 77, 0, 0.25);
     }
 
     nav .container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 76px;
     }
 
     .nav-logo {
@@ -123,26 +140,27 @@
       gap: 12px;
     }
 
-    .nav-logo img { height: 42px; width: auto; }
+    .nav-logo img { height: 44px; width: auto; }
 
     .nav-logo span {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       transition: color 0.3s;
       position: relative;
     }
@@ -150,7 +168,7 @@
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -4px; left: 0;
+      bottom: -6px; left: 0;
       width: 0; height: 2px;
       background: linear-gradient(90deg, var(--fire-start), var(--fire-end));
       transition: width 0.3s;
@@ -163,10 +181,11 @@
       background: transparent;
       border: 1px solid var(--fire-start);
       color: var(--fire-end);
-      padding: 6px 14px;
-      font-family: var(--font-body);
+      padding: 6px 16px;
+      font-family: var(--font-display);
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 600;
+      letter-spacing: 1px;
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s;
@@ -180,7 +199,7 @@
     .hamburger {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       background: none;
       border: none;
       cursor: pointer;
@@ -189,10 +208,81 @@
 
     .hamburger span {
       display: block;
-      width: 26px;
+      width: 28px;
       height: 2px;
       background: var(--text);
       transition: all 0.3s;
+    }
+
+    /* ===== BGM FLOATING BUTTON ===== */
+    .bgm-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--fire-start), var(--fire-end));
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px var(--fire-glow);
+      transition: all 0.3s;
+      animation: bgmPulse 2s ease-in-out infinite;
+    }
+
+    .bgm-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(255, 77, 0, 0.6);
+    }
+
+    .bgm-btn.playing { animation: none; }
+
+    .bgm-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+    }
+
+    .bgm-btn .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 20px;
+    }
+
+    .bgm-btn .bars span {
+      display: block;
+      width: 3px;
+      background: #fff;
+      border-radius: 2px;
+      animation: none;
+    }
+
+    .bgm-btn.playing .bars span {
+      animation: barBounce 0.8s ease-in-out infinite alternate;
+    }
+
+    .bgm-btn.playing .bars span:nth-child(1) { height: 8px; animation-delay: 0s; }
+    .bgm-btn.playing .bars span:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+    .bgm-btn.playing .bars span:nth-child(3) { height: 10px; animation-delay: 0.3s; }
+    .bgm-btn.playing .bars span:nth-child(4) { height: 18px; animation-delay: 0.45s; }
+
+    .bgm-btn:not(.playing) .bars span {
+      height: 3px !important;
+    }
+
+    @keyframes barBounce {
+      from { height: 4px; }
+      to { height: 20px; }
+    }
+
+    @keyframes bgmPulse {
+      0%, 100% { box-shadow: 0 4px 24px var(--fire-glow); }
+      50% { box-shadow: 0 4px 40px rgba(255, 77, 0, 0.55); }
     }
 
     /* ===== HERO ===== */
@@ -204,105 +294,139 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 70% 50%, rgba(255, 77, 0, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 30% 80%, rgba(255, 140, 0, 0.06) 0%, transparent 50%);
+      background-image: url('photos/hero_gym.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(10, 10, 10, 0.92) 0%,
+        rgba(10, 10, 10, 0.75) 40%,
+        rgba(10, 10, 10, 0.5) 70%,
+        rgba(10, 10, 10, 0.3) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, transparent 30%, rgba(10,10,10,0.7) 100%);
+      z-index: 1;
+    }
+
+    .hero-fire-glow {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(255, 77, 0, 0.06), transparent);
+      z-index: 1;
       pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
+      max-width: 720px;
+      padding-top: 80px;
     }
 
     .hero-tag {
       display: inline-block;
       font-family: var(--font-display);
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--fire-end);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.2s;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+      border-left: 3px solid var(--fire-start);
+      padding-left: 16px;
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
       font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: 3px;
-      margin-bottom: 24px;
+      line-height: 1.0;
+      letter-spacing: 4px;
+      margin-bottom: 28px;
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.4s;
+      animation: fadeUp 0.8s ease forwards 0.5s;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 540px;
+      margin-bottom: 44px;
+      max-width: 560px;
+      line-height: 1.8;
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.6s;
+      animation: fadeUp 0.8s ease forwards 0.7s;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.8s;
+      animation: fadeUp 0.8s ease forwards 0.9s;
     }
 
-    .hero-decor {
+    .hero-scroll-hint {
       position: absolute;
-      right: -5%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 77, 0, 0.12) 0%, transparent 70%);
-      filter: blur(60px);
-      pointer-events: none;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    /* Animated ember particles */
-    .ember {
-      position: absolute;
-      width: 4px; height: 4px;
-      background: var(--fire-start);
-      border-radius: 50%;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       opacity: 0;
-      pointer-events: none;
-      animation: ember 3s ease-in infinite;
+      animation: fadeUp 0.8s ease forwards 1.2s;
     }
 
-    .ember:nth-child(1) { left: 65%; bottom: 20%; animation-delay: 0s; }
-    .ember:nth-child(2) { left: 72%; bottom: 30%; animation-delay: 0.8s; width: 3px; height: 3px; }
-    .ember:nth-child(3) { left: 58%; bottom: 15%; animation-delay: 1.6s; width: 5px; height: 5px; }
-    .ember:nth-child(4) { left: 80%; bottom: 25%; animation-delay: 2.2s; }
-    .ember:nth-child(5) { left: 68%; bottom: 35%; animation-delay: 0.4s; width: 3px; height: 3px; }
+    .hero-scroll-hint span {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
 
-    @keyframes ember {
-      0% { opacity: 0; transform: translateY(0) scale(1); }
-      20% { opacity: 0.8; }
-      100% { opacity: 0; transform: translateY(-120px) scale(0); }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--fire-start);
+      border-bottom: 2px solid var(--fire-start);
+      transform: rotate(45deg);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
+      50% { transform: rotate(45deg) translateY(8px); opacity: 1; }
     }
 
     /* ===== STATS BAR ===== */
     .stats-bar {
+      position: relative;
+      padding: 60px 0;
+      background: #0d0d0d;
       border-top: 1px solid rgba(255, 77, 0, 0.15);
       border-bottom: 1px solid rgba(255, 77, 0, 0.15);
-      padding: 40px 0;
     }
 
     .stats-grid {
@@ -312,75 +436,119 @@
       text-align: center;
     }
 
+    .stat-item {
+      padding: 20px;
+    }
+
     .stat-number {
       font-family: var(--font-display);
-      font-size: 2.8rem;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
       font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-suffix {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
     }
 
     .stat-label {
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-top: 4px;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
     }
 
     /* ===== PROGRAMS ===== */
-    .programs { padding: 100px 0; }
+    .programs {
+      padding: 120px 0;
+      position: relative;
+    }
 
     .programs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
     }
 
     .program-card {
       background: var(--bg-card);
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 36px 28px;
+      border: 1px solid #1a1a1a;
+      border-radius: 16px;
+      overflow: hidden;
       transition: all 0.4s ease;
       position: relative;
-      overflow: hidden;
     }
 
     .program-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 3px;
+      height: 4px;
       background: linear-gradient(90deg, var(--fire-start), var(--fire-end));
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.4s ease;
+      z-index: 2;
     }
 
     .program-card:hover {
-      background: var(--bg-card-hover);
       border-color: rgba(255, 77, 0, 0.3);
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(255, 77, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(255, 77, 0, 0.12);
     }
 
     .program-card:hover::before { transform: scaleX(1); }
 
+    .program-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .program-card:hover .program-card-img {
+      transform: scale(1.05);
+    }
+
+    .program-card-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .program-card-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, var(--bg-card), transparent);
+      pointer-events: none;
+    }
+
+    .program-card-body {
+      padding: 28px 28px 24px;
+    }
+
     .program-icon {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: 12px;
       display: block;
     }
 
     .program-card h3 {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       margin-bottom: 12px;
+      text-transform: uppercase;
     }
 
     .program-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 20px;
+      line-height: 1.7;
     }
 
     .program-meta {
@@ -389,16 +557,57 @@
       align-items: center;
       padding-top: 16px;
       border-top: 1px solid #222;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .program-duration { color: var(--text-dim); }
-    .program-price { color: var(--fire-end); font-weight: 700; }
+    .program-price { color: var(--fire-end); font-weight: 700; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.5px; }
+
+    /* ===== PARALLAX IMAGE BREAK ===== */
+    .parallax-break {
+      height: 50vh;
+      min-height: 350px;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .parallax-break::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .parallax-break-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .parallax-break-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .parallax-break-text p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 12px;
+      letter-spacing: 1px;
+    }
 
     /* ===== TRANSFORMATIONS ===== */
     .transformations {
-      padding: 100px 0;
-      background: linear-gradient(180deg, var(--bg) 0%, #0f0f0f 50%, var(--bg) 100%);
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--bg) 0%, #080808 50%, var(--bg) 100%);
     }
 
     .transform-grid {
@@ -409,79 +618,72 @@
 
     .transform-card {
       background: var(--bg-card);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid #222;
-      transition: all 0.3s;
+      border: 1px solid #1a1a1a;
+      transition: all 0.4s;
     }
 
     .transform-card:hover {
       border-color: rgba(255, 77, 0, 0.3);
-      box-shadow: 0 8px 32px rgba(255, 77, 0, 0.08);
+      box-shadow: 0 12px 40px rgba(255, 77, 0, 0.1);
+      transform: translateY(-4px);
     }
 
     .transform-visual {
-      height: 220px;
-      display: flex;
+      height: 200px;
       position: relative;
+      overflow: hidden;
     }
 
-    .transform-before, .transform-after {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .transform-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1);
+    }
+
+    .transform-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, var(--bg-card) 100%);
+    }
+
+    .transform-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, var(--fire-start), var(--fire-end));
+      color: #fff;
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 20px;
     }
 
-    .transform-before {
-      background: linear-gradient(135deg, #1a1a1a, #222);
-      color: var(--text-dim);
-    }
-
-    .transform-after {
-      background: linear-gradient(135deg, #1a0f00, #2a1500);
-      color: var(--fire-end);
-    }
-
-    .transform-divider {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--fire-start), var(--fire-end));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      z-index: 2;
-      box-shadow: 0 0 20px var(--fire-glow);
-    }
-
-    .transform-info { padding: 24px; }
+    .transform-info { padding: 24px 28px; }
 
     .transform-info h3 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
     }
 
     .transform-info p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 16px;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+      font-style: italic;
     }
 
     .transform-stats {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       font-size: 0.85rem;
     }
 
@@ -489,102 +691,134 @@
       color: var(--fire-end);
       display: block;
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
     }
+
+    .transform-stat span { color: var(--text-dim); }
 
     /* ===== ABOUT ===== */
-    .about { padding: 100px 0; }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-image {
-      aspect-ratio: 3/4;
-      background: linear-gradient(135deg, #1a1a1a, #222);
-      border-radius: 12px;
-      border: 1px solid #222;
+    .about {
+      padding: 120px 0;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
 
-    .about-image::after {
+    .about::before {
       content: '';
       position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      border: 2px solid transparent;
-      background: linear-gradient(135deg, rgba(255,77,0,0.3), transparent) border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
+      top: 0; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255, 77, 0, 0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .about-image-placeholder {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      opacity: 0.15;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px;
+      right: 12px; bottom: 12px;
+      border: 2px solid var(--fire-start);
+      border-radius: 16px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .about-image {
+      position: relative;
+      z-index: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.03);
     }
 
     .about-content h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       letter-spacing: 2px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      line-height: 1.2;
     }
 
     .about-content p {
       color: var(--text-muted);
       margin-bottom: 20px;
       font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .about-quote {
+      border-left: 3px solid var(--fire-start);
+      padding-left: 20px;
+      font-style: italic;
+      color: var(--text) !important;
+      font-size: 1.1rem !important;
+      margin: 28px 0 !important;
     }
 
     .about-creds {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-top: 32px;
+      margin-top: 36px;
     }
 
     .cred {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-size: 0.95rem;
     }
 
     .cred-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, rgba(255,77,0,0.2), rgba(255,140,0,0.1));
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, rgba(255,77,0,0.15), rgba(255,140,0,0.08));
+      border: 1px solid rgba(255, 77, 0, 0.2);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 1.1rem;
       flex-shrink: 0;
     }
 
     /* ===== CONTACT ===== */
     .contact {
-      padding: 100px 0;
-      background: linear-gradient(180deg, var(--bg) 0%, #0d0500 100%);
+      padding: 120px 0;
       position: relative;
+      background: linear-gradient(180deg, var(--bg) 0%, #0d0500 100%);
     }
 
     .contact::before {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 300px;
-      background: radial-gradient(ellipse at 50% 100%, rgba(255, 77, 0, 0.08) 0%, transparent 70%);
+      height: 400px;
+      background: radial-gradient(ellipse at 50% 100%, rgba(255, 77, 0, 0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -602,71 +836,78 @@
       font-weight: 700;
       letter-spacing: 2px;
       margin-bottom: 20px;
+      line-height: 1.2;
     }
 
-    .contact-info p {
+    .contact-info > p {
       color: var(--text-muted);
       font-size: 1.05rem;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
+      line-height: 1.7;
     }
 
-    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+    .contact-details { display: flex; flex-direction: column; gap: 24px; }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .contact-item-icon {
-      width: 44px; height: 44px;
+      width: 48px; height: 48px;
       background: var(--bg-card);
       border: 1px solid #222;
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       flex-shrink: 0;
     }
 
     .contact-item-text strong {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-dim);
       font-weight: 500;
       margin-bottom: 2px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
+
+    .contact-item-text span { font-size: 0.95rem; }
 
     .contact-form {
       background: var(--bg-card);
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 36px;
+      border: 1px solid #1a1a1a;
+      border-radius: 16px;
+      padding: 40px;
     }
 
-    .form-group { margin-bottom: 20px; }
+    .form-group { margin-bottom: 22px; }
 
     .form-group label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       margin-bottom: 8px;
       font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 12px 16px;
+      padding: 14px 18px;
       background: var(--bg);
-      border: 1px solid #333;
-      border-radius: 8px;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
       color: var(--text);
       font-family: var(--font-body);
       font-size: 0.95rem;
-      transition: border-color 0.3s;
+      transition: all 0.3s;
     }
 
     .form-group input:focus,
@@ -674,10 +915,10 @@
     .form-group textarea:focus {
       outline: none;
       border-color: var(--fire-start);
-      box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.1);
+      box-shadow: 0 0 0 4px rgba(255, 77, 0, 0.08);
     }
 
-    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group textarea { min-height: 110px; resize: vertical; }
 
     .form-row {
       display: grid;
@@ -687,8 +928,8 @@
 
     /* ===== FOOTER ===== */
     footer {
-      border-top: 1px solid rgba(255, 77, 0, 0.15);
-      padding: 40px 0;
+      border-top: 1px solid rgba(255, 77, 0, 0.12);
+      padding: 48px 0;
       text-align: center;
     }
 
@@ -697,25 +938,74 @@
 
     /* ===== ANIMATIONS ===== */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
-      50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(50px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* stagger children */
+    .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+    .stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+    .stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+    .stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
 
     /* ===== MOBILE NAV ===== */
     .mobile-nav {
@@ -727,15 +1017,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 32px;
+      gap: 36px;
     }
 
     .mobile-nav.open { display: flex; }
 
     .mobile-nav a {
       font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: 2px;
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       transition: color 0.3s;
     }
 
@@ -748,15 +1039,16 @@
       background: none;
       border: none;
       color: var(--text);
-      font-size: 2rem;
+      font-size: 2.2rem;
       cursor: pointer;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .about-image { max-height: 400px; aspect-ratio: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-wrapper { max-width: 500px; margin: 0 auto; }
       .contact-grid { grid-template-columns: 1fr; }
+      .programs-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -766,20 +1058,23 @@
       .transform-grid { grid-template-columns: 1fr; }
       .about-creds { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .hero-decor { width: 300px; height: 300px; right: -15%; }
+      .hero-bg { background-attachment: scroll; }
+      .parallax-break { background-attachment: scroll; }
+      .bgm-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 2.6rem; }
+      .hero h1 { font-size: 2.8rem; }
       .hero-buttons { flex-direction: column; }
-      .hero-buttons .btn { text-align: center; }
+      .hero-buttons .btn { text-align: center; width: 100%; }
+      .contact-form { padding: 28px 20px; }
     }
   </style>
 </head>
 <body>
 
 <!-- ===== NAVBAR ===== -->
-<nav>
+<nav id="navbar">
   <div class="container">
     <a href="#" class="nav-logo">
       <img src="logos/logo_final.png" alt="鐵覺 IRONWAKE">
@@ -805,17 +1100,23 @@
   <a href="#results" class="mobile-link" data-zh="轉變實證" data-en="Results">轉變實證</a>
   <a href="#about" class="mobile-link" data-zh="關於教練" data-en="About">關於教練</a>
   <a href="#contact" class="mobile-link" data-zh="預約諮詢" data-en="Contact">預約諮詢</a>
-  <button id="langToggleMobile" style="background:transparent;border:1px solid var(--fire-start);color:var(--fire-end);padding:8px 20px;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;">EN</button>
+  <button id="langToggleMobile" style="background:transparent;border:1px solid var(--fire-start);color:var(--fire-end);padding:8px 24px;font-family:var(--font-display);font-size:1rem;font-weight:600;letter-spacing:1px;border-radius:4px;cursor:pointer;">EN</button>
 </div>
+
+<!-- ===== BGM BUTTON ===== -->
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <div class="bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</button>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
-  <div class="ember"></div>
-  <div class="ember"></div>
-  <div class="ember"></div>
-  <div class="ember"></div>
-  <div class="ember"></div>
-  <div class="hero-decor"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-fire-glow"></div>
   <div class="container">
     <div class="hero-content">
       <span class="hero-tag" data-zh="專業一對一健身教練" data-en="ELITE PERSONAL TRAINING">專業一對一健身教練</span>
@@ -833,26 +1134,30 @@
       </div>
     </div>
   </div>
+  <div class="hero-scroll-hint">
+    <span data-zh="向下探索" data-en="SCROLL">向下探索</span>
+    <div class="scroll-arrow"></div>
+  </div>
 </section>
 
 <!-- ===== STATS BAR ===== -->
-<section class="stats-bar">
+<section class="stats-bar" id="statsBar">
   <div class="container">
-    <div class="stats-grid">
-      <div class="reveal">
-        <div class="stat-number fire-text">12+</div>
+    <div class="stats-grid stagger-children">
+      <div class="stat-item reveal">
+        <div class="fire-text"><span class="stat-number" data-count="12">0</span><span class="stat-suffix">+</span></div>
         <div class="stat-label" data-zh="年教練經驗" data-en="Years of Coaching">年教練經驗</div>
       </div>
-      <div class="reveal">
-        <div class="stat-number fire-text">800+</div>
+      <div class="stat-item reveal">
+        <div class="fire-text"><span class="stat-number" data-count="800">0</span><span class="stat-suffix">+</span></div>
         <div class="stat-label" data-zh="學員成功轉變" data-en="Clients Transformed">學員成功轉變</div>
       </div>
-      <div class="reveal">
-        <div class="stat-number fire-text">15K+</div>
+      <div class="stat-item reveal">
+        <div class="fire-text"><span class="stat-number" data-count="15000">0</span><span class="stat-suffix">+</span></div>
         <div class="stat-label" data-zh="累計訓練時數" data-en="Training Hours">累計訓練時數</div>
       </div>
-      <div class="reveal">
-        <div class="stat-number fire-text">98%</div>
+      <div class="stat-item reveal">
+        <div class="fire-text"><span class="stat-number" data-count="98">0</span><span class="stat-suffix">%</span></div>
         <div class="stat-label" data-zh="學員滿意度" data-en="Client Satisfaction">學員滿意度</div>
       </div>
     </div>
@@ -862,129 +1167,159 @@
 <!-- ===== PROGRAMS ===== -->
 <section class="programs" id="programs">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
+    <div class="section-header reveal">
       <h2 class="section-title" data-zh="訓練課程" data-en="TRAINING PROGRAMS">訓練課程</h2>
       <p class="section-subtitle" data-zh="四大核心課程，從初階到進階，為你量身打造最適合的訓練方案。" data-en="Four core programs, from beginner to elite — custom-built for your goals.">
         四大核心課程，從初階到進階，為你量身打造最適合的訓練方案。
       </p>
+      <div class="section-line"></div>
     </div>
-    <div class="programs-grid">
+    <div class="programs-grid stagger-children">
       <!-- Card 1 -->
       <div class="program-card reveal">
-        <span class="program-icon">&#128293;</span>
-        <h3 data-zh="鐵覺燃脂" data-en="IRONBURN">鐵覺燃脂</h3>
-        <p data-zh="高強度間歇訓練結合功能性動作，最大化脂肪燃燒效率。適合想要快速減脂、提升心肺的你。" data-en="High-intensity interval training combined with functional movements. Maximize fat burn and elevate your cardiovascular capacity.">
-          高強度間歇訓練結合功能性動作，最大化脂肪燃燒效率。適合想要快速減脂、提升心肺的你。
-        </p>
-        <div class="program-meta">
-          <span class="program-duration" data-zh="每堂 60 分鐘" data-en="60 min / session">每堂 60 分鐘</span>
-          <span class="program-price" data-zh="NT$1,800/堂" data-en="NT$1,800/session">NT$1,800/堂</span>
+        <div class="program-card-img-wrap">
+          <img class="program-card-img" src="photos/training_session.png" alt="IRONBURN Training">
+        </div>
+        <div class="program-card-body">
+          <span class="program-icon">&#128293;</span>
+          <h3 data-zh="鐵覺燃脂" data-en="IRONBURN">鐵覺燃脂</h3>
+          <p data-zh="高強度間歇訓練結合功能性動作，最大化脂肪燃燒效率。適合想要快速減脂、提升心肺的你。" data-en="High-intensity interval training combined with functional movements. Maximize fat burn and elevate your cardiovascular capacity.">
+            高強度間歇訓練結合功能性動作，最大化脂肪燃燒效率。適合想要快速減脂、提升心肺的你。
+          </p>
+          <div class="program-meta">
+            <span class="program-duration" data-zh="每堂 60 分鐘" data-en="60 min / session">每堂 60 分鐘</span>
+            <span class="program-price" data-zh="NT$1,800/堂" data-en="NT$1,800/session">NT$1,800/堂</span>
+          </div>
         </div>
       </div>
       <!-- Card 2 -->
       <div class="program-card reveal">
-        <span class="program-icon">&#127947;</span>
-        <h3 data-zh="鐵覺重訓" data-en="IRONLIFT">鐵覺重訓</h3>
-        <p data-zh="系統化肌力訓練，以深蹲、硬舉、臥推三大動作為基礎，打造強壯且對稱的體態。" data-en="Systematic strength training built on squat, deadlift, and bench press. Build a powerful and symmetrical physique.">
-          系統化肌力訓練，以深蹲、硬舉、臥推三大動作為基礎，打造強壯且對稱的體態。
-        </p>
-        <div class="program-meta">
-          <span class="program-duration" data-zh="每堂 75 分鐘" data-en="75 min / session">每堂 75 分鐘</span>
-          <span class="program-price" data-zh="NT$2,200/堂" data-en="NT$2,200/session">NT$2,200/堂</span>
+        <div class="program-card-img-wrap">
+          <img class="program-card-img" src="photos/trainer.png" alt="IRONLIFT Training">
+        </div>
+        <div class="program-card-body">
+          <span class="program-icon">&#127947;</span>
+          <h3 data-zh="鐵覺重訓" data-en="IRONLIFT">鐵覺重訓</h3>
+          <p data-zh="系統化肌力訓練，以深蹲、硬舉、臥推三大動作為基礎，打造強壯且對稱的體態。" data-en="Systematic strength training built on squat, deadlift, and bench press. Build a powerful and symmetrical physique.">
+            系統化肌力訓練，以深蹲、硬舉、臥推三大動作為基礎，打造強壯且對稱的體態。
+          </p>
+          <div class="program-meta">
+            <span class="program-duration" data-zh="每堂 75 分鐘" data-en="75 min / session">每堂 75 分鐘</span>
+            <span class="program-price" data-zh="NT$2,200/堂" data-en="NT$2,200/session">NT$2,200/堂</span>
+          </div>
         </div>
       </div>
       <!-- Card 3 -->
       <div class="program-card reveal">
-        <span class="program-icon">&#129504;</span>
-        <h3 data-zh="鐵覺心智" data-en="IRONMIND">鐵覺心智</h3>
-        <p data-zh="訓練不只是身體，更是心理。結合運動心理學與正念呼吸法，突破內在瓶頸，建立不可撼動的精神韌性。" data-en="Training isn't just physical. Combining sports psychology with mindful breathing to break mental barriers and build unshakable resilience.">
-          訓練不只是身體，更是心理。結合運動心理學與正念呼吸法，突破內在瓶頸，建立不可撼動的精神韌性。
-        </p>
-        <div class="program-meta">
-          <span class="program-duration" data-zh="每堂 50 分鐘" data-en="50 min / session">每堂 50 分鐘</span>
-          <span class="program-price" data-zh="NT$1,600/堂" data-en="NT$1,600/session">NT$1,600/堂</span>
+        <div class="program-card-img-wrap">
+          <img class="program-card-img" src="photos/hero_gym.png" alt="IRONMIND Training">
+        </div>
+        <div class="program-card-body">
+          <span class="program-icon">&#129504;</span>
+          <h3 data-zh="鐵覺心智" data-en="IRONMIND">鐵覺心智</h3>
+          <p data-zh="訓練不只是身體，更是心理。結合運動心理學與正念呼吸法，突破內在瓶頸，建立不可撼動的精神韌性。" data-en="Training isn't just physical. Combining sports psychology with mindful breathing to break mental barriers and build unshakable resilience.">
+            訓練不只是身體，更是心理。結合運動心理學與正念呼吸法，突破內在瓶頸，建立不可撼動的精神韌性。
+          </p>
+          <div class="program-meta">
+            <span class="program-duration" data-zh="每堂 50 分鐘" data-en="50 min / session">每堂 50 分鐘</span>
+            <span class="program-price" data-zh="NT$1,600/堂" data-en="NT$1,600/session">NT$1,600/堂</span>
+          </div>
         </div>
       </div>
       <!-- Card 4 -->
       <div class="program-card reveal">
-        <span class="program-icon">&#9889;</span>
-        <h3 data-zh="鐵覺全方位" data-en="IRONTOTAL">鐵覺全方位</h3>
-        <p data-zh="整合肌力、體能、營養與心理的全方位教練方案。為期 12 週密集計劃，徹底改造你的身體與生活。" data-en="A complete coaching package integrating strength, conditioning, nutrition, and mindset. A 12-week intensive plan to transform your body and life.">
-          整合肌力、體能、營養與心理的全方位教練方案。為期 12 週密集計劃，徹底改造你的身體與生活。
-        </p>
-        <div class="program-meta">
-          <span class="program-duration" data-zh="12 週完整計劃" data-en="12-week program">12 週完整計劃</span>
-          <span class="program-price" data-zh="NT$48,000" data-en="NT$48,000">NT$48,000</span>
+        <div class="program-card-img-wrap">
+          <img class="program-card-img" src="photos/results.png" alt="IRONTOTAL Training">
+        </div>
+        <div class="program-card-body">
+          <span class="program-icon">&#9889;</span>
+          <h3 data-zh="鐵覺全方位" data-en="IRONTOTAL">鐵覺全方位</h3>
+          <p data-zh="整合肌力、體能、營養與心理的全方位教練方案。為期 12 週密集計劃，徹底改造你的身體與生活。" data-en="A complete coaching package integrating strength, conditioning, nutrition, and mindset. A 12-week intensive plan to transform your body and life.">
+            整合肌力、體能、營養與心理的全方位教練方案。為期 12 週密集計劃，徹底改造你的身體與生活。
+          </p>
+          <div class="program-meta">
+            <span class="program-duration" data-zh="12 週完整計劃" data-en="12-week program">12 週完整計劃</span>
+            <span class="program-price" data-zh="NT$48,000" data-en="NT$48,000">NT$48,000</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ===== PARALLAX BREAK ===== -->
+<div class="parallax-break" style="background-image: url('photos/training_session.png');">
+  <div class="parallax-break-text reveal-scale">
+    <h2 class="fire-text" data-zh="沒有捷徑，只有堅持" data-en="NO SHORTCUTS. ONLY GRIT.">沒有捷徑，只有堅持</h2>
+    <p data-zh="你的身體，就是你最強大的武器" data-en="Your body is your most powerful weapon">你的身體，就是你最強大的武器</p>
+  </div>
+</div>
+
 <!-- ===== TRANSFORMATIONS ===== -->
 <section class="transformations" id="results">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
+    <div class="section-header reveal">
       <h2 class="section-title" data-zh="轉變實證" data-en="TRANSFORMATION RESULTS">轉變實證</h2>
       <p class="section-subtitle" data-zh="數據不說謊。以下是學員們的真實蛻變紀錄。" data-en="Numbers don't lie. Real results from real clients.">
         數據不說謊。以下是學員們的真實蛻變紀錄。
       </p>
+      <div class="section-line"></div>
     </div>
     <div class="transform-grid">
       <!-- Result 1 -->
       <div class="transform-card reveal">
         <div class="transform-visual">
-          <div class="transform-before">BEFORE</div>
-          <div class="transform-after">AFTER</div>
-          <div class="transform-divider">&#10132;</div>
+          <img src="photos/results.png" alt="Transformation">
+          <div class="transform-visual-overlay"></div>
+          <div class="transform-badge">-18 KG</div>
         </div>
         <div class="transform-info">
-          <h3 data-zh="陳先生・32 歲・工程師" data-en="Mr. Chen, 32, Engineer">陳先生・32 歲・工程師</h3>
-          <p data-zh="「從 92 公斤到 74 公斤，以前爬三樓會喘，現在能完成半馬。鐵覺改變了我的人生。」" data-en="'From 92kg to 74kg. I used to gasp climbing 3 flights of stairs — now I finish half marathons. IRONWAKE changed my life.'">
+          <h3 data-zh="陳先生 . 32 歲 . 工程師" data-en="Mr. Chen, 32, Engineer">陳先生 . 32 歲 . 工程師</h3>
+          <p data-zh="「從 92 公斤到 74 公斤，以前爬三樓會喘，現在能完成半馬。鐵覺改變了我的人生。」" data-en="'From 92kg to 74kg. I used to gasp climbing 3 flights — now I finish half marathons. IRONWAKE changed my life.'">
             「從 92 公斤到 74 公斤，以前爬三樓會喘，現在能完成半馬。鐵覺改變了我的人生。」
           </p>
           <div class="transform-stats">
-            <div><strong>-18 kg</strong> <span data-zh="體重變化" data-en="Weight Lost">體重變化</span></div>
-            <div><strong>-12%</strong> <span data-zh="體脂下降" data-en="Body Fat Lost">體脂下降</span></div>
-            <div><strong>16</strong> <span data-zh="週完成" data-en="Weeks">週完成</span></div>
+            <div class="transform-stat"><strong>-18 kg</strong> <span data-zh="體重變化" data-en="Weight Lost">體重變化</span></div>
+            <div class="transform-stat"><strong>-12%</strong> <span data-zh="體脂下降" data-en="Body Fat Lost">體脂下降</span></div>
+            <div class="transform-stat"><strong>16</strong> <span data-zh="週完成" data-en="Weeks">週完成</span></div>
           </div>
         </div>
       </div>
       <!-- Result 2 -->
       <div class="transform-card reveal">
         <div class="transform-visual">
-          <div class="transform-before">BEFORE</div>
-          <div class="transform-after">AFTER</div>
-          <div class="transform-divider">&#10132;</div>
+          <img src="photos/training_session.png" alt="Transformation">
+          <div class="transform-visual-overlay"></div>
+          <div class="transform-badge">-9% BF</div>
         </div>
         <div class="transform-info">
-          <h3 data-zh="林小姐・28 歲・設計師" data-en="Ms. Lin, 28, Designer">林小姐・28 歲・設計師</h3>
+          <h3 data-zh="林小姐 . 28 歲 . 設計師" data-en="Ms. Lin, 28, Designer">林小姐 . 28 歲 . 設計師</h3>
           <p data-zh="「不只是瘦了，整個人的體態和自信都不一樣了。教練很專業，課程設計很科學。」" data-en="'It's not just about losing weight — my posture and confidence completely transformed. The coach is incredibly professional.'">
             「不只是瘦了，整個人的體態和自信都不一樣了。教練很專業，課程設計很科學。」
           </p>
           <div class="transform-stats">
-            <div><strong>-8 kg</strong> <span data-zh="體重變化" data-en="Weight Lost">體重變化</span></div>
-            <div><strong>-9%</strong> <span data-zh="體脂下降" data-en="Body Fat Lost">體脂下降</span></div>
-            <div><strong>12</strong> <span data-zh="週完成" data-en="Weeks">週完成</span></div>
+            <div class="transform-stat"><strong>-8 kg</strong> <span data-zh="體重變化" data-en="Weight Lost">體重變化</span></div>
+            <div class="transform-stat"><strong>-9%</strong> <span data-zh="體脂下降" data-en="Body Fat Lost">體脂下降</span></div>
+            <div class="transform-stat"><strong>12</strong> <span data-zh="週完成" data-en="Weeks">週完成</span></div>
           </div>
         </div>
       </div>
       <!-- Result 3 -->
       <div class="transform-card reveal">
         <div class="transform-visual">
-          <div class="transform-before">BEFORE</div>
-          <div class="transform-after">AFTER</div>
-          <div class="transform-divider">&#10132;</div>
+          <img src="photos/trainer.png" alt="Transformation">
+          <div class="transform-visual-overlay"></div>
+          <div class="transform-badge">+STRENGTH</div>
         </div>
         <div class="transform-info">
-          <h3 data-zh="王先生・45 歲・企業主管" data-en="Mr. Wang, 45, Executive">王先生・45 歲・企業主管</h3>
-          <p data-zh="「45 歲開始也不晚。深蹲從空槓到 140 公斤，硬舉拉到 180 公斤。感謝鐵覺讓我重新認識自己的身體。」" data-en="'It's never too late to start at 45. Squat went from empty bar to 140kg, deadlift to 180kg. IRONWAKE helped me rediscover my body.'">
+          <h3 data-zh="王先生 . 45 歲 . 企業主管" data-en="Mr. Wang, 45, Executive">王先生 . 45 歲 . 企業主管</h3>
+          <p data-zh="「45 歲開始也不晚。深蹲從空槓到 140 公斤，硬舉拉到 180 公斤。感謝鐵覺讓我重新認識自己的身體。」" data-en="'It's never too late at 45. Squat from empty bar to 140kg, deadlift to 180kg. IRONWAKE helped me rediscover my body.'">
             「45 歲開始也不晚。深蹲從空槓到 140 公斤，硬舉拉到 180 公斤。感謝鐵覺讓我重新認識自己的身體。」
           </p>
           <div class="transform-stats">
-            <div><strong>+25 kg</strong> <span data-zh="深蹲增重" data-en="Squat Gain">深蹲增重</span></div>
-            <div><strong>-6%</strong> <span data-zh="體脂下降" data-en="Body Fat Lost">體脂下降</span></div>
-            <div><strong>24</strong> <span data-zh="週完成" data-en="Weeks">週完成</span></div>
+            <div class="transform-stat"><strong>+25 kg</strong> <span data-zh="深蹲增重" data-en="Squat Gain">深蹲增重</span></div>
+            <div class="transform-stat"><strong>-6%</strong> <span data-zh="體脂下降" data-en="Body Fat Lost">體脂下降</span></div>
+            <div class="transform-stat"><strong>24</strong> <span data-zh="週完成" data-en="Weeks">週完成</span></div>
           </div>
         </div>
       </div>
@@ -996,10 +1331,12 @@
 <section class="about" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-image reveal">
-        <span class="about-image-placeholder">&#127947;</span>
+      <div class="about-image-wrapper reveal-left">
+        <div class="about-image">
+          <img src="photos/trainer.png" alt="教練鄭鐵軍 Coach Zheng Tiejun">
+        </div>
       </div>
-      <div class="about-content reveal">
+      <div class="about-content reveal-right">
         <h2>
           <span data-zh="關於教練" data-en="MEET YOUR COACH">關於教練</span><br>
           <span class="fire-text" data-zh="鄭鐵軍" data-en="ZHENG TIEJUN">鄭鐵軍</span>
@@ -1007,7 +1344,7 @@
         <p data-zh="前國家隊體能教練，擁有 12 年以上專業訓練經驗。曾協助多位職業運動員與企業高管達成體態目標，專精於肌力與體能訓練、運動傷害預防與恢復。" data-en="Former national team strength coach with 12+ years of professional experience. Has guided professional athletes and corporate executives to their physique goals, specializing in strength & conditioning, injury prevention, and recovery.">
           前國家隊體能教練，擁有 12 年以上專業訓練經驗。曾協助多位職業運動員與企業高管達成體態目標，專精於肌力與體能訓練、運動傷害預防與恢復。
         </p>
-        <p data-zh="「我相信每個人體內都沉睡著一股力量，我的工作就是喚醒它。不論你現在的起點在哪裡，我都會陪你走到終點。」" data-en="'I believe there is a dormant power inside everyone. My job is to awaken it. No matter where you start, I will walk with you to the finish line.'">
+        <p class="about-quote" data-zh="「我相信每個人體內都沉睡著一股力量，我的工作就是喚醒它。不論你現在的起點在哪裡，我都會陪你走到終點。」" data-en="'I believe there is a dormant power inside everyone. My job is to awaken it. No matter where you start, I will walk with you to the finish line.'">
           「我相信每個人體內都沉睡著一股力量，我的工作就是喚醒它。不論你現在的起點在哪裡，我都會陪你走到終點。」
         </p>
         <div class="about-creds">
@@ -1037,7 +1374,7 @@
 <section class="contact" id="contact">
   <div class="container">
     <div class="contact-grid">
-      <div class="contact-info reveal">
+      <div class="contact-info reveal-left">
         <h2>
           <span data-zh="準備好了嗎？" data-en="READY TO START?">準備好了嗎？</span><br>
           <span class="fire-text" data-zh="預約你的覺醒" data-en="BOOK YOUR AWAKENING">預約你的覺醒</span>
@@ -1076,7 +1413,7 @@
           </div>
         </div>
       </div>
-      <form class="contact-form reveal" onsubmit="event.preventDefault(); alert(currentLang === 'zh' ? '感謝您的預約！我們會儘快與您聯繫。' : 'Thank you! We will contact you shortly.');">
+      <form class="contact-form reveal-right" onsubmit="event.preventDefault(); alert(currentLang === 'zh' ? '感謝您的預約！我們會儘快與您聯繫。' : 'Thank you! We will contact you shortly.');">
         <div class="form-row">
           <div class="form-group">
             <label data-zh="姓名" data-en="Name">姓名</label>
@@ -1105,7 +1442,7 @@
           <label data-zh="想對教練說的話" data-en="Message">想對教練說的話</label>
           <textarea data-zh-placeholder="例如：訓練目標、身體狀況、可上課時間等" data-en-placeholder="e.g., training goals, physical conditions, available schedule" placeholder="例如：訓練目標、身體狀況、可上課時間等"></textarea>
         </div>
-        <button type="submit" class="btn btn-fire" style="width:100;" data-zh="送出預約" data-en="SUBMIT BOOKING">送出預約</button>
+        <button type="submit" class="btn btn-fire" style="width:100%;" data-zh="送出預約" data-en="SUBMIT BOOKING">送出預約</button>
       </form>
     </div>
   </div>
@@ -1124,29 +1461,30 @@
 
   function setLang(lang) {
     currentLang = lang;
-    const els = document.querySelectorAll('[data-zh]');
-    els.forEach(el => {
-      const text = el.getAttribute(`data-${lang}`);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
       if (text) el.textContent = text;
     });
-
-    // Update placeholders
     document.querySelectorAll('[data-zh-placeholder]').forEach(el => {
-      el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
+      el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
     });
-
-    // Update select options
     document.querySelectorAll('select option[data-zh]').forEach(el => {
-      el.textContent = el.getAttribute(`data-${lang}`);
+      el.textContent = el.getAttribute('data-' + lang);
     });
-
-    // Update toggle buttons
     const nextLang = lang === 'zh' ? 'EN' : '中文';
     document.getElementById('langToggle').textContent = nextLang;
     document.getElementById('langToggleMobile').textContent = nextLang;
-
-    // Update html lang attribute
     document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+
+    // Re-format stat numbers after language change
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const count = parseInt(el.getAttribute('data-count'));
+      if (count >= 1000) {
+        el.textContent = (count / 1000).toFixed(count % 1000 === 0 ? 0 : 0) + 'K';
+      } else {
+        el.textContent = count;
+      }
+    });
   }
 
   document.getElementById('langToggle').addEventListener('click', () => {
@@ -1174,6 +1512,23 @@
     });
   });
 
+  /* ===== BGM TOGGLE ===== */
+  const bgmBtn = document.getElementById('bgmBtn');
+  const bgmAudio = document.getElementById('bgmAudio');
+  let bgmPlaying = false;
+
+  bgmBtn.addEventListener('click', () => {
+    if (bgmPlaying) {
+      bgmAudio.pause();
+      bgmBtn.classList.remove('playing');
+    } else {
+      bgmAudio.volume = 0.3;
+      bgmAudio.play().catch(() => {});
+      bgmBtn.classList.add('playing');
+    }
+    bgmPlaying = !bgmPlaying;
+  });
+
   /* ===== SCROLL REVEAL ===== */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1182,22 +1537,75 @@
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  /* ===== ANIMATED STAT COUNTERS ===== */
+  let statsAnimated = false;
+
+  function animateCounters() {
+    if (statsAnimated) return;
+    statsAnimated = true;
+
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'));
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        const current = Math.round(easedProgress * target);
+
+        if (target >= 1000) {
+          el.textContent = (current / 1000).toFixed(current >= 1000 && current % 1000 !== 0 ? 1 : 0).replace(/\.0$/, '') + 'K';
+        } else {
+          el.textContent = current;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (target >= 1000) {
+            el.textContent = (target / 1000) + 'K';
+          } else {
+            el.textContent = target;
+          }
+        }
+      }
+
+      requestAnimationFrame(update);
+    });
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  statsObserver.observe(document.getElementById('statsBar'));
 
   /* ===== NAVBAR SCROLL EFFECT ===== */
-  let lastScroll = 0;
-  const navbar = document.querySelector('nav');
+  const navbar = document.getElementById('navbar');
 
   window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > 100) {
-      navbar.style.background = 'rgba(10, 10, 10, 0.97)';
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
     } else {
-      navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+      navbar.classList.remove('scrolled');
     }
-    lastScroll = current;
   });
 
   /* ===== SMOOTH ANCHOR OFFSET ===== */
