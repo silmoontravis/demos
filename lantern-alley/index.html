@@ -3,7 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>燈籠橫丁 Lantern Alley — 日式居酒屋</title>
+<title>燈籠橫丁 Lantern Alley — 台中日式居酒屋｜炭火串燒・清酒・深夜食堂</title>
+<meta name="description" content="燈籠橫丁 Lantern Alley — 隱身台中西區巷弄的正統日式居酒屋。備長炭直火串燒、主廚嚴選刺身、20+ 銘柄清酒，復刻東京橫丁的溫暖燈火。週二至週六 18:00-01:00 營業。">
+<meta name="keywords" content="燈籠橫丁,Lantern Alley,台中居酒屋,日式居酒屋,炭火串燒,備長炭,清酒,刺身,台中西區,深夜食堂,izakaya,Taichung,yakitori,sake">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/lantern-alley/">
+<link rel="alternate" hreflang="zh-TW" href="https://silmoontravis.github.io/demos/lantern-alley/">
+<link rel="alternate" hreflang="en" href="https://silmoontravis.github.io/demos/lantern-alley/">
+<link rel="alternate" hreflang="x-default" href="https://silmoontravis.github.io/demos/lantern-alley/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="燈籠橫丁 Lantern Alley — 台中日式居酒屋">
+<meta property="og:description" content="隱身巷弄的溫暖燈火。備長炭直火串燒、主廚嚴選刺身、20+ 銘柄清酒，復刻東京橫丁的深夜食堂體驗。">
+<meta property="og:image" content="https://silmoontravis.github.io/demos/lantern-alley/photos/hero_alley.png">
+<meta property="og:url" content="https://silmoontravis.github.io/demos/lantern-alley/">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="燈籠橫丁 Lantern Alley">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="燈籠橫丁 Lantern Alley — 台中日式居酒屋">
+<meta name="twitter:description" content="隱身巷弄的溫暖燈火。備長炭直火串燒、主廚嚴選刺身、20+ 銘柄清酒，復刻東京橫丁的深夜食堂體驗。">
+<meta name="twitter:image" content="https://silmoontravis.github.io/demos/lantern-alley/photos/hero_alley.png">
+
+<!-- GEO / Local SEO -->
+<meta name="geo.region" content="TW-TXG">
+<meta name="geo.placename" content="Taichung, West District">
+<meta name="geo.position" content="24.1477;120.6634">
+<meta name="ICBM" content="24.1477, 120.6634">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "燈籠橫丁 Lantern Alley",
+  "description": "隱身台中西區巷弄的正統日式居酒屋，備長炭直火串燒、主廚嚴選刺身、精選清酒。",
+  "url": "https://silmoontravis.github.io/demos/lantern-alley/",
+  "image": "https://silmoontravis.github.io/demos/lantern-alley/photos/hero_alley.png",
+  "servesCuisine": ["Japanese", "Izakaya", "Yakitori", "Sashimi"],
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "模範街28巷7號",
+    "addressLocality": "台中市",
+    "addressRegion": "西區",
+    "postalCode": "403",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.1477,
+    "longitude": 120.6634
+  },
+  "telephone": "04-2302-XXXX",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "18:00",
+      "closes": "01:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "17:00",
+      "closes": "23:00"
+    }
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -43,10 +113,23 @@ nav .inner{max-width:1200px;margin:0 auto;padding:18px 32px;display:flex;align-i
 .lang-switch{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:11px;letter-spacing:1px;transition:all .3s;font-family:var(--sans)}
 .lang-switch:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,168,56,.08)}
 
-/* ---- Hero ---- */
+/* ---- Hero Ken Burns Slideshow ---- */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('photos/hero_alley.png') center/cover no-repeat;transform:scale(1.05);will-change:transform;transition:transform .1s linear}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,11,7,.55) 0%,rgba(15,11,7,.7) 50%,rgba(15,11,7,.92) 100%)}
+.hero-bg{position:absolute;inset:0;will-change:transform;transition:transform .1s linear}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;will-change:transform,opacity;transition:opacity 1.5s ease-in-out}
+.hero-slide.active{opacity:1}
+.hero-slide:nth-child(1){background-image:url('photos/hero_alley.png')}
+.hero-slide:nth-child(2){background-image:url('photos/interior.png')}
+.hero-slide:nth-child(3){background-image:url('photos/sake.png')}
+@keyframes kenburns1{0%{transform:scale(1.05) translate(0,0)}100%{transform:scale(1.18) translate(-2%,-1.5%)}}
+@keyframes kenburns2{0%{transform:scale(1.05) translate(0,0)}100%{transform:scale(1.15) translate(2%,-2%)}}
+@keyframes kenburns3{0%{transform:scale(1.12) translate(-1%,0)}100%{transform:scale(1.05) translate(1%,1.5%)}}
+.hero-slide.kb1{animation:kenburns1 8s ease-in-out forwards}
+.hero-slide.kb2{animation:kenburns2 8s ease-in-out forwards}
+.hero-slide.kb3{animation:kenburns3 8s ease-in-out forwards}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,11,7,.55) 0%,rgba(15,11,7,.7) 50%,rgba(15,11,7,.92) 100%);z-index:1}
+/* ---- Particle canvas ---- */
+#lanternParticles{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:700px}
 .hero-logo{width:140px;height:140px;margin:0 auto 28px;filter:drop-shadow(0 0 50px rgba(232,168,56,.35));animation:float 5s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
@@ -214,8 +297,13 @@ footer{border-top:1px solid var(--border);background:var(--bg)}
 
 <!-- Hero -->
 <section class="hero" id="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg">
+    <div class="hero-slide active kb1"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
   <div class="hero-overlay"></div>
+  <canvas id="lanternParticles"></canvas>
   <div class="hero-content">
     <img src="logos/logo_final.png" alt="Lantern Alley" class="hero-logo reveal">
     <h1 class="reveal reveal-delay-1" id="hero-title">燈籠橫丁</h1>
@@ -420,7 +508,7 @@ window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const heroH = window.innerHeight;
       if (scrollY < heroH * 1.5) {
-        heroBg.style.transform = `scale(1.05) translateY(${scrollY * 0.35}px)`;
+        heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
       }
       // Nav background
       document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
@@ -429,6 +517,70 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 });
+
+/* ---- Ken Burns slideshow ---- */
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  const kbClasses = ['kb1','kb2','kb3'];
+  let current = 0;
+  const INTERVAL = 8000;
+  function nextSlide(){
+    const prev = current;
+    current = (current + 1) % slides.length;
+    // Remove old animation class and active
+    slides[prev].classList.remove('active');
+    slides[prev].classList.remove(kbClasses[prev]);
+    // Activate new slide with its Ken Burns animation
+    slides[current].classList.add(kbClasses[current]);
+    slides[current].classList.add('active');
+  }
+  setInterval(nextSlide, INTERVAL);
+})();
+
+/* ---- Lantern-light particles ---- */
+(function(){
+  const canvas = document.getElementById('lanternParticles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 35;
+  function resize(){
+    const hero = document.getElementById('hero');
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  function Particle(){
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height + Math.random() * 40;
+    this.r = Math.random() * 2.5 + 1;
+    this.speed = Math.random() * 0.5 + 0.2;
+    this.drift = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.5 + 0.15;
+    this.flicker = Math.random() * 0.02;
+  }
+  for(let i=0;i<COUNT;i++) particles.push(new Particle());
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+      p.y -= p.speed;
+      p.x += p.drift + Math.sin(p.y * 0.01) * 0.2;
+      p.opacity += Math.sin(Date.now() * 0.003 + p.x) * p.flicker;
+      p.opacity = Math.max(0.05, Math.min(0.65, p.opacity));
+      if(p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      ctx.beginPath();
+      const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.5);
+      grad.addColorStop(0,'rgba(232,168,56,'+p.opacity+')');
+      grad.addColorStop(0.5,'rgba(232,120,42,'+(p.opacity*0.5)+')');
+      grad.addColorStop(1,'rgba(232,92,42,0)');
+      ctx.fillStyle = grad;
+      ctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
 /* ---- Scroll reveal ---- */
 const revealEls = document.querySelectorAll('.reveal');

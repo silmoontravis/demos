@@ -3,7 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>鐵覺 IRONWAKE — 喚醒你的鋼鐵意志</title>
+  <title>鐵覺 IRONWAKE — 台中專業一對一健身教練 | 喚醒你的鋼鐵意志</title>
+  <meta name="description" content="鐵覺 IRONWAKE 台中頂級一對一私人健身教練。科學化肌力訓練、精準營養規劃、心理韌性鍛鍊，12年經驗，800+學員成功轉變。首次諮詢免費。">
+  <meta name="keywords" content="鐵覺,IRONWAKE,台中健身,一對一教練,私人教練,肌力訓練,重訓,減脂,體態改造,personal trainer Taichung">
+  <link rel="canonical" href="https://silmoontravis.github.io/demos/ironwake/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="鐵覺 IRONWAKE — 台中專業一對一健身教練">
+  <meta property="og:description" content="科學化肌力訓練、精準營養規劃、心理韌性鍛鍊。12年經驗，800+學員成功轉變。首次諮詢免費。">
+  <meta property="og:image" content="https://silmoontravis.github.io/demos/ironwake/photos/hero_gym.png">
+  <meta property="og:url" content="https://silmoontravis.github.io/demos/ironwake/">
+  <meta property="og:site_name" content="鐵覺 IRONWAKE">
+  <meta property="og:locale" content="zh_TW">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="鐵覺 IRONWAKE — 台中專業一對一健身教練">
+  <meta name="twitter:description" content="科學化肌力訓練、精準營養規劃、心理韌性鍛鍊。12年經驗，800+學員成功轉變。首次諮詢免費。">
+  <meta name="twitter:image" content="https://silmoontravis.github.io/demos/ironwake/photos/hero_gym.png">
+
+  <!-- GEO Meta Tags -->
+  <meta name="geo.region" content="TW-TXG">
+  <meta name="geo.placename" content="Taichung">
+  <meta name="geo.position" content="24.1500;120.6700">
+  <meta name="ICBM" content="24.1500, 120.6700">
+
+  <!-- JSON-LD Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "鐵覺 IRONWAKE",
+    "description": "台中頂級一對一私人健身教練。科學化肌力訓練、精準營養規劃、心理韌性鍛鍊。",
+    "url": "https://silmoontravis.github.io/demos/ironwake/",
+    "image": "https://silmoontravis.github.io/demos/ironwake/photos/hero_gym.png",
+    "telephone": "02-2771-8899",
+    "email": "coach@ironwake.tw",
+    "priceRange": "NT$1,600 - NT$48,000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "台中市",
+      "addressRegion": "台中",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 24.1500,
+      "longitude": 120.6700
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "06:00",
+      "closes": "22:00"
+    },
+    "sameAs": []
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -335,7 +393,7 @@
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       max-width: 720px;
       padding-top: 80px;
     }
@@ -389,7 +447,7 @@
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 2;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -418,6 +476,16 @@
     @keyframes scrollBounce {
       0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
       50% { transform: rotate(45deg) translateY(8px); opacity: 1; }
+    }
+
+    /* ===== EMBER CANVAS ===== */
+    #emberCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
     }
 
     /* ===== STATS BAR ===== */
@@ -1117,6 +1185,7 @@
   <div class="hero-overlay"></div>
   <div class="hero-vignette"></div>
   <div class="hero-fire-glow"></div>
+  <canvas id="emberCanvas"></canvas>
   <div class="container">
     <div class="hero-content">
       <span class="hero-tag" data-zh="專業一對一健身教練" data-en="ELITE PERSONAL TRAINING">專業一對一健身教練</span>
@@ -1607,6 +1676,82 @@
       navbar.classList.remove('scrolled');
     }
   });
+
+  /* ===== EMBER / FIRE PARTICLE CANVAS ===== */
+  (function() {
+    const canvas = document.getElementById('emberCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const PARTICLE_COUNT = 60;
+
+    function resize() {
+      const hero = document.getElementById('hero');
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Ember {
+      constructor() { this.reset(true); }
+
+      reset(initial) {
+        this.x = Math.random() * canvas.width;
+        this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
+        this.size = Math.random() * 3 + 1;
+        this.speedY = Math.random() * 1.2 + 0.4;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.life = 1;
+        this.decay = Math.random() * 0.006 + 0.003;
+        // orange-red hue range: 10-35
+        const hue = Math.random() * 25 + 10;
+        const lightness = Math.random() * 20 + 50;
+        this.color = { h: hue, s: 100, l: lightness };
+        this.wobbleSpeed = Math.random() * 0.02 + 0.01;
+        this.wobbleAmp = Math.random() * 0.8 + 0.2;
+        this.t = Math.random() * Math.PI * 2;
+      }
+
+      update() {
+        this.t += this.wobbleSpeed;
+        this.x += this.speedX + Math.sin(this.t) * this.wobbleAmp;
+        this.y -= this.speedY;
+        this.life -= this.decay;
+        if (this.life <= 0 || this.y < -20) this.reset(false);
+      }
+
+      draw() {
+        const alpha = this.life * 0.85;
+        const { h, s, l } = this.color;
+        // glow
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${h}, ${s}%, ${l}%, ${alpha * 0.15})`;
+        ctx.fill();
+        // core
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${h}, ${s}%, ${l + 15}%, ${alpha})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(new Ember());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.update();
+        p.draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  })();
 
   /* ===== SMOOTH ANCHOR OFFSET ===== */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

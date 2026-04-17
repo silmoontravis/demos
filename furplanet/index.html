@@ -3,7 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>毛星球 FurPlanet — 寵物寄宿旅館</title>
+<title>毛星球 FurPlanet — 寵物寄宿旅館 | 台中寵物住宿·美容·訓練</title>
+<meta name="description" content="毛星球 FurPlanet 是台中頂級寵物寄宿旅館，提供日間托育、夜間寄宿、寵物美容、行為訓練等全方位服務。24 小時專人照護，即時影像監控，讓毛孩安心入住。">
+<meta name="keywords" content="寵物旅館,寵物寄宿,寵物住宿,寵物美容,寵物訓練,pet hotel,pet boarding,pet grooming,台中寵物旅館,毛星球,FurPlanet,dog boarding,cat boarding">
+<meta name="author" content="毛星球 FurPlanet">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/furplanet/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="毛星球 FurPlanet — 寵物寄宿旅館 | 台中頂級寵物住宿">
+<meta property="og:description" content="用滿滿的愛與專業，為您的毛孩打造安心、舒適、快樂的第二個家。日間托育、夜間寄宿、寵物美容、行為訓練一站搞定。">
+<meta property="og:image" content="https://silmoontravis.github.io/demos/furplanet/photos/hero_pets.png">
+<meta property="og:url" content="https://silmoontravis.github.io/demos/furplanet/">
+<meta property="og:site_name" content="毛星球 FurPlanet">
+<meta property="og:locale" content="zh_TW">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="毛星球 FurPlanet — 寵物寄宿旅館">
+<meta name="twitter:description" content="台中頂級寵物寄宿旅館。日間托育、夜間寄宿、寵物美容、行為訓練，24 小時專人照護。">
+<meta name="twitter:image" content="https://silmoontravis.github.io/demos/furplanet/photos/hero_pets.png">
+
+<!-- GEO Meta Tags -->
+<meta name="geo.region" content="TW-TXG">
+<meta name="geo.placename" content="Taichung, Taiwan">
+<meta name="geo.position" content="24.1550;120.6680">
+<meta name="ICBM" content="24.1550, 120.6680">
+
+<!-- JSON-LD Structured Data: LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "PetStore", "AnimalShelter"],
+  "name": "毛星球 FurPlanet",
+  "description": "台中頂級寵物寄宿旅館，提供日間托育、夜間寄宿、寵物美容、行為訓練等全方位服務。",
+  "url": "https://silmoontravis.github.io/demos/furplanet/",
+  "image": "https://silmoontravis.github.io/demos/furplanet/photos/hero_pets.png",
+  "logo": "https://silmoontravis.github.io/demos/furplanet/logos/logo_final.png",
+  "telephone": "(04) 2888-7777",
+  "email": "hello@furplanet.com.tw",
+  "priceRange": "$$",
+  "currenciesAccepted": "TWD",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "毛星路 88 號",
+    "addressLocality": "台中市",
+    "addressRegion": "西屯區",
+    "postalCode": "407",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.1550,
+    "longitude": 120.6680
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "08:00",
+    "closes": "21:00"
+  },
+  "sameAs": [],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "寵物服務",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "日間托育 Day Care" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "夜間寄宿 Overnight Stay" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "寵物美容 Grooming & Spa" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "行為訓練 Training" } }
+    ]
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -210,7 +283,14 @@ nav.scrolled {
   66% { transform: translate(-10px, 15px) scale(0.97); }
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 700px; }
+/* Paw particle canvas */
+.paw-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 1; pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
 .hero-paw {
   display: inline-block;
   font-size: 4rem; margin-bottom: 1rem;
@@ -268,7 +348,7 @@ nav.scrolled {
 /* Scroll indicator */
 .scroll-indicator {
   position: absolute; bottom: 2.5rem; left: 50%;
-  transform: translateX(-50%); z-index: 1;
+  transform: translateX(-50%); z-index: 2;
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
   color: var(--text-light); font-size: .82rem; font-weight: 700;
   animation: scroll-bounce 2s ease-in-out infinite;
@@ -720,6 +800,7 @@ footer .heart { color: var(--pink); }
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <canvas id="pawCanvas" class="paw-canvas"></canvas>
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
   <div class="hero-blob hero-blob-3"></div>
@@ -994,11 +1075,11 @@ footer .heart { color: var(--pink); }
         <p data-zh="歡迎來電或親臨參觀，我們很樂意帶您認識毛星球的每個角落！" data-en="Feel free to call or visit us in person — we'd love to show you around!">歡迎來電或親臨參觀，我們很樂意帶您認識毛星球的每個角落！</p>
         <div class="contact-detail">
           <span class="contact-detail-icon">&#128205;</span>
-          <span data-zh="台北市大安區毛星路 88 號" data-en="No. 88, FurPlanet Rd., Da'an Dist., Taipei">台北市大安區毛星路 88 號</span>
+          <span data-zh="台中市西屯區毛星路 88 號" data-en="No. 88, FurPlanet Rd., Xitun Dist., Taichung">台中市西屯區毛星路 88 號</span>
         </div>
         <div class="contact-detail">
           <span class="contact-detail-icon">&#128222;</span>
-          <span>(02) 2888-7777</span>
+          <span>(04) 2888-7777</span>
         </div>
         <div class="contact-detail">
           <span class="contact-detail-icon">&#9993;&#65039;</span>
@@ -1150,6 +1231,112 @@ function handleSubmit(e) {
   alert(msg);
   e.target.reset();
 }
+
+// ── Floating Paw Print Particles (Canvas) ──
+(function() {
+  const canvas = document.getElementById('pawCanvas');
+  const ctx = canvas.getContext('2d');
+  const hero = document.getElementById('hero');
+  let particles = [];
+  const PARTICLE_COUNT = 22;
+  const COLORS = [
+    'rgba(244,114,182,0.18)',  // pink
+    'rgba(244,114,182,0.12)',
+    'rgba(52,211,153,0.16)',   // mint
+    'rgba(52,211,153,0.10)',
+    'rgba(251,191,36,0.15)',   // peach
+    'rgba(251,191,36,0.10)'
+  ];
+
+  function resize() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Draw a paw print shape at origin (centered)
+  function drawPaw(cx, cy, size, rotation, color) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rotation);
+    ctx.fillStyle = color;
+
+    // Main pad (oval)
+    ctx.beginPath();
+    ctx.ellipse(0, size * 0.15, size * 0.38, size * 0.32, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Toe beans (4 small circles)
+    var toes = [
+      { x: -size * 0.28, y: -size * 0.22, r: size * 0.16 },
+      { x: -size * 0.08, y: -size * 0.38, r: size * 0.15 },
+      { x:  size * 0.08, y: -size * 0.38, r: size * 0.15 },
+      { x:  size * 0.28, y: -size * 0.22, r: size * 0.16 }
+    ];
+    for (var i = 0; i < toes.length; i++) {
+      ctx.beginPath();
+      ctx.arc(toes[i].x, toes[i].y, toes[i].r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function createParticle() {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: 12 + Math.random() * 22,
+      speedX: (Math.random() - 0.5) * 0.35,
+      speedY: -0.15 - Math.random() * 0.35,
+      rotation: Math.random() * Math.PI * 2,
+      rotationSpeed: (Math.random() - 0.5) * 0.008,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      opacity: 0.3 + Math.random() * 0.5,
+      life: 0,
+      maxLife: 400 + Math.random() * 600
+    };
+  }
+
+  // Init particles
+  for (var i = 0; i < PARTICLE_COUNT; i++) {
+    var p = createParticle();
+    p.life = Math.random() * p.maxLife; // stagger
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.life++;
+      p.x += p.speedX;
+      p.y += p.speedY;
+      p.rotation += p.rotationSpeed;
+
+      // Fade in/out based on life
+      var lifeRatio = p.life / p.maxLife;
+      var fadeAlpha = lifeRatio < 0.1 ? lifeRatio / 0.1
+                    : lifeRatio > 0.85 ? (1 - lifeRatio) / 0.15
+                    : 1;
+      var alpha = p.opacity * fadeAlpha;
+
+      // Parse color and apply alpha
+      var col = p.color.replace(/[\d.]+\)$/, (alpha * 1.4).toFixed(2) + ')');
+
+      drawPaw(p.x, p.y, p.size, p.rotation, col);
+
+      // Reset when life expires or drifts off-screen
+      if (p.life >= p.maxLife || p.y < -50 || p.x < -50 || p.x > canvas.width + 50) {
+        particles[i] = createParticle();
+        particles[i].y = canvas.height + 20 + Math.random() * 40;
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
 
 // ── Parallax blobs on mousemove ──
 document.addEventListener('mousemove', (e) => {

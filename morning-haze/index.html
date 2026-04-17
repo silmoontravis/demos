@@ -3,7 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>晨霧珈琲 Morning Haze Coffee</title>
+  <title>晨霧珈琲 Morning Haze Coffee | 台中精品咖啡訂閱</title>
+  <meta name="description" content="晨霧珈琲 Morning Haze Coffee — 台中精品咖啡品牌，嚴選世界產區單品豆，小批量手工烘焙，提供咖啡豆訂閱方案。Specialty coffee roaster in Taichung, Taiwan.">
+  <meta name="keywords" content="晨霧珈琲, Morning Haze Coffee, 精品咖啡, 台中咖啡, 咖啡訂閱, 手工烘焙, 單品咖啡, specialty coffee, Taichung coffee, coffee subscription, artisan roasting">
+  <link rel="canonical" href="https://silmoontravis.github.io/demos/morning-haze/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="晨霧珈琲 Morning Haze Coffee | 台中精品咖啡訂閱">
+  <meta property="og:description" content="嚴選世界產區單品豆，小批量手工烘焙。每一杯，都是清晨的第一道光。Specialty coffee roasted with artisan heart in Taichung.">
+  <meta property="og:url" content="https://silmoontravis.github.io/demos/morning-haze/">
+  <meta property="og:image" content="https://silmoontravis.github.io/demos/morning-haze/photos/hero_pourover.png">
+  <meta property="og:site_name" content="晨霧珈琲 Morning Haze Coffee">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="晨霧珈琲 Morning Haze Coffee | 台中精品咖啡訂閱">
+  <meta name="twitter:description" content="嚴選世界產區單品豆，小批量手工烘焙。每一杯，都是清晨的第一道光。">
+  <meta name="twitter:image" content="https://silmoontravis.github.io/demos/morning-haze/photos/hero_pourover.png">
+
+  <!-- GEO Meta Tags -->
+  <meta name="geo.region" content="TW-TXG">
+  <meta name="geo.placename" content="Taichung, Taiwan">
+  <meta name="geo.position" content="24.1520;120.6650">
+  <meta name="ICBM" content="24.1520, 120.6650">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "晨霧珈琲 Morning Haze Coffee",
+    "image": "https://silmoontravis.github.io/demos/morning-haze/photos/hero_pourover.png",
+    "url": "https://silmoontravis.github.io/demos/morning-haze/",
+    "telephone": "+886-4-2277-0518",
+    "email": "hello@morninghaze.coffee",
+    "servesCuisine": "Coffee",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "台中市西區民權路 120 號",
+      "addressLocality": "台中市",
+      "addressRegion": "台中",
+      "postalCode": "403",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 24.1520,
+      "longitude": 120.6650
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": []
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -138,6 +207,13 @@
     @keyframes bar2 { 0%,100%{height:14px} 50%{height:6px} }
     @keyframes bar3 { 0%,100%{height:10px} 50%{height:20px} }
     @keyframes bar4 { 0%,100%{height:16px} 50%{height:8px} }
+
+    /* ===== Steam Canvas ===== */
+    #steamCanvas {
+      position: absolute; inset: 0; z-index: 1;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
 
     /* ===== Hero ===== */
     .hero {
@@ -507,6 +583,7 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
+  <canvas id="steamCanvas"></canvas>
   <div class="hero-content">
     <img src="logos/logo_final.png" alt="Logo" class="hero-logo-mark">
     <p class="hero-subtitle" data-zh="每一杯，都是清晨的第一道光" data-en="Every cup, the first light of dawn">每一杯，都是清晨的第一道光</p>
@@ -884,6 +961,83 @@
     heroBg.style.transform = 'scale(1.05)';
     heroBg.style.transition = 'transform 0.1s linear';
   }
+
+  // ===== Steam / Mist Canvas Animation =====
+  (function() {
+    const canvas = document.getElementById('steamCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const MAX_PARTICLES = 60;
+
+    function resize() {
+      const hero = document.getElementById('hero');
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function Particle() {
+      this.reset();
+      // Randomize initial y so particles don't all start at the bottom on load
+      this.y = Math.random() * canvas.height;
+    }
+    Particle.prototype.reset = function() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height + Math.random() * 40;
+      this.radius = 30 + Math.random() * 50;
+      this.opacity = 0.02 + Math.random() * 0.06;
+      this.speedY = 0.15 + Math.random() * 0.4;
+      this.speedX = (Math.random() - 0.5) * 0.25;
+      this.life = 0;
+      this.maxLife = 300 + Math.random() * 400;
+      // Slight warm tint variation: white to cream
+      const warmth = Math.floor(Math.random() * 20);
+      this.r = 250 - warmth * 0.3;
+      this.g = 246 - warmth * 0.5;
+      this.b = 240 - warmth;
+    };
+    Particle.prototype.update = function() {
+      this.life++;
+      this.y -= this.speedY;
+      this.x += this.speedX + Math.sin(this.life * 0.008) * 0.15;
+      this.radius += 0.03;
+      // Fade in quickly, then slowly fade out
+      var progress = this.life / this.maxLife;
+      if (progress < 0.1) {
+        this.currentOpacity = this.opacity * (progress / 0.1);
+      } else {
+        this.currentOpacity = this.opacity * (1 - (progress - 0.1) / 0.9);
+      }
+      if (this.life >= this.maxLife || this.y + this.radius < 0) {
+        this.reset();
+      }
+    };
+    Particle.prototype.draw = function() {
+      ctx.beginPath();
+      var gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+      gradient.addColorStop(0, 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',' + this.currentOpacity + ')');
+      gradient.addColorStop(1, 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',0)');
+      ctx.fillStyle = gradient;
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    for (var i = 0; i < MAX_PARTICLES; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
 </script>
 
 </body>
