@@ -285,11 +285,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-bg {
   position: absolute;
   inset: 0;
+  background: url('photos/hero_office.png') center center / cover no-repeat;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(13,148,136,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(200,164,94,0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 60% 80%, rgba(13,148,136,0.05) 0%, transparent 50%),
-    linear-gradient(135deg, #1a2332 0%, #111927 50%, #1a2332 100%);
+    radial-gradient(ellipse at 20% 50%, rgba(13,148,136,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(200,164,94,0.08) 0%, transparent 40%),
+    linear-gradient(135deg, rgba(17,25,39,0.88) 0%, rgba(26,35,50,0.82) 50%, rgba(17,25,39,0.88) 100%);
+}
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 .hero-pattern {
   position: absolute;
@@ -599,28 +610,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%;
   max-width: 480px;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-2xl);
 }
-.about-image-block::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(13,148,136,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(200,164,94,0.1) 0%, transparent 40%);
+.about-image-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
 }
-.about-image-block .icon-display {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: rgba(255,255,255,0.06);
+.about-image-block:hover img {
+  transform: scale(1.05);
 }
-.about-image-block .icon-display svg { width: 200px; height: 200px; }
+.about-consulting-photo {
+  width: 180px;
+  height: 130px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  box-shadow: var(--shadow-xl);
+  border: 3px solid var(--white);
+  z-index: 3;
+}
+.about-consulting-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.about-consulting-photo:hover img {
+  transform: scale(1.08);
+}
 .about-floating-card {
   position: absolute;
   bottom: -20px;
@@ -975,7 +999,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ========== CONTACT ========== */
-.contact { background: var(--off-white); }
+.contact { background: var(--off-white); position: relative; overflow: hidden; }
 .contact-header { text-align: center; margin-bottom: 64px; }
 .contact-header .section-badge {
   display: inline-flex;
@@ -1231,6 +1255,69 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .footer-bottom a { color: rgba(255,255,255,0.35); }
 .footer-bottom a:hover { color: var(--accent); }
 
+/* ========== PHOTO STYLING ========== */
+.photo-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+.section-divider-photo {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+.section-divider-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.section-divider-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,35,50,0.6), rgba(13,148,136,0.3));
+  pointer-events: none;
+}
+.why-bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.08;
+}
+.why-bg-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contact-bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.contact-bg-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contact-bg-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(248,249,251,0.95) 0%, rgba(248,249,251,0.88) 50%, rgba(248,249,251,0.95) 100%);
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1267,8 +1354,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-stats { flex-wrap: wrap; gap: 12px; justify-content: center; }
   .hero-stats > div { min-width: 120px; padding: 12px 16px; }
   .hero-stats .stat-number { font-size: 1.5rem; }
+  .section-divider-photo { height: 160px; }
   .about .container { grid-template-columns: 1fr; gap: 32px; }
-  .about-visual { order: -1; height: 200px; }
+  .about-visual { order: -1; height: auto; }
+  .about-consulting-photo { width: 120px; height: 90px; top: -10px; left: -10px; }
   .about-features { grid-template-columns: 1fr; gap: 12px; }
   .services-grid { grid-template-columns: 1fr; gap: 16px; }
   .service-card { padding: 24px 20px; }
@@ -1380,6 +1469,7 @@ body:not([data-lang="en"]) .en { display: none; }
 <!-- Hero -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
+  <canvas id="heroCanvas"></canvas>
   <div class="hero-pattern"></div>
   <div class="hero-geometric"></div>
   <div class="hero-line-accent"></div>
@@ -1498,10 +1588,11 @@ body:not([data-lang="en"]) .en { display: none; }
       </div>
     </div>
     <div class="about-visual animate-on-scroll delay-2">
+      <div class="about-consulting-photo">
+        <img src="photos/consulting.png" alt="AMCL consultant with client" loading="lazy">
+      </div>
       <div class="about-image-block">
-        <div class="icon-display">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
+        <img src="photos/team_meeting.png" alt="AMCL team meeting in boardroom" loading="lazy">
       </div>
       <div class="about-floating-card">
         <div>
@@ -1600,8 +1691,16 @@ body:not([data-lang="en"]) .en { display: none; }
   </div>
 </section>
 
+<!-- Global Network Divider -->
+<div class="section-divider-photo">
+  <img src="photos/global.png" alt="Global network connections" loading="lazy">
+</div>
+
 <!-- Why Choose Us -->
 <section class="why section-padding" id="why">
+  <div class="why-bg-photo">
+    <img src="photos/documents.png" alt="" loading="lazy" aria-hidden="true">
+  </div>
   <div class="container">
     <div class="why-header">
       <div class="section-badge animate-on-scroll">
@@ -1755,7 +1854,10 @@ body:not([data-lang="en"]) .en { display: none; }
 
 <!-- Contact -->
 <section class="contact section-padding" id="contact">
-  <div class="container">
+  <div class="contact-bg-photo">
+    <img src="photos/taipei_skyline.png" alt="" loading="lazy" aria-hidden="true">
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
     <div class="contact-header">
       <div class="section-badge animate-on-scroll">
         <span class="zh">聯絡我們</span><span class="en">Contact Us</span>
@@ -2005,6 +2107,70 @@ function animateCounters() {
     requestAnimationFrame(update);
   });
 }
+
+// ========== HERO CANVAS PARTICLE ANIMATION ==========
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+  const PARTICLE_COUNT = 60;
+  const MAX_DIST = 150;
+
+  function resize() {
+    const hero = document.getElementById('hero');
+    w = canvas.width = hero.offsetWidth;
+    h = canvas.height = hero.offsetHeight;
+  }
+
+  function Particle() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.r = Math.random() * 2 + 1;
+    this.color = Math.random() > 0.5 ? 'rgba(13,148,136,' : 'rgba(26,35,50,';
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + '0.6)';
+      ctx.fill();
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(13,148,136,' + (1 - dist / MAX_DIST) * 0.15 + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  init();
+  draw();
+  window.addEventListener('resize', () => { resize(); });
+})();
 
 // Trigger counter animation when hero is visible
 const heroObserver = new IntersectionObserver((entries) => {
