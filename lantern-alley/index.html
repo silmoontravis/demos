@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>燈籠橫丁 Lantern Alley — 日式居酒屋</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0b07;--bg2:#1a140d;--card:#1e1710;--gold:#e8a838;--gold2:#d4943a;--lantern:#e85c2a;--warm:#f5d6a8;--text:#c9b99a;--muted:#7a6b55;--border:#2a2218}
+body{font-family:'Noto Sans TC','Noto Serif JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--lantern)}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(15,11,7,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 0}
+nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{height:40px}
+.nav-logo span{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:2px}
+.nav-links{display:flex;gap:28px;font-size:14px;letter-spacing:1px}
+.nav-links a{color:var(--muted)}
+.nav-links a:hover{color:var(--gold)}
+.lang-switch{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px}
+.lang-switch:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#1a100a 50%,var(--bg) 100%);position:relative;padding:120px 24px 80px}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 40%,rgba(232,92,42,.08) 0%,transparent 60%);pointer-events:none}
+.hero-logo{width:180px;height:180px;margin-bottom:32px;filter:drop-shadow(0 0 40px rgba(232,168,56,.3));animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:52px;font-weight:700;color:var(--gold);letter-spacing:8px;margin-bottom:8px;text-shadow:0 0 60px rgba(232,168,56,.2)}
+.hero .sub{font-size:18px;color:var(--muted);letter-spacing:6px;margin-bottom:40px}
+.hero .desc{font-size:15px;color:var(--text);max-width:500px;line-height:2;margin-bottom:48px}
+.cta{display:inline-block;background:linear-gradient(135deg,var(--lantern),var(--gold));color:#0f0b07;font-weight:700;padding:14px 40px;border-radius:8px;font-size:15px;letter-spacing:2px;transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,92,42,.3);color:#0f0b07}
+
+/* Section */
+.section{max-width:1100px;margin:0 auto;padding:80px 24px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--gold);text-align:center;margin-bottom:12px;letter-spacing:4px}
+.section-sub{text-align:center;color:var(--muted);font-size:13px;letter-spacing:3px;margin-bottom:48px}
+.divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 48px}
+
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color .3s,transform .3s}
+.menu-card:hover{border-color:var(--gold2);transform:translateY(-4px)}
+.menu-cat{font-size:11px;color:var(--lantern);letter-spacing:3px;margin-bottom:12px;text-transform:uppercase}
+.menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px dotted var(--border)}
+.menu-item:last-child{border-bottom:none}
+.menu-name{font-size:15px;font-weight:700;color:var(--warm)}
+.menu-name small{font-size:11px;color:var(--muted);font-weight:300;display:block;margin-top:2px}
+.menu-price{font-size:14px;color:var(--gold);font-weight:700;white-space:nowrap}
+
+/* Features */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.feat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;text-align:center;transition:border-color .3s}
+.feat-card:hover{border-color:var(--gold2)}
+.feat-icon{font-size:36px;margin-bottom:16px}
+.feat-title{font-size:16px;font-weight:700;color:var(--warm);margin-bottom:8px}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* Info */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.info-label{font-size:11px;color:var(--lantern);letter-spacing:2px;margin-bottom:10px}
+.info-content{font-size:14px;color:var(--text);line-height:2}
+
+/* Footer */
+footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+footer .logo-sm{height:30px;margin-bottom:12px;opacity:.5}
+
+/* Responsive */
+@media(max-width:640px){
+  .hero h1{font-size:32px;letter-spacing:4px}
+  .nav-links{display:none}
+  .section{padding:60px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="nav-logo">
+      <img src="logos/logo_final.png" alt="燈籠橫丁">
+      <span id="nav-brand">燈籠橫丁</span>
+    </div>
+    <div class="nav-links">
+      <a href="#menu" id="nav-menu">菜單</a>
+      <a href="#features" id="nav-feat">特色</a>
+      <a href="#info" id="nav-info">店鋪資訊</a>
+    </div>
+    <button class="lang-switch" onclick="toggleLang()">EN / 中</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img src="logos/logo_final.png" alt="Lantern Alley" class="hero-logo">
+  <h1 id="hero-title">燈籠橫丁</h1>
+  <div class="sub" id="hero-sub">Lantern Alley</div>
+  <div class="desc" id="hero-desc">
+    隱身巷弄的溫暖燈火，一盞燈籠引你入座。<br>
+    嚴選食材、職人手藝，佐以精釀清酒，<br>
+    在這裡，每一口都是旅程。
+  </div>
+  <a href="#menu" class="cta" id="hero-cta">探索菜單</a>
+</section>
+
+<section class="section" id="menu">
+  <div class="section-title" id="menu-title">嚴選菜單</div>
+  <div class="section-sub" id="menu-sub">CURATED MENU</div>
+  <div class="divider"></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-cat" id="cat1">刺身 · 生食</div>
+      <div class="menu-item"><span class="menu-name" id="m1">綜合刺身五點盛<small id="m1s">主廚嚴選當日鮮魚</small></span><span class="menu-price">$580</span></div>
+      <div class="menu-item"><span class="menu-name" id="m2">炙燒鮭魚腹<small id="m2s">輕炙油脂、入口即化</small></span><span class="menu-price">$380</span></div>
+      <div class="menu-item"><span class="menu-name" id="m3">海膽軍艦<small id="m3s">北海道直送</small></span><span class="menu-price">$420</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-cat" id="cat2">串燒 · 炭火</div>
+      <div class="menu-item"><span class="menu-name" id="m4">備長炭雞腿串<small id="m4s">皮脆肉嫩、鹽味</small></span><span class="menu-price">$120</span></div>
+      <div class="menu-item"><span class="menu-name" id="m5">和牛骰子燒<small id="m5s">A5 等級、蒜味醬油</small></span><span class="menu-price">$480</span></div>
+      <div class="menu-item"><span class="menu-name" id="m6">明太子雞翅<small id="m6s">酥炸、博多風味</small></span><span class="menu-price">$180</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-cat" id="cat3">酒飲 · 精選</div>
+      <div class="menu-item"><span class="menu-name" id="m7">獺祭 純米大吟釀<small id="m7s">山口縣・二割三分</small></span><span class="menu-price">$320</span></div>
+      <div class="menu-item"><span class="menu-name" id="m8">橫丁特調 Highball<small id="m8s">角瓶威士忌 × 氣泡</small></span><span class="menu-price">$180</span></div>
+      <div class="menu-item"><span class="menu-name" id="m9">柚子沙瓦<small id="m9s">四國直送柚子、微甜</small></span><span class="menu-price">$160</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="section-title" id="feat-title">橫丁特色</div>
+  <div class="section-sub" id="feat-sub">WHY LANTERN ALLEY</div>
+  <div class="divider"></div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🔥</div>
+      <div class="feat-title" id="f1t">備長炭直火</div>
+      <div class="feat-desc" id="f1d">堅持使用紀州備長炭，900°C 高溫炙烤，鎖住食材原味，炭香四溢。</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🍶</div>
+      <div class="feat-title" id="f2t">清酒嚴選</div>
+      <div class="feat-desc" id="f2d">與日本酒藏直接合作，常備 20 款以上銘柄，從入門到珍稀一應俱全。</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🏮</div>
+      <div class="feat-title" id="f3t">橫丁氛圍</div>
+      <div class="feat-desc" id="f3d">復刻東京思い出横丁的巷弄燈火，吧台座席、低語笑聲，最純粹的居酒屋體驗。</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🐟</div>
+      <div class="feat-title" id="f4t">每日直送</div>
+      <div class="feat-desc" id="f4d">凌晨漁港直送鮮魚，當日未售完即不供應，只為呈現最佳鮮度。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="info">
+  <div class="section-title" id="info-title">店鋪資訊</div>
+  <div class="section-sub" id="info-sub">VISIT US</div>
+  <div class="divider"></div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label" id="il1">營業時間</div>
+      <div class="info-content" id="ic1">
+        週二 — 週六　18:00 — 01:00<br>
+        週日　17:00 — 23:00<br>
+        週一公休
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-label" id="il2">地址</div>
+      <div class="info-content" id="ic2">
+        台中市西區模範街 28 巷 7 號<br>
+        （巷口認燈籠）
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-label" id="il3">預約</div>
+      <div class="info-content" id="ic3">
+        電話：04-2302-XXXX<br>
+        LINE@：@lanternalley<br>
+        建議提前預約，吧台座可現場候位
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="logos/logo_final.png" alt="" class="logo-sm"><br>
+  <span id="footer-text">© 2026 燈籠橫丁 Lantern Alley — All Rights Reserved</span>
+</footer>
+
+<script>
+let lang = 'zh';
+const i18n = {
+  zh: {
+    'nav-brand':'燈籠橫丁','nav-menu':'菜單','nav-feat':'特色','nav-info':'店鋪資訊',
+    'hero-title':'燈籠橫丁','hero-sub':'Lantern Alley',
+    'hero-desc':'隱身巷弄的溫暖燈火，一盞燈籠引你入座。<br>嚴選食材、職人手藝，佐以精釀清酒，<br>在這裡，每一口都是旅程。',
+    'hero-cta':'探索菜單',
+    'menu-title':'嚴選菜單','menu-sub':'CURATED MENU',
+    'cat1':'刺身 · 生食','cat2':'串燒 · 炭火','cat3':'酒飲 · 精選',
+    'm1':'綜合刺身五點盛','m1s':'主廚嚴選當日鮮魚',
+    'm2':'炙燒鮭魚腹','m2s':'輕炙油脂、入口即化',
+    'm3':'海膽軍艦','m3s':'北海道直送',
+    'm4':'備長炭雞腿串','m4s':'皮脆肉嫩、鹽味',
+    'm5':'和牛骰子燒','m5s':'A5 等級、蒜味醬油',
+    'm6':'明太子雞翅','m6s':'酥炸、博多風味',
+    'm7':'獺祭 純米大吟釀','m7s':'山口縣・二割三分',
+    'm8':'橫丁特調 Highball','m8s':'角瓶威士忌 × 氣泡',
+    'm9':'柚子沙瓦','m9s':'四國直送柚子、微甜',
+    'feat-title':'橫丁特色','feat-sub':'WHY LANTERN ALLEY',
+    'f1t':'備長炭直火','f1d':'堅持使用紀州備長炭，900°C 高溫炙烤，鎖住食材原味，炭香四溢。',
+    'f2t':'清酒嚴選','f2d':'與日本酒藏直接合作，常備 20 款以上銘柄，從入門到珍稀一應俱全。',
+    'f3t':'橫丁氛圍','f3d':'復刻東京思い出横丁的巷弄燈火，吧台座席、低語笑聲，最純粹的居酒屋體驗。',
+    'f4t':'每日直送','f4d':'凌晨漁港直送鮮魚，當日未售完即不供應，只為呈現最佳鮮度。',
+    'info-title':'店鋪資訊','info-sub':'VISIT US',
+    'il1':'營業時間','ic1':'週二 — 週六　18:00 — 01:00<br>週日　17:00 — 23:00<br>週一公休',
+    'il2':'地址','ic2':'台中市西區模範街 28 巷 7 號<br>（巷口認燈籠）',
+    'il3':'預約','ic3':'電話：04-2302-XXXX<br>LINE@：@lanternalley<br>建議提前預約，吧台座可現場候位',
+    'footer-text':'© 2026 燈籠橫丁 Lantern Alley — All Rights Reserved'
+  },
+  en: {
+    'nav-brand':'Lantern Alley','nav-menu':'Menu','nav-feat':'Features','nav-info':'Visit',
+    'hero-title':'Lantern Alley','hero-sub':'燈籠橫丁',
+    'hero-desc':'A warm glow hidden in the alley, one lantern guides you to your seat.<br>Handpicked ingredients, artisan craft, paired with fine sake —<br>here, every bite is a journey.',
+    'hero-cta':'Explore Menu',
+    'menu-title':'Curated Menu','menu-sub':'嚴選菜單',
+    'cat1':'SASHIMI · RAW','cat2':'YAKITORI · CHARCOAL','cat3':'DRINKS · SELECTION',
+    'm1':'Chef\'s Sashimi Platter','m1s':'Five cuts of the freshest daily catch',
+    'm2':'Torched Salmon Belly','m2s':'Lightly seared, melt-in-your-mouth',
+    'm3':'Sea Urchin Gunkan','m3s':'Direct from Hokkaido',
+    'm4':'Binchotan Chicken Thigh','m4s':'Crispy skin, salt-seasoned',
+    'm5':'Wagyu Dice Steak','m5s':'A5 grade, garlic soy glaze',
+    'm6':'Mentaiko Chicken Wings','m6s':'Deep-fried, Hakata style',
+    'm7':'Dassai Junmai Daiginjo','m7s':'Yamaguchi · 23% polished',
+    'm8':'Alley Special Highball','m8s':'Kakubin whisky × sparkling',
+    'm9':'Yuzu Sour','m9s':'Shikoku yuzu, lightly sweet',
+    'feat-title':'Why Lantern Alley','feat-sub':'橫丁特色',
+    'f1t':'Binchotan Fire','f1d':'We insist on Kishu binchotan charcoal, searing at 900°C to lock in natural flavors.',
+    'f2t':'Curated Sake','f2d':'Direct partnerships with Japanese breweries. 20+ labels always in stock, from entry-level to rare finds.',
+    'f3t':'Yokocho Vibes','f3d':'Recreating Tokyo\'s Omoide Yokocho — counter seats, hushed laughter, the purest izakaya experience.',
+    'f4t':'Daily Fresh','f4d':'Pre-dawn harbor delivery. If it doesn\'t sell out today, it\'s not served — freshness above all.',
+    'info-title':'Visit Us','info-sub':'店鋪資訊',
+    'il1':'HOURS','ic1':'Tue — Sat　18:00 — 01:00<br>Sun　17:00 — 23:00<br>Closed on Monday',
+    'il2':'LOCATION','ic2':'No. 7, Lane 28, Mofan St., West Dist.<br>Taichung City<br>(Look for the lanterns)',
+    'il3':'RESERVATIONS','ic3':'Tel: 04-2302-XXXX<br>LINE@: @lanternalley<br>Advance booking recommended. Bar seats: walk-in OK.',
+    'footer-text':'© 2026 Lantern Alley 燈籠橫丁 — All Rights Reserved'
+  }
+};
+function toggleLang(){
+  lang = lang==='zh'?'en':'zh';
+  const d = i18n[lang];
+  Object.keys(d).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = d[id];
+  });
+  document.documentElement.lang = lang==='zh'?'zh-TW':'en';
+}
+</script>
+</body>
+</html>

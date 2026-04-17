@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travis Web Demo — Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#0f0f14;color:#e2e8f0;min-height:100vh}
+.hero{text-align:center;padding:80px 24px 40px}
+.hero h1{font-size:36px;font-weight:700;background:linear-gradient(90deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero p{color:#64748b;font-size:14px;letter-spacing:2px}
+.grid{max-width:1000px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:#1e1e2e;border:1px solid #2d2d3d;border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s;cursor:pointer;text-decoration:none;color:inherit}
+.card:hover{transform:translateY(-6px);border-color:#6c63ff}
+.card-img{height:160px;display:flex;align-items:center;justify-content:center;position:relative}
+.card-img img{height:80px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+.card-body{padding:20px}
+.card-title{font-size:18px;font-weight:700;margin-bottom:4px}
+.card-sub{font-size:12px;color:#64748b;margin-bottom:12px}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:3px 8px;border-radius:6px;background:#2d2d3d;color:#94a3b8}
+footer{text-align:center;padding:40px;color:#334155;font-size:12px}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Web Demo Portfolio</h1>
+  <p>TRAVIS CHEN — AI-POWERED WEBSITE SHOWCASE</p>
+</div>
+<div class="grid">
+  <a href="lantern-alley/" class="card">
+    <div class="card-img" style="background:linear-gradient(135deg,#1a100a,#2a1a0d)">
+      <img src="lantern-alley/logos/logo_final.png" alt="">
+    </div>
+    <div class="card-body">
+      <div class="card-title">燈籠橫丁 Lantern Alley</div>
+      <div class="card-sub">日式居酒屋</div>
+      <div class="card-tags"><span class="tag">餐飲</span><span class="tag">暗色風</span><span class="tag">中英雙語</span></div>
+    </div>
+  </a>
+  <a href="ironwake/" class="card">
+    <div class="card-img" style="background:linear-gradient(135deg,#0a0a0a,#1a0800)">
+      <img src="ironwake/logos/logo_final.png" alt="">
+    </div>
+    <div class="card-body">
+      <div class="card-title">鐵覺 IRONWAKE</div>
+      <div class="card-sub">個人健身教練</div>
+      <div class="card-tags"><span class="tag">服務</span><span class="tag">高能量</span><span class="tag">中英雙語</span></div>
+    </div>
+  </a>
+  <a href="morning-haze/" class="card">
+    <div class="card-img" style="background:linear-gradient(135deg,#faf6f0,#f0e6d6)">
+      <img src="morning-haze/logos/logo_final.png" alt="">
+    </div>
+    <div class="card-body">
+      <div class="card-title">晨霧珈琲 Morning Haze</div>
+      <div class="card-sub">獨立咖啡烘焙</div>
+      <div class="card-tags"><span class="tag">電商</span><span class="tag">暖色調</span><span class="tag">中英雙語</span></div>
+    </div>
+  </a>
+  <a href="neuralarc/" class="card">
+    <div class="card-img" style="background:linear-gradient(135deg,#0c0c1a,#1a1030)">
+      <img src="neuralarc/logos/logo_final.png" alt="">
+    </div>
+    <div class="card-body">
+      <div class="card-title">NeuralArc 弧智科技</div>
+      <div class="card-sub">AI 新創公司</div>
+      <div class="card-tags"><span class="tag">科技</span><span class="tag">玻璃擬態</span><span class="tag">中英雙語</span></div>
+    </div>
+  </a>
+  <a href="furplanet/" class="card">
+    <div class="card-img" style="background:linear-gradient(135deg,#fff5f5,#ffe0f0)">
+      <img src="furplanet/logos/logo_final.png" alt="">
+    </div>
+    <div class="card-body">
+      <div class="card-title">毛星球 FurPlanet</div>
+      <div class="card-sub">寵物寄宿旅館</div>
+      <div class="card-tags"><span class="tag">生活</span><span class="tag">粉彩風</span><span class="tag">中英雙語</span></div>
+    </div>
+  </a>
+</div>
+<footer>
+  Built with AI — Logo: Gemini / BGM: Suno V5 / SFX: ElevenLabs / Code: Claude<br>
+  © 2026 Travis Chen
+</footer>
+</body>
+</html>
