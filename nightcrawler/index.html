@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夜行者 NightCrawler | Craft Cocktail Bar — Taichung</title>
+<meta name="description" content="夜行者 NightCrawler — 台中最神秘的精釀調酒酒吧。沉浸式暗夜體驗，手工調酒，預約制。Taichung's most enigmatic craft cocktail speakeasy.">
+<meta name="keywords" content="夜行者, NightCrawler, 台中酒吧, craft cocktail, speakeasy, 調酒, Taichung bar">
+<meta property="og:title" content="夜行者 NightCrawler | Craft Cocktail Bar">
+<meta property="og:description" content="台中最神秘的精釀調酒酒吧。沉浸式暗夜體驗。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero_bar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": "夜行者 NightCrawler",
+  "description": "台中最神秘的精釀調酒酒吧。Taichung's most enigmatic craft cocktail speakeasy.",
+  "url": "",
+  "image": "photos/hero_bar.png",
+  "logo": "logos/logo_final.png",
+  "telephone": "+886-4-2345-6789",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "台中市西區某巷弄",
+    "addressLocality": "Taichung",
+    "addressRegion": "台中市",
+    "postalCode": "403",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.1530,
+    "longitude": 120.6670
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "19:00",
+      "closes": "02:00"
+    }
+  ],
+  "servesCuisine": "Craft Cocktails",
+  "priceRange": "$$",
+  "acceptsReservations": "True"
+}
+</script>
+
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #111118;
+  --bg-surface: #16161f;
+  --purple: #7c3aed;
+  --purple-light: #a78bfa;
+  --purple-glow: rgba(124,58,237,0.25);
+  --gold: #d97706;
+  --gold-light: #f59e0b;
+  --gold-glow: rgba(217,119,6,0.2);
+  --text: #e8e6f0;
+  --text-dim: #9895a8;
+  --text-bright: #ffffff;
+  --font-cn: 'Noto Sans TC', sans-serif;
+  --font-en: 'Playfair Display', serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-cn);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; }
+
+/* ── Utility ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-padding { padding: 100px 0; }
+
+.section-label {
+  font-family: var(--font-en);
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.section-title-cn {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+.section-title-en {
+  font-family: var(--font-en);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--purple-light);
+  margin-bottom: 40px;
+}
+
+/* ── Navigation ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
+}
+.navbar.scrolled {
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(20px);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(124,58,237,0.15);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img { height: 40px; width: auto; filter: drop-shadow(0 0 8px var(--purple-glow)); }
+.nav-logo span {
+  font-family: var(--font-en);
+  font-size: 1.1rem;
+  color: var(--text-bright);
+  letter-spacing: 2px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--text-bright); }
+.nav-links a:hover::after { width: 100%; }
+
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--purple);
+  color: var(--purple-light);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-family: var(--font-cn);
+}
+.lang-toggle:hover { background: var(--purple); color: #fff; }
+
+/* Hamburger */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text);
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('photos/hero_bar.png') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,10,15,0.55) 0%,
+    rgba(10,10,15,0.3) 40%,
+    rgba(10,10,15,0.6) 70%,
+    rgba(10,10,15,0.95) 100%
+  );
+}
+#smoke-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+}
+.hero-logo { width: 120px; margin-bottom: 24px; filter: drop-shadow(0 0 30px var(--purple-glow)); animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+
+.hero-title-cn {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 40px var(--purple-glow), 0 2px 10px rgba(0,0,0,0.6);
+}
+.hero-title-en {
+  font-family: var(--font-en);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold-light);
+  letter-spacing: 6px;
+  margin-bottom: 24px;
+}
+.hero-tagline {
+  font-size: 1rem;
+  color: var(--text-dim);
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+.hero-cta {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+  z-index: -1;
+}
+.hero-cta:hover { color: var(--bg); }
+.hero-cta:hover::before { transform: scaleX(1); }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+.scroll-indicator div { width: 24px; height: 38px; border: 2px solid var(--text-dim); border-radius: 12px; position: relative; }
+.scroll-indicator div::after {
+  content: '';
+  width: 3px; height: 8px;
+  background: var(--gold);
+  border-radius: 2px;
+  position: absolute;
+  top: 6px; left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-dot 2s infinite;
+}
+@keyframes bounce { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(8px); } }
+@keyframes scroll-dot { 0%{ opacity:1; top:6px; } 100%{ opacity:0; top:20px; } }
+
+/* ── BGM Button ── */
+.bgm-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--purple);
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  color: var(--purple-light);
+}
+.bgm-btn:hover { background: var(--purple); color: #fff; transform: scale(1.1); }
+.bgm-btn svg { width: 20px; height: 20px; }
+.bgm-btn.playing { border-color: var(--gold); box-shadow: 0 0 20px var(--gold-glow); }
+.bgm-btn.playing svg { color: var(--gold-light); }
+.bgm-bars { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
+.bgm-bars span {
+  width: 3px;
+  background: currentColor;
+  border-radius: 1px;
+  animation: none;
+}
+.bgm-btn.playing .bgm-bars span { animation: bar-bounce 0.8s ease-in-out infinite alternate; }
+.bgm-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
+.bgm-bars span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+.bgm-bars span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+.bgm-bars span:nth-child(4) { height: 14px; animation-delay: 0.45s; }
+@keyframes bar-bounce { 0%{ height: 4px; } 100%{ height: 16px; } }
+
+/* ── Cocktails Section ── */
+.cocktails { background: var(--bg); position: relative; }
+.cocktails::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--purple));
+}
+.cocktail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 20px;
+}
+.cocktail-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(124,58,237,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s;
+  position: relative;
+}
+.cocktail-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124,58,237,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px var(--purple-glow);
+}
+.cocktail-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s;
+}
+.cocktail-card:hover .cocktail-card-img { transform: scale(1.05); }
+.cocktail-card-img-wrap { overflow: hidden; position: relative; }
+.cocktail-card-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(transparent, var(--bg-card));
+}
+.cocktail-card-body { padding: 24px; position: relative; }
+.cocktail-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+.cocktail-name-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.cocktail-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.cocktail-price {
+  font-family: var(--font-en);
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+/* ── Bartender Section ── */
+.bartender { background: var(--bg-surface); position: relative; overflow: hidden; }
+.bartender-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.bartender-photo {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.bartender-photo img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  filter: brightness(0.9) contrast(1.05);
+}
+.bartender-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--purple);
+  border-radius: 12px;
+  transform: translate(12px, 12px);
+  z-index: -1;
+  opacity: 0.4;
+}
+.bartender-text blockquote {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--purple-light);
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+.bartender-text p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+.bartender-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+.bartender-title {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+/* ── Atmosphere Section ── */
+.atmosphere { background: var(--bg); position: relative; }
+.atmo-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.atmo-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.atmo-photo img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+.atmo-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), transparent);
+  border-radius: 12px;
+}
+.atmo-features { list-style: none; }
+.atmo-features li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(124,58,237,0.1);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.atmo-features li:last-child { border-bottom: none; }
+.atmo-icon {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  background: rgba(124,58,237,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--purple-light);
+  font-size: 1.2rem;
+}
+.atmo-features h4 {
+  font-size: 1rem;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+.atmo-features p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ── Reservation Section ── */
+.reservation {
+  background: var(--bg-surface);
+  position: relative;
+  overflow: hidden;
+}
+.reservation::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--purple-glow), transparent 70%);
+  pointer-events: none;
+}
+.reservation::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -150px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+  pointer-events: none;
+}
+.res-form {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: var(--font-cn);
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 20px var(--purple-glow);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select { cursor: pointer; appearance: none; }
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, var(--purple), #6d28d9);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-cn);
+  font-size: 1rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.submit-btn:hover::before { opacity: 1; }
+.submit-btn span { position: relative; z-index: 1; }
+
+/* ── Footer ── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid rgba(124,58,237,0.1);
+  padding: 48px 0 32px;
+  text-align: center;
+}
+footer .footer-logo { width: 48px; margin-bottom: 16px; opacity: 0.7; }
+.footer-social { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
+.footer-social a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+.footer-social a:hover { color: var(--gold); }
+.footer-info {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 2;
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(152,149,168,0.5);
+  margin-top: 20px;
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,15,0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .nav-links.open { display: flex; }
+  .hamburger { display: block; z-index: 1001; }
+  .cocktail-grid { grid-template-columns: 1fr; }
+  .bartender-grid { grid-template-columns: 1fr; gap: 32px; }
+  .atmo-layout { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-title-cn { letter-spacing: 4px; }
+  .section-padding { padding: 60px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logos/logo_final.png" alt="夜行者 Logo">
+      <span>NIGHTCRAWLER</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#cocktails" data-i18n="nav_cocktails">招牌調酒</a></li>
+      <li><a href="#bartender" data-i18n="nav_bartender">調酒師</a></li>
+      <li><a href="#atmosphere" data-i18n="nav_atmosphere">氛圍</a></li>
+      <li><a href="#reservation" data-i18n="nav_reservation">預約訂位</a></li>
+      <li><button class="lang-toggle" id="langToggle" aria-label="Toggle language">EN</button></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="smoke-canvas"></canvas>
+  <div class="hero-content">
+    <img src="logos/logo_final.png" alt="夜行者" class="hero-logo">
+    <h1 class="hero-title-cn" data-i18n="hero_title">夜行者</h1>
+    <p class="hero-title-en">NightCrawler</p>
+    <p class="hero-tagline" data-i18n="hero_tagline">隱身巷弄的暗夜調酒殿堂</p>
+    <a href="#reservation" class="hero-cta" data-i18n="hero_cta">立即預約</a>
+  </div>
+  <div class="scroll-indicator"><div></div></div>
+</section>
+
+<!-- ── Signature Cocktails ── -->
+<section class="cocktails section-padding" id="cocktails">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Signature Cocktails</p>
+      <h2 class="section-title-cn" data-i18n="cocktails_title">招牌調酒</h2>
+      <p class="section-title-en" data-i18n="cocktails_subtitle">Crafted in Darkness</p>
+    </div>
+    <div class="cocktail-grid">
+      <div class="cocktail-card reveal">
+        <div class="cocktail-card-img-wrap">
+          <img src="photos/cocktail.png" alt="暗影之吻" class="cocktail-card-img">
+        </div>
+        <div class="cocktail-card-body">
+          <h3 class="cocktail-name" data-i18n="c1_name">暗影之吻</h3>
+          <p class="cocktail-name-en">Shadow's Kiss</p>
+          <p class="cocktail-desc" data-i18n="c1_desc">煙燻威士忌、黑莓利口酒、活性炭、蝶豆花。隨溫度漸變的神秘色澤。</p>
+          <span class="cocktail-price">NT$ 420</span>
+        </div>
+      </div>
+      <div class="cocktail-card reveal">
+        <div class="cocktail-card-img-wrap">
+          <img src="photos/cocktail.png" alt="月蝕" class="cocktail-card-img">
+        </div>
+        <div class="cocktail-card-body">
+          <h3 class="cocktail-name" data-i18n="c2_name">月蝕</h3>
+          <p class="cocktail-name-en">Lunar Eclipse</p>
+          <p class="cocktail-desc" data-i18n="c2_desc">陳年蘭姆、紫蘇葉、柚子汁、蜂蜜泡沫。月光下的東方幻想。</p>
+          <span class="cocktail-price">NT$ 380</span>
+        </div>
+      </div>
+      <div class="cocktail-card reveal">
+        <div class="cocktail-card-img-wrap">
+          <img src="photos/cocktail.png" alt="紫焰" class="cocktail-card-img">
+        </div>
+        <div class="cocktail-card-body">
+          <h3 class="cocktail-name" data-i18n="c3_name">紫焰</h3>
+          <p class="cocktail-name-en">Violet Ember</p>
+          <p class="cocktail-desc" data-i18n="c3_desc">琴酒、薰衣草糖漿、接骨木花、乾冰煙霧。入口是花園，尾韻是深淵。</p>
+          <span class="cocktail-price">NT$ 450</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── The Bartender ── -->
+<section class="bartender section-padding" id="bartender">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">The Bartender</p>
+      <h2 class="section-title-cn" data-i18n="bartender_title">調酒師</h2>
+      <p class="section-title-en" data-i18n="bartender_subtitle">The Alchemist Behind the Bar</p>
+    </div>
+    <div class="bartender-grid">
+      <div class="bartender-photo reveal">
+        <img src="photos/bartender.png" alt="首席調酒師">
+      </div>
+      <div class="bartender-text reveal">
+        <blockquote data-i18n="bartender_quote">"Every cocktail is a conversation between light and darkness."</blockquote>
+        <p data-i18n="bartender_bio1">十五年調酒資歷，足跡遍布東京、倫敦、紐約的地下酒吧。師承日本 Bar High Five 的冰雕技藝，融合台灣在地食材，創造出獨樹一幟的暗黑調酒風格。</p>
+        <p data-i18n="bartender_bio2">每一杯調酒都是一場感官實驗——從視覺的色彩漸變、嗅覺的煙燻層次，到味蕾上的驚喜收尾。</p>
+        <p class="bartender-name" data-i18n="bartender_name">林 夜 | Yoru Hayashi</p>
+        <p class="bartender-title" data-i18n="bartender_role">Head Bartender & Co-founder</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Atmosphere ── -->
+<section class="atmosphere section-padding" id="atmosphere">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Atmosphere</p>
+      <h2 class="section-title-cn" data-i18n="atmo_title">空間氛圍</h2>
+      <p class="section-title-en" data-i18n="atmo_subtitle">Where Shadows Meet Elegance</p>
+    </div>
+    <div class="atmo-layout">
+      <div class="atmo-photo reveal">
+        <img src="photos/ambiance.png" alt="夜行者空間氛圍">
+      </div>
+      <div class="reveal">
+        <ul class="atmo-features">
+          <li>
+            <div class="atmo-icon">&#9830;</div>
+            <div>
+              <h4 data-i18n="atmo_f1_title">隱密入口</h4>
+              <p data-i18n="atmo_f1_desc">無招牌、暗巷、密碼門。唯有知者方能入內。</p>
+            </div>
+          </li>
+          <li>
+            <div class="atmo-icon">&#9833;</div>
+            <div>
+              <h4 data-i18n="atmo_f2_title">沉浸式音場</h4>
+              <p data-i18n="atmo_f2_desc">訂製環繞聲系統，從 Lo-fi Jazz 到 Dark Ambient，隨夜晚漸深轉換。</p>
+            </div>
+          </li>
+          <li>
+            <div class="atmo-icon">&#10022;</div>
+            <div>
+              <h4 data-i18n="atmo_f3_title">微光設計</h4>
+              <p data-i18n="atmo_f3_desc">蠟燭與紫光 LED 交織，每張桌都是獨立的暗夜劇場。</p>
+            </div>
+          </li>
+          <li>
+            <div class="atmo-icon">&#9827;</div>
+            <div>
+              <h4 data-i18n="atmo_f4_title">限定座席</h4>
+              <p data-i18n="atmo_f4_desc">全場僅 24 席。預約制，確保每位賓客的專屬體驗。</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Reservation ── -->
+<section class="reservation section-padding" id="reservation">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label">Reservations</p>
+      <h2 class="section-title-cn" data-i18n="res_title">預約訂位</h2>
+      <p class="section-title-en" data-i18n="res_subtitle">Step Into the Night</p>
+    </div>
+    <form class="res-form reveal" onsubmit="event.preventDefault(); alert(currentLang==='zh'?'預約已送出，我們將盡快與您聯繫。':'Reservation submitted. We will contact you shortly.'); this.reset();">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="res-name" data-i18n="form_name">姓名</label>
+          <input type="text" id="res-name" required placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="res-phone" data-i18n="form_phone">電話</label>
+          <input type="tel" id="res-phone" required placeholder="">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="res-date" data-i18n="form_date">日期</label>
+          <input type="date" id="res-date" required>
+        </div>
+        <div class="form-group">
+          <label for="res-time" data-i18n="form_time">時間</label>
+          <select id="res-time" required>
+            <option value="19:00">19:00</option>
+            <option value="19:30">19:30</option>
+            <option value="20:00">20:00</option>
+            <option value="20:30">20:30</option>
+            <option value="21:00">21:00</option>
+            <option value="21:30">21:30</option>
+            <option value="22:00">22:00</option>
+            <option value="22:30">22:30</option>
+            <option value="23:00">23:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="res-guests" data-i18n="form_guests">人數</label>
+          <select id="res-guests" required>
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="res-occasion" data-i18n="form_occasion">特殊需求</label>
+          <input type="text" id="res-occasion" data-i18n-placeholder="form_occasion_ph" placeholder="生日、紀念日...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="res-notes" data-i18n="form_notes">備註</label>
+          <textarea id="res-notes" data-i18n-placeholder="form_notes_ph" placeholder="任何需要我們事先知道的事..."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn"><span data-i18n="form_submit">確認預約</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <img src="logos/logo_final.png" alt="夜行者" class="footer-logo">
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">LINE</a>
+    </div>
+    <div class="footer-info">
+      <p data-i18n="footer_addr">台中市西區某巷弄（僅限預約入場）</p>
+      <p data-i18n="footer_hours">Wed — Sun / 19:00 — 02:00</p>
+      <p>+886-4-2345-6789</p>
+    </div>
+    <p class="footer-copy">&copy; 2026 夜行者 NightCrawler. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ── BGM Button ── -->
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <div class="bgm-bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</button>
+<audio id="bgmAudio" loop preload="none">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ── i18n ── */
+let currentLang = 'zh';
+const translations = {
+  en: {
+    nav_cocktails: 'Cocktails',
+    nav_bartender: 'Bartender',
+    nav_atmosphere: 'Atmosphere',
+    nav_reservation: 'Reservations',
+    hero_title: 'NightCrawler',
+    hero_tagline: 'A Speakeasy Hidden in the Alley',
+    hero_cta: 'Reserve Now',
+    cocktails_title: 'Signature Cocktails',
+    cocktails_subtitle: 'Crafted in Darkness',
+    c1_name: "Shadow's Kiss",
+    c1_desc: 'Smoked whiskey, blackberry liqueur, activated charcoal & butterfly pea flower. A mysterious hue that shifts with temperature.',
+    c2_name: 'Lunar Eclipse',
+    c2_desc: 'Aged rum, shiso leaf, yuzu juice & honey foam. An Eastern fantasy under moonlight.',
+    c3_name: 'Violet Ember',
+    c3_desc: 'Gin, lavender syrup, elderflower & dry ice mist. A garden on the palate, an abyss in the finish.',
+    bartender_title: 'The Bartender',
+    bartender_subtitle: 'The Alchemist Behind the Bar',
+    bartender_quote: '"Every cocktail is a conversation between light and darkness."',
+    bartender_bio1: 'Fifteen years behind the bar, with stints in Tokyo, London, and New York\'s underground speakeasies. Trained in ice-carving at Bar High Five, blending Taiwanese local ingredients into a signature dark cocktail style.',
+    bartender_bio2: 'Each creation is a sensory experiment — from shifting colors, layered smoky aromas, to a surprise finish on the palate.',
+    bartender_name: 'Yoru Hayashi',
+    bartender_role: 'Head Bartender & Co-founder',
+    atmo_title: 'Atmosphere',
+    atmo_subtitle: 'Where Shadows Meet Elegance',
+    atmo_f1_title: 'Hidden Entrance',
+    atmo_f1_desc: 'No signage. A dark alley. A password. Only the initiated may enter.',
+    atmo_f2_title: 'Immersive Soundscape',
+    atmo_f2_desc: 'Custom surround system — from Lo-fi Jazz to Dark Ambient, evolving as the night deepens.',
+    atmo_f3_title: 'Low-Light Design',
+    atmo_f3_desc: 'Candlelight intertwined with purple LEDs. Every table is its own theater of darkness.',
+    atmo_f4_title: 'Limited Seating',
+    atmo_f4_desc: 'Only 24 seats. By reservation only, ensuring an exclusive experience for every guest.',
+    res_title: 'Reservations',
+    res_subtitle: 'Step Into the Night',
+    form_name: 'Name',
+    form_phone: 'Phone',
+    form_date: 'Date',
+    form_time: 'Time',
+    form_guests: 'Guests',
+    form_occasion: 'Occasion',
+    form_occasion_ph: 'Birthday, anniversary...',
+    form_notes: 'Notes',
+    form_notes_ph: 'Anything we should know in advance...',
+    form_submit: 'Confirm Reservation',
+    footer_addr: 'Hidden Alley, West District, Taichung (Reservation Only)',
+    footer_hours: 'Wed — Sun / 7:00 PM — 2:00 AM',
+  },
+  zh: {
+    nav_cocktails: '招牌調酒',
+    nav_bartender: '調酒師',
+    nav_atmosphere: '氛圍',
+    nav_reservation: '預約訂位',
+    hero_title: '夜行者',
+    hero_tagline: '隱身巷弄的暗夜調酒殿堂',
+    hero_cta: '立即預約',
+    cocktails_title: '招牌調酒',
+    cocktails_subtitle: 'Crafted in Darkness',
+    c1_name: '暗影之吻',
+    c1_desc: '煙燻威士忌、黑莓利口酒、活性炭、蝶豆花。隨溫度漸變的神秘色澤。',
+    c2_name: '月蝕',
+    c2_desc: '陳年蘭姆、紫蘇葉、柚子汁、蜂蜜泡沫。月光下的東方幻想。',
+    c3_name: '紫焰',
+    c3_desc: '琴酒、薰衣草糖漿、接骨木花、乾冰煙霧。入口是花園，尾韻是深淵。',
+    bartender_title: '調酒師',
+    bartender_subtitle: 'The Alchemist Behind the Bar',
+    bartender_quote: '"每一杯調酒，都是光與暗的對話。"',
+    bartender_bio1: '十五年調酒資歷，足跡遍布東京、倫敦、紐約的地下酒吧。師承日本 Bar High Five 的冰雕技藝，融合台灣在地食材，創造出獨樹一幟的暗黑調酒風格。',
+    bartender_bio2: '每一杯調酒都是一場感官實驗——從視覺的色彩漸變、嗅覺的煙燻層次，到味蕾上的驚喜收尾。',
+    bartender_name: '林 夜 | Yoru Hayashi',
+    bartender_role: 'Head Bartender & Co-founder',
+    atmo_title: '空間氛圍',
+    atmo_subtitle: 'Where Shadows Meet Elegance',
+    atmo_f1_title: '隱密入口',
+    atmo_f1_desc: '無招牌、暗巷、密碼門。唯有知者方能入內。',
+    atmo_f2_title: '沉浸式音場',
+    atmo_f2_desc: '訂製環繞聲系統，從 Lo-fi Jazz 到 Dark Ambient，隨夜晚漸深轉換。',
+    atmo_f3_title: '微光設計',
+    atmo_f3_desc: '蠟燭與紫光 LED 交織，每張桌都是獨立的暗夜劇場。',
+    atmo_f4_title: '限定座席',
+    atmo_f4_desc: '全場僅 24 席。預約制，確保每位賓客的專屬體驗。',
+    res_title: '預約訂位',
+    res_subtitle: 'Step Into the Night',
+    form_name: '姓名',
+    form_phone: '電話',
+    form_date: '日期',
+    form_time: '時間',
+    form_guests: '人數',
+    form_occasion: '特殊需求',
+    form_occasion_ph: '生日、紀念日...',
+    form_notes: '備註',
+    form_notes_ph: '任何需要我們事先知道的事...',
+    form_submit: '確認預約',
+    footer_addr: '台中市西區某巷弄（僅限預約入場）',
+    footer_hours: 'Wed — Sun / 19:00 — 02:00',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang][key]) el.placeholder = translations[lang][key];
+  });
+  document.getElementById('langToggle').textContent = lang === 'zh' ? 'EN' : '中文';
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+}
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  setLang(currentLang === 'zh' ? 'en' : 'zh');
+});
+
+/* ── Navbar scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── Hamburger ── */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ── BGM ── */
+const bgmBtn = document.getElementById('bgmBtn');
+const bgmAudio = document.getElementById('bgmAudio');
+bgmAudio.volume = 0.3;
+bgmBtn.addEventListener('click', () => {
+  if (bgmAudio.paused) {
+    bgmAudio.play();
+    bgmBtn.classList.add('playing');
+  } else {
+    bgmAudio.pause();
+    bgmBtn.classList.remove('playing');
+  }
+});
+
+/* ── Scroll Reveal ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Canvas Smoke / Mist Particles ── */
+(function() {
+  const canvas = document.getElementById('smoke-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+
+  function resize() {
+    const hero = document.getElementById('hero');
+    w = canvas.width = hero.offsetWidth;
+    h = canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.r = Math.random() * 120 + 40;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = -Math.random() * 0.2 - 0.05;
+      this.alpha = Math.random() * 0.06 + 0.01;
+      this.life = Math.random() * 400 + 200;
+      this.age = 0;
+      // mix of dark purple and dim grey tones
+      const shade = Math.random();
+      if (shade < 0.4) {
+        this.color = `rgba(80,40,140,`;  // purple mist
+      } else if (shade < 0.7) {
+        this.color = `rgba(30,28,45,`;    // dark grey
+      } else {
+        this.color = `rgba(100,70,50,`;   // warm amber hint
+      }
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.age++;
+      if (this.age > this.life) this.reset();
+    }
+    draw() {
+      const progress = this.age / this.life;
+      const fade = progress < 0.3 ? progress / 0.3 : progress > 0.7 ? (1 - progress) / 0.3 : 1;
+      const a = this.alpha * fade;
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+      grad.addColorStop(0, this.color + a + ')');
+      grad.addColorStop(1, this.color + '0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  const count = Math.min(60, Math.floor(w * h / 15000));
+  for (let i = 0; i < count; i++) {
+    const p = new Particle();
+    p.age = Math.floor(Math.random() * p.life);
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+
+</body>
+</html>

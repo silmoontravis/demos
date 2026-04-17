@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>花見和菓子 Hanami Wagashi | 台中頂級和菓子專門店</title>
+<meta name="description" content="花見和菓子 Hanami Wagashi — 台中職人手作和菓子專門店。嚴選當季食材，呈現四季之美。Artisan Japanese wagashi confectionery in Taichung.">
+<meta name="keywords" content="和菓子,wagashi,台中,Taichung,日式甜點,抹茶,櫻花,花見,Japanese sweets">
+<meta name="author" content="花見和菓子 Hanami Wagashi">
+<link rel="canonical" href="https://hanami-wagashi.tw/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="花見和菓子 Hanami Wagashi | 台中頂級和菓子專門店">
+<meta property="og:description" content="職人手作和菓子專門店。嚴選當季食材，呈現四季之美。">
+<meta property="og:image" content="photos/hero_wagashi.png">
+<meta property="og:url" content="https://hanami-wagashi.tw/">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="花見和菓子 Hanami Wagashi">
+<meta name="twitter:description" content="台中職人手作和菓子專門店。嚴選當季食材，呈現四季之美。">
+<meta name="twitter:image" content="photos/hero_wagashi.png">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  "name": "花見和菓子 Hanami Wagashi",
+  "alternateName": "Hanami Wagashi",
+  "description": "台中職人手作和菓子專門店。嚴選當季食材，呈現四季之美。",
+  "url": "https://hanami-wagashi.tw/",
+  "image": "photos/hero_wagashi.png",
+  "logo": "logos/logo_final.png",
+  "telephone": "+886-4-2345-6789",
+  "email": "info@hanami-wagashi.tw",
+  "servesCuisine": ["Japanese", "Wagashi", "和菓子"],
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "精誠路 128 號",
+    "addressLocality": "台中市",
+    "addressRegion": "西區",
+    "postalCode": "403",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.1490,
+    "longitude": 120.6640
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:00",
+      "closes": "19:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/hanami_wagashi",
+    "https://www.facebook.com/hanamiwagashi"
+  ]
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Reset & Base ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --base: #fff5f0;
+  --sakura: #f9a8c9;
+  --sakura-light: #fdd5e5;
+  --sakura-dark: #e7739e;
+  --matcha: #7fb069;
+  --matcha-light: #a8d08d;
+  --matcha-dark: #5a8a48;
+  --text-primary: #3a2e2e;
+  --text-secondary: #6b5c5c;
+  --text-light: #9a8888;
+  --white: #ffffff;
+  --gold: #c9a96e;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans TC', 'Noto Serif JP', sans-serif;
+  background: var(--base);
+  color: var(--text-primary);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== Typography ===== */
+.serif { font-family: 'Noto Serif JP', serif; }
+h1, h2, h3 { font-family: 'Noto Serif JP', serif; font-weight: 500; }
+
+/* ===== Navigation ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.4s ease;
+}
+.nav.scrolled {
+  background: rgba(255,245,240,0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(249,168,201,0.15);
+  padding: 0.6rem 2rem;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.nav-logo img { height: 44px; transition: height 0.3s; }
+.nav.scrolled .nav-logo img { height: 36px; }
+.nav-logo span {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.1rem; font-weight: 500;
+  color: var(--white);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  transition: color 0.4s, text-shadow 0.4s;
+}
+.nav.scrolled .nav-logo span { color: var(--text-primary); text-shadow: none; }
+
+.nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.9rem; font-weight: 400; letter-spacing: 0.05em;
+  color: var(--white);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+  transition: color 0.3s, text-shadow 0.3s;
+  position: relative;
+}
+.nav.scrolled .nav-links a { color: var(--text-primary); text-shadow: none; }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: var(--sakura);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.lang-toggle {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.nav.scrolled .lang-toggle {
+  background: rgba(249,168,201,0.1);
+  border-color: var(--sakura-light);
+  color: var(--text-primary);
+}
+.lang-toggle:hover { background: var(--sakura); color: var(--white); border-color: var(--sakura); }
+
+/* Mobile menu */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 30px; height: 24px; position: relative;
+}
+.nav-hamburger span {
+  display: block; position: absolute; left: 0; width: 100%; height: 2px;
+  background: var(--white); transition: all 0.3s;
+}
+.nav.scrolled .nav-hamburger span { background: var(--text-primary); }
+.nav-hamburger span:nth-child(1) { top: 0; }
+.nav-hamburger span:nth-child(2) { top: 11px; }
+.nav-hamburger span:nth-child(3) { top: 22px; }
+.nav-hamburger.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .nav-hamburger { display: block; }
+  .nav-links {
+    position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
+    flex-direction: column; justify-content: center;
+    background: rgba(255,245,240,0.98); backdrop-filter: blur(20px);
+    transition: right 0.4s ease; padding: 2rem;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { color: var(--text-primary) !important; text-shadow: none !important; font-size: 1.2rem; }
+  .lang-toggle { color: var(--text-primary) !important; border-color: var(--sakura-light) !important; background: rgba(249,168,201,0.1) !important; }
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  height: 100vh; min-height: 600px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('photos/hero_wagashi.png') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(58,46,46,0.25) 0%,
+    rgba(58,46,46,0.10) 40%,
+    rgba(58,46,46,0.35) 100%
+  );
+}
+#sakura-canvas {
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; color: var(--white);
+  padding: 0 1rem;
+}
+.hero-content h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 300; letter-spacing: 0.15em;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  margin-bottom: 0.3rem;
+}
+.hero-content .hero-sub {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 300; letter-spacing: 0.3em;
+  opacity: 0.9; margin-bottom: 2.5rem;
+}
+.hero-divider {
+  width: 60px; height: 1px;
+  background: var(--sakura-light);
+  margin: 0 auto 2rem;
+}
+.hero-tagline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 300; letter-spacing: 0.1em;
+  opacity: 0.95;
+  text-shadow: 0 1px 15px rgba(0,0,0,0.25);
+}
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%); z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  color: var(--white); opacity: 0.7;
+  animation: float 2s ease-in-out infinite;
+}
+.hero-scroll span { font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 0.5rem; }
+.hero-scroll svg { width: 20px; height: 20px; }
+@keyframes float { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(8px); } }
+
+/* ===== Section Common ===== */
+.section { padding: 6rem 2rem; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header .section-label {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--sakura-dark); margin-bottom: 0.5rem;
+}
+.section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300; letter-spacing: 0.1em;
+  color: var(--text-primary);
+}
+.section-header .section-line {
+  width: 40px; height: 2px; background: var(--sakura);
+  margin: 1.2rem auto 0;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ===== Seasonal Wagashi ===== */
+.seasonal { background: var(--white); }
+.wagashi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+.wagashi-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--base);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.wagashi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(249,168,201,0.18);
+}
+.wagashi-card-img {
+  position: relative;
+  width: 100%; aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.wagashi-card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.wagashi-card:hover .wagashi-card-img img { transform: scale(1.05); }
+.wagashi-card-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: var(--sakura);
+  color: var(--white);
+  font-size: 0.7rem; letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+.wagashi-card-body { padding: 1.5rem; }
+.wagashi-card-body h3 {
+  font-size: 1.2rem; font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.wagashi-card-body .card-en {
+  font-size: 0.8rem; color: var(--text-light);
+  letter-spacing: 0.05em; margin-bottom: 0.8rem;
+}
+.wagashi-card-body p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.7;
+}
+.wagashi-card-body .card-price {
+  display: inline-block; margin-top: 1rem;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1rem; color: var(--sakura-dark);
+  font-weight: 500;
+}
+
+/* ===== Tea Pairing ===== */
+.tea-pairing { background: var(--base); }
+.tea-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.tea-image {
+  border-radius: 16px; overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.tea-image img { width: 100%; height: 100%; object-fit: cover; }
+.tea-content { padding: 1rem 0; }
+.tea-content h3 {
+  font-size: 1.6rem; font-weight: 400;
+  margin-bottom: 1.5rem; letter-spacing: 0.05em;
+}
+.tea-item {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(249,168,201,0.2);
+}
+.tea-item:last-child { border-bottom: none; }
+.tea-item-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.05rem; font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.tea-item-desc {
+  font-size: 0.85rem; color: var(--text-secondary);
+}
+.tea-item-pair {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.78rem; color: var(--matcha-dark);
+  background: rgba(127,176,105,0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+.tea-item-pair svg { width: 14px; height: 14px; }
+
+@media (max-width: 768px) {
+  .tea-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Shop Info ===== */
+.shop-info { background: var(--white); }
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.shop-photo {
+  border-radius: 16px; overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.shop-photo img { width: 100%; height: 100%; object-fit: cover; }
+.shop-details { padding: 1rem 0; }
+.shop-details h3 {
+  font-size: 1.6rem; font-weight: 400;
+  margin-bottom: 1.5rem; letter-spacing: 0.05em;
+}
+.info-row {
+  display: flex; gap: 1rem; padding: 1rem 0;
+  border-bottom: 1px solid rgba(249,168,201,0.15);
+}
+.info-row:last-child { border-bottom: none; }
+.info-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: rgba(249,168,201,0.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.info-icon svg { width: 18px; height: 18px; color: var(--sakura-dark); }
+.info-text .info-label {
+  font-size: 0.75rem; color: var(--text-light);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+.info-text .info-value {
+  font-size: 0.95rem; color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .shop-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--text-primary);
+  color: rgba(255,255,255,0.6);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer-logo { height: 36px; margin-bottom: 1rem; opacity: 0.8; }
+.footer p { font-size: 0.8rem; letter-spacing: 0.05em; }
+.footer-social { display: flex; justify-content: center; gap: 1.2rem; margin: 1.2rem 0; }
+.footer-social a {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.3s;
+}
+.footer-social a:hover {
+  border-color: var(--sakura);
+  color: var(--sakura);
+  background: rgba(249,168,201,0.1);
+}
+.footer-social a svg { width: 16px; height: 16px; }
+
+/* ===== BGM Button ===== */
+.bgm-btn {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  width: 50px; height: 50px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--sakura-light);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(249,168,201,0.2);
+  transition: all 0.3s;
+}
+.bgm-btn:hover { transform: scale(1.08); box-shadow: 0 6px 25px rgba(249,168,201,0.3); }
+.bgm-btn svg { width: 22px; height: 22px; color: var(--sakura-dark); }
+.bgm-btn.playing .bar { animation: soundBar 0.6s ease-in-out infinite alternate; }
+.bgm-btn .bar:nth-child(2) { animation-delay: 0.2s; }
+.bgm-btn .bar:nth-child(3) { animation-delay: 0.4s; }
+@keyframes soundBar { 0%{ height: 4px; } 100%{ height: 16px; } }
+
+/* ===== Animations ===== */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--base); }
+::-webkit-scrollbar-thumb { background: var(--sakura-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--sakura); }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img src="logos/logo_final.png" alt="花見和菓子">
+    <span data-zh="花見和菓子" data-en="Hanami Wagashi">花見和菓子</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#seasonal" data-zh="季節限定" data-en="Seasonal">季節限定</a></li>
+    <li><a href="#tea" data-zh="茶菓搭配" data-en="Tea Pairing">茶菓搭配</a></li>
+    <li><a href="#shop" data-zh="店舖資訊" data-en="Shop Info">店舖資訊</a></li>
+    <li><button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="sakura-canvas"></canvas>
+  <div class="hero-content">
+    <h1 data-zh="花見和菓子" data-en="Hanami Wagashi">花見和菓子</h1>
+    <p class="hero-sub" data-zh="HANAMI WAGASHI" data-en="HANAMI WAGASHI">HANAMI WAGASHI</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline" data-zh="以四季之美，凝於掌心" data-en="The beauty of four seasons, in the palm of your hand">以四季之美，凝於掌心</p>
+  </div>
+  <div class="hero-scroll">
+    <span data-zh="向下探索" data-en="SCROLL">向下探索</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- Seasonal Wagashi -->
+<section class="section seasonal" id="seasonal">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label" data-zh="季節限定" data-en="Seasonal Collection">季節限定</p>
+      <h2 data-zh="四季の菓子" data-en="Wagashi of the Four Seasons">四季の菓子</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="wagashi-grid">
+      <div class="wagashi-card fade-up">
+        <div class="wagashi-card-img">
+          <img src="photos/seasonal.png" alt="春櫻練切 sakura nerikiri" loading="lazy">
+          <span class="wagashi-card-badge" data-zh="春季限定" data-en="Spring">春季限定</span>
+        </div>
+        <div class="wagashi-card-body">
+          <h3 data-zh="春櫻練切" data-en="Sakura Nerikiri">春櫻練切</h3>
+          <p class="card-en">Sakura Nerikiri</p>
+          <p data-zh="以白豆沙為基底，手工揉製出櫻花綻放的姿態。淡雅的粉色漸層，承載著春日的溫柔。" data-en="White bean paste base, hand-shaped into blooming sakura. Gentle pink gradients carry the tenderness of spring.">以白豆沙為基底，手工揉製出櫻花綻放的姿態。淡雅的粉色漸層，承載著春日的溫柔。</p>
+          <span class="card-price">NT$ 180</span>
+        </div>
+      </div>
+      <div class="wagashi-card fade-up">
+        <div class="wagashi-card-img">
+          <img src="photos/matcha.png" alt="抹茶水饅頭 matcha mizu manju" loading="lazy">
+          <span class="wagashi-card-badge" style="background:var(--matcha);" data-zh="夏季限定" data-en="Summer">夏季限定</span>
+        </div>
+        <div class="wagashi-card-body">
+          <h3 data-zh="抹茶水饅頭" data-en="Matcha Mizu Manju">抹茶水饅頭</h3>
+          <p class="card-en">Matcha Mizu Manju</p>
+          <p data-zh="透明葛粉外皮包裹濃郁宇治抹茶餡。入口即化的清涼口感，是夏日最雅致的消暑之選。" data-en="Transparent kuzu skin wraps rich Uji matcha filling. Melt-in-your-mouth coolness for the most elegant summer refreshment.">透明葛粉外皮包裹濃郁宇治抹茶餡。入口即化的清涼口感，是夏日最雅致的消暑之選。</p>
+          <span class="card-price">NT$ 160</span>
+        </div>
+      </div>
+      <div class="wagashi-card fade-up">
+        <div class="wagashi-card-img">
+          <img src="photos/hero_wagashi.png" alt="栗蒸羊羹 kuri yokan" loading="lazy">
+          <span class="wagashi-card-badge" style="background:var(--gold);" data-zh="秋季限定" data-en="Autumn">秋季限定</span>
+        </div>
+        <div class="wagashi-card-body">
+          <h3 data-zh="栗蒸羊羹" data-en="Kuri Yokan">栗蒸羊羹</h3>
+          <p class="card-en">Kuri Yokan</p>
+          <p data-zh="嚴選丹波大栗，與細膩紅豆羊羹完美融合。深邃的琥珀色澤，是秋意濃的甜蜜饋贈。" data-en="Premium Tanba chestnuts perfectly merged with delicate red bean yokan. Deep amber hues, a sweet gift of autumn's abundance.">嚴選丹波大栗，與細膩紅豆羊羹完美融合。深邃的琥珀色澤，是秋意濃的甜蜜饋贈。</p>
+          <span class="card-price">NT$ 220</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tea Pairing -->
+<section class="section tea-pairing" id="tea">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label" data-zh="茶菓搭配" data-en="Tea Pairing">茶菓搭配</p>
+      <h2 data-zh="一期一会の茶席" data-en="Ichigo Ichie Tea Experience">一期一会の茶席</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="tea-grid">
+      <div class="tea-image fade-up">
+        <img src="photos/matcha.png" alt="茶菓搭配 tea pairing" loading="lazy">
+      </div>
+      <div class="tea-content fade-up">
+        <h3 data-zh="職人推薦搭配" data-en="Artisan Recommended Pairings">職人推薦搭配</h3>
+        <div class="tea-item">
+          <p class="tea-item-name" data-zh="薄茶 — 宇治の昔" data-en="Thin Tea — Uji no Mukashi">薄茶 — 宇治の昔</p>
+          <p class="tea-item-desc" data-zh="清雅的薄茶帶出練切的細膩甜味，茶湯翠綠如春日新芽。" data-en="Elegant thin tea brings out the delicate sweetness of nerikiri, the broth green as spring buds.">清雅的薄茶帶出練切的細膩甜味，茶湯翠綠如春日新芽。</p>
+          <span class="tea-item-pair">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-zh="推薦搭配：春櫻練切" data-en="Pairs with: Sakura Nerikiri">推薦搭配：春櫻練切</span>
+          </span>
+        </div>
+        <div class="tea-item">
+          <p class="tea-item-name" data-zh="煎茶 — 朝露" data-en="Sencha — Asatsuyu">煎茶 — 朝露</p>
+          <p class="tea-item-desc" data-zh="鮮爽的煎茶與水饅頭的清涼相得益彰，一口茶一口菓，清暑怡心。" data-en="Refreshing sencha complements the coolness of mizu manju. A sip of tea, a bite of sweet — cooling and soothing.">鮮爽的煎茶與水饅頭的清涼相得益彰，一口茶一口菓，清暑怡心。</p>
+          <span class="tea-item-pair">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-zh="推薦搭配：抹茶水饅頭" data-en="Pairs with: Matcha Mizu Manju">推薦搭配：抹茶水饅頭</span>
+          </span>
+        </div>
+        <div class="tea-item">
+          <p class="tea-item-name" data-zh="焙茶 — 加賀棒茶" data-en="Hojicha — Kaga Boucha">焙茶 — 加賀棒茶</p>
+          <p class="tea-item-desc" data-zh="焙茶的焦香與栗羊羹的甘甜形成絕妙平衡，溫潤而深沉的秋日風味。" data-en="Roasted tea's toasty aroma perfectly balances the chestnut yokan's sweetness. Warm, deep autumn flavor.">焙茶的焦香與栗羊羹的甘甜形成絕妙平衡，溫潤而深沉的秋日風味。</p>
+          <span class="tea-item-pair">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-zh="推薦搭配：栗蒸羊羹" data-en="Pairs with: Kuri Yokan">推薦搭配：栗蒸羊羹</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop Info -->
+<section class="section shop-info" id="shop">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label" data-zh="店舖資訊" data-en="Shop Information">店舖資訊</p>
+      <h2 data-zh="花見への道" data-en="Visit Hanami">花見への道</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-photo fade-up">
+        <img src="photos/shop_interior.png" alt="花見和菓子店內 shop interior" loading="lazy">
+      </div>
+      <div class="shop-details fade-up">
+        <h3 data-zh="歡迎蒞臨" data-en="Welcome">歡迎蒞臨</h3>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="info-text">
+            <p class="info-label" data-zh="地址" data-en="Address">地址</p>
+            <p class="info-value" data-zh="台中市西區精誠路 128 號" data-en="No. 128, Jingcheng Rd., West Dist., Taichung">台中市西區精誠路 128 號</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="info-text">
+            <p class="info-label" data-zh="營業時間" data-en="Hours">營業時間</p>
+            <p class="info-value" data-zh="週二至週日 11:00 - 19:00（週一公休）" data-en="Tue - Sun 11:00 - 19:00 (Closed Mon)">週二至週日 11:00 - 19:00（週一公休）</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="info-text">
+            <p class="info-label" data-zh="電話" data-en="Phone">電話</p>
+            <p class="info-value">04-2345-6789</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div class="info-text">
+            <p class="info-label" data-zh="電子郵件" data-en="Email">電子郵件</p>
+            <p class="info-value">info@hanami-wagashi.tw</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="info-text">
+            <p class="info-label" data-zh="預約" data-en="Reservation">預約</p>
+            <p class="info-value" data-zh="茶席體驗請提前三日預約" data-en="Tea experience: reserve 3 days in advance">茶席體驗請提前三日預約</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <img src="logos/logo_final.png" alt="花見和菓子" class="footer-logo">
+  <div class="footer-social">
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+    <a href="#" aria-label="LINE">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 5.82 2 10.5c0 3.26 2.16 6.12 5.4 7.74l-.96 3.54a.3.3 0 00.42.34l4.14-2.16c.32.04.66.04 1 .04 5.52 0 10-3.82 10-8.5S17.52 2 12 2z"/></svg>
+    </a>
+  </div>
+  <p data-zh="&copy; 2026 花見和菓子 Hanami Wagashi. All rights reserved." data-en="&copy; 2026 Hanami Wagashi. All rights reserved.">&copy; 2026 花見和菓子 Hanami Wagashi. All rights reserved.</p>
+</footer>
+
+<!-- BGM Button -->
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <svg viewBox="0 0 24 24" width="22" height="22" id="bgmIcon">
+    <rect class="bar" x="4" y="10" width="3" height="4" rx="1" fill="currentColor"/>
+    <rect class="bar" x="10.5" y="8" width="3" height="8" rx="1" fill="currentColor"/>
+    <rect class="bar" x="17" y="10" width="3" height="4" rx="1" fill="currentColor"/>
+  </svg>
+</button>
+<audio id="bgmAudio" loop preload="none">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ===== Sakura Petal Particles ===== */
+(function() {
+  const canvas = document.getElementById('sakura-canvas');
+  const ctx = canvas.getContext('2d');
+  let petals = [];
+  const PETAL_COUNT = 35;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Petal {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random() * canvas.width;
+      this.y = init ? Math.random() * canvas.height : -20;
+      this.size = 6 + Math.random() * 10;
+      this.speedY = 0.5 + Math.random() * 1.2;
+      this.speedX = -0.3 + Math.random() * 0.6;
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotSpeed = (Math.random() - 0.5) * 0.03;
+      this.opacity = 0.3 + Math.random() * 0.5;
+      this.wobble = Math.random() * Math.PI * 2;
+      this.wobbleSpeed = 0.02 + Math.random() * 0.02;
+    }
+    update() {
+      this.y += this.speedY;
+      this.wobble += this.wobbleSpeed;
+      this.x += this.speedX + Math.sin(this.wobble) * 0.5;
+      this.rotation += this.rotSpeed;
+      if (this.y > canvas.height + 20) this.reset(false);
+    }
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.globalAlpha = this.opacity;
+      ctx.beginPath();
+      const s = this.size;
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(s * 0.3, -s * 0.4, s * 0.8, -s * 0.2, s * 0.5, s * 0.3);
+      ctx.bezierCurveTo(s * 0.3, s * 0.6, -s * 0.1, s * 0.5, 0, 0);
+      ctx.fillStyle = `hsl(${340 + Math.random() * 10}, 80%, ${82 + Math.random() * 8}%)`;
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  for (let i = 0; i < PETAL_COUNT; i++) petals.push(new Petal());
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    petals.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ===== Navigation ===== */
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ===== BGM ===== */
+const bgmBtn = document.getElementById('bgmBtn');
+const bgmAudio = document.getElementById('bgmAudio');
+let isPlaying = false;
+
+bgmBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    bgmAudio.pause();
+    bgmBtn.classList.remove('playing');
+  } else {
+    bgmAudio.volume = 0.3;
+    bgmAudio.play().catch(() => {});
+    bgmBtn.classList.add('playing');
+  }
+  isPlaying = !isPlaying;
+});
+
+/* ===== i18n Toggle ===== */
+const langToggle = document.getElementById('langToggle');
+let currentLang = 'zh';
+
+langToggle.addEventListener('click', () => {
+  currentLang = currentLang === 'zh' ? 'en' : 'zh';
+  langToggle.textContent = currentLang === 'zh' ? 'EN' : '中文';
+  document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
+
+  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+    const text = el.getAttribute(`data-${currentLang}`);
+    if (text) el.innerHTML = text;
+  });
+});
+
+/* ===== Scroll Reveal ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

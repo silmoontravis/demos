@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浪潮衝浪 TideRush | 台中海岸衝浪學校</title>
+<meta name="description" content="浪潮衝浪 TideRush — 台中海岸最好玩的衝浪學校。初學者到進階課程、裝備租借、專業教練團隊，讓你乘風破浪！">
+<meta name="keywords" content="衝浪,衝浪學校,台中衝浪,衝浪課程,衝浪裝備租借,TideRush,浪潮衝浪,surf school,Taichung surf">
+<meta name="author" content="浪潮衝浪 TideRush">
+<meta property="og:title" content="浪潮衝浪 TideRush | 台中海岸衝浪學校">
+<meta property="og:description" content="台中海岸最好玩的衝浪學校。初學者到進階課程、裝備租借、專業教練團隊。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero_surf.png">
+<link rel="canonical" href="https://tiderush.tw">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "浪潮衝浪 TideRush",
+  "description": "台中海岸專業衝浪學校，提供初學至進階課程、裝備租借與衝浪體驗。",
+  "url": "https://tiderush.tw",
+  "telephone": "+886-4-2688-8899",
+  "email": "hello@tiderush.tw",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "台中市大安區海濱路88號",
+    "addressLocality": "台中市",
+    "addressRegion": "台中",
+    "postalCode": "439",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.2800,
+    "longitude": 120.5100
+  },
+  "openingHours": "Mo-Su 06:00-18:00",
+  "sport": "Surfing",
+  "image": "photos/hero_surf.png",
+  "priceRange": "NT$800 - NT$3500"
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans TC', 'Montserrat', sans-serif;
+  background: #f0feff;
+  color: #1e293b;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --ocean: #0891b2;
+  --ocean-dark: #0e7490;
+  --ocean-light: #22d3ee;
+  --sunset: #f97316;
+  --sunset-light: #fb923c;
+  --sand: #fef3c7;
+  --base: #f0feff;
+  --dark: #0c4a6e;
+  --text: #1e293b;
+  --white: #ffffff;
+  --radius: 16px;
+  --shadow: 0 8px 32px rgba(8,145,178,0.12);
+  --shadow-lg: 0 16px 48px rgba(8,145,178,0.18);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 5%;
+  background: rgba(240,254,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(8,145,178,0.1);
+  transition: all 0.3s ease;
+}
+.navbar.scrolled {
+  background: rgba(240,254,255,0.96);
+  box-shadow: 0 2px 20px rgba(8,145,178,0.1);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { height: 40px; width: auto; }
+.nav-logo span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; font-size: 1.2rem;
+  background: linear-gradient(135deg, var(--ocean), var(--sunset));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-weight: 500; font-size: 0.95rem; color: var(--dark);
+  position: relative; transition: color 0.3s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: var(--sunset);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--ocean); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.btn-lang {
+  background: none; border: 2px solid var(--ocean); color: var(--ocean);
+  padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s;
+}
+.btn-lang:hover { background: var(--ocean); color: var(--white); }
+
+.btn-bgm {
+  width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--sunset);
+  background: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s; position: relative;
+}
+.btn-bgm:hover { background: var(--sunset); }
+.btn-bgm:hover svg { stroke: white; }
+.btn-bgm svg { width: 18px; height: 18px; stroke: var(--sunset); fill: none; stroke-width: 2; }
+.btn-bgm.playing { background: var(--sunset); }
+.btn-bgm.playing svg { stroke: white; }
+.btn-bgm.playing::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 2px solid var(--sunset); animation: pulse-ring 1.5s ease-out infinite;
+}
+@keyframes pulse-ring {
+  to { transform: scale(1.4); opacity: 0; }
+}
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  width: 26px; height: 2.5px; background: var(--dark); border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative; width: 100%; height: 100vh; min-height: 600px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('photos/hero_surf.png') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12,74,110,0.55) 0%,
+    rgba(8,145,178,0.35) 40%,
+    rgba(249,115,22,0.25) 100%
+  );
+}
+#waveCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 1;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  padding: 0 20px; max-width: 800px;
+}
+.hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900; color: var(--white);
+  text-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  line-height: 1.15; margin-bottom: 16px;
+}
+.hero-content h1 .zh { display: block; font-family: 'Noto Sans TC', sans-serif; }
+.hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: rgba(255,255,255,0.92); margin-bottom: 32px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.hero-cta {
+  display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 36px; border-radius: 50px;
+  font-weight: 700; font-size: 1.05rem; cursor: pointer;
+  transition: all 0.3s ease; border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--sunset), var(--sunset-light));
+  color: white; box-shadow: 0 4px 20px rgba(249,115,22,0.4);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(249,115,22,0.5); }
+.btn-outline {
+  background: rgba(255,255,255,0.15); color: white;
+  border: 2px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.3); transform: translateY(-3px); }
+
+.scroll-hint {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  z-index: 2; animation: bounce 2s ease infinite;
+}
+.scroll-hint svg { width: 32px; height: 32px; stroke: white; fill: none; stroke-width: 2; }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-12px); }
+}
+
+/* ===== SECTION COMMON ===== */
+.section {
+  padding: 100px 5%;
+}
+.section-header {
+  text-align: center; margin-bottom: 60px;
+}
+.section-header .tag {
+  display: inline-block; font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 0.85rem; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--sunset);
+  margin-bottom: 12px;
+}
+.section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800; color: var(--dark);
+  margin-bottom: 16px;
+}
+.section-header p {
+  max-width: 600px; margin: 0 auto;
+  color: #64748b; font-size: 1.05rem;
+}
+.wave-divider {
+  width: 80px; height: 4px; margin: 16px auto 0;
+  background: linear-gradient(90deg, var(--ocean), var(--sunset));
+  border-radius: 2px;
+}
+
+/* ===== COURSES ===== */
+#courses { background: var(--white); }
+.courses-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px; max-width: 1200px; margin: 0 auto;
+}
+.course-card {
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--base); box-shadow: var(--shadow);
+  transition: all 0.4s ease;
+}
+.course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.course-img {
+  position: relative; height: 220px; overflow: hidden;
+}
+.course-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.course-card:hover .course-img img { transform: scale(1.08); }
+.course-level {
+  position: absolute; top: 16px; left: 16px;
+  padding: 5px 16px; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 700; color: white;
+}
+.level-beginner { background: linear-gradient(135deg, #10b981, #34d399); }
+.level-intermediate { background: linear-gradient(135deg, var(--ocean), var(--ocean-light)); }
+.level-advanced { background: linear-gradient(135deg, var(--sunset), #ef4444); }
+.course-body { padding: 24px; }
+.course-body h3 { font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.course-body .en-name {
+  font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+  color: var(--ocean); font-weight: 600; margin-bottom: 12px;
+}
+.course-body p { color: #64748b; font-size: 0.95rem; margin-bottom: 16px; }
+.course-meta { display: flex; justify-content: space-between; align-items: center; }
+.course-price {
+  font-size: 1.4rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--ocean), var(--sunset));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.course-duration { font-size: 0.85rem; color: #94a3b8; font-weight: 500; }
+
+/* ===== EQUIPMENT ===== */
+#equipment { background: var(--base); }
+.equip-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; max-width: 1100px; margin: 0 auto; align-items: center;
+}
+.equip-photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+.equip-photo img { width: 100%; height: 400px; object-fit: cover; }
+.equip-list { list-style: none; }
+.equip-list li {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px 0; border-bottom: 1px solid rgba(8,145,178,0.1);
+}
+.equip-icon {
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px;
+  background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+  display: flex; align-items: center; justify-content: center;
+}
+.equip-icon svg { width: 24px; height: 24px; stroke: white; fill: none; stroke-width: 2; }
+.equip-info h4 { font-size: 1.05rem; font-weight: 700; color: var(--dark); }
+.equip-info p { color: #64748b; font-size: 0.9rem; }
+.equip-info .price-tag { color: var(--sunset); font-weight: 700; font-size: 1rem; }
+
+/* ===== GALLERY ===== */
+#gallery { background: var(--white); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 220px);
+  gap: 16px; max-width: 1200px; margin: 0 auto;
+}
+.gallery-item {
+  border-radius: var(--radius); overflow: hidden;
+  position: relative; cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s;
+}
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(12,74,110,0.4));
+  opacity: 0; transition: opacity 0.3s;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+/* ===== CONTACT ===== */
+#contact {
+  background: linear-gradient(135deg, var(--dark) 0%, #0e7490 100%);
+  color: white;
+}
+#contact .section-header h2 { color: white; }
+#contact .section-header p { color: rgba(255,255,255,0.7); }
+#contact .section-header .tag { color: var(--sunset-light); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; max-width: 1100px; margin: 0 auto;
+}
+.contact-info { display: flex; flex-direction: column; gap: 28px; }
+.contact-item { display: flex; align-items: flex-start; gap: 16px; }
+.contact-icon {
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px;
+  background: rgba(255,255,255,0.1); display: flex;
+  align-items: center; justify-content: center;
+}
+.contact-icon svg { width: 22px; height: 22px; stroke: var(--ocean-light); fill: none; stroke-width: 2; }
+.contact-item h4 { font-weight: 600; margin-bottom: 4px; }
+.contact-item p { color: rgba(255,255,255,0.75); font-size: 0.95rem; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: 14px 20px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08); color: white;
+  font-family: inherit; font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none; border-color: var(--ocean-light);
+}
+.contact-form textarea { min-height: 120px; resize: vertical; }
+.btn-submit {
+  align-self: flex-start; padding: 14px 40px; border-radius: 50px;
+  background: linear-gradient(135deg, var(--sunset), var(--sunset-light));
+  color: white; font-weight: 700; font-size: 1rem; border: none;
+  cursor: pointer; transition: all 0.3s;
+}
+.btn-submit:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(249,115,22,0.4); }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #082f49; color: rgba(255,255,255,0.6);
+  padding: 40px 5%; text-align: center; font-size: 0.9rem;
+}
+.footer a { color: var(--ocean-light); }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; width: 100%;
+    background: rgba(240,254,255,0.98); padding: 20px 5%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .equip-wrap { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 180px);
+  }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+}
+@media (max-width: 600px) {
+  .courses-grid { grid-template-columns: 1fr; }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 200px);
+  }
+  .gallery-item:nth-child(1) { grid-column: span 1; }
+  .hero-content h1 { font-size: 2.2rem; }
+}
+
+/* ===== ANIMATIONS ===== */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="logos/logo_final.png" alt="浪潮衝浪 TideRush Logo">
+    <span>TideRush</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#courses" data-i18n="nav_courses">衝浪課程</a>
+    <a href="#equipment" data-i18n="nav_equipment">裝備租借</a>
+    <a href="#gallery" data-i18n="nav_gallery">精彩瞬間</a>
+    <a href="#contact" data-i18n="nav_contact">聯繫我們</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-lang" id="langToggle" title="Switch Language">EN</button>
+    <button class="btn-bgm" id="bgmToggle" title="Background Music">
+      <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="waveCanvas"></canvas>
+  <div class="hero-content">
+    <h1>
+      <span class="zh" data-i18n="hero_title_zh">浪潮衝浪</span>
+      TideRush
+    </h1>
+    <p data-i18n="hero_subtitle">乘風破浪，感受海洋的自由與力量 -- 台中海岸最好玩的衝浪學校</p>
+    <div class="hero-cta">
+      <a href="#courses" class="btn btn-primary" data-i18n="hero_cta1">立即預約課程</a>
+      <a href="#gallery" class="btn btn-outline" data-i18n="hero_cta2">探索更多</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24"><polyline points="7 13 12 18 17 13"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
+  </div>
+</section>
+
+<!-- ===== COURSES ===== -->
+<section class="section" id="courses">
+  <div class="section-header reveal">
+    <span class="tag">Surf Courses</span>
+    <h2 data-i18n="courses_title">衝浪課程</h2>
+    <p data-i18n="courses_desc">從零基礎到衝浪高手，我們提供最專業的分級教學</p>
+    <div class="wave-divider"></div>
+  </div>
+  <div class="courses-grid">
+    <!-- Beginner -->
+    <div class="course-card reveal">
+      <div class="course-img">
+        <img src="photos/lesson.png" alt="初學者衝浪課程" loading="lazy">
+        <span class="course-level level-beginner" data-i18n="level_beginner">初學者</span>
+      </div>
+      <div class="course-body">
+        <h3 data-i18n="course1_title">海洋初體驗</h3>
+        <div class="en-name">Ocean First Touch</div>
+        <p data-i18n="course1_desc">適合零經驗的你！從岸上教學到下水實作，學會站板、划水與基本衝浪禮儀，安全又好玩。</p>
+        <div class="course-meta">
+          <span class="course-price">NT$1,200</span>
+          <span class="course-duration" data-i18n="course1_dur">2.5 小時</span>
+        </div>
+      </div>
+    </div>
+    <!-- Intermediate -->
+    <div class="course-card reveal">
+      <div class="course-img">
+        <img src="photos/boards.png" alt="中階衝浪課程" loading="lazy">
+        <span class="course-level level-intermediate" data-i18n="level_intermediate">中階班</span>
+      </div>
+      <div class="course-body">
+        <h3 data-i18n="course2_title">浪花進階班</h3>
+        <div class="en-name">Wave Rider</div>
+        <p data-i18n="course2_desc">已能站板的你，學習轉向、切浪與讀浪技巧。掌握浪況判斷，享受真正的衝浪樂趣！</p>
+        <div class="course-meta">
+          <span class="course-price">NT$2,000</span>
+          <span class="course-duration" data-i18n="course2_dur">3 小時</span>
+        </div>
+      </div>
+    </div>
+    <!-- Advanced -->
+    <div class="course-card reveal">
+      <div class="course-img">
+        <img src="photos/sunset.png" alt="進階衝浪課程" loading="lazy">
+        <span class="course-level level-advanced" data-i18n="level_advanced">進階班</span>
+      </div>
+      <div class="course-body">
+        <h3 data-i18n="course3_title">極限浪人</h3>
+        <div class="en-name">Extreme Surfer</div>
+        <p data-i18n="course3_desc">挑戰大浪！學習 Bottom Turn、Cutback、Tube Riding 等進階技巧，成為真正的浪人。</p>
+        <div class="course-meta">
+          <span class="course-price">NT$3,500</span>
+          <span class="course-duration" data-i18n="course3_dur">3.5 小時</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EQUIPMENT ===== -->
+<section class="section" id="equipment">
+  <div class="section-header reveal">
+    <span class="tag">Equipment Rental</span>
+    <h2 data-i18n="equip_title">裝備租借</h2>
+    <p data-i18n="equip_desc">頂級衝浪裝備，讓你輕鬆上浪不煩惱</p>
+    <div class="wave-divider"></div>
+  </div>
+  <div class="equip-wrap">
+    <div class="equip-photo reveal">
+      <img src="photos/boards.png" alt="衝浪裝備" loading="lazy">
+    </div>
+    <ul class="equip-list reveal">
+      <li>
+        <div class="equip-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </div>
+        <div class="equip-info">
+          <h4 data-i18n="equip1_title">衝浪板</h4>
+          <p data-i18n="equip1_desc">軟板 / 短板 / 長板，多種尺寸任你選</p>
+          <span class="price-tag">NT$500 / <span data-i18n="per_day">天</span></span>
+        </div>
+      </li>
+      <li>
+        <div class="equip-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.38 8.57l-1.23 1.85a8 8 0 01-14.3 0L3.62 8.57"/><path d="M12 2v4"/></svg>
+        </div>
+        <div class="equip-info">
+          <h4 data-i18n="equip2_title">防寒衣</h4>
+          <p data-i18n="equip2_desc">3mm/5mm 全身防寒衣，春夏秋冬都適用</p>
+          <span class="price-tag">NT$300 / <span data-i18n="per_day">天</span></span>
+        </div>
+      </li>
+      <li>
+        <div class="equip-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="equip-info">
+          <h4 data-i18n="equip3_title">腳繩 & 蠟塊</h4>
+          <p data-i18n="equip3_desc">高品質衝浪腳繩與防滑蠟，確保安全</p>
+          <span class="price-tag">NT$100 / <span data-i18n="per_day">天</span></span>
+        </div>
+      </li>
+      <li>
+        <div class="equip-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+        </div>
+        <div class="equip-info">
+          <h4 data-i18n="equip4_title">全套裝備包</h4>
+          <p data-i18n="equip4_desc">板 + 防寒衣 + 腳繩 + 蠟，一次搞定</p>
+          <span class="price-tag">NT$800 / <span data-i18n="per_day">天</span></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="section" id="gallery">
+  <div class="section-header reveal">
+    <span class="tag">Gallery</span>
+    <h2 data-i18n="gallery_title">精彩瞬間</h2>
+    <p data-i18n="gallery_desc">記錄每一次與浪共舞的美好時刻</p>
+    <div class="wave-divider"></div>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <img src="photos/hero_surf.png" alt="衝浪精彩照片" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="photos/lesson.png" alt="衝浪教學照片" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="photos/boards.png" alt="衝浪板照片" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="photos/sunset.png" alt="夕陽衝浪照片" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact">
+  <div class="section-header reveal">
+    <span class="tag">Contact Us</span>
+    <h2 data-i18n="contact_title">聯繫我們</h2>
+    <p data-i18n="contact_desc">有任何問題？歡迎隨時聯繫我們的團隊</p>
+    <div class="wave-divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="contact_addr_label">地址</h4>
+          <p data-i18n="contact_addr">台中市大安區海濱路88號</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="contact_phone_label">電話</h4>
+          <p>04-2688-8899</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <p>hello@tiderush.tw</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="contact_hours_label">營業時間</h4>
+          <p data-i18n="contact_hours">每日 06:00 - 18:00</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form reveal" onsubmit="event.preventDefault(); alert(currentLang==='zh'?'感謝您的訊息！我們會盡快回覆。':'Thanks! We will reply soon.');">
+      <input type="text" placeholder="姓名 / Name" data-i18n-ph="form_name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="電話 / Phone" data-i18n-ph="form_phone">
+      <textarea placeholder="您的訊息 / Message" data-i18n-ph="form_message" required></textarea>
+      <button type="submit" class="btn-submit" data-i18n="form_submit">送出訊息</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="#courses" data-i18n="nav_courses">衝浪課程</a>
+    <a href="#equipment" data-i18n="nav_equipment">裝備租借</a>
+    <a href="#gallery" data-i18n="nav_gallery">精彩瞬間</a>
+    <a href="#contact" data-i18n="nav_contact">聯繫我們</a>
+  </div>
+  <p>&copy; 2026 浪潮衝浪 TideRush. All rights reserved.</p>
+</footer>
+
+<!-- BGM Audio -->
+<audio id="bgmAudio" loop preload="none">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ===== i18n ===== */
+const translations = {
+  zh: {
+    nav_courses: '衝浪課程', nav_equipment: '裝備租借',
+    nav_gallery: '精彩瞬間', nav_contact: '聯繫我們',
+    hero_title_zh: '浪潮衝浪',
+    hero_subtitle: '乘風破浪，感受海洋的自由與力量 -- 台中海岸最好玩的衝浪學校',
+    hero_cta1: '立即預約課程', hero_cta2: '探索更多',
+    courses_title: '衝浪課程', courses_desc: '從零基礎到衝浪高手，我們提供最專業的分級教學',
+    level_beginner: '初學者', level_intermediate: '中階班', level_advanced: '進階班',
+    course1_title: '海洋初體驗', course1_desc: '適合零經驗的你！從岸上教學到下水實作，學會站板、划水與基本衝浪禮儀，安全又好玩。', course1_dur: '2.5 小時',
+    course2_title: '浪花進階班', course2_desc: '已能站板的你，學習轉向、切浪與讀浪技巧。掌握浪況判斷，享受真正的衝浪樂趣！', course2_dur: '3 小時',
+    course3_title: '極限浪人', course3_desc: '挑戰大浪！學習 Bottom Turn、Cutback、Tube Riding 等進階技巧，成為真正的浪人。', course3_dur: '3.5 小時',
+    equip_title: '裝備租借', equip_desc: '頂級衝浪裝備，讓你輕鬆上浪不煩惱',
+    equip1_title: '衝浪板', equip1_desc: '軟板 / 短板 / 長板，多種尺寸任你選',
+    equip2_title: '防寒衣', equip2_desc: '3mm/5mm 全身防寒衣，春夏秋冬都適用',
+    equip3_title: '腳繩 & 蠟塊', equip3_desc: '高品質衝浪腳繩與防滑蠟，確保安全',
+    equip4_title: '全套裝備包', equip4_desc: '板 + 防寒衣 + 腳繩 + 蠟，一次搞定',
+    per_day: '天',
+    gallery_title: '精彩瞬間', gallery_desc: '記錄每一次與浪共舞的美好時刻',
+    contact_title: '聯繫我們', contact_desc: '有任何問題？歡迎隨時聯繫我們的團隊',
+    contact_addr_label: '地址', contact_addr: '台中市大安區海濱路88號',
+    contact_phone_label: '電話', contact_hours_label: '營業時間',
+    contact_hours: '每日 06:00 - 18:00',
+    form_submit: '送出訊息',
+    form_name: '姓名', form_phone: '電話', form_message: '您的訊息'
+  },
+  en: {
+    nav_courses: 'Courses', nav_equipment: 'Equipment',
+    nav_gallery: 'Gallery', nav_contact: 'Contact',
+    hero_title_zh: 'TideRush Surf',
+    hero_subtitle: 'Ride the waves, feel the freedom of the ocean -- The most exciting surf school on the Taichung coast',
+    hero_cta1: 'Book a Lesson', hero_cta2: 'Explore More',
+    courses_title: 'Surf Courses', courses_desc: 'From beginner to expert, we offer the most professional surf lessons',
+    level_beginner: 'Beginner', level_intermediate: 'Intermediate', level_advanced: 'Advanced',
+    course1_title: 'Ocean First Touch', course1_desc: 'Perfect for first-timers! Learn to stand up, paddle, and surf etiquette with on-shore and in-water practice. Safe and fun!', course1_dur: '2.5 hrs',
+    course2_title: 'Wave Rider', course2_desc: 'Already can stand? Learn turning, wave-cutting and wave-reading. Master wave conditions and enjoy the real thrill of surfing!', course2_dur: '3 hrs',
+    course3_title: 'Extreme Surfer', course3_desc: 'Challenge the big waves! Learn Bottom Turn, Cutback, Tube Riding and more advanced techniques.', course3_dur: '3.5 hrs',
+    equip_title: 'Equipment Rental', equip_desc: 'Top-quality surf gear so you can focus on riding waves',
+    equip1_title: 'Surfboard', equip1_desc: 'Soft top / Shortboard / Longboard, various sizes available',
+    equip2_title: 'Wetsuit', equip2_desc: '3mm/5mm full wetsuits for all seasons',
+    equip3_title: 'Leash & Wax', equip3_desc: 'High-quality surf leash and grip wax for safety',
+    equip4_title: 'Full Gear Pack', equip4_desc: 'Board + Wetsuit + Leash + Wax, all in one package',
+    per_day: 'day',
+    gallery_title: 'Gallery', gallery_desc: 'Capturing every beautiful moment dancing with the waves',
+    contact_title: 'Contact Us', contact_desc: 'Any questions? Feel free to reach out to our team anytime',
+    contact_addr_label: 'Address', contact_addr: 'No. 88, Haibin Rd, Da\'an Dist, Taichung',
+    contact_phone_label: 'Phone', contact_hours_label: 'Hours',
+    contact_hours: 'Daily 06:00 - 18:00',
+    form_submit: 'Send Message',
+    form_name: 'Name', form_phone: 'Phone', form_message: 'Your message'
+  }
+};
+
+let currentLang = 'zh';
+const langBtn = document.getElementById('langToggle');
+
+function setLang(lang) {
+  currentLang = lang;
+  langBtn.textContent = lang === 'zh' ? 'EN' : '中';
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (translations[lang][key]) el.placeholder = translations[lang][key];
+  });
+}
+langBtn.addEventListener('click', () => setLang(currentLang === 'zh' ? 'en' : 'zh'));
+
+/* ===== BGM ===== */
+const bgmAudio = document.getElementById('bgmAudio');
+const bgmBtn = document.getElementById('bgmToggle');
+let bgmPlaying = false;
+
+bgmBtn.addEventListener('click', () => {
+  if (bgmPlaying) {
+    bgmAudio.pause();
+    bgmBtn.classList.remove('playing');
+  } else {
+    bgmAudio.play().catch(() => {});
+    bgmBtn.classList.add('playing');
+  }
+  bgmPlaying = !bgmPlaying;
+});
+
+/* ===== NAVBAR SCROLL ===== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ===== HAMBURGER ===== */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+/* ===== SCROLL REVEAL ===== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ===== CANVAS WAVE PARTICLES ===== */
+(function() {
+  const canvas = document.getElementById('waveCanvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [], animId;
+
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * w;
+      this.y = h * 0.5 + Math.random() * h * 0.5;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = (Math.random() - 0.5) * 1.2;
+      this.speedY = -Math.random() * 0.8 - 0.2;
+      this.alpha = Math.random() * 0.5 + 0.2;
+      this.life = Math.random() * 200 + 100;
+      this.age = 0;
+    }
+    update() {
+      this.x += this.speedX + Math.sin(this.age * 0.02) * 0.5;
+      this.y += this.speedY;
+      this.age++;
+      this.alpha = Math.max(0, this.alpha - 0.002);
+      if (this.age > this.life || this.y < 0 || this.alpha <= 0) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  const count = Math.min(80, Math.floor(w * h / 10000));
+  for (let i = 0; i < count; i++) particles.push(new Particle());
+
+  // Wave lines
+  let time = 0;
+  function drawWaves() {
+    for (let j = 0; j < 3; j++) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(255,255,255,${0.06 + j * 0.03})`;
+      ctx.lineWidth = 1.5;
+      const yBase = h * (0.55 + j * 0.12);
+      for (let x = 0; x <= w; x += 4) {
+        const y = yBase + Math.sin(x * 0.006 + time + j * 1.5) * (20 + j * 10)
+                        + Math.sin(x * 0.012 + time * 0.7) * 8;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    time += 0.015;
+    drawWaves();
+    particles.forEach(p => { p.update(); p.draw(); });
+    animId = requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Pause when hero not visible
+  const heroObs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { if (!animId) animate(); }
+    else { cancelAnimationFrame(animId); animId = null; }
+  }, { threshold: 0.05 });
+  heroObs.observe(document.getElementById('hero'));
+})();
+</script>
+
+</body>
+</html>

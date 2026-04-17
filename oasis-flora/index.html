@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>綠洲花藝 Oasis Flora — 台中花藝設計工作室</title>
+<meta name="description" content="綠洲花藝 Oasis Flora 位於台中，提供日常花束、婚禮花藝、花藝課程與企業花藝服務。用自然與美學點綴生活每一刻。">
+<meta name="keywords" content="花藝,花束,婚禮花藝,花藝課程,台中花店,Oasis Flora,綠洲花藝">
+<meta property="og:title" content="綠洲花藝 Oasis Flora — 台中花藝設計工作室">
+<meta property="og:description" content="用自然與美學點綴生活每一刻。日常花束、婚禮花藝、花藝課程與企業花藝。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero_bouquet.png">
+<link rel="canonical" href="https://oasisflora.tw">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Florist",
+  "name": "綠洲花藝 Oasis Flora",
+  "description": "台中花藝設計工作室，提供日常花束、婚禮花藝、花藝課程與企業花藝服務。",
+  "url": "https://oasisflora.tw",
+  "telephone": "+886-4-2345-6789",
+  "email": "hello@oasisflora.tw",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大墩路 218 號",
+    "addressLocality": "台中市",
+    "addressRegion": "南屯區",
+    "postalCode": "408",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.1510,
+    "longitude": 120.6660
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "19:00"
+    }
+  ],
+  "image": "photos/hero_bouquet.png",
+  "priceRange": "$$",
+  "sameAs": [
+    "https://www.instagram.com/oasisflora",
+    "https://www.facebook.com/oasisflora"
+  ]
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset & Base ─────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8faf5;--sage:#6b8e6b;--sage-light:#8aad8a;--sage-dark:#4e6e4e;
+  --rose:#d4a0a0;--rose-light:#e6c4c4;--rose-dark:#b07878;
+  --text:#3a3a3a;--text-light:#6a6a6a;--white:#ffffff;
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-sans:'Noto Sans TC','Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ── Utility ──────────────────────────────── */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-title{font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--sage-dark);text-align:center;margin-bottom:.3em;letter-spacing:.04em}
+.section-subtitle{text-align:center;color:var(--text-light);font-size:.95rem;margin-bottom:3rem;font-weight:300}
+section{padding:100px 0}
+section:nth-child(even){background:var(--white)}
+
+/* ── Navigation ───────────────────────────── */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;transition:all .4s}
+.navbar.scrolled{background:rgba(248,250,245,.96);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,0,0,.06);padding:10px 0}
+.navbar .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:40px;width:auto}
+.nav-logo span{font-family:var(--font-serif);font-size:1.3rem;color:var(--white);font-weight:400;letter-spacing:.06em;transition:color .4s}
+.navbar.scrolled .nav-logo span{color:var(--sage-dark)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.85rem;font-weight:400;color:rgba(255,255,255,.85);letter-spacing:.04em;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--rose);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.navbar.scrolled .nav-links a{color:var(--text)}
+.nav-links a:hover{color:var(--rose)}
+.lang-btn{background:none;border:1px solid rgba(255,255,255,.5);color:rgba(255,255,255,.85);padding:4px 12px;border-radius:20px;font-size:.8rem;cursor:pointer;transition:all .3s;font-family:var(--font-sans)}
+.navbar.scrolled .lang-btn{border-color:var(--sage);color:var(--sage)}
+.lang-btn:hover{background:var(--sage);color:var(--white);border-color:var(--sage)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:var(--white);transition:all .3s;border-radius:2px}
+.navbar.scrolled .hamburger span{background:var(--sage-dark)}
+
+/* ── Hero ─────────────────────────────────── */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero_bouquet.png') center/cover no-repeat;filter:brightness(.55)}
+.hero-canvas{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hero-content{position:relative;z-index:3;text-align:center;color:var(--white);padding:0 24px}
+.hero-content h1{font-family:var(--font-serif);font-size:clamp(2.6rem,7vw,5rem);font-weight:300;letter-spacing:.08em;margin-bottom:.2em;line-height:1.15}
+.hero-content h1 em{font-style:italic;font-weight:300;display:block;font-size:.55em;letter-spacing:.14em;color:var(--rose-light);margin-top:.15em}
+.hero-content p{font-size:clamp(.95rem,2vw,1.15rem);font-weight:300;opacity:.88;max-width:520px;margin:1em auto 2em;line-height:1.8}
+.hero-cta{display:inline-block;padding:14px 42px;border:1px solid rgba(255,255,255,.6);color:var(--white);font-size:.9rem;letter-spacing:.1em;border-radius:40px;transition:all .35s;font-family:var(--font-sans)}
+.hero-cta:hover{background:var(--rose);border-color:var(--rose);transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,160,160,.3)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:3;animation:floatY 2.5s ease-in-out infinite}
+.hero-scroll span{display:block;width:24px;height:38px;border:2px solid rgba(255,255,255,.5);border-radius:12px;position:relative}
+.hero-scroll span::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:rgba(255,255,255,.7);border-radius:3px;animation:scrollDot 2s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+@keyframes scrollDot{0%,100%{opacity:1;top:6px}50%{opacity:.3;top:18px}}
+
+/* ── BGM Button ───────────────────────────── */
+.bgm-btn{position:fixed;bottom:28px;right:28px;z-index:999;width:48px;height:48px;border-radius:50%;background:var(--sage);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(107,142,107,.3);transition:all .3s}
+.bgm-btn:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(107,142,107,.4)}
+.bgm-btn svg{width:20px;height:20px;fill:var(--white)}
+.bgm-btn.playing .bar{animation:eqBar .6s ease-in-out infinite alternate}
+.bgm-btn.playing .bar:nth-child(2){animation-delay:.15s}
+.bgm-btn.playing .bar:nth-child(3){animation-delay:.3s}
+@keyframes eqBar{0%{height:4px}100%{height:14px}}
+
+/* ── Services ─────────────────────────────── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.service-card{background:var(--bg);border-radius:16px;overflow:hidden;transition:all .4s;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(107,142,107,.12)}
+.service-card .card-img{height:220px;overflow:hidden}
+.service-card .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.service-card:hover .card-img img{transform:scale(1.06)}
+.service-card .card-body{padding:28px 24px}
+.service-card h3{font-family:var(--font-serif);font-size:1.35rem;color:var(--sage-dark);margin-bottom:.4em;font-weight:400}
+.service-card p{font-size:.88rem;color:var(--text-light);line-height:1.7;font-weight:300}
+
+/* ── Workshop Schedule ────────────────────── */
+.workshop-section{background:linear-gradient(135deg,#f0f4ec 0%,#f8faf5 50%,#faf5f5 100%)}
+.workshop-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.workshop-item{display:flex;align-items:center;gap:28px;background:var(--white);border-radius:14px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:all .3s}
+.workshop-item:hover{transform:translateX(6px);box-shadow:0 6px 24px rgba(107,142,107,.1)}
+.workshop-date{text-align:center;min-width:72px;flex-shrink:0}
+.workshop-date .month{font-size:.72rem;text-transform:uppercase;color:var(--rose);letter-spacing:.1em;font-weight:500}
+.workshop-date .day{font-family:var(--font-serif);font-size:2rem;color:var(--sage-dark);line-height:1.1}
+.workshop-info h4{font-size:1.05rem;color:var(--sage-dark);margin-bottom:.25em;font-weight:500}
+.workshop-info p{font-size:.82rem;color:var(--text-light);font-weight:300}
+.workshop-tag{margin-left:auto;flex-shrink:0;padding:6px 16px;border-radius:20px;font-size:.75rem;font-weight:500;letter-spacing:.04em}
+.workshop-tag.open{background:rgba(107,142,107,.12);color:var(--sage-dark)}
+.workshop-tag.full{background:rgba(212,160,160,.15);color:var(--rose-dark)}
+
+/* ── Gallery ──────────────────────────────── */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-grid .gallery-item{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:1;cursor:pointer}
+.gallery-grid .gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-grid .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-grid .gallery-item:hover img{transform:scale(1.05)}
+.gallery-grid .gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.25) 0%,transparent 50%);opacity:0;transition:opacity .3s}
+.gallery-grid .gallery-item:hover::after{opacity:1}
+
+/* ── Contact ──────────────────────────────── */
+.contact-section{background:var(--sage-dark);color:var(--white)}
+.contact-section .section-title{color:var(--white)}
+.contact-section .section-subtitle{color:rgba(255,255,255,.6)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-item{display:flex;align-items:flex-start;gap:16px}
+.contact-item .icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item .icon svg{width:18px;height:18px;fill:var(--rose-light)}
+.contact-item h4{font-size:.9rem;font-weight:500;margin-bottom:.2em}
+.contact-item p{font-size:.85rem;opacity:.7;font-weight:300}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.contact-form input,.contact-form textarea{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px 18px;color:var(--white);font-family:var(--font-sans);font-size:.9rem;transition:border-color .3s;outline:none}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.4)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--rose)}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form button{padding:14px 36px;background:var(--rose);color:var(--white);border:none;border-radius:40px;font-size:.9rem;cursor:pointer;transition:all .3s;font-family:var(--font-sans);letter-spacing:.06em;align-self:flex-start}
+.contact-form button:hover{background:var(--rose-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,160,160,.3)}
+
+/* ── Footer ───────────────────────────────── */
+footer{background:#3a4a3a;color:rgba(255,255,255,.5);text-align:center;padding:32px 24px;font-size:.8rem}
+footer a{color:var(--rose-light);transition:color .3s}
+footer a:hover{color:var(--rose)}
+
+/* ── Fade-in Animation ────────────────────── */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── Responsive ───────────────────────────── */
+@media(max-width:768px){
+  .nav-links{position:fixed;top:0;right:-100%;width:70vw;max-width:300px;height:100vh;background:rgba(248,250,245,.98);backdrop-filter:blur(16px);flex-direction:column;justify-content:center;gap:32px;transition:right .4s;box-shadow:-4px 0 30px rgba(0,0,0,.1)}
+  .nav-links.open{right:0}
+  .nav-links a{color:var(--text)!important;font-size:1.05rem}
+  .hamburger{display:flex}
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .gallery-grid .gallery-item:first-child{grid-column:span 2;grid-row:span 1}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  section{padding:72px 0}
+  .workshop-item{flex-direction:column;text-align:center;gap:14px}
+  .workshop-tag{margin-left:0}
+}
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-grid .gallery-item:first-child{grid-column:span 1}
+  .services-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#hero" class="nav-logo">
+      <img src="logos/logo_final.png" alt="綠洲花藝 Logo">
+      <span>綠洲花藝</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services" data-i18n="nav_services">服務項目</a>
+      <a href="#workshop" data-i18n="nav_workshop">花藝課程</a>
+      <a href="#gallery" data-i18n="nav_gallery">作品集</a>
+      <a href="#contact" data-i18n="nav_contact">聯絡我們</a>
+      <button class="lang-btn" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ Hero ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <h1 data-i18n="hero_title">綠洲花藝<em>Oasis Flora</em></h1>
+    <p data-i18n="hero_desc">以自然為筆，以花為墨，為每一個重要時刻妝點生命的色彩。</p>
+    <a href="#services" class="hero-cta" data-i18n="hero_cta">探索花藝</a>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ═══ Services ═══ -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title fade-up" data-i18n="services_title">服務項目</h2>
+    <p class="section-subtitle fade-up" data-i18n="services_subtitle">從日常的美好到人生的重要時刻，我們以花藝陪伴您</p>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="card-img"><img src="photos/hero_bouquet.png" alt="日常花束" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="svc1_title">日常花束</h3>
+          <p data-i18n="svc1_desc">依時令精選花材，以獨到的配色美學，打造屬於您的日常小確幸。可預約訂製或至店面自選。</p>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="card-img"><img src="photos/wedding.png" alt="婚禮花藝" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="svc2_title">婚禮花藝</h3>
+          <p data-i18n="svc2_desc">從新娘捧花到會場佈置，為您量身打造夢想中的婚禮花藝，讓愛情綻放最美的模樣。</p>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="card-img"><img src="photos/workshop.png" alt="花藝課程" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="svc3_title">花藝課程</h3>
+          <p data-i18n="svc3_desc">從入門到進階，小班制教學，在花香中找到屬於自己的療癒時光與創作靈感。</p>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="card-img"><img src="photos/display.png" alt="企業花藝" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="svc4_title">企業花藝</h3>
+          <p data-i18n="svc4_desc">為辦公空間、商業場所提供定期換花服務與節慶佈置，以花藝提升品牌質感。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Workshop Schedule ═══ -->
+<section class="workshop-section" id="workshop">
+  <div class="container">
+    <h2 class="section-title fade-up" data-i18n="ws_title">近期課程</h2>
+    <p class="section-subtitle fade-up" data-i18n="ws_subtitle">小班教學，每堂限 6 人，含花材與下午茶</p>
+    <div class="workshop-list">
+      <div class="workshop-item fade-up">
+        <div class="workshop-date"><div class="month">May</div><div class="day">03</div></div>
+        <div class="workshop-info">
+          <h4 data-i18n="ws1_title">春日手綁花束</h4>
+          <p data-i18n="ws1_desc">14:00 – 16:30 ／ NT$2,200 ／ 適合初學者</p>
+        </div>
+        <span class="workshop-tag open" data-i18n="ws_open">報名中</span>
+      </div>
+      <div class="workshop-item fade-up">
+        <div class="workshop-date"><div class="month">May</div><div class="day">10</div></div>
+        <div class="workshop-info">
+          <h4 data-i18n="ws2_title">母親節感恩花禮</h4>
+          <p data-i18n="ws2_desc">14:00 – 16:00 ／ NT$2,500 ／ 含精美包裝</p>
+        </div>
+        <span class="workshop-tag open" data-i18n="ws_open2">報名中</span>
+      </div>
+      <div class="workshop-item fade-up">
+        <div class="workshop-date"><div class="month">May</div><div class="day">17</div></div>
+        <div class="workshop-info">
+          <h4 data-i18n="ws3_title">乾燥花花圈創作</h4>
+          <p data-i18n="ws3_desc">10:00 – 12:30 ／ NT$2,800 ／ 中階課程</p>
+        </div>
+        <span class="workshop-tag full" data-i18n="ws_full">已額滿</span>
+      </div>
+      <div class="workshop-item fade-up">
+        <div class="workshop-date"><div class="month">May</div><div class="day">24</div></div>
+        <div class="workshop-info">
+          <h4 data-i18n="ws4_title">初夏桌花設計</h4>
+          <p data-i18n="ws4_desc">14:00 – 16:30 ／ NT$2,400 ／ 適合所有程度</p>
+        </div>
+        <span class="workshop-tag open" data-i18n="ws_open3">報名中</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Gallery ═══ -->
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title fade-up" data-i18n="gallery_title">作品集</h2>
+    <p class="section-subtitle fade-up" data-i18n="gallery_subtitle">每一束花都是一件獨一無二的藝術品</p>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item"><img src="photos/hero_bouquet.png" alt="花藝作品 1" loading="lazy"></div>
+      <div class="gallery-item"><img src="photos/wedding.png" alt="婚禮花藝作品" loading="lazy"></div>
+      <div class="gallery-item"><img src="photos/display.png" alt="花藝展示" loading="lazy"></div>
+      <div class="gallery-item"><img src="photos/workshop.png" alt="花藝課程作品" loading="lazy"></div>
+      <div class="gallery-item"><img src="photos/hero_bouquet.png" alt="花藝作品 2" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Contact ═══ -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2 class="section-title fade-up" data-i18n="contact_title">聯絡我們</h2>
+    <p class="section-subtitle fade-up" data-i18n="contact_subtitle">讓我們一起為您的特別時刻增添花藝之美</p>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div class="contact-item">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="ct_addr_label">地址</h4>
+            <p data-i18n="ct_addr">408 台中市南屯區大墩路 218 號</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="ct_phone_label">電話</h4>
+            <p>(04) 2345-6789</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="ct_hours_label">營業時間</h4>
+            <p data-i18n="ct_hours">週二至週日 10:00 – 19:00（週一公休）</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p>hello@oasisflora.tw</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'感謝您的訊息，我們會儘快回覆！':'Thank you! We will get back to you soon.')">
+        <input type="text" required data-i18n-placeholder="form_name" placeholder="您的姓名">
+        <input type="email" required data-i18n-placeholder="form_email" placeholder="電子信箱">
+        <input type="tel" data-i18n-placeholder="form_phone" placeholder="聯絡電話">
+        <textarea data-i18n-placeholder="form_msg" placeholder="請告訴我們您的需求..."></textarea>
+        <button type="submit" data-i18n="form_submit">送出訊息</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Footer ═══ -->
+<footer>
+  <p data-i18n="footer">&copy; 2026 綠洲花藝 Oasis Flora. All rights reserved. | <a href="https://www.instagram.com/oasisflora" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/oasisflora" target="_blank" rel="noopener">Facebook</a> · <a href="https://line.me/R/ti/p/oasisflora" target="_blank" rel="noopener">LINE</a></p>
+</footer>
+
+<!-- ═══ BGM Button ═══ -->
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <svg viewBox="0 0 24 24" id="bgmIcon">
+    <rect class="bar" x="4" y="10" width="3" height="4" rx="1"/>
+    <rect class="bar" x="10" y="7" width="3" height="10" rx="1"/>
+    <rect class="bar" x="16" y="10" width="3" height="4" rx="1"/>
+  </svg>
+</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+/* ── i18n ─────────────────────────────────── */
+const i18n = {
+  zh: {
+    nav_services:'服務項目', nav_workshop:'花藝課程', nav_gallery:'作品集', nav_contact:'聯絡我們',
+    hero_title:'綠洲花藝<em>Oasis Flora</em>',
+    hero_desc:'以自然為筆，以花為墨，為每一個重要時刻妝點生命的色彩。',
+    hero_cta:'探索花藝',
+    services_title:'服務項目', services_subtitle:'從日常的美好到人生的重要時刻，我們以花藝陪伴您',
+    svc1_title:'日常花束', svc1_desc:'依時令精選花材，以獨到的配色美學，打造屬於您的日常小確幸。可預約訂製或至店面自選。',
+    svc2_title:'婚禮花藝', svc2_desc:'從新娘捧花到會場佈置，為您量身打造夢想中的婚禮花藝，讓愛情綻放最美的模樣。',
+    svc3_title:'花藝課程', svc3_desc:'從入門到進階，小班制教學，在花香中找到屬於自己的療癒時光與創作靈感。',
+    svc4_title:'企業花藝', svc4_desc:'為辦公空間、商業場所提供定期換花服務與節慶佈置，以花藝提升品牌質感。',
+    ws_title:'近期課程', ws_subtitle:'小班教學，每堂限 6 人，含花材與下午茶',
+    ws1_title:'春日手綁花束', ws1_desc:'14:00 – 16:30 ／ NT$2,200 ／ 適合初學者',
+    ws2_title:'母親節感恩花禮', ws2_desc:'14:00 – 16:00 ／ NT$2,500 ／ 含精美包裝',
+    ws3_title:'乾燥花花圈創作', ws3_desc:'10:00 – 12:30 ／ NT$2,800 ／ 中階課程',
+    ws4_title:'初夏桌花設計', ws4_desc:'14:00 – 16:30 ／ NT$2,400 ／ 適合所有程度',
+    ws_open:'報名中', ws_open2:'報名中', ws_open3:'報名中', ws_full:'已額滿',
+    gallery_title:'作品集', gallery_subtitle:'每一束花都是一件獨一無二的藝術品',
+    contact_title:'聯絡我們', contact_subtitle:'讓我們一起為您的特別時刻增添花藝之美',
+    ct_addr_label:'地址', ct_addr:'408 台中市南屯區大墩路 218 號',
+    ct_phone_label:'電話', ct_hours_label:'營業時間', ct_hours:'週二至週日 10:00 – 19:00（週一公休）',
+    form_name:'您的姓名', form_email:'電子信箱', form_phone:'聯絡電話', form_msg:'請告訴我們您的需求...',
+    form_submit:'送出訊息',
+    footer:'&copy; 2026 綠洲花藝 Oasis Flora. All rights reserved. | <a href="https://www.instagram.com/oasisflora" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/oasisflora" target="_blank" rel="noopener">Facebook</a> · <a href="https://line.me/R/ti/p/oasisflora" target="_blank" rel="noopener">LINE</a>'
+  },
+  en: {
+    nav_services:'Services', nav_workshop:'Workshops', nav_gallery:'Gallery', nav_contact:'Contact',
+    hero_title:'Oasis Flora<em>綠洲花藝</em>',
+    hero_desc:'Nature as our brush, flowers as our ink — adorning every precious moment with the colors of life.',
+    hero_cta:'Explore',
+    services_title:'Our Services', services_subtitle:'From everyday beauty to life\'s milestones, we accompany you with flowers',
+    svc1_title:'Daily Bouquets', svc1_desc:'Seasonal blooms curated with a refined color palette, crafting your everyday moments of joy. Available for order or walk-in selection.',
+    svc2_title:'Wedding Florals', svc2_desc:'From bridal bouquets to venue styling, we create bespoke wedding florals that let your love blossom in its most beautiful form.',
+    svc3_title:'Workshops', svc3_desc:'Beginner to advanced, intimate classes where you discover healing moments and creative inspiration among the fragrance of flowers.',
+    svc4_title:'Corporate Florals', svc4_desc:'Regular floral installations and seasonal decor for offices and commercial spaces, elevating your brand aesthetic with nature.',
+    ws_title:'Upcoming Workshops', ws_subtitle:'Intimate classes, max 6 per session, materials & afternoon tea included',
+    ws1_title:'Spring Hand-Tied Bouquet', ws1_desc:'14:00 – 16:30 ／ NT$2,200 ／ Beginner-friendly',
+    ws2_title:'Mother\'s Day Floral Gift', ws2_desc:'14:00 – 16:00 ／ NT$2,500 ／ Gift wrapping included',
+    ws3_title:'Dried Flower Wreath', ws3_desc:'10:00 – 12:30 ／ NT$2,800 ／ Intermediate',
+    ws4_title:'Early Summer Table Arrangement', ws4_desc:'14:00 – 16:30 ／ NT$2,400 ／ All levels',
+    ws_open:'Open', ws_open2:'Open', ws_open3:'Open', ws_full:'Full',
+    gallery_title:'Gallery', gallery_subtitle:'Every bouquet is a unique work of art',
+    contact_title:'Contact Us', contact_subtitle:'Let us add the beauty of florals to your special moments',
+    ct_addr_label:'Address', ct_addr:'No. 218, Dadun Rd., Nantun Dist., Taichung 408, Taiwan',
+    ct_phone_label:'Phone', ct_hours_label:'Hours', ct_hours:'Tue – Sun 10:00 – 19:00 (Closed Mon)',
+    form_name:'Your Name', form_email:'Email', form_phone:'Phone', form_msg:'Tell us about your needs...',
+    form_submit:'Send Message',
+    footer:'&copy; 2026 Oasis Flora 綠洲花藝. All rights reserved. | <a href="https://www.instagram.com/oasisflora" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/oasisflora" target="_blank" rel="noopener">Facebook</a> · <a href="https://line.me/R/ti/p/oasisflora" target="_blank" rel="noopener">LINE</a>'
+  }
+};
+
+let currentLang = 'zh';
+const langBtn = document.getElementById('langBtn');
+
+function setLang(lang) {
+  currentLang = lang;
+  langBtn.textContent = lang === 'zh' ? 'EN' : '中';
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (i18n[lang][key]) el.placeholder = i18n[lang][key];
+  });
+}
+
+langBtn.addEventListener('click', () => setLang(currentLang === 'zh' ? 'en' : 'zh'));
+
+/* ── Navbar scroll ────────────────────────── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── Hamburger ────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ── BGM ──────────────────────────────────── */
+const bgmBtn = document.getElementById('bgmBtn');
+const bgmAudio = document.getElementById('bgmAudio');
+let bgmPlaying = false;
+bgmBtn.addEventListener('click', () => {
+  if (bgmPlaying) { bgmAudio.pause(); bgmBtn.classList.remove('playing'); }
+  else { bgmAudio.play().catch(()=>{}); bgmBtn.classList.add('playing'); }
+  bgmPlaying = !bgmPlaying;
+});
+
+/* ── Scroll fade-in ───────────────────────── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+/* ── Canvas Petal / Leaf Particles ─────────── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Petal {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : -20;
+      this.size = 6 + Math.random() * 12;
+      this.speedY = 0.3 + Math.random() * 0.8;
+      this.speedX = -0.2 + Math.random() * 0.4;
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotSpeed = (-0.5 + Math.random()) * 0.02;
+      this.opacity = 0.2 + Math.random() * 0.4;
+      this.wobbleAmp = 20 + Math.random() * 40;
+      this.wobbleSpeed = 0.01 + Math.random() * 0.015;
+      this.wobblePhase = Math.random() * Math.PI * 2;
+      this.type = Math.random() > 0.45 ? 'petal' : 'leaf';
+      this.color = this.type === 'petal'
+        ? `rgba(${200 + Math.floor(Math.random()*30)}, ${140 + Math.floor(Math.random()*40)}, ${140 + Math.floor(Math.random()*40)}, ${this.opacity})`
+        : `rgba(${90 + Math.floor(Math.random()*30)}, ${130 + Math.floor(Math.random()*30)}, ${90 + Math.floor(Math.random()*20)}, ${this.opacity})`;
+    }
+    update(t) {
+      this.y += this.speedY;
+      this.x += this.speedX + Math.sin(this.wobblePhase + t * this.wobbleSpeed) * 0.3;
+      this.rotation += this.rotSpeed;
+      if (this.y > H + 20) this.reset(false);
+    }
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      if (this.type === 'petal') {
+        ctx.moveTo(0, -this.size / 2);
+        ctx.bezierCurveTo(this.size / 2, -this.size / 3, this.size / 2, this.size / 3, 0, this.size / 2);
+        ctx.bezierCurveTo(-this.size / 2, this.size / 3, -this.size / 2, -this.size / 3, 0, -this.size / 2);
+      } else {
+        const s = this.size;
+        ctx.moveTo(0, -s * 0.6);
+        ctx.bezierCurveTo(s * 0.4, -s * 0.3, s * 0.35, s * 0.3, 0, s * 0.6);
+        ctx.bezierCurveTo(-s * 0.35, s * 0.3, -s * 0.4, -s * 0.3, 0, -s * 0.6);
+      }
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  const count = Math.min(35, Math.floor(W / 40));
+  for (let i = 0; i < count; i++) particles.push(new Petal());
+
+  let t = 0;
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    t++;
+    particles.forEach(p => { p.update(t); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>

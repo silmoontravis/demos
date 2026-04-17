@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>墨語書房 InkVerse — 獨立書店 | Independent Bookstore in Taichung</title>
+<meta name="description" content="墨語書房 InkVerse — 台中獨立書店，精選文學、非虛構與詩集。閱讀空間、讀書會、藝文活動。A curated independent bookstore in Taichung, Taiwan.">
+<meta name="keywords" content="墨語書房, InkVerse, 獨立書店, 台中書店, independent bookstore, Taichung, 讀書會, book club">
+<meta property="og:title" content="墨語書房 InkVerse — 獨立書店">
+<meta property="og:description" content="台中獨立書店，精選文學、非虛構與詩集。閱讀空間、讀書會、藝文活動。">
+<meta property="og:image" content="photos/hero_books.png">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://inkverse.tw">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BookStore",
+  "name": "墨語書房 InkVerse",
+  "description": "台中獨立書店，精選文學、非虛構與詩集。閱讀空間、讀書會、藝文活動。",
+  "url": "https://inkverse.tw",
+  "telephone": "+886-4-2345-6789",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "台中市西區民生路 120 號",
+    "addressLocality": "台中市",
+    "addressRegion": "台中",
+    "postalCode": "403",
+    "addressCountry": "TW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.1460,
+    "longitude": 120.6730
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "11:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "22:00"
+    }
+  ],
+  "image": "photos/hero_books.png",
+  "priceRange": "$$"
+}
+</script>
+
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #faf8f5;
+  --bg-warm: #f5f0e8;
+  --navy: #1e293b;
+  --navy-light: #334155;
+  --amber: #d97706;
+  --amber-light: #f59e0b;
+  --amber-dark: #b45309;
+  --text: #374151;
+  --text-light: #6b7280;
+  --cream: #fefcf8;
+  --border: #e5e0d8;
+  --shadow: rgba(30, 41, 59, 0.08);
+  --font-zh: 'Noto Sans TC', sans-serif;
+  --font-en: 'Merriweather', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-zh);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.en-text, .en-font { font-family: var(--font-en); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--amber-dark); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--amber); }
+
+/* ========== NAVIGATION ========== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+}
+
+.navbar.scrolled {
+  background: rgba(250, 248, 245, 0.97);
+  box-shadow: 0 2px 20px var(--shadow);
+  padding: 0.5rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  transition: height 0.3s;
+}
+
+.navbar.scrolled .nav-logo img { height: 32px; }
+
+.nav-logo span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  transition: color 0.4s, text-shadow 0.4s;
+}
+
+.navbar.scrolled .nav-logo span {
+  color: var(--navy);
+  text-shadow: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  transition: color 0.3s, text-shadow 0.3s;
+  letter-spacing: 0.02em;
+}
+
+.navbar.scrolled .nav-links a {
+  color: var(--navy-light);
+  text-shadow: none;
+}
+
+.nav-links a:hover { color: var(--amber); }
+
+.lang-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: var(--font-zh);
+  transition: all 0.3s;
+}
+
+.navbar.scrolled .lang-toggle {
+  background: rgba(30, 41, 59, 0.05);
+  border-color: var(--border);
+  color: var(--navy);
+}
+
+.lang-toggle:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+}
+
+/* Mobile hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  width: 24px; height: 2px;
+  background: #fff;
+  transition: background 0.3s;
+}
+
+.navbar.scrolled .nav-hamburger span { background: var(--navy); }
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('photos/hero_books.png') center/cover no-repeat;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 41, 59, 0.45) 0%,
+    rgba(30, 41, 59, 0.3) 50%,
+    rgba(30, 41, 59, 0.6) 100%
+  );
+}
+
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 1.5rem;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+
+.hero-content .en-subtitle {
+  font-family: var(--font-en);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.hero-content .tagline {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.85;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  border: 2px solid var(--amber);
+  background: rgba(217, 119, 6, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  font-family: var(--font-zh);
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  transition: all 0.3s;
+  backdrop-filter: blur(4px);
+}
+
+.hero-cta:hover {
+  background: var(--amber);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.75rem;
+  animation: scrollBounce 2s infinite;
+}
+
+.scroll-hint svg { width: 20px; height: 20px; stroke: rgba(255,255,255,0.6); }
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ========== BGM BUTTON ========== */
+.bgm-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--amber);
+  background: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.bgm-btn:hover {
+  background: var(--amber);
+  transform: scale(1.1);
+}
+
+.bgm-btn:hover svg { stroke: #fff; }
+
+.bgm-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 2;
+  transition: stroke 0.3s;
+}
+
+.bgm-btn .bar { transition: transform 0.3s; transform-origin: center; }
+.bgm-btn.playing .bar { animation: barPulse 0.6s ease-in-out infinite alternate; }
+.bgm-btn.playing .bar:nth-child(2) { animation-delay: 0.15s; }
+.bgm-btn.playing .bar:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes barPulse {
+  from { transform: scaleY(0.4); }
+  to   { transform: scaleY(1); }
+}
+
+/* ========== SECTIONS ========== */
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.section-header .en-label {
+  font-family: var(--font-en);
+  font-size: 0.85rem;
+  color: var(--amber);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.section-header .divider {
+  width: 50px;
+  height: 2px;
+  background: var(--amber);
+  margin: 1.2rem auto 0;
+}
+
+.section-header p.desc {
+  margin-top: 1.5rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.95rem;
+}
+
+/* ========== COLLECTIONS ========== */
+.collections-bg { background: var(--bg); }
+
+.collections-photo {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 30px rgba(30,41,59,0.1);
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.collection-card {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(30,41,59,0.1);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(217, 119, 6, 0.08);
+}
+
+.card-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.collection-card h3 {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+
+.collection-card .en-name {
+  font-family: var(--font-en);
+  font-size: 0.8rem;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.collection-card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.75;
+}
+
+/* ========== EVENTS ========== */
+.events-bg { background: var(--bg-warm); }
+
+.events-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.events-photo {
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(30,41,59,0.1);
+  width: 100%;
+  object-fit: cover;
+  max-height: 420px;
+}
+
+.events-content h3 {
+  font-size: 1.3rem;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+}
+
+.event-item {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.event-date {
+  flex-shrink: 0;
+  width: 60px;
+  text-align: center;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.3rem;
+}
+
+.event-date .month {
+  font-size: 0.7rem;
+  color: var(--amber);
+  text-transform: uppercase;
+  font-family: var(--font-en);
+  letter-spacing: 0.05em;
+}
+
+.event-date .day {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.event-info h4 {
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 0.2rem;
+}
+
+.event-info p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.event-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  background: rgba(217,119,6,0.1);
+  color: var(--amber-dark);
+  margin-top: 0.3rem;
+}
+
+/* ========== READING SPACE ========== */
+.space-bg { background: var(--bg); }
+
+.space-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.space-photo {
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(30,41,59,0.1);
+  width: 100%;
+  object-fit: cover;
+  max-height: 420px;
+  order: 2;
+}
+
+.space-content { order: 1; }
+
+.space-content p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+}
+
+.space-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.space-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--navy-light);
+}
+
+.space-features li svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--amber);
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* ========== VISIT ========== */
+.visit-bg {
+  background: var(--navy);
+  color: rgba(255,255,255,0.85);
+}
+
+.visit-bg .section-header h2 { color: #fff; }
+.visit-bg .section-header .en-label { color: var(--amber-light); }
+.visit-bg .section-header .divider { background: var(--amber-light); }
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.visit-item h4 {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.visit-item h4 svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--amber-light);
+  fill: none;
+}
+
+.visit-item p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+}
+
+.visit-item a { color: var(--amber-light); }
+.visit-item a:hover { color: #fff; }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #151c28;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.8rem;
+}
+
+.footer a { color: rgba(255,255,255,0.5); }
+.footer a:hover { color: var(--amber-light); }
+
+/* ========== SCROLL ANIMATIONS ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .collections-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .events-layout,
+  .space-layout { grid-template-columns: 1fr; }
+  .space-photo { order: 0; }
+  .visit-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(250,248,245,0.98);
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    box-shadow: 0 8px 30px var(--shadow);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-links.mobile-open a {
+    color: var(--navy) !important;
+    text-shadow: none !important;
+    font-size: 1rem;
+  }
+
+  .section { padding: 4rem 1.25rem; }
+  .section-header { margin-bottom: 2.5rem; }
+  .space-features { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo">
+    <img src="logos/logo_final.png" alt="墨語書房 Logo" width="40" height="40">
+    <span data-zh="墨語書房" data-en="InkVerse">墨語書房</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#collections" data-zh="精選書籍" data-en="Collections">精選書籍</a></li>
+    <li><a href="#events" data-zh="活動與讀書會" data-en="Events">活動與讀書會</a></li>
+    <li><a href="#space" data-zh="閱讀空間" data-en="Reading Space">閱讀空間</a></li>
+    <li><a href="#visit" data-zh="造訪我們" data-en="Visit">造訪我們</a></li>
+    <li><button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-bg" role="img" aria-label="Books on warm wooden shelves"></div>
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content reveal">
+    <h1 data-zh="墨語書房" data-en="InkVerse">墨語書房</h1>
+    <p class="en-subtitle">Where Ink Speaks, Worlds Unfold</p>
+    <p class="tagline" data-zh="每一頁翻開，都是一場靈魂的對話。<br>在墨香與溫暖燈光之間，找到屬於你的故事。" data-en="Every page turned is a conversation with the soul.<br>Find your story among ink and warm light.">每一頁翻開，都是一場靈魂的對話。<br>在墨香與溫暖燈光之間，找到屬於你的故事。</p>
+    <a href="#collections" class="hero-cta" data-zh="探索書房" data-en="Explore the Store">探索書房</a>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- ========== CURATED COLLECTIONS ========== -->
+<section class="section collections-bg" id="collections">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="en-label en-font">Curated Collections</span>
+      <h2 data-zh="精選書籍" data-en="Curated Collections">精選書籍</h2>
+      <div class="divider"></div>
+      <p class="desc" data-zh="我們相信，每一本書都值得被看見。從經典文學到當代思潮，由書房主人親自選書，為你打開不同的閱讀風景。" data-en="We believe every book deserves to be seen. From classic literature to contemporary thought, each title is hand-picked by our curators to open new reading landscapes.">我們相信，每一本書都值得被看見。從經典文學到當代思潮，由書房主人親自選書，為你打開不同的閱讀風景。</p>
+    </div>
+
+    <img src="photos/shelves.png" alt="Curated bookshelves" class="collections-photo reveal" loading="lazy">
+
+    <div class="collections-grid">
+      <!-- Fiction -->
+      <div class="collection-card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h3 data-zh="文學小說" data-en="Fiction">文學小說</h3>
+        <p class="en-name en-font">Fiction</p>
+        <p data-zh="從台灣新銳到世界經典，橫跨魔幻寫實、歷史敘事與當代都會文學。讓故事帶你走進不同的人生。" data-en="From emerging Taiwanese voices to world classics, spanning magical realism, historical narrative, and contemporary urban fiction.">從台灣新銳到世界經典，橫跨魔幻寫實、歷史敘事與當代都會文學。讓故事帶你走進不同的人生。</p>
+      </div>
+      <!-- Non-fiction -->
+      <div class="collection-card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <h3 data-zh="非虛構" data-en="Non-Fiction">非虛構</h3>
+        <p class="en-name en-font">Non-Fiction</p>
+        <p data-zh="人文社科、自然書寫、思想哲學。我們精選那些改變觀看世界方式的作品，讓閱讀成為理解的起點。" data-en="Humanities, nature writing, philosophy. We curate works that reshape how you see the world, making reading the starting point of understanding.">人文社科、自然書寫、思想哲學。我們精選那些改變觀看世界方式的作品，讓閱讀成為理解的起點。</p>
+      </div>
+      <!-- Poetry -->
+      <div class="collection-card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 data-zh="詩集" data-en="Poetry">詩集</h3>
+        <p class="en-name en-font">Poetry</p>
+        <p data-zh="詩是語言的極致。收錄現代詩、古典詩選與跨語言詩作，在最精煉的文字裡，感受最遼闊的情感。" data-en="Poetry is language at its purest. Modern verse, classical selections, and cross-lingual works -- feel the vastness of emotion in the most refined words.">詩是語言的極致。收錄現代詩、古典詩選與跨語言詩作，在最精煉的文字裡，感受最遼闊的情感。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EVENTS & BOOK CLUB ========== -->
+<section class="section events-bg" id="events">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="en-label en-font">Events &amp; Book Club</span>
+      <h2 data-zh="活動與讀書會" data-en="Events &amp; Book Club">活動與讀書會</h2>
+      <div class="divider"></div>
+      <p class="desc" data-zh="閱讀不只是個人的旅程。在墨語書房，我們定期舉辦讀書會、作家座談與文學工作坊，讓文字成為人與人之間的橋樑。" data-en="Reading is more than a solo journey. We host regular book clubs, author talks, and literary workshops -- making words a bridge between people.">閱讀不只是個人的旅程。在墨語書房，我們定期舉辦讀書會、作家座談與文學工作坊，讓文字成為人與人之間的橋樑。</p>
+    </div>
+
+    <div class="events-layout">
+      <img src="photos/event.png" alt="Book club event at InkVerse" class="events-photo reveal" loading="lazy">
+
+      <div class="events-content reveal">
+        <h3 data-zh="近期活動" data-en="Upcoming Events">近期活動</h3>
+
+        <div class="event-item">
+          <div class="event-date">
+            <div class="month en-font">May</div>
+            <div class="day">03</div>
+          </div>
+          <div class="event-info">
+            <h4 data-zh="月讀書會：島嶼的聲音" data-en="Monthly Book Club: Voices of the Island">月讀書會：島嶼的聲音</h4>
+            <p data-zh="本月主題：台灣自然書寫，共讀劉克襄《四分之三的香港》" data-en="This month's theme: Taiwan nature writing">本月主題：台灣自然書寫，共讀劉克襄《四分之三的香港》</p>
+            <span class="event-tag" data-zh="讀書會" data-en="Book Club">讀書會</span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <div class="month en-font">May</div>
+            <div class="day">10</div>
+          </div>
+          <div class="event-info">
+            <h4 data-zh="作家座談：詩與日常" data-en="Author Talk: Poetry and the Everyday">作家座談：詩與日常</h4>
+            <p data-zh="邀請詩人陳育虹分享創作歷程與生活中的詩意" data-en="Poet Chen Yu-hung shares her creative journey">邀請詩人陳育虹分享創作歷程與生活中的詩意</p>
+            <span class="event-tag" data-zh="講座" data-en="Talk">講座</span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <div class="month en-font">May</div>
+            <div class="day">24</div>
+          </div>
+          <div class="event-info">
+            <h4 data-zh="手作工作坊：手工書製作" data-en="Workshop: Handmade Bookbinding">手作工作坊：手工書製作</h4>
+            <p data-zh="從裁紙到裝訂，親手製作一本屬於自己的筆記本" data-en="From paper cutting to binding -- craft your own notebook">從裁紙到裝訂，親手製作一本屬於自己的筆記本</p>
+            <span class="event-tag" data-zh="工作坊" data-en="Workshop">工作坊</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== READING SPACE ========== -->
+<section class="section space-bg" id="space">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="en-label en-font">Reading Space</span>
+      <h2 data-zh="閱讀空間" data-en="Reading Space">閱讀空間</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="space-layout">
+      <div class="space-content reveal">
+        <p data-zh="墨語書房不只是一間書店，更是一個讓思緒沉澱的空間。木質調的溫暖、柔和的燈光、手沖咖啡的香氣，每一個角落都邀請你慢下來，好好讀一本書。" data-en="InkVerse is more than a bookstore -- it's a space where thoughts can settle. Warm wood tones, soft lighting, the aroma of hand-dripped coffee. Every corner invites you to slow down and read.">墨語書房不只是一間書店，更是一個讓思緒沉澱的空間。木質調的溫暖、柔和的燈光、手沖咖啡的香氣，每一個角落都邀請你慢下來，好好讀一本書。</p>
+        <p data-zh="我們提供安靜的個人閱讀座位、適合小型聚會的沙發區，以及可眺望街景的窗邊位置。無論是獨處或共聚，都能在這裡找到最舒適的角落。" data-en="We offer quiet solo reading seats, cozy sofa areas for small gatherings, and window seats overlooking the street. Whether alone or together, find your most comfortable corner here.">我們提供安靜的個人閱讀座位、適合小型聚會的沙發區，以及可眺望街景的窗邊位置。無論是獨處或共聚，都能在這裡找到最舒適的角落。</p>
+
+        <ul class="space-features">
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 8h1a4 4 0 110 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+            <span data-zh="手沖咖啡與茶飲" data-en="Hand-dripped coffee & tea">手沖咖啡與茶飲</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span data-zh="免費 Wi-Fi" data-en="Free Wi-Fi">免費 Wi-Fi</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3a6 6 0 00-6 6v3.5a.5.5 0 01-.5.5H4a1 1 0 00-1 1v1a1 1 0 001 1h16a1 1 0 001-1v-1a1 1 0 00-1-1h-1.5a.5.5 0 01-.5-.5V9a6 6 0 00-6-6z"/><path d="M9 21h6"/></svg>
+            <span data-zh="安靜閱讀區" data-en="Quiet reading zone">安靜閱讀區</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+            <span data-zh="藝文展覽空間" data-en="Art exhibition area">藝文展覽空間</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <span data-zh="自然採光閱讀區" data-en="Natural-lit reading area">自然採光閱讀區</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+            <span data-zh="兒童繪本角" data-en="Children's picture book corner">兒童繪本角</span>
+          </li>
+        </ul>
+      </div>
+      <img src="photos/reading.png" alt="Cozy reading space at InkVerse" class="space-photo reveal" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ========== VISIT ========== -->
+<section class="section visit-bg" id="visit">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="en-label en-font">Visit Us</span>
+      <h2 data-zh="造訪我們" data-en="Visit Us">造訪我們</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="visit-grid reveal">
+      <div class="visit-item">
+        <h4>
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-zh="地址" data-en="Address">地址</span>
+        </h4>
+        <p data-zh="403 台中市西區民生路 120 號" data-en="No. 120, Minsheng Rd, West Dist, Taichung 403, Taiwan">403 台中市西區民生路 120 號</p>
+      </div>
+
+      <div class="visit-item">
+        <h4>
+          <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-zh="營業時間" data-en="Hours">營業時間</span>
+        </h4>
+        <p data-zh="週二至週五 11:00 – 21:00<br>週六日 10:00 – 22:00<br>週一公休" data-en="Tue – Fri: 11:00 – 21:00<br>Sat – Sun: 10:00 – 22:00<br>Closed on Mondays">週二至週五 11:00 – 21:00<br>週六日 10:00 – 22:00<br>週一公休</p>
+      </div>
+
+      <div class="visit-item">
+        <h4>
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span data-zh="聯絡" data-en="Contact">聯絡</span>
+        </h4>
+        <p>
+          <a href="tel:+886423456789">04-2345-6789</a><br>
+          <a href="mailto:hello@inkverse.tw">hello@inkverse.tw</a><br>
+          <a href="https://instagram.com/inkverse.tw" target="_blank" rel="noopener">@inkverse.tw</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p>&copy; 2026 墨語書房 InkVerse. All rights reserved.</p>
+</footer>
+
+<!-- ========== BGM BUTTON ========== -->
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music" title="Background Music">
+  <svg viewBox="0 0 24 24">
+    <rect class="bar" x="4" y="6" width="3" height="12" rx="1.5"/>
+    <rect class="bar" x="10.5" y="3" width="3" height="18" rx="1.5"/>
+    <rect class="bar" x="17" y="8" width="3" height="8" rx="1.5"/>
+  </svg>
+</button>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+(function() {
+  'use strict';
+
+  // ===== NAVBAR SCROLL =====
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ===== HAMBURGER =====
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-open');
+  });
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') navLinks.classList.remove('mobile-open');
+  });
+
+  // ===== BGM =====
+  const bgmBtn = document.getElementById('bgmBtn');
+  const bgmAudio = document.getElementById('bgmAudio');
+  let isPlaying = false;
+
+  bgmBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      bgmAudio.pause();
+      bgmBtn.classList.remove('playing');
+    } else {
+      bgmAudio.volume = 0.3;
+      bgmAudio.play().catch(() => {});
+      bgmBtn.classList.add('playing');
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // ===== i18n =====
+  const langToggle = document.getElementById('langToggle');
+  let currentLang = 'zh';
+
+  langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'zh' ? 'en' : 'zh';
+    langToggle.textContent = currentLang === 'zh' ? 'EN' : '中文';
+    document.documentElement.lang = currentLang === 'zh' ? 'zh-TW' : 'en';
+
+    document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + currentLang);
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else {
+        el.innerHTML = text;
+      }
+    });
+  });
+
+  // ===== SCROLL REVEAL =====
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // ===== HERO CANVAS — FLOATING BOOK PAGES =====
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animFrameId;
+
+  function resizeCanvas() {
+    const hero = document.querySelector('.hero');
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+
+  class PageParticle {
+    constructor() {
+      this.reset(true);
+    }
+
+    reset(initial) {
+      this.x = Math.random() * canvas.width;
+      this.y = initial ? Math.random() * canvas.height : -30;
+      this.w = 10 + Math.random() * 14;
+      this.h = this.w * (1.2 + Math.random() * 0.4);
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotSpeed = (Math.random() - 0.5) * 0.015;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = 0.3 + Math.random() * 0.6;
+      this.opacity = 0.08 + Math.random() * 0.12;
+      this.fold = 0.15 + Math.random() * 0.25;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.rotation += this.rotSpeed;
+
+      // gentle sway
+      this.x += Math.sin(this.y * 0.01) * 0.3;
+
+      if (this.y > canvas.height + 40 || this.x < -40 || this.x > canvas.width + 40) {
+        this.reset(false);
+      }
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.globalAlpha = this.opacity;
+
+      // page body
+      ctx.fillStyle = '#fefcf8';
+      ctx.beginPath();
+      ctx.moveTo(-this.w / 2, -this.h / 2);
+      ctx.lineTo(this.w / 2, -this.h / 2);
+      ctx.lineTo(this.w / 2, this.h / 2);
+      ctx.lineTo(-this.w / 2, this.h / 2);
+      ctx.closePath();
+      ctx.fill();
+
+      // fold shadow
+      ctx.fillStyle = 'rgba(180, 160, 130, 0.3)';
+      ctx.beginPath();
+      ctx.moveTo(this.w / 2 - this.w * this.fold, -this.h / 2);
+      ctx.lineTo(this.w / 2, -this.h / 2);
+      ctx.lineTo(this.w / 2, this.h / 2);
+      ctx.lineTo(this.w / 2 - this.w * this.fold, this.h / 2);
+      ctx.closePath();
+      ctx.fill();
+
+      // faint text lines
+      ctx.strokeStyle = 'rgba(150, 130, 100, 0.25)';
+      ctx.lineWidth = 0.5;
+      const lines = 3 + Math.floor(Math.random() * 2);
+      const lineGap = this.h / (lines + 2);
+      for (let i = 1; i <= lines; i++) {
+        const ly = -this.h / 2 + lineGap * (i + 0.5);
+        const lx1 = -this.w / 2 + 2;
+        const lx2 = this.w / 2 - this.w * this.fold - 2;
+        if (lx2 > lx1) {
+          ctx.beginPath();
+          ctx.moveTo(lx1, ly);
+          ctx.lineTo(lx1 + (lx2 - lx1) * (0.5 + Math.random() * 0.5), ly);
+          ctx.stroke();
+        }
+      }
+
+      ctx.restore();
+    }
+  }
+
+  function initParticles() {
+    const count = Math.max(15, Math.floor(canvas.width * canvas.height / 25000));
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push(new PageParticle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    animFrameId = requestAnimationFrame(animate);
+  }
+
+  resizeCanvas();
+  initParticles();
+  animate();
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      resizeCanvas();
+      initParticles();
+    }, 200);
+  });
+
+  // Pause animation when hero is not visible
+  const heroSection = document.getElementById('hero');
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!animFrameId) animate();
+      } else {
+        cancelAnimationFrame(animFrameId);
+        animFrameId = null;
+      }
+    });
+  }, { threshold: 0.05 });
+  heroObserver.observe(heroSection);
+
+})();
+</script>
+</body>
+</html>
