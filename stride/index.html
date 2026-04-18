@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRIDE — 限量球鞋，每一步都是態度</title>
+<meta name="description" content="STRIDE 限量球鞋電商，每週限量發售，搶先入手最新潮流球鞋。">
+<meta name="keywords" content="限量球鞋,球鞋電商,STRIDE,sneaker drops,limited edition">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link rel="canonical" href="https://stride-sneakers.com/">
+<meta property="og:title" content="STRIDE — 限量球鞋電商">
+<meta property="og:description" content="每週限量發售，搶先入手最新潮流球鞋。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "STRIDE",
+  "url": "https://stride-sneakers.com",
+  "logo": "logos/logo_final.png",
+  "description": "限量球鞋電商，每週限量發售"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--red:#ef4444;--white:#ffffff;--gray:#888;--dark-gray:#1a1a1a}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Helvetica Neue',Arial,'Noto Sans TC',sans-serif;color:var(--white);background:var(--black);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);z-index:1000;padding:14px 0;border-bottom:1px solid #222;transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(239,68,68,.15)}
+.nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;object-fit:contain}
+.nav-logo span{font-size:1.3rem;font-weight:900;letter-spacing:4px;text-transform:uppercase}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:.85rem;color:#ccc;transition:color .3s;text-transform:uppercase;letter-spacing:1px}
+.nav-links a:hover{color:var(--red)}
+.btn-nav{background:var(--red);color:#fff!important;padding:8px 20px;border-radius:0;font-size:.85rem;font-weight:700;letter-spacing:1px}
+.btn-nav:hover{background:#dc2626}
+.lang-toggle,.bgm-toggle{background:none;border:1px solid var(--red);color:var(--red);padding:6px 12px;cursor:pointer;font-size:.8rem;transition:all .3s;letter-spacing:1px}
+.lang-toggle:hover,.bgm-toggle:hover,.bgm-toggle.playing{background:var(--red);color:#fff}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--red)}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.4)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.9) 0%,rgba(10,10,10,.3) 100%);z-index:1}
+.hero .container{position:relative;z-index:2}
+.hero-text h1{font-size:4rem;font-weight:900;line-height:1.1;text-transform:uppercase;letter-spacing:3px}
+.hero-text h1 span{color:var(--red);display:block}
+.hero-text p{font-size:1.1rem;color:#aaa;margin:20px 0 36px;max-width:500px;line-height:1.7}
+.btn-primary{background:var(--red);color:#fff;padding:16px 40px;font-size:1rem;font-weight:700;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:2px;transition:all .3s;display:inline-block}
+.btn-primary:hover{background:#dc2626;transform:translateY(-2px);box-shadow:0 8px 30px rgba(239,68,68,.4)}
+/* DROPS */
+.drops{padding:100px 0;background:var(--dark-gray)}
+.section-title{text-align:center;font-size:2.2rem;font-weight:900;text-transform:uppercase;letter-spacing:3px;margin-bottom:12px}
+.section-subtitle{text-align:center;font-size:.95rem;color:var(--gray);margin-bottom:60px}
+.drop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.drop-card{background:var(--black);border:1px solid #222;overflow:hidden;transition:all .4s;position:relative}
+.drop-card:hover{border-color:var(--red);transform:translateY(-8px);box-shadow:0 12px 40px rgba(239,68,68,.15)}
+.drop-card img{width:100%;height:300px;object-fit:cover;transition:transform .5s}
+.drop-card:hover img{transform:scale(1.05)}
+.drop-info{padding:24px}
+.drop-info h3{font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.drop-info .price{font-size:1.4rem;font-weight:900;color:var(--red);margin-bottom:16px}
+.btn-buy{width:100%;padding:14px;border:none;font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;cursor:pointer;transition:all .3s}
+.btn-buy.available{background:var(--red);color:#fff}
+.btn-buy.available:hover{background:#dc2626}
+.btn-buy.sold-out{background:#333;color:#666;cursor:not-allowed}
+.sold-tag{position:absolute;top:20px;right:20px;background:var(--red);color:#fff;padding:6px 14px;font-size:.75rem;font-weight:700;letter-spacing:1px}
+/* COUNTDOWN */
+.countdown-section{padding:100px 0;background:var(--black);text-align:center}
+.countdown-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px;max-width:900px;margin-left:auto;margin-right:auto}
+.release-item{background:var(--dark-gray);border:1px solid #222;padding:30px;transition:border-color .3s}
+.release-item:hover{border-color:var(--red)}
+.release-item h4{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.countdown{display:flex;justify-content:center;gap:12px;margin-bottom:16px}
+.countdown .unit{text-align:center}
+.countdown .num{font-size:2rem;font-weight:900;color:var(--red);display:block}
+.countdown .label{font-size:.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
+.release-price{font-size:1.1rem;font-weight:700;color:#ccc}
+/* CULTURE */
+.culture{padding:100px 0;background:var(--dark-gray)}
+.culture-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.culture-img{overflow:hidden;position:relative}
+.culture-img img{width:100%;height:400px;object-fit:cover;filter:brightness(.8);transition:all .5s}
+.culture-img:hover img{filter:brightness(1);transform:scale(1.03)}
+.culture-text{display:flex;flex-direction:column;justify-content:center;padding:40px}
+.culture-text h2{font-size:2rem;font-weight:900;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.culture-text p{color:#aaa;line-height:1.8;margin-bottom:16px}
+/* NEWSLETTER */
+.newsletter{padding:100px 0;background:var(--black);text-align:center}
+.newsletter-form{max-width:500px;margin:40px auto 0;display:flex;gap:0}
+.newsletter-form input{flex:1;padding:16px 20px;background:var(--dark-gray);border:1px solid #333;color:#fff;font-size:.95rem;outline:none}
+.newsletter-form input::placeholder{color:#666}
+.newsletter-form input:focus{border-color:var(--red)}
+.newsletter-form button{background:var(--red);color:#fff;border:none;padding:16px 30px;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;font-size:.9rem;transition:background .3s}
+.newsletter-form button:hover{background:#dc2626}
+.footer{padding:40px 0;border-top:1px solid #222;text-align:center}
+.footer p{font-size:.8rem;color:#555}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px}
+.footer-links a{font-size:.8rem;color:#666;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+.footer-links a:hover{color:var(--red)}
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;width:100%;background:var(--black);flex-direction:column;padding:20px;border-top:1px solid #222}
+  .nav-links.open{display:flex}
+  .mobile-menu-btn{display:block}
+  .hero-text h1{font-size:2.4rem}
+  .drop-grid,.countdown-grid{grid-template-columns:1fr}
+  .culture-grid{grid-template-columns:1fr}
+  .newsletter-form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="STRIDE Logo"><span>STRIDE</span></a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="#drops" data-zh="限量發售" data-en="Drops">限量發售</a>
+      <a href="#upcoming" data-zh="即將上架" data-en="Upcoming">即將上架</a>
+      <a href="#culture" data-zh="潮流文化" data-en="Culture">潮流文化</a>
+      <button class="bgm-toggle" onclick="toggleBGM()" aria-label="Toggle BGM">♪ BGM</button>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+      <a href="#drops" class="btn-nav" data-zh="立即搶購" data-en="SHOP NOW">立即搶購</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"><img src="photos/hero.png" alt="STRIDE hero" loading="eager"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-text fade-in">
+      <h1 data-zh="限量發售<span>不等人</span>" data-en="LIMITED<span>DROPS</span>">限量發售<span>不等人</span></h1>
+      <p data-zh="每一雙都是態度的宣言。STRIDE 每週限量上架，錯過不再。" data-en="Every pair is a statement. STRIDE drops weekly — once it's gone, it's gone.">每一雙都是態度的宣言。STRIDE 每週限量上架，錯過不再。</p>
+      <a href="#drops" class="btn-primary" data-zh="查看本週發售" data-en="VIEW THIS WEEK'S DROP">查看本週發售</a>
+    </div>
+  </div>
+</section>
+
+<section class="drops" id="drops">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="本週限量發售" data-en="THIS WEEK'S DROPS">本週限量發售</h2>
+    <p class="section-subtitle fade-in" data-zh="限量 200 雙，售完即止" data-en="Limited to 200 pairs each — while supplies last">限量 200 雙，售完即止</p>
+    <div class="drop-grid">
+      <div class="drop-card fade-in">
+        <div class="sold-tag">HOT</div>
+        <img src="photos/product.png" alt="STRIDE Phantom X1">
+        <div class="drop-info">
+          <h3>STRIDE Phantom X1</h3>
+          <div class="price">NT$5,980</div>
+          <button class="btn-buy available" data-zh="立即購買" data-en="BUY NOW">立即購買</button>
+        </div>
+      </div>
+      <div class="drop-card fade-in">
+        <div class="sold-tag">SOLD OUT</div>
+        <img src="photos/product.png" alt="STRIDE Vortex Pro">
+        <div class="drop-info">
+          <h3>STRIDE Vortex Pro</h3>
+          <div class="price">NT$6,480</div>
+          <button class="btn-buy sold-out" data-zh="已售罄" data-en="SOLD OUT">已售罄</button>
+        </div>
+      </div>
+      <div class="drop-card fade-in">
+        <div class="sold-tag">NEW</div>
+        <img src="photos/product.png" alt="STRIDE Eclipse">
+        <div class="drop-info">
+          <h3>STRIDE Eclipse</h3>
+          <div class="price">NT$7,280</div>
+          <button class="btn-buy available" data-zh="立即購買" data-en="BUY NOW">立即購買</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="countdown-section" id="upcoming">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="即將上架" data-en="UPCOMING RELEASES">即將上架</h2>
+    <p class="section-subtitle fade-in" data-zh="設定提醒，搶先入手" data-en="Set your alarm — don't miss out">設定提醒，搶先入手</p>
+    <div class="countdown-grid">
+      <div class="release-item fade-in">
+        <h4>STRIDE Blaze</h4>
+        <div class="countdown" data-days="3">
+          <div class="unit"><span class="num days">03</span><span class="label" data-zh="天" data-en="Days">天</span></div>
+          <div class="unit"><span class="num hours">12</span><span class="label" data-zh="時" data-en="Hrs">時</span></div>
+          <div class="unit"><span class="num mins">45</span><span class="label" data-zh="分" data-en="Min">分</span></div>
+          <div class="unit"><span class="num secs">00</span><span class="label" data-zh="秒" data-en="Sec">秒</span></div>
+        </div>
+        <div class="release-price">NT$5,480</div>
+      </div>
+      <div class="release-item fade-in">
+        <h4>STRIDE Frost</h4>
+        <div class="countdown" data-days="7">
+          <div class="unit"><span class="num days">07</span><span class="label" data-zh="天" data-en="Days">天</span></div>
+          <div class="unit"><span class="num hours">06</span><span class="label" data-zh="時" data-en="Hrs">時</span></div>
+          <div class="unit"><span class="num mins">22</span><span class="label" data-zh="分" data-en="Min">分</span></div>
+          <div class="unit"><span class="num secs">00</span><span class="label" data-zh="秒" data-en="Sec">秒</span></div>
+        </div>
+        <div class="release-price">NT$6,980</div>
+      </div>
+      <div class="release-item fade-in">
+        <h4>STRIDE Apex</h4>
+        <div class="countdown" data-days="14">
+          <div class="unit"><span class="num days">14</span><span class="label" data-zh="天" data-en="Days">天</span></div>
+          <div class="unit"><span class="num hours">00</span><span class="label" data-zh="時" data-en="Hrs">時</span></div>
+          <div class="unit"><span class="num mins">00</span><span class="label" data-zh="分" data-en="Min">分</span></div>
+          <div class="unit"><span class="num secs">00</span><span class="label" data-zh="秒" data-en="Sec">秒</span></div>
+        </div>
+        <div class="release-price">NT$8,280</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="culture" id="culture">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="潮流不只是穿搭" data-en="MORE THAN FASHION">潮流不只是穿搭</h2>
+    <p class="section-subtitle fade-in" data-zh="STRIDE 是一種生活態度" data-en="STRIDE is a lifestyle">STRIDE 是一種生活態度</p>
+    <div class="culture-grid">
+      <div class="culture-img slide-left">
+        <img src="photos/drop.png" alt="街頭潮流文化" loading="lazy">
+      </div>
+      <div class="culture-text slide-right">
+        <h2 data-zh="街頭即舞台" data-en="THE STREET IS YOUR STAGE">街頭即舞台</h2>
+        <p data-zh="STRIDE 誕生於街頭文化的脈動之中。我們與全球設計師合作，將藝術、音樂與運動精神注入每一雙鞋。" data-en="STRIDE was born from the pulse of street culture. We collaborate with global designers, infusing art, music, and athletic spirit into every pair.">STRIDE 誕生於街頭文化的脈動之中。我們與全球設計師合作，將藝術、音樂與運動精神注入每一雙鞋。</p>
+        <p data-zh="每一次限量發售，都是一個故事的開始。加入我們的社群，成為 STRIDE 文化的一部分。" data-en="Every limited drop begins a new story. Join our community and become part of the STRIDE culture.">每一次限量發售，都是一個故事的開始。加入我們的社群，成為 STRIDE 文化的一部分。</p>
+      </div>
+    </div>
+    <div class="culture-grid" style="margin-top:30px">
+      <div class="culture-text slide-left">
+        <h2 data-zh="穿出你的態度" data-en="WEAR YOUR ATTITUDE">穿出你的態度</h2>
+        <p data-zh="不跟風，不妥協。STRIDE 的每一雙鞋都代表著獨立思考與個人風格的堅持。" data-en="No following trends. No compromises. Every STRIDE pair represents independent thinking and personal style.">不跟風，不妥協。STRIDE 的每一雙鞋都代表著獨立思考與個人風格的堅持。</p>
+      </div>
+      <div class="culture-img slide-right">
+        <img src="photos/lifestyle.png" alt="STRIDE lifestyle" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="加入 STRIDE CREW" data-en="JOIN THE STRIDE CREW">加入 STRIDE CREW</h2>
+    <p class="section-subtitle fade-in" data-zh="第一時間獲得發售通知與獨家優惠" data-en="Be the first to know about drops and exclusive deals">第一時間獲得發售通知與獨家優惠</p>
+    <form class="newsletter-form fade-in" onsubmit="event.preventDefault();alert('Welcome to STRIDE CREW!')">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit" data-zh="訂閱" data-en="SUBSCRIBE">訂閱</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="#drops" data-zh="發售" data-en="Drops">發售</a>
+      <a href="#culture" data-zh="文化" data-en="Culture">文化</a>
+      <a href="#newsletter" data-zh="聯絡" data-en="Contact">聯絡</a>
+    </div>
+    <p>&copy; 2024 STRIDE. All rights reserved.</p>
+  </div>
+</footer>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgm=document.getElementById('bgm');
+function toggleBGM(){const btn=document.querySelector('.bgm-toggle');if(bgm.paused){bgm.play();btn.classList.add('playing');btn.textContent='♪ ON'}else{bgm.pause();btn.classList.remove('playing');btn.textContent='♪ BGM'}}
+let lang='zh';
+function toggleLang(){lang=lang==='zh'?'en':'zh';document.querySelector('.lang-toggle').textContent=lang==='zh'?'EN':'中文';document.documentElement.lang=lang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(el.tagName==='INPUT')el.placeholder=t;else el.innerHTML=t})}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.slide-left,.slide-right').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+// Countdown timers
+document.querySelectorAll('.countdown').forEach(cd=>{
+  const days=parseInt(cd.dataset.days);
+  let target=Date.now()+days*86400000;
+  function tick(){
+    let diff=Math.max(0,target-Date.now());
+    const d=Math.floor(diff/86400000);diff%=86400000;
+    const h=Math.floor(diff/3600000);diff%=3600000;
+    const m=Math.floor(diff/60000);diff%=60000;
+    const s=Math.floor(diff/1000);
+    cd.querySelector('.days').textContent=String(d).padStart(2,'0');
+    cd.querySelector('.hours').textContent=String(h).padStart(2,'0');
+    cd.querySelector('.mins').textContent=String(m).padStart(2,'0');
+    cd.querySelector('.secs').textContent=String(s).padStart(2,'0');
+  }
+  tick();setInterval(tick,1000);
+});
+</script>
+</body>
+</html>

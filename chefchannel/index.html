@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主廚頻道 ChefChannel — 烹飪教學訂閱平台</title>
+<meta name="description" content="主廚頻道提供專業烹飪教學影片，從基礎到進階，訂閱即可無限觀看大師級料理課程。">
+<meta name="keywords" content="烹飪,教學,訂閱,食譜,主廚,料理課程,ChefChannel">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"主廚頻道 ChefChannel",
+  "url":"https://chefchannel.com",
+  "description":"烹飪教學訂閱平台",
+  "publisher":{"@type":"Organization","name":"ChefChannel","logo":{"@type":"ImageObject","url":"logos/logo_final.png"}},
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Gourmet","price":"199","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Master","price":"399","priceCurrency":"TWD"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#dc2626;--cream:#fffbeb;--brown:#451a03;--dark:#1a0a00;--white:#ffffff;--gray:#8b7355}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;background:var(--cream);color:var(--brown);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;transition:all .3s;font-family:inherit}
+.btn-primary{background:var(--red);color:var(--white)}
+.btn-primary:hover{background:#b91c1c;transform:translateY(-2px);box-shadow:0 8px 24px rgba(220,38,38,.3)}
+.btn-outline{background:transparent;border:2px solid var(--red);color:var(--red)}
+.btn-outline:hover{background:var(--red);color:var(--white)}
+.btn-sm{padding:8px 18px;font-size:.8rem}
+.btn-icon{background:none;border:none;color:var(--brown);font-size:1.2rem;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.btn-icon:hover{background:rgba(69,26,3,.1)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,251,235,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(69,26,3,.1);padding:12px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--brown);text-decoration:none}
+.logo img{width:36px;height:36px;border-radius:8px}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{color:var(--brown);font-size:.9rem;text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--red)}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--brown);transition:.3s}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:rgba(255,251,235,.98);padding:20px;gap:16px}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,251,235,.92),rgba(255,251,235,.6))}
+.hero-content{position:relative;z-index:1;max-width:600px;padding:40px 20px}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;line-height:1.2;margin-bottom:20px;color:var(--brown)}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:1.1rem;color:var(--gray);margin-bottom:30px;line-height:1.8}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;margin-bottom:10px;color:var(--brown)}
+.section-title h2 span{color:var(--red)}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+
+/* RECIPES */
+.recipes-section{background:var(--white)}
+.recipes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.recipe-card{background:var(--cream);border-radius:16px;overflow:hidden;transition:all .4s;border:1px solid rgba(69,26,3,.08);box-shadow:0 4px 20px rgba(69,26,3,.06)}
+.recipe-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(69,26,3,.12)}
+.recipe-thumb{position:relative;overflow:hidden;aspect-ratio:16/10}
+.recipe-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.recipe-card:hover .recipe-thumb img{transform:scale(1.05)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.9);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(220,38,38,.4)}
+.play-btn:hover{transform:translate(-50%,-50%) scale(1.1)}
+.recipe-duration{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.7);color:var(--white);padding:4px 10px;border-radius:4px;font-size:.75rem}
+.recipe-body{padding:20px}
+.recipe-tag{display:inline-block;background:rgba(220,38,38,.1);color:var(--red);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:8px}
+.recipe-card h3{font-size:1.1rem;margin-bottom:8px;color:var(--brown)}
+.recipe-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* SUBSCRIPTION */
+.sub-section{background:var(--cream)}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.sub-card{background:var(--white);border-radius:16px;padding:36px;text-align:center;border:1px solid rgba(69,26,3,.08);transition:all .4s;position:relative}
+.sub-card.featured{border-color:var(--red);box-shadow:0 8px 30px rgba(220,38,38,.1)}
+.sub-card.featured::before{content:'最受歡迎';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--red);color:var(--white);padding:4px 20px;border-radius:20px;font-size:.8rem;font-weight:700}
+.sub-card:hover{transform:translateY(-8px)}
+.sub-name{font-size:1.2rem;font-weight:700;margin-bottom:16px}
+.sub-price{font-size:3rem;font-weight:900;color:var(--red);margin-bottom:4px}
+.sub-price small{font-size:1rem;color:var(--gray)}
+.sub-period{color:var(--gray);font-size:.85rem;margin-bottom:24px}
+.sub-features{list-style:none;margin-bottom:30px;text-align:left}
+.sub-features li{padding:8px 0;border-bottom:1px solid rgba(69,26,3,.06);font-size:.9rem;color:var(--brown)}
+.sub-features li::before{content:'🍴';margin-right:10px}
+
+/* BEHIND SCENES */
+.bts-section{background:var(--white)}
+.bts-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.bts-grid{grid-template-columns:1fr}}
+.bts-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(69,26,3,.12)}
+.bts-content h3{font-size:1.5rem;margin-bottom:16px;color:var(--brown)}
+.bts-content p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+
+/* INGREDIENTS */
+.ingredients-section{background:var(--cream);position:relative;overflow:hidden}
+.ingredients-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.ingredients-grid{grid-template-columns:1fr}}
+.ingredients-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(69,26,3,.1)}
+.ingredient-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.ingredient-tag{background:var(--white);padding:8px 16px;border-radius:20px;font-size:.85rem;color:var(--brown);border:1px solid rgba(69,26,3,.1);transition:all .3s}
+.ingredient-tag:hover{border-color:var(--red);color:var(--red)}
+
+/* NEWSLETTER */
+.newsletter-section{background:linear-gradient(135deg,rgba(220,38,38,.08),rgba(255,251,235,1));text-align:center;padding:100px 20px}
+.newsletter-section h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;margin-bottom:16px;color:var(--brown)}
+.newsletter-section p{color:var(--gray);margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto}
+.newsletter-form{display:flex;gap:12px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.newsletter-form input{flex:1;min-width:200px;padding:12px 20px;border-radius:8px;border:1px solid rgba(69,26,3,.15);background:var(--white);font-size:.9rem;font-family:inherit;outline:none}
+.newsletter-form input:focus{border-color:var(--red)}
+
+/* FOOTER */
+footer{background:var(--brown);padding:40px 0;text-align:center;color:rgba(255,251,235,.6);font-size:.85rem}
+
+/* BGM */
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:999;width:50px;height:50px;border-radius:50%;background:var(--red);color:var(--white);border:none;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(220,38,38,.4);transition:all .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 20px rgba(220,38,38,.4)}50%{box-shadow:0 4px 30px rgba(220,38,38,.7)}}
+
+/* SCROLL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+  <a href="#" class="logo"><img src="logos/logo_final.png" alt="主廚頻道"><span>主廚</span>頻道</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#recipes" data-zh="精選食譜" data-en="Recipes">精選食譜</a></li>
+    <li><a href="#subscription" data-zh="訂閱方案" data-en="Subscribe">訂閱方案</a></li>
+    <li><a href="#behind" data-zh="幕後花絮" data-en="Behind Scenes">幕後花絮</a></li>
+    <li><a href="#newsletter" data-zh="電子報" data-en="Newsletter">電子報</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="btn-icon" id="langToggle" title="中/EN">🌐</button>
+    <button class="btn btn-primary btn-sm" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"><img src="photos/hero.png" alt="ChefChannel 主廚頻道"></div>
+<div class="container hero-content">
+  <h1 class="reveal" data-zh="跟著<span>大師</span>學料理" data-en="Learn to Cook with <span>Masters</span>">跟著<span>大師</span>學料理</h1>
+  <p class="reveal delay-1" data-zh="300+ 道專業食譜影片，從家常菜到米其林級料理，每週更新，讓你的廚藝不斷進化。" data-en="300+ professional recipe videos, from home cooking to Michelin-level cuisine, updated weekly to elevate your skills.">300+ 道專業食譜影片，從家常菜到米其林級料理，每週更新，讓你的廚藝不斷進化。</p>
+  <div class="reveal delay-2">
+    <a href="#subscription" class="btn btn-primary" data-zh="開始學習" data-en="Start Learning">開始學習</a>
+  </div>
+</div>
+</section>
+
+<!-- FEATURED RECIPES -->
+<section id="recipes" class="recipes-section">
+<div class="container">
+  <div class="section-title reveal">
+    <h2 data-zh="精選<span>食譜</span>" data-en="Featured <span>Recipes</span>">精選<span>食譜</span></h2>
+    <p data-zh="本週最受歡迎的教學影片" data-en="This week's most popular tutorial videos">本週最受歡迎的教學影片</p>
+  </div>
+  <div class="recipes-grid">
+    <div class="recipe-card reveal delay-1">
+      <div class="recipe-thumb">
+        <img src="photos/dish.png" alt="Recipe">
+        <div class="play-btn">▶</div>
+        <div class="recipe-duration">12:45</div>
+      </div>
+      <div class="recipe-body">
+        <span class="recipe-tag" data-zh="法式料理" data-en="French">法式料理</span>
+        <h3 data-zh="經典法式洋蔥湯" data-en="Classic French Onion Soup">經典法式洋蔥湯</h3>
+        <p data-zh="慢炒焦糖化洋蔥的秘訣，配上香脆的烤起司麵包。" data-en="Secrets to caramelized onions, topped with crispy cheese bread.">慢炒焦糖化洋蔥的秘訣，配上香脆的烤起司麵包。</p>
+      </div>
+    </div>
+    <div class="recipe-card reveal delay-2">
+      <div class="recipe-thumb">
+        <img src="photos/dish.png" alt="Recipe">
+        <div class="play-btn">▶</div>
+        <div class="recipe-duration">18:30</div>
+      </div>
+      <div class="recipe-body">
+        <span class="recipe-tag" data-zh="日式料理" data-en="Japanese">日式料理</span>
+        <h3 data-zh="手工味噌拉麵" data-en="Handmade Miso Ramen">手工味噌拉麵</h3>
+        <p data-zh="從高湯熬煮到手工製麵，完整的拉麵製作教學。" data-en="From broth simmering to handmade noodles, a complete ramen guide.">從高湯熬煮到手工製麵，完整的拉麵製作教學。</p>
+      </div>
+    </div>
+    <div class="recipe-card reveal delay-3">
+      <div class="recipe-thumb">
+        <img src="photos/dish.png" alt="Recipe">
+        <div class="play-btn">▶</div>
+        <div class="recipe-duration">15:20</div>
+      </div>
+      <div class="recipe-body">
+        <span class="recipe-tag" data-zh="甜點" data-en="Dessert">甜點</span>
+        <h3 data-zh="提拉米蘇" data-en="Tiramisu">提拉米蘇</h3>
+        <p data-zh="經典義式甜點，掌握馬斯卡彭起司的完美比例。" data-en="Classic Italian dessert, mastering the perfect mascarpone ratio.">經典義式甜點，掌握馬斯卡彭起司的完美比例。</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SUBSCRIPTION -->
+<section id="subscription" class="sub-section">
+<div class="container">
+  <div class="section-title reveal">
+    <h2 data-zh="訂閱<span>方案</span>" data-en="Subscription <span>Plans</span>">訂閱<span>方案</span></h2>
+    <p data-zh="解鎖無限料理靈感" data-en="Unlock unlimited culinary inspiration">解鎖無限料理靈感</p>
+  </div>
+  <div class="sub-grid">
+    <div class="sub-card reveal delay-1">
+      <div class="sub-name" data-zh="免費體驗" data-en="Free">免費體驗</div>
+      <div class="sub-price">$0<small>/mo</small></div>
+      <div class="sub-period" data-zh="永久免費" data-en="Free forever">永久免費</div>
+      <ul class="sub-features">
+        <li data-zh="每月 3 部影片" data-en="3 Videos/month">每月 3 部影片</li>
+        <li data-zh="基礎食譜" data-en="Basic Recipes">基礎食譜</li>
+        <li data-zh="社群討論" data-en="Community Forum">社群討論</li>
+      </ul>
+      <button class="btn btn-outline" style="width:100%" data-zh="免費開始" data-en="Start Free">免費開始</button>
+    </div>
+    <div class="sub-card featured reveal delay-2">
+      <div class="sub-name">Gourmet</div>
+      <div class="sub-price">$199<small>/mo</small></div>
+      <div class="sub-period" data-zh="每月訂閱" data-en="Monthly">每月訂閱</div>
+      <ul class="sub-features">
+        <li data-zh="全部影片無限看" data-en="Unlimited Videos">全部影片無限看</li>
+        <li data-zh="食材清單下載" data-en="Ingredient Lists">食材清單下載</li>
+        <li data-zh="步驟筆記功能" data-en="Step-by-step Notes">步驟筆記功能</li>
+        <li data-zh="每月直播教學" data-en="Monthly Live Class">每月直播教學</li>
+      </ul>
+      <button class="btn btn-primary" style="width:100%" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</button>
+    </div>
+    <div class="sub-card reveal delay-3">
+      <div class="sub-name">Master</div>
+      <div class="sub-price">$399<small>/mo</small></div>
+      <div class="sub-period" data-zh="每月訂閱" data-en="Monthly">每月訂閱</div>
+      <ul class="sub-features">
+        <li data-zh="Gourmet 全部功能" data-en="All Gourmet Features">Gourmet 全部功能</li>
+        <li data-zh="1對1 主廚問答" data-en="1-on-1 Chef Q&A">1對1 主廚問答</li>
+        <li data-zh="進階技法課程" data-en="Advanced Techniques">進階技法課程</li>
+        <li data-zh="獨家食材禮盒" data-en="Exclusive Ingredient Box">獨家食材禮盒</li>
+        <li data-zh="證書發放" data-en="Certificate">證書發放</li>
+      </ul>
+      <button class="btn btn-outline" style="width:100%" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BEHIND THE SCENES -->
+<section id="behind" class="bts-section">
+<div class="container">
+  <div class="bts-grid">
+    <div class="bts-img reveal-left"><img src="photos/setup.png" alt="Behind the Scenes"></div>
+    <div class="bts-content reveal-right">
+      <h3 data-zh="幕後花絮" data-en="Behind the Scenes">幕後花絮</h3>
+      <p data-zh="走進我們的專業攝影棚，看看每一道精彩食譜背後的故事。從食材挑選、刀工準備到最終擺盤，每個步驟都經過精心規劃。" data-en="Step into our professional studio and discover the stories behind every recipe. From ingredient selection to knife prep and final plating, every step is carefully planned.">走進我們的專業攝影棚，看看每一道精彩食譜背後的故事。從食材挑選、刀工準備到最終擺盤，每個步驟都經過精心規劃。</p>
+      <p data-zh="我們的團隊由五位專業主廚和十位攝影師組成，致力於呈現最高品質的料理教學內容。" data-en="Our team of five professional chefs and ten cinematographers is dedicated to delivering the highest quality culinary content.">我們的團隊由五位專業主廚和十位攝影師組成，致力於呈現最高品質的料理教學內容。</p>
+      <a href="#" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients-section">
+<div class="container">
+  <div class="ingredients-grid">
+    <div class="reveal-left">
+      <div class="section-title" style="text-align:left">
+        <h2 data-zh="嚴選<span>食材</span>" data-en="Premium <span>Ingredients</span>">嚴選<span>食材</span></h2>
+        <p style="margin:0" data-zh="我們與在地農場合作，確保每一道料理都使用最新鮮的當季食材。" data-en="We partner with local farms to ensure every dish uses the freshest seasonal ingredients.">我們與在地農場合作，確保每一道料理都使用最新鮮的當季食材。</p>
+      </div>
+      <div class="ingredient-tags">
+        <span class="ingredient-tag" data-zh="有機蔬菜" data-en="Organic Veggies">有機蔬菜</span>
+        <span class="ingredient-tag" data-zh="放牧雞蛋" data-en="Free-range Eggs">放牧雞蛋</span>
+        <span class="ingredient-tag" data-zh="手工起司" data-en="Artisan Cheese">手工起司</span>
+        <span class="ingredient-tag" data-zh="進口香料" data-en="Imported Spices">進口香料</span>
+        <span class="ingredient-tag" data-zh="當季水果" data-en="Seasonal Fruits">當季水果</span>
+        <span class="ingredient-tag" data-zh="小農直送" data-en="Farm Direct">小農直送</span>
+      </div>
+    </div>
+    <div class="ingredients-img reveal-right"><img src="photos/ingredients.png" alt="Fresh Ingredients"></div>
+  </div>
+</div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter" class="newsletter-section">
+<div class="container reveal">
+  <h2 data-zh="訂閱<span>電子報</span>" data-en="Subscribe to Our <span>Newsletter</span>">訂閱<span>電子報</span></h2>
+  <p data-zh="每週收到精選食譜、烹飪技巧和獨家優惠" data-en="Get weekly curated recipes, cooking tips, and exclusive offers">每週收到精選食譜、烹飪技巧和獨家優惠</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault();alert('感謝訂閱！')">
+    <input type="email" placeholder="your@email.com" required>
+    <button class="btn btn-primary" type="submit" data-zh="訂閱" data-en="Subscribe">訂閱</button>
+  </form>
+</div>
+</section>
+
+<footer>
+<div class="container">
+  <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:12px">
+    <img src="logos/logo_final.png" alt="Logo" style="width:28px;height:28px;border-radius:6px">
+    <span style="font-weight:700;color:var(--cream)">主廚頻道 ChefChannel</span>
+  </div>
+  <p>© 2026 ChefChannel. All rights reserved.</p>
+</div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.textContent='♫';bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.textContent='⏸';bgmBtn.classList.add('playing')}
+  bgmPlaying=!bgmPlaying;
+});
+let lang='zh';
+document.getElementById('langToggle').addEventListener('click',()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+});
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

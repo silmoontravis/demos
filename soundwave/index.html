@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoundWave — 音樂串流訂閱平台</title>
+<meta name="description" content="SoundWave 提供千萬首歌曲無限暢聽，探索你的專屬音樂世界。Premium 會員享受無損音質與離線下載。">
+<meta name="keywords" content="音樂串流,訂閱,無損音質,SoundWave,Premium,音樂平台">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"SoundWave",
+  "url":"https://soundwave.com",
+  "description":"音樂串流訂閱平台",
+  "publisher":{"@type":"Organization","name":"SoundWave","logo":{"@type":"ImageObject","url":"logos/logo_final.png"}},
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Premium","price":"149","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Family","price":"249","priceCurrency":"TWD"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#581c87;--pink:#ec4899;--dark:#0f0f1a;--darker:#0a0a12;--white:#ffffff;--gray:#9ca3af;--gradient:linear-gradient(135deg,#581c87,#ec4899)}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;padding:12px 28px;border-radius:50px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;transition:all .3s}
+.btn-primary{background:var(--gradient);color:var(--white)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(236,72,153,.4)}
+.btn-outline{background:transparent;border:2px solid var(--pink);color:var(--pink)}
+.btn-outline:hover{background:var(--pink);color:var(--white)}
+.btn-sm{padding:8px 18px;font-size:.8rem}
+.btn-icon{background:none;border:none;color:var(--white);font-size:1.2rem;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.btn-icon:hover{background:rgba(255,255,255,.1)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(15,15,26,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(236,72,153,.15);padding:12px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem}
+.logo img{width:36px;height:36px;border-radius:8px}
+.logo span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{color:var(--white);font-size:.9rem;text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--pink)}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:.3s}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:rgba(15,15,26,.98);padding:20px;gap:16px}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,15,26,.85),rgba(15,15,26,.95))}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:700px;margin:0 auto;padding:40px 20px}
+.hero h1{font-size:clamp(2rem,7vw,4rem);font-weight:900;line-height:1.1;margin-bottom:20px}
+.hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:var(--gray);margin-bottom:30px;line-height:1.6}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;margin-bottom:10px}
+.section-title h2 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+
+/* NOW PLAYING */
+.now-playing{background:var(--darker)}
+.player-mockup{max-width:500px;margin:0 auto;background:rgba(255,255,255,.05);border-radius:24px;padding:40px;border:1px solid rgba(236,72,153,.15);box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.player-cover{width:100%;aspect-ratio:1;border-radius:16px;overflow:hidden;margin-bottom:24px;position:relative}
+.player-cover img{width:100%;height:100%;object-fit:cover}
+.player-cover .vinyl-overlay{position:absolute;inset:0;background:radial-gradient(circle,transparent 30%,rgba(0,0,0,.3));display:flex;align-items:center;justify-content:center}
+.play-circle{width:72px;height:72px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;box-shadow:0 8px 30px rgba(236,72,153,.5);transition:transform .3s}
+.play-circle:hover{transform:scale(1.1)}
+.player-info{text-align:center;margin-bottom:20px}
+.player-info h3{font-size:1.3rem;margin-bottom:4px}
+.player-info p{color:var(--gray);font-size:.9rem}
+.progress-bar{width:100%;height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin-bottom:8px;overflow:hidden}
+.progress-fill{height:100%;width:35%;background:var(--gradient);border-radius:2px;animation:progress-move 8s linear infinite}
+@keyframes progress-move{0%{width:0}100%{width:100%}}
+.player-time{display:flex;justify-content:space-between;font-size:.75rem;color:var(--gray);margin-bottom:20px}
+.player-controls{display:flex;justify-content:center;gap:24px;align-items:center}
+.player-controls button{background:none;border:none;color:var(--white);font-size:1.2rem;cursor:pointer;transition:color .3s}
+.player-controls button:hover{color:var(--pink)}
+.equalizer{display:flex;gap:3px;justify-content:center;margin-top:16px}
+.eq-bar{width:4px;background:var(--gradient);border-radius:2px;animation:eq-bounce 1.2s ease infinite}
+.eq-bar:nth-child(1){height:16px;animation-delay:0s}
+.eq-bar:nth-child(2){height:24px;animation-delay:.15s}
+.eq-bar:nth-child(3){height:12px;animation-delay:.3s}
+.eq-bar:nth-child(4){height:20px;animation-delay:.45s}
+.eq-bar:nth-child(5){height:28px;animation-delay:.6s}
+.eq-bar:nth-child(6){height:16px;animation-delay:.75s}
+.eq-bar:nth-child(7){height:22px;animation-delay:.9s}
+@keyframes eq-bounce{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.3)}}
+
+/* PLANS */
+.plans-section{background:var(--dark)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:rgba(255,255,255,.03);border-radius:20px;padding:36px;text-align:center;border:1px solid rgba(255,255,255,.06);transition:all .4s;position:relative}
+.plan-card.featured{border-color:var(--pink);background:linear-gradient(180deg,rgba(88,28,135,.1),rgba(236,72,153,.05))}
+.plan-card.featured::before{content:'推薦';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gradient);color:var(--white);padding:4px 20px;border-radius:20px;font-size:.8rem;font-weight:700}
+.plan-card:hover{transform:translateY(-8px)}
+.plan-name{font-size:1.2rem;font-weight:700;margin-bottom:16px}
+.plan-price{font-size:3rem;font-weight:900;margin-bottom:4px}
+.plan-price span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.plan-price small{font-size:1rem;-webkit-text-fill-color:var(--gray)}
+.plan-period{color:var(--gray);font-size:.85rem;margin-bottom:24px}
+.plan-features{list-style:none;margin-bottom:30px;text-align:left}
+.plan-features li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.9rem;color:#ccc}
+.plan-features li::before{content:'♪';color:var(--pink);margin-right:10px}
+
+/* DISCOVERY */
+.discovery{background:var(--darker)}
+.discovery-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.discovery-grid{grid-template-columns:1fr}}
+.discovery-card{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3}
+.discovery-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.discovery-card:hover img{transform:scale(1.05)}
+.discovery-card .overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,15,26,.9),transparent);display:flex;align-items:flex-end;padding:24px}
+.discovery-card h3{font-size:1.2rem;margin-bottom:4px}
+.discovery-card p{color:var(--gray);font-size:.85rem}
+
+/* ARTIST */
+.artist-section{background:var(--dark)}
+.artist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px}
+.artist-card{text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:16px;border:1px solid rgba(255,255,255,.06);transition:all .3s}
+.artist-card:hover{border-color:var(--pink)}
+.artist-img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:3px solid transparent;background-image:var(--gradient);background-origin:border-box;background-clip:content-box,border-box}
+.artist-card h4{font-size:.9rem;margin-bottom:2px}
+.artist-card p{color:var(--gray);font-size:.75rem}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,rgba(88,28,135,.3),rgba(236,72,153,.15));text-align:center;padding:100px 20px}
+.cta-section h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin-bottom:16px}
+.cta-section p{color:#ccc;margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* FOOTER */
+footer{background:var(--darker);padding:40px 0;text-align:center;color:var(--gray);font-size:.85rem;border-top:1px solid rgba(255,255,255,.05)}
+
+/* BGM */
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:999;width:50px;height:50px;border-radius:50%;background:var(--gradient);color:var(--white);border:none;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(236,72,153,.4);transition:all .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 20px rgba(236,72,153,.4)}50%{box-shadow:0 4px 30px rgba(236,72,153,.7)}}
+
+/* SCROLL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+  <a href="#" class="logo"><img src="logos/logo_final.png" alt="SoundWave"><span>SoundWave</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#nowplaying" data-zh="正在播放" data-en="Now Playing">正在播放</a></li>
+    <li><a href="#plans" data-zh="方案" data-en="Plans">方案</a></li>
+    <li><a href="#discovery" data-zh="探索" data-en="Discover">探索</a></li>
+    <li><a href="#artists" data-zh="藝人" data-en="Artists">藝人</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="btn-icon" id="langToggle" title="中/EN">🌐</button>
+    <button class="btn btn-outline btn-sm" data-zh="登入" data-en="Login">登入</button>
+    <button class="btn btn-primary btn-sm" data-zh="免費試聽" data-en="Free Trial">免費試聽</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"><img src="photos/hero.png" alt="SoundWave Music"></div>
+<div class="hero-content">
+  <h1 class="reveal" data-zh="感受音樂的<span>無限可能</span>" data-en="Feel the <span>Infinite Possibilities</span> of Music">感受音樂的<span>無限可能</span></h1>
+  <p class="reveal delay-1" data-zh="千萬首歌曲，無損音質，離線暢聽。你的音樂，你的世界。" data-en="Millions of songs, lossless quality, offline listening. Your music, your world.">千萬首歌曲，無損音質，離線暢聽。你的音樂，你的世界。</p>
+  <div class="hero-buttons reveal delay-2">
+    <a href="#plans" class="btn btn-primary" data-zh="開始免費試聽" data-en="Start Free Trial">開始免費試聽</a>
+    <a href="#nowplaying" class="btn btn-outline" data-zh="立即探索" data-en="Explore Now">立即探索</a>
+  </div>
+</div>
+</section>
+
+<!-- NOW PLAYING -->
+<section id="nowplaying" class="now-playing">
+<div class="container">
+  <div class="section-title reveal">
+    <h2 data-zh="正在<span>播放</span>" data-en="Now <span>Playing</span>">正在<span>播放</span></h2>
+  </div>
+  <div class="player-mockup reveal">
+    <div class="player-cover">
+      <img src="photos/vinyl.png" alt="Album Cover">
+      <div class="vinyl-overlay"><div class="play-circle">▶</div></div>
+    </div>
+    <div class="player-info">
+      <h3 data-zh="午夜狂想曲" data-en="Midnight Rhapsody">午夜狂想曲</h3>
+      <p data-zh="夢境樂團" data-en="Dreamscape Band">夢境樂團</p>
+    </div>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <div class="player-time"><span>1:23</span><span>3:45</span></div>
+    <div class="player-controls">
+      <button>⏮</button>
+      <button style="font-size:1.8rem">⏸</button>
+      <button>⏭</button>
+    </div>
+    <div class="equalizer">
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PLANS -->
+<section id="plans" class="plans-section">
+<div class="container">
+  <div class="section-title reveal">
+    <h2 data-zh="訂閱<span>方案</span>" data-en="Subscription <span>Plans</span>">訂閱<span>方案</span></h2>
+    <p data-zh="選擇最適合你的聆聽體驗" data-en="Choose the listening experience that suits you">選擇最適合你的聆聽體驗</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card reveal delay-1">
+      <div class="plan-name" data-zh="免費版" data-en="Free">免費版</div>
+      <div class="plan-price"><span>$0</span><small>/mo</small></div>
+      <div class="plan-period" data-zh="永久免費" data-en="Free forever">永久免費</div>
+      <ul class="plan-features">
+        <li data-zh="含廣告聆聽" data-en="Ad-supported listening">含廣告聆聽</li>
+        <li data-zh="標準音質" data-en="Standard quality">標準音質</li>
+        <li data-zh="隨機播放" data-en="Shuffle play">隨機播放</li>
+      </ul>
+      <button class="btn btn-outline" style="width:100%" data-zh="免費開始" data-en="Start Free">免費開始</button>
+    </div>
+    <div class="plan-card featured reveal delay-2">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price"><span>$149</span><small>/mo</small></div>
+      <div class="plan-period" data-zh="每月訂閱" data-en="Monthly">每月訂閱</div>
+      <ul class="plan-features">
+        <li data-zh="零廣告" data-en="Ad-free">零廣告</li>
+        <li data-zh="無損音質 Hi-Fi" data-en="Lossless Hi-Fi quality">無損音質 Hi-Fi</li>
+        <li data-zh="離線下載" data-en="Offline download">離線下載</li>
+        <li data-zh="跨裝置同步" data-en="Cross-device sync">跨裝置同步</li>
+      </ul>
+      <button class="btn btn-primary" style="width:100%" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</button>
+    </div>
+    <div class="plan-card reveal delay-3">
+      <div class="plan-name">Family</div>
+      <div class="plan-price"><span>$249</span><small>/mo</small></div>
+      <div class="plan-period" data-zh="每月訂閱" data-en="Monthly">每月訂閱</div>
+      <ul class="plan-features">
+        <li data-zh="Premium 全部功能" data-en="All Premium features">Premium 全部功能</li>
+        <li data-zh="最多 6 個帳號" data-en="Up to 6 accounts">最多 6 個帳號</li>
+        <li data-zh="家庭混合播放清單" data-en="Family mix playlists">家庭混合播放清單</li>
+        <li data-zh="兒童安全模式" data-en="Kids safe mode">兒童安全模式</li>
+      </ul>
+      <button class="btn btn-outline" style="width:100%" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DISCOVERY -->
+<section id="discovery" class="discovery">
+<div class="container">
+  <div class="section-title reveal">
+    <h2 data-zh="探索<span>音樂宇宙</span>" data-en="Explore the <span>Music Universe</span>">探索<span>音樂宇宙</span></h2>
+  </div>
+  <div class="discovery-grid">
+    <div class="discovery-card reveal-left">
+      <img src="photos/vinyl.png" alt="Vinyl Collection">
+      <div class="overlay"><div><h3 data-zh="經典黑膠" data-en="Classic Vinyl">經典黑膠</h3><p data-zh="重溫不朽的音樂經典" data-en="Revisit timeless music classics">重溫不朽的音樂經典</p></div></div>
+    </div>
+    <div class="discovery-card reveal-right">
+      <img src="photos/concert.png" alt="Live Concert">
+      <div class="overlay"><div><h3 data-zh="現場演唱會" data-en="Live Concerts">現場演唱會</h3><p data-zh="獨家直播，身歷其境的現場體驗" data-en="Exclusive live streams, immersive concert experience">獨家直播，身歷其境的現場體驗</p></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ARTISTS -->
+<section id="artists" class="artist-section">
+<div class="container">
+  <div class="section-title reveal">
+    <h2 data-zh="焦點<span>藝人</span>" data-en="Artist <span>Spotlight</span>">焦點<span>藝人</span></h2>
+  </div>
+  <div class="artist-grid">
+    <div class="artist-card reveal delay-1">
+      <img src="photos/listening.png" alt="Artist" class="artist-img">
+      <h4>Luna 月光</h4>
+      <p data-zh="電子流行" data-en="Electropop">電子流行</p>
+    </div>
+    <div class="artist-card reveal delay-2">
+      <img src="photos/concert.png" alt="Artist" class="artist-img">
+      <h4>The Echoes</h4>
+      <p data-zh="獨立搖滾" data-en="Indie Rock">獨立搖滾</p>
+    </div>
+    <div class="artist-card reveal delay-3">
+      <img src="photos/vinyl.png" alt="Artist" class="artist-img">
+      <h4>DJ Pulse</h4>
+      <p data-zh="EDM / House" data-en="EDM / House">EDM / House</p>
+    </div>
+    <div class="artist-card reveal delay-4">
+      <img src="photos/listening.png" alt="Artist" class="artist-img">
+      <h4>蘇靜雨</h4>
+      <p data-zh="民謠" data-en="Folk">民謠</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+<div class="container reveal">
+  <h2 data-zh="開始你的音樂旅程" data-en="Start Your Music Journey">開始你的音樂旅程</h2>
+  <p data-zh="下載 SoundWave，享受沉浸式音樂體驗" data-en="Download SoundWave for an immersive music experience">下載 SoundWave，享受沉浸式音樂體驗</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+    <a href="#" class="btn btn-primary" data-zh="📱 下載 APP" data-en="📱 Download APP">📱 下載 APP</a>
+    <a href="#" class="btn btn-outline" data-zh="網頁版試聽" data-en="Web Player">網頁版試聽</a>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+  <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:12px">
+    <img src="logos/logo_final.png" alt="Logo" style="width:28px;height:28px;border-radius:6px">
+    <span style="font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">SoundWave</span>
+  </div>
+  <p style="color:var(--gray)">© 2026 SoundWave. All rights reserved.</p>
+</div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.textContent='♫';bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.textContent='⏸';bgmBtn.classList.add('playing')}
+  bgmPlaying=!bgmPlaying;
+});
+let lang='zh';
+document.getElementById('langToggle').addEventListener('click',()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+});
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

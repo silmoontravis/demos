@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>木質生活 WoodLife — 手工實木傢俱，溫暖每個角落</title>
+<meta name="description" content="木質生活 WoodLife 提供北歐風格手工實木傢俱，從客廳到臥室，打造溫暖自然的居家空間。">
+<meta name="keywords" content="實木傢俱,木質生活,WoodLife,北歐傢俱,手工家具,Scandinavian furniture">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link rel="canonical" href="https://woodlife.tw/">
+<meta property="og:title" content="木質生活 WoodLife — 手工實木傢俱">
+<meta property="og:description" content="北歐風格手工實木傢俱，溫暖每個角落。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FurnitureStore",
+  "name": "木質生活 WoodLife",
+  "url": "https://woodlife.tw",
+  "logo": "logos/logo_final.png",
+  "description": "北歐風格手工實木傢俱電商",
+  "priceRange": "$$"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--walnut:#7c4a2a;--cream:#faf5eb;--sage:#a3b18a;--dark:#2d2d2d;--gray:#888;--light:#f5efe6}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Georgia','Noto Serif TC',serif;color:var(--dark);background:var(--cream);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(250,245,235,.96);backdrop-filter:blur(10px);z-index:1000;padding:14px 0;border-bottom:1px solid rgba(124,74,42,.1);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(124,74,42,.1)}
+.nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;object-fit:contain}
+.nav-logo span{font-size:1.1rem;font-weight:700;color:var(--walnut);letter-spacing:1px}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:.88rem;color:var(--dark);transition:color .3s}
+.nav-links a:hover{color:var(--walnut)}
+.btn-nav{background:var(--walnut);color:#fff!important;padding:8px 20px;border-radius:4px;font-size:.85rem}
+.lang-toggle,.bgm-toggle{background:none;border:1px solid var(--walnut);color:var(--walnut);padding:6px 12px;border-radius:4px;cursor:pointer;font-size:.8rem;transition:all .3s}
+.lang-toggle:hover,.bgm-toggle:hover,.bgm-toggle.playing{background:var(--walnut);color:#fff}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--walnut)}
+/* HERO */
+.hero{padding:130px 0 80px;position:relative}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text h1{font-size:2.6rem;font-weight:700;line-height:1.4;color:var(--walnut)}
+.hero-text h1 span{color:var(--sage)}
+.hero-text p{font-size:1.05rem;color:var(--gray);line-height:1.9;margin:20px 0 36px;font-family:'Helvetica Neue',Arial,sans-serif}
+.btn-primary{background:var(--walnut);color:#fff;padding:14px 36px;border-radius:4px;font-size:1rem;border:none;cursor:pointer;transition:all .3s;display:inline-block;letter-spacing:1px}
+.btn-primary:hover{background:#6b3d22;transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,74,42,.25)}
+.hero-img{border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(124,74,42,.12)}
+.hero-img img{width:100%;height:450px;object-fit:cover}
+/* COLLECTIONS */
+.collections{padding:80px 0;background:#fff}
+.section-title{text-align:center;font-size:1.8rem;font-weight:700;margin-bottom:12px;color:var(--walnut)}
+.section-subtitle{text-align:center;font-size:.95rem;color:var(--gray);margin-bottom:48px;font-family:sans-serif}
+.coll-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.coll-card{background:var(--cream);border-radius:8px;overflow:hidden;transition:all .4s;cursor:pointer}
+.coll-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(124,74,42,.12)}
+.coll-card img{width:100%;height:220px;object-fit:cover}
+.coll-info{padding:20px}
+.coll-info h3{font-size:1rem;font-weight:600;margin-bottom:6px;color:var(--walnut)}
+.coll-info .price{font-size:1.2rem;font-weight:700;color:var(--walnut);margin-bottom:4px;font-family:sans-serif}
+.coll-info .price-from{font-size:.78rem;color:var(--gray);font-family:sans-serif}
+/* CRAFTSMANSHIP */
+.craft{padding:80px 0;background:var(--cream)}
+.craft .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.craft-img{border-radius:8px;overflow:hidden}
+.craft-img img{width:100%;height:420px;object-fit:cover}
+.craft-text h2{font-size:1.8rem;font-weight:700;color:var(--walnut);margin-bottom:20px}
+.craft-text p{color:var(--gray);line-height:1.9;margin-bottom:16px;font-family:sans-serif;font-size:.95rem}
+.craft-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.stat{text-align:center}
+.stat .num{font-size:1.8rem;font-weight:700;color:var(--walnut)}
+.stat .label{font-size:.78rem;color:var(--gray);font-family:sans-serif}
+/* INSPIRATION */
+.inspiration{padding:80px 0;background:#fff}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.gallery-item{border-radius:8px;overflow:hidden;position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:280px;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+.gallery-item:first-child img{height:100%}
+/* CUSTOM ORDER */
+.custom{padding:80px 0;background:var(--light)}
+.custom-form{max-width:600px;margin:40px auto 0;background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.9rem;color:var(--walnut);margin-bottom:6px;font-family:sans-serif}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:4px;font-size:.95rem;font-family:sans-serif;outline:none;transition:border .3s;background:#fff}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--walnut)}
+.form-group textarea{height:100px;resize:vertical}
+.btn-submit{width:100%;padding:14px;background:var(--walnut);color:#fff;border:none;border-radius:4px;font-size:1rem;cursor:pointer;transition:all .3s;letter-spacing:1px}
+.btn-submit:hover{background:#6b3d22}
+/* FOOTER */
+.footer{background:var(--walnut);color:#fff;padding:48px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer h4{font-size:1rem;margin-bottom:16px;color:var(--sage)}
+.footer p,.footer a{font-size:.85rem;color:#ddd;line-height:1.8;font-family:sans-serif}
+.footer a:hover{color:var(--sage)}
+.footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);font-size:.8rem;color:rgba(255,255,255,.5);font-family:sans-serif}
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;width:100%;background:var(--cream);flex-direction:column;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+  .nav-links.open{display:flex}
+  .mobile-menu-btn{display:block}
+  .hero .container,.craft .container{grid-template-columns:1fr}
+  .hero-text h1{font-size:2rem}
+  .coll-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:1fr}
+  .gallery-item:first-child{grid-column:span 1;grid-row:span 1}
+  .gallery-item:first-child img{height:280px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="木質生活 Logo"><span data-zh="木質生活" data-en="WoodLife">木質生活</span></a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="#collections" data-zh="系列" data-en="Collections">系列</a>
+      <a href="#craft" data-zh="工藝" data-en="Craft">工藝</a>
+      <a href="#inspiration" data-zh="靈感" data-en="Inspiration">靈感</a>
+      <a href="#custom" data-zh="訂製" data-en="Custom">訂製</a>
+      <button class="bgm-toggle" onclick="toggleBGM()" aria-label="Toggle BGM">♪ BGM</button>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+      <a href="#collections" class="btn-nav" data-zh="探索系列" data-en="Explore">探索系列</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-text fade-in">
+      <h1 data-zh="用木頭的溫度<br>溫暖<span>每個角落</span>" data-en="Warm Every Corner<br>With the <span>Touch of Wood</span>">用木頭的溫度<br>溫暖<span>每個角落</span></h1>
+      <p data-zh="每一件傢俱，都由匠人手工打磨。選用永續林木，以北歐簡約設計，為你打造經得起時間考驗的居家美學。" data-en="Every piece is handcrafted by artisans. Using sustainable timber with Scandinavian minimalist design, we create timeless home aesthetics.">每一件傢俱，都由匠人手工打磨。選用永續林木，以北歐簡約設計，為你打造經得起時間考驗的居家美學。</p>
+      <a href="#collections" class="btn-primary" data-zh="瀏覽系列" data-en="Browse Collections">瀏覽系列</a>
+    </div>
+    <div class="hero-img slide-right">
+      <img src="photos/hero.png" alt="木質生活傢俱" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="collections" id="collections">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="傢俱系列" data-en="Collections">傢俱系列</h2>
+    <p class="section-subtitle fade-in" data-zh="為每個空間注入自然的溫暖" data-en="Bringing natural warmth to every space">為每個空間注入自然的溫暖</p>
+    <div class="coll-grid">
+      <div class="coll-card fade-in">
+        <img src="photos/product.png" alt="客廳系列">
+        <div class="coll-info">
+          <h3 data-zh="客廳系列" data-en="Living Room">客廳系列</h3>
+          <div class="price">NT$12,800 <span class="price-from" data-zh="起" data-en="from">起</span></div>
+        </div>
+      </div>
+      <div class="coll-card fade-in">
+        <img src="photos/product.png" alt="臥室系列">
+        <div class="coll-info">
+          <h3 data-zh="臥室系列" data-en="Bedroom">臥室系列</h3>
+          <div class="price">NT$18,500 <span class="price-from" data-zh="起" data-en="from">起</span></div>
+        </div>
+      </div>
+      <div class="coll-card fade-in">
+        <img src="photos/product.png" alt="餐廳系列">
+        <div class="coll-info">
+          <h3 data-zh="餐廳系列" data-en="Dining">餐廳系列</h3>
+          <div class="price">NT$15,200 <span class="price-from" data-zh="起" data-en="from">起</span></div>
+        </div>
+      </div>
+      <div class="coll-card fade-in">
+        <img src="photos/product.png" alt="辦公系列">
+        <div class="coll-info">
+          <h3 data-zh="辦公系列" data-en="Office">辦公系列</h3>
+          <div class="price">NT$9,800 <span class="price-from" data-zh="起" data-en="from">起</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="craft" id="craft">
+  <div class="container">
+    <div class="craft-img slide-left">
+      <img src="photos/workshop.png" alt="工坊" loading="lazy">
+    </div>
+    <div class="craft-text slide-right">
+      <h2 data-zh="匠人精神" data-en="Craftsmanship">匠人精神</h2>
+      <p data-zh="我們的工坊位於台中大甲，擁有超過 30 年木工經驗的匠師團隊。每一件作品從選材、乾燥、榫接到上油，全程手工完成，不使用一根螺絲釘。" data-en="Our workshop is in Dajia, Taichung, with master craftsmen boasting over 30 years of experience. Every piece — from timber selection to drying, joinery, and oiling — is completed by hand, without a single screw.">我們的工坊位於台中大甲，擁有超過 30 年木工經驗的匠師團隊。每一件作品從選材、乾燥、榫接到上油，全程手工完成，不使用一根螺絲釘。</p>
+      <p data-zh="我們只使用 FSC 認證的永續林木，堅持對環境負責的製造方式。" data-en="We exclusively use FSC-certified sustainable timber, committed to environmentally responsible manufacturing.">我們只使用 FSC 認證的永續林木，堅持對環境負責的製造方式。</p>
+      <div class="craft-stats">
+        <div class="stat"><div class="num">30+</div><div class="label" data-zh="年工藝經驗" data-en="Years Experience">年工藝經驗</div></div>
+        <div class="stat"><div class="num">2,000+</div><div class="label" data-zh="件作品" data-en="Pieces Created">件作品</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label" data-zh="手工製作" data-en="Handmade">手工製作</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inspiration" id="inspiration">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="空間靈感" data-en="Inspiration Gallery">空間靈感</h2>
+    <p class="section-subtitle fade-in" data-zh="看看木質生活如何融入不同空間" data-en="See how WoodLife transforms different spaces">看看木質生活如何融入不同空間</p>
+    <div class="gallery">
+      <div class="gallery-item fade-in"><img src="photos/room.png" alt="居家空間" loading="lazy"></div>
+      <div class="gallery-item fade-in"><img src="photos/product.png" alt="傢俱特寫" loading="lazy"></div>
+      <div class="gallery-item fade-in"><img src="photos/workshop.png" alt="工坊" loading="lazy"></div>
+      <div class="gallery-item fade-in"><img src="photos/room.png" alt="空間搭配" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="custom" id="custom">
+  <div class="container">
+    <h2 class="section-title fade-in" data-zh="訂製服務" data-en="Custom Order">訂製服務</h2>
+    <p class="section-subtitle fade-in" data-zh="打造專屬於你的獨一無二" data-en="Create something uniquely yours">打造專屬於你的獨一無二</p>
+    <form class="custom-form fade-in" onsubmit="event.preventDefault();alert('感謝您的訂製需求，我們將儘快與您聯繫！')">
+      <div class="form-group">
+        <label data-zh="姓名" data-en="Name">姓名</label>
+        <input type="text" data-zh="請輸入姓名" data-en="Enter your name" placeholder="請輸入姓名" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="電子郵件" data-en="Email">電子郵件</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="傢俱類型" data-en="Furniture Type">傢俱類型</label>
+        <select>
+          <option value="" data-zh="請選擇" data-en="Select">請選擇</option>
+          <option value="table" data-zh="桌類" data-en="Table">桌類</option>
+          <option value="chair" data-zh="椅類" data-en="Chair">椅類</option>
+          <option value="cabinet" data-zh="櫃類" data-en="Cabinet">櫃類</option>
+          <option value="bed" data-zh="床架" data-en="Bed Frame">床架</option>
+          <option value="other" data-zh="其他" data-en="Other">其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-zh="需求描述" data-en="Description">需求描述</label>
+        <textarea data-zh="請描述您的訂製需求（尺寸、材質偏好、風格等）" data-en="Describe your custom needs (dimensions, material, style...)" placeholder="請描述您的訂製需求（尺寸、材質偏好、風格等）"></textarea>
+      </div>
+      <button type="submit" class="btn-submit" data-zh="送出訂製需求" data-en="Submit Custom Order">送出訂製需求</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 data-zh="木質生活 WoodLife" data-en="WoodLife">木質生活 WoodLife</h4>
+        <p data-zh="以匠人之心，造自然之美。每一件傢俱，都是時光的藝術品。" data-en="Crafted with artisan spirit, shaped by nature's beauty. Every piece is a timeless work of art.">以匠人之心，造自然之美。每一件傢俱，都是時光的藝術品。</p>
+      </div>
+      <div>
+        <h4 data-zh="快速連結" data-en="Quick Links">快速連結</h4>
+        <p><a href="#collections" data-zh="傢俱系列" data-en="Collections">傢俱系列</a></p>
+        <p><a href="#craft" data-zh="匠人精神" data-en="Craftsmanship">匠人精神</a></p>
+        <p><a href="#custom" data-zh="訂製服務" data-en="Custom Order">訂製服務</a></p>
+      </div>
+      <div>
+        <h4 data-zh="聯絡我們" data-en="Contact">聯絡我們</h4>
+        <p>hello@woodlife.tw</p>
+        <p>04-2688-1234</p>
+        <p data-zh="台中市大甲區木藝街 88 號" data-en="No. 88, Muyi St., Dajia, Taichung">台中市大甲區木藝街 88 號</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 木質生活 WoodLife. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<script>
+const bgm=document.getElementById('bgm');
+function toggleBGM(){const btn=document.querySelector('.bgm-toggle');if(bgm.paused){bgm.play();btn.classList.add('playing');btn.textContent='♪ ON'}else{bgm.pause();btn.classList.remove('playing');btn.textContent='♪ BGM'}}
+let lang='zh';
+function toggleLang(){lang=lang==='zh'?'en':'zh';document.querySelector('.lang-toggle').textContent=lang==='zh'?'EN':'中文';document.documentElement.lang=lang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.innerHTML=t})}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.slide-left,.slide-right').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+</script>
+</body>
+</html>

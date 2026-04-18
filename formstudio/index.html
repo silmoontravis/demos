@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>形塑設計 FormStudio — 室內設計公司</title>
+<meta name="description" content="形塑設計 FormStudio 是一間專注於高端室內設計的公司，以精湛工藝與獨到美學，打造卓越的生活空間。">
+<meta name="keywords" content="室內設計,FormStudio,形塑設計,建築設計,空間規劃,裝潢,高端設計">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"形塑設計 FormStudio",
+  "url":"https://formstudio.com",
+  "description":"高端室內設計公司",
+  "image":"logos/logo_final.png",
+  "address":{"@type":"PostalAddress","addressLocality":"Taipei","addressCountry":"TW"},
+  "logo":{"@type":"ImageObject","url":"logos/logo_final.png"},
+  "serviceType":"Interior Design"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--charcoal:#27272a;--gold:#c8a45e;--offwhite:#fafaf9;--dark:#18181b;--white:#ffffff;--gray:#a1a1aa;--light-gold:rgba(200,164,94,.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;background:var(--offwhite);color:var(--charcoal);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;padding:12px 32px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:all .3s;font-family:inherit;letter-spacing:1px;text-decoration:none}
+.btn-primary{background:var(--gold);color:var(--dark)}
+.btn-primary:hover{background:#b8943e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,164,94,.3)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:var(--dark)}
+.btn-dark{background:var(--charcoal);color:var(--offwhite)}
+.btn-dark:hover{background:var(--dark)}
+.btn-sm{padding:8px 20px;font-size:.8rem}
+.btn-icon{background:none;border:none;color:var(--offwhite);font-size:1.2rem;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.btn-icon:hover{background:rgba(255,255,255,.1)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(39,39,42,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,164,94,.15);padding:14px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.1rem;color:var(--offwhite);text-decoration:none;letter-spacing:2px}
+.logo img{width:36px;height:36px;border-radius:4px}
+.logo .gold{color:var(--gold)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--offwhite);font-size:.85rem;text-decoration:none;transition:color .3s;letter-spacing:1px;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--offwhite);transition:.3s}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;width:100%;background:rgba(39,39,42,.98);padding:24px;gap:20px}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;text-align:center}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:rgba(24,24,27,.6)}
+.hero-content{position:relative;z-index:1;padding:40px 20px}
+.hero-subtitle{font-size:.85rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:300;line-height:1.1;margin-bottom:24px;color:var(--offwhite);letter-spacing:2px}
+.hero h1 span{font-weight:700;color:var(--gold)}
+.hero p{font-size:1rem;color:var(--gray);margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8}
+.hero-line{width:1px;height:60px;background:var(--gold);margin:40px auto 0;opacity:.5}
+
+/* SECTIONS */
+section{padding:100px 0}
+.section-title{text-align:center;margin-bottom:60px}
+.section-title .label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:300;margin-bottom:12px;letter-spacing:2px}
+.section-title h2 span{font-weight:700;color:var(--gold)}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto;line-height:1.6}
+.gold-line{width:40px;height:1px;background:var(--gold);margin:16px auto 0}
+
+/* PORTFOLIO */
+.portfolio-section{background:var(--offwhite)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.portfolio-card{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.portfolio-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.portfolio-card:hover img{transform:scale(1.05)}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,24,27,.85) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:30px;transition:all .4s}
+.portfolio-card:hover .portfolio-overlay{background:linear-gradient(0deg,rgba(24,24,27,.9) 0%,rgba(24,24,27,.2) 100%)}
+.portfolio-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.portfolio-card h3{font-size:1.2rem;color:var(--offwhite);font-weight:400;letter-spacing:1px}
+.portfolio-card p{color:var(--gray);font-size:.8rem;margin-top:4px;opacity:0;transform:translateY(10px);transition:all .4s}
+.portfolio-card:hover p{opacity:1;transform:translateY(0)}
+
+/* PROCESS */
+.process-section{background:var(--charcoal);color:var(--offwhite)}
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:768px){.process-grid{grid-template-columns:1fr}}
+.process-img{overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.3)}
+.process-img img{width:100%;transition:transform .6s}
+.process-img:hover img{transform:scale(1.03)}
+.process-steps{display:flex;flex-direction:column;gap:32px}
+.process-step{display:flex;gap:20px;align-items:flex-start}
+.step-line{display:flex;flex-direction:column;align-items:center;gap:4px}
+.step-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);background:transparent;flex-shrink:0}
+.step-connector{width:1px;height:40px;background:rgba(200,164,94,.3)}
+.process-step:last-child .step-connector{display:none}
+.process-step h4{font-size:.95rem;font-weight:600;margin-bottom:4px;color:var(--gold);letter-spacing:1px}
+.process-step p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* MATERIALS */
+.materials-section{background:var(--offwhite)}
+.materials-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:768px){.materials-grid{grid-template-columns:1fr}}
+.materials-img{overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.materials-content h3{font-size:1.5rem;font-weight:300;margin-bottom:16px;letter-spacing:1px}
+.materials-content h3 span{font-weight:700;color:var(--gold)}
+.materials-content p{color:var(--gray);line-height:1.8;margin-bottom:20px}
+.material-tags{display:flex;flex-wrap:wrap;gap:10px}
+.material-tag{padding:8px 20px;border:1px solid rgba(39,39,42,.15);font-size:.8rem;letter-spacing:1px;color:var(--charcoal);transition:all .3s}
+.material-tag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ABOUT */
+.about-section{background:var(--charcoal);color:var(--offwhite);text-align:center}
+.about-stats{display:flex;gap:60px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.about-stat{text-align:center}
+.about-stat .num{font-size:2.5rem;font-weight:300;color:var(--gold);letter-spacing:2px}
+.about-stat .label{font-size:.8rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* CONTACT */
+.contact-section{background:var(--offwhite);text-align:center;padding:120px 20px}
+.contact-section h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:300;letter-spacing:2px;margin-bottom:16px}
+.contact-section h2 span{font-weight:700;color:var(--gold)}
+.contact-section p{color:var(--gray);margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
+.contact-info{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.contact-info div{text-align:center}
+.contact-info .icon{font-size:1.2rem;margin-bottom:8px;color:var(--gold)}
+.contact-info .label{font-size:.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase}
+.contact-info .value{font-size:.9rem;margin-top:4px;color:var(--charcoal)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:40px 0;text-align:center;color:var(--gray);font-size:.8rem;letter-spacing:1px;border-top:1px solid rgba(200,164,94,.1)}
+
+/* BGM */
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:999;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--dark);border:none;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,164,94,.4);transition:all .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 20px rgba(200,164,94,.4)}50%{box-shadow:0 4px 30px rgba(200,164,94,.7)}}
+
+/* SCROLL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.15s}.delay-2{transition-delay:.3s}.delay-3{transition-delay:.45s}.delay-4{transition-delay:.6s}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+  <a href="#" class="logo">
+    <img src="logos/logo_final.png" alt="FormStudio">
+    <span class="gold">形塑</span>設計
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#portfolio" data-zh="作品" data-en="Portfolio">作品</a></li>
+    <li><a href="#process" data-zh="流程" data-en="Process">流程</a></li>
+    <li><a href="#materials" data-zh="材質" data-en="Materials">材質</a></li>
+    <li><a href="#about" data-zh="關於" data-en="About">關於</a></li>
+    <li><a href="#contact" data-zh="聯繫" data-en="Contact">聯繫</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="btn-icon" id="langToggle" title="中/EN">🌐</button>
+    <a href="#contact" class="btn btn-primary btn-sm" data-zh="預約諮詢" data-en="Consult">預約諮詢</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"><img src="photos/hero.png" alt="FormStudio Interior Design"></div>
+<div class="hero-content">
+  <div class="hero-subtitle reveal" data-zh="室內設計 / 空間規劃 / 工藝美學" data-en="Interior Design / Space Planning / Craft Aesthetics">室內設計 / 空間規劃 / 工藝美學</div>
+  <h1 class="reveal delay-1" data-zh="以空間<span>訴說</span>生活" data-en="Spaces That <span>Tell</span> Stories">以空間<span>訴說</span>生活</h1>
+  <p class="reveal delay-2" data-zh="形塑設計致力於創造兼具美感與機能的居住空間，讓每一個角落都承載主人的故事。" data-en="FormStudio creates living spaces that blend aesthetics and function, where every corner carries the owner's story.">形塑設計致力於創造兼具美感與機能的居住空間，讓每一個角落都承載主人的故事。</p>
+  <div class="reveal delay-3">
+    <a href="#portfolio" class="btn btn-primary" data-zh="探索作品" data-en="View Portfolio">探索作品</a>
+  </div>
+  <div class="hero-line reveal delay-4"></div>
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="portfolio-section">
+<div class="container">
+  <div class="section-title reveal">
+    <div class="label" data-zh="精選作品" data-en="Selected Works">精選作品</div>
+    <h2 data-zh="空間<span>作品集</span>" data-en="Design <span>Portfolio</span>">空間<span>作品集</span></h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal delay-1">
+      <img src="photos/project.png" alt="Project 1">
+      <div class="portfolio-overlay">
+        <div class="portfolio-tag" data-zh="住宅設計" data-en="Residential">住宅設計</div>
+        <h3 data-zh="靜謐之居" data-en="Serene Dwelling">靜謐之居</h3>
+        <p data-zh="120坪 / 現代日式 / 大安區" data-en="120 ping / Modern Japanese / Da'an">120坪 / 現代日式 / 大安區</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal delay-2">
+      <img src="photos/project.png" alt="Project 2">
+      <div class="portfolio-overlay">
+        <div class="portfolio-tag" data-zh="商業空間" data-en="Commercial">商業空間</div>
+        <h3 data-zh="光影書房" data-en="Light & Shadow Library">光影書房</h3>
+        <p data-zh="200坪 / 極簡工業風 / 信義區" data-en="200 ping / Minimalist Industrial / Xinyi">200坪 / 極簡工業風 / 信義區</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal delay-3">
+      <img src="photos/project.png" alt="Project 3">
+      <div class="portfolio-overlay">
+        <div class="portfolio-tag" data-zh="豪宅設計" data-en="Luxury">豪宅設計</div>
+        <h3 data-zh="雲端居所" data-en="Cloud Residence">雲端居所</h3>
+        <p data-zh="300坪 / 新古典 / 天母" data-en="300 ping / Neo-classical / Tianmu">300坪 / 新古典 / 天母</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-section">
+<div class="container">
+  <div class="process-grid">
+    <div class="reveal-left">
+      <div class="section-title" style="text-align:left">
+        <div class="label" data-zh="設計流程" data-en="Our Process">設計流程</div>
+        <h2 data-zh="從<span>構想</span>到<span>實現</span>" data-en="From <span>Vision</span> to <span>Reality</span>">從<span>構想</span>到<span>實現</span></h2>
+        <div class="gold-line" style="margin:16px 0 0"></div>
+      </div>
+      <div class="process-steps" style="margin-top:40px">
+        <div class="process-step">
+          <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+          <div><h4 data-zh="需求訪談" data-en="Discovery">需求訪談</h4><p data-zh="深入了解您的生活方式、美學偏好與機能需求，建立設計方向。" data-en="Deep dive into your lifestyle, aesthetic preferences, and functional needs.">深入了解您的生活方式、美學偏好與機能需求，建立設計方向。</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+          <div><h4 data-zh="概念設計" data-en="Concept Design">概念設計</h4><p data-zh="提出空間佈局方案、材質搭配與色彩計畫，呈現設計概念。" data-en="Spatial layout proposals, material palettes, and color plans to present the design concept.">提出空間佈局方案、材質搭配與色彩計畫，呈現設計概念。</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-dot"></div><div class="step-connector"></div></div>
+          <div><h4 data-zh="細部設計" data-en="Detailed Design">細部設計</h4><p data-zh="繪製施工圖面、確認工法細節與建材規格，進入工程準備。" data-en="Construction drawings, specification of methods and materials, engineering preparation.">繪製施工圖面、確認工法細節與建材規格，進入工程準備。</p></div>
+        </div>
+        <div class="process-step">
+          <div class="step-line"><div class="step-dot"></div></div>
+          <div><h4 data-zh="工程監造" data-en="Construction">工程監造</h4><p data-zh="全程品質監控，確保每一個細節都符合設計標準與業主期待。" data-en="Full quality control, ensuring every detail meets design standards and owner expectations.">全程品質監控，確保每一個細節都符合設計標準與業主期待。</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="process-img reveal-right"><img src="photos/blueprint.png" alt="Design Blueprint"></div>
+  </div>
+</div>
+</section>
+
+<!-- MATERIALS -->
+<section id="materials" class="materials-section">
+<div class="container">
+  <div class="materials-grid">
+    <div class="materials-img reveal-left"><img src="photos/detail.png" alt="Material Details"></div>
+    <div class="reveal-right">
+      <div class="materials-content">
+        <h3 data-zh="嚴選<span>材質</span>" data-en="Premium <span>Materials</span>">嚴選<span>材質</span></h3>
+        <p data-zh="我們堅持使用最高品質的建材與飾材。從義大利大理石到日本職人木工，每一種材質都經過嚴格篩選，確保耐久性與美感兼具。細節，是我們最在意的事。" data-en="We insist on using only the highest quality construction and decorative materials. From Italian marble to Japanese artisan woodwork, every material is carefully selected for both durability and beauty. Details are what we care about most.">我們堅持使用最高品質的建材與飾材。從義大利大理石到日本職人木工，每一種材質都經過嚴格篩選，確保耐久性與美感兼具。細節，是我們最在意的事。</p>
+        <div class="material-tags">
+          <span class="material-tag" data-zh="義大利大理石" data-en="Italian Marble">義大利大理石</span>
+          <span class="material-tag" data-zh="橡木實木" data-en="Solid Oak">橡木實木</span>
+          <span class="material-tag" data-zh="手工磁磚" data-en="Handmade Tile">手工磁磚</span>
+          <span class="material-tag" data-zh="黃銅五金" data-en="Brass Hardware">黃銅五金</span>
+          <span class="material-tag" data-zh="亞麻布藝" data-en="Linen Fabric">亞麻布藝</span>
+          <span class="material-tag" data-zh="水磨石" data-en="Terrazzo">水磨石</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+<div class="container reveal">
+  <div class="section-title">
+    <div class="label" data-zh="關於我們" data-en="About Us">關於我們</div>
+    <h2 data-zh="形塑，不只是<span>設計</span>" data-en="FormStudio, Beyond <span>Design</span>">形塑，不只是<span>設計</span></h2>
+    <div class="gold-line"></div>
+  </div>
+  <p style="max-width:700px;margin:0 auto;color:var(--gray);line-height:2;text-align:center" data-zh="形塑設計成立於 2015 年，由建築師 陳立方 創辦。我們相信好的空間設計不僅是視覺的享受，更是生活品質的提升。十年來，我們完成了超過 200 個設計案，服務範圍涵蓋住宅、商業空間、辦公室與豪宅。" data-en="Founded in 2015 by architect Fang Chen, FormStudio believes great spatial design is not just visual pleasure but an elevation of life quality. Over ten years, we have completed 200+ projects spanning residential, commercial, office, and luxury spaces.">形塑設計成立於 2015 年，由建築師 陳立方 創辦。我們相信好的空間設計不僅是視覺的享受，更是生活品質的提升。十年來，我們完成了超過 200 個設計案，服務範圍涵蓋住宅、商業空間、辦公室與豪宅。</p>
+  <div class="about-stats">
+    <div class="about-stat">
+      <div class="num">200+</div>
+      <div class="label" data-zh="完成專案" data-en="Projects">完成專案</div>
+    </div>
+    <div class="about-stat">
+      <div class="num">10</div>
+      <div class="label" data-zh="年經驗" data-en="Years">年經驗</div>
+    </div>
+    <div class="about-stat">
+      <div class="num">15</div>
+      <div class="label" data-zh="設計師" data-en="Designers">設計師</div>
+    </div>
+    <div class="about-stat">
+      <div class="num">8</div>
+      <div class="label" data-zh="國際獎項" data-en="Awards">國際獎項</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+<div class="container reveal">
+  <h2 data-zh="開啟您的<span>空間旅程</span>" data-en="Begin Your <span>Space Journey</span>">開啟您的<span>空間旅程</span></h2>
+  <p data-zh="歡迎預約免費諮詢，讓我們聆聽您對理想空間的想像" data-en="Book a free consultation and let us listen to your vision of the ideal space">歡迎預約免費諮詢，讓我們聆聽您對理想空間的想像</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+    <a href="#" class="btn btn-primary" data-zh="預約諮詢" data-en="Book Consultation">預約諮詢</a>
+    <a href="#" class="btn btn-outline" data-zh="下載作品集" data-en="Download Portfolio">下載作品集</a>
+  </div>
+  <div class="contact-info">
+    <div>
+      <div class="icon">📍</div>
+      <div class="label" data-zh="工作室" data-en="Studio">工作室</div>
+      <div class="value" data-zh="台北市大安區敦化南路一段 168 號 5F" data-en="5F, No.168, Sec.1, Dunhua S. Rd, Da'an, Taipei">台北市大安區敦化南路一段 168 號 5F</div>
+    </div>
+    <div>
+      <div class="icon">✉</div>
+      <div class="label">Email</div>
+      <div class="value">hello@formstudio.com</div>
+    </div>
+    <div>
+      <div class="icon">📞</div>
+      <div class="label" data-zh="電話" data-en="Phone">電話</div>
+      <div class="value">(02) 2700-8888</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+  <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:12px">
+    <img src="logos/logo_final.png" alt="Logo" style="width:28px;height:28px;border-radius:4px">
+    <span style="font-weight:600;color:var(--gold);letter-spacing:2px">形塑設計 FormStudio</span>
+  </div>
+  <p>© 2026 FormStudio. All rights reserved.</p>
+</div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.textContent='♫';bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.textContent='⏸';bgmBtn.classList.add('playing')}
+  bgmPlaying=!bgmPlaying;
+});
+let lang='zh';
+document.getElementById('langToggle').addEventListener('click',()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+});
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
