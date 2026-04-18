@@ -97,21 +97,22 @@
       <span class="blog-label">BLOG</span>
     </a>
     <div class="blog-nav-links">
-      <a href="../../#services">服務</a>
-      <a href="../../#portfolio">作品</a>
-      <a href="../../#contact">聯繫</a>
+      <a href="../../#services"><span data-zh="服務" data-en="Services">服務</span></a>
+      <a href="../../#portfolio"><span data-zh="作品" data-en="Portfolio">作品</span></a>
+      <a href="../../#contact"><span data-zh="聯繫" data-en="Contact">聯繫</span></a>
+      <button onclick="toggleLang()" style="background:var(--hey-blue,#2563eb);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:14px;font-weight:600;margin-left:12px;white-space:nowrap;" id="langToggleBtn">EN/中</button>
     </div>
   </div>
 </nav>
 
 <header class="article-header">
   <div class="blog-container">
-    <span class="category">SEO</span>
-    <h1>自動化 SEO 是什麼？每日關鍵字報告怎麼做？</h1>
+    <span class="category"><span data-zh="SEO" data-en="SEO">SEO</span></span>
+    <h1><span data-zh="自動化 SEO 是什麼？每日關鍵字報告怎麼做？" data-en="What Is Automated SEO? How to Create Daily Keyword Reports?">自動化 SEO 是什麼？每日關鍵字報告怎麼做？</span></h1>
     <div class="article-meta">
       <span>Travis Chen</span>
       <span>2026-04-18</span>
-      <span>8 分鐘閱讀</span>
+      <span><span data-zh="8 分鐘閱讀" data-en="8 min read">8 分鐘閱讀</span></span>
     </div>
   </div>
 </header>
@@ -120,119 +121,131 @@
 
 <article class="article-body">
 
-<p>做網站不做 SEO，就像開店不掛招牌。但大部分企業的 SEO 做法是這樣的：花錢請 SEO 顧問、每個月一份 PDF 報告、看不懂的數據圖表、然後等三個月「看看有沒有效果」。</p>
+<p><span data-zh="做網站不做 SEO，就像開店不掛招牌。但大部分企業的 SEO 做法是這樣的：花錢請 SEO 顧問、每個月一份 PDF 報告、看不懂的數據圖表、然後等三個月「看看有沒有效果」。" data-en="Building a website without SEO is like opening a store without a sign. But most companies handle SEO like this: hire an SEO consultant, get a monthly PDF report with incomprehensible charts, then wait three months to see if it works.">做網站不做 SEO，就像開店不掛招牌。但大部分企業的 SEO 做法是這樣的：花錢請 SEO 顧問、每個月一份 PDF 報告、看不懂的數據圖表、然後等三個月「看看有沒有效果」。</p>
 
-<p>在 <strong>HEY!BOSS 銀月數位顧問</strong>，我們認為這種做法已經過時了。SEO 應該是<strong>自動化的、即時的、可量化的</strong>。這篇文章完整解析我們的自動化 SEO 系統。</p>
+<p><span data-zh="在 HEY!BOSS 銀月數位顧問，我們認為這種做法已經過時了。SEO 應該是自動化的、即時的、可量化的。這篇文章完整解析我們的自動化 SEO 系統。" data-en="At HEY!BOSS SilverMoon Digital Consulting, we believe this approach is outdated. SEO should be automated, real-time, and measurable. This article fully explains our automated SEO system.">在 <strong>HEY!BOSS 銀月數位顧問</strong>，我們認為這種做法已經過時了。SEO 應該是<strong>自動化的、即時的、可量化的</strong>。這篇文章完整解析我們的自動化 SEO 系統。</p>
 
-<h2>一、手動 SEO 為什麼已經過時？</h2>
+<h2><span data-zh="一、手動 SEO 為什麼已經過時？" data-en="1. Why Is Manual SEO Outdated?">一、手動 SEO 為什麼已經過時？</span></h2>
 
-<p>傳統的 SEO 工作流程充滿了人工操作：</p>
-
-<ul>
-<li><strong>手動查排名</strong> — 每天打開 Search Console 看數據，或用第三方工具查關鍵字排名</li>
-<li><strong>手動寫報告</strong> — 每月整理一份 Excel 或 PDF，寄給客戶</li>
-<li><strong>手動改 meta tags</strong> — 發現某個頁面 CTR 低，手動修改 title 和 description</li>
-<li><strong>手動提交 sitemap</strong> — 網站更新後，要記得去 Search Console 重新提交</li>
-</ul>
-
-<p>這些工作的問題不是做不到，而是<strong>太慢</strong>。排名掉了三天才發現、競爭對手搶走了你的關鍵字一週才知道、新頁面上線了忘記提交 sitemap 導致一個月都沒被索引。</p>
-
-<p>每一個「手動」環節，都是可能出錯、可能遺漏的風險點。</p>
-
-<h2>二、HEY!BOSS 的自動化 SEO 系統架構</h2>
-
-<p>我們的自動化 SEO 系統由四個核心元件組成：</p>
-
-<h3>1. Search Console API 資料擷取</h3>
-
-<p>透過 Google Search Console API，我們自動擷取每個網站的搜尋表現數據：曝光次數、點擊次數、平均排名、CTR（點擊率）。這些數據每天自動更新，不需要任何人工操作。</p>
-
-<h3>2. Cloud Function 資料分析</h3>
-
-<p>原始數據本身沒有意義，需要分析才有價值。我們的 Cloud Function 每天自動執行以下分析：</p>
+<p><span data-zh="傳統的 SEO 工作流程充滿了人工操作：" data-en="Traditional SEO workflows are full of manual operations:">傳統的 SEO 工作流程充滿了人工操作：</span></p>
 
 <ul>
-<li><strong>排名變化偵測</strong> — 哪些關鍵字排名上升了？哪些下滑了？下滑幅度超過 5 名的會觸發警報</li>
-<li><strong>CTR 異常偵測</strong> — 排名在前 5 但 CTR 低於行業平均，可能是 title/description 需要優化</li>
-<li><strong>新機會發現</strong> — 排名在 6-20 名的關鍵字，是最有機會衝到第一頁的目標</li>
-<li><strong>競爭分析</strong> — 追蹤核心關鍵字的排名趨勢，發現競爭對手的動態</li>
+<li><span data-zh="手動查排名 — 每天打開 Search Console 看數據，或用第三方工具查關鍵字排名" data-en="Manual Rank Checking — Opening Search Console daily or using third-party tools to check keyword rankings"><strong>手動查排名</strong> — 每天打開 Search Console 看數據，或用第三方工具查關鍵字排名</span></li>
+<li><span data-zh="手動寫報告 — 每月整理一份 Excel 或 PDF，寄給客戶" data-en="Manual Report Writing — Compiling a monthly Excel or PDF report for clients"><strong>手動寫報告</strong> — 每月整理一份 Excel 或 PDF，寄給客戶</span></li>
+<li><span data-zh="手動改 meta tags — 發現某個頁面 CTR 低，手動修改 title 和 description" data-en="Manual Meta Tag Edits — Finding a page with low CTR, manually editing title and description"><strong>手動改 meta tags</strong> — 發現某個頁面 CTR 低，手動修改 title 和 description</span></li>
+<li><span data-zh="手動提交 sitemap — 網站更新後，要記得去 Search Console 重新提交" data-en="Manual Sitemap Submission — Remembering to resubmit to Search Console after site updates"><strong>手動提交 sitemap</strong> — 網站更新後，要記得去 Search Console 重新提交</span></li>
 </ul>
 
-<h3>3. Telegram 每日推播</h3>
+<p><span data-zh="這些工作的問題不是做不到，而是太慢。排名掉了三天才發現、競爭對手搶走了你的關鍵字一週才知道、新頁面上線了忘記提交 sitemap 導致一個月都沒被索引。" data-en="The problem with these tasks is not that they cannot be done, but that they are too slow. Rankings drop for three days before you notice, competitors steal your keywords for a week before you know, new pages go live but you forget to submit the sitemap so they are not indexed for a month.">這些工作的問題不是做不到，而是<strong>太慢</strong>。排名掉了三天才發現、競爭對手搶走了你的關鍵字一週才知道、新頁面上線了忘記提交 sitemap 導致一個月都沒被索引。</p>
 
-<p>分析完的報告不是一份看不完的 PDF，而是一則<strong>精簡的 Telegram 訊息</strong>，每天早上自動推送：</p>
+<p><span data-zh="每一個「手動」環節，都是可能出錯、可能遺漏的風險點。" data-en="Every manual step is a risk point that can go wrong or be forgotten.">每一個「手動」環節，都是可能出錯、可能遺漏的風險點。</span></p>
+
+<h2><span data-zh="二、HEY!BOSS 的自動化 SEO 系統架構" data-en="2. HEY!BOSS Automated SEO System Architecture">二、HEY!BOSS 的自動化 SEO 系統架構</span></h2>
+
+<p><span data-zh="我們的自動化 SEO 系統由四個核心元件組成：" data-en="Our automated SEO system consists of four core components:">我們的自動化 SEO 系統由四個核心元件組成：</span></p>
+
+<h3><span data-zh="1. Search Console API 資料擷取" data-en="1. Search Console API Data Extraction">1. Search Console API 資料擷取</span></h3>
+
+<p><span data-zh="透過 Google Search Console API，我們自動擷取每個網站的搜尋表現數據：曝光次數、點擊次數、平均排名、CTR（點擊率）。這些數據每天自動更新，不需要任何人工操作。" data-en="Through Google Search Console API, we automatically extract search performance data for each website: impressions, clicks, average position, CTR. This data updates daily with zero manual intervention.">透過 Google Search Console API，我們自動擷取每個網站的搜尋表現數據：曝光次數、點擊次數、平均排名、CTR（點擊率）。這些數據每天自動更新，不需要任何人工操作。</p>
+
+<h3><span data-zh="2. Cloud Function 資料分析" data-en="2. Cloud Function Data Analysis">2. Cloud Function 資料分析</span></h3>
+
+<p><span data-zh="原始數據本身沒有意義，需要分析才有價值。我們的 Cloud Function 每天自動執行以下分析：" data-en="Raw data alone is meaningless — it needs analysis to have value. Our Cloud Function automatically performs the following analysis daily:">原始數據本身沒有意義，需要分析才有價值。我們的 Cloud Function 每天自動執行以下分析：</p>
 
 <ul>
-<li>今日排名異動摘要（上升/下滑最多的前 5 個關鍵字）</li>
-<li>需要注意的 CTR 異常頁面</li>
-<li>新進入排名的關鍵字</li>
-<li>本週 vs 上週的整體曝光/點擊趨勢</li>
+<li><span data-zh="排名變化偵測 — 哪些關鍵字排名上升了？哪些下滑了？下滑幅度超過 5 名的會觸發警報" data-en="Ranking Change Detection — Which keywords rose? Which dropped? Drops of 5+ positions trigger alerts"><strong>排名變化偵測</strong> — 哪些關鍵字排名上升了？哪些下滑了？下滑幅度超過 5 名的會觸發警報</span></li>
+<li><span data-zh="CTR 異常偵測 — 排名在前 5 但 CTR 低於行業平均，可能是 title/description 需要優化" data-en="CTR Anomaly Detection — Ranking in top 5 but CTR below industry average; title/description may need optimization"><strong>CTR 異常偵測</strong> — 排名在前 5 但 CTR 低於行業平均，可能是 title/description 需要優化</span></li>
+<li><span data-zh="新機會發現 — 排名在 6-20 名的關鍵字，是最有機會衝到第一頁的目標" data-en="New Opportunity Discovery — Keywords ranked 6-20, best candidates to push to page one"><strong>新機會發現</strong> — 排名在 6-20 名的關鍵字，是最有機會衝到第一頁的目標</span></li>
+<li><span data-zh="競爭分析 — 追蹤核心關鍵字的排名趨勢，發現競爭對手的動態" data-en="Competitive Analysis — Track core keyword ranking trends, discover competitor movements"><strong>競爭分析</strong> — 追蹤核心關鍵字的排名趨勢，發現競爭對手的動態</span></li>
 </ul>
 
-<p>打開手機，30 秒看完 SEO 狀況。不用登入任何系統，不用等月報。</p>
+<h3><span data-zh="3. Telegram 每日推播" data-en="3. Telegram Daily Push Notifications">3. Telegram 每日推播</span></h3>
 
-<h3>4. Meta Tags 自動調整建議</h3>
-
-<p>最強的部分是<strong>自動優化</strong>。當系統偵測到某個頁面排名在前 5 但 CTR 低於預期，AI 會自動生成新的 title 和 meta description 建議，並推送到 Telegram 等待確認。確認後自動更新，下一次 Google 爬取時就會生效。</p>
-
-<p>這個循環是持續的：擷取數據 → 分析 → 優化 → 擷取新數據 → 再分析 → 再優化。<strong>SEO 不再是一次性的工作，而是一個永不停歇的自動化循環。</strong></p>
-
-<h2>三、結構化資料：讓搜尋引擎「讀懂」你的網站</h2>
-
-<p>自動化 SEO 不只是追蹤排名，更重要的是讓搜尋引擎正確理解你的網站內容。這就是<strong>結構化資料（Structured Data）</strong>的作用。</p>
-
-<p>HEY!BOSS 建置的每個網站都內建以下 JSON-LD Schema：</p>
+<p><span data-zh="分析完的報告不是一份看不完的 PDF，而是一則精簡的 Telegram 訊息，每天早上自動推送：" data-en="The analysis report is not an endless PDF, but a concise Telegram message auto-pushed every morning:">分析完的報告不是一份看不完的 PDF，而是一則<strong>精簡的 Telegram 訊息</strong>，每天早上自動推送：</p>
 
 <ul>
-<li><strong>Organization</strong> — 公司名稱、Logo、聯絡資訊</li>
-<li><strong>Article</strong> — 文章標題、作者、發布日期、字數</li>
-<li><strong>FAQPage</strong> — 常見問題和答案，可直接在搜尋結果中展示</li>
-<li><strong>LocalBusiness</strong> — 實體商家的地址、營業時間、評價</li>
-<li><strong>Product</strong> — 產品名稱、價格、庫存狀態</li>
+<li><span data-zh="今日排名異動摘要（上升/下滑最多的前 5 個關鍵字）" data-en="Today's ranking changes summary (top 5 keywords with biggest rises/drops)">今日排名異動摘要（上升/下滑最多的前 5 個關鍵字）</span></li>
+<li><span data-zh="需要注意的 CTR 異常頁面" data-en="Pages with CTR anomalies requiring attention">需要注意的 CTR 異常頁面</span></li>
+<li><span data-zh="新進入排名的關鍵字" data-en="Newly ranked keywords">新進入排名的關鍵字</span></li>
+<li><span data-zh="本週 vs 上週的整體曝光/點擊趨勢" data-en="This week vs last week overall impression/click trends">本週 vs 上週的整體曝光/點擊趨勢</span></li>
 </ul>
 
-<p>結構化資料不只幫助傳統 SEO，更是 <strong>GEO（Generative Engine Optimization）</strong>的基礎。</p>
+<p><span data-zh="打開手機，30 秒看完 SEO 狀況。不用登入任何系統，不用等月報。" data-en="Open your phone, 30 seconds to review SEO status. No system logins, no waiting for monthly reports.">打開手機，30 秒看完 SEO 狀況。不用登入任何系統，不用等月報。</span></p>
 
-<h2>四、GEO：AI 搜尋時代的 SEO</h2>
+<h3><span data-zh="4. Meta Tags 自動調整建議" data-en="4. Auto Meta Tag Adjustment Suggestions">4. Meta Tags 自動調整建議</span></h3>
 
-<p>2026 年，搜尋已經不只是 Google 了。越來越多人用 ChatGPT、Perplexity、Google AI Overview 來搜尋資訊。這些 AI 搜尋引擎在回答問題時，會引用和推薦網站內容。</p>
+<p><span data-zh="最強的部分是自動優化。當系統偵測到某個頁面排名在前 5 但 CTR 低於預期，AI 會自動生成新的 title 和 meta description 建議，並推送到 Telegram 等待確認。確認後自動更新，下一次 Google 爬取時就會生效。" data-en="The most powerful part is auto-optimization. When the system detects a page ranking in the top 5 with lower-than-expected CTR, AI auto-generates new title and meta description suggestions, pushed to Telegram for confirmation. Once confirmed, it auto-updates and takes effect on the next Google crawl.">最強的部分是<strong>自動優化</strong>。當系統偵測到某個頁面排名在前 5 但 CTR 低於預期，AI 會自動生成新的 title 和 meta description 建議，並推送到 Telegram 等待確認。確認後自動更新，下一次 Google 爬取時就會生效。</p>
 
-<p><strong>GEO（Generative Engine Optimization）</strong>就是針對這些 AI 搜尋引擎的優化策略：</p>
+<p><span data-zh="這個循環是持續的：擷取數據 → 分析 → 優化 → 擷取新數據 → 再分析 → 再優化。SEO 不再是一次性的工作，而是一個永不停歇的自動化循環。" data-en="This cycle is continuous: extract data → analyze → optimize → extract new data → re-analyze → re-optimize. SEO is no longer a one-time task but a never-ending automated loop.">這個循環是持續的：擷取數據 → 分析 → 優化 → 擷取新數據 → 再分析 → 再優化。<strong>SEO 不再是一次性的工作，而是一個永不停歇的自動化循環。</strong></p>
+
+<h2><span data-zh="三、結構化資料：讓搜尋引擎「讀懂」你的網站" data-en="3. Structured Data: Helping Search Engines Understand Your Website">三、結構化資料：讓搜尋引擎「讀懂」你的網站</span></h2>
+
+<p><span data-zh="自動化 SEO 不只是追蹤排名，更重要的是讓搜尋引擎正確理解你的網站內容。這就是結構化資料（Structured Data）的作用。" data-en="Automated SEO is not just about tracking rankings — more importantly, it helps search engines correctly understand your website content. This is the role of Structured Data.">自動化 SEO 不只是追蹤排名，更重要的是讓搜尋引擎正確理解你的網站內容。這就是<strong>結構化資料（Structured Data）</strong>的作用。</p>
+
+<p><span data-zh="HEY!BOSS 建置的每個網站都內建以下 JSON-LD Schema：" data-en="Every website built by HEY!BOSS includes the following JSON-LD Schema:">HEY!BOSS 建置的每個網站都內建以下 JSON-LD Schema：</span></p>
 
 <ul>
-<li><strong>清晰的內容結構</strong> — H2/H3 標題層級分明，AI 更容易擷取和引用</li>
-<li><strong>FAQ Schema</strong> — 問答格式的結構化資料，AI 搜尋引擎的最愛</li>
-<li><strong>權威性內容</strong> — 有數據、有案例、有作者資訊的內容，被引用的機率更高</li>
-<li><strong>語義完整性</strong> — 不只堆關鍵字，而是完整回答使用者的問題</li>
+<li><span data-zh="Organization — 公司名稱、Logo、聯絡資訊" data-en="Organization — Company name, Logo, contact information"><strong>Organization</strong> — 公司名稱、Logo、聯絡資訊</span></li>
+<li><span data-zh="Article — 文章標題、作者、發布日期、字數" data-en="Article — Article title, author, publication date, word count"><strong>Article</strong> — 文章標題、作者、發布日期、字數</span></li>
+<li><span data-zh="FAQPage — 常見問題和答案，可直接在搜尋結果中展示" data-en="FAQPage — FAQs that can display directly in search results"><strong>FAQPage</strong> — 常見問題和答案，可直接在搜尋結果中展示</span></li>
+<li><span data-zh="LocalBusiness — 實體商家的地址、營業時間、評價" data-en="LocalBusiness — Physical store address, business hours, reviews"><strong>LocalBusiness</strong> — 實體商家的地址、營業時間、評價</span></li>
+<li><span data-zh="Product — 產品名稱、價格、庫存狀態" data-en="Product — Product name, price, stock status"><strong>Product</strong> — 產品名稱、價格、庫存狀態</span></li>
 </ul>
 
-<p>HEY!BOSS 的每篇 Blog 文章（包括你正在閱讀的這一篇）都同時針對 SEO 和 GEO 優化。我們不只要在 Google 排名好，還要在 AI 搜尋引擎中被引用和推薦。</p>
+<p><span data-zh="結構化資料不只幫助傳統 SEO，更是 GEO（Generative Engine Optimization）的基礎。" data-en="Structured data helps not only traditional SEO but is also the foundation of GEO (Generative Engine Optimization).">結構化資料不只幫助傳統 SEO，更是 <strong>GEO（Generative Engine Optimization）</strong>的基礎。</span></p>
 
-<h2>五、自動化 SEO 的實際效果</h2>
+<h2><span data-zh="四、GEO：AI 搜尋時代的 SEO" data-en="4. GEO: SEO for the AI Search Era">四、GEO：AI 搜尋時代的 SEO</span></h2>
 
-<p>自動化 SEO 不是理論，是我們每天在執行的實戰系統。以 HEY!BOSS 為例：</p>
+<p><span data-zh="2026 年，搜尋已經不只是 Google 了。越來越多人用 ChatGPT、Perplexity、Google AI Overview 來搜尋資訊。這些 AI 搜尋引擎在回答問題時，會引用和推薦網站內容。" data-en="In 2026, search is no longer just Google. More people use ChatGPT, Perplexity, and Google AI Overview to search. These AI search engines cite and recommend website content when answering questions.">2026 年，搜尋已經不只是 Google 了。越來越多人用 ChatGPT、Perplexity、Google AI Overview 來搜尋資訊。這些 AI 搜尋引擎在回答問題時，會引用和推薦網站內容。</p>
+
+<p><span data-zh="GEO（Generative Engine Optimization）就是針對這些 AI 搜尋引擎的優化策略：" data-en="GEO (Generative Engine Optimization) is the optimization strategy for these AI search engines:"><strong>GEO（Generative Engine Optimization）</strong>就是針對這些 AI 搜尋引擎的優化策略：</span></p>
 
 <ul>
-<li><strong>每日報告</strong> — 每天早上 9 點自動推送排名異動到 Telegram</li>
-<li><strong>即時警報</strong> — 排名大幅下滑時 5 分鐘內收到通知</li>
-<li><strong>持續優化</strong> — 根據 CTR 數據持續調整 meta tags，CTR 平均提升 15-25%</li>
-<li><strong>零人力成本</strong> — 整個系統全自動運行，不需要 SEO 專員每天操作</li>
+<li><span data-zh="清晰的內容結構 — H2/H3 標題層級分明，AI 更容易擷取和引用" data-en="Clear Content Structure — Well-organized H2/H3 headings make it easier for AI to extract and cite"><strong>清晰的內容結構</strong> — H2/H3 標題層級分明，AI 更容易擷取和引用</span></li>
+<li><span data-zh="FAQ Schema — 問答格式的結構化資料，AI 搜尋引擎的最愛" data-en="FAQ Schema — Q&A structured data, AI search engines' favorite"><strong>FAQ Schema</strong> — 問答格式的結構化資料，AI 搜尋引擎的最愛</span></li>
+<li><span data-zh="權威性內容 — 有數據、有案例、有作者資訊的內容，被引用的機率更高" data-en="Authoritative Content — Content with data, case studies, and author info has higher citation probability"><strong>權威性內容</strong> — 有數據、有案例、有作者資訊的內容，被引用的機率更高</span></li>
+<li><span data-zh="語義完整性 — 不只堆關鍵字，而是完整回答使用者的問題" data-en="Semantic Completeness — Not just keyword stuffing, but fully answering user questions"><strong>語義完整性</strong> — 不只堆關鍵字，而是完整回答使用者的問題</span></li>
 </ul>
 
-<blockquote>「SEO 最大的敵人不是演算法變動，而是你忘了去看 Search Console。自動化 SEO 解決的就是這個問題。」</blockquote>
+<p><span data-zh="HEY!BOSS 的每篇 Blog 文章（包括你正在閱讀的這一篇）都同時針對 SEO 和 GEO 優化。我們不只要在 Google 排名好，還要在 AI 搜尋引擎中被引用和推薦。" data-en="Every HEY!BOSS blog post (including the one you are reading) is optimized for both SEO and GEO. We aim not only to rank well on Google but also to be cited and recommended by AI search engines.">HEY!BOSS 的每篇 Blog 文章（包括你正在閱讀的這一篇）都同時針對 SEO 和 GEO 優化。我們不只要在 Google 排名好，還要在 AI 搜尋引擎中被引用和推薦。</p>
+
+<h2><span data-zh="五、自動化 SEO 的實際效果" data-en="5. Real Results of Automated SEO">五、自動化 SEO 的實際效果</span></h2>
+
+<p><span data-zh="自動化 SEO 不是理論，是我們每天在執行的實戰系統。以 HEY!BOSS 為例：" data-en="Automated SEO is not theory — it is a live system we run daily. HEY!BOSS as an example:">自動化 SEO 不是理論，是我們每天在執行的實戰系統。以 HEY!BOSS 為例：</span></p>
+
+<ul>
+<li><span data-zh="每日報告 — 每天早上 9 點自動推送排名異動到 Telegram" data-en="Daily Reports — Auto-push ranking changes to Telegram at 9 AM every day"><strong>每日報告</strong> — 每天早上 9 點自動推送排名異動到 Telegram</span></li>
+<li><span data-zh="即時警報 — 排名大幅下滑時 5 分鐘內收到通知" data-en="Real-time Alerts — Notified within 5 minutes when rankings drop significantly"><strong>即時警報</strong> — 排名大幅下滑時 5 分鐘內收到通知</span></li>
+<li><span data-zh="持續優化 — 根據 CTR 數據持續調整 meta tags，CTR 平均提升 15-25%" data-en="Continuous Optimization — Ongoing meta tag adjustments based on CTR data, average CTR improvement 15-25%"><strong>持續優化</strong> — 根據 CTR 數據持續調整 meta tags，CTR 平均提升 15-25%</span></li>
+<li><span data-zh="零人力成本 — 整個系統全自動運行，不需要 SEO 專員每天操作" data-en="Zero Manpower Cost — The entire system runs fully automated, no SEO specialist needed for daily operations"><strong>零人力成本</strong> — 整個系統全自動運行，不需要 SEO 專員每天操作</span></li>
+</ul>
+
+<blockquote><span data-zh="「SEO 最大的敵人不是演算法變動，而是你忘了去看 Search Console。自動化 SEO 解決的就是這個問題。」" data-en="SEO's biggest enemy is not algorithm changes — it is forgetting to check Search Console. Automated SEO solves exactly this problem.">「SEO 最大的敵人不是演算法變動，而是你忘了去看 Search Console。自動化 SEO 解決的就是這個問題。」</span></blockquote>
 
 <div class="article-cta">
-  <h3>想讓你的網站 SEO 自動化運行？</h3>
-  <p>HEY!BOSS 的建站服務標配自動化 SEO 監控，從上線第一天就開始累積搜尋能量。</p>
-  <a href="../../#contact">免費諮詢</a>
+  <h3><span data-zh="想讓你的網站 SEO 自動化運行？" data-en="Want Your Website SEO to Run Automatically?">想讓你的網站 SEO 自動化運行？</span></h3>
+  <p><span data-zh="HEY!BOSS 的建站服務標配自動化 SEO 監控，從上線第一天就開始累積搜尋能量。" data-en="HEY!BOSS website building services include automated SEO monitoring as standard, building search momentum from day one.">HEY!BOSS 的建站服務標配自動化 SEO 監控，從上線第一天就開始累積搜尋能量。</span></p>
+  <a href="../../#contact"><span data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</span></a>
 </div>
 
 </article>
 
 <footer class="blog-footer">
-  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
-  <a href="../">返回 Blog</a>
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> <span data-zh="銀月數位顧問股份有限公司" data-en="SilverMoon Digital Consulting Co., Ltd.">銀月數位顧問股份有限公司</span> &copy; 2026 |
+  <a href="../"><span data-zh="返回 Blog" data-en="Back to Blog">返回 Blog</span></a>
 </footer>
 
+
+<script>
+let lang = 'zh';
+function toggleLang() {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  document.querySelectorAll('[data-zh]').forEach(function(el) {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  var btn = document.getElementById('langToggleBtn');
+  btn.textContent = lang === 'zh' ? 'EN/\u4e2d' : '\u4e2d/EN';
+}
+</script>
 </body>
 </html>

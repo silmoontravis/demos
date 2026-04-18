@@ -97,21 +97,22 @@
       <span class="blog-label">BLOG</span>
     </a>
     <div class="blog-nav-links">
-      <a href="../../#services">服務</a>
-      <a href="../../#portfolio">作品</a>
-      <a href="../../#contact">聯繫</a>
+      <a href="../../#services"><span data-zh="服務" data-en="Services">服務</span></a>
+      <a href="../../#portfolio"><span data-zh="作品" data-en="Portfolio">作品</span></a>
+      <a href="../../#contact"><span data-zh="聯繫" data-en="Contact">聯繫</span></a>
+      <button onclick="toggleLang()" style="background:var(--hey-blue,#2563eb);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:14px;font-weight:600;margin-left:12px;white-space:nowrap;" id="langToggleBtn">EN/中</button>
     </div>
   </div>
 </nav>
 
 <header class="article-header">
   <div class="blog-container">
-    <span class="category">DevOps</span>
-    <h1>CI/CD 自動部署：2 分鐘網站上線的秘密</h1>
+    <span class="category"><span data-zh="DevOps" data-en="DevOps">DevOps</span></span>
+    <h1><span data-zh="CI/CD 自動部署：2 分鐘網站上線的秘密" data-en="CI/CD Auto Deployment: The Secret to Going Live in 2 Minutes">CI/CD 自動部署：2 分鐘網站上線的秘密</span></h1>
     <div class="article-meta">
       <span>Travis Chen</span>
       <span>2026-04-18</span>
-      <span>8 分鐘閱讀</span>
+      <span><span data-zh="8 分鐘閱讀" data-en="8 min read">8 分鐘閱讀</span></span>
     </div>
   </div>
 </header>
@@ -120,122 +121,134 @@
 
 <article class="article-body">
 
-<p>你有沒有這種經驗：網站做好了，工程師說「部署需要一天」。改了一個 typo，又要等半天才能上線。更慘的是，上線之後才發現 SSL 憑證沒裝、某個頁面 404、手機版排版整個跑掉。</p>
+<p><span data-zh="你有沒有這種經驗：網站做好了，工程師說「部署需要一天」。改了一個 typo，又要等半天才能上線。更慘的是，上線之後才發現 SSL 憑證沒裝、某個頁面 404、手機版排版整個跑掉。" data-en="Have you experienced this: the website is ready, but the engineer says deployment needs a day. Fix a typo, wait another half day to go live. Worse, after launch you discover SSL is missing, a page returns 404, and mobile layout is completely broken.">你有沒有這種經驗：網站做好了，工程師說「部署需要一天」。改了一個 typo，又要等半天才能上線。更慘的是，上線之後才發現 SSL 憑證沒裝、某個頁面 404、手機版排版整個跑掉。</p>
 
-<p>這些問題的根源都一樣：<strong>手動部署</strong>。</p>
+<p><span data-zh="這些問題的根源都一樣：手動部署。" data-en="All these problems have the same root cause: manual deployment.">這些問題的根源都一樣：<strong>手動部署</strong>。</span></p>
 
-<p>在 <strong>HEY!BOSS 銀月數位顧問</strong>，我們用 CI/CD 自動部署，從程式碼推送到網站上線，<strong>只要 2 分鐘，零人工介入</strong>。這篇文章公開我們的完整技術架構。</p>
+<p><span data-zh="在 HEY!BOSS 銀月數位顧問，我們用 CI/CD 自動部署，從程式碼推送到網站上線，只要 2 分鐘，零人工介入。這篇文章公開我們的完整技術架構。" data-en="At HEY!BOSS SilverMoon Digital Consulting, we use CI/CD auto deployment — from code push to website live in just 2 minutes, zero manual intervention. This article reveals our complete technical architecture.">在 <strong>HEY!BOSS 銀月數位顧問</strong>，我們用 CI/CD 自動部署，從程式碼推送到網站上線，<strong>只要 2 分鐘，零人工介入</strong>。這篇文章公開我們的完整技術架構。</p>
 
-<h2>一、什麼是 CI/CD？</h2>
+<h2><span data-zh="一、什麼是 CI/CD？" data-en="1. What Is CI/CD?">一、什麼是 CI/CD？</span></h2>
 
-<p><strong>CI（Continuous Integration，持續整合）</strong>是指每次程式碼變更都自動進行建置和測試，確保新的程式碼不會破壞現有功能。</p>
+<p><span data-zh="CI（Continuous Integration，持續整合）是指每次程式碼變更都自動進行建置和測試，確保新的程式碼不會破壞現有功能。" data-en="CI (Continuous Integration) means every code change is automatically built and tested, ensuring new code does not break existing functionality."><strong>CI（Continuous Integration，持續整合）</strong>是指每次程式碼變更都自動進行建置和測試，確保新的程式碼不會破壞現有功能。</p>
 
-<p><strong>CD（Continuous Deployment，持續部署）</strong>是指通過測試的程式碼自動部署到生產環境，不需要人工操作。</p>
+<p><span data-zh="CD（Continuous Deployment，持續部署）是指通過測試的程式碼自動部署到生產環境，不需要人工操作。" data-en="CD (Continuous Deployment) means code that passes testing is automatically deployed to the production environment with no manual operation."><strong>CD（Continuous Deployment，持續部署）</strong>是指通過測試的程式碼自動部署到生產環境，不需要人工操作。</p>
 
-<p>兩者結合就是 <strong>CI/CD Pipeline</strong>：程式碼從開發者的電腦到使用者的瀏覽器，全程自動化、全程可追蹤、全程可重複。</p>
+<p><span data-zh="兩者結合就是 CI/CD Pipeline：程式碼從開發者的電腦到使用者的瀏覽器，全程自動化、全程可追蹤、全程可重複。" data-en="Combined, they form the CI/CD Pipeline: from developer's computer to user's browser, fully automated, fully traceable, fully repeatable.">兩者結合就是 <strong>CI/CD Pipeline</strong>：程式碼從開發者的電腦到使用者的瀏覽器，全程自動化、全程可追蹤、全程可重複。</p>
 
-<h2>二、HEY!BOSS 的 CI/CD Pipeline 完整流程</h2>
+<h2><span data-zh="二、HEY!BOSS 的 CI/CD Pipeline 完整流程" data-en="2. HEY!BOSS CI/CD Pipeline Complete Workflow">二、HEY!BOSS 的 CI/CD Pipeline 完整流程</span></h2>
 
-<p>以下是我們實際運行的 Jenkins Pipeline，每次部署都會經過這 6 個階段：</p>
+<p><span data-zh="以下是我們實際運行的 Jenkins Pipeline，每次部署都會經過這 6 個階段：" data-en="Below is our actual Jenkins Pipeline — every deployment goes through these 6 stages:">以下是我們實際運行的 Jenkins Pipeline，每次部署都會經過這 6 個階段：</span></p>
 
-<h3>Stage 1：Git Push — 觸發 Pipeline</h3>
-<p>工程師把程式碼 push 到 GitLab，GitLab 的 Webhook 自動通知 Jenkins：「有新的程式碼了，開始工作。」整個 pipeline 從這裡自動啟動，不需要任何人按任何按鈕。</p>
+<h3><span data-zh="Stage 1：Git Push — 觸發 Pipeline" data-en="Stage 1: Git Push — Trigger Pipeline">Stage 1：Git Push — 觸發 Pipeline</span></h3>
+<p><span data-zh="工程師把程式碼 push 到 GitLab，GitLab 的 Webhook 自動通知 Jenkins：「有新的程式碼了，開始工作。」整個 pipeline 從這裡自動啟動，不需要任何人按任何按鈕。" data-en="Engineers push code to GitLab, and GitLab's Webhook automatically notifies Jenkins: new code is here, start working. The entire pipeline auto-starts from here — no one needs to press any button.">工程師把程式碼 push 到 GitLab，GitLab 的 Webhook 自動通知 Jenkins：「有新的程式碼了，開始工作。」整個 pipeline 從這裡自動啟動，不需要任何人按任何按鈕。</p>
 
-<h3>Stage 2：Build — 建置專案</h3>
-<p>Jenkins 拉取最新程式碼，執行建置指令（npm build / yarn build）。如果是 Vue、React 等前端框架，這個階段會把 TypeScript 編譯成 JavaScript、壓縮 CSS、優化圖片、生成靜態檔案。</p>
+<h3><span data-zh="Stage 2：Build — 建置專案" data-en="Stage 2: Build — Build Project">Stage 2：Build — 建置專案</span></h3>
+<p><span data-zh="Jenkins 拉取最新程式碼，執行建置指令（npm build / yarn build）。如果是 Vue、React 等前端框架，這個階段會把 TypeScript 編譯成 JavaScript、壓縮 CSS、優化圖片、生成靜態檔案。" data-en="Jenkins pulls the latest code and runs build commands (npm build / yarn build). For frontend frameworks like Vue or React, this stage compiles TypeScript to JavaScript, minifies CSS, optimizes images, and generates static files.">Jenkins 拉取最新程式碼，執行建置指令（npm build / yarn build）。如果是 Vue、React 等前端框架，這個階段會把 TypeScript 編譯成 JavaScript、壓縮 CSS、優化圖片、生成靜態檔案。</p>
 
-<h3>Stage 3：Test — 自動測試</h3>
-<p>建置成功後，自動執行測試套件。包含：</p>
+<h3><span data-zh="Stage 3：Test — 自動測試" data-en="Stage 3: Test — Automated Testing">Stage 3：Test — 自動測試</span></h3>
+<p><span data-zh="建置成功後，自動執行測試套件。包含：" data-en="After successful build, test suites run automatically, including:">建置成功後，自動執行測試套件。包含：</span></p>
 <ul>
-<li><strong>單元測試</strong> — 核心功能的邏輯驗證</li>
-<li><strong>整合測試</strong> — API 呼叫和資料流的正確性</li>
-<li><strong>Playwright E2E 測試</strong> — 模擬真實使用者操作，從瀏覽器層級驗證功能</li>
+<li><span data-zh="單元測試 — 核心功能的邏輯驗證" data-en="Unit Tests — Logic verification of core features"><strong>單元測試</strong> — 核心功能的邏輯驗證</span></li>
+<li><span data-zh="整合測試 — API 呼叫和資料流的正確性" data-en="Integration Tests — Correctness of API calls and data flow"><strong>整合測試</strong> — API 呼叫和資料流的正確性</span></li>
+<li><span data-zh="Playwright E2E 測試 — 模擬真實使用者操作，從瀏覽器層級驗證功能" data-en="Playwright E2E Tests — Simulate real user actions, verify functionality at browser level"><strong>Playwright E2E 測試</strong> — 模擬真實使用者操作，從瀏覽器層級驗證功能</span></li>
 </ul>
-<p>任何測試失敗，pipeline 立即中斷，不會有有問題的程式碼進入生產環境。</p>
+<p><span data-zh="任何測試失敗，pipeline 立即中斷，不會有有問題的程式碼進入生產環境。" data-en="Any test failure immediately halts the pipeline — no problematic code enters the production environment.">任何測試失敗，pipeline 立即中斷，不會有有問題的程式碼進入生產環境。</p>
 
-<h3>Stage 4：Deploy — Docker 容器部署</h3>
-<p>測試通過後，Jenkins 自動執行部署：</p>
+<h3><span data-zh="Stage 4：Deploy — Docker 容器部署" data-en="Stage 4: Deploy — Docker Container Deployment">Stage 4：Deploy — Docker 容器部署</span></h3>
+<p><span data-zh="測試通過後，Jenkins 自動執行部署：" data-en="After tests pass, Jenkins auto-executes deployment:">測試通過後，Jenkins 自動執行部署：</span></p>
 <ul>
-<li>打包 Docker Image</li>
-<li>推送到私有 Docker Registry</li>
-<li>在生產伺服器上拉取新的 Image</li>
-<li>用 docker-compose 重啟服務</li>
+<li><span data-zh="打包 Docker Image" data-en="Build Docker Image">打包 Docker Image</span></li>
+<li><span data-zh="推送到私有 Docker Registry" data-en="Push to private Docker Registry">推送到私有 Docker Registry</span></li>
+<li><span data-zh="在生產伺服器上拉取新的 Image" data-en="Pull new Image on production server">在生產伺服器上拉取新的 Image</span></li>
+<li><span data-zh="用 docker-compose 重啟服務" data-en="Restart services with docker-compose">用 docker-compose 重啟服務</span></li>
 </ul>
-<p>Docker 容器化的好處是<strong>環境一致性</strong>。開發環境能跑的，生產環境一定也能跑。不會出現「在我電腦上是好的啊」這種問題。</p>
+<p><span data-zh="Docker 容器化的好處是環境一致性。開發環境能跑的，生產環境一定也能跑。不會出現「在我電腦上是好的啊」這種問題。" data-en="The advantage of Docker containerization is environment consistency. If it runs in development, it definitely runs in production. No more it works on my machine problems.">Docker 容器化的好處是<strong>環境一致性</strong>。開發環境能跑的，生產環境一定也能跑。不會出現「在我電腦上是好的啊」這種問題。</p>
 
-<h3>Stage 5：SSL — Let's Encrypt 自動憑證</h3>
-<p>網站部署完成後，如果是新的域名，<strong>Nginx Proxy Manager</strong> 會自動透過 Let's Encrypt 申請免費的 SSL 憑證。HTTPS 強制跳轉也是自動設定的。憑證到期前會自動續期，不需要記任何日期。</p>
+<h3><span data-zh="Stage 5：SSL — Let's Encrypt 自動憑證" data-en="Stage 5: SSL — Let's Encrypt Auto Certificates">Stage 5：SSL — Let's Encrypt 自動憑證</span></h3>
+<p><span data-zh="網站部署完成後，如果是新的域名，Nginx Proxy Manager 會自動透過 Let's Encrypt 申請免費的 SSL 憑證。HTTPS 強制跳轉也是自動設定的。憑證到期前會自動續期，不需要記任何日期。" data-en="After website deployment, for new domains, Nginx Proxy Manager automatically applies for free SSL certificates via Let's Encrypt. HTTPS forced redirect is also auto-configured. Certificates auto-renew before expiry — no dates to remember.">網站部署完成後，如果是新的域名，<strong>Nginx Proxy Manager</strong> 會自動透過 Let's Encrypt 申請免費的 SSL 憑證。HTTPS 強制跳轉也是自動設定的。憑證到期前會自動續期，不需要記任何日期。</p>
 
-<h3>Stage 6：DNS — 自動域名設定</h3>
-<p>透過 AWS Route 53 API，新的子域名會自動建立 DNS 記錄，指向正確的伺服器 IP。從域名到 HTTPS 連線，全部自動完成。</p>
+<h3><span data-zh="Stage 6：DNS — 自動域名設定" data-en="Stage 6: DNS — Auto Domain Configuration">Stage 6：DNS — 自動域名設定</span></h3>
+<p><span data-zh="透過 AWS Route 53 API，新的子域名會自動建立 DNS 記錄，指向正確的伺服器 IP。從域名到 HTTPS 連線，全部自動完成。" data-en="Via AWS Route 53 API, new subdomains automatically create DNS records pointing to the correct server IP. From domain to HTTPS connection, everything is automated.">透過 AWS Route 53 API，新的子域名會自動建立 DNS 記錄，指向正確的伺服器 IP。從域名到 HTTPS 連線，全部自動完成。</p>
 
-<h2>三、Nginx Proxy Manager：反向代理的指揮中心</h2>
+<h2><span data-zh="三、Nginx Proxy Manager：反向代理的指揮中心" data-en="3. Nginx Proxy Manager: The Reverse Proxy Command Center">三、Nginx Proxy Manager：反向代理的指揮中心</span></h2>
 
-<p>當你有數十個甚至上百個網站都部署在同一台伺服器上時，需要一個「流量指揮中心」來決定每個域名應該導向哪個 Docker Container。這就是 <strong>Nginx Proxy Manager</strong> 的角色。</p>
-
-<ul>
-<li><strong>反向代理</strong> — 根據域名自動將流量導向對應的容器</li>
-<li><strong>SSL 管理</strong> — 集中管理所有域名的 SSL 憑證</li>
-<li><strong>Access Control</strong> — 可以對特定站點設定 IP 白名單或密碼保護</li>
-<li><strong>Web UI</strong> — 圖形化介面管理所有代理規則，不用手寫 Nginx config</li>
-</ul>
-
-<p>HEY!BOSS 的 100 個品牌網站，全部透過同一個 Nginx Proxy Manager 管理。新增一個站點只要在 UI 上點幾下，或是透過 API 自動新增。</p>
-
-<h2>四、監控：部署完才是開始</h2>
-
-<p>很多公司的 DevOps 做到部署就結束了。但在 HEY!BOSS，我們認為<strong>部署完才是真正的開始</strong>。上線後的監控同樣重要：</p>
-
-<h3>Health Check 健康檢查</h3>
-<p>每 5 分鐘自動對所有網站發送 HTTP 請求，確認網站正常回應。如果連續三次失敗，立即推送 Telegram 警報，並附上錯誤訊息和伺服器狀態。</p>
-
-<h3>Cost Report 成本報告</h3>
-<p>每天自動計算 AWS 的使用成本，推送到 Telegram。當日費用超過設定的閾值會觸發警報，避免意外的費用暴增（例如被 DDoS 攻擊導致流量費用飆升）。</p>
-
-<h3>部署通知</h3>
-<p>每次 CI/CD Pipeline 完成（無論成功或失敗），都會推送 Telegram 通知，包含：部署的專案名稱、觸發者、耗時、成功/失敗狀態。如果失敗，還會附上錯誤 log 的關鍵行。</p>
-
-<h2>五、實際數據：HEY!BOSS 的部署效率</h2>
-
-<p>以下是我們實際的部署數據：</p>
+<p><span data-zh="當你有數十個甚至上百個網站都部署在同一台伺服器上時，需要一個「流量指揮中心」來決定每個域名應該導向哪個 Docker Container。這就是 Nginx Proxy Manager 的角色。" data-en="When you have dozens or even hundreds of websites on the same server, you need a traffic command center to decide which Docker Container each domain should route to. That is the role of Nginx Proxy Manager.">當你有數十個甚至上百個網站都部署在同一台伺服器上時，需要一個「流量指揮中心」來決定每個域名應該導向哪個 Docker Container。這就是 <strong>Nginx Proxy Manager</strong> 的角色。</p>
 
 <ul>
-<li><strong>平均部署時間</strong> — 1 分 47 秒（含建置、測試、部署、SSL）</li>
-<li><strong>部署成功率</strong> — 98.5%（失敗的 1.5% 全部在測試階段被攔截，沒有影響到生產環境）</li>
-<li><strong>回滾時間</strong> — 15 秒（docker-compose 切回上一個 Image）</li>
-<li><strong>SSL 申請時間</strong> — 平均 23 秒（Let's Encrypt DNS 驗證）</li>
-<li><strong>零手動介入</strong> — 從 git push 到上線，沒有任何人工步驟</li>
+<li><span data-zh="反向代理 — 根據域名自動將流量導向對應的容器" data-en="Reverse Proxy — Auto-route traffic to corresponding containers based on domain"><strong>反向代理</strong> — 根據域名自動將流量導向對應的容器</span></li>
+<li><span data-zh="SSL 管理 — 集中管理所有域名的 SSL 憑證" data-en="SSL Management — Centralized management of all domain SSL certificates"><strong>SSL 管理</strong> — 集中管理所有域名的 SSL 憑證</span></li>
+<li><span data-zh="Access Control — 可以對特定站點設定 IP 白名單或密碼保護" data-en="Access Control — Set IP whitelists or password protection for specific sites"><strong>Access Control</strong> — 可以對特定站點設定 IP 白名單或密碼保護</span></li>
+<li><span data-zh="Web UI — 圖形化介面管理所有代理規則，不用手寫 Nginx config" data-en="Web UI — Visual interface to manage all proxy rules, no hand-writing Nginx config"><strong>Web UI</strong> — 圖形化介面管理所有代理規則，不用手寫 Nginx config</span></li>
 </ul>
 
-<p>這不是實驗室的理想數據，是我們每天實際在跑的生產環境數據。</p>
+<p><span data-zh="HEY!BOSS 的 100 個品牌網站，全部透過同一個 Nginx Proxy Manager 管理。新增一個站點只要在 UI 上點幾下，或是透過 API 自動新增。" data-en="All 100 HEY!BOSS brand websites are managed through the same Nginx Proxy Manager. Adding a new site takes just a few clicks in the UI or auto-adds via API.">HEY!BOSS 的 100 個品牌網站，全部透過同一個 Nginx Proxy Manager 管理。新增一個站點只要在 UI 上點幾下，或是透過 API 自動新增。</p>
 
-<blockquote>「部署應該像呼吸一樣自然。你不會每次呼吸都要手動操作肺部，部署也不應該。CI/CD 讓部署變成一個不需要思考的動作。」</blockquote>
+<h2><span data-zh="四、監控：部署完才是開始" data-en="4. Monitoring: Deployment Is Just the Beginning">四、監控：部署完才是開始</span></h2>
 
-<h2>六、為什麼這很重要？</h2>
+<p><span data-zh="很多公司的 DevOps 做到部署就結束了。但在 HEY!BOSS，我們認為部署完才是真正的開始。上線後的監控同樣重要：" data-en="Many companies' DevOps ends at deployment. But at HEY!BOSS, we believe deployment is just the real beginning. Post-launch monitoring is equally important:">很多公司的 DevOps 做到部署就結束了。但在 HEY!BOSS，我們認為<strong>部署完才是真正的開始</strong>。上線後的監控同樣重要：</p>
 
-<p>CI/CD 不只是技術面的提升，更是<strong>商業面的競爭優勢</strong>：</p>
+<h3><span data-zh="Health Check 健康檢查" data-en="Health Check">Health Check 健康檢查</span></h3>
+<p><span data-zh="每 5 分鐘自動對所有網站發送 HTTP 請求，確認網站正常回應。如果連續三次失敗，立即推送 Telegram 警報，並附上錯誤訊息和伺服器狀態。" data-en="Every 5 minutes, auto-send HTTP requests to all websites to confirm normal response. Three consecutive failures trigger an immediate Telegram alert with error messages and server status.">每 5 分鐘自動對所有網站發送 HTTP 請求，確認網站正常回應。如果連續三次失敗，立即推送 Telegram 警報，並附上錯誤訊息和伺服器狀態。</p>
+
+<h3><span data-zh="Cost Report 成本報告" data-en="Cost Report">Cost Report 成本報告</span></h3>
+<p><span data-zh="每天自動計算 AWS 的使用成本，推送到 Telegram。當日費用超過設定的閾值會觸發警報，避免意外的費用暴增（例如被 DDoS 攻擊導致流量費用飆升）。" data-en="Daily auto-calculate AWS usage costs, pushed to Telegram. Exceeding the daily threshold triggers an alert, preventing unexpected cost spikes (e.g., DDoS attacks causing traffic fee surges).">每天自動計算 AWS 的使用成本，推送到 Telegram。當日費用超過設定的閾值會觸發警報，避免意外的費用暴增（例如被 DDoS 攻擊導致流量費用飆升）。</p>
+
+<h3><span data-zh="部署通知" data-en="Deployment Notifications">部署通知</span></h3>
+<p><span data-zh="每次 CI/CD Pipeline 完成（無論成功或失敗），都會推送 Telegram 通知，包含：部署的專案名稱、觸發者、耗時、成功/失敗狀態。如果失敗，還會附上錯誤 log 的關鍵行。" data-en="Every CI/CD Pipeline completion (success or failure) triggers a Telegram notification including: project name, trigger, duration, success/failure status. Failures also include key error log lines.">每次 CI/CD Pipeline 完成（無論成功或失敗），都會推送 Telegram 通知，包含：部署的專案名稱、觸發者、耗時、成功/失敗狀態。如果失敗，還會附上錯誤 log 的關鍵行。</p>
+
+<h2><span data-zh="五、實際數據：HEY!BOSS 的部署效率" data-en="5. Real Data: HEY!BOSS Deployment Efficiency">五、實際數據：HEY!BOSS 的部署效率</span></h2>
+
+<p><span data-zh="以下是我們實際的部署數據：" data-en="Here are our actual deployment metrics:">以下是我們實際的部署數據：</span></p>
 
 <ul>
-<li><strong>速度</strong> — 產品更新從「每月一次」變成「隨時可以」，更快回應市場需求</li>
-<li><strong>品質</strong> — 自動測試攔截問題，用戶看到的永遠是穩定版本</li>
-<li><strong>成本</strong> — 省下的人工部署時間，可以投入更有價值的開發工作</li>
-<li><strong>信心</strong> — 不用擔心「部署會不會出事」，因為流程是可重複、可預測的</li>
+<li><span data-zh="平均部署時間 — 1 分 47 秒（含建置、測試、部署、SSL）" data-en="Average Deployment Time — 1 min 47 sec (including build, test, deploy, SSL)"><strong>平均部署時間</strong> — 1 分 47 秒（含建置、測試、部署、SSL）</span></li>
+<li><span data-zh="部署成功率 — 98.5%（失敗的 1.5% 全部在測試階段被攔截，沒有影響到生產環境）" data-en="Deployment Success Rate — 98.5% (the 1.5% failures were all caught at the test stage, no impact on production)"><strong>部署成功率</strong> — 98.5%（失敗的 1.5% 全部在測試階段被攔截，沒有影響到生產環境）</span></li>
+<li><span data-zh="回滾時間 — 15 秒（docker-compose 切回上一個 Image）" data-en="Rollback Time — 15 seconds (docker-compose switch to previous Image)"><strong>回滾時間</strong> — 15 秒（docker-compose 切回上一個 Image）</span></li>
+<li><span data-zh="SSL 申請時間 — 平均 23 秒（Let's Encrypt DNS 驗證）" data-en="SSL Application Time — Average 23 seconds (Let's Encrypt DNS verification)"><strong>SSL 申請時間</strong> — 平均 23 秒（Let's Encrypt DNS 驗證）</span></li>
+<li><span data-zh="零手動介入 — 從 git push 到上線，沒有任何人工步驟" data-en="Zero Manual Intervention — From git push to live, no manual steps whatsoever"><strong>零手動介入</strong> — 從 git push 到上線，沒有任何人工步驟</span></li>
 </ul>
 
-<p><strong>HEY!BOSS 銀月數位顧問</strong>的每一個客戶專案，都享有這套 CI/CD 基礎設施。不是加購選項，是標配。</p>
+<p><span data-zh="這不是實驗室的理想數據，是我們每天實際在跑的生產環境數據。" data-en="These are not lab-ideal numbers — they are production data we run every day.">這不是實驗室的理想數據，是我們每天實際在跑的生產環境數據。</span></p>
+
+<blockquote><span data-zh="「部署應該像呼吸一樣自然。你不會每次呼吸都要手動操作肺部，部署也不應該。CI/CD 讓部署變成一個不需要思考的動作。」" data-en="Deployment should be as natural as breathing. You don't manually operate your lungs for every breath — deployment shouldn't require that either. CI/CD makes deployment an action that needs no thought.">「部署應該像呼吸一樣自然。你不會每次呼吸都要手動操作肺部，部署也不應該。CI/CD 讓部署變成一個不需要思考的動作。」</span></blockquote>
+
+<h2><span data-zh="六、為什麼這很重要？" data-en="6. Why Does This Matter?">六、為什麼這很重要？</span></h2>
+
+<p><span data-zh="CI/CD 不只是技術面的提升，更是商業面的競爭優勢：" data-en="CI/CD is not just a technical improvement — it is a business competitive advantage:">CI/CD 不只是技術面的提升，更是<strong>商業面的競爭優勢</strong>：</span></p>
+
+<ul>
+<li><span data-zh="速度 — 產品更新從「每月一次」變成「隨時可以」，更快回應市場需求" data-en="Speed — Product updates go from monthly to anytime, responding faster to market demands"><strong>速度</strong> — 產品更新從「每月一次」變成「隨時可以」，更快回應市場需求</span></li>
+<li><span data-zh="品質 — 自動測試攔截問題，用戶看到的永遠是穩定版本" data-en="Quality — Automated tests catch issues; users always see stable versions"><strong>品質</strong> — 自動測試攔截問題，用戶看到的永遠是穩定版本</span></li>
+<li><span data-zh="成本 — 省下的人工部署時間，可以投入更有價值的開發工作" data-en="Cost — Saved manual deployment time can be invested in more valuable development work"><strong>成本</strong> — 省下的人工部署時間，可以投入更有價值的開發工作</span></li>
+<li><span data-zh="信心 — 不用擔心「部署會不會出事」，因為流程是可重複、可預測的" data-en="Confidence — No worrying about deployment going wrong, because the process is repeatable and predictable"><strong>信心</strong> — 不用擔心「部署會不會出事」，因為流程是可重複、可預測的</span></li>
+</ul>
+
+<p><span data-zh="HEY!BOSS 銀月數位顧問的每一個客戶專案，都享有這套 CI/CD 基礎設施。不是加購選項，是標配。" data-en="Every HEY!BOSS SilverMoon Digital Consulting client project enjoys this CI/CD infrastructure. It is not an add-on — it is standard."><strong>HEY!BOSS 銀月數位顧問</strong>的每一個客戶專案，都享有這套 CI/CD 基礎設施。不是加購選項，是標配。</span></p>
 
 <div class="article-cta">
-  <h3>想讓你的網站擁有 2 分鐘自動部署？</h3>
-  <p>HEY!BOSS 的建站和系統開發服務，標配 CI/CD 自動部署、SSL、監控和 Telegram 通知。</p>
-  <a href="../../#contact">免費諮詢</a>
+  <h3><span data-zh="想讓你的網站擁有 2 分鐘自動部署？" data-en="Want 2-Minute Auto Deployment for Your Website?">想讓你的網站擁有 2 分鐘自動部署？</span></h3>
+  <p><span data-zh="HEY!BOSS 的建站和系統開發服務，標配 CI/CD 自動部署、SSL、監控和 Telegram 通知。" data-en="HEY!BOSS website building and system development services include CI/CD auto deployment, SSL, monitoring, and Telegram notifications as standard.">HEY!BOSS 的建站和系統開發服務，標配 CI/CD 自動部署、SSL、監控和 Telegram 通知。</span></p>
+  <a href="../../#contact"><span data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</span></a>
 </div>
 
 </article>
 
 <footer class="blog-footer">
-  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
-  <a href="../">返回 Blog</a>
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> <span data-zh="銀月數位顧問股份有限公司" data-en="SilverMoon Digital Consulting Co., Ltd.">銀月數位顧問股份有限公司</span> &copy; 2026 |
+  <a href="../"><span data-zh="返回 Blog" data-en="Back to Blog">返回 Blog</span></a>
 </footer>
 
+
+<script>
+let lang = 'zh';
+function toggleLang() {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  document.querySelectorAll('[data-zh]').forEach(function(el) {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  var btn = document.getElementById('langToggleBtn');
+  btn.textContent = lang === 'zh' ? 'EN/\u4e2d' : '\u4e2d/EN';
+}
+</script>
 </body>
 </html>
