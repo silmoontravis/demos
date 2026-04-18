@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: pip install -q Pillow
+
       - name: Check for drafts
         id: check
         run: |
@@ -62,11 +65,22 @@ jobs:
           cat_en_match = re.search(r'<span class="category"[^>]*data-en="([^"]*)"', html)
           cat_en = cat_en_match.group(1) if cat_en_match else cat_zh
 
-          # Extract first base64 image from article for thumbnail
-          img_match = re.search(r'src="(data:image/[^"]{100,500})"', html)
-          thumb_src = img_match.group(1) if img_match else ""
+          # Extract first base64 image and resize for thumbnail
+          import base64 as b64, io
+          img_match = re.search(r'src="(data:image/jpeg;base64,[A-Za-z0-9+/=]+)"', html)
+          thumb_src = ""
+          if img_match:
+              try:
+                  from PIL import Image
+                  full_b64 = img_match.group(1).split(',')[1]
+                  img = Image.open(io.BytesIO(b64.b64decode(full_b64))).convert('RGB')
+                  img = img.resize((400, 250), Image.LANCZOS)
+                  buf = io.BytesIO()
+                  img.save(buf, 'JPEG', quality=65)
+                  thumb_src = 'data:image/jpeg;base64,' + b64.b64encode(buf.getvalue()).decode()
+              except ImportError:
+                  thumb_src = img_match.group(1)[:2000]
 
-          # Build card matching existing format
           thumb_html = ""
           if thumb_src:
               thumb_html = f'<div class="post-card-thumb" style="padding:0;font-size:0"><img src="{thumb_src}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:12px"></div>'
