@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RWD 響應式設計：你的網站在手機上好看嗎？ — HEY!BOSS Blog</title>
+<meta name="description" content="超過 70% 的網站流量來自手機。了解 Mobile-first 設計、viewport meta、CSS media queries 的實作，以及 HEY!BOSS 如何用 Playwright 自動化測試 100 個網站的行動裝置相容性。">
+<meta name="keywords" content="RWD, 響應式設計, Mobile-first, 手機版網站, CSS media queries, Playwright, HEY!BOSS, 行動裝置優化">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/mobile-responsive-design.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="RWD 響應式設計：你的網站在手機上好看嗎？">
+<meta property="og:description" content="超過 70% 流量來自手機。你的網站準備好了嗎？Mobile-first 設計完整教學。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/mobile-responsive-design.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-05-12">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="AI 建站">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "RWD 響應式設計：你的網站在手機上好看嗎？",
+  "description": "了解 Mobile-first 設計、viewport meta、CSS media queries 的實作，以及如何用 Playwright 自動化測試行動裝置相容性。",
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/mobile-responsive-design.html",
+  "articleSection": "AI 建站",
+  "wordCount": 1050,
+  "inLanguage": "zh-TW"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "RWD 和獨立手機版網站有什麼差別？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RWD（Responsive Web Design）是同一個網站根據螢幕大小自動調整版面，只需維護一份程式碼。獨立手機版（如 m.example.com）是另外做一個手機專用網站，需要維護兩份程式碼。Google 官方推薦使用 RWD，因為同一個 URL 有利於 SEO 排名。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "我的網站是不是 RWD？怎麼測試？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "最簡單的方法是用手機打開你的網站，看看文字是不是需要左右滑動才能看完。你也可以用 Google 的 Mobile-Friendly Test 工具輸入網址檢測。如果測試結果顯示「頁面不適合在行動裝置上使用」，代表你的網站還不是 RWD。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "已經有網站了，改成 RWD 要多少錢？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "取決於現有網站的複雜度。如果是簡單的企業形象網站，改成 RWD 大約 3-8 萬。如果是功能複雜的電商網站，費用會更高。HEY!BOSS 銀月數位顧問建議：如果網站架構太舊，不如直接用 AI 重新建一個，速度更快、費用可能更低。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../#services">服務</a>
+      <a href="../../#portfolio">作品</a>
+      <a href="../../#contact">聯繫</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">AI 建站</span>
+    <h1>RWD 響應式設計：你的網站在手機上好看嗎？</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-05-12</span>
+      <span>7 分鐘閱讀</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>打開你的手機，瀏覽你自己公司的網站。文字是不是小到要放大才看得清？有沒有需要左右滑動才能看到完整內容？按鈕是不是太小很難點到？</p>
+
+<p>如果答案是「是」，你正在流失超過 <strong>70% 的潛在客戶</strong>。</p>
+
+<p>根據 Statcounter 的統計，2026 年台灣的網站流量有超過 70% 來自行動裝置。也就是說，大多數人第一次看到你的網站，是在手機上。如果手機上的體驗很差，他們會在 3 秒內離開，然後找到你的競爭對手。</p>
+
+<h2>一、什麼是 RWD 響應式設計？</h2>
+
+<p>RWD（Responsive Web Design，響應式網頁設計）是一種讓同一個網站能在不同螢幕尺寸上自動調整版面的設計方法。不管是 27 吋的桌上型螢幕、13 吋的筆電、10 吋的平板，還是 6 吋的手機，網站都能完美呈現。</p>
+
+<p>RWD 的核心技術有三個：</p>
+
+<ol>
+<li><strong>Viewport Meta 標籤</strong> — 告訴瀏覽器按照裝置寬度來渲染頁面</li>
+<li><strong>流式佈局（Fluid Layout）</strong> — 使用百分比而非固定像素來定義寬度</li>
+<li><strong>CSS Media Queries</strong> — 根據螢幕寬度套用不同的 CSS 樣式</li>
+</ol>
+
+<h2>二、Mobile-First：先做手機版</h2>
+
+<p>傳統的網頁設計是「Desktop-First」— 先做桌面版，再縮小到手機。但現在業界的最佳實踐是 <strong>Mobile-First</strong>：先設計手機版，再擴展到桌面。</p>
+
+<p>為什麼？</p>
+
+<ul>
+<li><strong>手機的限制更嚴格</strong> — 螢幕小、操作靠觸控、網速可能較慢。先在這些限制下做好設計，擴展到桌面時自然沒問題</li>
+<li><strong>強迫你思考重點</strong> — 手機螢幕空間有限，你必須決定什麼內容最重要。這個思考過程會讓整個網站更精煉</li>
+<li><strong>Google 用 Mobile-First Indexing</strong> — 2019 年起，Google 以手機版內容作為排名依據。手機版做不好，直接影響 SEO</li>
+</ul>
+
+<h2>三、Viewport Meta 標籤</h2>
+
+<p>所有 RWD 網站的第一步，就是在 HTML 的 <code>&lt;head&gt;</code> 中加入 viewport meta 標籤：</p>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+<p>這一行程式碼做了兩件事：</p>
+<ul>
+<li><code>width=device-width</code> — 告訴瀏覽器頁面寬度等於裝置螢幕寬度</li>
+<li><code>initial-scale=1.0</code> — 初始縮放比例為 100%，不要自動縮小</li>
+</ul>
+
+<p>沒有這行，手機瀏覽器會把你的網站當成桌面版來渲染，然後整個縮小塞進螢幕裡。結果就是字小到看不清、要放大才能操作。</p>
+
+<h2>四、CSS Media Queries 實作</h2>
+
+<p>Media Queries 是 RWD 的核心。它讓你可以根據螢幕寬度套用不同的 CSS 樣式：</p>
+
+<pre><code>/* 手機版（預設，Mobile-First） */
+.container {
+  width: 100%;
+  padding: 16px;
+}
+
+/* 平板（768px 以上） */
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+    margin: 0 auto;
+  }
+}
+
+/* 桌面（1024px 以上） */
+@media (min-width: 1024px) {
+  .container {
+    width: 960px;
+  }
+}</code></pre>
+
+<p>常見的斷點（Breakpoints）：</p>
+<ul>
+<li><strong>576px</strong> — 大手機（如 iPhone Plus 系列橫向）</li>
+<li><strong>768px</strong> — 平板直向</li>
+<li><strong>1024px</strong> — 平板橫向 / 小筆電</li>
+<li><strong>1200px</strong> — 桌面螢幕</li>
+</ul>
+
+<h2>五、常見的手機版設計問題</h2>
+
+<p>即使加了 viewport 和 media queries，很多網站在手機上還是會出問題。以下是最常見的幾個：</p>
+
+<ul>
+<li><strong>橫向溢出（Horizontal Overflow）</strong> — 有元素寬度超過螢幕，出現左右捲軸。通常是圖片或表格沒有設定 <code>max-width: 100%</code></li>
+<li><strong>按鈕太小</strong> — 手指觸控區域至少要 44x44 像素，太小的按鈕會讓使用者點不到</li>
+<li><strong>字體太小</strong> — 手機上的最小可讀字體大小是 16px。更小的字需要放大才能閱讀</li>
+<li><strong>圖片太大</strong> — 沒有針對手機提供較小的圖片，導致載入速度很慢</li>
+<li><strong>彈出視窗（Popup）</strong> — 在手機上關不掉或遮住整個畫面的彈出視窗，是使用者體驗的殺手</li>
+</ul>
+
+<h2>六、HEY!BOSS 的 Playwright 行動裝置 QA 稽核</h2>
+
+<p>在 <strong>HEY!BOSS 銀月數位顧問</strong>建置的 100 個品牌網站中，每一個都經過 Playwright 自動化行動裝置品質稽核。我們的測試腳本會模擬以下裝置：</p>
+
+<ul>
+<li>iPhone 14 Pro（390 x 844）</li>
+<li>Samsung Galaxy S23（360 x 780）</li>
+<li>iPad Air（820 x 1180）</li>
+</ul>
+
+<p>每個裝置上會自動檢查：</p>
+<ol>
+<li><strong>橫向溢出檢測</strong> — 頁面寬度是否超過 viewport 寬度</li>
+<li><strong>字體大小檢查</strong> — 所有文字是否達到最小可讀大小</li>
+<li><strong>觸控目標檢查</strong> — 可點擊元素是否大於 44x44 像素</li>
+<li><strong>圖片載入檢查</strong> — 所有圖片是否正常載入、是否有設定 alt 文字</li>
+<li><strong>截圖對比</strong> — 自動截圖並與基準圖片比對，檢測版面異常</li>
+</ol>
+
+<p>這套自動化 QA 流程讓我們能在部署後幾分鐘內完成所有裝置的測試，而不是靠人工一個一個打開手機檢查。</p>
+
+<blockquote>「在手機時代，你的網站在手機上的樣子，就是你的品牌在客戶眼中的第一印象。」</blockquote>
+
+<h2>不確定你的網站手機版有沒有問題？</h2>
+
+<p>HEY!BOSS 可以免費幫你做一次行動裝置相容性檢測，告訴你目前有哪些問題需要修正。</p>
+
+<div class="article-cta">
+  <h3>想讓你的網站在手機上完美呈現？</h3>
+  <p>HEY!BOSS 銀月數位顧問提供 RWD 響應式設計服務，從設計到自動化品質測試一站搞定。</p>
+  <a href="../../#contact">免費諮詢</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">返回 Blog</a>
+</footer>
+
+</body>
+</html>

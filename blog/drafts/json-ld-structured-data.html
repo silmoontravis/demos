@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON-LD 結構化資料入門：讓 Google 更懂你的網站 — HEY!BOSS Blog</title>
+<meta name="description" content="什麼是 JSON-LD？為什麼 Google 推薦使用結構化資料？本文從 Organization、LocalBusiness、Article 到 FAQPage，完整教學如何讓搜尋引擎更懂你的網站內容。">
+<meta name="keywords" content="JSON-LD, 結構化資料, Schema.org, SEO, Google搜尋, Rich Results, HEY!BOSS, 銀月數位顧問">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/json-ld-structured-data.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="JSON-LD 結構化資料入門：讓 Google 更懂你的網站">
+<meta property="og:description" content="從 Organization 到 FAQPage，完整教學結構化資料如何提升 SEO 排名和搜尋結果呈現。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/json-ld-structured-data.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-05-10">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="SEO">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "JSON-LD 結構化資料入門：讓 Google 更懂你的網站",
+  "description": "什麼是 JSON-LD？為什麼 Google 推薦使用結構化資料？完整教學如何讓搜尋引擎更懂你的網站內容。",
+  "datePublished": "2026-05-10",
+  "dateModified": "2026-05-10",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/json-ld-structured-data.html",
+  "articleSection": "SEO",
+  "wordCount": 1100,
+  "inLanguage": "zh-TW"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "JSON-LD 和 Microdata 有什麼差別？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JSON-LD 是在 <script> 標籤中以 JSON 格式撰寫結構化資料，不會跟 HTML 內容混在一起，維護更容易。Microdata 則是直接在 HTML 標籤上加屬性（如 itemprop），跟 HTML 耦合度高，修改時容易出錯。Google 官方推薦使用 JSON-LD。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "加了 JSON-LD 結構化資料就一定會出現 Rich Results 嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不一定。結構化資料是告訴 Google 你的內容是什麼，但 Google 會自行決定是否在搜尋結果中以 Rich Results 呈現。不過，沒有結構化資料就完全沒有機會。加上 JSON-LD 是爭取 Rich Results 的必要條件。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "一個頁面可以放多組 JSON-LD 嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。Google 支援一個頁面中放多組 JSON-LD script 標籤，例如同時放 Article 和 FAQPage。HEY!BOSS 的每篇部落格文章都同時包含 Article 和 FAQPage 兩組結構化資料，讓搜尋結果同時呈現文章資訊和常見問題。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../#services">服務</a>
+      <a href="../../#portfolio">作品</a>
+      <a href="../../#contact">聯繫</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">SEO</span>
+    <h1>JSON-LD 結構化資料入門：讓 Google 更懂你的網站</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-05-10</span>
+      <span>8 分鐘閱讀</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>你有沒有在 Google 搜尋時看過一些特別的搜尋結果？有的會顯示星星評分、有的會直接展開常見問題、有的會秀出食譜的烹飪時間。這些都不是 Google 自己變出來的 — 而是網站透過<strong>結構化資料（Structured Data）</strong>主動告訴 Google 的。</p>
+
+<p>而 <strong>JSON-LD</strong> 就是 Google 官方推薦的結構化資料格式。</p>
+
+<h2>一、什麼是 JSON-LD？</h2>
+
+<p>JSON-LD 全名是 <strong>JavaScript Object Notation for Linked Data</strong>。簡單來說，它是一段放在 HTML <code>&lt;script&gt;</code> 標籤裡的 JSON 格式資料，用來告訴搜尋引擎：「這個頁面的內容是什麼、誰寫的、什麼時候發布的、屬於什麼類型。」</p>
+
+<p>跟其他結構化資料格式（如 Microdata 和 RDFa）相比，JSON-LD 最大的優勢是：<strong>完全不需要修改 HTML 內容</strong>。你只要在 <code>&lt;head&gt;</code> 裡加一段 <code>&lt;script type="application/ld+json"&gt;</code>，搜尋引擎就能理解你的頁面。</p>
+
+<p>這也是為什麼 Google 官方明確表示：<strong>「我們推薦使用 JSON-LD」</strong>。</p>
+
+<h2>二、四種最實用的 Schema 類型</h2>
+
+<p>Schema.org 定義了數百種結構化資料類型，但對大多數企業網站來說，以下四種最實用：</p>
+
+<h3>1. Organization — 告訴 Google 你是誰</h3>
+
+<p>這是最基本的結構化資料。放在首頁，告訴 Google 你的公司名稱、Logo、聯繫方式、社群媒體連結。</p>
+
+<p>當有人搜尋你的公司名稱時，Google 知識面板（Knowledge Panel）就可能顯示這些資訊。</p>
+
+<h3>2. LocalBusiness — 在地商家必備</h3>
+
+<p>如果你有實體店面或服務據點，LocalBusiness 結構化資料可以告訴 Google 你的地址、營業時間、電話號碼、服務範圍。</p>
+
+<p>這對「附近的餐廳」、「台北網頁設計」這類在地搜尋特別有幫助。Google 地圖和本地搜尋結果都會參考 LocalBusiness 結構化資料。</p>
+
+<h3>3. Article — 讓文章內容被正確理解</h3>
+
+<p>部落格、新聞、教學文章都適用。Article 結構化資料包含標題、作者、發布日期、文章分類、字數等資訊。</p>
+
+<p>在 <strong>HEY!BOSS</strong> 的部落格中，每篇文章都包含完整的 Article JSON-LD，讓 Google 能準確理解文章的主題和作者資訊。你現在正在閱讀的這篇文章就有。</p>
+
+<h3>4. FAQPage — 搶佔搜尋結果版面</h3>
+
+<p>FAQPage 是最能立即提升搜尋結果曝光度的結構化資料。當 Google 認可你的 FAQPage 結構化資料時，搜尋結果會直接展開問答內容，佔據更大的版面。</p>
+
+<p>HEY!BOSS 的每篇文章都包含 3 組常見問題的 FAQPage 結構化資料，這讓我們的文章在搜尋結果中有更高的點擊率。</p>
+
+<h2>三、JSON-LD 實作範例</h2>
+
+<p>以一個 Article 結構化資料為例：</p>
+
+<pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "你的文章標題",
+  "description": "文章摘要描述",
+  "datePublished": "2026-05-10",
+  "author": {
+    "@type": "Person",
+    "name": "作者名稱"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "公司名稱"
+  }
+}
+&lt;/script&gt;</code></pre>
+
+<p>就是這麼簡單。把這段 JSON 放進 HTML 的 <code>&lt;head&gt;</code> 裡就完成了。</p>
+
+<h2>四、HEY!BOSS 如何在 100 個網站實作 JSON-LD</h2>
+
+<p>手動為一個網站加 JSON-LD 不難，但如果要為 <strong>100 個品牌網站</strong>都加上正確的結構化資料呢？</p>
+
+<p>在 HEY!BOSS 銀月數位顧問，我們用 AI 自動化解決了這個問題：</p>
+
+<ol>
+<li><strong>模板化</strong> — 每種頁面類型（首頁、文章頁、服務頁）都有對應的 JSON-LD 模板</li>
+<li><strong>自動填充</strong> — AI 根據品牌資料自動填入公司名稱、Logo URL、聯繫資訊</li>
+<li><strong>多 Schema 疊加</strong> — 一個頁面同時包含 Organization + LocalBusiness 或 Article + FAQPage</li>
+<li><strong>自動驗證</strong> — 部署後自動透過 Google Rich Results Test API 驗證結構化資料是否正確</li>
+</ol>
+
+<p>這讓我們的 100 個品牌網站從上線第一天就有完整且正確的結構化資料，不需要一個一個手動加。</p>
+
+<h2>五、常見錯誤與注意事項</h2>
+
+<p>雖然 JSON-LD 的語法很簡單，但實作時有幾個常見錯誤要避免：</p>
+
+<ul>
+<li><strong>JSON 格式錯誤</strong> — 少一個逗號或多一個括號就會讓整段結構化資料失效。建議用 Google 的 Rich Results Test 工具驗證</li>
+<li><strong>內容不一致</strong> — JSON-LD 裡寫的標題跟頁面實際標題不一樣，Google 可能會忽略你的結構化資料</li>
+<li><strong>虛構資訊</strong> — 在 JSON-LD 裡寫假的星星評分或不存在的 FAQ，Google 會處罰你的網站</li>
+<li><strong>遺漏必要欄位</strong> — 每種 Schema 類型都有必填欄位，少了就不會被認可</li>
+</ul>
+
+<h2>六、從零開始的行動清單</h2>
+
+<p>如果你的網站還沒有任何結構化資料，建議按照這個順序開始：</p>
+
+<ol>
+<li><strong>首頁加 Organization</strong> — 公司名稱、Logo、官網 URL、社群連結</li>
+<li><strong>如果有實體據點，加 LocalBusiness</strong> — 地址、電話、營業時間</li>
+<li><strong>部落格文章加 Article + FAQPage</strong> — 每篇文章附上 3 個常見問題</li>
+<li><strong>用 Rich Results Test 驗證</strong> — 確認所有結構化資料都被正確解析</li>
+<li><strong>在 Search Console 查看成效</strong> — 觀察「增強」報告中的結構化資料狀態</li>
+</ol>
+
+<blockquote>「結構化資料不會直接提升排名，但它讓你的搜尋結果更吸引人、佔據更大版面、獲得更高點擊率。在 SEO 的世界裡，點擊率就是一切。」</blockquote>
+
+<div class="article-cta">
+  <h3>想為你的網站加上結構化資料？</h3>
+  <p>HEY!BOSS 銀月數位顧問幫你的網站建立完整的 JSON-LD 結構化資料，讓 Google 真正理解你的內容。</p>
+  <a href="../../#contact">免費諮詢</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">返回 Blog</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker 容器化部署：讓你的網站永不停機 — HEY!BOSS Blog</title>
+<meta name="description" content="Docker 容器化部署讓你的網站更穩定、更容易管理。HEY!BOSS 銀月數位顧問解析 Docker 的基本概念、容器化優勢，以及如何搭配 Nginx Proxy Manager 實現零停機部署。">
+<meta name="keywords" content="Docker, 容器化部署, Nginx Proxy Manager, 零停機部署, DevOps, HEY!BOSS, 銀月數位顧問, 網站部署, CI/CD">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="Docker 容器化部署：讓你的網站永不停機">
+<meta property="og:description" content="Docker 是什麼？為什麼能讓網站更穩定？搭配 Nginx Proxy Manager 實現零停機部署的完整指南。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-04-27">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="DevOps">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Docker 容器化部署：讓你的網站永不停機",
+  "description": "Docker 容器化部署的基本概念和實戰應用，搭配 Nginx Proxy Manager 實現零停機部署。",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-04-27",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html",
+  "articleSection": "DevOps",
+  "wordCount": 1050,
+  "inLanguage": "zh-TW"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Docker 跟虛擬機有什麼不同？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "虛擬機模擬了一整台電腦（含作業系統），非常消耗資源。Docker 容器共享主機的作業系統核心，只包含應用程式和必要的依賴，啟動速度快（秒級 vs 分鐘級）、資源佔用少（MB 級 vs GB 級）。一台伺服器可以跑幾個虛擬機，但可以跑上百個 Docker 容器。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "小型網站也需要用 Docker 嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "建議使用。Docker 的好處不只是大規模部署，即使是小型網站，Docker 也能帶來環境一致性（開發和正式環境完全相同）、快速回滾（出問題秒速切回舊版本）和易於遷移（換伺服器時直接搬移容器）等好處。HEY!BOSS 的所有網站，不論大小，都使用 Docker 部署。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "零停機部署是怎麼做到的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "基本原理是：先啟動新版本的容器，確認它正常運作後，再把流量從舊容器切換到新容器，最後關閉舊容器。整個過程中，訪客始終有一個可用的版本在運行，不會看到停機畫面。HEY!BOSS 使用 Nginx Proxy Manager 搭配 Docker 實現這個流程。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../#services">服務</a>
+      <a href="../../#portfolio">作品</a>
+      <a href="../../#contact">聯繫</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">DevOps</span>
+    <h1>Docker 容器化部署：讓你的網站永不停機</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-04-27</span>
+      <span>7 分鐘閱讀</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>你有沒有遇過這種情況：網站更新一個小功能，結果整個站掛了半小時？或者工程師說「在我電腦上沒問題啊」，但正式上線就爆炸？這些問題的根源都是同一個：<strong>部署環境不一致</strong>。</p>
+
+<p>Docker 容器化技術解決了這個問題，而且帶來了一個額外的超級好處：<strong>零停機部署</strong>。在 <strong>HEY!BOSS 銀月數位顧問</strong>的基礎設施中，所有網站都使用 Docker 容器化部署，搭配 Nginx Proxy Manager，實現 7×24 不間斷服務。</p>
+
+<h2>一、Docker 是什麼？用搬家來比喻</h2>
+
+<p>想像你要搬家。傳統做法是：把所有家具一件一件搬到新家，然後重新組裝、重新接水接電。如果舊家和新家的格局不同，有些家具可能放不進去。</p>
+
+<p>Docker 的做法是：把你的房間連同家具、水電管線<strong>整間打包成一個貨櫃</strong>。搬到新家時，直接把貨櫃放下來就好了。不管新家的地基是什麼形狀，貨櫃裡面的環境永遠不變。</p>
+
+<p>對應到技術世界：</p>
+
+<ul>
+<li><strong>貨櫃 = Docker 容器</strong> — 你的應用程式和所有依賴（執行環境、函式庫、設定檔）都打包在一起</li>
+<li><strong>新家 = 伺服器</strong> — 不管是 AWS、GCP 還是自己的主機，容器放上去就能跑</li>
+<li><strong>貨櫃規格 = Docker 映像檔</strong> — 一份藍圖，可以在任何地方建出一模一樣的容器</li>
+</ul>
+
+<h2>二、容器化部署的五大優勢</h2>
+
+<h3>1. 環境一致性</h3>
+<p>「在我電腦上沒問題」這句話會永遠消失。因為開發環境、測試環境、正式環境跑的都是<strong>同一個容器映像檔</strong>，環境 100% 一致。</p>
+
+<h3>2. 快速啟動</h3>
+<p>傳統虛擬機啟動需要分鐘級的時間，Docker 容器啟動只需要<strong>秒級</strong>。部署新版本、回滾舊版本都是秒速完成。</p>
+
+<h3>3. 資源節省</h3>
+<p>Docker 容器共享主機作業系統的核心，不需要為每個應用程式跑一個完整的作業系統。一台伺服器可以跑上百個容器，資源利用率比虛擬機高出數倍。</p>
+
+<h3>4. 隔離性</h3>
+<p>每個容器都是獨立的。A 網站的容器出問題，不會影響到 B 網站的容器。這比所有網站跑在同一個伺服器上安全多了。</p>
+
+<h3>5. 可攜性</h3>
+<p>想從 A 主機搬到 B 主機？把容器映像檔複製過去就好。不需要重新安裝環境、不需要重新設定依賴。</p>
+
+<h2>三、Nginx Proxy Manager：流量的交通指揮</h2>
+
+<p>當一台伺服器上跑了多個網站容器時，需要一個「交通指揮」來決定哪個請求送到哪個容器。這就是 <strong>Nginx Proxy Manager</strong> 的角色。</p>
+
+<p>Nginx Proxy Manager 的功能：</p>
+
+<ul>
+<li><strong>反向代理</strong> — 根據域名把流量分配到對應的容器</li>
+<li><strong>SSL 管理</strong> — 自動申請和續期 Let's Encrypt SSL 憑證</li>
+<li><strong>圖形化介面</strong> — 不需要手動編輯設定檔，點幾下就能新增網站</li>
+<li><strong>存取控制</strong> — 設定 IP 白名單、基本認證等安全機制</li>
+</ul>
+
+<p>在 HEY!BOSS 的架構中，Nginx Proxy Manager 是整個基礎設施的入口。所有進入伺服器的流量都先經過它，再被分配到各個 Docker 容器。</p>
+
+<h2>四、零停機部署：怎麼做到的？</h2>
+
+<p>傳統部署的流程是：停止舊版本 → 部署新版本 → 啟動新版本。在「停止舊版本」和「啟動新版本」之間，網站是離線的。</p>
+
+<p>零停機部署的流程是：</p>
+
+<ol>
+<li><strong>建置新容器</strong> — 新版本的容器被建立並啟動，但還沒接收流量</li>
+<li><strong>健康檢查</strong> — 確認新容器運作正常（頁面能正確載入、API 有回應）</li>
+<li><strong>流量切換</strong> — Nginx Proxy Manager 把流量從舊容器切換到新容器</li>
+<li><strong>關閉舊容器</strong> — 確認所有流量都到新容器後，關閉舊容器</li>
+</ol>
+
+<p>整個過程中，<strong>訪客始終有一個可用的版本在服務</strong>。他們甚至不會察覺到網站剛剛更新了。</p>
+
+<h2>五、HEY!BOSS 的 Docker 部署架構</h2>
+
+<p>我們的部署架構：</p>
+
+<ul>
+<li><strong>AWS EC2</strong> — 雲端伺服器，按需擴展</li>
+<li><strong>Docker</strong> — 所有應用程式都容器化</li>
+<li><strong>Nginx Proxy Manager</strong> — 統一管理流量和 SSL</li>
+<li><strong>Jenkins CI/CD</strong> — 程式碼 push 後自動建置、測試、部署</li>
+<li><strong>Telegram 通知</strong> — 部署成功或失敗都即時推送通知</li>
+</ul>
+
+<p>從程式碼提交到上線完成，整個流程<strong>自動化、不到 2 分鐘</strong>。工程師 push 程式碼後就可以去泡咖啡了，回來時部署已經完成並且通知已經推送到 Telegram。</p>
+
+<h2>六、這對你的企業意味著什麼？</h2>
+
+<p>作為網站擁有者，你不需要理解 Docker 的技術細節。你只需要知道：</p>
+
+<ul>
+<li><strong>你的網站不會因為更新而停機</strong> — 任何修改都是無縫切換</li>
+<li><strong>出問題能秒速回滾</strong> — 如果新版本有 Bug，幾秒鐘就能切回舊版本</li>
+<li><strong>換主機不是災難</strong> — 容器打包帶走，新主機上秒速恢復</li>
+<li><strong>多個網站互不影響</strong> — A 站出問題不會拖垮 B 站</li>
+</ul>
+
+<blockquote>「Docker 不是潮流，是標準。在 2026 年，不用容器化部署的網站服務商，就像不用冰箱的餐廳一樣不可思議。」</blockquote>
+
+<div class="article-cta">
+  <h3>想讓你的網站永不停機？</h3>
+  <p>HEY!BOSS 使用 Docker + Nginx Proxy Manager + Jenkins CI/CD，為每個網站提供企業級的部署基礎設施。</p>
+  <a href="../../#contact">免費諮詢</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">返回 Blog</a>
+</footer>
+
+</body>
+</html>

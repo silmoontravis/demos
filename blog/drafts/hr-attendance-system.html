@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR 人資系統：考勤、請假、薪資一次搞定 — HEY!BOSS Blog</title>
+<meta name="description" content="還在用紙本請假單和 Excel 算薪水？HR 人資系統幫你自動化考勤打卡、請假審核、薪資計算。HEY!BOSS 用 RuoYi RBAC 架構打造部門層級管理。">
+<meta name="keywords" content="HR系統, 人資系統, 考勤管理, 請假系統, 薪資計算, RBAC, RuoYi, HEY!BOSS">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/hr-attendance-system.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="HR 人資系統：考勤、請假、薪資一次搞定">
+<meta property="og:description" content="還在用紙本請假單和 Excel 算薪水？HR 人資系統幫你一次搞定考勤、請假、薪資。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/hr-attendance-system.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-05-05">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="系統開發">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "HR 人資系統：考勤、請假、薪資一次搞定",
+  "description": "HR 人資系統幫你自動化考勤打卡、請假審核、薪資計算，RuoYi RBAC 架構打造部門層級管理。",
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/hr-attendance-system.html",
+  "articleSection": "系統開發",
+  "wordCount": 1040,
+  "inLanguage": "zh-TW"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "HR 系統可以處理台灣的勞基法規定嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HEY!BOSS 開發的 HR 系統完全符合台灣勞基法規定，包含特休天數自動計算（依年資）、加班費計算（平日 1.34/1.67 倍、假日 2 倍）、國定假日自動排除等。系統內建台灣勞動法規的計算邏輯。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "員工可以用手機打卡嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。系統支援多種打卡方式：手機 App GPS 定位打卡（可設定打卡範圍）、網頁打卡、NFC 感應打卡。外勤人員也可以在客戶地點用手機打卡，系統會記錄 GPS 座標。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "HR 系統開發需要多少預算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使用 RuoYi 快速開發框架，基礎 HR 模組（考勤 + 請假 + 薪資）的開發費用約為市面上 SaaS 方案年費的 2-3 倍，但系統完全屬於你，沒有月費、沒有人數上限限制。中長期來看更經濟。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../#services">服務</a>
+      <a href="../../#portfolio">作品</a>
+      <a href="../../#contact">聯繫</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">系統開發</span>
+    <h1>HR 人資系統：考勤、請假、薪資一次搞定</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-05-05</span>
+      <span>7 分鐘閱讀</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>每個月底，你公司的人資專員是不是在做這件事：打開 Excel，對著打卡紀錄一筆一筆算遲到、早退、加班、請假... 然後再開另一個 Excel 算薪水。一個 50 人的公司，光是算薪水就要花掉 2-3 天。</p>
+
+<p>更痛苦的是，如果算錯了 — 員工會投訴、勞檢會開罰。人工計算薪資的壓力，只有人資才懂。</p>
+
+<p>一套 <strong>HR 人資系統</strong>，就是為了解決這些問題而存在的。</p>
+
+<h2>一、考勤管理：告別打卡機的時代</h2>
+
+<p>傳統的指紋打卡機有幾個問題：只能在公司打卡（外勤人員怎麼辦？）、機器壞了就沒紀錄、資料導出格式不統一。</p>
+
+<p>現代 HR 系統的考勤管理完全不同：</p>
+
+<ul>
+<li><strong>多元打卡方式</strong> — 手機 GPS 打卡、網頁打卡、NFC 感應，依工作型態選擇</li>
+<li><strong>GPS 定位圍欄</strong> — 可以設定打卡有效範圍，例如公司周邊 100 公尺內才算有效打卡</li>
+<li><strong>彈性工時支援</strong> — 核心工時制、彈性上下班、排班制，不同部門可以有不同的出勤規則</li>
+<li><strong>自動計算</strong> — 遲到、早退、加班時數全部自動計算，人資不用手動對帳</li>
+</ul>
+
+<h2>二、請假管理：線上審核、即時通知</h2>
+
+<p>紙本請假單的問題：主管不在座位上沒人簽、紙本遺失、假別天數算錯。線上請假系統一次解決：</p>
+
+<ul>
+<li><strong>線上申請</strong> — 員工用手機或電腦提交請假申請，選假別、填時段、寫事由</li>
+<li><strong>自動審核流程</strong> — 申請送出後自動通知直屬主管，主管用手機就能核准或退回</li>
+<li><strong>假別餘額自動計算</strong> — 特休幾天、還剩幾天、事假用了幾天，員工自己就看得到</li>
+<li><strong>特休自動計算</strong> — 依照勞基法規定，根據到職日自動計算特休天數，不用人資手動查表</li>
+<li><strong>代理人設定</strong> — 請假時系統自動通知代理人，工作不會斷線</li>
+</ul>
+
+<h2>三、薪資計算：最怕算錯的環節</h2>
+
+<p>薪資計算是 HR 最核心也最敏感的工作。算少了員工不開心，算多了公司虧錢，更不用說勞健保、二代健保、所得稅的各種計算規則。</p>
+
+<p>HR 系統的薪資模組幫你：</p>
+
+<ul>
+<li><strong>自動抓取出勤數據</strong> — 考勤資料直接匯入薪資計算，不用手動輸入</li>
+<li><strong>加班費自動計算</strong> — 平日加班 1.34/1.67 倍、休息日 1.34/1.67 倍、國定假日 2 倍，系統自動判斷</li>
+<li><strong>勞健保扣繳</strong> — 依照級距表自動計算勞保、健保、勞退提撥金額</li>
+<li><strong>所得稅預扣</strong> — 依照扣繳稅額表自動計算應扣稅額</li>
+<li><strong>薪資單產出</strong> — 自動產生電子薪資單，員工在系統裡就能查看</li>
+</ul>
+
+<h2>四、RuoYi RBAC：部門層級權限管理</h2>
+
+<p>HR 系統的權限管理特別重要，因為薪資資料是高度敏感的。誰能看到誰的薪水？主管能看到下屬的，但不能看到其他部門的。老闆能看到所有人的，但外包 IT 不能。</p>
+
+<p><strong>HEY!BOSS 銀月數位顧問</strong>使用的 <strong>RuoYi 框架</strong>內建了完善的 <strong>RBAC（Role-Based Access Control）</strong>權限控制：</p>
+
+<ul>
+<li><strong>角色定義</strong> — 總經理、部門主管、人資專員、一般員工，每個角色看到不同的資料和功能</li>
+<li><strong>資料權限</strong> — 部門主管只能看到自己部門的數據，不需要額外設定</li>
+<li><strong>操作權限</strong> — 細緻到按鈕層級，例如人資可以「編輯薪資」但主管只能「檢視出勤」</li>
+<li><strong>組織架構</strong> — 支援多層級的部門樹狀結構，權限自動沿著組織架構繼承</li>
+</ul>
+
+<h2>五、導入 HR 系統的注意事項</h2>
+
+<p>導入 HR 系統最容易踩的坑：</p>
+
+<ol>
+<li><strong>先理清公司的出勤規則</strong> — 很多公司的出勤規則自己都說不清楚（彈性上班到底是多彈性？），系統化之前要先把規則釐清</li>
+<li><strong>歷史數據遷移</strong> — 員工的年資、剩餘特休、累計加班時數，這些歷史數據要正確地匯入新系統</li>
+<li><strong>員工教育訓練</strong> — 系統再好，員工不會用就是白做。特別是年紀較大的員工，需要耐心的教學</li>
+<li><strong>並行期</strong> — 建議新舊系統並行 1-2 個月，確認新系統計算正確後再完全切換</li>
+</ol>
+
+<blockquote>「HR 系統不只是讓人資輕鬆，更是讓公司的人事管理制度化、透明化。HEY!BOSS 幫你從紙本走向數位，不丟失任何一筆紀錄。」</blockquote>
+
+<h2>結語</h2>
+
+<p>人資工作是公司營運的基礎。考勤、請假、薪資這三件事，做對了沒人誇獎，做錯了人人抱怨。一套好的 HR 系統，讓人資從繁瑣的計算工作中解放出來，把時間花在更有價值的事情上 — 人才招募、教育訓練、員工關懷。</p>
+
+<div class="article-cta">
+  <h3>想讓人資作業數位化？</h3>
+  <p>HEY!BOSS 用 RuoYi 快速開發框架，為你打造符合台灣勞基法的 HR 系統。</p>
+  <a href="../../#contact">免費諮詢</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">返回 Blog</a>
+</footer>
+
+</body>
+</html>
