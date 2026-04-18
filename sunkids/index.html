@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小太陽幼兒園 SunKids — 讓孩子快樂成長</title>
+<meta name="description" content="小太陽幼兒園 SunKids，溫馨安全的學習環境，培養孩子的創造力與自信心。招收2-6歲幼兒。">
+<meta name="keywords" content="幼兒園, 幼稚園, 學前教育, SunKids, 小太陽, 台北幼兒園">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ChildCare",
+  "name": "小太陽幼兒園 SunKids",
+  "description": "Warm and safe learning environment nurturing creativity and confidence for ages 2-6",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2345-6789",
+  "openingHours": "Mo-Fr 07:30-18:00",
+  "priceRange": "$$"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--yellow:#f59e0b;--blue:#38bdf8;--pink:#f9a8d4;--dark:#333;--white:#fff;--cream:#fffbeb;--light-blue:#e0f2fe}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--yellow);border:3px solid var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(245,158,11,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:24px;height:24px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--white);border:2px solid var(--yellow);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--dark);font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.lang-toggle:hover{background:var(--yellow);color:var(--white)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(255,251,235,.95);backdrop-filter:blur(10px);border-bottom:3px solid var(--yellow);padding:10px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:40px;width:40px;object-fit:contain}
+nav .logo-area span{font-weight:800;font-size:20px;color:var(--yellow)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--dark);font-size:14px;font-weight:600;transition:color .3s}
+nav .nav-links a:hover{color:var(--yellow)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:3px;background:var(--yellow);margin:4px 0;border-radius:3px}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:64px;left:0;width:100%;background:var(--cream);flex-direction:column;padding:20px;gap:16px;border-bottom:3px solid var(--yellow)}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(180deg,var(--light-blue),var(--cream))}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(56,189,248,.3),rgba(255,251,235,.7))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:650px}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;color:var(--dark);margin-bottom:14px;line-height:1.3}
+.hero h1 .sun{color:var(--yellow)}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:#555;margin-bottom:28px;line-height:1.7}
+.btn{display:inline-block;padding:14px 32px;border-radius:30px;font-weight:700;font-size:16px;transition:all .3s;cursor:pointer;border:none}
+.btn-sun{background:var(--yellow);color:var(--white);box-shadow:0 4px 15px rgba(245,158,11,.35)}
+.btn-sun:hover{background:#d97706;transform:translateY(-2px)}
+.btn-blue{background:var(--blue);color:var(--white);margin-left:12px;box-shadow:0 4px 15px rgba(56,189,248,.35)}
+.btn-blue:hover{background:#0ea5e9;transform:translateY(-2px)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--dark)}
+.section-title .dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.section-title .dots span{width:10px;height:10px;border-radius:50%}
+.section-title .dots span:nth-child(1){background:var(--yellow)}
+.section-title .dots span:nth-child(2){background:var(--blue)}
+.section-title .dots span:nth-child(3){background:var(--pink)}
+.section-title p{color:#666;margin-top:10px;font-size:15px}
+
+.programs{background:var(--white);border-radius:24px;padding:40px 20px}
+.programs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.program-card{background:var(--cream);border-radius:20px;padding:30px 24px;text-align:center;transition:all .4s;border:3px solid transparent}
+.program-card:hover{border-color:var(--yellow);transform:translateY(-6px);box-shadow:0 8px 30px rgba(245,158,11,.15)}
+.program-card .age{display:inline-block;background:var(--blue);color:var(--white);padding:6px 18px;border-radius:20px;font-size:14px;font-weight:700;margin-bottom:14px}
+.program-card:nth-child(2) .age{background:var(--yellow)}
+.program-card:nth-child(3) .age{background:var(--pink);color:var(--dark)}
+.program-card h3{font-size:20px;margin-bottom:10px}
+.program-card p{color:#666;font-size:14px;line-height:1.7}
+
+.activities-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.activities-grid img{border-radius:20px;width:100%;height:300px;object-fit:cover;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform .4s}
+.activities-grid img:hover{transform:scale(1.03)}
+@media(max-width:600px){.activities-grid{grid-template-columns:1fr}.activities-grid img{height:220px}}
+
+.teachers{background:var(--light-blue);border-radius:24px;padding:40px 20px}
+.teacher-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.teacher-wrap img{border-radius:20px;box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.teacher-text h3{font-size:22px;margin-bottom:14px;color:var(--dark)}
+.teacher-text p{color:#555;line-height:1.8;font-size:15px}
+@media(max-width:768px){.teacher-wrap{grid-template-columns:1fr}}
+
+.enrollment{background:linear-gradient(135deg,var(--yellow),#fbbf24);border-radius:24px;padding:50px 30px;text-align:center;color:var(--white)}
+.enrollment h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:16px}
+.enrollment p{font-size:16px;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-white{background:var(--white);color:var(--yellow);font-weight:700;padding:14px 36px;border-radius:30px;border:none;font-size:16px;cursor:pointer;transition:all .3s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+
+footer{text-align:center;padding:30px 20px;color:#999;font-size:13px}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.bounce-in{opacity:0;transform:scale(.8);transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.bounce-in.visible{opacity:1;transform:scale(1)}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+</button>
+<button class="lang-toggle" id="langBtn">EN</button>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo-area"><img src="logos/logo_final.png" alt="小太陽幼兒園"><span>小太陽</span></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#programs" data-zh="課程介紹" data-en="Programs">課程介紹</a></li>
+      <li><a href="#activities" data-zh="活動花絮" data-en="Activities">活動花絮</a></li>
+      <li><a href="#teachers" data-zh="師資團隊" data-en="Teachers">師資團隊</a></li>
+      <li><a href="#enrollment" data-zh="報名入學" data-en="Enroll">報名入學</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="讓每個孩子<br>都是閃亮的<span class='sun'>小太陽</span>" data-en="Every Child Is<br>A Shining <span class='sun'>SunKid</span>">讓每個孩子<br>都是閃亮的<span class="sun">小太陽</span></h1>
+    <p data-zh="溫馨、安全、充滿歡笑的學習環境，培養孩子的創造力、自信心與社交能力。招收2至6歲幼兒。" data-en="A warm, safe, joy-filled learning environment nurturing creativity, confidence, and social skills. Enrolling ages 2-6.">溫馨、安全、充滿歡笑的學習環境，培養孩子的創造力、自信心與社交能力。招收2至6歲幼兒。</p>
+    <a href="#enrollment" class="btn btn-sun" data-zh="立即報名" data-en="Enroll Now">立即報名</a>
+    <a href="#programs" class="btn btn-blue" data-zh="認識課程" data-en="Our Programs">認識課程</a>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="課程介紹" data-en="Our Programs">課程介紹</h2>
+      <div class="dots"><span></span><span></span><span></span></div>
+      <p data-zh="依照年齡分級，給予最適切的啟蒙教育" data-en="Age-appropriate programs for the best early education">依照年齡分級，給予最適切的啟蒙教育</p>
+    </div>
+    <div class="programs bounce-in">
+      <div class="programs-grid">
+        <div class="program-card">
+          <span class="age" data-zh="2–3 歲" data-en="Ages 2–3">2–3 歲</span>
+          <h3 data-zh="小幼班 — 探索萌芽" data-en="Seedlings — Exploration">小幼班 — 探索萌芽</h3>
+          <p data-zh="透過感官遊戲與音樂律動，建立孩子的安全依附與基礎認知，培養對世界的好奇心。" data-en="Sensory play and music movement to build secure attachment, foundational cognition, and curiosity about the world.">透過感官遊戲與音樂律動，建立孩子的安全依附與基礎認知，培養對世界的好奇心。</p>
+        </div>
+        <div class="program-card">
+          <span class="age" data-zh="3–5 歲" data-en="Ages 3–5">3–5 歲</span>
+          <h3 data-zh="中班 — 創意綻放" data-en="Bloomers — Creativity">中班 — 創意綻放</h3>
+          <p data-zh="融合藝術、科學、語文的主題式教學，激發創造力與獨立思考能力。" data-en="Theme-based teaching blending art, science, and language to spark creativity and independent thinking.">融合藝術、科學、語文的主題式教學，激發創造力與獨立思考能力。</p>
+        </div>
+        <div class="program-card">
+          <span class="age" data-zh="5–6 歲" data-en="Ages 5–6">5–6 歲</span>
+          <h3 data-zh="大班 — 自信起飛" data-en="Flyers — Confidence">大班 — 自信起飛</h3>
+          <p data-zh="注重團隊合作與邏輯思維訓練，為小學銜接做好完整準備。" data-en="Focus on teamwork and logical thinking, preparing children for a smooth transition to primary school.">注重團隊合作與邏輯思維訓練，為小學銜接做好完整準備。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="活動花絮" data-en="Activities">活動花絮</h2>
+      <div class="dots"><span></span><span></span><span></span></div>
+      <p data-zh="豐富多元的學習體驗" data-en="Rich and diverse learning experiences">豐富多元的學習體驗</p>
+    </div>
+    <div class="activities-grid fade-up">
+      <img src="photos/activity.png" alt="室內活動" loading="lazy">
+      <img src="photos/outdoor.png" alt="戶外探索" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="teachers">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="師資團隊" data-en="Our Teachers">師資團隊</h2>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+    <div class="teachers fade-up">
+      <div class="teacher-wrap">
+        <img src="photos/teacher.png" alt="師資團隊" loading="lazy">
+        <div class="teacher-text">
+          <h3 data-zh="用愛與專業陪伴成長" data-en="Growing Together with Love and Expertise">用愛與專業陪伴成長</h3>
+          <p data-zh="每位老師皆具備幼教專業證照與豐富教學經驗，定期參與在職進修。我們相信，最好的教育源自老師對每個孩子的真心關懷，讓孩子在安全溫暖的環境中自在學習、快樂成長。" data-en="Every teacher holds professional early childhood education credentials and rich teaching experience, with ongoing professional development. We believe the best education comes from genuine care for each child, allowing them to learn freely and grow happily in a safe, warm environment.">每位老師皆具備幼教專業證照與豐富教學經驗，定期參與在職進修。我們相信，最好的教育源自老師對每個孩子的真心關懷，讓孩子在安全溫暖的環境中自在學習、快樂成長。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="enrollment">
+  <div class="section-inner">
+    <div class="enrollment bounce-in">
+      <h2 data-zh="新學期招生中" data-en="Now Enrolling">新學期招生中</h2>
+      <p data-zh="歡迎預約參觀園所，親身感受小太陽的溫暖與活力！名額有限，請盡早報名。" data-en="Schedule a visit to experience SunKids' warmth and energy firsthand! Limited spots available — enroll early.">歡迎預約參觀園所，親身感受小太陽的溫暖與活力！名額有限，請盡早報名。</p>
+      <button class="btn-white" onclick="alert(document.documentElement.lang==='en'?'Thank you! We will contact you shortly.':'感謝您！我們會盡快與您聯繫。')" data-zh="預約參觀" data-en="Schedule Visit">預約參觀</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 小太陽幼兒園 SunKids. All rights reserved.</p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.onclick=()=>{if(playing){bgm.pause();bgmBtn.style.opacity='.5'}else{bgm.play();bgmBtn.style.opacity='1'}playing=!playing};
+
+document.getElementById('menuToggle').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
+document.querySelectorAll('.fade-up,.bounce-in').forEach(el=>obs.observe(el));
+
+let lang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.onclick=()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  langBtn.textContent=lang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+};
+</script>
+</body>
+</html>

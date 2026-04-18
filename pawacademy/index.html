@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汪星人學院 PawAcademy — Pet Training</title>
+<meta name="description" content="汪星人學院 PawAcademy，專業寵物訓練學校。幼犬基礎、服從訓練、敏捷課程、行為矯正，讓毛孩成為最棒的家庭夥伴。">
+<meta name="keywords" content="汪星人學院, PawAcademy, 寵物訓練, 狗狗訓練, 犬隻行為, 會員">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "汪星人學院 PawAcademy",
+  "description": "專業寵物訓練學校，提供幼犬基礎、服從訓練、敏捷課程與行為矯正",
+  "url": "https://pawacademy.com",
+  "logo": "logos/logo_final.png",
+  "address": {"@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "會員方案",
+    "itemListElement": [
+      {"@type": "Offer", "name": "免費體驗", "price": "0", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "月費會員", "price": "899", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "年費會員", "price": "8990", "priceCurrency": "TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--brown:#92400e;--brown-light:#b45309;--navy:#1e3a5a;--navy-light:#2d5a8a;--cream:#fef3c7;--cream-dark:#fde68a;--white:#ffffff;--dark:#1a1510;--text:#4a3f35;--text-light:#7a6f63}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC','Nunito',sans-serif;color:var(--text);line-height:1.7;overflow-x:hidden;background:var(--cream)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+.bounce-in{opacity:0;transform:scale(.8);transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.56,.64,1)}
+.bounce-in.visible{opacity:1;transform:scale(1)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(254,243,199,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(146,64,14,.1);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--brown);text-decoration:none}
+.nav-logo img{height:36px;width:36px;object-fit:contain}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.88rem;font-weight:600;transition:color .3s}
+.nav-links a:hover{color:var(--brown)}
+.nav-controls{display:flex;align-items:center;gap:12px}
+.btn-lang{background:none;border:2px solid var(--brown);color:var(--brown);padding:4px 12px;border-radius:20px;font-size:.8rem;cursor:pointer;font-weight:700;transition:all .3s;font-family:inherit}
+.btn-lang:hover{background:var(--brown);color:var(--cream)}
+.btn-bgm{background:none;border:2px solid var(--navy);color:var(--navy);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .3s}
+.btn-bgm:hover,.btn-bgm.playing{background:var(--navy);color:var(--cream)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:24px;height:2.5px;background:var(--brown);border-radius:2px;transition:all .3s}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--cream) 0%,#fde68a 50%,#fed7aa 100%);padding:100px 24px 60px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--cream),transparent)}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-text h1{font-size:3rem;font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:16px}
+.hero-text h1 span{color:var(--brown)}
+.hero-text p{font-size:1.1rem;color:var(--text-light);margin-bottom:32px;max-width:440px}
+.btn-warm{background:var(--brown);color:var(--cream);padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s;display:inline-block;border:none;cursor:pointer}
+.btn-warm:hover{background:var(--brown-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(146,64,14,.25)}
+.btn-warm-outline{border:2px solid var(--brown);color:var(--brown);padding:12px 36px;border-radius:30px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s;background:transparent;display:inline-block}
+.btn-warm-outline:hover{background:var(--brown);color:var(--cream)}
+.hero-img img{width:100%;border-radius:24px;box-shadow:0 20px 60px rgba(146,64,14,.12)}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+
+section{padding:80px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:56px}
+.section-title h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin-bottom:8px}
+.section-title p{font-size:1rem;color:var(--text-light)}
+.paw-divider{display:flex;justify-content:center;gap:8px;margin:12px 0 0}
+.paw-divider span{width:8px;height:8px;background:var(--brown);border-radius:50%;opacity:.4}
+.paw-divider span:nth-child(2){opacity:.7}
+.paw-divider span:nth-child(3){opacity:1}
+
+/* Programs */
+.programs{background:var(--white)}
+.programs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.program-card{background:var(--cream);border-radius:20px;padding:32px 24px;text-align:center;transition:all .4s;border:2px solid transparent}
+.program-card:hover{transform:translateY(-8px);border-color:var(--brown);box-shadow:0 12px 36px rgba(146,64,14,.1)}
+.program-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--brown),var(--brown-light));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem}
+.program-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.program-card p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+
+/* Membership */
+.membership{background:var(--cream)}
+.membership-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.member-card{background:var(--white);border-radius:20px;padding:40px 28px;text-align:center;transition:all .4s;border:2px solid transparent;position:relative}
+.member-card:hover{border-color:var(--brown)}
+.member-card.popular{border-color:var(--brown);box-shadow:0 12px 40px rgba(146,64,14,.1)}
+.member-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--brown);color:var(--cream);padding:4px 20px;border-radius:20px;font-size:.75rem;font-weight:700}
+.member-card h3{font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.member-card .member-price{font-size:2.6rem;font-weight:800;color:var(--brown);margin:16px 0 4px}
+.member-card .member-price span{font-size:.9rem;font-weight:400;color:var(--text-light)}
+.member-card .member-desc{font-size:.85rem;color:var(--text-light);margin-bottom:20px}
+.member-perks{list-style:none;text-align:left;margin-bottom:28px}
+.member-perks li{padding:5px 0;font-size:.88rem;color:var(--text);display:flex;align-items:center;gap:8px}
+.member-perks li::before{content:'🐾';font-size:.7rem}
+
+/* Gallery */
+.gallery{background:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gallery-grid img{width:100%;border-radius:16px;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}
+.gallery-grid img:hover{transform:scale(1.03)}
+
+/* Trainers */
+.trainers{background:var(--cream)}
+.trainers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.trainer-card{background:var(--white);border-radius:16px;padding:32px 24px;text-align:center;transition:all .4s}
+.trainer-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.trainer-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-light));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;color:#fff}
+.trainer-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.trainer-card .trainer-role{font-size:.8rem;color:var(--brown);font-weight:600;margin-bottom:10px}
+.trainer-card p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+
+/* Signup */
+.signup{background:var(--navy);color:#fff;padding:100px 24px}
+.signup .section-title h2{color:var(--cream)}
+.signup .section-title p{color:rgba(254,243,199,.6)}
+.signup-form{max-width:520px;margin:0 auto;display:grid;gap:18px}
+.signup-form .form-group{display:flex;flex-direction:column;gap:6px}
+.signup-form label{font-size:.8rem;color:var(--cream-dark);font-weight:600;letter-spacing:1px}
+.signup-form input,.signup-form select{background:rgba(255,255,255,.1);border:1px solid rgba(254,243,199,.2);color:#fff;padding:12px 16px;border-radius:12px;font-size:.9rem;font-family:inherit;transition:border-color .3s}
+.signup-form input:focus,.signup-form select:focus{outline:none;border-color:var(--cream-dark)}
+.signup-form select option{background:var(--navy);color:#fff}
+.signup-form .btn-warm{width:100%;text-align:center;padding:16px;border-radius:30px;margin-top:8px;font-size:1rem}
+
+footer{background:var(--dark);color:rgba(254,243,199,.4);padding:40px 24px;text-align:center;font-size:.85rem}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(254,243,199,.98);flex-direction:column;padding:20px;gap:14px;border-bottom:1px solid rgba(146,64,14,.1)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-text h1{font-size:2rem}
+  .hero-text p{margin:0 auto 32px}
+  .hero-btns{justify-content:center}
+  .programs-grid{grid-template-columns:1fr 1fr}
+  .membership-grid,.trainers-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){.programs-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="汪星人學院 Logo">汪星人學院</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#programs" data-zh="課程" data-en="Programs">課程</a>
+    <a href="#membership" data-zh="會員" data-en="Membership">會員</a>
+    <a href="#gallery" data-zh="成果" data-en="Gallery">成果</a>
+    <a href="#trainers" data-zh="訓練師" data-en="Trainers">訓練師</a>
+    <a href="#signup" data-zh="報名" data-en="Sign Up">報名</a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
+    <button class="btn-bgm" id="bgmBtn" onclick="toggleBGM()">♪</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-up">
+      <h1 data-zh="讓毛孩成為<span>最棒的夥伴</span>" data-en="Help Your Fur Baby Become <span>The Best Companion</span>">讓毛孩成為<span>最棒的夥伴</span></h1>
+      <p data-zh="專業訓練師團隊，以正向訓練法為核心，打造快樂、自信、有禮貌的毛小孩。" data-en="Our professional trainers use positive reinforcement to build happy, confident, and well-mannered pets.">專業訓練師團隊，以正向訓練法為核心，打造快樂、自信、有禮貌的毛小孩。</p>
+      <div class="hero-btns">
+        <a href="#signup" class="btn-warm" data-zh="免費體驗課" data-en="Free Trial Class">免費體驗課</a>
+        <a href="#programs" class="btn-warm-outline" data-zh="瀏覽課程" data-en="View Programs">瀏覽課程</a>
+      </div>
+    </div>
+    <div class="hero-img fade-right">
+      <img src="photos/hero.png" alt="汪星人學院" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="訓練課程" data-en="Training Programs">訓練課程</h2>
+      <div class="paw-divider"><span></span><span></span><span></span></div>
+      <p data-zh="從幼犬到成犬，為每個階段量身打造的專業課程" data-en="Professional programs tailored for every stage, from puppy to adult">從幼犬到成犬，為每個階段量身打造的專業課程</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card bounce-in">
+        <div class="program-icon">🐶</div>
+        <h3 data-zh="幼犬基礎班" data-en="Puppy Basics">幼犬基礎班</h3>
+        <p data-zh="3-6 月齡幼犬的社會化與基礎指令訓練，建立良好行為習慣的黃金期。" data-en="Socialization and basic commands for 3-6 month puppies. The golden period for building good habits.">3-6 月齡幼犬的社會化與基礎指令訓練，建立良好行為習慣的黃金期。</p>
+      </div>
+      <div class="program-card bounce-in" style="transition-delay:.1s">
+        <div class="program-icon">🎓</div>
+        <h3 data-zh="服從訓練班" data-en="Obedience Training">服從訓練班</h3>
+        <p data-zh="進階指令與日常禮儀訓練，讓毛孩在各種環境中都能保持冷靜與服從。" data-en="Advanced commands and daily etiquette training for calm and obedient behavior in any environment.">進階指令與日常禮儀訓練，讓毛孩在各種環境中都能保持冷靜與服從。</p>
+      </div>
+      <div class="program-card bounce-in" style="transition-delay:.2s">
+        <div class="program-icon">🏃</div>
+        <h3 data-zh="敏捷訓練班" data-en="Agility Course">敏捷訓練班</h3>
+        <p data-zh="障礙跑跳訓練，強化體能與默契。適合活力充沛的狗狗與主人一同挑戰。" data-en="Obstacle course training to enhance fitness and teamwork. Perfect for energetic dogs and their owners.">障礙跑跳訓練，強化體能與默契。適合活力充沛的狗狗與主人一同挑戰。</p>
+      </div>
+      <div class="program-card bounce-in" style="transition-delay:.3s">
+        <div class="program-icon">🧠</div>
+        <h3 data-zh="行為矯正班" data-en="Behavioral Correction">行為矯正班</h3>
+        <p data-zh="針對分離焦慮、攻擊行為、過度吠叫等問題，提供一對一專業矯正方案。" data-en="One-on-one professional solutions for separation anxiety, aggression, excessive barking, and more.">針對分離焦慮、攻擊行為、過度吠叫等問題，提供一對一專業矯正方案。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+      <div class="paw-divider"><span></span><span></span><span></span></div>
+      <p data-zh="加入學院大家庭，享受持續學習的樂趣" data-en="Join our family and enjoy the joy of continuous learning">加入學院大家庭，享受持續學習的樂趣</p>
+    </div>
+    <div class="membership-grid">
+      <div class="member-card fade-up">
+        <h3 data-zh="免費體驗" data-en="Free Intro">免費體驗</h3>
+        <div class="member-price" data-zh="免費" data-en="Free" style="font-size:2.2rem">免費</div>
+        <p class="member-desc" data-zh="適合初次了解我們的毛爸毛媽" data-en="Perfect for first-time pet parents getting to know us">適合初次了解我們的毛爸毛媽</p>
+        <ul class="member-perks">
+          <li data-zh="1 堂免費體驗課" data-en="1 free trial class">1 堂免費體驗課</li>
+          <li data-zh="行為初步評估" data-en="Initial behavior assessment">行為初步評估</li>
+          <li data-zh="訓練建議報告" data-en="Training recommendation report">訓練建議報告</li>
+        </ul>
+        <a href="#signup" class="btn-warm-outline" style="padding:10px 28px;font-size:.85rem" data-zh="免費體驗" data-en="Try Free">免費體驗</a>
+      </div>
+      <div class="member-card popular fade-up" style="transition-delay:.15s">
+        <span class="member-badge" data-zh="最受歡迎" data-en="Most Popular">最受歡迎</span>
+        <h3 data-zh="月費會員" data-en="Monthly">月費會員</h3>
+        <div class="member-price">$899<span data-zh="/月" data-en="/mo">/月</span></div>
+        <p class="member-desc" data-zh="持續進步的最佳選擇" data-en="The best choice for continuous progress">持續進步的最佳選擇</p>
+        <ul class="member-perks">
+          <li data-zh="每週 2 堂團體課" data-en="2 group classes per week">每週 2 堂團體課</li>
+          <li data-zh="月度行為追蹤報告" data-en="Monthly behavior tracking report">月度行為追蹤報告</li>
+          <li data-zh="線上諮詢無限次" data-en="Unlimited online consultations">線上諮詢無限次</li>
+          <li data-zh="商品 9 折優惠" data-en="10% off merchandise">商品 9 折優惠</li>
+        </ul>
+        <a href="#signup" class="btn-warm" style="padding:10px 28px;font-size:.85rem" data-zh="立即加入" data-en="Join Now">立即加入</a>
+      </div>
+      <div class="member-card fade-up" style="transition-delay:.3s">
+        <h3 data-zh="年費會員" data-en="Annual">年費會員</h3>
+        <div class="member-price">$8,990<span data-zh="/年" data-en="/yr">/年</span></div>
+        <p class="member-desc" data-zh="省下 2 個月費用，全方位陪伴成長" data-en="Save 2 months, complete growth companionship">省下 2 個月費用，全方位陪伴成長</p>
+        <ul class="member-perks">
+          <li data-zh="所有月費會員權益" data-en="All monthly benefits">所有月費會員權益</li>
+          <li data-zh="每季 1 堂一對一課程" data-en="1 private session per quarter">每季 1 堂一對一課程</li>
+          <li data-zh="年度畢業典禮資格" data-en="Annual graduation ceremony">年度畢業典禮資格</li>
+          <li data-zh="商品 8 折優惠" data-en="20% off merchandise">商品 8 折優惠</li>
+          <li data-zh="專屬會員徽章" data-en="Exclusive member badge">專屬會員徽章</li>
+        </ul>
+        <a href="#signup" class="btn-warm-outline" style="padding:10px 28px;font-size:.85rem" data-zh="年費加入" data-en="Join Annually">年費加入</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="訓練成果" data-en="Training Results">訓練成果</h2>
+      <div class="paw-divider"><span></span><span></span><span></span></div>
+      <p data-zh="從懵懂小毛頭到自信畢業生" data-en="From curious puppies to confident graduates">從懵懂小毛頭到自信畢業生</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="photos/puppy.png" alt="學員幼犬" loading="lazy" class="fade-up">
+      <img src="photos/graduate.png" alt="畢業犬隻" loading="lazy" class="fade-up" style="transition-delay:.15s">
+      <img src="photos/training.png" alt="訓練過程" loading="lazy" class="fade-up" style="transition-delay:.3s">
+      <img src="photos/hero.png" alt="學院環境" loading="lazy" class="fade-up" style="transition-delay:.45s">
+    </div>
+  </div>
+</section>
+
+<section class="trainers" id="trainers">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="訓練師團隊" data-en="Our Trainers">訓練師團隊</h2>
+      <div class="paw-divider"><span></span><span></span><span></span></div>
+      <p data-zh="擁有國際認證的專業訓練師" data-en="Internationally certified professional trainers">擁有國際認證的專業訓練師</p>
+    </div>
+    <div class="trainers-grid">
+      <div class="trainer-card fade-up">
+        <div class="trainer-avatar">K</div>
+        <h3 data-zh="凱文教練" data-en="Coach Kevin">凱文教練</h3>
+        <p class="trainer-role" data-zh="首席訓練師 / CPDT-KA" data-en="Head Trainer / CPDT-KA">首席訓練師 / CPDT-KA</p>
+        <p data-zh="15 年犬隻訓練經驗，專精行為矯正與服從訓練。" data-en="15 years of canine training experience, specializing in behavioral correction and obedience.">15 年犬隻訓練經驗，專精行為矯正與服從訓練。</p>
+      </div>
+      <div class="trainer-card fade-up" style="transition-delay:.15s">
+        <div class="trainer-avatar">M</div>
+        <h3 data-zh="小美教練" data-en="Coach Mei">小美教練</h3>
+        <p class="trainer-role" data-zh="幼犬專家 / KPA-CTP" data-en="Puppy Specialist / KPA-CTP">幼犬專家 / KPA-CTP</p>
+        <p data-zh="擅長幼犬社會化與基礎訓練，溫柔又有耐心。" data-en="Expert in puppy socialization and basic training with a gentle and patient approach.">擅長幼犬社會化與基礎訓練，溫柔又有耐心。</p>
+      </div>
+      <div class="trainer-card fade-up" style="transition-delay:.3s">
+        <div class="trainer-avatar">J</div>
+        <h3 data-zh="傑克教練" data-en="Coach Jack">傑克教練</h3>
+        <p class="trainer-role" data-zh="敏捷訓練主管" data-en="Agility Training Director">敏捷訓練主管</p>
+        <p data-zh="國際敏捷競賽裁判資格，帶領多組人犬組合取得佳績。" data-en="International agility competition judge, leading many teams to outstanding results.">國際敏捷競賽裁判資格，帶領多組人犬組合取得佳績。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="立即報名" data-en="Sign Up Now">立即報名</h2>
+      <div class="paw-divider"><span style="background:#fef3c7"></span><span style="background:#fef3c7"></span><span style="background:#fef3c7"></span></div>
+      <p data-zh="填寫以下資料，開始您與毛孩的學習之旅" data-en="Fill in the form below to start your learning journey">填寫以下資料，開始您與毛孩的學習之旅</p>
+    </div>
+    <form class="signup-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'報名成功！我們會盡快與您聯繫。':'Registration successful! We will contact you shortly.')">
+      <div class="form-group">
+        <label data-zh="飼主姓名" data-en="Owner Name">飼主姓名</label>
+        <input type="text" required data-zh="請輸入姓名" data-en="Enter your name" placeholder="請輸入姓名">
+      </div>
+      <div class="form-group">
+        <label data-zh="聯絡電話" data-en="Phone">聯絡電話</label>
+        <input type="tel" required data-zh="請輸入電話" data-en="Enter phone number" placeholder="請輸入電話">
+      </div>
+      <div class="form-group">
+        <label data-zh="電子郵件" data-en="Email">電子郵件</label>
+        <input type="email" required placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label data-zh="毛孩品種 / 年齡" data-en="Pet Breed / Age">毛孩品種 / 年齡</label>
+        <input type="text" data-zh="例如：柴犬 / 6 個月" data-en="e.g., Shiba Inu / 6 months" placeholder="例如：柴犬 / 6 個月">
+      </div>
+      <div class="form-group">
+        <label data-zh="有興趣的課程" data-en="Interested Program">有興趣的課程</label>
+        <select>
+          <option data-zh="幼犬基礎班" data-en="Puppy Basics">幼犬基礎班</option>
+          <option data-zh="服從訓練班" data-en="Obedience Training">服從訓練班</option>
+          <option data-zh="敏捷訓練班" data-en="Agility Course">敏捷訓練班</option>
+          <option data-zh="行為矯正班" data-en="Behavioral Correction">行為矯正班</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-warm" data-zh="送出報名" data-en="Submit Registration">送出報名</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 汪星人學院 PawAcademy. <span data-zh="版權所有" data-en="All rights reserved">版權所有</span>.</p>
+</footer>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.bounce-in').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio');const bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh][data-en]').forEach(el=>{const t=el.getAttribute('data-'+currentLang);if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else if(el.tagName==='OPTION')el.textContent=t;else el.innerHTML=t})}
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永恆珠寶 EternGem — 頂級珠寶精品</title>
+<meta name="description" content="永恆珠寶 EternGem，匠心打造每一件珍貴作品。戒指、項鍊、耳環、手鍊，頂級珠寶盡在永恆。">
+<meta name="keywords" content="珠寶, 鑽戒, 項鍊, 耳環, 手鍊, EternGem, 永恆珠寶, 精品珠寶">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JewelryStore",
+  "name": "永恆珠寶 EternGem",
+  "description": "Ultra luxury jewelry e-commerce — rings, necklaces, earrings, bracelets",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2777-8899",
+  "priceRange": "$$$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Jewelry Collections",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "經典鑽戒", "category": "Rings"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "璀璨項鍊", "category": "Necklaces"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "優雅耳環", "category": "Earrings"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "精緻手鍊", "category": "Bracelets"}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--platinum:#e5e7eb;--icy:#bfdbfe;--gold:#c8a45e;--black:#111;--white:#fff;--gray:#888;--dark-bg:#0a0a0a}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;background:var(--dark-bg);color:var(--platinum);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:transparent;border:2px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn:hover{background:var(--gold)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--gold);transition:fill .3s}
+.bgm-btn:hover svg{fill:var(--black)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:transparent;border:1px solid var(--gold);padding:6px 16px;border-radius:2px;cursor:pointer;color:var(--gold);font-size:13px;letter-spacing:2px;font-family:'Georgia',serif}
+.lang-toggle:hover{background:var(--gold);color:var(--black)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(10,10,10,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,164,94,.15);padding:14px 0}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:12px}
+nav .logo-area img{height:32px;width:32px;object-fit:contain}
+nav .logo-area span{font-weight:400;font-size:18px;color:var(--gold);letter-spacing:3px}
+nav .nav-links{display:flex;gap:28px;list-style:none}
+nav .nav-links a{color:var(--gray);font-size:13px;letter-spacing:1px;transition:color .3s}
+nav .nav-links a:hover{color:var(--gold)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:22px;height:1px;background:var(--gold);margin:5px 0}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(10,10,10,.98);flex-direction:column;padding:24px;gap:18px}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.7),rgba(10,10,10,.85))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:400;letter-spacing:6px;margin-bottom:20px;line-height:1.4}
+.hero h1 .gold{color:var(--gold)}
+.hero p{font-size:clamp(.95rem,2vw,1.15rem);color:var(--gray);margin-bottom:32px;line-height:1.8;letter-spacing:1px}
+.btn{display:inline-block;padding:14px 40px;font-size:14px;letter-spacing:2px;transition:all .3s;cursor:pointer;border:none;font-family:'Georgia',serif}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:#b8943e;transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--gold);color:var(--gold);background:transparent;margin-left:14px}
+.btn-ghost:hover{background:var(--gold);color:var(--black)}
+
+section{padding:90px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:56px}
+.section-title h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:400;letter-spacing:4px}
+.section-title .divider{width:60px;height:1px;background:var(--gold);margin:16px auto}
+.section-title p{color:var(--gray);font-size:14px;letter-spacing:1px;margin-top:8px}
+
+.collections-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:rgba(229,231,235,.04);border:1px solid rgba(200,164,94,.12);overflow:hidden;transition:all .4s;position:relative}
+.product-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 16px 50px rgba(200,164,94,.12)}
+.product-card .card-img{height:260px;background:linear-gradient(135deg,rgba(191,219,254,.08),rgba(200,164,94,.06));display:flex;align-items:center;justify-content:center;font-size:60px;color:var(--gold);opacity:.4}
+.product-card .card-body{padding:24px}
+.product-card h3{font-size:17px;font-weight:400;letter-spacing:2px;margin-bottom:6px}
+.product-card .price{color:var(--gold);font-size:18px;margin-bottom:12px}
+.product-card .add-cart{display:block;text-align:center;padding:10px;border:1px solid rgba(200,164,94,.3);color:var(--gold);font-size:13px;letter-spacing:1px;transition:all .3s;cursor:pointer;background:transparent}
+.product-card .add-cart:hover{background:var(--gold);color:var(--black)}
+
+.craft-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.craft-wrap img{box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.craft-text h3{font-size:24px;font-weight:400;letter-spacing:3px;margin-bottom:16px;color:var(--gold)}
+.craft-text p{color:var(--gray);line-height:1.9;font-size:15px}
+@media(max-width:768px){.craft-wrap{grid-template-columns:1fr}}
+
+.editorial{position:relative;overflow:hidden;border-radius:0}
+.editorial img{width:100%;max-height:500px;object-fit:cover;filter:brightness(.7)}
+.editorial-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
+.editorial-overlay h3{font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:400;letter-spacing:5px;color:var(--white)}
+
+.cart-cta{text-align:center;padding:60px 20px;background:linear-gradient(135deg,rgba(200,164,94,.08),transparent)}
+.cart-cta h2{font-size:clamp(1.4rem,3.5vw,2rem);letter-spacing:4px;margin-bottom:16px;font-weight:400}
+.cart-cta p{color:var(--gray);margin-bottom:28px;font-size:15px}
+
+footer{text-align:center;padding:30px 20px;border-top:1px solid rgba(200,164,94,.1);color:var(--gray);font-size:12px;letter-spacing:1px}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-in{opacity:0;transition:opacity 1s ease}
+.fade-in.visible{opacity:1}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+</button>
+<button class="lang-toggle" id="langBtn">EN</button>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo-area"><img src="logos/logo_final.png" alt="永恆珠寶"><span>ETERNGEM</span></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#collections" data-zh="珠寶系列" data-en="Collections">珠寶系列</a></li>
+      <li><a href="#craftsmanship" data-zh="匠心工藝" data-en="Craftsmanship">匠心工藝</a></li>
+      <li><a href="#editorial" data-zh="時尚特輯" data-en="Editorial">時尚特輯</a></li>
+      <li><a href="#shop" data-zh="立即選購" data-en="Shop">立即選購</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="恆久璀璨<br><span class='gold'>永恆珠寶</span>" data-en="Timeless Brilliance<br><span class='gold'>EternGem</span>">恆久璀璨<br><span class="gold">永恆珠寶</span></h1>
+    <p data-zh="以匠心精神打磨每一件珍品，將永恆之美凝聚於指尖。頂級寶石與精湛工藝，為您銘刻人生中最珍貴的時刻。" data-en="Crafting each precious piece with artisan spirit, capturing timeless beauty at your fingertips. Premium gemstones and exquisite craftsmanship to mark life's most cherished moments.">以匠心精神打磨每一件珍品，將永恆之美凝聚於指尖。頂級寶石與精湛工藝，為您銘刻人生中最珍貴的時刻。</p>
+    <a href="#collections" class="btn btn-gold" data-zh="探索系列" data-en="Explore Collections">探索系列</a>
+    <a href="#shop" class="btn btn-ghost" data-zh="立即選購" data-en="Shop Now">立即選購</a>
+  </div>
+</section>
+
+<section id="collections">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="珠寶系列" data-en="Collections">珠寶系列</h2>
+      <div class="divider"></div>
+      <p data-zh="精選四大系列，每件作品皆為獨一無二的永恆承諾" data-en="Four curated collections — each piece a unique eternal promise">精選四大系列，每件作品皆為獨一無二的永恆承諾</p>
+    </div>
+    <div class="collections-grid">
+      <div class="product-card fade-up">
+        <div class="card-img"><img src="photos/collection.png" alt="經典鑽戒" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="card-body">
+          <h3 data-zh="經典鑽戒" data-en="Classic Rings">經典鑽戒</h3>
+          <div class="price">NT$ 68,000 起</div>
+          <button class="add-cart" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="card-img" style="background:linear-gradient(135deg,rgba(200,164,94,.1),rgba(191,219,254,.06));display:flex;align-items:center;justify-content:center"><span style="font-size:48px;color:var(--gold);opacity:.3">&#9830;</span></div>
+        <div class="card-body">
+          <h3 data-zh="璀璨項鍊" data-en="Radiant Necklaces">璀璨項鍊</h3>
+          <div class="price">NT$ 45,000 起</div>
+          <button class="add-cart" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="card-img" style="background:linear-gradient(135deg,rgba(191,219,254,.08),rgba(200,164,94,.06));display:flex;align-items:center;justify-content:center"><span style="font-size:48px;color:var(--icy);opacity:.3">&#10022;</span></div>
+        <div class="card-body">
+          <h3 data-zh="優雅耳環" data-en="Elegant Earrings">優雅耳環</h3>
+          <div class="price">NT$ 28,000 起</div>
+          <button class="add-cart" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="card-img" style="background:linear-gradient(135deg,rgba(200,164,94,.08),rgba(229,231,235,.04));display:flex;align-items:center;justify-content:center"><span style="font-size:48px;color:var(--gold);opacity:.3">&#9675;</span></div>
+        <div class="card-body">
+          <h3 data-zh="精緻手鍊" data-en="Fine Bracelets">精緻手鍊</h3>
+          <div class="price">NT$ 35,000 起</div>
+          <button class="add-cart" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="craftsmanship">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="匠心工藝" data-en="Craftsmanship">匠心工藝</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="craft-wrap fade-up">
+      <img src="photos/detail.png" alt="工藝細節" loading="lazy">
+      <div class="craft-text">
+        <h3 data-zh="百年傳承的匠人精神" data-en="A Century of Artisan Heritage">百年傳承的匠人精神</h3>
+        <p data-zh="每件永恆珠寶作品，從原石甄選、切割打磨到鑲嵌定型，皆經由資深珠寶匠師逾百道工序精心雕琢。我們堅持只使用通過國際認證的頂級寶石，以精湛的手工技藝賦予每顆寶石最璀璨的生命力。" data-en="Every EternGem creation — from raw stone selection and cutting to setting and finishing — undergoes over a hundred meticulous steps by master jewelers. We insist on only internationally certified premium gemstones, breathing brilliant life into each stone through exquisite handcraftsmanship.">每件永恆珠寶作品，從原石甄選、切割打磨到鑲嵌定型，皆經由資深珠寶匠師逾百道工序精心雕琢。我們堅持只使用通過國際認證的頂級寶石，以精湛的手工技藝賦予每顆寶石最璀璨的生命力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="editorial" style="padding:0">
+  <div class="editorial fade-in">
+    <img src="photos/model.png" alt="時尚特輯" loading="lazy">
+    <div class="editorial-overlay">
+      <h3 data-zh="穿戴永恆，成就非凡" data-en="Wear Eternity, Achieve Extraordinary">穿戴永恆，成就非凡</h3>
+    </div>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="cart-cta fade-up">
+    <h2 data-zh="開啟您的璀璨旅程" data-en="Begin Your Brilliant Journey">開啟您的璀璨旅程</h2>
+    <p data-zh="免費配送 · 30天鑑賞期 · 終身保養服務" data-en="Free shipping · 30-day approval period · Lifetime care service">免費配送 · 30天鑑賞期 · 終身保養服務</p>
+    <button class="btn btn-gold" onclick="alert(document.documentElement.lang==='en'?'Welcome to EternGem! Opening shop...':'歡迎蒞臨永恆珠寶！正在為您開啟精品店...')" data-zh="前往購物車" data-en="Go to Cart">前往購物車</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 永恆珠寶 EternGem. All rights reserved.</p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.onclick=()=>{if(playing){bgm.pause();bgmBtn.style.opacity='.5'}else{bgm.play();bgmBtn.style.opacity='1'}playing=!playing};
+
+document.getElementById('menuToggle').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.fade-up,.fade-in').forEach(el=>obs.observe(el));
+
+let lang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.onclick=()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  langBtn.textContent=lang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+};
+</script>
+</body>
+</html>

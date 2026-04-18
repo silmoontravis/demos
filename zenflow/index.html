@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>靜心瑜伽 ZenFlow — 身心靈平衡之旅</title>
+<meta name="description" content="靜心瑜伽 ZenFlow 提供哈達瑜伽、流瑜伽、陰瑜伽、冥想等課程。專業師資，寧靜空間，找到屬於你的平衡。">
+<meta name="keywords" content="瑜伽, 冥想, 哈達瑜伽, 流瑜伽, 陰瑜伽, ZenFlow, 靜心瑜伽, 瑜伽教室">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "靜心瑜伽 ZenFlow",
+  "description": "Yoga studio offering Hatha, Vinyasa, Yin, and Meditation classes",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2333-9988",
+  "openingHours": "Mo-Su 06:00-21:00",
+  "priceRange": "$$",
+  "event": [
+    {"@type": "Event", "name": "Hatha Yoga", "description": "哈達瑜伽"},
+    {"@type": "Event", "name": "Vinyasa Flow", "description": "流瑜伽"},
+    {"@type": "Event", "name": "Yin Yoga", "description": "陰瑜伽"},
+    {"@type": "Event", "name": "Meditation", "description": "冥想靜坐"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--lavender:#a78bfa;--teal:#5eead4;--warm:#fefdf5;--dark:#2d2d2d;--gray:#777;--light-lav:#ede9fe;--light-teal:#ccfbf1}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--warm);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--lavender);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(167,139,250,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--warm)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--warm);border:2px solid var(--lavender);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--lavender);font-size:14px;font-weight:600}
+.lang-toggle:hover{background:var(--lavender);color:var(--warm)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(254,253,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(167,139,250,.15);padding:12px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:36px;width:36px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--lavender)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--gray);font-size:14px;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--lavender)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--lavender);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(254,253,245,.98);flex-direction:column;padding:20px;gap:16px}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(254,253,245,.5),rgba(254,253,245,.85))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:650px}
+.hero h1{font-size:clamp(2rem,5.5vw,3.2rem);font-weight:300;letter-spacing:2px;margin-bottom:16px;line-height:1.4;color:var(--dark)}
+.hero h1 .zen{color:var(--lavender);font-weight:600}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--gray);margin-bottom:30px;line-height:1.8}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:600;font-size:15px;transition:all .3s;cursor:pointer;border:none}
+.btn-lav{background:var(--lavender);color:var(--warm)}
+.btn-lav:hover{background:#8b5cf6;transform:translateY(-2px)}
+.btn-teal{background:var(--teal);color:var(--dark);margin-left:12px}
+.btn-teal:hover{background:#2dd4bf;transform:translateY(-2px)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:300;letter-spacing:2px;color:var(--dark)}
+.section-title .wave{width:50px;height:3px;background:linear-gradient(90deg,var(--lavender),var(--teal));margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px}
+
+.classes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
+.class-card{background:var(--warm);border-radius:20px;padding:30px 24px;text-align:center;transition:all .4s;border:2px solid transparent;box-shadow:0 2px 15px rgba(0,0,0,.04)}
+.class-card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(167,139,250,.15)}
+.class-card:nth-child(1){border-color:var(--lavender)}
+.class-card:nth-child(2){border-color:var(--teal)}
+.class-card:nth-child(3){border-color:#f9a8d4}
+.class-card:nth-child(4){border-color:var(--lavender)}
+.class-icon{font-size:36px;margin-bottom:14px}
+.class-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.class-card p{color:var(--gray);font-size:14px;line-height:1.7}
+
+.studio-section{background:var(--light-lav);border-radius:24px;padding:40px}
+.studio-section img{border-radius:16px;box-shadow:0 6px 25px rgba(0,0,0,.1)}
+
+.schedule-table{width:100%;border-collapse:collapse;font-size:14px;background:var(--warm);border-radius:16px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,.05)}
+.schedule-table th{background:var(--lavender);color:var(--warm);padding:14px 10px;font-weight:600;font-size:13px}
+.schedule-table td{padding:12px 10px;text-align:center;border-bottom:1px solid rgba(167,139,250,.1);color:var(--dark)}
+.schedule-table tr:last-child td{border-bottom:none}
+.schedule-table tr:hover td{background:var(--light-lav)}
+@media(max-width:600px){.schedule-table{font-size:11px}.schedule-table th,.schedule-table td{padding:8px 4px}}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.price-card{background:var(--warm);border-radius:20px;padding:36px 28px;text-align:center;border:2px solid rgba(167,139,250,.15);transition:all .4s;box-shadow:0 2px 15px rgba(0,0,0,.04)}
+.price-card.featured{border-color:var(--lavender);background:var(--light-lav);transform:scale(1.04)}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(167,139,250,.15)}
+.price-card .plan{font-size:14px;color:var(--gray);letter-spacing:1px;margin-bottom:8px}
+.price-card .amount{font-size:36px;font-weight:700;color:var(--lavender);margin-bottom:6px}
+.price-card .period{color:var(--gray);font-size:13px;margin-bottom:18px}
+.price-card ul{list-style:none;text-align:left;margin-bottom:22px}
+.price-card li{padding:6px 0;font-size:14px;color:var(--dark);border-bottom:1px solid rgba(0,0,0,.05)}
+.price-card li::before{content:"✓ ";color:var(--teal);font-weight:700}
+
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact-wrap img{border-radius:16px}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.contact-form input,.contact-form textarea{background:var(--warm);border:2px solid rgba(167,139,250,.2);border-radius:12px;padding:14px;font-size:15px;color:var(--dark);width:100%}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--lavender)}
+.contact-form textarea{min-height:100px;resize:vertical}
+@media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
+
+footer{text-align:center;padding:30px 20px;color:var(--gray);font-size:13px}
+
+.fade-up{opacity:0;transform:translateY(35px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.float-in{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
+.float-in.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+</button>
+<button class="lang-toggle" id="langBtn">EN</button>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo-area"><img src="logos/logo_final.png" alt="靜心瑜伽"><span>ZenFlow</span></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#classes" data-zh="課程" data-en="Classes">課程</a></li>
+      <li><a href="#studio" data-zh="空間" data-en="Studio">空間</a></li>
+      <li><a href="#schedule" data-zh="課表" data-en="Schedule">課表</a></li>
+      <li><a href="#pricing" data-zh="方案" data-en="Pricing">方案</a></li>
+      <li><a href="#contact" data-zh="聯繫" data-en="Contact">聯繫</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="呼吸之間<br>找到你的<span class='zen'>寧靜</span>" data-en="Between Breaths<br>Find Your <span class='zen'>Stillness</span>">呼吸之間<br>找到你的<span class="zen">寧靜</span></h1>
+    <p data-zh="在城市的喧囂中，靜心瑜伽為您打造一方淨土。從初學到進階，從身體到心靈，與我們一起踏上平衡之旅。" data-en="In the noise of the city, ZenFlow creates a sanctuary for you. From beginner to advanced, body to soul — join us on a journey to balance.">在城市的喧囂中，靜心瑜伽為您打造一方淨土。從初學到進階，從身體到心靈，與我們一起踏上平衡之旅。</p>
+    <a href="#classes" class="btn btn-lav" data-zh="探索課程" data-en="Explore Classes">探索課程</a>
+    <a href="#pricing" class="btn btn-teal" data-zh="查看方案" data-en="See Pricing">查看方案</a>
+  </div>
+</section>
+
+<section id="classes">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="課程類型" data-en="Class Types">課程類型</h2>
+      <div class="wave"></div>
+      <p data-zh="四種課程，滿足不同身心需求" data-en="Four class types for different body-mind needs">四種課程，滿足不同身心需求</p>
+    </div>
+    <div class="classes-grid">
+      <div class="class-card fade-up">
+        <div class="class-icon">🧘</div>
+        <h3 data-zh="哈達瑜伽" data-en="Hatha Yoga">哈達瑜伽</h3>
+        <p data-zh="經典體位法與呼吸法的結合，適合所有程度。在穩定中找到力量與柔軟。" data-en="Classic asanas paired with pranayama, suitable for all levels. Find strength and softness in stability.">經典體位法與呼吸法的結合，適合所有程度。在穩定中找到力量與柔軟。</p>
+      </div>
+      <div class="class-card fade-up">
+        <div class="class-icon">🌊</div>
+        <h3 data-zh="流瑜伽" data-en="Vinyasa Flow">流瑜伽</h3>
+        <p data-zh="動態串連的體位流動，在呼吸與動作的韻律中，感受身體的自由與活力。" data-en="Dynamic sequencing of postures — feel freedom and vitality in the rhythm of breath and movement.">動態串連的體位流動，在呼吸與動作的韻律中，感受身體的自由與活力。</p>
+      </div>
+      <div class="class-card fade-up">
+        <div class="class-icon">🌙</div>
+        <h3 data-zh="陰瑜伽" data-en="Yin Yoga">陰瑜伽</h3>
+        <p data-zh="長時間停留的深層伸展，釋放筋膜緊繃，讓身心進入深度放鬆的修復狀態。" data-en="Long-held deep stretches to release fascial tension, guiding body and mind into deep restorative relaxation.">長時間停留的深層伸展，釋放筋膜緊繃，讓身心進入深度放鬆的修復狀態。</p>
+      </div>
+      <div class="class-card fade-up">
+        <div class="class-icon">🕯️</div>
+        <h3 data-zh="冥想靜坐" data-en="Meditation">冥想靜坐</h3>
+        <p data-zh="正念冥想與引導式靜坐，訓練專注力，在寧靜中覺察內在，找回心的安定。" data-en="Mindfulness meditation and guided sitting practice — train focus, observe within, and rediscover inner peace.">正念冥想與引導式靜坐，訓練專注力，在寧靜中覺察內在，找回心的安定。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="studio">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="練習空間" data-en="Our Studio">練習空間</h2>
+      <div class="wave"></div>
+    </div>
+    <div class="studio-section fade-up">
+      <img src="photos/studio.png" alt="瑜伽教室空間" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="每週課表" data-en="Weekly Schedule">每週課表</h2>
+      <div class="wave"></div>
+    </div>
+    <div class="fade-up" style="overflow-x:auto">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th data-zh="時段" data-en="Time">時段</th>
+            <th data-zh="週一" data-en="Mon">週一</th>
+            <th data-zh="週二" data-en="Tue">週二</th>
+            <th data-zh="週三" data-en="Wed">週三</th>
+            <th data-zh="週四" data-en="Thu">週四</th>
+            <th data-zh="週五" data-en="Fri">週五</th>
+            <th data-zh="週六" data-en="Sat">週六</th>
+            <th data-zh="週日" data-en="Sun">週日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>07:00</td><td data-zh="哈達" data-en="Hatha">哈達</td><td>—</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td>—</td><td data-zh="哈達" data-en="Hatha">哈達</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td data-zh="冥想" data-en="Meditation">冥想</td></tr>
+          <tr><td>10:00</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td data-zh="哈達" data-en="Hatha">哈達</td><td data-zh="陰瑜伽" data-en="Yin">陰瑜伽</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td data-zh="哈達" data-en="Hatha">哈達</td><td data-zh="哈達" data-en="Hatha">哈達</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td></tr>
+          <tr><td>14:00</td><td data-zh="陰瑜伽" data-en="Yin">陰瑜伽</td><td data-zh="冥想" data-en="Meditation">冥想</td><td>—</td><td data-zh="陰瑜伽" data-en="Yin">陰瑜伽</td><td data-zh="冥想" data-en="Meditation">冥想</td><td data-zh="陰瑜伽" data-en="Yin">陰瑜伽</td><td>—</td></tr>
+          <tr><td>18:30</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td data-zh="哈達" data-en="Hatha">哈達</td><td data-zh="哈達" data-en="Hatha">哈達</td><td data-zh="陰瑜伽" data-en="Yin">陰瑜伽</td><td>—</td><td>—</td></tr>
+          <tr><td>20:00</td><td data-zh="冥想" data-en="Meditation">冥想</td><td data-zh="陰瑜伽" data-en="Yin">陰瑜伽</td><td data-zh="冥想" data-en="Meditation">冥想</td><td data-zh="流瑜伽" data-en="Vinyasa">流瑜伽</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="會員方案" data-en="Pricing Plans">會員方案</h2>
+      <div class="wave"></div>
+    </div>
+    <div class="pricing-grid fade-up">
+      <div class="price-card">
+        <div class="plan" data-zh="單堂體驗" data-en="DROP-IN">單堂體驗</div>
+        <div class="amount">$500</div>
+        <div class="period" data-zh="每堂" data-en="per class">每堂</div>
+        <ul>
+          <li data-zh="任選一堂課程" data-en="Any single class">任選一堂課程</li>
+          <li data-zh="含瑜伽墊使用" data-en="Yoga mat included">含瑜伽墊使用</li>
+          <li data-zh="首次體驗優惠 $300" data-en="First-time special $300">首次體驗優惠 $300</li>
+        </ul>
+        <button class="btn btn-teal" style="width:100%" data-zh="立即報名" data-en="Sign Up">立即報名</button>
+      </div>
+      <div class="price-card featured">
+        <div class="plan" data-zh="月費會員" data-en="MONTHLY">月費會員</div>
+        <div class="amount">$3,200</div>
+        <div class="period" data-zh="每月" data-en="per month">每月</div>
+        <ul>
+          <li data-zh="無限堂數" data-en="Unlimited classes">無限堂數</li>
+          <li data-zh="免費瑜伽墊與毛巾" data-en="Free mat & towel">免費瑜伽墊與毛巾</li>
+          <li data-zh="優先預約" data-en="Priority booking">優先預約</li>
+          <li data-zh="免費冥想音頻" data-en="Free meditation audio">免費冥想音頻</li>
+        </ul>
+        <button class="btn btn-lav" style="width:100%" data-zh="最受歡迎" data-en="Most Popular">最受歡迎</button>
+      </div>
+      <div class="price-card">
+        <div class="plan" data-zh="年費會員" data-en="ANNUAL">年費會員</div>
+        <div class="amount">$28,800</div>
+        <div class="period" data-zh="每年（省 $9,600）" data-en="per year (save $9,600)">每年（省 $9,600）</div>
+        <ul>
+          <li data-zh="無限堂數" data-en="Unlimited classes">無限堂數</li>
+          <li data-zh="全配備提供" data-en="Full gear provided">全配備提供</li>
+          <li data-zh="專屬置物櫃" data-en="Personal locker">專屬置物櫃</li>
+          <li data-zh="一對一課程 2 堂" data-en="2 private sessions">一對一課程 2 堂</li>
+        </ul>
+        <button class="btn btn-teal" style="width:100%" data-zh="最超值" data-en="Best Value">最超值</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="聯繫我們" data-en="Contact Us">聯繫我們</h2>
+      <div class="wave"></div>
+    </div>
+    <div class="contact-wrap float-in">
+      <img src="photos/pose.png" alt="瑜伽姿勢" loading="lazy" style="border-radius:16px">
+      <form class="contact-form" onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Message sent! Namaste.':'訊息已送出！感恩合十。')">
+        <input type="text" placeholder="姓名" required data-ph-zh="姓名" data-ph-en="Your Name">
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="電話" data-ph-zh="電話（選填）" data-ph-en="Phone (optional)">
+        <textarea placeholder="想對我們說的話..." data-ph-zh="想對我們說的話..." data-ph-en="Your message..."></textarea>
+        <button type="submit" class="btn btn-lav" style="width:100%" data-zh="送出訊息" data-en="Send Message">送出訊息</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 靜心瑜伽 ZenFlow. All rights reserved.</p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.onclick=()=>{if(playing){bgm.pause();bgmBtn.style.opacity='.5'}else{bgm.play();bgmBtn.style.opacity='1'}playing=!playing};
+
+document.getElementById('menuToggle').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.fade-up,.float-in').forEach(el=>obs.observe(el));
+
+let lang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.onclick=()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  langBtn.textContent=lang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+  document.querySelectorAll('[data-ph-'+lang+']').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+lang)});
+};
+</script>
+</body>
+</html>

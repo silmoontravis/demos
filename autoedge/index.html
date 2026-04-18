@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>速馳車業 AutoEdge — 專業汽車保養改裝</title>
+<meta name="description" content="速馳車業 AutoEdge 提供專業汽車保養、改裝、美容、檢測服務。頂級設備與技術，讓您的愛車性能再進化。">
+<meta name="keywords" content="汽車保養, 汽車改裝, 汽車美容, 車輛檢測, AutoEdge, 速馳車業">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "速馳車業 AutoEdge",
+  "description": "Professional car service, tuning, detailing & inspection",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2888-6688",
+  "openingHours": "Mo-Sa 09:00-19:00",
+  "priceRange": "$$",
+  "serviceType": ["汽車保養", "汽車改裝", "汽車美容", "車輛檢測"]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--silver:#c0c0c0;--red:#dc2626;--dark:#111;--white:#fff;--gray:#888}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* BGM Button */
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--red);border:2px solid var(--silver);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:24px;height:24px;fill:var(--white)}
+
+/* Lang Toggle */
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:rgba(17,17,17,.85);border:1px solid var(--silver);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--silver);font-size:14px;backdrop-filter:blur(8px)}
+.lang-toggle:hover{color:var(--white);border-color:var(--red)}
+
+/* Navigation */
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(17,17,17,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(192,192,192,.15);padding:12px 0;transition:all .3s}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:36px;width:36px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--silver)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--gray);font-size:14px;transition:color .3s}
+nav .nav-links a:hover{color:var(--red)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--silver);margin:5px 0;transition:all .3s}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(17,17,17,.97);flex-direction:column;padding:20px;gap:16px}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(17,17,17,.85),rgba(220,38,38,.25))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;letter-spacing:2px;margin-bottom:16px}
+.hero h1 .accent{color:var(--red)}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--silver);margin-bottom:30px;line-height:1.7}
+.btn{display:inline-block;padding:14px 36px;border-radius:4px;font-weight:700;font-size:16px;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:var(--red);color:var(--white)}
+.btn-primary:hover{background:#b91c1c;transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--silver);color:var(--silver);background:transparent;margin-left:12px}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+/* Sections */
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:10px}
+.section-title h2 .line{display:block;width:50px;height:3px;background:var(--red);margin:12px auto 0}
+.section-title p{color:var(--gray);font-size:15px;margin-top:10px}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:rgba(192,192,192,.06);border:1px solid rgba(192,192,192,.12);border-radius:8px;padding:32px 24px;text-align:center;transition:all .4s}
+.service-card:hover{border-color:var(--red);transform:translateY(-6px);box-shadow:0 12px 40px rgba(220,38,38,.15)}
+.service-icon{font-size:40px;margin-bottom:16px}
+.service-card h3{font-size:18px;margin-bottom:10px}
+.service-card p{color:var(--gray);font-size:14px;line-height:1.6}
+
+/* Gallery */
+.gallery{background:rgba(192,192,192,.03)}
+.gallery-img{border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.gallery-img img{width:100%;transition:transform .6s}
+.gallery-img:hover img{transform:scale(1.03)}
+
+/* Team */
+.team-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.team-img{border-radius:12px;overflow:hidden}
+.team-text h3{font-size:22px;margin-bottom:14px}
+.team-text p{color:var(--gray);line-height:1.8;font-size:15px}
+@media(max-width:768px){.team-wrap{grid-template-columns:1fr}}
+
+/* Booking */
+.booking{background:linear-gradient(135deg,rgba(220,38,38,.08),rgba(17,17,17,1))}
+.booking-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.booking-form input,.booking-form select,.booking-form textarea{background:rgba(192,192,192,.08);border:1px solid rgba(192,192,192,.2);border-radius:6px;padding:14px;color:var(--white);font-size:15px;width:100%}
+.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{outline:none;border-color:var(--red)}
+.booking-form textarea{min-height:100px;resize:vertical}
+
+/* Footer */
+footer{text-align:center;padding:30px 20px;border-top:1px solid rgba(192,192,192,.1);color:var(--gray);font-size:13px}
+
+/* Scroll Animation */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- BGM -->
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+</button>
+
+<!-- Language Toggle -->
+<button class="lang-toggle" id="langBtn">EN</button>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo-area"><img src="logos/logo_final.png" alt="速馳車業"><span>速馳車業</span></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services" data-zh="服務項目" data-en="Services">服務項目</a></li>
+      <li><a href="#gallery" data-zh="車輛展示" data-en="Gallery">車輛展示</a></li>
+      <li><a href="#team" data-zh="專業團隊" data-en="Team">專業團隊</a></li>
+      <li><a href="#booking" data-zh="線上預約" data-en="Book Now">線上預約</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="極致性能<br><span class='accent'>速馳車業</span>" data-en="Peak Performance<br><span class='accent'>AutoEdge</span>">極致性能<br><span class="accent">速馳車業</span></h1>
+    <p data-zh="專業汽車保養、性能改裝、精緻美容、全車檢測。頂級設備與技術團隊，讓您的愛車突破極限。" data-en="Professional car maintenance, performance tuning, premium detailing, and full inspection. Top-tier equipment and expert team to push your car beyond limits.">專業汽車保養、性能改裝、精緻美容、全車檢測。頂級設備與技術團隊，讓您的愛車突破極限。</p>
+    <a href="#booking" class="btn btn-primary" data-zh="立即預約" data-en="Book Now">立即預約</a>
+    <a href="#services" class="btn btn-outline" data-zh="了解服務" data-en="Our Services">了解服務</a>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="服務項目<span class='line'></span>" data-en="Our Services<span class='line'></span>">服務項目<span class="line"></span></h2>
+      <p data-zh="四大核心服務，全方位守護您的愛車" data-en="Four core services for complete car care">四大核心服務，全方位守護您的愛車</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🔧</div>
+        <h3 data-zh="定期保養" data-en="Maintenance">定期保養</h3>
+        <p data-zh="原廠級保養服務，機油更換、煞車系統、冷氣保養，延長愛車壽命。" data-en="Factory-level maintenance: oil change, brake systems, A/C service — extending your car's lifespan.">原廠級保養服務，機油更換、煞車系統、冷氣保養，延長愛車壽命。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">⚡</div>
+        <h3 data-zh="性能改裝" data-en="Performance Tuning">性能改裝</h3>
+        <p data-zh="ECU 調校、排氣系統、進氣升級、避震器調整，釋放車輛潛力。" data-en="ECU tuning, exhaust systems, intake upgrades, suspension setup — unleash your car's potential.">ECU 調校、排氣系統、進氣升級、避震器調整，釋放車輛潛力。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">✨</div>
+        <h3 data-zh="精緻美容" data-en="Detailing">精緻美容</h3>
+        <p data-zh="鍍膜、拋光、內裝清潔、皮革保養，讓愛車煥然一新。" data-en="Ceramic coating, polishing, interior cleaning, leather care — revitalize your ride.">鍍膜、拋光、內裝清潔、皮革保養，讓愛車煥然一新。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔍</div>
+        <h3 data-zh="全車檢測" data-en="Inspection">全車檢測</h3>
+        <p data-zh="電腦診斷、底盤檢查、電路系統檢測，全面掌握車輛健康狀況。" data-en="Computer diagnostics, chassis check, electrical system inspection — full health report.">電腦診斷、底盤檢查、電路系統檢測，全面掌握車輛健康狀況。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="gallery">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="車輛展示<span class='line'></span>" data-en="Gallery<span class='line'></span>">車輛展示<span class="line"></span></h2>
+      <p data-zh="精選改裝案例，展現速馳車業的實力" data-en="Selected tuning projects showcasing our expertise">精選改裝案例，展現速馳車業的實力</p>
+    </div>
+    <div class="gallery-img fade-up">
+      <img src="photos/car.png" alt="改裝車輛展示" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section id="team">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="專業團隊<span class='line'></span>" data-en="Our Team<span class='line'></span>">專業團隊<span class="line"></span></h2>
+    </div>
+    <div class="team-wrap fade-up">
+      <div class="team-img"><img src="photos/team.png" alt="速馳車業團隊" loading="lazy"></div>
+      <div class="team-text">
+        <h3 data-zh="十年以上資深技師團隊" data-en="Over a Decade of Master Technicians">十年以上資深技師團隊</h3>
+        <p data-zh="速馳車業擁有超過十年經驗的資深技師群，每位成員均通過嚴格的專業認證。從日常保養到高性能改裝，我們以精湛技術與真誠服務，贏得車主們的長期信賴。" data-en="AutoEdge is backed by master technicians with over a decade of experience, each certified to the highest standards. From routine maintenance to high-performance tuning, we earn long-term trust through skill and sincerity.">速馳車業擁有超過十年經驗的資深技師群，每位成員均通過嚴格的專業認證。從日常保養到高性能改裝，我們以精湛技術與真誠服務，贏得車主們的長期信賴。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="booking">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2 data-zh="線上預約<span class='line'></span>" data-en="Book Now<span class='line'></span>">線上預約<span class="line"></span></h2>
+      <p data-zh="填寫表單，我們將盡速與您確認預約時段" data-en="Fill out the form and we'll confirm your appointment shortly">填寫表單，我們將盡速與您確認預約時段</p>
+    </div>
+    <form class="booking-form fade-up" onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Booking submitted! We will contact you soon.':'預約已送出！我們會盡速與您聯繫。')">
+      <input type="text" placeholder="姓名 / Name" required data-ph-zh="姓名" data-ph-en="Your Name">
+      <input type="tel" placeholder="電話 / Phone" required data-ph-zh="電話" data-ph-en="Phone Number">
+      <select required>
+        <option value="" data-zh="選擇服務" data-en="Select Service">選擇服務</option>
+        <option value="maintenance" data-zh="定期保養" data-en="Maintenance">定期保養</option>
+        <option value="tuning" data-zh="性能改裝" data-en="Performance Tuning">性能改裝</option>
+        <option value="detailing" data-zh="精緻美容" data-en="Detailing">精緻美容</option>
+        <option value="inspection" data-zh="全車檢測" data-en="Inspection">全車檢測</option>
+      </select>
+      <input type="date" required>
+      <textarea placeholder="備註 / Notes" data-ph-zh="備註（選填）" data-ph-en="Notes (optional)"></textarea>
+      <button type="submit" class="btn btn-primary" style="width:100%" data-zh="確認預約" data-en="Confirm Booking">確認預約</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 速馳車業 AutoEdge. All rights reserved.</p>
+</footer>
+
+<script>
+// BGM
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.onclick=()=>{if(playing){bgm.pause();bgmBtn.style.opacity='.5'}else{bgm.play();bgmBtn.style.opacity='1'}playing=!playing};
+
+// Mobile menu
+document.getElementById('menuToggle').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+// Scroll animations
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// Language toggle
+let lang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.onclick=()=>{
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  langBtn.textContent=lang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+  document.querySelectorAll('[data-ph-'+lang+']').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+lang)});
+  document.querySelectorAll('select option[data-'+lang+']').forEach(el=>{el.textContent=el.getAttribute('data-'+lang)});
+};
+</script>
+</body>
+</html>

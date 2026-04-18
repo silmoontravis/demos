@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光年劇場 LightYear — Performing Arts Theater</title>
+<meta name="description" content="光年劇場，台灣頂尖表演藝術殿堂。精選劇目、會員專屬票務、沉浸式觀劇體驗。">
+<meta name="keywords" content="光年劇場, LightYear, 表演藝術, 劇場, 舞台劇, 會員, 票務">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PerformingArtsTheater",
+  "name": "光年劇場 LightYear",
+  "description": "台灣頂尖表演藝術殿堂，精選劇目與沉浸式觀劇體驗",
+  "url": "https://lightyear-theater.com",
+  "logo": "logos/logo_final.png",
+  "address": {"@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW"},
+  "event": [
+    {"@type": "TheaterEvent", "name": "夢迴長安", "startDate": "2026-05-10", "offers": {"@type": "Offer", "price": "1200", "priceCurrency": "TWD"}},
+    {"@type": "TheaterEvent", "name": "星塵物語", "startDate": "2026-06-15", "offers": {"@type": "Offer", "price": "1500", "priceCurrency": "TWD"}},
+    {"@type": "TheaterEvent", "name": "霧中風景", "startDate": "2026-07-20", "offers": {"@type": "Offer", "price": "800", "priceCurrency": "TWD"}}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#4c1d95;--purple-light:#7c3aed;--gold:#c8a45e;--gold-light:#e8d5a0;--red:#991b1b;--red-light:#dc2626;--dark:#0f0f1a;--cream:#faf7f2;--text:#e8e0d4;--text-dark:#2d2520}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Serif TC','Playfair Display',serif;color:var(--text);line-height:1.7;overflow-x:hidden;background:var(--dark)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+.scale-in{opacity:0;transform:scale(.9);transition:opacity .8s ease,transform .8s ease}
+.scale-in.visible{opacity:1;transform:scale(1)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,15,26,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,164,94,.15);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.2rem;color:var(--gold);text-decoration:none;letter-spacing:2px}
+.nav-logo img{height:36px;width:36px;object-fit:contain}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.85rem;transition:color .3s;letter-spacing:1px}
+.nav-links a:hover{color:var(--gold)}
+.nav-controls{display:flex;align-items:center;gap:12px}
+.btn-lang{background:none;border:1px solid var(--gold);color:var(--gold);padding:5px 14px;border-radius:4px;font-size:.8rem;cursor:pointer;font-weight:600;transition:all .3s;font-family:inherit}
+.btn-lang:hover{background:var(--gold);color:var(--dark)}
+.btn-bgm{background:none;border:1px solid var(--gold);color:var(--gold);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .3s}
+.btn-bgm:hover,.btn-bgm.playing{background:var(--gold);color:var(--dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--gold);transition:all .3s}
+
+/* Hero */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,15,26,.5) 0%,rgba(76,29,149,.4) 50%,rgba(15,15,26,.85) 100%)}
+.hero-content{position:relative;z-index:2;padding:24px}
+.hero-content h1{font-size:4rem;font-weight:900;color:var(--gold);margin-bottom:16px;letter-spacing:8px;text-shadow:0 4px 20px rgba(0,0,0,.5)}
+.hero-content .subtitle{font-size:1.3rem;color:var(--text);margin-bottom:12px;letter-spacing:4px;font-weight:400}
+.hero-content p{font-size:1rem;color:rgba(232,224,212,.7);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-divider{width:80px;height:2px;background:var(--gold);margin:24px auto}
+.btn-gold{background:transparent;border:2px solid var(--gold);color:var(--gold);padding:14px 40px;font-size:1rem;font-weight:600;letter-spacing:3px;cursor:pointer;transition:all .4s;text-decoration:none;display:inline-block;font-family:inherit}
+.btn-gold:hover{background:var(--gold);color:var(--dark);box-shadow:0 8px 30px rgba(200,164,94,.3)}
+.btn-gold-filled{background:var(--gold);border:2px solid var(--gold);color:var(--dark);padding:14px 40px;font-size:1rem;font-weight:600;letter-spacing:3px;cursor:pointer;transition:all .4s;text-decoration:none;display:inline-block;font-family:inherit}
+.btn-gold-filled:hover{background:transparent;color:var(--gold)}
+
+section{padding:100px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:60px}
+.section-title h2{font-size:2.4rem;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:4px}
+.section-title p{font-size:1rem;color:rgba(232,224,212,.6);letter-spacing:2px}
+.gold-line{width:60px;height:2px;background:var(--gold);margin:16px auto 0}
+
+/* Shows */
+.shows{background:var(--dark)}
+.shows-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.show-card{background:rgba(76,29,149,.15);border:1px solid rgba(200,164,94,.2);border-radius:12px;overflow:hidden;transition:all .5s}
+.show-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 12px 40px rgba(200,164,94,.1)}
+.show-img{height:200px;background:linear-gradient(135deg,var(--purple),var(--red));display:flex;align-items:center;justify-content:center;font-size:3rem}
+.show-body{padding:28px}
+.show-body h3{font-size:1.3rem;color:var(--gold);margin-bottom:8px;letter-spacing:2px}
+.show-body .show-date{font-size:.85rem;color:rgba(232,224,212,.5);margin-bottom:12px}
+.show-body .show-desc{font-size:.9rem;color:rgba(232,224,212,.7);margin-bottom:16px;line-height:1.7}
+.show-body .show-price{font-size:1.1rem;color:var(--gold);font-weight:700;margin-bottom:16px}
+.show-body .btn-ticket{display:block;text-align:center;background:var(--red);color:#fff;padding:10px;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s;letter-spacing:1px}
+.show-body .btn-ticket:hover{background:var(--red-light)}
+
+/* Membership */
+.membership{background:linear-gradient(to bottom,var(--dark),rgba(76,29,149,.15))}
+.membership-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.member-card{background:rgba(15,15,26,.6);border:1px solid rgba(200,164,94,.15);border-radius:12px;padding:40px 28px;text-align:center;transition:all .5s;position:relative}
+.member-card:hover{border-color:var(--gold);box-shadow:0 8px 30px rgba(200,164,94,.08)}
+.member-card.vip{border-color:var(--gold);background:rgba(200,164,94,.08)}
+.member-card h3{font-size:1.4rem;color:var(--gold);margin-bottom:8px;letter-spacing:2px}
+.member-card .member-price{font-size:2rem;font-weight:700;color:var(--text);margin:16px 0 8px}
+.member-card .member-price span{font-size:.9rem;font-weight:400;color:rgba(232,224,212,.5)}
+.member-perks{list-style:none;text-align:left;margin:20px 0 28px}
+.member-perks li{padding:6px 0;font-size:.88rem;color:rgba(232,224,212,.7);display:flex;align-items:center;gap:8px}
+.member-perks li::before{content:'◆';color:var(--gold);font-size:.6rem}
+
+/* Gallery */
+.gallery{background:var(--dark)}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gallery-grid img{width:100%;border-radius:8px;aspect-ratio:16/10;object-fit:cover;transition:transform .5s;border:1px solid rgba(200,164,94,.1)}
+.gallery-grid img:hover{transform:scale(1.03)}
+
+/* About */
+.about{background:rgba(76,29,149,.08)}
+.about-content{max-width:700px;margin:0 auto;text-align:center}
+.about-content p{font-size:1.05rem;color:rgba(232,224,212,.7);line-height:2;margin-bottom:20px}
+
+/* Box Office */
+.box-office{background:var(--dark);text-align:center}
+.box-info{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.box-item{padding:28px;border:1px solid rgba(200,164,94,.15);border-radius:12px}
+.box-item h4{color:var(--gold);font-size:1rem;margin-bottom:8px;letter-spacing:2px}
+.box-item p{color:rgba(232,224,212,.6);font-size:.9rem}
+
+footer{background:rgba(0,0,0,.5);color:rgba(232,224,212,.4);padding:40px 24px;text-align:center;font-size:.85rem;letter-spacing:1px;border-top:1px solid rgba(200,164,94,.1)}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:rgba(15,15,26,.98);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid rgba(200,164,94,.15)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .hero-content h1{font-size:2.4rem;letter-spacing:4px}
+  .hero-content .subtitle{font-size:1rem}
+  .shows-grid,.membership-grid,.box-info{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="光年劇場 Logo">光年劇場</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#shows" data-zh="當期節目" data-en="Current Shows">當期節目</a>
+    <a href="#membership" data-zh="會員方案" data-en="Membership">會員方案</a>
+    <a href="#gallery" data-zh="劇場風景" data-en="Gallery">劇場風景</a>
+    <a href="#about" data-zh="關於劇場" data-en="About">關於劇場</a>
+    <a href="#boxoffice" data-zh="票務中心" data-en="Box Office">票務中心</a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
+    <button class="btn-bgm" id="bgmBtn" onclick="toggleBGM()">♪</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <p class="subtitle" data-zh="Performing Arts Theater" data-en="表演藝術殿堂">Performing Arts Theater</p>
+    <h1 data-zh="光年劇場" data-en="LightYear Theater">光年劇場</h1>
+    <div class="hero-divider"></div>
+    <p data-zh="在光與影的交匯處，每一場演出都是一次靈魂的旅程。" data-en="At the intersection of light and shadow, every performance is a journey of the soul.">在光與影的交匯處，每一場演出都是一次靈魂的旅程。</p>
+    <a href="#shows" class="btn-gold" data-zh="探索節目" data-en="Explore Shows">探索節目</a>
+  </div>
+</section>
+
+<section class="shows" id="shows">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="當期節目" data-en="Current Shows">當期節目</h2>
+      <div class="gold-line"></div>
+      <p data-zh="精心策劃的年度演出季" data-en="Curated annual performance season">精心策劃的年度演出季</p>
+    </div>
+    <div class="shows-grid">
+      <div class="show-card fade-up">
+        <div class="show-img" style="background:linear-gradient(135deg,#4c1d95,#991b1b)">🏛</div>
+        <div class="show-body">
+          <h3 data-zh="夢迴長安" data-en="Dreams of Chang'an">夢迴長安</h3>
+          <p class="show-date" data-zh="2026.05.10 — 05.25 ｜ 大劇院" data-en="2026.05.10 — 05.25 | Main Hall">2026.05.10 — 05.25 ｜ 大劇院</p>
+          <p class="show-desc" data-zh="穿越千年的盛唐長安，一段關於詩人與舞者的愛情故事。" data-en="A love story of a poet and dancer set in the magnificent Tang Dynasty Chang'an.">穿越千年的盛唐長安，一段關於詩人與舞者的愛情故事。</p>
+          <p class="show-price" data-zh="NT$1,200 起" data-en="From NT$1,200">NT$1,200 起</p>
+          <a href="#boxoffice" class="btn-ticket" data-zh="立即購票" data-en="Buy Tickets">立即購票</a>
+        </div>
+      </div>
+      <div class="show-card fade-up" style="transition-delay:.15s">
+        <div class="show-img" style="background:linear-gradient(135deg,#1e3a5f,#4c1d95)">✨</div>
+        <div class="show-body">
+          <h3 data-zh="星塵物語" data-en="Stardust Tales">星塵物語</h3>
+          <p class="show-date" data-zh="2026.06.15 — 07.05 ｜ 實驗劇場" data-en="2026.06.15 — 07.05 | Black Box">2026.06.15 — 07.05 ｜ 實驗劇場</p>
+          <p class="show-desc" data-zh="一部融合舞蹈與光影的現代劇場作品，探索宇宙與人心的距離。" data-en="A modern theater piece blending dance and light, exploring the distance between cosmos and heart.">一部融合舞蹈與光影的現代劇場作品，探索宇宙與人心的距離。</p>
+          <p class="show-price" data-zh="NT$1,500 起" data-en="From NT$1,500">NT$1,500 起</p>
+          <a href="#boxoffice" class="btn-ticket" data-zh="立即購票" data-en="Buy Tickets">立即購票</a>
+        </div>
+      </div>
+      <div class="show-card fade-up" style="transition-delay:.3s">
+        <div class="show-img" style="background:linear-gradient(135deg,#374151,#6b7280)">🌫</div>
+        <div class="show-body">
+          <h3 data-zh="霧中風景" data-en="Landscape in Mist">霧中風景</h3>
+          <p class="show-date" data-zh="2026.07.20 — 08.10 ｜ 小劇場" data-en="2026.07.20 — 08.10 | Studio">2026.07.20 — 08.10 ｜ 小劇場</p>
+          <p class="show-desc" data-zh="改編自經典文學，三個角色在記憶的迷霧中尋找失落的自我。" data-en="Adapted from classic literature, three characters search for their lost selves in the mist of memory.">改編自經典文學，三個角色在記憶的迷霧中尋找失落的自我。</p>
+          <p class="show-price" data-zh="NT$800 起" data-en="From NT$800">NT$800 起</p>
+          <a href="#boxoffice" class="btn-ticket" data-zh="立即購票" data-en="Buy Tickets">立即購票</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+      <div class="gold-line"></div>
+      <p data-zh="成為光年劇場的家人，享受專屬禮遇" data-en="Join the LightYear family and enjoy exclusive benefits">成為光年劇場的家人，享受專屬禮遇</p>
+    </div>
+    <div class="membership-grid">
+      <div class="member-card fade-up">
+        <h3 data-zh="常客會員" data-en="Regular">常客會員</h3>
+        <div class="member-price" data-zh="免費" data-en="Free">免費</div>
+        <ul class="member-perks">
+          <li data-zh="優先購票通知" data-en="Priority ticket notifications">優先購票通知</li>
+          <li data-zh="生日月 9 折優惠" data-en="10% birthday month discount">生日月 9 折優惠</li>
+          <li data-zh="電子節目冊" data-en="Digital program book">電子節目冊</li>
+        </ul>
+        <a href="#boxoffice" class="btn-gold" style="padding:10px 28px;font-size:.85rem" data-zh="免費加入" data-en="Join Free">免費加入</a>
+      </div>
+      <div class="member-card vip fade-up" style="transition-delay:.15s">
+        <h3 data-zh="VIP 會員" data-en="VIP">VIP 會員</h3>
+        <div class="member-price">NT$3,600<span data-zh="/年" data-en="/yr">/年</span></div>
+        <ul class="member-perks">
+          <li data-zh="全年 8 折購票" data-en="20% off all tickets year-round">全年 8 折購票</li>
+          <li data-zh="專屬貴賓休息室" data-en="Exclusive VIP lounge access">專屬貴賓休息室</li>
+          <li data-zh="演後座談優先席" data-en="Priority post-show talk seating">演後座談優先席</li>
+          <li data-zh="精美會員禮品" data-en="Premium membership gift">精美會員禮品</li>
+        </ul>
+        <a href="#boxoffice" class="btn-gold-filled" style="padding:10px 28px;font-size:.85rem" data-zh="立即升級" data-en="Upgrade Now">立即升級</a>
+      </div>
+      <div class="member-card fade-up" style="transition-delay:.3s">
+        <h3 data-zh="贊助人" data-en="Patron">贊助人</h3>
+        <div class="member-price">NT$36,000<span data-zh="/年" data-en="/yr">/年</span></div>
+        <ul class="member-perks">
+          <li data-zh="所有 VIP 禮遇" data-en="All VIP benefits">所有 VIP 禮遇</li>
+          <li data-zh="年度贊助人晚宴" data-en="Annual patron gala dinner">年度贊助人晚宴</li>
+          <li data-zh="與導演/演員會面" data-en="Meet the director & cast">與導演/演員會面</li>
+          <li data-zh="限定幕後導覽" data-en="Exclusive backstage tour">限定幕後導覽</li>
+          <li data-zh="節目冊署名致謝" data-en="Name in program credits">節目冊署名致謝</li>
+        </ul>
+        <a href="#boxoffice" class="btn-gold" style="padding:10px 28px;font-size:.85rem" data-zh="洽詢贊助" data-en="Inquire">洽詢贊助</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="劇場風景" data-en="Gallery">劇場風景</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="gallery-grid">
+      <img src="photos/performance.png" alt="光年劇場演出" loading="lazy" class="scale-in">
+      <img src="photos/backstage.png" alt="光年劇場後台" loading="lazy" class="scale-in" style="transition-delay:.15s">
+      <img src="photos/audience.png" alt="光年劇場觀眾" loading="lazy" class="scale-in" style="transition-delay:.3s">
+      <img src="photos/hero.png" alt="光年劇場全景" loading="lazy" class="scale-in" style="transition-delay:.45s">
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="關於劇場" data-en="About the Theater">關於劇場</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="about-content fade-up">
+      <p data-zh="光年劇場創立於 2018 年，坐落於台北市中心，是一座融合古典美學與現代科技的表演藝術殿堂。劇場擁有三個演出空間——800 席大劇院、200 席實驗劇場與 80 席小劇場，每年推出超過 60 場精彩演出。" data-en="Founded in 2018 and located in downtown Taipei, LightYear Theater is a performing arts venue blending classical aesthetics with modern technology. With three performance spaces — an 800-seat main hall, 200-seat black box, and 80-seat studio — we present over 60 shows annually.">光年劇場創立於 2018 年，坐落於台北市中心，是一座融合古典美學與現代科技的表演藝術殿堂。劇場擁有三個演出空間——800 席大劇院、200 席實驗劇場與 80 席小劇場，每年推出超過 60 場精彩演出。</p>
+      <p data-zh="我們相信，劇場是一道光，穿越時間與空間的距離，在演員與觀眾之間搭起心靈的橋樑。每一次幕起，都是一次跨越光年的相遇。" data-en="We believe theater is a light that transcends time and space, building bridges between performers and audiences. Every curtain rise is an encounter across light-years.">我們相信，劇場是一道光，穿越時間與空間的距離，在演員與觀眾之間搭起心靈的橋樑。每一次幕起，都是一次跨越光年的相遇。</p>
+    </div>
+  </div>
+</section>
+
+<section class="box-office" id="boxoffice">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="票務中心" data-en="Box Office">票務中心</h2>
+      <div class="gold-line"></div>
+      <p data-zh="我們期待您的蒞臨" data-en="We look forward to your visit">我們期待您的蒞臨</p>
+    </div>
+    <div class="box-info">
+      <div class="box-item fade-up">
+        <h4 data-zh="服務時間" data-en="Hours">服務時間</h4>
+        <p data-zh="週二至週日 10:00 – 20:00<br>週一公休" data-en="Tue–Sun 10:00 – 20:00<br>Closed Monday">週二至週日 10:00 – 20:00<br>週一公休</p>
+      </div>
+      <div class="box-item fade-up" style="transition-delay:.1s">
+        <h4 data-zh="聯繫方式" data-en="Contact">聯繫方式</h4>
+        <p>02-2789-1234<br>tickets@lightyear-theater.com</p>
+      </div>
+      <div class="box-item fade-up" style="transition-delay:.2s">
+        <h4 data-zh="劇場地址" data-en="Address">劇場地址</h4>
+        <p data-zh="台北市信義區光年路 88 號" data-en="No. 88, LightYear Rd, Xinyi District, Taipei">台北市信義區光年路 88 號</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 光年劇場 LightYear Theater. <span data-zh="版權所有" data-en="All rights reserved">版權所有</span>.</p>
+</footer>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(el=>observer.observe(el));
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio');const bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh][data-en]').forEach(el=>{const t=el.getAttribute('data-'+currentLang);if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.innerHTML=t})}
+</script>
+</body>
+</html>

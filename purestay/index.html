@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>璞旅 PureStay — Boutique Hotel</title>
+<meta name="description" content="璞旅 PureStay，城市中的靜謐綠洲。精品客房、頂級餐飲、療癒 SPA，為您打造難忘的住宿體驗。">
+<meta name="keywords" content="璞旅, PureStay, 精品飯店, boutique hotel, 住宿, SPA, 餐飲">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "璞旅 PureStay",
+  "description": "城市中的靜謐綠洲，精品住宿體驗",
+  "url": "https://purestay.com",
+  "logo": "logos/logo_final.png",
+  "starRating": {"@type": "Rating", "ratingValue": "5"},
+  "address": {"@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW"},
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "SPA"},
+    {"@type": "LocationFeatureSpecification", "name": "Fine Dining"},
+    {"@type": "LocationFeatureSpecification", "name": "Concierge"}
+  ],
+  "makesOffer": [
+    {"@type": "Offer", "name": "Standard Room", "price": "4800", "priceCurrency": "TWD"},
+    {"@type": "Offer", "name": "Deluxe Room", "price": "7200", "priceCurrency": "TWD"},
+    {"@type": "Offer", "name": "Suite", "price": "12800", "priceCurrency": "TWD"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--charcoal:#1f1f1f;--gold:#c8a45e;--gold-light:#e8d5a0;--cream:#faf7f2;--dark:#0d0d0d;--text:#5c5549;--text-light:#8a8278}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Serif TC','Cormorant Garamond',serif;color:var(--text);line-height:1.8;overflow-x:hidden;background:var(--cream)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,247,242,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,164,94,.15);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+nav.scrolled{background:rgba(250,247,242,.98);box-shadow:0 2px 20px rgba(0,0,0,.04)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.15rem;color:var(--charcoal);text-decoration:none;letter-spacing:3px}
+.nav-logo img{height:36px;width:36px;object-fit:contain}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.85rem;transition:color .3s;letter-spacing:1px}
+.nav-links a:hover{color:var(--gold)}
+.nav-controls{display:flex;align-items:center;gap:12px}
+.btn-lang{background:none;border:1px solid var(--gold);color:var(--gold);padding:5px 14px;border-radius:4px;font-size:.8rem;cursor:pointer;font-weight:600;transition:all .3s;font-family:inherit}
+.btn-lang:hover{background:var(--gold);color:var(--cream)}
+.btn-bgm{background:none;border:1px solid var(--gold);color:var(--gold);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .3s}
+.btn-bgm:hover,.btn-bgm.playing{background:var(--gold);color:var(--cream)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--charcoal);transition:all .3s}
+
+/* Hero */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,13,.3) 0%,rgba(31,31,31,.5) 60%,rgba(13,13,13,.8) 100%)}
+.hero-content{position:relative;z-index:2;padding:24px;color:#fff}
+.hero-content .subtitle{font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:6px;color:var(--gold-light);margin-bottom:12px;font-weight:300}
+.hero-content h1{font-size:3.6rem;font-weight:700;letter-spacing:8px;margin-bottom:16px;text-shadow:0 4px 20px rgba(0,0,0,.3)}
+.hero-divider{width:60px;height:1px;background:var(--gold);margin:20px auto}
+.hero-content p{font-size:1rem;color:rgba(255,255,255,.7);max-width:460px;margin:0 auto 36px;letter-spacing:1px}
+.btn-hotel{border:1px solid var(--gold);color:var(--gold);padding:14px 44px;font-size:.9rem;font-weight:500;letter-spacing:4px;cursor:pointer;transition:all .4s;text-decoration:none;display:inline-block;font-family:inherit;background:transparent}
+.btn-hotel:hover{background:var(--gold);color:var(--dark)}
+.btn-hotel-filled{background:var(--gold);border:1px solid var(--gold);color:var(--dark);padding:14px 44px;font-size:.9rem;font-weight:500;letter-spacing:4px;cursor:pointer;transition:all .4s;text-decoration:none;display:inline-block;font-family:inherit}
+.btn-hotel-filled:hover{background:transparent;color:var(--gold)}
+
+section{padding:100px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:56px}
+.section-title h2{font-size:2.2rem;font-weight:600;color:var(--charcoal);margin-bottom:8px;letter-spacing:4px}
+.section-title p{font-size:.95rem;color:var(--text-light);letter-spacing:2px}
+.gold-line{width:50px;height:1px;background:var(--gold);margin:16px auto 0}
+
+/* Rooms */
+.rooms{background:var(--cream)}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.room-card{background:#fff;border-radius:12px;overflow:hidden;transition:all .5s;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.room-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.room-card img{width:100%;height:220px;object-fit:cover}
+.room-body{padding:28px}
+.room-body h3{font-size:1.2rem;color:var(--charcoal);margin-bottom:6px;letter-spacing:2px}
+.room-body .room-size{font-size:.8rem;color:var(--text-light);margin-bottom:12px}
+.room-body p{font-size:.88rem;color:var(--text);margin-bottom:16px;line-height:1.7}
+.room-body .room-price{font-size:1.3rem;color:var(--gold);font-weight:700;margin-bottom:16px}
+.room-body .room-price span{font-size:.8rem;font-weight:400;color:var(--text-light)}
+
+/* Dining */
+.dining{background:#fff}
+.dining-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.dining-img img{width:100%;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.dining-text h2{font-size:2rem;font-weight:600;color:var(--charcoal);margin-bottom:16px;letter-spacing:3px}
+.dining-text p{color:var(--text);margin-bottom:16px;line-height:1.9}
+
+/* Spa */
+.spa{background:var(--cream)}
+.spa-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.spa-img img{width:100%;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.spa-text h2{font-size:2rem;font-weight:600;color:var(--charcoal);margin-bottom:16px;letter-spacing:3px}
+.spa-text p{color:var(--text);margin-bottom:16px;line-height:1.9}
+
+/* Location */
+.location{background:#fff;text-align:center}
+.location-info{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.loc-item{padding:28px;border:1px solid rgba(200,164,94,.2);border-radius:12px}
+.loc-item h4{color:var(--gold);font-size:.95rem;margin-bottom:8px;letter-spacing:2px}
+.loc-item p{color:var(--text-light);font-size:.88rem;line-height:1.7}
+
+/* Booking */
+.booking{background:var(--charcoal);color:#fff;padding:100px 24px}
+.booking .section-title h2{color:var(--gold)}
+.booking .section-title p{color:rgba(255,255,255,.5)}
+.booking-form{max-width:600px;margin:0 auto;display:grid;gap:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.8rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase}
+.form-group input,.form-group select{background:rgba(255,255,255,.08);border:1px solid rgba(200,164,94,.25);color:#fff;padding:12px 16px;border-radius:6px;font-size:.9rem;font-family:inherit;transition:border-color .3s}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--gold)}
+.form-group select option{background:var(--charcoal);color:#fff}
+.form-group input[type="date"]{color-scheme:dark}
+.booking-form .btn-hotel-filled{width:100%;text-align:center;padding:16px;border-radius:6px;margin-top:8px}
+
+footer{background:var(--dark);color:rgba(250,247,242,.4);padding:40px 24px;text-align:center;font-size:.85rem;letter-spacing:1px}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:rgba(250,247,242,.98);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid rgba(200,164,94,.15)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .hero-content h1{font-size:2.2rem;letter-spacing:4px}
+  .rooms-grid{grid-template-columns:1fr}
+  .dining-content,.spa-content{grid-template-columns:1fr}
+  .location-info{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="璞旅 Logo">璞旅 PureStay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#rooms" data-zh="客房" data-en="Rooms">客房</a>
+    <a href="#dining" data-zh="餐飲" data-en="Dining">餐飲</a>
+    <a href="#spa" data-zh="水療" data-en="Spa">水療</a>
+    <a href="#location" data-zh="位置" data-en="Location">位置</a>
+    <a href="#booking" data-zh="訂房" data-en="Booking">訂房</a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
+    <button class="btn-bgm" id="bgmBtn" onclick="toggleBGM()">♪</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <p class="subtitle" data-zh="BOUTIQUE HOTEL" data-en="精品飯店">BOUTIQUE HOTEL</p>
+    <h1 data-zh="璞旅" data-en="PureStay">璞旅</h1>
+    <div class="hero-divider"></div>
+    <p data-zh="在城市的喧囂中，為您保留一方靜謐的天地。" data-en="A serene sanctuary reserved for you amidst the bustle of the city.">在城市的喧囂中，為您保留一方靜謐的天地。</p>
+    <a href="#booking" class="btn-hotel" data-zh="立即預訂" data-en="Book Now">立即預訂</a>
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="客房" data-en="Rooms">客房</h2>
+      <div class="gold-line"></div>
+      <p data-zh="每一間房，都是一場靜謐的邀請" data-en="Each room is an invitation to serenity">每一間房，都是一場靜謐的邀請</p>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card fade-up">
+        <img src="photos/room.png" alt="標準客房" loading="lazy">
+        <div class="room-body">
+          <h3 data-zh="標準客房" data-en="Standard Room">標準客房</h3>
+          <p class="room-size" data-zh="32 平方公尺 ｜ 1 大床" data-en="32 sqm | 1 King Bed">32 平方公尺 ｜ 1 大床</p>
+          <p data-zh="簡約雅致的空間，配備頂級寢具與獨立淋浴，是商務旅客的理想之選。" data-en="An elegant minimalist space with premium bedding and walk-in shower, ideal for business travelers.">簡約雅致的空間，配備頂級寢具與獨立淋浴，是商務旅客的理想之選。</p>
+          <div class="room-price">NT$4,800 <span data-zh="/晚" data-en="/night">/晚</span></div>
+          <a href="#booking" class="btn-hotel" style="padding:10px 28px;font-size:.8rem" data-zh="預訂此房型" data-en="Book This Room">預訂此房型</a>
+        </div>
+      </div>
+      <div class="room-card fade-up" style="transition-delay:.15s">
+        <img src="photos/room.png" alt="豪華客房" loading="lazy">
+        <div class="room-body">
+          <h3 data-zh="豪華客房" data-en="Deluxe Room">豪華客房</h3>
+          <p class="room-size" data-zh="48 平方公尺 ｜ 1 大床 ｜ 景觀浴缸" data-en="48 sqm | 1 King Bed | View Bathtub">48 平方公尺 ｜ 1 大床 ｜ 景觀浴缸</p>
+          <p data-zh="寬敞明亮的起居空間，獨立景觀浴缸，俯瞰城市天際線。" data-en="Spacious living space with a standalone bathtub overlooking the city skyline.">寬敞明亮的起居空間，獨立景觀浴缸，俯瞰城市天際線。</p>
+          <div class="room-price">NT$7,200 <span data-zh="/晚" data-en="/night">/晚</span></div>
+          <a href="#booking" class="btn-hotel" style="padding:10px 28px;font-size:.8rem" data-zh="預訂此房型" data-en="Book This Room">預訂此房型</a>
+        </div>
+      </div>
+      <div class="room-card fade-up" style="transition-delay:.3s">
+        <img src="photos/spa.png" alt="總統套房" loading="lazy">
+        <div class="room-body">
+          <h3 data-zh="尊爵套房" data-en="Suite">尊爵套房</h3>
+          <p class="room-size" data-zh="85 平方公尺 ｜ 1 大床 ｜ 客廳 ｜ 私人陽台" data-en="85 sqm | 1 King Bed | Living Room | Private Balcony">85 平方公尺 ｜ 1 大床 ｜ 客廳 ｜ 私人陽台</p>
+          <p data-zh="頂級套房體驗，獨立客廳、私人陽台與專屬管家服務。" data-en="Premium suite with separate living room, private balcony, and dedicated butler service.">頂級套房體驗，獨立客廳、私人陽台與專屬管家服務。</p>
+          <div class="room-price">NT$12,800 <span data-zh="/晚" data-en="/night">/晚</span></div>
+          <a href="#booking" class="btn-hotel" style="padding:10px 28px;font-size:.8rem" data-zh="預訂此房型" data-en="Book This Room">預訂此房型</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dining" id="dining">
+  <div class="container">
+    <div class="dining-content">
+      <div class="dining-img fade-left">
+        <img src="photos/dining.png" alt="璞旅餐飲" loading="lazy">
+      </div>
+      <div class="dining-text fade-right">
+        <h2 data-zh="璞食" data-en="Dining">璞食</h2>
+        <div class="gold-line" style="margin:16px 0"></div>
+        <p data-zh="璞旅行政主廚以在地食材為靈感，融合法式料理技法，呈現一場味覺與視覺的雙重饗宴。從晨間的手沖咖啡到夜晚的私廚晚宴，每一道餐點都是對美好生活的致敬。" data-en="Our executive chef draws inspiration from local ingredients, blending French culinary techniques to present a feast for both palate and eyes. From morning pour-over coffee to evening private dining, every dish is a tribute to the art of fine living.">璞旅行政主廚以在地食材為靈感，融合法式料理技法，呈現一場味覺與視覺的雙重饗宴。從晨間的手沖咖啡到夜晚的私廚晚宴，每一道餐點都是對美好生活的致敬。</p>
+        <p data-zh="餐廳營業時間：早餐 7:00–10:00 ｜ 午餐 11:30–14:00 ｜ 晚餐 17:30–21:30" data-en="Hours: Breakfast 7:00–10:00 | Lunch 11:30–14:00 | Dinner 17:30–21:30">餐廳營業時間：早餐 7:00–10:00 ｜ 午餐 11:30–14:00 ｜ 晚餐 17:30–21:30</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spa" id="spa">
+  <div class="container">
+    <div class="spa-content">
+      <div class="spa-text fade-left">
+        <h2 data-zh="璞泉" data-en="Spa & Wellness">璞泉</h2>
+        <div class="gold-line" style="margin:16px 0"></div>
+        <p data-zh="璞泉 SPA 以天然礦泉與頂級精油為基底，結合東方推拿與西式芳療，為身心帶來深層的修復與平衡。每一位療癒師皆經嚴格訓練，以專業手法引導您進入全然放鬆的境界。" data-en="Our spa combines natural mineral springs with premium essential oils, merging Eastern massage and Western aromatherapy for deep restoration and balance. Every therapist is rigorously trained to guide you into complete relaxation.">璞泉 SPA 以天然礦泉與頂級精油為基底，結合東方推拿與西式芳療，為身心帶來深層的修復與平衡。每一位療癒師皆經嚴格訓練，以專業手法引導您進入全然放鬆的境界。</p>
+        <p data-zh="SPA 營業時間：10:00–22:00（最後預約 20:30）" data-en="Spa Hours: 10:00–22:00 (Last booking 20:30)">SPA 營業時間：10:00–22:00（最後預約 20:30）</p>
+      </div>
+      <div class="spa-img fade-right">
+        <img src="photos/spa.png" alt="璞泉 SPA" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="位置" data-en="Location">位置</h2>
+      <div class="gold-line"></div>
+      <p data-zh="城市核心，靜謐之所" data-en="City center, tranquil retreat">城市核心，靜謐之所</p>
+    </div>
+    <div class="location-info">
+      <div class="loc-item fade-up">
+        <h4 data-zh="飯店地址" data-en="Address">飯店地址</h4>
+        <p data-zh="台北市大安區敦化南路二段 168 號" data-en="No. 168, Sec. 2, Dunhua S. Rd., Da'an Dist., Taipei">台北市大安區敦化南路二段 168 號</p>
+      </div>
+      <div class="loc-item fade-up" style="transition-delay:.1s">
+        <h4 data-zh="交通" data-en="Transportation">交通</h4>
+        <p data-zh="捷運忠孝敦化站步行 5 分鐘<br>松山機場車程 15 分鐘<br>桃園機場車程 45 分鐘" data-en="5 min walk from MRT Zhongxiao Dunhua<br>15 min from Songshan Airport<br>45 min from Taoyuan Airport">捷運忠孝敦化站步行 5 分鐘<br>松山機場車程 15 分鐘<br>桃園機場車程 45 分鐘</p>
+      </div>
+      <div class="loc-item fade-up" style="transition-delay:.2s">
+        <h4 data-zh="聯繫我們" data-en="Contact">聯繫我們</h4>
+        <p>02-2700-8888<br>reserve@purestay.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="預訂" data-en="Reservation">預訂</h2>
+      <div class="gold-line"></div>
+      <p data-zh="選擇您的入住日期，開啟靜謐之旅" data-en="Choose your dates and begin your serene journey">選擇您的入住日期，開啟靜謐之旅</p>
+    </div>
+    <form class="booking-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'感謝您的預訂，我們將盡快與您聯繫！':'Thank you for your reservation. We will contact you shortly!')">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="入住日期" data-en="Check-in">入住日期</label>
+          <input type="date" required>
+        </div>
+        <div class="form-group">
+          <label data-zh="退房日期" data-en="Check-out">退房日期</label>
+          <input type="date" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="房型" data-en="Room Type">房型</label>
+          <select>
+            <option data-zh="標準客房 — NT$4,800" data-en="Standard — NT$4,800">標準客房 — NT$4,800</option>
+            <option data-zh="豪華客房 — NT$7,200" data-en="Deluxe — NT$7,200">豪華客房 — NT$7,200</option>
+            <option data-zh="尊爵套房 — NT$12,800" data-en="Suite — NT$12,800">尊爵套房 — NT$12,800</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-zh="入住人數" data-en="Guests">入住人數</label>
+          <select>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="姓名" data-en="Full Name">姓名</label>
+          <input type="text" required data-zh="請輸入姓名" data-en="Enter your name" placeholder="請輸入姓名">
+        </div>
+        <div class="form-group">
+          <label data-zh="電子郵件" data-en="Email">電子郵件</label>
+          <input type="email" required placeholder="email@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-zh="電話" data-en="Phone">電話</label>
+        <input type="tel" data-zh="請輸入聯絡電話" data-en="Enter your phone number" placeholder="請輸入聯絡電話">
+      </div>
+      <button type="submit" class="btn-hotel-filled" data-zh="確認預訂" data-en="Confirm Reservation">確認預訂</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 璞旅 PureStay. <span data-zh="版權所有" data-en="All rights reserved">版權所有</span>.</p>
+</footer>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio');const bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh][data-en]').forEach(el=>{const t=el.getAttribute('data-'+currentLang);if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else if(el.tagName==='OPTION')el.textContent=t;else el.innerHTML=t})}
+</script>
+</body>
+</html>
