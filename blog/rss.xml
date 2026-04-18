@@ -71,5 +71,14 @@
     <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-website-vs-template.html</guid>
   </item>
 
+  <item>
+    <title>AWS 雲端架構入門：EC2 + RDS 企業級部署指南</title>
+    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/aws-cloud-architecture.html</link>
+    <description>AWS 雲端架構入門指南。從 EC2 虛擬機到 RDS PostgreSQL 資料庫、Security Groups 安全設定，了解 HEY!BOSS 如何用 AWS 打造企業級基礎設施。</description>
+    <category>DevOps</category>
+    <pubDate>Sat, 18 Apr 2026 23:45:49 +0000</pubDate>
+    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/aws-cloud-architecture.html</guid>
+  </item>
+
 </channel>
 </rss>
