@@ -1,45 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://hiboss.demosilvermoon.com.tw/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/lantern-alley/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/hanami-wagashi/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/nightcrawler/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/morning-haze/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/ironwake/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/tiderush/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/inkverse/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/oasis-flora/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/neuralarc/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/furplanet/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/dolice/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/freshmart/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/goodday/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/heherb/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/chefchannel/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/fitclub/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/stride/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/pixelforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/lightframe/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/learnsphere/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/justword/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/soundwave/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/woodlife/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/mistlodge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/playbox/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/purelab/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/lumiere/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/amcl-consulting/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/buildpro/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/formstudio/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/trustdental/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/alleybrew/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/amcl-consulting/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/appforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/aquafit/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/aromalife/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/artisan/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/artwall/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/autoedge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/babybloom/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/bakehaus/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/boardroom/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/bookkeeper/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/buildpro/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/chefchannel/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/chessmaster/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/cleanpro/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/cloudkitchen/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/codeacademy/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/cryptovault/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/dancefloor/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/dolice/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/dreamwedding/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/dronesky/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/ecobag/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/elitewatch/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/eterngem/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/farmbox/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/fitclub/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/fitfuel/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/formstudio/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/freshmart/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/furplanet/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/glamour/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/glasshouse/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/goodday/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/greencharge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/greenplate/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/hanami-wagashi/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/heherb/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/herbgarden/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/inkverse/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/ironthread/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/ironwake/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/justword/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/lantern-alley/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/leafpress/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/learnsphere/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/legalshield/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/lexicon/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/lightframe/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/lightyear/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/lumiere/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/mindforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/mistlodge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/morning-haze/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/motionpic/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/musicroom/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/neuralarc/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/nextstep/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/nightcrawler/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/oasis-flora/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/oceanview/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/pawacademy/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/pawfashion/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/petdoc/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/petpark/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/pixelforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/pixelperfect/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/pixelstore/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/playbox/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/podcastle/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/purelab/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/purestay/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/quickfix/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/raceway/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/securehome/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/silkroad/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/skylogistics/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/smarttutor/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/solarcraft/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/soundwave/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/spiceroute/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/starcamp/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/steelworks/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/storybook/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/stride/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/summit/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/sunkids/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/tattoostudio/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/teazen/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/tiderush/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/trustdental/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/urbanroots/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/vintagevault/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/vividprint/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/wanderlust/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/wealthwise/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/woodlife/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/zenflow/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/zenspace/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 </urlset>
