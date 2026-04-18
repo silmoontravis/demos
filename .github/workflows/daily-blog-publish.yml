@@ -37,20 +37,72 @@ jobs:
       - name: Update blog index
         if: steps.check.outputs.has_draft == 'true'
         run: |
-          FILE="blog/posts/${{ steps.check.outputs.filename }}"
+          python3 << 'PYEOF'
+          import re, sys
 
-          # Extract article metadata
-          TITLE=$(grep -oP '<h1>\K[^<]+' "$FILE" | head -1)
-          DESC=$(grep -oP 'name="description" content="\K[^"]+' "$FILE" | head -1)
-          CATEGORY=$(grep -oP '<span class="category">\K[^<]+' "$FILE" | head -1)
-          DATE=$(date +%Y-%m-%d)
-          FILENAME="${{ steps.check.outputs.filename }}"
+          filename = "${{ steps.check.outputs.filename }}"
+          filepath = f"blog/posts/{filename}"
+          today = __import__('datetime').date.today().isoformat()
 
-          # Build new post card HTML
-          CARD="    <a href=\"posts/${FILENAME}\" class=\"post-card\">\n      <div class=\"post-card-content\">\n        <div class=\"post-card-meta\">\n          <span class=\"post-card-category\">${CATEGORY}</span>\n          <span>${DATE}</span>\n          <span>6 分鐘閱讀</span>\n        </div>\n        <h2>${TITLE}</h2>\n        <p>${DESC:0:120}...</p>\n      </div>\n    </a>\n"
+          with open(filepath, 'r', encoding='utf-8') as f:
+              html = f.read()
 
-          # Insert before closing </div> of blog-container in post-grid
-          sed -i "/<\/section>/i\\${CARD}" blog/index.html || true
+          title_zh = re.search(r'<h1[^>]*>([^<]+)', html)
+          title_zh = title_zh.group(1) if title_zh else filename
+          title_en = ""
+          t_match = re.search(r'<h1[^>]*data-en="([^"]*)"', html)
+          if t_match:
+              title_en = t_match.group(1)
+
+          desc_match = re.search(r'name="description" content="([^"]*)"', html)
+          desc = desc_match.group(1)[:150] if desc_match else ""
+
+          cat_match = re.search(r'<span class="category"[^>]*>([^<]+)', html)
+          cat_zh = cat_match.group(1) if cat_match else "Blog"
+          cat_en_match = re.search(r'<span class="category"[^>]*data-en="([^"]*)"', html)
+          cat_en = cat_en_match.group(1) if cat_en_match else cat_zh
+
+          # Extract first base64 image from article for thumbnail
+          img_match = re.search(r'src="(data:image/[^"]{100,500})"', html)
+          thumb_src = img_match.group(1) if img_match else ""
+
+          # Build card matching existing format
+          thumb_html = ""
+          if thumb_src:
+              thumb_html = f'<div class="post-card-thumb" style="padding:0;font-size:0"><img src="{thumb_src}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:12px"></div>'
+          else:
+              thumb_html = '<div class="post-card-thumb">📝</div>'
+
+          card = f'''    <a href="posts/{filename}" class="post-card">
+                <div class="post-card-content">
+                  <div class="post-card-meta">
+                    <span class="post-card-category" data-zh="{cat_zh}" data-en="{cat_en}">{cat_zh}</span>
+                    <span>{today}</span>
+                    <span data-zh="6 分鐘閱讀" data-en="6 min read">6 分鐘閱讀</span>
+                  </div>
+                  <h2 data-zh="{title_zh}" data-en="{title_en or title_zh}">{title_zh}</h2>
+                  <p>{desc}</p>
+                </div>
+                {thumb_html}
+              </a>
+          '''
+
+          with open('blog/index.html', 'r', encoding='utf-8') as f:
+              index = f.read()
+
+          # Insert before </section> in post-grid
+          insert_point = index.find('</section>', index.find('post-grid'))
+          if insert_point > 0:
+              # Find the </div> before </section>
+              div_point = index.rfind('</div>', 0, insert_point)
+              if div_point > 0:
+                  index = index[:div_point] + card + '\n' + index[div_point:]
+
+          with open('blog/index.html', 'w', encoding='utf-8') as f:
+              f.write(index)
+
+          print(f"Added card for {filename}")
+          PYEOF
 
       - name: Update sitemap
         if: steps.check.outputs.has_draft == 'true'
