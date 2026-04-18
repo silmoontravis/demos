@@ -33,6 +33,15 @@
 }
 </script>
 <style>
+/* Mobile overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--purple:#7c3aed;--gold:#c8a45e;--cream:#fefdf5;--dark:#1a1a1a;--gray:#6b7280;--light-purple:#ede9fe}
 html{scroll-behavior:smooth}

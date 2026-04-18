@@ -24,6 +24,15 @@
 }
 </script>
 <style>
+/* Mobile overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--jade:#166534;--brown:#92400e;--cream:#fefdf5;--jade-light:#dcfce7;--brown-light:#fef3c7}
 html{scroll-behavior:smooth}

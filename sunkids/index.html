@@ -25,6 +25,15 @@
 }
 </script>
 <style>
+/* Mobile overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--yellow:#f59e0b;--blue:#38bdf8;--pink:#f9a8d4;--dark:#333;--white:#fff;--cream:#fffbeb;--light-blue:#e0f2fe}
 html{scroll-behavior:smooth}
