@@ -182,5 +182,5 @@ a { text-decoration: none; color: inherit; }
   .post-card-thumb { width: 100%; min-height: 180px; }
   .blog-hero h1 { font-size: 26px; }
   .article-header h1 { font-size: 28px; }
-  .blog-nav-links { display: none; }
+  .blog-nav-links a { display: none; }
 }
