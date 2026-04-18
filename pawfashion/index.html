@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>毛孩衣櫃 PawFashion — 寵物時裝電商</title>
+<meta name="description" content="毛孩衣櫃 PawFashion 寵物時裝品牌，為你的貓咪狗狗打造時尚穿搭。舒適面料、多種尺碼、潮流設計。">
+<meta name="keywords" content="寵物衣服,狗衣服,貓衣服,寵物時裝,PawFashion,毛孩衣櫃,寵物穿搭">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/pawfashion/">
+<meta property="og:title" content="毛孩衣櫃 PawFashion — 寵物時裝電商">
+<meta property="og:description" content="為你的毛孩打造時尚穿搭，舒適面料與潮流設計。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"毛孩衣櫃 PawFashion",
+  "description":"寵物時裝電商品牌，提供狗狗與貓咪的時尚服飾。",
+  "url":"https://silmoontravis.github.io/demos/pawfashion/",
+  "image":"photos/hero.png",
+  "priceRange":"$$"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--coral:#f97316;--navy:#1e3a5f;--cream:#fff5f0;--white:#fff;--radius:14px}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;background:var(--cream);color:var(--navy);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,245,240,.95);backdrop-filter:blur(8px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy)}
+nav .logo img{height:36px}
+nav .logo span{font-weight:700;font-size:1.1rem}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.lang-btn,.bgm-btn{background:var(--coral);color:#fff;border:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.3s}
+.lang-btn:hover,.bgm-btn:hover{opacity:.85}
+.bgm-btn.playing{background:var(--navy)}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:60px;overflow:hidden}
+.hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,245,240,.4),rgba(255,245,240,.9))}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);margin-bottom:12px}
+.hero h1 em{color:var(--coral);font-style:normal}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:#5a6e82;max-width:520px;margin:0 auto 24px}
+.btn{display:inline-block;background:var(--coral);color:#fff;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:600;font-size:1rem;transition:.3s;border:none;cursor:pointer}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(249,115,22,.35)}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:8px}
+.section-title p{color:#5a6e82;font-size:1.05rem}
+
+/* TABS */
+.tabs{display:flex;justify-content:center;gap:12px;margin-bottom:32px}
+.tab-btn{background:var(--white);border:2px solid #e5e7eb;border-radius:30px;padding:10px 28px;cursor:pointer;font-size:1rem;font-weight:600;transition:.3s;color:var(--navy)}
+.tab-btn.active{background:var(--coral);color:#fff;border-color:var(--coral)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.pet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;text-align:center}
+.pet-cat-item{background:#fff;border-radius:var(--radius);padding:24px;font-size:1.1rem;font-weight:600;transition:.3s;cursor:pointer}
+.pet-cat-item:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.pet-cat-item .emoji{font-size:2.5rem;margin-bottom:8px}
+
+/* PRODUCTS */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:.3s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.product-card .card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,#fde8d8,#fce4d0)}
+.product-card .card-body{padding:20px}
+.product-card h3{font-size:1.05rem;margin-bottom:4px}
+.product-card .sizes{color:#888;font-size:.85rem;margin-bottom:6px}
+.product-card .price{font-size:1.2rem;font-weight:700;color:var(--coral)}
+.product-card .btn{display:block;text-align:center;margin-top:12px;padding:10px;font-size:.9rem}
+.new-tag{display:inline-block;background:var(--coral);color:#fff;font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+
+/* LOOKBOOK */
+.lookbook-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.lookbook-grid img{border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* CTA */
+.cart-cta{background:var(--coral);color:#fff;text-align:center}
+.cart-cta h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px}
+.cart-cta p{max-width:500px;margin:0 auto 24px;opacity:.9}
+.cart-cta .btn{background:#fff;color:var(--coral)}
+
+footer{background:var(--navy);color:#aab;text-align:center;padding:32px 20px;font-size:.85rem}
+footer a{color:#aab;text-decoration:none}
+footer a:hover{color:var(--coral)}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);cursor:pointer;transition:.3s;text-decoration:none}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .lookbook-grid{grid-template-columns:1fr}
+  .hero{min-height:80vh}
+  section{padding:60px 0}
+  nav .logo span{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><img src="logos/logo_final.png" alt="PawFashion Logo"><span>毛孩衣櫃</span></a>
+  <div class="nav-actions">
+    <button class="bgm-btn" onclick="toggleBGM()">♪ BGM</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="hero-bg" src="photos/hero.png" alt="毛孩衣櫃品牌形象">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="給毛孩最<em>潮</em>的穿搭" data-en="The <em>Trendiest</em> Pet Fashion">給毛孩最<em>潮</em>的穿搭</h1>
+    <p data-zh="舒適面料 × 時尚設計，讓你的貓咪狗狗成為街上最閃亮的存在。" data-en="Comfy fabrics meet trendy design. Make your pet the most stylish on the block.">舒適面料 × 時尚設計，讓你的貓咪狗狗成為街上最閃亮的存在。</p>
+    <a href="#shop" class="btn" data-zh="立即選購" data-en="Shop Now">立即選購</a>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="依寵物類型選購" data-en="Shop by Pet">依寵物類型選購</h2>
+      <p data-zh="為你的毛孩找到專屬風格" data-en="Find the perfect style for your furry friend">為你的毛孩找到專屬風格</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('dogs',this)" data-zh="🐕 狗狗" data-en="🐕 Dogs">🐕 狗狗</button>
+      <button class="tab-btn" onclick="switchTab('cats',this)" data-zh="🐱 貓咪" data-en="🐱 Cats">🐱 貓咪</button>
+    </div>
+    <div id="tab-dogs" class="tab-content active">
+      <div class="pet-grid">
+        <div class="pet-cat-item reveal"><div class="emoji">🦮</div><span data-zh="大型犬" data-en="Large Dogs">大型犬</span></div>
+        <div class="pet-cat-item reveal"><div class="emoji">🐕</div><span data-zh="中型犬" data-en="Medium Dogs">中型犬</span></div>
+        <div class="pet-cat-item reveal"><div class="emoji">🐶</div><span data-zh="小型犬" data-en="Small Dogs">小型犬</span></div>
+        <div class="pet-cat-item reveal"><div class="emoji">🐾</div><span data-zh="幼犬" data-en="Puppies">幼犬</span></div>
+      </div>
+    </div>
+    <div id="tab-cats" class="tab-content">
+      <div class="pet-grid">
+        <div class="pet-cat-item reveal"><div class="emoji">🐱</div><span data-zh="短毛貓" data-en="Short Hair">短毛貓</span></div>
+        <div class="pet-cat-item reveal"><div class="emoji">😺</div><span data-zh="長毛貓" data-en="Long Hair">長毛貓</span></div>
+        <div class="pet-cat-item reveal"><div class="emoji">🐈</div><span data-zh="大型貓" data-en="Large Cats">大型貓</span></div>
+        <div class="pet-cat-item reveal"><div class="emoji">🐾</div><span data-zh="幼貓" data-en="Kittens">幼貓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff" id="arrivals">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="新品上架" data-en="New Arrivals">新品上架</h2>
+      <p data-zh="本季最新設計，限量搶購中" data-en="Latest designs this season, limited edition">本季最新設計，限量搶購中</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="card-img">👔</div>
+        <div class="card-body">
+          <h3 data-zh="紳士領結套裝" data-en="Gentleman Bow Set">紳士領結套裝<span class="new-tag">NEW</span></h3>
+          <div class="sizes" data-zh="尺碼：XS / S / M / L / XL" data-en="Size: XS / S / M / L / XL">尺碼：XS / S / M / L / XL</div>
+          <div class="price">NT$ 580</div>
+          <a href="#cart" class="btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</a>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="card-img">🧥</div>
+        <div class="card-body">
+          <h3 data-zh="雨天防水外套" data-en="Rainy Day Waterproof">雨天防水外套<span class="new-tag">NEW</span></h3>
+          <div class="sizes" data-zh="尺碼：S / M / L / XL" data-en="Size: S / M / L / XL">尺碼：S / M / L / XL</div>
+          <div class="price">NT$ 890</div>
+          <a href="#cart" class="btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</a>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="card-img">🎀</div>
+        <div class="card-body">
+          <h3 data-zh="公主蕾絲洋裝" data-en="Princess Lace Dress">公主蕾絲洋裝</h3>
+          <div class="sizes" data-zh="尺碼：XS / S / M / L" data-en="Size: XS / S / M / L">尺碼：XS / S / M / L</div>
+          <div class="price">NT$ 720</div>
+          <a href="#cart" class="btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</a>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="card-img">🧣</div>
+        <div class="card-body">
+          <h3 data-zh="暖冬針織毛衣" data-en="Winter Knit Sweater">暖冬針織毛衣</h3>
+          <div class="sizes" data-zh="尺碼：XS / S / M / L / XL" data-en="Size: XS / S / M / L / XL">尺碼：XS / S / M / L / XL</div>
+          <div class="price">NT$ 650</div>
+          <a href="#cart" class="btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="穿搭特輯" data-en="Lookbook">穿搭特輯</h2>
+      <p data-zh="看看毛孩們的時尚 OOTD" data-en="Check out our pets' stylish OOTDs">看看毛孩們的時尚 OOTD</p>
+    </div>
+    <div class="lookbook-grid">
+      <img src="photos/model.png" alt="寵物穿搭模特" class="reveal">
+      <img src="photos/lifestyle.png" alt="寵物生活穿搭" class="reveal">
+    </div>
+  </div>
+</section>
+
+<section class="cart-cta" id="cart">
+  <div class="container">
+    <h2 data-zh="打造毛孩的夢幻衣櫃" data-en="Build Your Pet's Dream Wardrobe">打造毛孩的夢幻衣櫃</h2>
+    <p data-zh="全館滿 NT$1,200 免運費，新會員首購享 9 折優惠！" data-en="Free shipping over NT$1,200. New members get 10% off first order!">全館滿 NT$1,200 免運費，新會員首購享 9 折優惠！</p>
+    <a href="https://silmoontravis.github.io/demos/#contact" class="btn" data-zh="前往結帳" data-en="Checkout">前往結帳</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const audio=document.getElementById('bgmAudio');const bgmBtn=document.querySelector('.bgm-btn');let isPlaying=false;
+function toggleBGM(){if(isPlaying){audio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪ BGM'}else{audio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪ ON'}isPlaying=!isPlaying}
+let lang='zh';
+function toggleLang(){lang=lang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';document.documentElement.lang=lang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)})}
+function switchTab(id,btn){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active')}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

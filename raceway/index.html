@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>極速賽道 RaceWay — 卡丁車賽車體驗</title>
+<meta name="description" content="極速賽道 RaceWay 提供專業卡丁車賽車體驗，休閒賽、競速賽、團體活動，感受極速快感！室內外賽道，適合所有年齡。">
+<meta name="keywords" content="卡丁車,賽車,go-kart,極速賽道,RaceWay,賽車體驗,團體活動">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/raceway/">
+<meta property="og:title" content="極速賽道 RaceWay — 卡丁車賽車體驗">
+<meta property="og:description" content="專業卡丁車賽道，休閒賽、競速賽、團體活動，感受極速快感！">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SportsActivityLocation",
+  "name":"極速賽道 RaceWay",
+  "description":"專業卡丁車賽車體驗場，提供休閒賽、競速賽與團體活動。",
+  "url":"https://silmoontravis.github.io/demos/raceway/",
+  "image":"photos/hero.png"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#dc2626;--black:#111;--yellow:#eab308;--dark:#0a0a0a;--white:#fff;--radius:12px}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;background:var(--dark);color:var(--white);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(10,10,10,.95);backdrop-filter:blur(8px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white)}
+nav .logo img{height:36px}
+nav .logo span{font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:2px}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.lang-btn,.bgm-btn{background:var(--red);color:#fff;border:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.3s}
+.lang-btn:hover,.bgm-btn:hover{opacity:.85}
+.bgm-btn.playing{background:var(--yellow);color:var(--black)}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:60px;overflow:hidden}
+.hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.6),rgba(10,10,10,.85))}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{font-size:clamp(2.2rem,7vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero h1 .yellow{color:var(--yellow)}
+.hero p{font-size:clamp(1rem,2.5vw,1.25rem);color:#ccc;max-width:550px;margin:0 auto 28px}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:1px;transition:.3s;border:none;cursor:pointer}
+.btn:hover{background:#ef4444;transform:translateY(-2px);box-shadow:0 6px 24px rgba(220,38,38,.5)}
+.btn-yellow{background:var(--yellow);color:var(--black)}
+.btn-yellow:hover{background:#facc15;box-shadow:0 6px 24px rgba(234,179,8,.5)}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.section-title .accent{width:60px;height:4px;background:var(--red);margin:12px auto 0;border-radius:2px}
+.section-title p{color:#999;font-size:1.05rem;margin-top:12px}
+
+/* EXPERIENCES */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.exp-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:32px;transition:.3s;position:relative;overflow:hidden}
+.exp-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 32px rgba(220,38,38,.15)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red)}
+.exp-card .tag{display:inline-block;background:var(--red);color:#fff;font-size:.75rem;padding:3px 10px;border-radius:4px;margin-bottom:12px;text-transform:uppercase;font-weight:700;letter-spacing:1px}
+.exp-card .tag.yellow{background:var(--yellow);color:var(--black)}
+.exp-card h3{font-size:1.3rem;margin-bottom:8px}
+.exp-card p{color:#aaa;font-size:.95rem;margin-bottom:16px}
+.exp-card .price-row{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,.1)}
+.exp-card .price{font-size:1.4rem;font-weight:800;color:var(--yellow)}
+.exp-card .duration{color:#888;font-size:.9rem}
+
+/* TRACK */
+.track-section{background:var(--black)}
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.track-grid img{border-radius:var(--radius)}
+.track-text h3{font-size:1.5rem;margin-bottom:16px;color:var(--yellow)}
+.track-text p{color:#aaa;margin-bottom:12px}
+.track-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.stat{text-align:center;padding:16px;background:rgba(255,255,255,.05);border-radius:8px}
+.stat .num{font-size:2rem;font-weight:800;color:var(--red)}
+.stat .label{color:#888;font-size:.85rem;margin-top:4px}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gallery-grid img{border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* BOOK */
+.book-race{background:var(--red);text-align:center}
+.book-race h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.book-race p{max-width:520px;margin:0 auto 24px;opacity:.9;font-size:1.05rem}
+.book-race .btn{background:var(--yellow);color:var(--black)}
+
+footer{background:var(--black);color:#666;text-align:center;padding:32px 20px;font-size:.85rem;border-top:1px solid rgba(255,255,255,.08)}
+footer a{color:#666;text-decoration:none}
+footer a:hover{color:var(--red)}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);cursor:pointer;transition:.3s;text-decoration:none}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .track-grid,.gallery-grid{grid-template-columns:1fr}
+  .hero{min-height:80vh}
+  section{padding:60px 0}
+  nav .logo span{display:none}
+  .track-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><img src="logos/logo_final.png" alt="RaceWay Logo"><span>極速賽道</span></a>
+  <div class="nav-actions">
+    <button class="bgm-btn" onclick="toggleBGM()">♪ BGM</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="hero-bg" src="photos/hero.png" alt="極速賽道品牌形象">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="<em>極速</em>，從這裡<span class='yellow'>開始</span>" data-en="<em>Speed</em> Starts <span class='yellow'>Here</span>"><em>極速</em>，從這裡<span class="yellow">開始</span></h1>
+    <p data-zh="腎上腺素飆升的卡丁車體驗！專業賽道、頂級裝備，無論新手或老將，都能在這裡找到屬於你的速度。" data-en="An adrenaline-pumping go-kart experience! Professional tracks, top-tier equipment — whether beginner or veteran, find your speed here.">腎上腺素飆升的卡丁車體驗！專業賽道、頂級裝備，無論新手或老將，都能在這裡找到屬於你的速度。</p>
+    <a href="#book" class="btn" data-zh="立即預約" data-en="Book a Race">立即預約</a>
+  </div>
+</section>
+
+<section id="experiences">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="賽車體驗" data-en="Experiences">賽車體驗</h2>
+      <div class="accent"></div>
+      <p data-zh="三種模式，滿足你對速度的一切想像" data-en="Three modes to satisfy every speed fantasy">三種模式，滿足你對速度的一切想像</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <span class="tag" data-zh="休閒" data-en="Casual">休閒</span>
+        <h3 data-zh="歡樂休閒賽" data-en="Fun Casual Race">歡樂休閒賽</h3>
+        <p data-zh="適合首次體驗或家庭出遊。專業教練全程指導，提供安全帽與護具。最低年齡 8 歲，無需駕照。" data-en="Perfect for first-timers or family outings. Professional coaches guide you throughout. Minimum age 8, no license needed.">適合首次體驗或家庭出遊。專業教練全程指導，提供安全帽與護具。最低年齡 8 歲，無需駕照。</p>
+        <div class="price-row">
+          <div class="price">NT$ 600</div>
+          <div class="duration" data-zh="15 分鐘 / 場" data-en="15 min / session">15 分鐘 / 場</div>
+        </div>
+      </div>
+      <div class="exp-card reveal">
+        <span class="tag yellow" data-zh="競速" data-en="Competitive">競速</span>
+        <h3 data-zh="極限競速賽" data-en="Extreme Speed Race">極限競速賽</h3>
+        <p data-zh="高性能卡丁車，計時排名系統，挑戰賽道最速紀錄。適合有經驗的車手，提供賽後數據分析報告。" data-en="High-performance karts, timed ranking system, challenge the track record. For experienced drivers, with post-race data analysis.">高性能卡丁車，計時排名系統，挑戰賽道最速紀錄。適合有經驗的車手，提供賽後數據分析報告。</p>
+        <div class="price-row">
+          <div class="price">NT$ 1,200</div>
+          <div class="duration" data-zh="30 分鐘 / 場" data-en="30 min / session">30 分鐘 / 場</div>
+        </div>
+      </div>
+      <div class="exp-card reveal">
+        <span class="tag" data-zh="團體" data-en="Group">團體</span>
+        <h3 data-zh="團體派對賽" data-en="Group Event Race">團體派對賽</h3>
+        <p data-zh="企業團建、生日派對、社團活動首選！包場服務含專屬賽事、獎盃頒獎與派對空間。10-30 人成團。" data-en="Perfect for corporate team building, birthday parties, and club events! Private track, trophy ceremony, and party space. 10-30 people.">企業團建、生日派對、社團活動首選！包場服務含專屬賽事、獎盃頒獎與派對空間。10-30 人成團。</p>
+        <div class="price-row">
+          <div class="price">NT$ 15,000<span style="font-size:.8rem;font-weight:400;color:#aaa" data-zh=" 起" data-en="+"> 起</span></div>
+          <div class="duration" data-zh="2 小時包場" data-en="2hr private">2 小時包場</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="track-section">
+  <div class="container">
+    <div class="track-grid">
+      <img src="photos/track.png" alt="賽道俯瞰" class="reveal">
+      <div class="track-text reveal">
+        <h3 data-zh="專業賽道" data-en="The Track">專業賽道</h3>
+        <p data-zh="國際規格設計的室內外複合賽道，融合直線衝刺區、高速彎道與技術彎角，每一圈都充滿變化與挑戰。全場配備防撞護欄與即時監控系統，安全無虞。" data-en="An international-standard indoor/outdoor hybrid track featuring straight sprints, high-speed curves, and technical corners. Every lap is full of variety and challenge, with crash barriers and real-time monitoring throughout.">國際規格設計的室內外複合賽道，融合直線衝刺區、高速彎道與技術彎角，每一圈都充滿變化與挑戰。全場配備防撞護欄與即時監控系統，安全無虞。</p>
+        <div class="track-stats">
+          <div class="stat"><div class="num">850m</div><div class="label" data-zh="賽道全長" data-en="Track Length">賽道全長</div></div>
+          <div class="stat"><div class="num">12</div><div class="label" data-zh="彎道數" data-en="Corners">彎道數</div></div>
+          <div class="stat"><div class="num">80<span style="font-size:1rem">km/h</span></div><div class="label" data-zh="最高時速" data-en="Top Speed">最高時速</div></div>
+          <div class="stat"><div class="num">20</div><div class="label" data-zh="同時上場" data-en="Max Drivers">同時上場</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="精彩瞬間" data-en="Gallery">精彩瞬間</h2>
+      <div class="accent"></div>
+    </div>
+    <div class="gallery-grid">
+      <img src="photos/fun.png" alt="賽車歡樂時刻" class="reveal">
+      <img src="photos/kart.png" alt="卡丁車特寫" class="reveal">
+    </div>
+  </div>
+</section>
+
+<section class="book-race" id="book">
+  <div class="container">
+    <h2 data-zh="準備好了嗎？" data-en="Ready to Race?">準備好了嗎？</h2>
+    <p data-zh="立即預約你的賽車體驗，線上預約享 9 折早鳥優惠！" data-en="Book your racing experience now — 10% early bird discount for online reservations!">立即預約你的賽車體驗，線上預約享 9 折早鳥優惠！</p>
+    <a href="https://silmoontravis.github.io/demos/#contact" class="btn" data-zh="立即預約" data-en="Book Now">立即預約</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const audio=document.getElementById('bgmAudio');const bgmBtn=document.querySelector('.bgm-btn');let isPlaying=false;
+function toggleBGM(){if(isPlaying){audio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪ BGM'}else{audio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪ ON'}isPlaying=!isPlaying}
+let lang='zh';
+function toggleLang(){lang=lang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';document.documentElement.lang=lang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)})}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

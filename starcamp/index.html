@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星空營地 StarCamp — 露營預約平台</title>
+<meta name="description" content="星空營地 StarCamp 是台灣首選露營預約平台，提供帳篷、豪華露營及木屋等多種住宿選擇。">
+<meta name="keywords" content="露營,glamping,營地預約,starcamp,camping,豪華露營,木屋">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LodgingBusiness",
+  "name":"星空營地 StarCamp",
+  "description":"台灣首選露營預約平台，帳篷、豪華露營及木屋等多種住宿選擇",
+  "image":"photos/hero.png",
+  "url":"https://starcamp.tw",
+  "priceRange":"$$-$$$",
+  "address":{"@type":"PostalAddress","addressLocality":"南投縣","addressCountry":"TW"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e1b4b;--fire:#f97316;--cream:#fef3c7;--navy-light:#312e81;--navy-dark:#0f0d29}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans TC',sans-serif;background:var(--navy);color:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:var(--fire);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.lang-toggle:hover{background:#e06610}
+
+.bgm-btn{position:fixed;top:16px;left:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--fire);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 2px 8px rgba(0,0,0,.3)}50%{box-shadow:0 2px 16px rgba(249,115,22,.6)}}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.4);cursor:pointer;animation:hb 3s ease-in-out infinite}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta svg{width:28px;height:28px;fill:#fff}
+@keyframes hb{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(30,27,75,.95);backdrop-filter:blur(10px);z-index:900;padding:12px 24px;display:flex;justify-content:center;align-items:center;gap:24px;border-bottom:1px solid rgba(255,255,255,.05)}
+nav a{font-size:14px;color:#aaa;transition:.3s}
+nav a:hover{color:var(--fire)}
+nav .logo-nav{height:32px;margin-right:auto}
+
+/* Stars background */
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy-dark)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,13,41,.3),rgba(30,27,75,.8))}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
+.hero-content h1{font-size:clamp(2.2rem,7vw,4.5rem);margin-bottom:16px;color:var(--cream)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--cream);opacity:.85;max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;padding:14px 36px;border-radius:30px;font-size:16px;font-weight:bold;transition:.3s;cursor:pointer;border:none}
+.btn-fire{background:var(--fire);color:#fff}
+.btn-fire:hover{background:#e06610;transform:translateY(-2px)}
+
+section{padding:80px 24px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px;color:var(--cream)}
+.section-title p{color:var(--fire);font-size:1rem}
+.container{max-width:1100px;margin:0 auto}
+
+/* Campsites */
+.campsites{background:var(--navy-dark)}
+.camp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.camp-card{background:rgba(255,255,255,.05);border-radius:20px;padding:36px 28px;text-align:center;border:1px solid rgba(255,255,255,.08);transition:.3s;position:relative;overflow:hidden}
+.camp-card:hover{border-color:var(--fire);transform:translateY(-6px)}
+.camp-card.popular::before{content:'HOT';position:absolute;top:16px;right:16px;background:var(--fire);padding:4px 12px;border-radius:12px;font-size:.75rem;font-weight:bold}
+.camp-card .icon{font-size:3rem;margin-bottom:16px}
+.camp-card h3{font-size:1.3rem;margin-bottom:8px;color:var(--cream)}
+.camp-card p{font-size:.9rem;color:#aaa;line-height:1.6;margin-bottom:20px}
+.camp-card .price{font-size:2rem;font-weight:bold;color:var(--fire);margin-bottom:4px}
+.camp-card .price-note{font-size:.8rem;color:#888;margin-bottom:20px}
+
+/* Experience */
+.experience{background:var(--navy-light)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.exp-grid img{border-radius:16px;height:300px;object-fit:cover;width:100%}
+.exp-text{display:flex;flex-direction:column;justify-content:center}
+.exp-text h3{font-size:1.4rem;margin-bottom:12px;color:var(--cream)}
+.exp-text p{color:#ccc;line-height:1.8;margin-bottom:16px}
+.exp-features{list-style:none;padding:0}
+.exp-features li{padding:8px 0;color:var(--cream);font-size:.95rem}
+.exp-features li::before{content:'★ ';color:var(--fire)}
+
+/* Map */
+.map-section{text-align:center}
+.map-placeholder{background:rgba(255,255,255,.05);border-radius:16px;height:300px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.1);margin-top:32px;font-size:1.2rem;color:#888}
+
+/* Booking Form */
+.booking-section{background:linear-gradient(135deg,var(--navy-dark),#1a0f00)}
+.booking-form{max-width:600px;margin:0 auto}
+.booking-form label{display:block;margin-bottom:6px;color:var(--cream);font-size:.9rem}
+.booking-form input,.booking-form select,.booking-form textarea{width:100%;padding:14px 18px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.05);color:#fff;font-size:15px;margin-bottom:16px;font-family:inherit;transition:.3s}
+.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{outline:none;border-color:var(--fire)}
+.booking-form select{appearance:none}
+.date-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+footer{background:#0a0919;color:#888;text-align:center;padding:32px 24px;font-size:.9rem}
+footer a{color:var(--fire);transition:.3s}
+footer a:hover{color:var(--cream)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s,transform .8s}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s,transform .8s}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  nav{gap:10px;flex-wrap:wrap}
+  nav a{font-size:12px}
+  .exp-grid{grid-template-columns:1fr}
+  .date-row{grid-template-columns:1fr}
+  section{padding:60px 16px}
+}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+<button class="lang-toggle" id="langBtn">EN</button>
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z"/></svg></a>
+
+<nav>
+<img src="logos/logo_final.png" alt="StarCamp" class="logo-nav">
+<a href="#campsites" data-zh="營位" data-en="Campsites">營位</a>
+<a href="#experience" data-zh="體驗" data-en="Experience">體驗</a>
+<a href="#map" data-zh="位置" data-en="Location">位置</a>
+<a href="#booking" data-zh="預約" data-en="Book">預約</a>
+</nav>
+
+<section class="hero">
+<img src="photos/hero.png" alt="星空營地">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 data-zh="星空營地" data-en="StarCamp">星空營地</h1>
+<p data-zh="在繁星之下入眠，與自然共鳴。台灣最美的露營體驗，等你來探索。" data-en="Sleep beneath the stars, resonate with nature. Taiwan's most beautiful camping experience awaits.">在繁星之下入眠，與自然共鳴。台灣最美的露營體驗，等你來探索。</p>
+<a href="#booking" class="btn btn-fire" data-zh="立即預約" data-en="Book Now">立即預約</a>
+</div>
+</section>
+
+<section class="campsites" id="campsites">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="營位選擇" data-en="Campsites">營位選擇</h2>
+<p data-zh="三種住宿方案，滿足不同需求" data-en="3 stay options for every adventurer">三種住宿方案，滿足不同需求</p>
+</div>
+<div class="camp-cards">
+<div class="camp-card fade-up">
+<div class="icon">⛺</div>
+<h3 data-zh="自搭帳篷區" data-en="Tent Site">自搭帳篷區</h3>
+<p data-zh="獨立營位附設水電、洗手間。適合喜歡自備裝備、享受原始露營樂趣的你。" data-en="Private site with water/power hookup and restrooms. Perfect for those who love bringing their own gear.">獨立營位附設水電、洗手間。適合喜歡自備裝備、享受原始露營樂趣的你。</p>
+<div class="price">NT$800</div>
+<div class="price-note" data-zh="每晚" data-en="per night">每晚</div>
+<a href="#booking" class="btn btn-fire" data-zh="預約" data-en="Book">預約</a>
+</div>
+<div class="camp-card popular fade-up">
+<div class="icon">🏕️</div>
+<h3 data-zh="豪華露營" data-en="Glamping">豪華露營</h3>
+<p data-zh="精緻Bell帳篷，內含雙人床、傢俱及露營燈。免裝備即可享受浪漫星空露營。" data-en="Luxury bell tent with double bed, furniture and lanterns. No gear needed for a romantic starry night.">精緻Bell帳篷，內含雙人床、傢俱及露營燈。免裝備即可享受浪漫星空露營。</p>
+<div class="price">NT$2,500</div>
+<div class="price-note" data-zh="每晚" data-en="per night">每晚</div>
+<a href="#booking" class="btn btn-fire" data-zh="預約" data-en="Book">預約</a>
+</div>
+<div class="camp-card fade-up">
+<div class="icon">🏠</div>
+<h3 data-zh="森林木屋" data-en="Forest Cabin">森林木屋</h3>
+<p data-zh="獨棟木屋含衛浴、暖氣及觀景陽台。適合家庭與追求舒適的旅客。" data-en="Private cabin with bathroom, heating and balcony view. Perfect for families and comfort-seekers.">獨棟木屋含衛浴、暖氣及觀景陽台。適合家庭與追求舒適的旅客。</p>
+<div class="price">NT$4,000</div>
+<div class="price-note" data-zh="每晚" data-en="per night">每晚</div>
+<a href="#booking" class="btn btn-fire" data-zh="預約" data-en="Book">預約</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="experience" id="experience">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="營地體驗" data-en="Camp Experience">營地體驗</h2>
+<p data-zh="不只是露營，是一場與大自然的深度對話" data-en="More than camping — a deep conversation with nature">不只是露營，是一場與大自然的深度對話</p>
+</div>
+<div class="exp-grid">
+<img src="photos/fire.png" alt="營火" class="fade-left">
+<div class="exp-text fade-right">
+<h3 data-zh="營火之夜" data-en="Campfire Night">營火之夜</h3>
+<p data-zh="每晚的營火晚會是星空營地的招牌體驗，在溫暖火光中分享故事，仰望滿天星斗。" data-en="Our nightly campfire is the signature StarCamp experience — share stories by warm flames under a sky full of stars.">每晚的營火晚會是星空營地的招牌體驗，在溫暖火光中分享故事，仰望滿天星斗。</p>
+<ul class="exp-features">
+<li data-zh="專業天文導覽" data-en="Professional stargazing guide">專業天文導覽</li>
+<li data-zh="營火烤棉花糖" data-en="Campfire marshmallow roasting">營火烤棉花糖</li>
+<li data-zh="原住民文化體驗" data-en="Indigenous cultural experience">原住民文化體驗</li>
+<li data-zh="晨間瑜珈" data-en="Morning yoga session">晨間瑜珈</li>
+</ul>
+</div>
+</div>
+<div class="exp-grid" style="margin-top:48px">
+<div class="exp-text fade-left">
+<h3 data-zh="自然探索" data-en="Nature Exploration">自然探索</h3>
+<p data-zh="營地周邊擁有豐富的生態步道、溪流與瀑布景觀，適合親子同遊與戶外愛好者。" data-en="Surrounding the camp are rich ecological trails, streams and waterfalls — perfect for families and outdoor enthusiasts.">營地周邊擁有豐富的生態步道、溪流與瀑布景觀，適合親子同遊與戶外愛好者。</p>
+<ul class="exp-features">
+<li data-zh="森林步道健行" data-en="Forest trail hiking">森林步道健行</li>
+<li data-zh="溪流生態觀察" data-en="Stream ecology tour">溪流生態觀察</li>
+<li data-zh="攝影工作坊" data-en="Photography workshop">攝影工作坊</li>
+<li data-zh="野外炊事體驗" data-en="Outdoor cooking class">野外炊事體驗</li>
+</ul>
+</div>
+<img src="photos/nature.png" alt="自然" class="fade-right">
+</div>
+</div>
+</section>
+
+<section class="map-section" id="map">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="營地位置" data-en="Location">營地位置</h2>
+<p data-zh="南投縣仁愛鄉，海拔1,200公尺" data-en="Ren'ai Township, Nantou County — 1,200m elevation">南投縣仁愛鄉，海拔1,200公尺</p>
+</div>
+<div class="map-placeholder fade-up">
+<div>
+<p style="font-size:2rem;margin-bottom:12px">📍</p>
+<p data-zh="南投縣仁愛鄉星空路1號" data-en="No.1 Starry Rd, Ren'ai, Nantou">南投縣仁愛鄉星空路1號</p>
+<p style="margin-top:8px;font-size:.85rem" data-zh="GPS: 24.0589, 121.1628" data-en="GPS: 24.0589, 121.1628">GPS: 24.0589, 121.1628</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="booking-section" id="booking">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="預約住宿" data-en="Book a Stay">預約住宿</h2>
+<p data-zh="選擇日期，開始你的星空之旅" data-en="Pick your dates and start your starry adventure">選擇日期，開始你的星空之旅</p>
+</div>
+<form class="booking-form fade-up" onsubmit="event.preventDefault();alert('預約成功！我們會盡快確認。')">
+<label data-zh="姓名" data-en="Full Name">姓名</label>
+<input type="text" placeholder="王小明 / Name" required>
+<label data-zh="Email" data-en="Email">Email</label>
+<input type="email" placeholder="email@example.com" required>
+<label data-zh="電話" data-en="Phone">電話</label>
+<input type="tel" placeholder="0912-345-678" required>
+<div class="date-row">
+<div>
+<label data-zh="入住日期" data-en="Check-in">入住日期</label>
+<input type="date" required>
+</div>
+<div>
+<label data-zh="退房日期" data-en="Check-out">退房日期</label>
+<input type="date" required>
+</div>
+</div>
+<label data-zh="營位類型" data-en="Campsite Type">營位類型</label>
+<select required>
+<option value="" disabled selected data-zh="請選擇" data-en="Select">請選擇</option>
+<option data-zh="自搭帳篷 NT$800/晚" data-en="Tent Site NT$800/night">自搭帳篷 NT$800/晚</option>
+<option data-zh="豪華露營 NT$2,500/晚" data-en="Glamping NT$2,500/night">豪華露營 NT$2,500/晚</option>
+<option data-zh="森林木屋 NT$4,000/晚" data-en="Forest Cabin NT$4,000/night">森林木屋 NT$4,000/晚</option>
+</select>
+<label data-zh="人數" data-en="Guests">人數</label>
+<input type="number" min="1" max="10" placeholder="2" required>
+<button type="submit" class="btn btn-fire" style="width:100%" data-zh="確認預約" data-en="Confirm Booking">確認預約</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{if(playing){bgm.pause();bgmBtn.classList.remove('playing')}else{bgm.play();bgmBtn.classList.add('playing')}playing=!playing});
+let lang='zh';const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';langBtn.textContent=lang==='zh'?'EN':'中';document.querySelectorAll('[data-zh]').forEach(el=>{el.textContent=el.getAttribute('data-'+lang)})});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>心智鍛造 MindForge — 心理諮商中心</title>
+<meta name="description" content="心智鍛造 MindForge 專業心理諮商中心，提供個人、伴侶、家庭與團體諮商服務。溫暖專業的治療空間，陪你走過每個心靈時刻。">
+<meta name="keywords" content="心理諮商,心理治療,個人諮商,伴侶諮商,家庭治療,MindForge,心智鍛造">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/mindforge/">
+<meta property="og:title" content="心智鍛造 MindForge — 心理諮商中心">
+<meta property="og:description" content="專業心理諮商服務，溫暖陪伴你的心靈旅程。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MedicalBusiness",
+  "name":"心智鍛造 MindForge",
+  "description":"專業心理諮商中心，提供個人、伴侶、家庭與團體諮商服務。",
+  "url":"https://silmoontravis.github.io/demos/mindforge/",
+  "image":"photos/hero.png",
+  "medicalSpecialty":"Psychology"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lavender:#a78bfa;--lavender-dark:#7c3aed;--gold:#c8956c;--soft:#fefdf5;--dark:#2d2438;--radius:14px}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;background:var(--soft);color:var(--dark);line-height:1.8;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(254,253,245,.95);backdrop-filter:blur(8px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.05)}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--dark)}
+nav .logo img{height:36px}
+nav .logo span{font-weight:700;font-size:1.1rem}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.lang-btn,.bgm-btn{background:var(--lavender);color:#fff;border:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.3s}
+.lang-btn:hover,.bgm-btn:hover{opacity:.85}
+.bgm-btn.playing{background:var(--gold)}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;margin-top:60px;overflow:hidden}
+.hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(254,253,245,.88),rgba(254,253,245,.6))}
+.hero-content{position:relative;z-index:2;padding:40px 20px;max-width:600px}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);margin-bottom:16px;line-height:1.3}
+.hero h1 em{color:var(--lavender);font-style:normal}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:#5a4e62;margin-bottom:24px}
+.btn{display:inline-block;background:var(--lavender);color:#fff;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:600;font-size:1rem;transition:.3s;border:none;cursor:pointer}
+.btn:hover{background:var(--lavender-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(167,139,250,.35)}
+.btn-gold{background:var(--gold)}
+.btn-gold:hover{background:#b07d55;box-shadow:0 6px 20px rgba(200,149,108,.35)}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:8px}
+.section-title p{color:#6b5e78;font-size:1.05rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:#fff;border-radius:var(--radius);padding:32px 24px;text-align:center;transition:.3s;border:2px solid transparent;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.service-card:hover{border-color:var(--lavender);transform:translateY(-4px);box-shadow:0 8px 28px rgba(167,139,250,.1)}
+.service-card .icon{font-size:2.5rem;margin-bottom:12px}
+.service-card h3{font-size:1.15rem;margin-bottom:8px;color:var(--dark)}
+.service-card p{color:#6b5e78;font-size:.95rem;margin-bottom:12px}
+.service-card .price{font-weight:700;color:var(--gold);font-size:1.05rem}
+
+.approach{background:#fff}
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.approach-grid img{border-radius:var(--radius)}
+.approach-text h3{font-size:1.5rem;margin-bottom:16px;color:var(--lavender-dark)}
+.approach-text p{color:#5a4e62;margin-bottom:12px}
+
+.space-section{overflow:hidden}
+.space-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.space-grid img{border-radius:var(--radius)}
+.space-text h3{font-size:1.5rem;margin-bottom:16px;color:var(--gold)}
+
+.team{background:#fff}
+.team-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.team-inner img{border-radius:var(--radius)}
+.team-text h3{font-size:1.5rem;margin-bottom:16px;color:var(--lavender-dark)}
+
+.book{background:linear-gradient(135deg,var(--lavender),var(--lavender-dark));color:#fff;text-align:center}
+.book h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px}
+.book p{max-width:520px;margin:0 auto 24px;opacity:.9}
+.book .btn{background:#fff;color:var(--lavender-dark)}
+
+footer{background:var(--dark);color:#b8aec5;text-align:center;padding:32px 20px;font-size:.85rem}
+footer a{color:#b8aec5;text-decoration:none}
+footer a:hover{color:var(--lavender)}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);cursor:pointer;transition:.3s;text-decoration:none}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .approach-grid,.space-grid,.team-inner{grid-template-columns:1fr}
+  .hero{min-height:80vh}
+  section{padding:60px 0}
+  nav .logo span{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><img src="logos/logo_final.png" alt="MindForge Logo"><span>心智鍛造</span></a>
+  <div class="nav-actions">
+    <button class="bgm-btn" onclick="toggleBGM()">♪ BGM</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="hero-bg" src="photos/hero.png" alt="心智鍛造品牌形象">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="在安全的空間裡，<em>找回自己</em>" data-en="In a Safe Space, <em>Find Yourself</em>">在安全的空間裡，<em>找回自己</em></h1>
+    <p data-zh="每個人都值得被傾聽。心智鍛造提供專業心理諮商服務，陪你在生命的每個轉折中，找到前進的力量。" data-en="Everyone deserves to be heard. MindForge offers professional counseling services, walking with you through every turn in life to find the strength to move forward.">每個人都值得被傾聽。心智鍛造提供專業心理諮商服務，陪你在生命的每個轉折中，找到前進的力量。</p>
+    <a href="#book" class="btn" data-zh="預約諮商" data-en="Book a Session">預約諮商</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="諮商服務" data-en="Our Services">諮商服務</h2>
+      <p data-zh="根據你的需求，提供最適切的陪伴方式" data-en="Tailored support based on your unique needs">根據你的需求，提供最適切的陪伴方式</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="icon">🧘</div>
+        <h3 data-zh="個人諮商" data-en="Individual Counseling">個人諮商</h3>
+        <p data-zh="一對一深度對話，探索內在自我，處理焦慮、憂鬱、人際困擾或生命轉折。" data-en="One-on-one deep dialogue, exploring inner self, addressing anxiety, depression, interpersonal issues, or life transitions.">一對一深度對話，探索內在自我，處理焦慮、憂鬱、人際困擾或生命轉折。</p>
+        <div class="price" data-zh="NT$ 2,400 / 50分鐘" data-en="NT$ 2,400 / 50 min">NT$ 2,400 / 50分鐘</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">💑</div>
+        <h3 data-zh="伴侶諮商" data-en="Couples Counseling">伴侶諮商</h3>
+        <p data-zh="改善溝通模式、修復信任、重建連結，讓關係找到新的平衡與默契。" data-en="Improve communication, rebuild trust, and restore connection to find new balance in your relationship.">改善溝通模式、修復信任、重建連結，讓關係找到新的平衡與默契。</p>
+        <div class="price" data-zh="NT$ 3,200 / 80分鐘" data-en="NT$ 3,200 / 80 min">NT$ 3,200 / 80分鐘</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">👨‍👩‍👧‍👦</div>
+        <h3 data-zh="家庭治療" data-en="Family Therapy">家庭治療</h3>
+        <p data-zh="調整家庭互動模式，處理代際議題，建立更健康的家庭關係。" data-en="Adjust family dynamics, address intergenerational issues, and build healthier family relationships.">調整家庭互動模式，處理代際議題，建立更健康的家庭關係。</p>
+        <div class="price" data-zh="NT$ 3,600 / 90分鐘" data-en="NT$ 3,600 / 90 min">NT$ 3,600 / 90分鐘</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🤝</div>
+        <h3 data-zh="團體諮商" data-en="Group Counseling">團體諮商</h3>
+        <p data-zh="在安全的團體氛圍中分享與學習，透過同儕支持獲得力量與洞察。" data-en="Share and learn in a safe group environment, gaining strength and insight through peer support.">在安全的團體氛圍中分享與學習，透過同儕支持獲得力量與洞察。</p>
+        <div class="price" data-zh="NT$ 800 / 人 / 次" data-en="NT$ 800 / person / session">NT$ 800 / 人 / 次</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach">
+  <div class="container">
+    <div class="approach-grid">
+      <img src="photos/session.png" alt="諮商情境" class="reveal">
+      <div class="approach-text reveal">
+        <h3 data-zh="我們的取向" data-en="Our Approach">我們的取向</h3>
+        <p data-zh="心智鍛造整合多元諮商取向，包括認知行為治療（CBT）、焦點解決短期治療（SFBT）、正念減壓（MBSR）以及情緒取向治療（EFT），依據每位來訪者的獨特需求量身打造治療方案。" data-en="MindForge integrates multiple counseling approaches including CBT, SFBT, MBSR, and EFT, tailoring treatment plans to each client's unique needs.">心智鍛造整合多元諮商取向，包括認知行為治療（CBT）、焦點解決短期治療（SFBT）、正念減壓（MBSR）以及情緒取向治療（EFT），依據每位來訪者的獨特需求量身打造治療方案。</p>
+        <p data-zh="我們相信，每個人都擁有自我療癒的內在力量，諮商師的角色是陪伴與引導你發現並運用這份力量。" data-en="We believe everyone possesses an innate capacity for self-healing. The counselor's role is to accompany and guide you in discovering and using that strength.">我們相信，每個人都擁有自我療癒的內在力量，諮商師的角色是陪伴與引導你發現並運用這份力量。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="space-section">
+  <div class="container">
+    <div class="space-grid">
+      <div class="space-text reveal">
+        <h3 data-zh="療癒空間" data-en="Wellness Space">療癒空間</h3>
+        <p data-zh="我們精心打造溫暖、安全的諮商空間，柔和的光線、自然的色調與舒適的座椅，讓你在踏入的那一刻就能感受到被接納的溫度。每間諮商室都配備完善的隔音設備，確保談話的絕對隱私。" data-en="We've carefully designed warm, safe counseling spaces with soft lighting, natural tones, and comfortable seating, so you feel accepted the moment you step in. Every room is fully soundproofed to ensure absolute privacy.">我們精心打造溫暖、安全的諮商空間，柔和的光線、自然的色調與舒適的座椅，讓你在踏入的那一刻就能感受到被接納的溫度。每間諮商室都配備完善的隔音設備，確保談話的絕對隱私。</p>
+      </div>
+      <img src="photos/space.png" alt="諮商空間" class="reveal">
+    </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="container">
+    <div class="team-inner">
+      <img src="photos/team.png" alt="諮商團隊" class="reveal">
+      <div class="team-text reveal">
+        <h3 data-zh="專業團隊" data-en="Our Therapists">專業團隊</h3>
+        <p data-zh="我們的諮商心理師團隊均持有國家證照，累積超過 10,000 小時的臨床經驗。每位心理師持續接受督導與進修，以提供最專業、最溫暖的服務。涵蓋焦慮症、憂鬱症、創傷後壓力症、關係議題、職場壓力等多元領域。" data-en="Our team of licensed counseling psychologists has over 10,000 hours of combined clinical experience. Each therapist continues to receive supervision and training to provide the most professional and compassionate service across anxiety, depression, PTSD, relationship issues, and workplace stress.">我們的諮商心理師團隊均持有國家證照，累積超過 10,000 小時的臨床經驗。每位心理師持續接受督導與進修，以提供最專業、最溫暖的服務。涵蓋焦慮症、憂鬱症、創傷後壓力症、關係議題、職場壓力等多元領域。</p>
+        <a href="#book" class="btn btn-gold" style="margin-top:16px" data-zh="認識團隊" data-en="Meet Our Team">認識團隊</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="container">
+    <h2 data-zh="預約你的第一次諮商" data-en="Book Your First Session">預約你的第一次諮商</h2>
+    <p data-zh="踏出這一步需要勇氣，而我們已在這裡等你。初次諮商提供免費 20 分鐘電話評估。" data-en="Taking this step takes courage, and we're here waiting for you. First-time clients receive a free 20-minute phone assessment.">踏出這一步需要勇氣，而我們已在這裡等你。初次諮商提供免費 20 分鐘電話評估。</p>
+    <a href="https://silmoontravis.github.io/demos/#contact" class="btn" data-zh="立即預約" data-en="Book Now">立即預約</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const audio=document.getElementById('bgmAudio');const bgmBtn=document.querySelector('.bgm-btn');let isPlaying=false;
+function toggleBGM(){if(isPlaying){audio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪ BGM'}else{audio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪ ON'}isPlaying=!isPlaying}
+let lang='zh';
+function toggleLang(){lang=lang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';document.documentElement.lang=lang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)})}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安居智能 SecureHome — 智慧居家安全系統</title>
+<meta name="description" content="安居智能 SecureHome 提供智慧攝影機、感測器、智慧鎖與中控系統，全方位守護您的居家安全。">
+<meta name="keywords" content="智慧家庭,居家安全,smart home,security,攝影機,感測器,智慧鎖,IoT">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"安居智能 SecureHome",
+  "description":"全方位智慧居家安全解決方案",
+  "image":"photos/hero.png",
+  "url":"https://securehome.tw",
+  "offers":[
+    {"@type":"Offer","name":"Basic","price":"299","priceCurrency":"TWD","description":"基礎方案 月費"},
+    {"@type":"Offer","name":"Pro","price":"599","priceCurrency":"TWD","description":"專業方案 月費"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e3a5f;--green:#22c55e;--white:#ffffff;--gray:#f8fafc;--dark:#0f172a;--navy-light:#2d5a8a;--green-dark:#16a34a}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans TC',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:var(--navy);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 8px rgba(30,58,95,.3)}
+.lang-toggle:hover{background:var(--navy-light)}
+
+.bgm-btn{position:fixed;top:16px;left:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(30,58,95,.3)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 2px 8px rgba(30,58,95,.3)}50%{box-shadow:0 2px 16px rgba(34,197,94,.5)}}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.4);cursor:pointer;animation:hb 3s ease-in-out infinite}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta svg{width:28px;height:28px;fill:#fff}
+@keyframes hb{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:900;padding:12px 24px;display:flex;justify-content:center;align-items:center;gap:24px;border-bottom:1px solid #e2e8f0}
+nav a{font-size:14px;color:#64748b;transition:.3s}
+nav a:hover{color:var(--navy)}
+nav .logo-nav{height:32px;margin-right:auto}
+
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--dark)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(15,23,42,.85),rgba(15,23,42,.5))}
+.hero-content{position:relative;z-index:2;max-width:600px;padding:0 24px}
+.hero-content h1{font-size:clamp(2rem,6vw,3.5rem);margin-bottom:16px;color:#fff}
+.hero-content h1 span{color:var(--green)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.2rem);color:#cbd5e1;max-width:500px;margin-bottom:32px;line-height:1.7}
+.btn{display:inline-block;padding:14px 36px;border-radius:30px;font-size:16px;font-weight:bold;transition:.3s;cursor:pointer;border:none}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-dark);transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-light);transform:translateY(-2px)}
+.btn-outline-w{border:2px solid #fff;color:#fff;background:transparent;margin-left:12px}
+.btn-outline-w:hover{background:#fff;color:var(--dark)}
+
+section{padding:80px 24px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px}
+.section-title p{color:var(--navy);font-size:1rem}
+.container{max-width:1100px;margin:0 auto}
+
+/* Products */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:var(--white);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:.3s;border:2px solid transparent}
+.product-card:hover{border-color:var(--green);transform:translateY(-6px);box-shadow:0 8px 30px rgba(34,197,94,.15)}
+.product-card .icon{font-size:2.8rem;margin-bottom:16px}
+.product-card h3{font-size:1.1rem;margin-bottom:8px}
+.product-card p{font-size:.85rem;color:#64748b;line-height:1.6;margin-bottom:16px}
+.product-card .price{font-size:1.4rem;font-weight:bold;color:var(--navy);margin-bottom:4px}
+.product-card .price-note{font-size:.8rem;color:#94a3b8;margin-bottom:16px}
+
+/* Smart Features */
+.smart-section{background:var(--dark);color:#fff}
+.smart-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.smart-grid img{border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.smart-text h2{font-size:clamp(1.5rem,3.5vw,2.2rem);margin-bottom:20px}
+.smart-text p{color:#94a3b8;line-height:1.8;margin-bottom:16px}
+.smart-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.smart-feat{background:rgba(255,255,255,.05);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.08)}
+.smart-feat h4{font-size:.9rem;margin-bottom:4px;color:var(--green)}
+.smart-feat p{font-size:.8rem;color:#94a3b8}
+
+/* App Control */
+.app-section{text-align:center}
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;text-align:left}
+.app-grid img{border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.app-text h2{font-size:clamp(1.5rem,3.5vw,2rem);margin-bottom:20px}
+.app-text p{color:#64748b;line-height:1.8;margin-bottom:16px}
+.app-badges{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Plans */
+.plans-section{background:var(--gray)}
+.plan-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--white);border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:.3s;border:2px solid transparent;position:relative}
+.plan-card:hover{transform:translateY(-4px)}
+.plan-card.featured{border-color:var(--green);box-shadow:0 8px 30px rgba(34,197,94,.15)}
+.plan-card.featured::before{content:'RECOMMENDED';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:4px 16px;border-radius:12px;font-size:.75rem;font-weight:bold}
+.plan-card h3{font-size:1.3rem;margin-bottom:8px}
+.plan-card .price{font-size:2.4rem;font-weight:bold;color:var(--dark);margin:16px 0 4px}
+.plan-card .price span{font-size:1rem;color:#94a3b8}
+.plan-card .price-note{font-size:.85rem;color:#94a3b8;margin-bottom:20px}
+.plan-card ul{list-style:none;text-align:left;margin-bottom:24px}
+.plan-card ul li{padding:8px 0;font-size:.9rem;color:#475569;border-bottom:1px solid #f1f5f9}
+.plan-card ul li::before{content:'✓ ';color:var(--green);font-weight:bold}
+
+/* Installation */
+.install-section{background:var(--dark);color:#fff}
+.install-form{max-width:600px;margin:0 auto}
+.install-form input,.install-form select,.install-form textarea{width:100%;padding:14px 18px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.05);color:#fff;font-size:15px;margin-bottom:16px;font-family:inherit;transition:.3s}
+.install-form input:focus,.install-form select:focus,.install-form textarea:focus{outline:none;border-color:var(--green)}
+.install-form select{appearance:none}
+.install-form textarea{height:100px;resize:vertical}
+
+footer{background:#0a0f1a;color:#64748b;text-align:center;padding:32px 24px;font-size:.9rem}
+footer a{color:var(--green);transition:.3s}
+footer a:hover{color:var(--navy-light)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s,transform .8s}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s,transform .8s}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  nav{gap:10px;flex-wrap:wrap}
+  nav a{font-size:12px}
+  .smart-grid,.app-grid{grid-template-columns:1fr}
+  .smart-features{grid-template-columns:1fr}
+  section{padding:60px 16px}
+  .hero-content{text-align:center}
+}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+<button class="lang-toggle" id="langBtn">EN</button>
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z"/></svg></a>
+
+<nav>
+<img src="logos/logo_final.png" alt="SecureHome" class="logo-nav">
+<a href="#products" data-zh="產品" data-en="Products">產品</a>
+<a href="#smart" data-zh="功能" data-en="Features">功能</a>
+<a href="#app" data-zh="App" data-en="App">App</a>
+<a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+<a href="#install" data-zh="安裝" data-en="Install">安裝</a>
+</nav>
+
+<section class="hero">
+<img src="photos/hero.png" alt="安居智能">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 data-zh="安居智能" data-en="SecureHome"><span>安居</span>智能</h1>
+<p data-zh="全方位智慧居家安全系統。從攝影機到智慧鎖，用科技守護你最珍貴的家。即時監控、智能警報、一指掌控。" data-en="Complete smart home security. From cameras to smart locks, protect what matters most with technology. Real-time monitoring, smart alerts, one-tap control.">全方位智慧居家安全系統。從攝影機到智慧鎖，用科技守護你最珍貴的家。即時監控、智能警報、一指掌控。</p>
+<a href="#products" class="btn btn-green" data-zh="探索產品" data-en="Explore Products">探索產品</a>
+<a href="#install" class="btn btn-outline-w" data-zh="預約安裝" data-en="Book Install">預約安裝</a>
+</div>
+</section>
+
+<section id="products">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="產品系列" data-en="Our Products">產品系列</h2>
+<p data-zh="四大核心產品，建構完整安全防線" data-en="4 core products for complete security coverage">四大核心產品，建構完整安全防線</p>
+</div>
+<div class="products-grid">
+<div class="product-card fade-up">
+<div class="icon">📹</div>
+<h3 data-zh="智慧攝影機" data-en="Smart Cameras">智慧攝影機</h3>
+<p data-zh="4K超高清、夜視功能、雙向語音。支援移動偵測與即時推播通知。" data-en="4K ultra HD, night vision, two-way audio. Motion detection with real-time push notifications.">4K超高清、夜視功能、雙向語音。支援移動偵測與即時推播通知。</p>
+<div class="price">NT$3,990</div>
+<div class="price-note" data-zh="起" data-en="from">起</div>
+<a href="#install" class="btn btn-green" data-zh="了解更多" data-en="Learn More">了解更多</a>
+</div>
+<div class="product-card fade-up">
+<div class="icon">📡</div>
+<h3 data-zh="環境感測器" data-en="Smart Sensors">環境感測器</h3>
+<p data-zh="門窗感測、煙霧偵測、漏水警報。全方位環境監控，異常即時通知。" data-en="Door/window, smoke, and water leak sensors. Complete environmental monitoring with instant alerts.">門窗感測、煙霧偵測、漏水警報。全方位環境監控，異常即時通知。</p>
+<div class="price">NT$1,290</div>
+<div class="price-note" data-zh="起" data-en="from">起</div>
+<a href="#install" class="btn btn-green" data-zh="了解更多" data-en="Learn More">了解更多</a>
+</div>
+<div class="product-card fade-up">
+<div class="icon">🔐</div>
+<h3 data-zh="智慧門鎖" data-en="Smart Locks">智慧門鎖</h3>
+<p data-zh="指紋、密碼、NFC、遠端開鎖。支援臨時密碼與進出記錄查詢。" data-en="Fingerprint, PIN, NFC, remote unlock. Temporary codes and entry log support.">指紋、密碼、NFC、遠端開鎖。支援臨時密碼與進出記錄查詢。</p>
+<div class="price">NT$8,990</div>
+<div class="price-note" data-zh="起" data-en="from">起</div>
+<a href="#install" class="btn btn-green" data-zh="了解更多" data-en="Learn More">了解更多</a>
+</div>
+<div class="product-card fade-up">
+<div class="icon">🏠</div>
+<h3 data-zh="智慧中控" data-en="Security Hub">智慧中控</h3>
+<p data-zh="整合所有設備的核心主機。支援 Zigbee、WiFi 與藍牙協定，一台掌控全家。" data-en="Central hub integrating all devices. Supports Zigbee, WiFi & Bluetooth — one hub controls everything.">整合所有設備的核心主機。支援 Zigbee、WiFi 與藍牙協定，一台掌控全家。</p>
+<div class="price">NT$4,990</div>
+<div class="price-note" data-zh="起" data-en="from">起</div>
+<a href="#install" class="btn btn-green" data-zh="了解更多" data-en="Learn More">了解更多</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="smart-section" id="smart">
+<div class="container">
+<div class="smart-grid">
+<img src="photos/system.png" alt="智慧系統" class="fade-left">
+<div class="fade-right">
+<div class="smart-text">
+<h2 data-zh="智慧功能" data-en="Smart Features">智慧功能</h2>
+<p data-zh="安居智能系統採用先進技術，讓居家安全從被動防禦升級為主動防護。多重感測器聯動、智慧場景自動化，讓你的家比你想像的更聰明。" data-en="SecureHome uses advanced tech to evolve home security from passive to proactive. Multi-sensor coordination and smart scene automation make your home smarter than you imagined.">安居智能系統採用先進技術，讓居家安全從被動防禦升級為主動防護。多重感測器聯動、智慧場景自動化，讓你的家比你想像的更聰明。</p>
+</div>
+<div class="smart-features">
+<div class="smart-feat">
+<h4 data-zh="智慧偵測" data-en="Smart Detection">智慧偵測</h4>
+<p data-zh="人形辨識，降低誤報率95%" data-en="Human detection, 95% fewer false alarms">人形辨識，降低誤報率95%</p>
+</div>
+<div class="smart-feat">
+<h4 data-zh="場景聯動" data-en="Scene Automation">場景聯動</h4>
+<p data-zh="離家自動布防，到家自動解除" data-en="Auto-arm on leave, auto-disarm on arrival">離家自動布防，到家自動解除</p>
+</div>
+<div class="smart-feat">
+<h4 data-zh="雲端儲存" data-en="Cloud Storage">雲端儲存</h4>
+<p data-zh="30天影像雲端備份" data-en="30-day cloud video backup">30天影像雲端備份</p>
+</div>
+<div class="smart-feat">
+<h4 data-zh="緊急通報" data-en="Emergency Alert">緊急通報</h4>
+<p data-zh="一鍵緊急通報保全中心" data-en="One-tap emergency alert to security center">一鍵緊急通報保全中心</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="app">
+<div class="container">
+<div class="app-grid">
+<div class="app-text fade-left">
+<h2 data-zh="一個 App，掌控全家" data-en="One App, Total Control">一個 App，掌控全家</h2>
+<p data-zh="安居智能 App 讓你隨時隨地查看家中狀況、控制所有設備、接收即時警報。直覺化介面設計，全家人都能輕鬆使用。" data-en="The SecureHome App lets you monitor your home, control all devices, and receive real-time alerts from anywhere. Intuitive design for the whole family.">安居智能 App 讓你隨時隨地查看家中狀況、控制所有設備、接收即時警報。直覺化介面設計，全家人都能輕鬆使用。</p>
+<div class="app-badges">
+<a href="#" class="btn btn-navy" data-zh="App Store" data-en="App Store">App Store</a>
+<a href="#" class="btn btn-green" data-zh="Google Play" data-en="Google Play">Google Play</a>
+</div>
+</div>
+<img src="photos/app.png" alt="SecureHome App" class="fade-right">
+</div>
+</div>
+</section>
+
+<section class="plans-section" id="plans">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="服務方案" data-en="Service Plans">服務方案</h2>
+<p data-zh="選擇最適合你的安全方案" data-en="Choose the plan that fits your security needs">選擇最適合你的安全方案</p>
+</div>
+<div class="plan-cards">
+<div class="plan-card fade-up">
+<h3 data-zh="Basic 基礎方案" data-en="Basic Plan">Basic 基礎方案</h3>
+<div class="price">NT$299<span data-zh="/月" data-en="/mo">/月</span></div>
+<div class="price-note" data-zh="年繳享9折" data-en="10% off annual">年繳享9折</div>
+<ul>
+<li data-zh="最多 4 台設備" data-en="Up to 4 devices">最多 4 台設備</li>
+<li data-zh="7 天雲端錄影" data-en="7-day cloud recording">7 天雲端錄影</li>
+<li data-zh="即時推播通知" data-en="Real-time push alerts">即時推播通知</li>
+<li data-zh="App 遠端控制" data-en="Remote app control">App 遠端控制</li>
+</ul>
+<a href="#install" class="btn btn-navy" data-zh="選擇方案" data-en="Choose Plan">選擇方案</a>
+</div>
+<div class="plan-card featured fade-up">
+<h3 data-zh="Pro 專業方案" data-en="Pro Plan">Pro 專業方案</h3>
+<div class="price">NT$599<span data-zh="/月" data-en="/mo">/月</span></div>
+<div class="price-note" data-zh="年繳享85折" data-en="15% off annual">年繳享85折</div>
+<ul>
+<li data-zh="最多 16 台設備" data-en="Up to 16 devices">最多 16 台設備</li>
+<li data-zh="30 天雲端錄影" data-en="30-day cloud recording">30 天雲端錄影</li>
+<li data-zh="智慧場景自動化" data-en="Smart scene automation">智慧場景自動化</li>
+<li data-zh="24/7 保全中心聯防" data-en="24/7 security center link">24/7 保全中心聯防</li>
+<li data-zh="優先客服支援" data-en="Priority customer support">優先客服支援</li>
+</ul>
+<a href="#install" class="btn btn-green" data-zh="選擇方案" data-en="Choose Plan">選擇方案</a>
+</div>
+<div class="plan-card fade-up">
+<h3 data-zh="Enterprise 企業方案" data-en="Enterprise Plan">Enterprise 企業方案</h3>
+<div class="price" data-zh="客製報價" data-en="Custom">客製報價</div>
+<div class="price-note" data-zh="依需求量身規劃" data-en="Tailored to your needs">依需求量身規劃</div>
+<ul>
+<li data-zh="無限設備數量" data-en="Unlimited devices">無限設備數量</li>
+<li data-zh="90 天雲端錄影" data-en="90-day cloud recording">90 天雲端錄影</li>
+<li data-zh="專屬客戶經理" data-en="Dedicated account manager">專屬客戶經理</li>
+<li data-zh="客製化整合開發" data-en="Custom integration development">客製化整合開發</li>
+<li data-zh="到府安裝與維護" data-en="On-site install & maintenance">到府安裝與維護</li>
+</ul>
+<a href="#install" class="btn btn-navy" data-zh="聯絡我們" data-en="Contact Us">聯絡我們</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="install-section" id="install">
+<div class="container">
+<div class="section-title fade-up">
+<h2 style="color:#fff" data-zh="預約安裝諮詢" data-en="Book Installation">預約安裝諮詢</h2>
+<p data-zh="專業團隊到府評估，打造專屬安全方案" data-en="Our team visits your home for a custom security assessment">專業團隊到府評估，打造專屬安全方案</p>
+</div>
+<form class="install-form fade-up" onsubmit="event.preventDefault();alert('已收到！我們會盡快安排專人聯繫。')">
+<input type="text" placeholder="姓名 / Name" required>
+<input type="email" placeholder="Email" required>
+<input type="tel" placeholder="電話 / Phone" required>
+<input type="text" placeholder="地址 / Address" required>
+<select required>
+<option value="" disabled selected data-zh="選擇方案" data-en="Select Plan">選擇方案</option>
+<option data-zh="Basic 基礎方案 NT$299/月" data-en="Basic NT$299/mo">Basic 基礎方案 NT$299/月</option>
+<option data-zh="Pro 專業方案 NT$599/月" data-en="Pro NT$599/mo">Pro 專業方案 NT$599/月</option>
+<option data-zh="Enterprise 企業方案" data-en="Enterprise (Custom)">Enterprise 企業方案</option>
+</select>
+<textarea placeholder="其他需求說明 / Additional Notes"></textarea>
+<button type="submit" class="btn btn-green" style="width:100%" data-zh="送出預約" data-en="Submit Inquiry">送出預約</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{if(playing){bgm.pause();bgmBtn.classList.remove('playing')}else{bgm.play();bgmBtn.classList.add('playing')}playing=!playing});
+let lang='zh';const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';langBtn.textContent=lang==='zh'?'EN':'中';document.querySelectorAll('[data-zh]').forEach(el=>{el.textContent=el.getAttribute('data-'+lang)})});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

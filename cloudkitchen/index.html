@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雲端廚房 CloudKitchen — 美食外送平台</title>
+<meta name="description" content="雲端廚房 CloudKitchen 是新世代美食外送平台，匯集六大菜系、快速到府。">
+<meta name="keywords" content="雲端廚房,外送,cloud kitchen,delivery,美食平台">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"雲端廚房 CloudKitchen",
+  "description":"新世代美食外送平台，匯集六大菜系、快速到府",
+  "image":"photos/hero.png",
+  "url":"https://cloudkitchen.tw"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#f97316;--blue:#38bdf8;--dark:#111;--gray:#1a1a1a;--light:#f5f5f5}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans TC',sans-serif;background:var(--dark);color:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:var(--orange);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:.3s}
+.lang-toggle:hover{background:#e06610}
+
+.bgm-btn{position:fixed;top:16px;left:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:.3s}
+.bgm-btn:hover{background:#e06610}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 2px 8px rgba(0,0,0,.3)}50%{box-shadow:0 2px 16px rgba(249,115,22,.6)}}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.4);cursor:pointer;transition:.3s;animation:hb-float 3s ease-in-out infinite}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta svg{width:28px;height:28px;fill:#fff}
+@keyframes hb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(17,17,17,.95);backdrop-filter:blur(10px);z-index:900;padding:12px 24px;display:flex;justify-content:center;align-items:center;gap:24px;border-bottom:1px solid rgba(255,255,255,.05)}
+nav a{font-size:14px;color:#aaa;transition:.3s}
+nav a:hover{color:var(--orange)}
+nav .logo-nav{height:32px;margin-right:auto}
+
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,.5),rgba(17,17,17,.85))}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
+.hero-content h1{font-size:clamp(2rem,6vw,4rem);margin-bottom:16px;background:linear-gradient(135deg,var(--orange),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);opacity:.8;max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;padding:14px 36px;border-radius:30px;font-size:16px;font-weight:bold;transition:.3s;cursor:pointer;border:none}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:#e06610;transform:translateY(-2px)}
+.btn-blue{background:var(--blue);color:var(--dark)}
+.btn-blue:hover{background:#22a3e0;transform:translateY(-2px)}
+
+section{padding:80px 24px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px}
+.section-title p{color:var(--blue);font-size:1rem}
+.container{max-width:1100px;margin:0 auto}
+
+/* How It Works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;text-align:center}
+.step{background:var(--gray);border-radius:20px;padding:40px 24px;transition:.3s;border:1px solid rgba(255,255,255,.05)}
+.step:hover{border-color:var(--orange);transform:translateY(-4px)}
+.step .num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--blue));display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:bold;margin:0 auto 20px}
+.step h3{margin-bottom:12px;font-size:1.2rem}
+.step p{color:#aaa;line-height:1.6;font-size:.9rem}
+
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px}
+.menu-card{background:var(--gray);border-radius:16px;padding:28px 16px;text-align:center;transition:.3s;border:1px solid rgba(255,255,255,.05);cursor:pointer}
+.menu-card:hover{border-color:var(--orange);transform:scale(1.05)}
+.menu-card .emoji{font-size:2.4rem;margin-bottom:12px}
+.menu-card h3{font-size:1rem;margin-bottom:6px}
+.menu-card p{font-size:.8rem;color:#888}
+
+/* Delivery */
+.delivery-section{background:var(--gray)}
+.delivery-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.delivery-grid img{border-radius:16px}
+.delivery-text h2{font-size:clamp(1.5rem,3.5vw,2.2rem);margin-bottom:20px}
+.delivery-text p{line-height:1.8;color:#bbb;margin-bottom:16px}
+.delivery-stats{display:flex;gap:32px;margin-top:24px}
+.stat{text-align:center}
+.stat .num{font-size:2rem;font-weight:bold;color:var(--orange)}
+.stat p{font-size:.85rem;color:#888}
+
+/* App */
+.app-section{text-align:center}
+.app-section img{max-width:500px;margin:32px auto 0;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.app-badges{display:flex;gap:16px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+
+/* Partner Form */
+.partner-section{background:linear-gradient(135deg,#1a0f00,#0a1520)}
+.partner-form{max-width:600px;margin:0 auto}
+.partner-form input,.partner-form select,.partner-form textarea{width:100%;padding:14px 18px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.05);color:#fff;font-size:15px;margin-bottom:16px;font-family:inherit;transition:.3s}
+.partner-form input:focus,.partner-form select:focus,.partner-form textarea:focus{outline:none;border-color:var(--orange)}
+.partner-form textarea{height:100px;resize:vertical}
+.partner-form select{appearance:none}
+
+footer{background:#0a0a0a;color:#888;text-align:center;padding:32px 24px;font-size:.9rem}
+footer a{color:var(--orange);transition:.3s}
+footer a:hover{color:var(--blue)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s,transform .8s}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s,transform .8s}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  nav{gap:10px;flex-wrap:wrap}
+  nav a{font-size:12px}
+  .delivery-grid{grid-template-columns:1fr}
+  .delivery-stats{flex-direction:column;gap:16px}
+  section{padding:60px 16px}
+}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+<button class="lang-toggle" id="langBtn">EN</button>
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z"/></svg></a>
+
+<nav>
+<img src="logos/logo_final.png" alt="CloudKitchen" class="logo-nav">
+<a href="#how" data-zh="運作方式" data-en="How It Works">運作方式</a>
+<a href="#menu" data-zh="菜單" data-en="Menu">菜單</a>
+<a href="#delivery" data-zh="外送" data-en="Delivery">外送</a>
+<a href="#app" data-zh="App" data-en="App">App</a>
+<a href="#partner" data-zh="加盟" data-en="Partner">加盟</a>
+</nav>
+
+<section class="hero">
+<img src="photos/hero.png" alt="雲端廚房">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 data-zh="雲端廚房" data-en="CloudKitchen">雲端廚房</h1>
+<p data-zh="六大菜系、百款美食，30分鐘內新鮮到府。新世代美食外送平台，改變你的用餐方式。" data-en="6 cuisines, 100+ dishes, delivered fresh in 30 minutes. A next-gen food delivery platform changing how you eat.">六大菜系、百款美食，30分鐘內新鮮到府。新世代美食外送平台，改變你的用餐方式。</p>
+<a href="#menu" class="btn btn-orange" data-zh="瀏覽菜單" data-en="Browse Menu">瀏覽菜單</a>
+</div>
+</section>
+
+<section id="how">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="如何運作" data-en="How It Works">如何運作</h2>
+<p data-zh="三步驟，美食到家" data-en="3 simple steps to deliciousness">三步驟，美食到家</p>
+</div>
+<div class="steps">
+<div class="step fade-up">
+<div class="num">1</div>
+<h3 data-zh="選擇美食" data-en="Choose Your Meal">選擇美食</h3>
+<p data-zh="瀏覽六大菜系，從經典中式到異國料理，數百款美食任你挑選。" data-en="Browse 6 cuisine categories with hundreds of dishes from classic Chinese to international flavors.">瀏覽六大菜系，從經典中式到異國料理，數百款美食任你挑選。</p>
+</div>
+<div class="step fade-up">
+<div class="num">2</div>
+<h3 data-zh="下單付款" data-en="Place Your Order">下單付款</h3>
+<p data-zh="支援多元支付方式，一鍵下單。即時追蹤訂單狀態，掌握每一步進度。" data-en="Multiple payment options, one-click ordering. Track your order status in real time.">支援多元支付方式，一鍵下單。即時追蹤訂單狀態，掌握每一步進度。</p>
+</div>
+<div class="step fade-up">
+<div class="num">3</div>
+<h3 data-zh="快速到府" data-en="Fast Delivery">快速到府</h3>
+<p data-zh="專屬外送團隊，平均30分鐘內送達。保溫包裝確保每道菜品質如店內現做。" data-en="Dedicated delivery fleet, average 30-min delivery. Insulated packaging keeps every dish restaurant-fresh.">專屬外送團隊，平均30分鐘內送達。保溫包裝確保每道菜品質如店內現做。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="menu" style="background:var(--gray)">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="菜單分類" data-en="Menu Categories">菜單分類</h2>
+<p data-zh="六大菜系，滿足每一種味蕾" data-en="6 cuisines for every craving">六大菜系，滿足每一種味蕾</p>
+</div>
+<div class="menu-grid">
+<div class="menu-card fade-up"><div class="emoji">🍜</div><h3 data-zh="台式經典" data-en="Taiwanese">台式經典</h3><p data-zh="滷肉飯・牛肉麵・小籠包" data-en="Braised pork rice, beef noodle, xiao long bao">滷肉飯・牛肉麵・小籠包</p></div>
+<div class="menu-card fade-up"><div class="emoji">🍣</div><h3 data-zh="日式料理" data-en="Japanese">日式料理</h3><p data-zh="壽司・拉麵・丼飯" data-en="Sushi, ramen, donburi">壽司・拉麵・丼飯</p></div>
+<div class="menu-card fade-up"><div class="emoji">🍕</div><h3 data-zh="義式美食" data-en="Italian">義式美食</h3><p data-zh="披薩・義大利麵・燉飯" data-en="Pizza, pasta, risotto">披薩・義大利麵・燉飯</p></div>
+<div class="menu-card fade-up"><div class="emoji">🌮</div><h3 data-zh="墨西哥風味" data-en="Mexican">墨西哥風味</h3><p data-zh="塔可・捲餅・酪梨醬" data-en="Tacos, burritos, guacamole">塔可・捲餅・酪梨醬</p></div>
+<div class="menu-card fade-up"><div class="emoji">🍛</div><h3 data-zh="東南亞菜" data-en="Southeast Asian">東南亞菜</h3><p data-zh="泰式咖哩・越南河粉・沙嗲" data-en="Thai curry, pho, satay">泰式咖哩・越南河粉・沙嗲</p></div>
+<div class="menu-card fade-up"><div class="emoji">🥗</div><h3 data-zh="健康輕食" data-en="Healthy">健康輕食</h3><p data-zh="沙拉・穀物碗・低卡套餐" data-en="Salads, grain bowls, low-cal sets">沙拉・穀物碗・低卡套餐</p></div>
+</div>
+<div style="text-align:center;margin-top:32px" class="fade-up">
+<img src="photos/food.png" alt="美食" style="border-radius:16px;max-width:600px;margin:0 auto;box-shadow:0 8px 40px rgba(0,0,0,.4)">
+</div>
+</div>
+</section>
+
+<section class="delivery-section" id="delivery">
+<div class="container">
+<div class="delivery-grid">
+<img src="photos/delivery.png" alt="外送服務" class="fade-left">
+<div class="delivery-text fade-right">
+<h2 data-zh="極速外送體驗" data-en="Lightning-Fast Delivery">極速外送體驗</h2>
+<p data-zh="雲端廚房擁有遍布全台的衛星廚房據點，搭配專屬外送團隊，確保每一份餐點都在最佳狀態下送達你手中。" data-en="With satellite kitchen locations across Taiwan and a dedicated delivery fleet, every meal arrives in peak condition.">雲端廚房擁有遍布全台的衛星廚房據點，搭配專屬外送團隊，確保每一份餐點都在最佳狀態下送達你手中。</p>
+<div class="delivery-stats">
+<div class="stat"><div class="num" data-zh="30分" data-en="30min">30分</div><p data-zh="平均送達" data-en="Avg delivery">平均送達</p></div>
+<div class="stat"><div class="num" data-zh="98%" data-en="98%">98%</div><p data-zh="準時率" data-en="On-time rate">準時率</p></div>
+<div class="stat"><div class="num" data-zh="50+" data-en="50+">50+</div><p data-zh="服務區域" data-en="Service areas">服務區域</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="app-section" id="app">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="下載 App" data-en="Download the App">下載 App</h2>
+<p data-zh="隨時隨地，美食一指到手" data-en="Anytime, anywhere — food at your fingertips">隨時隨地，美食一指到手</p>
+</div>
+<div class="fade-up">
+<img src="photos/app.png" alt="CloudKitchen App">
+<div class="app-badges">
+<a href="#" class="btn btn-orange" data-zh="App Store 下載" data-en="App Store">App Store 下載</a>
+<a href="#" class="btn btn-blue" data-zh="Google Play 下載" data-en="Google Play">Google Play 下載</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="partner-section" id="partner">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="成為合作夥伴" data-en="Partner with Us">成為合作夥伴</h2>
+<p data-zh="加入雲端廚房，拓展你的餐飲事業" data-en="Join CloudKitchen and expand your food business">加入雲端廚房，拓展你的餐飲事業</p>
+</div>
+<form class="partner-form fade-up" onsubmit="event.preventDefault();alert('已收到！我們會盡快聯繫您。')">
+<input type="text" placeholder="餐廳/品牌名稱 / Restaurant Name" required>
+<input type="text" placeholder="聯絡人 / Contact Person" required>
+<input type="email" placeholder="Email" required>
+<input type="tel" placeholder="電話 / Phone" required>
+<select required>
+<option value="" disabled selected data-zh="選擇菜系類型" data-en="Select Cuisine Type">選擇菜系類型</option>
+<option>中式</option><option>日式</option><option>西式</option><option>東南亞</option><option>其他</option>
+</select>
+<textarea placeholder="其他需求 / Additional Notes"></textarea>
+<button type="submit" class="btn btn-orange" style="width:100%" data-zh="提交申請" data-en="Submit Application">提交申請</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{if(playing){bgm.pause();bgmBtn.classList.remove('playing')}else{bgm.play();bgmBtn.classList.add('playing')}playing=!playing});
+let lang='zh';const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';langBtn.textContent=lang==='zh'?'EN':'中';document.querySelectorAll('[data-zh]').forEach(el=>{el.textContent=el.getAttribute('data-'+lang)})});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

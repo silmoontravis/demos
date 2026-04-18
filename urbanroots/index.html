@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>城市根源 UrbanRoots — 都市農耕教育平台</title>
+<meta name="description" content="城市根源 UrbanRoots 都市農耕教育平台，提供城市農場課程、會員制學習、社群活動。從陽台到屋頂，讓綠意扎根城市。">
+<meta name="keywords" content="都市農耕,城市農場,農耕課程,UrbanRoots,城市根源,屋頂農場,會員">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/urbanroots/">
+<meta property="og:title" content="城市根源 UrbanRoots — 都市農耕教育平台">
+<meta property="og:description" content="從陽台到屋頂，讓綠意扎根城市。加入會員，開始你的農耕旅程。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"EducationalOrganization",
+  "name":"城市根源 UrbanRoots",
+  "description":"都市農耕教育平台，提供城市農場課程與會員社群。",
+  "url":"https://silmoontravis.github.io/demos/urbanroots/",
+  "image":"photos/hero.png"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#22c55e;--green-dark:#16a34a;--gray:#6b7280;--dark:#1a1a1a;--white:#ffffff;--light:#f8faf8;--radius:12px}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;background:var(--white);color:var(--dark);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--dark)}
+nav .logo img{height:36px}
+nav .logo span{font-weight:700;font-size:1.1rem}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.lang-btn,.bgm-btn{background:var(--green);color:#fff;border:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.3s}
+.lang-btn:hover,.bgm-btn:hover{opacity:.85}
+.bgm-btn.playing{background:var(--gray)}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;margin-top:60px;overflow:hidden}
+.hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(248,250,248,.7))}
+.hero-content{position:relative;z-index:2;padding:40px 20px;max-width:600px}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);margin-bottom:12px}
+.hero h1 em{color:var(--green);font-style:normal}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--gray);margin-bottom:24px}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:600;font-size:1rem;transition:.3s;border:none;cursor:pointer}
+.btn:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.35)}
+.btn-outline{background:transparent;border:2px solid var(--green);color:var(--green)}
+.btn-outline:hover{background:var(--green);color:#fff}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:8px}
+.section-title p{color:var(--gray);font-size:1.05rem}
+
+.programs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.program-card{background:var(--light);border-radius:var(--radius);padding:28px;transition:.3s;border:2px solid transparent}
+.program-card:hover{border-color:var(--green);transform:translateY(-4px)}
+.program-card .icon{font-size:2.5rem;margin-bottom:12px}
+.program-card h3{font-size:1.15rem;margin-bottom:8px}
+.program-card p{color:var(--gray);font-size:.95rem}
+
+.membership{background:var(--light)}
+.membership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan{background:#fff;border-radius:var(--radius);padding:32px;text-align:center;border:2px solid #e5e7eb;transition:.3s;position:relative}
+.plan:hover{border-color:var(--green);box-shadow:0 8px 32px rgba(34,197,94,.12)}
+.plan.featured{border-color:var(--green)}
+.plan.featured::before{content:'最受歡迎';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:4px 16px;border-radius:20px;font-size:.8rem;font-weight:600}
+.plan h3{font-size:1.3rem;margin-bottom:8px}
+.plan .price{font-size:2.2rem;font-weight:800;color:var(--green);margin-bottom:16px}
+.plan .price span{font-size:.9rem;font-weight:400;color:var(--gray)}
+.plan ul{list-style:none;text-align:left;margin-bottom:24px}
+.plan ul li{padding:6px 0;border-bottom:1px solid #f3f4f6;color:var(--gray);font-size:.95rem}
+.plan ul li::before{content:'✓';color:var(--green);margin-right:8px;font-weight:700}
+
+.community-section{overflow:hidden}
+.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.community-grid img{border-radius:var(--radius)}
+.community-text h3{font-size:1.5rem;margin-bottom:12px;color:var(--green-dark)}
+
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gallery-grid img{border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover;width:100%}
+
+.signup{background:var(--green);color:#fff;text-align:center}
+.signup h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px}
+.signup p{max-width:500px;margin:0 auto 24px;opacity:.9}
+.signup .btn{background:#fff;color:var(--green)}
+
+footer{background:var(--dark);color:#aaa;text-align:center;padding:32px 20px;font-size:.85rem}
+footer a{color:#aaa;text-decoration:none}
+footer a:hover{color:var(--green)}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);cursor:pointer;transition:.3s;text-decoration:none}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .community-grid,.gallery-grid{grid-template-columns:1fr}
+  .hero{min-height:80vh}
+  section{padding:60px 0}
+  nav .logo span{display:none}
+  .plan.featured::before{content:'Popular'}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><img src="logos/logo_final.png" alt="UrbanRoots Logo"><span>城市根源</span></a>
+  <div class="nav-actions">
+    <button class="bgm-btn" onclick="toggleBGM()">♪ BGM</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="hero-bg" src="photos/hero.png" alt="城市根源品牌形象">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="在城市裡，<em>種下根源</em>" data-en="Plant <em>Roots</em> in the City">在城市裡，<em>種下根源</em></h1>
+    <p data-zh="從陽台到屋頂，我們教你在水泥叢林中創造綠色奇蹟。加入會員，開始你的都市農耕旅程。" data-en="From balcony to rooftop, we teach you to create green miracles in the urban jungle. Join our membership and start your farming journey.">從陽台到屋頂，我們教你在水泥叢林中創造綠色奇蹟。加入會員，開始你的都市農耕旅程。</p>
+    <a href="#membership" class="btn" data-zh="加入會員" data-en="Join Now">加入會員</a>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="農耕課程" data-en="Our Programs">農耕課程</h2>
+      <p data-zh="四大主題，從入門到進階一次掌握" data-en="Four themes, from beginner to advanced">四大主題，從入門到進階一次掌握</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <div class="icon">🌱</div>
+        <h3 data-zh="陽台菜園入門" data-en="Balcony Garden 101">陽台菜園入門</h3>
+        <p data-zh="學習在有限空間種植蔬菜香草，包含容器選擇、土壤配方與日照管理。" data-en="Learn to grow vegetables and herbs in limited space, including container selection, soil mixing, and sunlight management.">學習在有限空間種植蔬菜香草，包含容器選擇、土壤配方與日照管理。</p>
+      </div>
+      <div class="program-card reveal">
+        <div class="icon">🏙️</div>
+        <h3 data-zh="屋頂農場規劃" data-en="Rooftop Farm Planning">屋頂農場規劃</h3>
+        <p data-zh="從防水到灌溉系統，完整的屋頂農場設計與施工指導。" data-en="Complete rooftop farm design and construction guidance, from waterproofing to irrigation systems.">從防水到灌溉系統，完整的屋頂農場設計與施工指導。</p>
+      </div>
+      <div class="program-card reveal">
+        <div class="icon">🧪</div>
+        <h3 data-zh="有機栽培技術" data-en="Organic Cultivation">有機栽培技術</h3>
+        <p data-zh="堆肥製作、天然防蟲、微生物土壤管理等進階有機技術。" data-en="Advanced organic techniques including composting, natural pest control, and microbial soil management.">堆肥製作、天然防蟲、微生物土壤管理等進階有機技術。</p>
+      </div>
+      <div class="program-card reveal">
+        <div class="icon">👨‍🌾</div>
+        <h3 data-zh="社區農園經營" data-en="Community Garden Management">社區農園經營</h3>
+        <p data-zh="社區農園的規劃、管理與社群營運，打造鄰里共好空間。" data-en="Planning, managing, and operating community gardens to build neighborly shared spaces.">社區農園的規劃、管理與社群營運，打造鄰里共好空間。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+      <p data-zh="選擇適合你的方案，開始綠色旅程" data-en="Choose the plan that fits you and start your green journey">選擇適合你的方案，開始綠色旅程</p>
+    </div>
+    <div class="membership-grid">
+      <div class="plan reveal">
+        <h3 data-zh="種子會員" data-en="Seed Member">種子會員</h3>
+        <div class="price" data-zh="免費 <span>/ 永久</span>" data-en="Free <span>/ forever</span>">免費 <span>/ 永久</span></div>
+        <ul>
+          <li data-zh="線上社群加入" data-en="Online community access">線上社群加入</li>
+          <li data-zh="每月電子報" data-en="Monthly newsletter">每月電子報</li>
+          <li data-zh="基礎教學文章" data-en="Basic tutorial articles">基礎教學文章</li>
+          <li data-zh="活動早鳥通知" data-en="Early event notifications">活動早鳥通知</li>
+        </ul>
+        <a href="#signup" class="btn btn-outline" data-zh="免費加入" data-en="Join Free">免費加入</a>
+      </div>
+      <div class="plan featured reveal">
+        <h3 data-zh="成長會員" data-en="Grower Member">成長會員</h3>
+        <div class="price">NT$ 399 <span data-zh="/ 月" data-en="/ mo">/ 月</span></div>
+        <ul>
+          <li data-zh="所有種子會員權益" data-en="All Seed benefits">所有種子會員權益</li>
+          <li data-zh="每月線上直播課程" data-en="Monthly live online classes">每月線上直播課程</li>
+          <li data-zh="專屬問答社群" data-en="Exclusive Q&A community">專屬問答社群</li>
+          <li data-zh="種植紀錄工具" data-en="Planting log tools">種植紀錄工具</li>
+          <li data-zh="實體課程 8 折優惠" data-en="20% off in-person classes">實體課程 8 折優惠</li>
+        </ul>
+        <a href="#signup" class="btn" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</a>
+      </div>
+      <div class="plan reveal">
+        <h3 data-zh="大師會員" data-en="Master Member">大師會員</h3>
+        <div class="price">NT$ 799 <span data-zh="/ 月" data-en="/ mo">/ 月</span></div>
+        <ul>
+          <li data-zh="所有成長會員權益" data-en="All Grower benefits">所有成長會員權益</li>
+          <li data-zh="每月一對一顧問諮詢" data-en="Monthly 1-on-1 consulting">每月一對一顧問諮詢</li>
+          <li data-zh="進階工作坊免費參加" data-en="Free advanced workshops">進階工作坊免費參加</li>
+          <li data-zh="農產品交換平台" data-en="Harvest exchange platform">農產品交換平台</li>
+          <li data-zh="年度收穫季 VIP 席位" data-en="Annual harvest fest VIP seat">年度收穫季 VIP 席位</li>
+        </ul>
+        <a href="#signup" class="btn btn-outline" data-zh="升級大師" data-en="Go Master">升級大師</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="community-section">
+  <div class="container">
+    <div class="community-grid">
+      <img src="photos/community.png" alt="社群活動" class="reveal">
+      <div class="community-text reveal">
+        <h3 data-zh="活躍社群" data-en="Vibrant Community">活躍社群</h3>
+        <p data-zh="超過 3,000 位都市農夫加入我們的社群，定期舉辦採收派對、種子交換會與田間參訪。在這裡，每個人都是彼此的老師，分享從土地到餐桌的喜悅。" data-en="Over 3,000 urban farmers have joined our community. We regularly host harvest parties, seed swaps, and field visits. Here, everyone learns from each other, sharing the joy from soil to table.">超過 3,000 位都市農夫加入我們的社群，定期舉辦採收派對、種子交換會與田間參訪。在這裡，每個人都是彼此的老師，分享從土地到餐桌的喜悅。</p>
+        <a href="#signup" class="btn" style="margin-top:16px" data-zh="加入社群" data-en="Join Community">加入社群</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--light)">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-zh="學員成果" data-en="Gallery">學員成果</h2>
+      <p data-zh="來自我們學員的豐收時刻" data-en="Harvest moments from our members">來自我們學員的豐收時刻</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="photos/harvest.png" alt="豐收成果" class="reveal">
+      <img src="photos/class.png" alt="課程實況" class="reveal">
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="container">
+    <h2 data-zh="開始你的綠色旅程" data-en="Start Your Green Journey">開始你的綠色旅程</h2>
+    <p data-zh="立即註冊成為種子會員，免費開始探索都市農耕的無限可能。" data-en="Sign up as a Seed Member for free and start exploring the limitless possibilities of urban farming.">立即註冊成為種子會員，免費開始探索都市農耕的無限可能。</p>
+    <a href="https://silmoontravis.github.io/demos/#contact" class="btn" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const audio=document.getElementById('bgmAudio');const bgmBtn=document.querySelector('.bgm-btn');let isPlaying=false;
+function toggleBGM(){if(isPlaying){audio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪ BGM'}else{audio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪ ON'}isPlaying=!isPlaying}
+let lang='zh';
+function toggleLang(){lang=lang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';document.documentElement.lang=lang==='zh'?'zh-Hant':'en';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)})}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

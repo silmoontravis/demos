@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>語匯學院 Lexicon — 語言學習會員平台</title>
+<meta name="description" content="語匯學院 Lexicon 提供六大語言線上課程，多元會員方案，打造你的語言超能力。">
+<meta name="keywords" content="語言學習,線上課程,英文,日文,韓文,法文,西班牙文,中文,language learning,membership">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"EducationalOrganization",
+  "name":"語匯學院 Lexicon",
+  "description":"六大語言線上課程會員平台",
+  "image":"photos/hero.png",
+  "url":"https://lexicon.tw",
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Plus","price":"299","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Pro","price":"599","priceCurrency":"TWD"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#3b82f6;--coral:#f97316;--white:#ffffff;--gray:#f8fafc;--dark:#1e293b;--blue-dark:#2563eb}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans TC',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 8px rgba(59,130,246,.3)}
+.lang-toggle:hover{background:var(--blue-dark)}
+
+.bgm-btn{position:fixed;top:16px;left:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(59,130,246,.3)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 2px 8px rgba(59,130,246,.3)}50%{box-shadow:0 2px 16px rgba(59,130,246,.6)}}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.4);cursor:pointer;animation:hb 3s ease-in-out infinite}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta svg{width:28px;height:28px;fill:#fff}
+@keyframes hb{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:900;padding:12px 24px;display:flex;justify-content:center;align-items:center;gap:24px;border-bottom:1px solid #e2e8f0}
+nav a{font-size:14px;color:#64748b;transition:.3s}
+nav a:hover{color:var(--blue)}
+nav .logo-nav{height:32px;margin-right:auto}
+
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#eff6ff,#fef3c7)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.4),rgba(255,255,255,.8))}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
+.hero-content h1{font-size:clamp(2rem,6vw,4rem);margin-bottom:16px;color:var(--dark)}
+.hero-content h1 span{color:var(--blue)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);color:#475569;max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;padding:14px 36px;border-radius:30px;font-size:16px;font-weight:bold;transition:.3s;cursor:pointer;border:none}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{background:#e06610;transform:translateY(-2px)}
+
+section{padding:80px 24px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px;color:var(--dark)}
+.section-title p{color:var(--blue);font-size:1rem}
+.container{max-width:1100px;margin:0 auto}
+
+/* Languages */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px}
+.lang-card{background:var(--white);border-radius:16px;padding:32px 16px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:.3s;border:2px solid transparent;cursor:pointer}
+.lang-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 8px 24px rgba(59,130,246,.15)}
+.lang-card .flag{font-size:2.8rem;margin-bottom:12px}
+.lang-card h3{font-size:1rem;margin-bottom:4px}
+.lang-card p{font-size:.8rem;color:#94a3b8}
+
+/* Membership */
+.membership-section{background:var(--gray)}
+.plan-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--white);border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:.3s;border:2px solid transparent;position:relative}
+.plan-card:hover{transform:translateY(-4px)}
+.plan-card.featured{border-color:var(--blue);box-shadow:0 8px 30px rgba(59,130,246,.2)}
+.plan-card.featured::before{content:'POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:4px 16px;border-radius:12px;font-size:.75rem;font-weight:bold}
+.plan-card h3{font-size:1.3rem;margin-bottom:8px}
+.plan-card .price{font-size:2.4rem;font-weight:bold;color:var(--dark);margin:16px 0 4px}
+.plan-card .price span{font-size:1rem;color:#94a3b8}
+.plan-card .price-note{font-size:.85rem;color:#94a3b8;margin-bottom:20px}
+.plan-card ul{list-style:none;text-align:left;margin-bottom:24px}
+.plan-card ul li{padding:8px 0;font-size:.9rem;color:#475569;border-bottom:1px solid #f1f5f9}
+.plan-card ul li::before{content:'✓ ';color:var(--blue);font-weight:bold}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.features-grid img{border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.features-text h2{font-size:clamp(1.5rem,3.5vw,2rem);margin-bottom:20px}
+.features-text p{color:#64748b;line-height:1.8;margin-bottom:16px}
+.feature-list{list-style:none}
+.feature-list li{padding:10px 0;font-size:.95rem;display:flex;align-items:center;gap:12px}
+.feature-list li .dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+/* Community */
+.community{background:linear-gradient(135deg,#eff6ff,#fef9e7)}
+.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.community-grid img{border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+
+/* Success */
+.success-section{text-align:center}
+.success-section img{max-width:700px;margin:0 auto;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px;text-align:left}
+.testimonial{background:var(--gray);border-radius:16px;padding:24px;border-left:4px solid var(--blue)}
+.testimonial p{font-size:.9rem;color:#475569;line-height:1.6;margin-bottom:12px;font-style:italic}
+.testimonial .author{font-size:.85rem;font-weight:bold;color:var(--dark)}
+
+/* Signup */
+.signup-section{background:var(--dark);color:#fff}
+.signup-form{max-width:500px;margin:0 auto}
+.signup-form input,.signup-form select{width:100%;padding:14px 18px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.05);color:#fff;font-size:15px;margin-bottom:16px;font-family:inherit;transition:.3s}
+.signup-form input:focus,.signup-form select:focus{outline:none;border-color:var(--blue)}
+
+footer{background:#0f172a;color:#64748b;text-align:center;padding:32px 24px;font-size:.9rem}
+footer a{color:var(--blue);transition:.3s}
+footer a:hover{color:var(--coral)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s,transform .8s}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s,transform .8s}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  nav{gap:10px;flex-wrap:wrap}
+  nav a{font-size:12px}
+  .features-grid,.community-grid{grid-template-columns:1fr}
+  section{padding:60px 16px}
+}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+<button class="lang-toggle" id="langBtn">EN</button>
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z"/></svg></a>
+
+<nav>
+<img src="logos/logo_final.png" alt="Lexicon" class="logo-nav">
+<a href="#languages" data-zh="語言" data-en="Languages">語言</a>
+<a href="#membership" data-zh="會員" data-en="Plans">會員</a>
+<a href="#features" data-zh="功能" data-en="Features">功能</a>
+<a href="#community" data-zh="社群" data-en="Community">社群</a>
+<a href="#signup" data-zh="加入" data-en="Sign Up">加入</a>
+</nav>
+
+<section class="hero">
+<img src="photos/hero.png" alt="語匯學院">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 data-zh="語匯學院" data-en="Lexicon"><span>語匯</span>學院</h1>
+<p data-zh="六大語言、無限學習。加入全台最大語言學習社群，解鎖你的語言超能力。" data-en="6 languages, unlimited learning. Join Taiwan's largest language community and unlock your superpower.">六大語言、無限學習。加入全台最大語言學習社群，解鎖你的語言超能力。</p>
+<a href="#signup" class="btn btn-blue" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+</div>
+</section>
+
+<section id="languages" style="background:var(--gray)">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="選擇你的語言" data-en="Choose Your Language">選擇你的語言</h2>
+<p data-zh="六大語言，專業師資團隊" data-en="6 languages, professional instructors">六大語言，專業師資團隊</p>
+</div>
+<div class="lang-grid">
+<div class="lang-card fade-up"><div class="flag">🇬🇧</div><h3 data-zh="英文" data-en="English">英文</h3><p data-zh="商務・多益・雅思" data-en="Business, TOEIC, IELTS">商務・多益・雅思</p></div>
+<div class="lang-card fade-up"><div class="flag">🇯🇵</div><h3 data-zh="日文" data-en="Japanese">日文</h3><p data-zh="N5~N1・會話" data-en="N5–N1, Conversation">N5~N1・會話</p></div>
+<div class="lang-card fade-up"><div class="flag">🇰🇷</div><h3 data-zh="韓文" data-en="Korean">韓文</h3><p data-zh="TOPIK・韓劇聽力" data-en="TOPIK, K-drama listening">TOPIK・韓劇聽力</p></div>
+<div class="lang-card fade-up"><div class="flag">🇫🇷</div><h3 data-zh="法文" data-en="French">法文</h3><p data-zh="DELF・旅遊法語" data-en="DELF, Travel French">DELF・旅遊法語</p></div>
+<div class="lang-card fade-up"><div class="flag">🇪🇸</div><h3 data-zh="西班牙文" data-en="Spanish">西班牙文</h3><p data-zh="DELE・拉美文化" data-en="DELE, Latin culture">DELE・拉美文化</p></div>
+<div class="lang-card fade-up"><div class="flag">🇨🇳</div><h3 data-zh="中文" data-en="Chinese">中文</h3><p data-zh="HSK・華語教學" data-en="HSK, Mandarin teaching">HSK・華語教學</p></div>
+</div>
+</div>
+</section>
+
+<section class="membership-section" id="membership">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+<p data-zh="選擇最適合你的學習計畫" data-en="Choose the plan that fits your learning journey">選擇最適合你的學習計畫</p>
+</div>
+<div class="plan-cards">
+<div class="plan-card fade-up">
+<h3 data-zh="Free 免費方案" data-en="Free Plan">Free 免費方案</h3>
+<div class="price">NT$0<span data-zh="/月" data-en="/mo">/月</span></div>
+<div class="price-note" data-zh="永久免費" data-en="Free forever">永久免費</div>
+<ul>
+<li data-zh="每日 1 堂免費課程" data-en="1 free lesson per day">每日 1 堂免費課程</li>
+<li data-zh="基礎字彙練習" data-en="Basic vocabulary practice">基礎字彙練習</li>
+<li data-zh="社群討論區" data-en="Community forum access">社群討論區</li>
+<li data-zh="學習進度追蹤" data-en="Learning progress tracker">學習進度追蹤</li>
+</ul>
+<a href="#signup" class="btn btn-blue" data-zh="免費開始" data-en="Start Free">免費開始</a>
+</div>
+<div class="plan-card featured fade-up">
+<h3 data-zh="Plus 進階方案" data-en="Plus Plan">Plus 進階方案</h3>
+<div class="price">NT$299<span data-zh="/月" data-en="/mo">/月</span></div>
+<div class="price-note" data-zh="年繳享85折" data-en="15% off annual billing">年繳享85折</div>
+<ul>
+<li data-zh="無限課程觀看" data-en="Unlimited lesson access">無限課程觀看</li>
+<li data-zh="互動練習題庫" data-en="Interactive quiz bank">互動練習題庫</li>
+<li data-zh="每月 2 次真人教師答疑" data-en="2 live tutor sessions/month">每月 2 次真人教師答疑</li>
+<li data-zh="離線下載學習" data-en="Offline download">離線下載學習</li>
+<li data-zh="學習徽章系統" data-en="Achievement badge system">學習徽章系統</li>
+</ul>
+<a href="#signup" class="btn btn-coral" data-zh="升級 Plus" data-en="Upgrade to Plus">升級 Plus</a>
+</div>
+<div class="plan-card fade-up">
+<h3 data-zh="Pro 專業方案" data-en="Pro Plan">Pro 專業方案</h3>
+<div class="price">NT$599<span data-zh="/月" data-en="/mo">/月</span></div>
+<div class="price-note" data-zh="年繳享8折" data-en="20% off annual billing">年繳享8折</div>
+<ul>
+<li data-zh="Plus 全部功能" data-en="All Plus features">Plus 全部功能</li>
+<li data-zh="無限真人教師 1 對 1" data-en="Unlimited 1-on-1 tutoring">無限真人教師 1 對 1</li>
+<li data-zh="模擬考試與證照輔導" data-en="Mock exams & cert coaching">模擬考試與證照輔導</li>
+<li data-zh="專屬學習規劃顧問" data-en="Personal learning advisor">專屬學習規劃顧問</li>
+<li data-zh="優先新課程搶先看" data-en="Early access to new courses">優先新課程搶先看</li>
+</ul>
+<a href="#signup" class="btn btn-blue" data-zh="升級 Pro" data-en="Upgrade to Pro">升級 Pro</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="features">
+<div class="container">
+<div class="features-grid">
+<img src="photos/app.png" alt="Lexicon App" class="fade-left">
+<div class="features-text fade-right">
+<h2 data-zh="隨時隨地學習" data-en="Learn Anytime, Anywhere">隨時隨地學習</h2>
+<p data-zh="語匯學院 App 打造沉浸式學習體驗，讓語言學習融入你的日常生活。" data-en="The Lexicon App creates an immersive learning experience that fits into your daily life.">語匯學院 App 打造沉浸式學習體驗，讓語言學習融入你的日常生活。</p>
+<ul class="feature-list">
+<li><span class="dot"></span><span data-zh="智慧複習系統，間隔重複強化記憶" data-en="Smart review system with spaced repetition">智慧複習系統，間隔重複強化記憶</span></li>
+<li><span class="dot"></span><span data-zh="語音辨識即時糾正發音" data-en="Voice recognition for real-time pronunciation correction">語音辨識即時糾正發音</span></li>
+<li><span class="dot"></span><span data-zh="遊戲化學習，每日任務與排行榜" data-en="Gamified learning with daily missions & leaderboards">遊戲化學習，每日任務與排行榜</span></li>
+<li><span class="dot"></span><span data-zh="個人化學習路徑推薦" data-en="Personalized learning path recommendations">個人化學習路徑推薦</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="community" id="community">
+<div class="container">
+<div class="community-grid">
+<div class="fade-left">
+<div class="section-title" style="text-align:left">
+<h2 data-zh="全球學習社群" data-en="Global Learning Community">全球學習社群</h2>
+<p data-zh="與來自世界各地的學習者交流" data-en="Connect with learners from around the world">與來自世界各地的學習者交流</p>
+</div>
+<p style="color:#475569;line-height:1.8;margin-bottom:16px" data-zh="加入語匯學院社群，參與線上語言交換、文化分享會與學習挑戰。超過 50,000 名學習者已在這裡找到志同道合的夥伴。" data-en="Join our community for language exchange, cultural sharing events and learning challenges. Over 50,000 learners have found their study partners here.">加入語匯學院社群，參與線上語言交換、文化分享會與學習挑戰。超過 50,000 名學習者已在這裡找到志同道合的夥伴。</p>
+</div>
+<img src="photos/culture.png" alt="社群" class="fade-right">
+</div>
+</div>
+</section>
+
+<section class="success-section" id="success">
+<div class="container">
+<div class="section-title fade-up">
+<h2 data-zh="成功故事" data-en="Success Stories">成功故事</h2>
+<p data-zh="聽聽學員怎麼說" data-en="Hear from our students">聽聽學員怎麼說</p>
+</div>
+<img src="photos/success.png" alt="成功學員" class="fade-up">
+<div class="testimonials">
+<div class="testimonial fade-up">
+<p data-zh="「三個月內從零基礎到 JLPT N3 合格，語匯學院的系統化課程讓我的學習效率倍增！」" data-en='"From zero to JLPT N3 in 3 months — Lexicon\'s systematic courses doubled my learning efficiency!"'>「三個月內從零基礎到 JLPT N3 合格，語匯學院的系統化課程讓我的學習效率倍增！」</p>
+<div class="author" data-zh="— 林小芳，日文學員" data-en="— Fang Lin, Japanese student">— 林小芳，日文學員</div>
+</div>
+<div class="testimonial fade-up">
+<p data-zh="「Pro 方案的 1 對 1 教學太棒了！老師根據我的程度客製內容，讓我順利拿到多益 900 分。」" data-en='"Pro plan\'s 1-on-1 tutoring is amazing! The teacher customized content for my level and I scored 900 on TOEIC."'>「Pro 方案的 1 對 1 教學太棒了！老師根據我的程度客製內容，讓我順利拿到多益 900 分。」</p>
+<div class="author" data-zh="— 陳大明，英文學員" data-en="— David Chen, English student">— 陳大明，英文學員</div>
+</div>
+<div class="testimonial fade-up">
+<p data-zh="「社群裡認識了很多韓國朋友，邊聊天邊練韓文，學習變得好有趣！」" data-en='"I met so many Korean friends in the community — chatting while practicing Korean makes learning so fun!"'>「社群裡認識了很多韓國朋友，邊聊天邊練韓文，學習變得好有趣！」</p>
+<div class="author" data-zh="— 王美玲，韓文學員" data-en="— Meiling Wang, Korean student">— 王美玲，韓文學員</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="signup-section" id="signup">
+<div class="container">
+<div class="section-title fade-up">
+<h2 style="color:#fff" data-zh="開始你的語言之旅" data-en="Start Your Language Journey">開始你的語言之旅</h2>
+<p data-zh="免費註冊，立即體驗" data-en="Sign up free and start learning today">免費註冊，立即體驗</p>
+</div>
+<form class="signup-form fade-up" onsubmit="event.preventDefault();alert('註冊成功！歡迎加入語匯學院。')">
+<input type="text" placeholder="姓名 / Name" required>
+<input type="email" placeholder="Email" required>
+<input type="password" placeholder="密碼 / Password" required>
+<select required>
+<option value="" disabled selected data-zh="想學的語言" data-en="Language of interest">想學的語言</option>
+<option>English</option><option>日本語</option><option>한국어</option><option>Français</option><option>Español</option><option>中文</option>
+</select>
+<button type="submit" class="btn btn-coral" style="width:100%" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{if(playing){bgm.pause();bgmBtn.classList.remove('playing')}else{bgm.play();bgmBtn.classList.add('playing')}playing=!playing});
+let lang='zh';const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';langBtn.textContent=lang==='zh'?'EN':'中';document.querySelectorAll('[data-zh]').forEach(el=>{el.textContent=el.getAttribute('data-'+lang)})});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
