@@ -113,9 +113,13 @@ jobs:
 
       - name: Notify Telegram
         if: steps.check.outputs.has_draft == 'true'
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           FILE="blog/posts/${{ steps.check.outputs.filename }}"
-          TITLE=$(grep -oP '<h1>\K[^<]+' "$FILE" | head -1)
+          TITLE=$(grep -oP '<h1>\K[^<]+' "$FILE" | head -1 || echo "${{ steps.check.outputs.filename }}")
           URL="https://hiboss.demosilvermoon.com.tw/blog/posts/${{ steps.check.outputs.filename }}"
-          MSG="📝 Blog 每日自動發文%0A%0A${TITLE}%0A${URL}%0A%0AGoogle 索引已通知"
-          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${MSG}" > /dev/null
+          curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            -H "Content-Type: application/json" \
+            -d "{\"chat_id\":\"${TG_CHAT}\",\"text\":\"Blog auto-publish\\n\\n${TITLE}\\n${URL}\\n\\nGoogle indexed\"}" > /dev/null
