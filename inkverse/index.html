@@ -24,7 +24,7 @@
   "@type": "BookStore",
   "name": "墨語書房 InkVerse",
   "description": "台中獨立書店，精選文學、非虛構與詩集。閱讀空間、讀書會、藝文活動。",
-  "url": "https://inkverse.tw",
+  "url": "https://hiboss.demosilvermoon.com.tw/inkverse/",
   "telephone": "+886-4-2345-6789",
   "address": {
     "@type": "PostalAddress",
@@ -36,25 +36,38 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 24.1460,
-    "longitude": 120.6730
+    "latitude": 24.146,
+    "longitude": 120.673
   },
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
       "opens": "11:00",
       "closes": "21:00"
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Saturday","Sunday"],
+      "dayOfWeek": [
+        "Saturday",
+        "Sunday"
+      ],
       "opens": "10:00",
       "closes": "22:00"
     }
   ],
-  "image": "photos/hero_books.png",
-  "priceRange": "$$"
+  "image": "https://hiboss.demosilvermoon.com.tw/inkverse/photos/hero_books.png",
+  "priceRange": "$$",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/"
+  }
 }
 </script>
 
@@ -719,6 +732,31 @@ a:hover { color: var(--amber); }
   .space-features { grid-template-columns: 1fr; }
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "健身房／工作室怎麼用網站吸引會員？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "好的品牌網站能展示你的空間、課程、教練團隊，建立專業形象。HEY!BOSS 用 AI 技術打造的品牌網站包含預約功能、課程介紹、會員見證，讓潛在會員一眼就被吸引。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "寵物店需要網站嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "需要！寵物主人越來越習慣上網搜尋寵物服務。一個專業的品牌網站能展示你的服務、價格、環境照片。HEY!BOSS 能用 AI 在一天內為寵物品牌打造溫馨專業的網站。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
