@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>菁英錶藏 EliteWatch — 頂級腕錶精品電商</title>
+<meta name="description" content="菁英錶藏 EliteWatch 精選世界頂級腕錶，鑑定保真、全球配送，為品味人士打造專屬的奢華時計收藏體驗。">
+<meta name="keywords" content="奢華腕錶, 名錶, EliteWatch, 菁英錶藏, luxury watch, 精品手錶">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/elitewatch/">
+<meta property="og:title" content="菁英錶藏 EliteWatch — 頂級腕錶精品電商">
+<meta property="og:description" content="精選世界頂級腕錶，鑑定保真、全球配送。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "菁英錶藏 EliteWatch",
+  "description": "頂級腕錶精品電商，鑑定保真、全球配送。",
+  "url": "https://silmoontravis.github.io/demos/elitewatch/",
+  "image": "photos/hero.png",
+  "priceRange": "$$$$",
+  "brand": {"@type": "Brand", "name": "EliteWatch 菁英錶藏"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Luxury Watch Collections"
+  }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#111;--gold:#c8a45e;--white:#fff;--dark2:#1a1a1a;--gray:#888}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;color:var(--white);background:var(--black);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(17,17,17,.92);backdrop-filter:blur(12px);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(200,164,94,.2)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:34px}
+.nav-logo span{font-weight:700;font-size:1.1rem;color:var(--gold);letter-spacing:2px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:6px 14px;font-size:.85rem;color:var(--gray);transition:.3s;letter-spacing:1px}
+.nav-links a:hover{color:var(--gold)}
+.lang-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);cursor:pointer;padding:5px 14px;border-radius:2px;font-size:.8rem;letter-spacing:1px}
+.bgm-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.3s}
+.bgm-btn.playing{background:var(--gold);color:var(--black)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:5px}
+.hamburger span{width:22px;height:1.5px;background:var(--gold);transition:.3s}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:62px;right:-100%;width:65%;height:calc(100vh - 62px);background:rgba(17,17,17,.98);flex-direction:column;padding:40px 30px;gap:20px;transition:.4s}
+  .nav-links.active{right:0}
+  .hamburger{display:flex}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.6) 0%,rgba(17,17,17,.9) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:700px;padding:20px}
+.hero-content h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:300;letter-spacing:6px;margin-bottom:16px;color:var(--gold)}
+.hero-content p{font-size:clamp(.95rem,2vw,1.15rem);color:var(--gray);margin-bottom:35px;letter-spacing:2px;line-height:1.8}
+.btn{display:inline-block;padding:14px 40px;font-weight:600;font-size:.9rem;transition:all .3s;cursor:pointer;border:none;letter-spacing:2px}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:#d4af37;transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,94,.3)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);background:transparent;margin-left:12px}
+.btn-outline:hover{background:var(--gold);color:var(--black)}
+
+/* SECTIONS */
+section{padding:100px 20px}
+.section-title{text-align:center;margin-bottom:60px}
+.section-title h2{font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:300;color:var(--gold);letter-spacing:4px;margin-bottom:12px}
+.section-title .line{width:60px;height:1px;background:var(--gold);margin:0 auto 16px}
+.section-title p{color:var(--gray);font-size:.95rem;letter-spacing:1px}
+.container{max-width:1100px;margin:0 auto}
+
+/* COLLECTIONS */
+.collections{background:var(--dark2)}
+.watch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.watch-card{background:var(--black);border:1px solid rgba(200,164,94,.15);padding:0;overflow:hidden;transition:all .5s;opacity:0;transform:translateY(30px)}
+.watch-card.visible{opacity:1;transform:translateY(0)}
+.watch-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 16px 50px rgba(200,164,94,.1)}
+.watch-img{height:240px;background:url('photos/collection.png') center/cover;position:relative}
+.watch-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--black))}
+.watch-info{padding:20px}
+.watch-brand{color:var(--gold);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.watch-name{font-size:1.1rem;margin-bottom:8px;font-weight:400;letter-spacing:1px}
+.watch-price{color:var(--gold);font-size:1.3rem;font-weight:300}
+
+/* CRAFTSMANSHIP */
+.craftsmanship{background:var(--black)}
+.craft-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.craft-wrap img{border-radius:0;box-shadow:0 0 60px rgba(200,164,94,.08)}
+.craft-text h3{color:var(--gold);font-size:1.5rem;letter-spacing:3px;font-weight:300;margin-bottom:20px}
+.craft-text p{color:var(--gray);line-height:1.9;font-size:.95rem;margin-bottom:16px}
+.craft-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.craft-stat{text-align:center;padding:16px;border:1px solid rgba(200,164,94,.2)}
+.craft-stat .num{font-size:2rem;color:var(--gold);font-weight:300}
+.craft-stat .label{font-size:.8rem;color:var(--gray);letter-spacing:1px;margin-top:4px}
+@media(max-width:768px){.craft-wrap{grid-template-columns:1fr}}
+
+/* LIFESTYLE */
+.lifestyle{background:var(--dark2);overflow:hidden}
+.life-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.life-wrap img{box-shadow:0 0 60px rgba(200,164,94,.08)}
+.life-text h3{color:var(--gold);font-size:1.5rem;letter-spacing:3px;font-weight:300;margin-bottom:20px}
+.life-text p{color:var(--gray);line-height:1.9;font-size:.95rem;margin-bottom:14px}
+@media(max-width:768px){.life-wrap{grid-template-columns:1fr}}
+
+/* AUTHENTICATION */
+.auth{background:var(--black)}
+.auth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px}
+.auth-card{text-align:center;padding:40px 24px;border:1px solid rgba(200,164,94,.12);transition:.5s;opacity:0;transform:translateY(30px)}
+.auth-card.visible{opacity:1;transform:translateY(0)}
+.auth-card:hover{border-color:var(--gold);box-shadow:0 0 40px rgba(200,164,94,.06)}
+.auth-icon{font-size:2.5rem;margin-bottom:16px}
+.auth-card h3{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:10px;font-weight:400}
+.auth-card p{color:var(--gray);font-size:.85rem;line-height:1.7}
+
+/* SHOP CTA */
+.shop-cta{background:linear-gradient(135deg,var(--dark2),var(--black));text-align:center;padding:120px 20px}
+.shop-cta h2{color:var(--gold);font-size:clamp(1.5rem,4vw,2.5rem);font-weight:300;letter-spacing:4px;margin-bottom:16px}
+.shop-cta p{color:var(--gray);max-width:500px;margin:0 auto 30px;line-height:1.8}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(200,164,94,.15);color:var(--gray);text-align:center;padding:30px 20px;font-size:.8rem;letter-spacing:1px}
+footer a{color:var(--gold)}
+
+/* HEYBOSS CTA */
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;font-size:1.3rem}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.7)}
+.heyboss-cta::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(59,130,246,.4);animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+
+/* SCROLL ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="EliteWatch Logo">
+    <span data-zh="菁英錶藏" data-en="ELITEWATCH">菁英錶藏</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#collections" data-zh="典藏系列" data-en="Collections">典藏系列</a>
+    <a href="#craftsmanship" data-zh="工藝" data-en="Craftsmanship">工藝</a>
+    <a href="#lifestyle" data-zh="品味" data-en="Lifestyle">品味</a>
+    <a href="#auth" data-zh="保真認證" data-en="Authentication">保真認證</a>
+    <a href="#shop" data-zh="選購" data-en="Shop">選購</a>
+    <button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♪</button>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="時間的藝術" data-en="THE ART OF TIME">時間的藝術</h1>
+    <p data-zh="精選全球頂級腕錶，每一枚都是匠心獨運的時間傑作" data-en="Curated world-class timepieces — each one a masterpiece of horological artistry">精選全球頂級腕錶，每一枚都是匠心獨運的時間傑作</p>
+    <a href="#collections" class="btn btn-gold" data-zh="探索典藏" data-en="EXPLORE">探索典藏</a>
+    <a href="#shop" class="btn btn-outline" data-zh="立即選購" data-en="SHOP NOW">立即選購</a>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="典藏系列" data-en="COLLECTIONS">典藏系列</h2>
+      <div class="line"></div>
+      <p data-zh="臻選四大經典系列，傳承百年製錶工藝" data-en="Four iconic collections embodying centuries of watchmaking heritage">臻選四大經典系列，傳承百年製錶工藝</p>
+    </div>
+    <div class="watch-grid">
+      <div class="watch-card">
+        <div class="watch-img"></div>
+        <div class="watch-info">
+          <div class="watch-brand" data-zh="經典系列" data-en="CLASSIC SERIES">經典系列</div>
+          <div class="watch-name" data-zh="永恆經典 Perpetual" data-en="Perpetual Classic">永恆經典 Perpetual</div>
+          <div class="watch-price">NT$ 385,000</div>
+        </div>
+      </div>
+      <div class="watch-card">
+        <div class="watch-img" style="background-position:left center"></div>
+        <div class="watch-info">
+          <div class="watch-brand" data-zh="運動系列" data-en="SPORT SERIES">運動系列</div>
+          <div class="watch-name" data-zh="深海潛航 Diver Pro" data-en="Diver Pro">深海潛航 Diver Pro</div>
+          <div class="watch-price">NT$ 268,000</div>
+        </div>
+      </div>
+      <div class="watch-card">
+        <div class="watch-img" style="background-position:right center"></div>
+        <div class="watch-info">
+          <div class="watch-brand" data-zh="高級複雜" data-en="HAUTE COMPLICATION">高級複雜</div>
+          <div class="watch-name" data-zh="星象陀飛輪 Tourbillon" data-en="Stellar Tourbillon">星象陀飛輪 Tourbillon</div>
+          <div class="watch-price">NT$ 1,280,000</div>
+        </div>
+      </div>
+      <div class="watch-card">
+        <div class="watch-img" style="background-position:center top"></div>
+        <div class="watch-info">
+          <div class="watch-brand" data-zh="限量珍藏" data-en="LIMITED EDITION">限量珍藏</div>
+          <div class="watch-name" data-zh="百年紀念 Centennial" data-en="Centennial Edition">百年紀念 Centennial</div>
+          <div class="watch-price">NT$ 2,450,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFTSMANSHIP -->
+<section class="craftsmanship" id="craftsmanship">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="製錶工藝" data-en="CRAFTSMANSHIP">製錶工藝</h2>
+      <div class="line"></div>
+    </div>
+    <div class="craft-wrap">
+      <img src="photos/detail.png" alt="腕錶工藝細節" class="slide-left">
+      <div class="craft-text slide-right">
+        <h3 data-zh="每一個齒輪，都是對完美的堅持" data-en="Every Gear, A Pursuit of Perfection">每一個齒輪，都是對完美的堅持</h3>
+        <p data-zh="我們與全球頂尖製錶師合作，從瑞士日內瓦到德國格拉蘇蒂，嚴選每一枚時計。每只腕錶都經過超過 300 道工序，歷時數月方能完成。" data-en="We partner with the world's finest watchmakers, from Geneva to Glashütte, curating timepieces that undergo over 300 meticulous steps across months of craftsmanship.">我們與全球頂尖製錶師合作，從瑞士日內瓦到德國格拉蘇蒂，嚴選每一枚時計。每只腕錶都經過超過 300 道工序，歷時數月方能完成。</p>
+        <div class="craft-stats">
+          <div class="craft-stat"><div class="num">300+</div><div class="label" data-zh="精密工序" data-en="PROCESSES">精密工序</div></div>
+          <div class="craft-stat"><div class="num">50+</div><div class="label" data-zh="合作品牌" data-en="PARTNER BRANDS">合作品牌</div></div>
+          <div class="craft-stat"><div class="num">12</div><div class="label" data-zh="年品牌歷史" data-en="YEARS OF HERITAGE">年品牌歷史</div></div>
+          <div class="craft-stat"><div class="num">100%</div><div class="label" data-zh="正品保證" data-en="AUTHENTIC">正品保證</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="lifestyle" id="lifestyle">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="品味生活" data-en="LIFESTYLE">品味生活</h2>
+      <div class="line"></div>
+    </div>
+    <div class="life-wrap">
+      <div class="life-text slide-left">
+        <h3 data-zh="腕間方寸，盡顯非凡" data-en="Distinction on Your Wrist">腕間方寸，盡顯非凡</h3>
+        <p data-zh="一枚頂級腕錶不僅是時間的載體，更是品味與身份的象徵。從商務場合到休閒時光，菁英錶藏為您的每一刻增添非凡風采。" data-en="A premier timepiece is more than a measure of time — it is a symbol of taste and distinction. From boardrooms to leisure, EliteWatch elevates every moment.">一枚頂級腕錶不僅是時間的載體，更是品味與身份的象徵。從商務場合到休閒時光，菁英錶藏為您的每一刻增添非凡風采。</p>
+        <p data-zh="我們提供專屬的私人選錶顧問服務，為您量身推薦最適合的時計珍品。" data-en="Our dedicated personal watch advisors will curate the perfect timepiece tailored to your lifestyle.">我們提供專屬的私人選錶顧問服務，為您量身推薦最適合的時計珍品。</p>
+      </div>
+      <img src="photos/lifestyle.png" alt="奢華生活風格" class="slide-right">
+    </div>
+  </div>
+</section>
+
+<!-- AUTHENTICATION -->
+<section class="auth" id="auth">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="保真承諾" data-en="AUTHENTICATION GUARANTEE">保真承諾</h2>
+      <div class="line"></div>
+      <p data-zh="四重保障，讓您安心收藏" data-en="Four layers of protection for your peace of mind">四重保障，讓您安心收藏</p>
+    </div>
+    <div class="auth-grid">
+      <div class="auth-card">
+        <div class="auth-icon">🔍</div>
+        <h3 data-zh="專業鑑定" data-en="Expert Appraisal">專業鑑定</h3>
+        <p data-zh="每枚腕錶均經瑞士認證鑑定師驗證真偽" data-en="Every timepiece authenticated by Swiss-certified appraisers">每枚腕錶均經瑞士認證鑑定師驗證真偽</p>
+      </div>
+      <div class="auth-card">
+        <div class="auth-icon">📜</div>
+        <h3 data-zh="原廠證書" data-en="Original Certificate">原廠證書</h3>
+        <p data-zh="附原廠保證書、保卡及完整盒裝" data-en="Includes original warranty card, papers, and complete box">附原廠保證書、保卡及完整盒裝</p>
+      </div>
+      <div class="auth-card">
+        <div class="auth-icon">🛡️</div>
+        <h3 data-zh="三年保固" data-en="3-Year Warranty">三年保固</h3>
+        <p data-zh="購買後享三年機芯保固服務" data-en="Comprehensive 3-year movement warranty after purchase">購買後享三年機芯保固服務</p>
+      </div>
+      <div class="auth-card">
+        <div class="auth-icon">🔄</div>
+        <h3 data-zh="鑑賞退換" data-en="Return Policy">鑑賞退換</h3>
+        <p data-zh="14 天鑑賞期，不滿意可退換" data-en="14-day return and exchange policy for your satisfaction">14 天鑑賞期，不滿意可退換</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP CTA -->
+<section class="shop-cta" id="shop">
+  <h2 class="fade-in" data-zh="開啟您的錶藏之旅" data-en="BEGIN YOUR COLLECTION">開啟您的錶藏之旅</h2>
+  <p class="fade-in" data-zh="預約私人選錶顧問，讓我們為您找到那枚命中注定的時計" data-en="Book a private consultation and let us find the timepiece destined for you">預約私人選錶顧問，讓我們為您找到那枚命中注定的時計</p>
+  <a href="#" class="btn btn-gold fade-in" data-zh="預約諮詢" data-en="BOOK CONSULTATION">預約諮詢</a>
+  <a href="#" class="btn btn-outline fade-in" data-zh="瀏覽全系列" data-en="VIEW ALL">瀏覽全系列</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:6px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<!-- HEYBOSS CTA -->
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss" title="Contact Us">💬</a>
+
+<!-- BGM -->
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪';}
+  else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸';}
+  bgmPlaying=!bgmPlaying;
+});
+
+let currentLang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{
+  currentLang=currentLang==='zh'?'en':'zh';
+  langBtn.textContent=currentLang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+currentLang);if(t)el.textContent=t;
+  });
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.watch-card,.auth-card').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

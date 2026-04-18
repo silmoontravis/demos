@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>舞動空間 DanceFloor — 專業舞蹈教室</title>
+<meta name="description" content="舞動空間 DanceFloor 提供芭蕾、嘻哈、現代舞、騷莎、兒童舞蹈課程，專業師資、頂級場地，讓每個人都能找到屬於自己的舞步。">
+<meta name="keywords" content="舞蹈教室, dance studio, DanceFloor, 舞動空間, 芭蕾, 嘻哈, 現代舞">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/dancefloor/">
+<meta property="og:title" content="舞動空間 DanceFloor — 專業舞蹈教室">
+<meta property="og:description" content="芭蕾、嘻哈、現代舞、騷莎、兒童舞蹈課程，專業師資、頂級場地。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DanceSchool",
+  "name": "舞動空間 DanceFloor",
+  "description": "專業舞蹈教室，提供芭蕾、嘻哈、現代舞、騷莎、兒童舞蹈課程。",
+  "url": "https://silmoontravis.github.io/demos/dancefloor/",
+  "image": "photos/hero.png",
+  "address": {"@type":"PostalAddress","addressLocality":"台北市","addressCountry":"TW"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Dance Classes",
+    "itemListElement": [
+      {"@type":"Offer","name":"Ballet"},
+      {"@type":"Offer","name":"Hip-Hop"},
+      {"@type":"Offer","name":"Contemporary"},
+      {"@type":"Offer","name":"Salsa"},
+      {"@type":"Offer","name":"Kids Dance"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--magenta:#ec4899;--purple:#7c3aed;--dark:#1a1a2e;--darker:#12121f;--white:#fff;--gray:#a0a0b8}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;color:var(--white);background:var(--dark);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(26,26,46,.92);backdrop-filter:blur(12px);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(236,72,153,.15)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:34px}
+.nav-logo span{font-weight:700;font-size:1.05rem;background:linear-gradient(135deg,var(--magenta),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:6px 14px;font-size:.85rem;color:var(--gray);transition:.3s;border-radius:8px}
+.nav-links a:hover{color:var(--magenta)}
+.lang-btn{background:linear-gradient(135deg,var(--magenta),var(--purple));color:#fff;border:none;cursor:pointer;padding:5px 14px;border-radius:8px;font-size:.8rem;font-weight:700}
+.bgm-btn{width:34px;height:34px;border-radius:50%;border:2px solid var(--magenta);background:transparent;color:var(--magenta);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.3s}
+.bgm-btn.playing{background:var(--magenta);color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:5px}
+.hamburger span{width:24px;height:2px;background:var(--magenta);transition:.3s}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:58px;right:-100%;width:70%;height:calc(100vh - 58px);background:rgba(26,26,46,.98);flex-direction:column;padding:30px;gap:16px;transition:.4s}
+  .nav-links.active{right:0}
+  .hamburger{display:flex}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,46,.8),rgba(124,58,237,.4),rgba(236,72,153,.3))}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:700px;padding:20px}
+.hero-content h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,var(--magenta),var(--purple),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-content p{font-size:clamp(.95rem,2.2vw,1.15rem);color:var(--gray);margin-bottom:30px;line-height:1.7}
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .3s;cursor:pointer;border:none}
+.btn-gradient{background:linear-gradient(135deg,var(--magenta),var(--purple));color:#fff;box-shadow:0 4px 20px rgba(236,72,153,.4)}
+.btn-gradient:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(236,72,153,.6)}
+.btn-outline{border:2px solid var(--magenta);color:var(--magenta);background:transparent;margin-left:12px;border-radius:50px}
+.btn-outline:hover{background:var(--magenta);color:#fff}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;background:linear-gradient(135deg,var(--magenta),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.section-title p{color:var(--gray);font-size:.95rem;max-width:550px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+
+/* CLASSES */
+.classes{background:var(--darker)}
+.classes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.class-card{background:var(--dark);border-radius:20px;padding:30px 20px;text-align:center;border:1px solid rgba(236,72,153,.1);transition:.5s;opacity:0;transform:translateY(30px)}
+.class-card.visible{opacity:1;transform:translateY(0)}
+.class-card:hover{border-color:var(--magenta);transform:translateY(-6px);box-shadow:0 12px 40px rgba(236,72,153,.15)}
+.class-icon{font-size:2.5rem;margin-bottom:14px}
+.class-card h3{font-size:1.1rem;margin-bottom:8px;color:var(--magenta)}
+.class-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* STUDIO */
+.studio{background:var(--dark);overflow:hidden}
+.studio-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.studio-wrap img{border-radius:20px;box-shadow:0 8px 40px rgba(236,72,153,.1)}
+.studio-text h3{color:var(--magenta);font-size:1.4rem;margin-bottom:14px}
+.studio-text p{color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:12px}
+.studio-features{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.studio-feat{background:rgba(236,72,153,.1);color:var(--magenta);padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600}
+@media(max-width:768px){.studio-wrap{grid-template-columns:1fr}}
+
+/* PERFORMANCES */
+.performances{background:var(--darker);overflow:hidden}
+.perf-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.perf-wrap img{border-radius:20px;box-shadow:0 8px 40px rgba(124,58,237,.15)}
+.perf-text h3{color:var(--purple);font-size:1.4rem;margin-bottom:14px}
+.perf-text p{color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:12px}
+@media(max-width:768px){.perf-wrap{grid-template-columns:1fr}}
+
+/* SCHEDULE */
+.schedule{background:var(--dark)}
+.schedule-table{width:100%;border-collapse:collapse;margin-top:10px;overflow-x:auto;display:block}
+.schedule-table thead th{background:linear-gradient(135deg,var(--magenta),var(--purple));color:#fff;padding:12px 10px;font-size:.8rem;text-align:center;white-space:nowrap}
+.schedule-table tbody td{padding:10px 8px;text-align:center;font-size:.8rem;color:var(--gray);border-bottom:1px solid rgba(255,255,255,.05);white-space:nowrap}
+.schedule-table tbody tr:hover td{background:rgba(236,72,153,.05);color:var(--magenta)}
+.s-highlight{color:var(--magenta)!important;font-weight:600}
+
+/* TRIAL FORM */
+.trial{background:var(--darker)}
+.trial-form{max-width:500px;margin:0 auto;background:var(--dark);border-radius:20px;padding:40px 30px;border:1px solid rgba(236,72,153,.15)}
+.trial-form .form-group{margin-bottom:18px}
+.trial-form label{display:block;font-size:.85rem;color:var(--gray);margin-bottom:6px}
+.trial-form input,.trial-form select{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(236,72,153,.2);background:var(--darker);color:#fff;font-size:.95rem;outline:none;transition:.3s}
+.trial-form input:focus,.trial-form select:focus{border-color:var(--magenta);box-shadow:0 0 12px rgba(236,72,153,.15)}
+.trial-form select option{background:var(--dark)}
+.trial-form .btn-gradient{width:100%;text-align:center}
+
+footer{background:var(--darker);border-top:1px solid rgba(236,72,153,.1);color:var(--gray);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--magenta)}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;font-size:1.3rem}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.7)}
+.heyboss-cta::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(59,130,246,.4);animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="DanceFloor Logo">
+    <span data-zh="舞動空間" data-en="DanceFloor">舞動空間</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#classes" data-zh="課程" data-en="Classes">課程</a>
+    <a href="#studio" data-zh="教室" data-en="Studio">教室</a>
+    <a href="#performances" data-zh="表演" data-en="Shows">表演</a>
+    <a href="#schedule" data-zh="課表" data-en="Schedule">課表</a>
+    <a href="#trial" data-zh="體驗課" data-en="Free Trial">體驗課</a>
+    <button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♪</button>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="讓身體說話 用舞步表達" data-en="Let Your Body Speak Through Dance">讓身體說話 用舞步表達</h1>
+    <p data-zh="五大舞風、專業師資、頂級教室，找到屬於你的節奏" data-en="Five dance styles, professional instructors, premium studios — find your rhythm">五大舞風、專業師資、頂級教室，找到屬於你的節奏</p>
+    <a href="#trial" class="btn btn-gradient" data-zh="免費體驗課" data-en="Free Trial Class">免費體驗課</a>
+    <a href="#classes" class="btn btn-outline" data-zh="探索課程" data-en="Explore Classes">探索課程</a>
+  </div>
+</section>
+
+<!-- CLASSES -->
+<section class="classes" id="classes">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="五大舞蹈課程" data-en="Five Dance Styles">五大舞蹈課程</h2>
+      <p data-zh="從古典到流行，從個人到團體，總有一堂課適合你" data-en="From classical to urban, solo to group — there's a class for everyone">從古典到流行，從個人到團體，總有一堂課適合你</p>
+    </div>
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-icon">🩰</div>
+        <h3 data-zh="芭蕾" data-en="Ballet">芭蕾</h3>
+        <p data-zh="古典芭蕾基礎到進階，培養優雅體態與核心力量" data-en="Classical ballet from beginner to advanced, building grace and core strength">古典芭蕾基礎到進階，培養優雅體態與核心力量</p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">🎤</div>
+        <h3 data-zh="嘻哈" data-en="Hip-Hop">嘻哈</h3>
+        <p data-zh="街舞、Breaking、Popping，釋放你的自由靈魂" data-en="Street dance, Breaking, Popping — unleash your free spirit">街舞、Breaking、Popping，釋放你的自由靈魂</p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">🌊</div>
+        <h3 data-zh="現代舞" data-en="Contemporary">現代舞</h3>
+        <p data-zh="融合技巧與情感表達，探索身體的無限可能" data-en="Blending technique with emotional expression to explore your body's potential">融合技巧與情感表達，探索身體的無限可能</p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">💃</div>
+        <h3 data-zh="騷莎" data-en="Salsa">騷莎</h3>
+        <p data-zh="拉丁節奏、雙人舞步，感受熱情奔放的舞蹈魅力" data-en="Latin rhythm, partner steps — feel the passionate dance energy">拉丁節奏、雙人舞步，感受熱情奔放的舞蹈魅力</p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">👧</div>
+        <h3 data-zh="兒童舞蹈" data-en="Kids Dance">兒童舞蹈</h3>
+        <p data-zh="4-12 歲適齡課程，在遊戲中培養節奏感與自信" data-en="Age 4-12 programs building rhythm awareness and confidence through play">4-12 歲適齡課程，在遊戲中培養節奏感與自信</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio" id="studio">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="頂級教室空間" data-en="Premium Studio Space">頂級教室空間</h2>
+      <p data-zh="專為舞者打造的完美練習環境" data-en="The perfect practice environment built for dancers">專為舞者打造的完美練習環境</p>
+    </div>
+    <div class="studio-wrap">
+      <img src="photos/studio.png" alt="舞蹈教室" class="slide-left">
+      <div class="studio-text slide-right">
+        <h3 data-zh="三間獨立教室，滿足不同需求" data-en="Three Independent Studios for Every Need">三間獨立教室，滿足不同需求</h3>
+        <p data-zh="每間教室均配備專業彈性地板、全牆鏡面、頂級音響系統與獨立空調。A 教室可容納 30 人，B 教室 20 人，C 教室為私人小班制 10 人。" data-en="Each studio features professional sprung floors, full-wall mirrors, premium sound systems, and independent climate control. Studio A fits 30, B fits 20, C is a private 10-person room.">每間教室均配備專業彈性地板、全牆鏡面、頂級音響系統與獨立空調。A 教室可容納 30 人，B 教室 20 人，C 教室為私人小班制 10 人。</p>
+        <div class="studio-features">
+          <span class="studio-feat" data-zh="彈性地板" data-en="Sprung Floor">彈性地板</span>
+          <span class="studio-feat" data-zh="全牆鏡面" data-en="Full Mirrors">全牆鏡面</span>
+          <span class="studio-feat" data-zh="JBL 音響" data-en="JBL Sound">JBL 音響</span>
+          <span class="studio-feat" data-zh="獨立空調" data-en="Climate Control">獨立空調</span>
+          <span class="studio-feat" data-zh="更衣淋浴" data-en="Changing Room">更衣淋浴</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCES -->
+<section class="performances" id="performances">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="學員成果展演" data-en="Student Performances">學員成果展演</h2>
+      <p data-zh="每季成果發表會，讓學員站上真正的舞台" data-en="Quarterly showcases giving students a real stage experience">每季成果發表會，讓學員站上真正的舞台</p>
+    </div>
+    <div class="perf-wrap">
+      <div class="perf-text slide-left">
+        <h3 data-zh="舞台是最好的老師" data-en="The Stage Is the Best Teacher">舞台是最好的老師</h3>
+        <p data-zh="我們相信舞蹈不只是教室裡的練習，更是舞台上的綻放。每季舉辦的成果發表會，讓每位學員都有機會在專業燈光與音響下展現自我。" data-en="We believe dance goes beyond studio practice — it blossoms on stage. Our quarterly showcases give every student the chance to perform under professional lighting and sound.">我們相信舞蹈不只是教室裡的練習，更是舞台上的綻放。每季舉辦的成果發表會，讓每位學員都有機會在專業燈光與音響下展現自我。</p>
+        <p data-zh="年度公演更與專業劇場合作，打造完整的表演製作體驗。" data-en="Our annual showcase collaborates with professional theaters for a complete production experience.">年度公演更與專業劇場合作，打造完整的表演製作體驗。</p>
+      </div>
+      <img src="photos/performance.png" alt="舞蹈表演" class="slide-right">
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="每週課表" data-en="Weekly Schedule">每週課表</h2>
+      <p data-zh="多元時段，彈性選課" data-en="Multiple time slots, flexible enrollment">多元時段，彈性選課</p>
+    </div>
+    <div style="overflow-x:auto" class="fade-in">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th data-zh="時段" data-en="Time">時段</th>
+            <th data-zh="週一" data-en="Mon">週一</th>
+            <th data-zh="週二" data-en="Tue">週二</th>
+            <th data-zh="週三" data-en="Wed">週三</th>
+            <th data-zh="週四" data-en="Thu">週四</th>
+            <th data-zh="週五" data-en="Fri">週五</th>
+            <th data-zh="週六" data-en="Sat">週六</th>
+            <th data-zh="週日" data-en="Sun">週日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00</td>
+            <td class="s-highlight" data-zh="芭蕾基礎" data-en="Ballet Basic">芭蕾基礎</td>
+            <td>—</td>
+            <td class="s-highlight" data-zh="芭蕾基礎" data-en="Ballet Basic">芭蕾基礎</td>
+            <td>—</td>
+            <td class="s-highlight" data-zh="芭蕾進階" data-en="Ballet Adv.">芭蕾進階</td>
+            <td class="s-highlight" data-zh="兒童舞蹈 A" data-en="Kids A">兒童舞蹈 A</td>
+            <td class="s-highlight" data-zh="兒童舞蹈 B" data-en="Kids B">兒童舞蹈 B</td>
+          </tr>
+          <tr>
+            <td>14:00</td>
+            <td class="s-highlight" data-zh="現代舞" data-en="Contemporary">現代舞</td>
+            <td class="s-highlight" data-zh="嘻哈入門" data-en="Hip-Hop Intro">嘻哈入門</td>
+            <td class="s-highlight" data-zh="騷莎雙人" data-en="Salsa Partner">騷莎雙人</td>
+            <td class="s-highlight" data-zh="現代舞" data-en="Contemporary">現代舞</td>
+            <td class="s-highlight" data-zh="嘻哈進階" data-en="Hip-Hop Adv.">嘻哈進階</td>
+            <td class="s-highlight" data-zh="騷莎入門" data-en="Salsa Intro">騷莎入門</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>16:00</td>
+            <td>—</td>
+            <td class="s-highlight" data-zh="兒童舞蹈" data-en="Kids Dance">兒童舞蹈</td>
+            <td>—</td>
+            <td class="s-highlight" data-zh="兒童舞蹈" data-en="Kids Dance">兒童舞蹈</td>
+            <td>—</td>
+            <td class="s-highlight" data-zh="嘻哈入門" data-en="Hip-Hop Intro">嘻哈入門</td>
+            <td class="s-highlight" data-zh="現代舞" data-en="Contemporary">現代舞</td>
+          </tr>
+          <tr>
+            <td>19:00</td>
+            <td class="s-highlight" data-zh="嘻哈進階" data-en="Hip-Hop Adv.">嘻哈進階</td>
+            <td class="s-highlight" data-zh="芭蕾進階" data-en="Ballet Adv.">芭蕾進階</td>
+            <td class="s-highlight" data-zh="騷莎進階" data-en="Salsa Adv.">騷莎進階</td>
+            <td class="s-highlight" data-zh="嘻哈入門" data-en="Hip-Hop Intro">嘻哈入門</td>
+            <td class="s-highlight" data-zh="現代舞進階" data-en="Contemp. Adv.">現代舞進階</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL FORM -->
+<section class="trial" id="trial">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="免費體驗課報名" data-en="Book a Free Trial Class">免費體驗課報名</h2>
+      <p data-zh="留下資料，我們將為您安排最適合的體驗課程" data-en="Leave your info and we'll arrange the perfect trial class for you">留下資料，我們將為您安排最適合的體驗課程</p>
+    </div>
+    <form class="trial-form fade-in" onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Thank you! We will contact you shortly.':'感謝報名！我們將盡快與您聯繫。')">
+      <div class="form-group">
+        <label data-zh="姓名" data-en="Name">姓名</label>
+        <input type="text" required data-zh-placeholder="請輸入姓名" data-en-placeholder="Your name" placeholder="請輸入姓名">
+      </div>
+      <div class="form-group">
+        <label data-zh="電話" data-en="Phone">電話</label>
+        <input type="tel" required data-zh-placeholder="請輸入手機號碼" data-en-placeholder="Your phone number" placeholder="請輸入手機號碼">
+      </div>
+      <div class="form-group">
+        <label data-zh="Email" data-en="Email">Email</label>
+        <input type="email" required placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label data-zh="想體驗的課程" data-en="Preferred Class">想體驗的課程</label>
+        <select required>
+          <option value="" data-zh="請選擇" data-en="Select one">請選擇</option>
+          <option value="ballet" data-zh="芭蕾" data-en="Ballet">芭蕾</option>
+          <option value="hiphop" data-zh="嘻哈" data-en="Hip-Hop">嘻哈</option>
+          <option value="contemporary" data-zh="現代舞" data-en="Contemporary">現代舞</option>
+          <option value="salsa" data-zh="騷莎" data-en="Salsa">騷莎</option>
+          <option value="kids" data-zh="兒童舞蹈" data-en="Kids Dance">兒童舞蹈</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-gradient" data-zh="立即報名" data-en="Sign Up Now">立即報名</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:6px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss" title="Contact Us">💬</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪';}
+  else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸';}
+  bgmPlaying=!bgmPlaying;
+});
+
+let currentLang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{
+  currentLang=currentLang==='zh'?'en':'zh';
+  langBtn.textContent=currentLang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+currentLang);if(t)el.textContent=t;
+  });
+  document.querySelectorAll('[data-'+currentLang+'-placeholder]').forEach(el=>{
+    el.placeholder=el.getAttribute('data-'+currentLang+'-placeholder');
+  });
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.class-card').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

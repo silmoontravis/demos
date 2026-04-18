@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>故事盒子 StoryBook — 兒童有聲書平台</title>
+<meta name="description" content="故事盒子 StoryBook 提供數千本兒童有聲書，陪伴孩子在故事中成長，激發想像力與創造力。">
+<meta name="keywords" content="故事盒子,StoryBook,兒童有聲書,親子共讀,睡前故事,兒童教育">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"故事盒子 StoryBook",
+  "url":"https://silmoontravis.github.io/demos/storybook",
+  "logo":"logos/logo_final.png",
+  "description":"兒童有聲書會員平台，數千本精選故事陪伴孩子成長。"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--purple:#7c3aed;--gold:#c8a45e;--cream:#fefdf5;--dark:#2d1b69;--light-purple:#ede9fe;--text:#3b2d6e}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+[lang="en"]{display:none}
+body.en [lang="en"]{display:block}
+body.en [lang="zh"]{display:none}
+
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(254,253,245,.95);backdrop-filter:blur(8px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(124,58,237,.08);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(124,58,237,.08)}
+.nav-logo{height:40px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{font-size:14px;color:var(--purple);font-weight:500;padding:6px 10px;border-radius:6px;transition:background .2s}
+.nav-links a:hover{background:rgba(124,58,237,.06)}
+.ctrl-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--purple);background:transparent;color:var(--purple);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.ctrl-btn:hover{background:var(--purple);color:#fff}
+.ctrl-btn.playing{background:var(--purple);color:#fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.4)}50%{box-shadow:0 0 0 8px rgba(124,58,237,0)}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 20px;background:linear-gradient(135deg,var(--cream),var(--light-purple))}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;opacity:.2}
+.hero-content{position:relative;z-index:2;max-width:600px;text-align:center}
+.hero-content h1{font-size:clamp(2rem,6vw,3.5rem);color:var(--purple);line-height:1.2;margin-bottom:16px}
+.hero-content h1 em{font-style:normal;color:var(--gold)}
+.hero-content p{color:#6b5b95;font-size:clamp(1rem,2.5vw,1.15rem);margin-bottom:32px;line-height:1.7}
+.btn{display:inline-block;padding:14px 32px;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s;border:none}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-purple:hover{background:#6d28d9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.3)}
+.btn-outline{border:2px solid var(--purple);color:var(--purple);background:transparent}
+.btn-outline:hover{background:var(--purple);color:#fff}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#b8944e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,164,94,.3)}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-stars{font-size:2rem;margin-bottom:16px}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--purple);margin-bottom:12px}
+.section-title h2 em{font-style:normal;color:var(--gold)}
+.section-title p{color:#6b5b95;max-width:600px;margin:0 auto;line-height:1.7}
+.container{max-width:1100px;margin:0 auto}
+
+/* LIBRARY */
+.library{background:#fff}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.lib-card{background:var(--light-purple);border-radius:20px;padding:28px 16px;text-align:center;cursor:pointer;transition:all .3s;border:2px solid transparent}
+.lib-card:hover{border-color:var(--purple);transform:translateY(-4px);box-shadow:0 8px 24px rgba(124,58,237,.12)}
+.lib-card .icon{font-size:2.8rem;margin-bottom:12px}
+.lib-card h3{font-size:1rem;color:var(--purple)}
+.lib-card p{font-size:.8rem;color:#6b5b95;margin-top:4px}
+
+/* APP FEATURES */
+.app-section{background:var(--cream)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.split img{border-radius:20px;width:100%}
+.split-text h2{font-size:clamp(1.5rem,3vw,2rem);color:var(--purple);margin-bottom:16px}
+.split-text h2 em{font-style:normal;color:var(--gold)}
+.split-text p{color:#6b5b95;line-height:1.8;margin-bottom:16px}
+.features-list{list-style:none}
+.features-list li{padding:10px 0;border-bottom:1px solid rgba(124,58,237,.08);display:flex;align-items:center;gap:10px;color:#6b5b95}
+.features-list li .fi{width:32px;height:32px;border-radius:8px;background:var(--light-purple);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+
+/* PLANS */
+.plans{background:#fff}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--cream);border:2px solid rgba(124,58,237,.08);border-radius:20px;padding:32px 24px;text-align:center;transition:all .3s;position:relative}
+.plan-card.featured{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,58,237,.04),rgba(200,164,94,.04))}
+.plan-card.featured::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:3px;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:0 0 4px 4px}
+.plan-card h3{font-size:1.3rem;color:var(--purple);margin-bottom:8px}
+.plan-card .plan-price{font-size:2.5rem;font-weight:800;color:var(--purple);margin:16px 0}
+.plan-card .plan-price small{font-size:1rem;color:#6b5b95;font-weight:400}
+.plan-card .plan-price .free{color:var(--gold)}
+.plan-card ul{list-style:none;text-align:left;margin:20px 0}
+.plan-card ul li{padding:8px 0;border-bottom:1px solid rgba(124,58,237,.06);color:#6b5b95;font-size:.9rem}
+.plan-card ul li::before{content:'✨ '}
+.plan-card .btn{width:100%;margin-top:16px}
+
+/* FAMILY */
+.family{background:var(--cream)}
+.family-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.family-gallery img{border-radius:16px;width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* DOWNLOAD CTA */
+.download{background:linear-gradient(135deg,var(--purple),var(--dark));color:#fff;text-align:center}
+.download h2{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:12px}
+.download p{opacity:.85;max-width:500px;margin:0 auto 32px;line-height:1.7}
+.download-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.download-btns .btn{font-size:1rem;padding:14px 36px}
+
+.footer{background:var(--dark);color:rgba(255,255,255,.7);text-align:center;padding:32px 20px;font-size:.85rem}
+.footer a{color:var(--gold)}
+.footer p{margin-top:8px}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);transition:transform .2s}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.ctrl-btn){display:none}
+  .split{grid-template-columns:1fr}
+  .split img{order:-1}
+  .lib-grid{grid-template-columns:repeat(3,1fr)}
+  .family-gallery{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .lib-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <img src="logos/logo_final.png" alt="StoryBook Logo" class="nav-logo">
+  <div class="nav-links">
+    <a href="#library" lang="zh">故事館</a><a href="#library" lang="en">Library</a>
+    <a href="#app" lang="zh">功能</a><a href="#app" lang="en">Features</a>
+    <a href="#plans" lang="zh">方案</a><a href="#plans" lang="en">Plans</a>
+    <a href="#family" lang="zh">親子</a><a href="#family" lang="en">Family</a>
+    <button class="ctrl-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+    <button class="ctrl-btn" id="langBtn">EN</button>
+  </div>
+</nav>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content reveal">
+    <div class="hero-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <h1 lang="zh">打開<em>故事盒子</em><br>開啟無限想像</h1>
+    <h1 lang="en">Open the <em>StoryBook</em><br>Unlock Imagination</h1>
+    <p lang="zh">數千本精選兒童有聲書，由專業配音員傾情演繹，陪伴孩子在故事中探索世界、快樂成長。</p>
+    <p lang="en">Thousands of curated children's audiobooks, narrated by professional voice actors, helping kids explore the world and grow through stories.</p>
+    <div class="hero-btns">
+      <a href="#plans" class="btn btn-purple" lang="zh">免費試聽</a>
+      <a href="#plans" class="btn btn-purple" lang="en">Free Trial</a>
+      <a href="#library" class="btn btn-outline" lang="zh">探索故事</a>
+      <a href="#library" class="btn btn-outline" lang="en">Explore Stories</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIBRARY -->
+<section class="library" id="library">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh"><em>故事</em>館藏</h2><h2 lang="en">Story <em>Library</em></h2>
+      <p lang="zh">涵蓋六大類別，適合0-12歲各年齡層的孩子，每週更新精彩新故事。</p>
+      <p lang="en">Six categories for ages 0-12, with exciting new stories added weekly.</p>
+    </div>
+    <div class="lib-grid">
+      <div class="lib-card reveal"><div class="icon">&#x1F984;</div><h3 lang="zh">奇幻冒險</h3><h3 lang="en">Fantasy</h3><p lang="zh">320+ 故事</p><p lang="en">320+ stories</p></div>
+      <div class="lib-card reveal"><div class="icon">&#x1F30D;</div><h3 lang="zh">科普知識</h3><h3 lang="en">Science</h3><p lang="zh">280+ 故事</p><p lang="en">280+ stories</p></div>
+      <div class="lib-card reveal"><div class="icon">&#x1F3B5;</div><h3 lang="zh">童謠兒歌</h3><h3 lang="en">Songs</h3><p lang="zh">200+ 故事</p><p lang="en">200+ stories</p></div>
+      <div class="lib-card reveal"><div class="icon">&#x1F48C;</div><h3 lang="zh">品格教育</h3><h3 lang="en">Character</h3><p lang="zh">180+ 故事</p><p lang="en">180+ stories</p></div>
+      <div class="lib-card reveal"><div class="icon">&#x1F31C;</div><h3 lang="zh">睡前故事</h3><h3 lang="en">Bedtime</h3><p lang="zh">250+ 故事</p><p lang="en">250+ stories</p></div>
+      <div class="lib-card reveal"><div class="icon">&#x1F30F;</div><h3 lang="zh">世界文學</h3><h3 lang="en">Classics</h3><p lang="zh">150+ 故事</p><p lang="en">150+ stories</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP FEATURES -->
+<section class="app-section" id="app">
+  <div class="container">
+    <div class="split">
+      <img src="photos/app.png" alt="故事盒子 App" class="reveal">
+      <div class="split-text reveal">
+        <h2 lang="zh"><em>App</em> 功能特色</h2><h2 lang="en"><em>App</em> Features</h2>
+        <p lang="zh">精心設計的兒童介面，讓孩子輕鬆操作，家長安心使用。</p>
+        <p lang="en">Child-friendly interface designed for easy operation and parental peace of mind.</p>
+        <ul class="features-list">
+          <li lang="zh"><span class="fi">&#x23F0;</span>睡眠定時器 — 設定播放時間，自動關閉</li>
+          <li lang="en"><span class="fi">&#x23F0;</span>Sleep Timer — Set play duration, auto-stop</li>
+          <li lang="zh"><span class="fi">&#x1F4F6;</span>離線收聽 — 下載故事，無網路也能聽</li>
+          <li lang="en"><span class="fi">&#x1F4F6;</span>Offline Mode — Download stories for offline listening</li>
+          <li lang="zh"><span class="fi">&#x1F476;</span>年齡篩選 — 依年齡推薦最適合的內容</li>
+          <li lang="en"><span class="fi">&#x1F476;</span>Age Filter — Age-appropriate content recommendations</li>
+          <li lang="zh"><span class="fi">&#x1F512;</span>家長控制 — 使用時間管理與內容控制</li>
+          <li lang="en"><span class="fi">&#x1F512;</span>Parental Controls — Screen time & content management</li>
+          <li lang="zh"><span class="fi">&#x1F4CA;</span>學習報告 — 追蹤孩子的聽書記錄與進度</li>
+          <li lang="en"><span class="fi">&#x1F4CA;</span>Progress Reports — Track listening history & milestones</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">選擇您的<em>方案</em></h2><h2 lang="en">Choose Your <em>Plan</em></h2>
+      <p lang="zh">從免費體驗開始，隨時升級享受更多精彩故事。</p>
+      <p lang="en">Start free, upgrade anytime for more amazing stories.</p>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-card reveal">
+        <h3 lang="zh">免費體驗</h3><h3 lang="en">Free</h3>
+        <div class="plan-price"><span class="free" lang="zh">免費</span><span class="free" lang="en">Free</span></div>
+        <ul>
+          <li lang="zh">每月5本免費故事</li><li lang="en">5 free stories per month</li>
+          <li lang="zh">基本故事分類</li><li lang="en">Basic story categories</li>
+          <li lang="zh">含廣告</li><li lang="en">Ad-supported</li>
+          <li lang="zh">單一裝置</li><li lang="en">Single device</li>
+        </ul>
+        <button class="btn btn-outline" lang="zh">免費開始</button>
+        <button class="btn btn-outline" lang="en">Start Free</button>
+      </div>
+      <div class="plan-card featured reveal">
+        <h3 lang="zh">故事通 Story</h3><h3 lang="en">Story Plan</h3>
+        <div class="plan-price">NT$199<small lang="zh">/月</small><small lang="en">/mo</small></div>
+        <ul>
+          <li lang="zh">無限暢聽所有故事</li><li lang="en">Unlimited stories</li>
+          <li lang="zh">無廣告體驗</li><li lang="en">Ad-free experience</li>
+          <li lang="zh">離線下載 20 本</li><li lang="en">20 offline downloads</li>
+          <li lang="zh">睡眠定時器</li><li lang="en">Sleep timer</li>
+          <li lang="zh">2 台裝置</li><li lang="en">2 devices</li>
+        </ul>
+        <button class="btn btn-purple" lang="zh">立即訂閱</button>
+        <button class="btn btn-purple" lang="en">Subscribe Now</button>
+      </div>
+      <div class="plan-card reveal">
+        <h3 lang="zh">家庭方案 Family</h3><h3 lang="en">Family Plan</h3>
+        <div class="plan-price">NT$399<small lang="zh">/月</small><small lang="en">/mo</small></div>
+        <ul>
+          <li lang="zh">無限暢聽 + 新故事搶先聽</li><li lang="en">Unlimited + early access</li>
+          <li lang="zh">離線下載無上限</li><li lang="en">Unlimited downloads</li>
+          <li lang="zh">5 個兒童帳號</li><li lang="en">5 child profiles</li>
+          <li lang="zh">學習進度報告</li><li lang="en">Progress reports</li>
+          <li lang="zh">5 台裝置</li><li lang="en">5 devices</li>
+        </ul>
+        <button class="btn btn-gold" lang="zh">立即訂閱</button>
+        <button class="btn btn-gold" lang="en">Subscribe Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY TIME -->
+<section class="family" id="family">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh"><em>親子</em>共讀時光</h2><h2 lang="en"><em>Family</em> Story Time</h2>
+      <p lang="zh">故事不只是孩子的，更是全家人最珍貴的相處時光。一起聽故事，一起成長。</p>
+      <p lang="en">Stories aren't just for kids. They're the most precious family moments. Listen together, grow together.</p>
+    </div>
+    <div class="family-gallery reveal">
+      <img src="photos/family.png" alt="親子共讀">
+      <img src="photos/story.png" alt="故事時光">
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="download">
+  <div class="container reveal">
+    <h2 lang="zh">立即下載故事盒子</h2><h2 lang="en">Download StoryBook Now</h2>
+    <p lang="zh">iOS 與 Android 雙平台支援，註冊即享免費故事體驗，讓精彩故事陪伴孩子的每一天。</p>
+    <p lang="en">Available on iOS and Android. Sign up for free stories and let amazing tales accompany your child every day.</p>
+    <div class="download-btns">
+      <a href="#" class="btn btn-gold" lang="zh">App Store 下載</a>
+      <a href="#" class="btn btn-gold" lang="en">App Store</a>
+      <a href="#" class="btn" style="background:#fff;color:var(--purple)" lang="zh">Google Play 下載</a>
+      <a href="#" class="btn" style="background:#fff;color:var(--purple)" lang="en">Google Play</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgm.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}
+  else{bgm.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}
+  playing=!playing;
+});
+const langBtn=document.getElementById('langBtn');
+let isEn=false;
+langBtn.addEventListener('click',()=>{
+  isEn=!isEn;document.body.classList.toggle('en',isEn);
+  langBtn.textContent=isEn?'中':'EN';
+  document.documentElement.lang=isEn?'en':'zh-Hant';
+});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>

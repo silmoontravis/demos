@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>烘焙之家 BakeHaus — 烘焙材料用品電商</title>
+<meta name="description" content="烘焙之家 BakeHaus 提供最齊全的烘焙材料、工具與模具，從新手到專業烘焙師都能找到所需。">
+<meta name="keywords" content="烘焙之家,BakeHaus,烘焙材料,烘焙工具,蛋糕模具,巧克力,麵粉">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"烘焙之家 BakeHaus",
+  "url":"https://silmoontravis.github.io/demos/bakehaus",
+  "logo":"logos/logo_final.png",
+  "description":"烘焙材料用品電商，提供最齊全的烘焙材料、工具與模具。"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--butter:#d97706;--choco:#78350f;--cream:#fefce8;--dark:#3d2008;--text:#4a3520;--bg:#fffef7}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+[lang="en"]{display:none}
+body.en [lang="en"]{display:block}
+body.en [lang="zh"]{display:none}
+
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(255,254,247,.95);backdrop-filter:blur(8px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(120,53,15,.08);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(120,53,15,.08)}
+.nav-logo{height:40px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{font-size:14px;color:var(--choco);padding:6px 10px;border-radius:6px;transition:background .2s}
+.nav-links a:hover{background:rgba(120,53,15,.06)}
+.ctrl-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--butter);background:transparent;color:var(--butter);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.ctrl-btn:hover{background:var(--butter);color:#fff}
+.ctrl-btn.playing{background:var(--butter);color:#fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,119,6,.4)}50%{box-shadow:0 0 0 8px rgba(217,119,6,0)}}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 20px}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,254,247,.93),rgba(254,252,232,.75))}
+.hero-content{position:relative;z-index:2;max-width:600px;text-align:center}
+.hero-content h1{font-size:clamp(2rem,6vw,3.5rem);color:var(--choco);line-height:1.2;margin-bottom:16px}
+.hero-content h1 em{font-style:normal;color:var(--butter)}
+.hero-content p{color:#7a6548;font-size:clamp(1rem,2.5vw,1.15rem);margin-bottom:32px;line-height:1.7}
+.btn{display:inline-block;padding:14px 32px;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s;border:none}
+.btn-butter{background:var(--butter);color:#fff}
+.btn-butter:hover{background:#b45309;transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,119,6,.3)}
+.btn-outline{border:2px solid var(--choco);color:var(--choco);background:transparent}
+.btn-outline:hover{background:var(--choco);color:#fff}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--choco);margin-bottom:12px}
+.section-title h2 em{font-style:normal;color:var(--butter)}
+.section-title p{color:#7a6548;max-width:600px;margin:0 auto;line-height:1.7}
+.container{max-width:1100px;margin:0 auto}
+
+/* CATEGORIES */
+.categories{background:var(--cream)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.cat-card{background:#fff;border-radius:16px;padding:28px 16px;text-align:center;cursor:pointer;transition:all .3s;border:2px solid transparent}
+.cat-card:hover{border-color:var(--butter);transform:translateY(-4px);box-shadow:0 8px 24px rgba(217,119,6,.1)}
+.cat-card .icon{font-size:2.5rem;margin-bottom:12px}
+.cat-card h3{font-size:1rem;color:var(--choco)}
+
+/* BESTSELLERS */
+.bestsellers{background:var(--bg)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:#fff;border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;border:1px solid rgba(120,53,15,.06)}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(120,53,15,.1)}
+.product-card img{width:100%;aspect-ratio:1;object-fit:cover}
+.product-card-body{padding:20px}
+.product-card-body h3{color:var(--choco);margin-bottom:6px;font-size:1.05rem}
+.product-card-body .desc{color:#7a6548;font-size:.85rem;margin-bottom:12px;line-height:1.5}
+.product-card-body .price{font-size:1.3rem;font-weight:700;color:var(--butter)}
+.product-card-body .price small{font-size:.8rem;color:#999;text-decoration:line-through;margin-left:8px}
+.cart-btn{display:block;width:100%;padding:10px;border:none;border-radius:8px;background:var(--butter);color:#fff;font-size:.95rem;font-weight:600;cursor:pointer;margin-top:12px;transition:background .2s}
+.cart-btn:hover{background:#b45309}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.split img{border-radius:16px;width:100%}
+.split-text h2{font-size:clamp(1.5rem,3vw,2rem);color:var(--choco);margin-bottom:16px}
+.split-text h2 em{font-style:normal;color:var(--butter)}
+.split-text p{color:#7a6548;line-height:1.8;margin-bottom:16px}
+.tips-list{list-style:none}
+.tips-list li{padding:8px 0;border-bottom:1px solid rgba(120,53,15,.08);display:flex;align-items:center;gap:8px;color:#7a6548}
+.tips-list li::before{content:'🍰';font-size:1.1rem}
+
+/* NEWSLETTER */
+.newsletter{background:linear-gradient(135deg,var(--butter),var(--choco));color:#fff;text-align:center}
+.newsletter h2{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:12px}
+.newsletter p{opacity:.85;max-width:500px;margin:0 auto 32px;line-height:1.7}
+.newsletter-form{display:flex;gap:12px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.newsletter-form input{flex:1;min-width:200px;padding:14px 18px;border:none;border-radius:50px;font-size:1rem}
+.newsletter-form .btn{background:#fff;color:var(--choco);font-weight:700}
+.newsletter-form .btn:hover{background:var(--cream)}
+
+.footer{background:var(--choco);color:rgba(255,255,255,.7);text-align:center;padding:32px 20px;font-size:.85rem}
+.footer a{color:var(--butter)}
+.footer p{margin-top:8px}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);transition:transform .2s}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.ctrl-btn){display:none}
+  .split{grid-template-columns:1fr}
+  .split img{order:-1}
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:480px){
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <img src="logos/logo_final.png" alt="BakeHaus Logo" class="nav-logo">
+  <div class="nav-links">
+    <a href="#categories" lang="zh">分類</a><a href="#categories" lang="en">Categories</a>
+    <a href="#bestsellers" lang="zh">熱銷</a><a href="#bestsellers" lang="en">Bestsellers</a>
+    <a href="#tips" lang="zh">烘焙技巧</a><a href="#tips" lang="en">Tips</a>
+    <button class="ctrl-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+    <button class="ctrl-btn" id="langBtn">EN</button>
+  </div>
+</nav>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 lang="zh"><em>烘焙之家</em><br>讓美味從這裡開始</h1>
+    <h1 lang="en"><em>BakeHaus</em><br>Where Delicious Begins</h1>
+    <p lang="zh">嚴選全球烘焙材料與專業工具，從新手到大師，一站滿足您的烘焙夢想。</p>
+    <p lang="en">Premium baking supplies and professional tools sourced globally. Everything for beginners to master bakers.</p>
+    <div class="hero-btns">
+      <a href="#categories" class="btn btn-butter" lang="zh">開始選購</a>
+      <a href="#categories" class="btn btn-butter" lang="en">Start Shopping</a>
+      <a href="#tips" class="btn btn-outline" lang="zh">烘焙技巧</a>
+      <a href="#tips" class="btn btn-outline" lang="en">Baking Tips</a>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">依分類<em>選購</em></h2><h2 lang="en">Shop by <em>Category</em></h2>
+      <p lang="zh">精心分類，讓您快速找到所需的烘焙好物。</p>
+      <p lang="en">Carefully organized so you can quickly find what you need.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal"><div class="icon">🌾</div><h3 lang="zh">麵粉穀物</h3><h3 lang="en">Flour & Grains</h3></div>
+      <div class="cat-card reveal"><div class="icon">🍫</div><h3 lang="zh">巧克力可可</h3><h3 lang="en">Chocolate & Cocoa</h3></div>
+      <div class="cat-card reveal"><div class="icon">🔧</div><h3 lang="zh">烘焙工具</h3><h3 lang="en">Baking Tools</h3></div>
+      <div class="cat-card reveal"><div class="icon">🧁</div><h3 lang="zh">模具烤盤</h3><h3 lang="en">Molds & Pans</h3></div>
+      <div class="cat-card reveal"><div class="icon">🎨</div><h3 lang="zh">裝飾糖霜</h3><h3 lang="en">Decorating</h3></div>
+      <div class="cat-card reveal"><div class="icon">📦</div><h3 lang="zh">包裝材料</h3><h3 lang="en">Packaging</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section class="bestsellers" id="bestsellers">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">本月<em>熱銷</em></h2><h2 lang="en">Monthly <em>Bestsellers</em></h2>
+      <p lang="zh">烘焙達人最愛的人氣商品，品質保證，好評不斷。</p>
+      <p lang="en">Top picks loved by baking enthusiasts. Quality guaranteed, rave reviews.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="法國T55麵粉">
+        <div class="product-card-body">
+          <h3 lang="zh">法國T55高筋麵粉 1kg</h3><h3 lang="en">French T55 Bread Flour 1kg</h3>
+          <p class="desc" lang="zh">法國原裝進口，適合法棍、可頌等歐式麵包</p>
+          <p class="desc" lang="en">Imported from France, perfect for baguettes and croissants</p>
+          <div class="price">NT$320 <small>NT$420</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="比利時巧克力">
+        <div class="product-card-body">
+          <h3 lang="zh">比利時72%黑巧克力 500g</h3><h3 lang="en">Belgian 72% Dark Chocolate 500g</h3>
+          <p class="desc" lang="zh">頂級可可豆製成，濃郁絲滑，甘納許首選</p>
+          <p class="desc" lang="en">Premium cocoa beans, rich and silky, perfect for ganache</p>
+          <div class="price">NT$580 <small>NT$720</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="矽膠刮刀組">
+        <div class="product-card-body">
+          <h3 lang="zh">專業矽膠刮刀三件組</h3><h3 lang="en">Pro Silicone Spatula Set (3pc)</h3>
+          <p class="desc" lang="zh">耐高溫280°C，一體成型，清潔方便</p>
+          <p class="desc" lang="en">Heat-resistant to 280°C, seamless design, easy to clean</p>
+          <div class="price">NT$480 <small>NT$650</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="蛋糕模具">
+        <div class="product-card-body">
+          <h3 lang="zh">不沾8吋活底蛋糕模</h3><h3 lang="en">Non-stick 8" Spring Cake Pan</h3>
+          <p class="desc" lang="zh">德國不沾塗層，活底設計，輕鬆脫模</p>
+          <p class="desc" lang="en">German non-stick coating, removable bottom, easy release</p>
+          <div class="price">NT$420 <small>NT$560</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips-section" id="tips" style="background:var(--cream)">
+  <div class="container">
+    <div class="split">
+      <img src="photos/baking.png" alt="烘焙技巧" class="reveal">
+      <div class="split-text reveal">
+        <h2 lang="zh"><em>烘焙</em>小技巧</h2><h2 lang="en"><em>Baking</em> Tips</h2>
+        <p lang="zh">無論你是新手還是老手，這些實用技巧都能幫助你的烘焙更上一層樓。</p>
+        <p lang="en">Whether you're a beginner or a pro, these practical tips will level up your baking.</p>
+        <ul class="tips-list">
+          <li lang="zh">材料回到室溫再操作，口感更細緻</li><li lang="en">Bring ingredients to room temp for better texture</li>
+          <li lang="zh">麵粉過篩兩次，蛋糕更加蓬鬆</li><li lang="en">Sift flour twice for fluffier cakes</li>
+          <li lang="zh">烤箱一定要充分預熱15分鐘</li><li lang="en">Always preheat your oven for 15 minutes</li>
+          <li lang="zh">巧克力隔水加熱，溫度不超過55°C</li><li lang="en">Melt chocolate in a double boiler, max 55°C</li>
+          <li lang="zh">使用電子秤精準秤量，告別失敗</li><li lang="en">Use a digital scale for precise measurements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DREAM KITCHEN -->
+<section style="background:var(--bg)">
+  <div class="container">
+    <div class="split">
+      <div class="split-text reveal">
+        <h2 lang="zh">打造您的<em>夢想廚房</em></h2><h2 lang="en">Build Your <em>Dream Kitchen</em></h2>
+        <p lang="zh">從入門到專業，烘焙之家提供完整的烘焙設備與材料。我們與全球頂尖品牌合作，為您帶來最優質的烘焙體驗。不論是週末親子烘焙，還是創業開店，都能在這裡找到最佳解決方案。</p>
+        <p lang="en">From beginner to professional, BakeHaus offers complete baking equipment and supplies. We partner with top global brands to deliver the best baking experience. Whether it's weekend family baking or launching your own bakery, find your solution here.</p>
+        <a href="#categories" class="btn btn-butter" lang="zh">開始選購</a>
+        <a href="#categories" class="btn btn-butter" lang="en">Start Shopping</a>
+      </div>
+      <img src="photos/kitchen.png" alt="夢想廚房" class="reveal">
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container reveal">
+    <h2 lang="zh">訂閱烘焙電子報</h2><h2 lang="en">Subscribe to Our Newsletter</h2>
+    <p lang="zh">每週收到獨家食譜、新品上架通知和會員專屬折扣。</p>
+    <p lang="en">Get exclusive recipes, new arrivals, and member-only discounts weekly.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault();alert('訂閱成功！')">
+      <input type="email" required lang="zh" placeholder="輸入您的Email">
+      <input type="email" required lang="en" placeholder="Enter your email">
+      <button type="submit" class="btn" lang="zh">訂閱</button>
+      <button type="submit" class="btn" lang="en">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgm.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}
+  else{bgm.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}
+  playing=!playing;
+});
+const langBtn=document.getElementById('langBtn');
+let isEn=false;
+langBtn.addEventListener('click',()=>{
+  isEn=!isEn;document.body.classList.toggle('en',isEn);
+  langBtn.textContent=isEn?'中':'EN';
+  document.documentElement.lang=isEn?'en':'zh-Hant';
+});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>

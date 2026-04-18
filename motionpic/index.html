@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>動態影像 MotionPic — 專業影像製作公司</title>
+<meta name="description" content="動態影像 MotionPic 提供商業廣告、MV、企業形象片、紀錄片等專業影像製作服務。">
+<meta name="keywords" content="動態影像,MotionPic,影像製作,商業廣告,MV拍攝,企業影片">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"動態影像 MotionPic",
+  "url":"https://silmoontravis.github.io/demos/motionpic",
+  "logo":"logos/logo_final.png",
+  "description":"專業影像製作公司，提供商業廣告、MV、企業影片、紀錄片製作。",
+  "contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"info@motionpic.com"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--dark:#1f1f1f;--red:#dc2626;--white:#fff;--gray:#888;--bg:#111}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;color:var(--white);background:var(--bg);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+[lang="en"]{display:none}
+body.en [lang="en"]{display:block}
+body.en [lang="zh"]{display:none}
+
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(17,17,17,.92);backdrop-filter:blur(10px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.5)}
+.nav-logo{height:40px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{font-size:14px;color:var(--white);opacity:.7;padding:6px 10px;border-radius:6px;transition:all .2s}
+.nav-links a:hover{opacity:1;background:rgba(255,255,255,.06)}
+.lang-btn,.bgm-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--red);background:transparent;color:var(--red);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.lang-btn:hover,.bgm-btn:hover{background:var(--red);color:#fff}
+.bgm-btn.playing{background:var(--red);color:#fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4)}50%{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 20px}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(17,17,17,.95) 40%,rgba(17,17,17,.3))}
+.hero-content{position:relative;z-index:2;max-width:600px;padding-left:5%}
+.hero-content h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.1;margin-bottom:16px;font-weight:800}
+.hero-content h1 em{font-style:normal;color:var(--red)}
+.hero-content p{color:var(--gray);font-size:clamp(1rem,2.5vw,1.15rem);margin-bottom:32px;line-height:1.7;max-width:480px}
+.btn{display:inline-block;padding:14px 32px;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s;border:none}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#b91c1c;transform:translateY(-2px);box-shadow:0 8px 24px rgba(220,38,38,.3)}
+.btn-outline{border:2px solid var(--white);color:var(--white);background:transparent}
+.btn-outline:hover{background:var(--white);color:var(--dark)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:12px;font-weight:700}
+.section-title h2 em{font-style:normal;color:var(--red)}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7}
+.container{max-width:1100px;margin:0 auto}
+
+/* SERVICES */
+.services{background:var(--dark)}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--bg);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:32px 24px;transition:all .3s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.service-card:hover{transform:translateY(-4px);border-color:var(--red)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card .icon{font-size:2.5rem;margin-bottom:16px}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{color:var(--gray);font-size:.9rem;line-height:1.6}
+
+/* PROCESS */
+.process{background:var(--bg)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.split img{border-radius:12px;width:100%}
+.split-text h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:16px}
+.split-text h2 em{font-style:normal;color:var(--red)}
+.split-text p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+.process-steps{list-style:none;counter-reset:step}
+.process-steps li{counter-increment:step;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);color:var(--gray);display:flex;align-items:center;gap:12px}
+.process-steps li::before{content:counter(step,decimal-leading-zero);color:var(--red);font-weight:700;font-size:1.2rem;width:32px;flex-shrink:0}
+
+/* PORTFOLIO */
+.portfolio{background:var(--dark)}
+.portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.portfolio-grid img{border-radius:8px;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .3s;cursor:pointer}
+.portfolio-grid img:hover{transform:scale(1.02)}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-form{max-width:560px;margin:0 auto}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:14px 16px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(255,255,255,.04);color:var(--white);font-size:1rem;margin-bottom:16px;font-family:inherit;transition:border-color .2s}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:none;border-color:var(--red)}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form .btn{width:100%}
+
+.footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:32px 20px;font-size:.85rem}
+.footer a{color:var(--red)}
+.footer p{margin-top:8px}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);transition:transform .2s}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.lang-btn):not(.bgm-btn){display:none}
+  .split{grid-template-columns:1fr}
+  .split img{order:-1}
+  .portfolio-grid{grid-template-columns:1fr}
+  .hero-content{padding-left:0}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <img src="logos/logo_final.png" alt="MotionPic Logo" class="nav-logo">
+  <div class="nav-links">
+    <a href="#services" lang="zh">服務</a><a href="#services" lang="en">Services</a>
+    <a href="#process" lang="zh">流程</a><a href="#process" lang="en">Process</a>
+    <a href="#portfolio" lang="zh">作品</a><a href="#portfolio" lang="en">Portfolio</a>
+    <a href="#contact" lang="zh">聯繫</a><a href="#contact" lang="en">Contact</a>
+    <button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+</nav>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 lang="zh">用<em>影像</em>說出<br>品牌的靈魂</h1>
+    <h1 lang="en">Tell Your Brand's<br>Soul Through <em>Film</em></h1>
+    <p lang="zh">從概念到銀幕，我們以電影級製作水準，為每一個品牌故事注入生命力與感動。</p>
+    <p lang="en">From concept to screen, we bring cinematic production quality to every brand story, infusing life and emotion.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-red" lang="zh">洽談專案</a>
+      <a href="#contact" class="btn btn-red" lang="en">Start a Project</a>
+      <a href="#portfolio" class="btn btn-outline" lang="zh">觀看作品</a>
+      <a href="#portfolio" class="btn btn-outline" lang="en">View Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">我們的<em>服務</em></h2><h2 lang="en">Our <em>Services</em></h2>
+      <p lang="zh">從創意發想到後期完成，提供全方位影像製作服務。</p>
+      <p lang="en">Full-spectrum video production from creative ideation to post-production.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="icon">🎬</div>
+        <h3 lang="zh">商業廣告</h3><h3 lang="en">Commercial Ads</h3>
+        <p lang="zh">電視廣告、社群影片、品牌形象片，用畫面打動消費者的心。</p>
+        <p lang="en">TV commercials, social videos, brand films that captivate audiences.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🎵</div>
+        <h3 lang="zh">音樂MV</h3><h3 lang="en">Music Videos</h3>
+        <p lang="zh">融合音樂與視覺藝術，打造令人難忘的MV視覺饗宴。</p>
+        <p lang="en">Blending music and visual art into unforgettable music video experiences.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🏢</div>
+        <h3 lang="zh">企業影片</h3><h3 lang="en">Corporate Video</h3>
+        <p lang="zh">企業簡介、產品介紹、內部培訓影片，提升品牌專業形象。</p>
+        <p lang="en">Company profiles, product demos, training videos to elevate your brand.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">📽️</div>
+        <h3 lang="zh">紀錄片</h3><h3 lang="en">Documentary</h3>
+        <p lang="zh">深入故事核心，以真實影像紀錄最動人的人文故事。</p>
+        <p lang="en">Diving deep into stories, documenting the most moving human narratives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="split">
+      <div class="split-text reveal">
+        <h2 lang="zh">專業<em>製作流程</em></h2><h2 lang="en">Our <em>Process</em></h2>
+        <p lang="zh">系統化的製作流程，確保每個環節都達到最高品質標準。</p>
+        <p lang="en">Systematic production workflow ensuring the highest quality at every stage.</p>
+        <ol class="process-steps">
+          <li lang="zh">需求訪談 — 深入了解品牌與目標受眾</li><li lang="en">Discovery — Understanding your brand and audience</li>
+          <li lang="zh">創意企劃 — 腳本撰寫與視覺風格定調</li><li lang="en">Creative Brief — Scripting and visual direction</li>
+          <li lang="zh">前期製作 — 選角、場勘、製作籌備</li><li lang="en">Pre-Production — Casting, location scouting, planning</li>
+          <li lang="zh">現場拍攝 — 專業攝影團隊執行拍攝</li><li lang="en">Production — Professional crew on-set filming</li>
+          <li lang="zh">後期製作 — 剪輯、調色、音效與特效</li><li lang="en">Post-Production — Editing, color grading, sound & VFX</li>
+          <li lang="zh">交付上線 — 成品交付與多平台發布</li><li lang="en">Delivery — Final delivery and multi-platform distribution</li>
+        </ol>
+      </div>
+      <img src="photos/editing.png" alt="後期剪輯" class="reveal">
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">精選<em>作品</em></h2><h2 lang="en">Featured <em>Work</em></h2>
+      <p lang="zh">每一部作品都是團隊心血的結晶，記錄著無數動人時刻。</p>
+      <p lang="en">Every piece is a labor of love, capturing countless moving moments.</p>
+    </div>
+    <div class="portfolio-grid reveal">
+      <img src="photos/shoot.png" alt="拍攝現場">
+      <img src="photos/reel.png" alt="作品集錦">
+      <img src="photos/shoot.png" alt="攝影作品" style="filter:hue-rotate(30deg)brightness(1.1)">
+      <img src="photos/reel.png" alt="精選作品" style="filter:sepia(.3)">
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">開始您的<em>影像專案</em></h2><h2 lang="en">Start Your <em>Project</em></h2>
+      <p lang="zh">告訴我們您的構想，讓我們一起創造精彩。</p>
+      <p lang="en">Tell us your vision. Let's create something amazing together.</p>
+    </div>
+    <form class="contact-form reveal" onsubmit="event.preventDefault();alert('感謝您的訊息！我們會盡快回覆。')">
+      <input type="text" required lang="zh" placeholder="您的姓名"><input type="text" required lang="en" placeholder="Your Name">
+      <input type="email" required lang="zh" placeholder="電子郵件"><input type="email" required lang="en" placeholder="Email Address">
+      <select>
+        <option lang="zh" value="">— 選擇服務類型 —</option><option lang="en" value="">— Select Service —</option>
+        <option lang="zh">商業廣告</option><option lang="en">Commercial Ad</option>
+        <option lang="zh">音樂MV</option><option lang="en">Music Video</option>
+        <option lang="zh">企業影片</option><option lang="en">Corporate Video</option>
+        <option lang="zh">紀錄片</option><option lang="en">Documentary</option>
+      </select>
+      <textarea lang="zh" placeholder="請描述您的專案需求..." rows="4"></textarea>
+      <textarea lang="en" placeholder="Describe your project..." rows="4"></textarea>
+      <button type="submit" class="btn btn-red" lang="zh">送出諮詢</button>
+      <button type="submit" class="btn btn-red" lang="en">Submit Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgm.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}
+  else{bgm.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}
+  playing=!playing;
+});
+const langBtn=document.getElementById('langBtn');
+let isEn=false;
+langBtn.addEventListener('click',()=>{
+  isEn=!isEn;document.body.classList.toggle('en',isEn);
+  langBtn.textContent=isEn?'中':'EN';
+  document.documentElement.lang=isEn?'en':'zh-Hant';
+});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>

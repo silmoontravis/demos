@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法盾律師 LegalShield — 線上法律諮詢會員平台</title>
+<meta name="description" content="法盾律師 LegalShield 提供合約審閱、公司法務、智慧財產權、爭議處理等線上法律諮詢服務，會員制平台讓法律服務更可及。">
+<meta name="keywords" content="法律諮詢, 線上律師, LegalShield, 法盾, 合約審閱, 法律顧問, legal consultation">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/legalshield/">
+<meta property="og:title" content="法盾律師 LegalShield — 線上法律諮詢會員平台">
+<meta property="og:description" content="合約審閱、公司法務、智慧財產權、爭議處理，會員制法律顧問平台。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "法盾律師 LegalShield",
+  "description": "線上法律諮詢會員平台，提供合約審閱、公司法務、智慧財產權及爭議處理。",
+  "url": "https://silmoontravis.github.io/demos/legalshield/",
+  "image": "photos/hero.png",
+  "serviceType": ["Contract Review", "Corporate Law", "Intellectual Property", "Dispute Resolution"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Membership Plans",
+    "itemListElement": [
+      {"@type":"Offer","name":"Basic","price":"0","priceCurrency":"TWD"},
+      {"@type":"Offer","name":"Pro","price":"499","priceCurrency":"TWD"},
+      {"@type":"Offer","name":"Enterprise","price":"999","priceCurrency":"TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e3a5f;--teal:#0d9488;--white:#fff;--light:#f0fdfa;--dark:#0f172a;--gray:#64748b;--navy-light:#2a4d73}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(30,58,95,.95);backdrop-filter:blur(12px);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:34px}
+.nav-logo span{font-weight:700;font-size:1.05rem;color:var(--teal)}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:6px 14px;font-size:.85rem;color:rgba(255,255,255,.7);transition:.3s}
+.nav-links a:hover{color:var(--teal)}
+.lang-btn{background:var(--teal);color:#fff;border:none;cursor:pointer;padding:5px 14px;border-radius:6px;font-size:.8rem;font-weight:700}
+.bgm-btn{width:34px;height:34px;border-radius:50%;border:2px solid var(--teal);background:transparent;color:var(--teal);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.3s}
+.bgm-btn.playing{background:var(--teal);color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:5px}
+.hamburger span{width:24px;height:2px;background:var(--teal);transition:.3s}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:58px;right:-100%;width:70%;height:calc(100vh - 58px);background:rgba(30,58,95,.98);flex-direction:column;padding:30px;gap:16px;transition:.4s}
+  .nav-links.active{right:0}
+  .hamburger{display:flex}
+}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 20px 40px}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,95,.88),rgba(13,148,136,.3))}
+.hero-content{position:relative;z-index:2;max-width:650px;margin:0 auto;text-align:center;color:#fff}
+.hero-content h1{font-size:clamp(1.8rem,5.5vw,3rem);font-weight:800;margin-bottom:16px;line-height:1.3}
+.hero-content p{font-size:clamp(.9rem,2vw,1.1rem);margin-bottom:30px;opacity:.9;line-height:1.7}
+.btn{display:inline-block;padding:14px 36px;border-radius:10px;font-weight:700;font-size:.95rem;transition:all .3s;cursor:pointer;border:none}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 20px rgba(13,148,136,.4)}
+.btn-teal:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(13,148,136,.5)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent;margin-left:12px;border-radius:10px}
+.btn-outline:hover{background:#fff;color:var(--navy)}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;color:var(--navy);margin-bottom:10px}
+.section-title p{color:var(--gray);font-size:.95rem;max-width:550px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+
+/* SERVICES */
+.services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:30px;border-left:4px solid var(--teal);transition:.5s;opacity:0;transform:translateY(30px)}
+.service-card.visible{opacity:1;transform:translateY(0)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(13,148,136,.1)}
+.service-icon{font-size:2.5rem;margin-bottom:14px}
+.service-card h3{color:var(--navy);font-size:1.1rem;margin-bottom:8px}
+.service-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* PLATFORM */
+.platform{background:var(--white);overflow:hidden}
+.plat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.plat-wrap img{border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.08)}
+.plat-text h3{color:var(--navy);font-size:1.4rem;margin-bottom:14px}
+.plat-text p{color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:12px}
+.plat-features{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.plat-feat{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--gray)}
+.plat-feat::before{content:"✓";color:var(--teal);font-weight:700;font-size:1.1rem}
+@media(max-width:768px){.plat-wrap{grid-template-columns:1fr}}
+
+/* PLANS */
+.plans{background:var(--light)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--white);border-radius:20px;padding:36px 28px;text-align:center;border:2px solid transparent;transition:.5s;opacity:0;transform:scale(.92)}
+.plan-card.visible{opacity:1;transform:scale(1)}
+.plan-card:hover{border-color:var(--teal);transform:scale(1.02)}
+.plan-card.featured{border-color:var(--teal);background:linear-gradient(135deg,var(--navy),var(--navy-light));color:#fff}
+.plan-card.featured .plan-name{color:#fff}
+.plan-card.featured .plan-price{color:var(--teal)}
+.plan-card.featured .price-features li{color:rgba(255,255,255,.8)}
+.plan-card.featured .price-features li::before{color:var(--teal)}
+.plan-label{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin-bottom:6px}
+.plan-card.featured .plan-label{color:var(--teal)}
+.plan-name{font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.plan-price{font-size:2.4rem;font-weight:800;color:var(--teal);margin:12px 0}
+.plan-price span{font-size:.85rem;font-weight:400;color:var(--gray)}
+.plan-card.featured .plan-price span{color:rgba(255,255,255,.5)}
+.price-features{list-style:none;text-align:left;margin:20px 0;display:flex;flex-direction:column;gap:8px}
+.price-features li{font-size:.9rem;color:var(--gray);display:flex;align-items:center;gap:8px}
+.price-features li::before{content:"⚖";color:var(--teal)}
+
+/* TEAM */
+.team{background:var(--white);overflow:hidden}
+.team-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.team-wrap img{border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.08)}
+.team-text h3{color:var(--navy);font-size:1.4rem;margin-bottom:14px}
+.team-text p{color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:12px}
+.team-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px}
+.team-stat{text-align:center}
+.team-stat .num{font-size:1.8rem;font-weight:800;color:var(--teal)}
+.team-stat .label{font-size:.75rem;color:var(--gray);margin-top:2px}
+@media(max-width:768px){.team-wrap{grid-template-columns:1fr}}
+
+/* CONSULTATION CTA */
+.consult-cta{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:#fff;text-align:center;padding:100px 20px}
+.consult-cta h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;margin-bottom:14px}
+.consult-cta p{color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 30px;line-height:1.7}
+
+footer{background:var(--dark);color:var(--gray);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--teal)}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;font-size:1.3rem}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.7)}
+.heyboss-cta::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(59,130,246,.4);animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="LegalShield Logo">
+    <span data-zh="法盾律師" data-en="LegalShield">法盾律師</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" data-zh="服務項目" data-en="Services">服務項目</a>
+    <a href="#platform" data-zh="平台" data-en="Platform">平台</a>
+    <a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+    <a href="#team" data-zh="團隊" data-en="Team">團隊</a>
+    <a href="#consult" data-zh="免費諮詢" data-en="Consult">免費諮詢</a>
+    <button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♪</button>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="法律守護 隨時在線" data-en="Legal Protection, Always Online">法律守護 隨時在線</h1>
+    <p data-zh="專業律師團隊線上即時諮詢，合約審閱、公司法務、智財保護、爭議處理，會員制讓法律服務更可及" data-en="Professional legal team for real-time online consultation — contract review, corporate law, IP protection, dispute resolution. Membership-based for accessible legal services.">專業律師團隊線上即時諮詢，合約審閱、公司法務、智財保護、爭議處理，會員制讓法律服務更可及</p>
+    <a href="#consult" class="btn btn-teal" data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</a>
+    <a href="#plans" class="btn btn-outline" data-zh="查看方案" data-en="View Plans">查看方案</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="四大服務領域" data-en="Four Practice Areas">四大服務領域</h2>
+      <p data-zh="涵蓋企業與個人最常見的法律需求" data-en="Covering the most common legal needs for businesses and individuals">涵蓋企業與個人最常見的法律需求</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3 data-zh="合約審閱" data-en="Contract Review">合約審閱</h3>
+        <p data-zh="各類商業合約、勞動契約、租賃合約審閱與修訂，確保您的權益不受損害" data-en="Review and revision of commercial, employment, and lease contracts to protect your interests">各類商業合約、勞動契約、租賃合約審閱與修訂，確保您的權益不受損害</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3 data-zh="公司法務" data-en="Corporate Law">公司法務</h3>
+        <p data-zh="公司設立、股權架構、董事會運作、合規檢查等企業法務全方位支援" data-en="Company formation, equity structure, board operations, and compliance checks">公司設立、股權架構、董事會運作、合規檢查等企業法務全方位支援</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3 data-zh="智慧財產權" data-en="Intellectual Property">智慧財產權</h3>
+        <p data-zh="商標註冊、專利申請、著作權保護、營業秘密管理與侵權訴訟" data-en="Trademark registration, patent filing, copyright protection, trade secrets, and infringement litigation">商標註冊、專利申請、著作權保護、營業秘密管理與侵權訴訟</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚖️</div>
+        <h3 data-zh="爭議處理" data-en="Dispute Resolution">爭議處理</h3>
+        <p data-zh="民事訴訟、商業仲裁、調解協商，協助您有效解決各類法律糾紛" data-en="Civil litigation, commercial arbitration, and mediation to resolve legal disputes effectively">民事訴訟、商業仲裁、調解協商，協助您有效解決各類法律糾紛</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="platform" id="platform">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="智慧法律平台" data-en="Smart Legal Platform">智慧法律平台</h2>
+      <p data-zh="隨時隨地，取得專業法律協助" data-en="Access professional legal help anytime, anywhere">隨時隨地，取得專業法律協助</p>
+    </div>
+    <div class="plat-wrap">
+      <img src="photos/platform.png" alt="法律諮詢平台" class="slide-left">
+      <div class="plat-text slide-right">
+        <h3 data-zh="一站式法律服務體驗" data-en="One-Stop Legal Service Experience">一站式法律服務體驗</h3>
+        <p data-zh="透過法盾平台，您可以即時與專業律師視訊諮詢、上傳文件進行合約審閱、追蹤案件進度，所有法律服務都在一個平台上完成。" data-en="Through the LegalShield platform, you can video-consult with lawyers in real-time, upload documents for contract review, track case progress — all legal services in one place.">透過法盾平台，您可以即時與專業律師視訊諮詢、上傳文件進行合約審閱、追蹤案件進度，所有法律服務都在一個平台上完成。</p>
+        <div class="plat-features">
+          <div class="plat-feat" data-zh="即時視訊諮詢" data-en="Real-time video consultation">即時視訊諮詢</div>
+          <div class="plat-feat" data-zh="線上合約審閱系統" data-en="Online contract review system">線上合約審閱系統</div>
+          <div class="plat-feat" data-zh="案件進度即時追蹤" data-en="Real-time case tracking">案件進度即時追蹤</div>
+          <div class="plat-feat" data-zh="加密文件傳輸" data-en="Encrypted document transfer">加密文件傳輸</div>
+          <div class="plat-feat" data-zh="法律知識庫免費瀏覽" data-en="Free legal knowledge base access">法律知識庫免費瀏覽</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+      <p data-zh="從免費到企業級，找到最適合您的法律守護方案" data-en="From free to enterprise — find the right legal protection plan for you">從免費到企業級，找到最適合您的法律守護方案</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-label" data-zh="入門" data-en="STARTER">入門</div>
+        <div class="plan-name" data-zh="基本方案" data-en="Basic">基本方案</div>
+        <div class="plan-price" data-zh="免費" data-en="Free">免費</div>
+        <ul class="price-features">
+          <li data-zh="法律知識庫瀏覽" data-en="Legal knowledge base access">法律知識庫瀏覽</li>
+          <li data-zh="每月 1 次文字諮詢" data-en="1 text consultation/month">每月 1 次文字諮詢</li>
+          <li data-zh="合約範本下載" data-en="Contract template downloads">合約範本下載</li>
+          <li data-zh="法律新知電子報" data-en="Legal newsletter">法律新知電子報</li>
+        </ul>
+        <a href="#" class="btn btn-teal" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-label" data-zh="最受歡迎" data-en="MOST POPULAR">最受歡迎</div>
+        <div class="plan-name" data-zh="專業方案" data-en="Pro">專業方案</div>
+        <div class="plan-price">$499<span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul class="price-features">
+          <li data-zh="每月 3 次視訊諮詢（30分鐘）" data-en="3 video consultations/month (30 min)">每月 3 次視訊諮詢（30分鐘）</li>
+          <li data-zh="合約審閱 2 份/月" data-en="2 contract reviews/month">合約審閱 2 份/月</li>
+          <li data-zh="優先預約律師" data-en="Priority lawyer booking">優先預約律師</li>
+          <li data-zh="文件範本全部解鎖" data-en="All document templates unlocked">文件範本全部解鎖</li>
+          <li data-zh="案件進度追蹤" data-en="Case progress tracking">案件進度追蹤</li>
+        </ul>
+        <a href="#" class="btn btn-teal" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-label" data-zh="企業" data-en="ENTERPRISE">企業</div>
+        <div class="plan-name" data-zh="企業方案" data-en="Enterprise">企業方案</div>
+        <div class="plan-price">$999<span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul class="price-features">
+          <li data-zh="不限次數視訊諮詢" data-en="Unlimited video consultations">不限次數視訊諮詢</li>
+          <li data-zh="不限份數合約審閱" data-en="Unlimited contract reviews">不限份數合約審閱</li>
+          <li data-zh="專屬法律顧問" data-en="Dedicated legal advisor">專屬法律顧問</li>
+          <li data-zh="公司法務健檢" data-en="Corporate legal health check">公司法務健檢</li>
+          <li data-zh="員工法律講座（季）" data-en="Quarterly staff legal seminars">員工法律講座（季）</li>
+          <li data-zh="緊急法律事件 24h 回應" data-en="24h emergency legal response">緊急法律事件 24h 回應</li>
+        </ul>
+        <a href="#" class="btn btn-teal" data-zh="聯繫業務" data-en="Contact Sales">聯繫業務</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="專業律師團隊" data-en="Our Legal Team">專業律師團隊</h2>
+      <p data-zh="資深律師群為您提供最專業的法律守護" data-en="Experienced attorneys providing the most professional legal protection">資深律師群為您提供最專業的法律守護</p>
+    </div>
+    <div class="team-wrap">
+      <div class="team-text slide-left">
+        <h3 data-zh="值得信賴的法律夥伴" data-en="Your Trusted Legal Partners">值得信賴的法律夥伴</h3>
+        <p data-zh="法盾律師團隊由超過 30 位資深律師組成，涵蓋各專業領域。每位律師均具有 10 年以上執業經驗，曾任職於頂尖法律事務所或企業法務部門。" data-en="The LegalShield team comprises over 30 senior attorneys across all practice areas. Each lawyer brings 10+ years of experience from top law firms and corporate legal departments.">法盾律師團隊由超過 30 位資深律師組成，涵蓋各專業領域。每位律師均具有 10 年以上執業經驗，曾任職於頂尖法律事務所或企業法務部門。</p>
+        <p data-zh="我們相信法律服務應該更透明、更可及，讓每個人都能在需要時獲得專業的法律保護。" data-en="We believe legal services should be more transparent and accessible, ensuring everyone can obtain professional legal protection when needed.">我們相信法律服務應該更透明、更可及，讓每個人都能在需要時獲得專業的法律保護。</p>
+        <div class="team-stats">
+          <div class="team-stat"><div class="num">30+</div><div class="label" data-zh="資深律師" data-en="Senior Attorneys">資深律師</div></div>
+          <div class="team-stat"><div class="num">5,000+</div><div class="label" data-zh="服務案件" data-en="Cases Served">服務案件</div></div>
+          <div class="team-stat"><div class="num">98%</div><div class="label" data-zh="滿意度" data-en="Satisfaction">滿意度</div></div>
+        </div>
+      </div>
+      <img src="photos/team.png" alt="律師團隊" class="slide-right">
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTATION CTA -->
+<section class="consult-cta" id="consult">
+  <h2 class="fade-in" data-zh="現在就開始您的法律諮詢" data-en="Start Your Legal Consultation Now">現在就開始您的法律諮詢</h2>
+  <p class="fade-in" data-zh="首次諮詢完全免費，讓我們的專業律師為您解答法律疑問" data-en="Your first consultation is completely free — let our lawyers answer your legal questions">首次諮詢完全免費，讓我們的專業律師為您解答法律疑問</p>
+  <a href="#" class="btn btn-teal fade-in" data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</a>
+  <a href="#plans" class="btn btn-outline fade-in" data-zh="查看方案" data-en="View Plans">查看方案</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:6px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss" title="Contact Us">💬</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪';}
+  else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸';}
+  bgmPlaying=!bgmPlaying;
+});
+
+let currentLang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{
+  currentLang=currentLang==='zh'?'en':'zh';
+  langBtn.textContent=currentLang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+currentLang);if(t)el.textContent=t;
+  });
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.service-card,.plan-card').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

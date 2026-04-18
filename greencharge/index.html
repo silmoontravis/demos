@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>綠能充電 GreenCharge — 電動車充電站網路</title>
+<meta name="description" content="綠能充電 GreenCharge 提供全台最密集的電動車充電網路，結合太陽能綠電，讓充電更快、更綠、更便利。">
+<meta name="keywords" content="電動車充電, EV charging, GreenCharge, 綠能充電, 充電站, 太陽能">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/greencharge/">
+<meta property="og:title" content="綠能充電 GreenCharge — 電動車充電站網路">
+<meta property="og:description" content="全台最密集的電動車充電網路，結合太陽能綠電。">
+<meta property="og:image" content="photos/hero.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "綠能充電 GreenCharge",
+  "description": "電動車充電站網路，結合太陽能綠電。",
+  "url": "https://silmoontravis.github.io/demos/greencharge/",
+  "image": "photos/hero.png",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Charging Plans",
+    "itemListElement": [
+      {"@type":"Offer","name":"Pay-per-use","priceCurrency":"TWD"},
+      {"@type":"Offer","name":"Monthly Plan","price":"299","priceCurrency":"TWD"},
+      {"@type":"Offer","name":"Annual Plan","price":"2990","priceCurrency":"TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e3a5f;--green:#22c55e;--white:#fff;--light:#f0fdf4;--dark:#0f172a;--gray:#64748b}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(30,58,95,.95);backdrop-filter:blur(12px);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:34px}
+.nav-logo span{font-weight:700;font-size:1.05rem;color:var(--green)}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:6px 14px;font-size:.85rem;color:rgba(255,255,255,.7);transition:.3s;border-radius:6px}
+.nav-links a:hover{color:var(--green)}
+.lang-btn{background:var(--green);color:var(--navy);border:none;cursor:pointer;padding:5px 14px;border-radius:6px;font-size:.8rem;font-weight:700}
+.bgm-btn{width:34px;height:34px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.3s}
+.bgm-btn.playing{background:var(--green);color:var(--navy)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:5px}
+.hamburger span{width:24px;height:2px;background:var(--green);transition:.3s}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:58px;right:-100%;width:70%;height:calc(100vh - 58px);background:rgba(30,58,95,.98);flex-direction:column;padding:30px;gap:16px;transition:.4s}
+  .nav-links.active{right:0}
+  .hamburger{display:flex}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 20px 40px}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,95,.85),rgba(34,197,94,.3))}
+.hero-content{position:relative;z-index:2;max-width:650px;margin:0 auto;text-align:center;color:#fff}
+.hero-content h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:800;margin-bottom:16px}
+.hero-content h1 span{color:var(--green)}
+.hero-content p{font-size:clamp(.95rem,2.2vw,1.15rem);margin-bottom:30px;opacity:.9;line-height:1.7}
+.btn{display:inline-block;padding:14px 36px;border-radius:12px;font-weight:700;font-size:.95rem;transition:all .3s;cursor:pointer;border:none}
+.btn-green{background:var(--green);color:var(--navy);box-shadow:0 4px 20px rgba(34,197,94,.4)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(34,197,94,.5)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent;margin-left:12px;border-radius:12px}
+.btn-outline:hover{background:#fff;color:var(--navy)}
+
+/* SECTIONS */
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;color:var(--navy);margin-bottom:10px}
+.section-title p{color:var(--gray);font-size:.95rem;max-width:550px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+
+/* CHARGING NETWORK */
+.network{background:var(--light)}
+.net-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.net-wrap img{border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.1)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:var(--white);border-radius:14px;padding:24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:.4s;opacity:0;transform:translateY(20px)}
+.stat-card.visible{opacity:1;transform:translateY(0)}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(34,197,94,.15)}
+.stat-num{font-size:2rem;font-weight:800;color:var(--green)}
+.stat-label{font-size:.85rem;color:var(--gray);margin-top:4px}
+@media(max-width:768px){.net-wrap{grid-template-columns:1fr}}
+
+/* APP FEATURES */
+.app{background:var(--white)}
+.app-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.app-wrap img{border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.1);max-width:360px;margin:0 auto}
+.app-features{display:flex;flex-direction:column;gap:16px}
+.app-feat{display:flex;gap:16px;align-items:flex-start;background:var(--light);padding:20px;border-radius:14px;transition:all .4s;opacity:0;transform:translateX(30px)}
+.app-feat.visible{opacity:1;transform:translateX(0)}
+.app-feat:hover{transform:translateX(6px);box-shadow:0 4px 20px rgba(34,197,94,.1)}
+.app-feat-icon{font-size:2rem;flex-shrink:0}
+.app-feat h4{color:var(--navy);margin-bottom:4px;font-size:1rem}
+.app-feat p{color:var(--gray);font-size:.85rem;line-height:1.6}
+@media(max-width:768px){.app-wrap{grid-template-columns:1fr}}
+
+/* GREEN ENERGY */
+.green-energy{background:var(--light);overflow:hidden}
+.energy-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.energy-wrap img{border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.1)}
+.energy-text h3{color:var(--navy);font-size:1.4rem;margin-bottom:14px}
+.energy-text p{color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:12px}
+.energy-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.energy-badge{background:var(--green);color:#fff;padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600}
+@media(max-width:768px){.energy-wrap{grid-template-columns:1fr}}
+
+/* PLANS */
+.plans{background:var(--white)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--light);border-radius:20px;padding:36px 28px;text-align:center;border:2px solid transparent;transition:.5s;opacity:0;transform:scale(.92)}
+.plan-card.visible{opacity:1;transform:scale(1)}
+.plan-card:hover{border-color:var(--green);transform:scale(1.02)}
+.plan-card.featured{border-color:var(--green);background:linear-gradient(135deg,var(--navy),#254d7a);color:#fff}
+.plan-card.featured .plan-label{color:var(--green)}
+.plan-card.featured .plan-price{color:var(--green)}
+.plan-card.featured .price-features li{color:rgba(255,255,255,.8)}
+.plan-card.featured .price-features li::before{color:var(--green)}
+.plan-label{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin-bottom:8px}
+.plan-name{font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.plan-card.featured .plan-name{color:#fff}
+.plan-price{font-size:2.4rem;font-weight:800;color:var(--green);margin:12px 0}
+.plan-price span{font-size:.85rem;font-weight:400;color:var(--gray)}
+.plan-card.featured .plan-price span{color:rgba(255,255,255,.6)}
+.price-features{list-style:none;text-align:left;margin:20px 0;display:flex;flex-direction:column;gap:8px}
+.price-features li{font-size:.9rem;color:var(--gray);display:flex;align-items:center;gap:8px}
+.price-features li::before{content:"⚡";color:var(--green)}
+
+/* FIND STATION */
+.find-station{background:var(--navy);color:#fff;text-align:center;padding:100px 20px}
+.find-station h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;margin-bottom:14px}
+.find-station h2 span{color:var(--green)}
+.find-station p{color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 30px;line-height:1.7}
+.search-box{display:flex;gap:0;max-width:500px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.search-box input{flex:1;padding:16px 20px;border:none;font-size:1rem;outline:none}
+.search-box button{background:var(--green);color:var(--navy);border:none;padding:16px 28px;font-weight:700;cursor:pointer;font-size:.95rem;transition:.3s}
+.search-box button:hover{background:#16a34a}
+
+/* FOOTER */
+footer{background:var(--dark);color:var(--gray);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--green)}
+
+/* HEYBOSS CTA */
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;font-size:1.3rem}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.7)}
+.heyboss-cta::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(59,130,246,.4);animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="GreenCharge Logo">
+    <span data-zh="綠能充電" data-en="GreenCharge">綠能充電</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#network" data-zh="充電網路" data-en="Network">充電網路</a>
+    <a href="#app" data-zh="App 功能" data-en="App">App 功能</a>
+    <a href="#energy" data-zh="綠能" data-en="Green Energy">綠能</a>
+    <a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+    <a href="#find" data-zh="找充電站" data-en="Find Station">找充電站</a>
+    <button class="bgm-btn" id="bgmBtn" aria-label="Toggle BGM">♪</button>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="為未來充電 用綠能驅動" data-en="Charge the Future with Green Energy"><span data-zh="為未來充電" data-en="Charge the Future">為未來充電</span><br data-zh=" 用綠能驅動" data-en=" with Green Energy"> 用綠能驅動</h1>
+    <p data-zh="全台超過 500 座充電站，結合太陽能綠電，讓每一次充電都是對地球的承諾" data-en="Over 500 charging stations across Taiwan, powered by solar energy — every charge is a promise to our planet">全台超過 500 座充電站，結合太陽能綠電，讓每一次充電都是對地球的承諾</p>
+    <a href="#find" class="btn btn-green" data-zh="尋找充電站" data-en="Find a Station">尋找充電站</a>
+    <a href="#plans" class="btn btn-outline" data-zh="查看方案" data-en="View Plans">查看方案</a>
+  </div>
+</section>
+
+<!-- CHARGING NETWORK -->
+<section class="network" id="network">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="⚡ 充電網路" data-en="⚡ Charging Network">⚡ 充電網路</h2>
+      <p data-zh="全台佈建最密集的快充網路" data-en="The most extensive fast-charging network across Taiwan">全台佈建最密集的快充網路</p>
+    </div>
+    <div class="net-wrap">
+      <img src="photos/station.png" alt="充電站" class="slide-left">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label" data-zh="充電站點" data-en="Stations">充電站點</div></div>
+        <div class="stat-card"><div class="stat-num">2,000+</div><div class="stat-label" data-zh="充電樁" data-en="Chargers">充電樁</div></div>
+        <div class="stat-card"><div class="stat-num">350kW</div><div class="stat-label" data-zh="最大功率" data-en="Max Power">最大功率</div></div>
+        <div class="stat-card"><div class="stat-num">99.5%</div><div class="stat-label" data-zh="可用率" data-en="Uptime">可用率</div></div>
+        <div class="stat-card"><div class="stat-num">15</div><div class="stat-label" data-zh="分鐘快充" data-en="Min Quick Charge">分鐘快充</div></div>
+        <div class="stat-card"><div class="stat-num">22</div><div class="stat-label" data-zh="縣市覆蓋" data-en="Cities Covered">縣市覆蓋</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP FEATURES -->
+<section class="app" id="app">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="📱 智慧充電 App" data-en="📱 Smart Charging App">📱 智慧充電 App</h2>
+      <p data-zh="一鍵找站、預約充電、即時監控" data-en="Find stations, book slots, and monitor charging in real-time">一鍵找站、預約充電、即時監控</p>
+    </div>
+    <div class="app-wrap">
+      <img src="photos/app.png" alt="GreenCharge App" class="slide-left">
+      <div class="app-features">
+        <div class="app-feat">
+          <div class="app-feat-icon">📍</div>
+          <div><h4 data-zh="智慧導航" data-en="Smart Navigation">智慧導航</h4><p data-zh="即時顯示最近可用充電站，一鍵導航前往" data-en="Real-time nearest available station with one-tap navigation">即時顯示最近可用充電站，一鍵導航前往</p></div>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-icon">📅</div>
+          <div><h4 data-zh="預約充電" data-en="Reserve Slot">預約充電</h4><p data-zh="提前預約充電時段，到站即充不等待" data-en="Book your charging slot ahead — no waiting on arrival">提前預約充電時段，到站即充不等待</p></div>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-icon">📊</div>
+          <div><h4 data-zh="充電紀錄" data-en="Charging History">充電紀錄</h4><p data-zh="完整充電歷史、費用明細、碳足跡計算" data-en="Full history, cost breakdown, and carbon footprint tracking">完整充電歷史、費用明細、碳足跡計算</p></div>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-icon">💳</div>
+          <div><h4 data-zh="行動支付" data-en="Mobile Payment">行動支付</h4><p data-zh="支援多種支付方式，充完自動扣款" data-en="Multiple payment methods with automatic billing">支援多種支付方式，充完自動扣款</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GREEN ENERGY -->
+<section class="green-energy" id="energy">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="🌱 綠能承諾" data-en="🌱 Green Energy Promise">🌱 綠能承諾</h2>
+      <p data-zh="每一度電都來自可再生能源" data-en="Every kilowatt powered by renewable energy">每一度電都來自可再生能源</p>
+    </div>
+    <div class="energy-wrap">
+      <div class="energy-text slide-left">
+        <h3 data-zh="太陽能驅動的充電網路" data-en="Solar-Powered Charging Network">太陽能驅動的充電網路</h3>
+        <p data-zh="GreenCharge 所有充電站均配備太陽能板，白天發電、儲能系統蓄電，實現真正的零碳充電體驗。" data-en="All GreenCharge stations feature solar panels for daytime generation and energy storage systems, enabling a truly zero-carbon charging experience.">GreenCharge 所有充電站均配備太陽能板，白天發電、儲能系統蓄電，實現真正的零碳充電體驗。</p>
+        <p data-zh="至今已累計減碳超過 12,000 噸，相當於種植 30 萬棵樹。" data-en="To date, we've reduced over 12,000 tonnes of carbon — equivalent to planting 300,000 trees.">至今已累計減碳超過 12,000 噸，相當於種植 30 萬棵樹。</p>
+        <div class="energy-badges">
+          <span class="energy-badge" data-zh="100% 綠電" data-en="100% Green">100% 綠電</span>
+          <span class="energy-badge" data-zh="碳中和認證" data-en="Carbon Neutral">碳中和認證</span>
+          <span class="energy-badge" data-zh="ISO 14001" data-en="ISO 14001">ISO 14001</span>
+        </div>
+      </div>
+      <img src="photos/solar.png" alt="太陽能充電站" class="slide-right">
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2 data-zh="💰 充電方案" data-en="💰 Charging Plans">💰 充電方案</h2>
+      <p data-zh="彈性選擇，滿足不同充電需求" data-en="Flexible plans to match your charging needs">彈性選擇，滿足不同充電需求</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-label" data-zh="隨充隨付" data-en="PAY-PER-USE">隨充隨付</div>
+        <div class="plan-name" data-zh="單次充電" data-en="Single Charge">單次充電</div>
+        <div class="plan-price" data-zh="$8" data-en="$8">$8<span data-zh="/度" data-en="/kWh">/度</span></div>
+        <ul class="price-features">
+          <li data-zh="無需綁約" data-en="No contract required">無需綁約</li>
+          <li data-zh="即插即充" data-en="Plug and charge">即插即充</li>
+          <li data-zh="信用卡或行動支付" data-en="Credit card or mobile pay">信用卡或行動支付</li>
+          <li data-zh="即時費用通知" data-en="Real-time cost alerts">即時費用通知</li>
+        </ul>
+        <a href="#" class="btn btn-green" data-zh="立即使用" data-en="Start Now">立即使用</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-label" data-zh="最受歡迎" data-en="MOST POPULAR">最受歡迎</div>
+        <div class="plan-name" data-zh="月租方案" data-en="Monthly Plan">月租方案</div>
+        <div class="plan-price">$299<span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul class="price-features">
+          <li data-zh="每月含 50 度免費額度" data-en="50 kWh free monthly allowance">每月含 50 度免費額度</li>
+          <li data-zh="超額每度 $6（省 25%）" data-en="Overage at $6/kWh (save 25%)">超額每度 $6（省 25%）</li>
+          <li data-zh="優先預約充電" data-en="Priority reservation">優先預約充電</li>
+          <li data-zh="充電數據分析報告" data-en="Charging analytics report">充電數據分析報告</li>
+          <li data-zh="24/7 客服支援" data-en="24/7 support">24/7 客服支援</li>
+        </ul>
+        <a href="#" class="btn btn-green" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-label" data-zh="最划算" data-en="BEST VALUE">最划算</div>
+        <div class="plan-name" data-zh="年度方案" data-en="Annual Plan">年度方案</div>
+        <div class="plan-price">$2,990<span data-zh="/年" data-en="/yr">/年</span></div>
+        <ul class="price-features">
+          <li data-zh="每月含 60 度免費額度" data-en="60 kWh free monthly allowance">每月含 60 度免費額度</li>
+          <li data-zh="超額每度 $5（省 37%）" data-en="Overage at $5/kWh (save 37%)">超額每度 $5（省 37%）</li>
+          <li data-zh="VIP 專屬充電區" data-en="VIP dedicated zones">VIP 專屬充電區</li>
+          <li data-zh="免費道路救援一次" data-en="One free roadside assist">免費道路救援一次</li>
+          <li data-zh="年度碳中和證書" data-en="Annual carbon-neutral cert">年度碳中和證書</li>
+        </ul>
+        <a href="#" class="btn btn-green" data-zh="立即加入" data-en="Join Now">立即加入</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND STATION -->
+<section class="find-station" id="find">
+  <h2 class="fade-in" data-zh="尋找最近的充電站" data-en="Find the Nearest Station"><span data-zh="尋找最近的" data-en="Find the Nearest">尋找最近的</span><br data-zh="充電站" data-en="Station">充電站</h2>
+  <p class="fade-in" data-zh="輸入地址或開啟定位，立即找到您附近的 GreenCharge 充電站" data-en="Enter your address or enable location to find the nearest GreenCharge station">輸入地址或開啟定位，立即找到您附近的 GreenCharge 充電站</p>
+  <div class="search-box fade-in">
+    <input type="text" id="searchInput" data-zh-placeholder="輸入地址或地標..." data-en-placeholder="Enter address or landmark..." placeholder="輸入地址或地標...">
+    <button data-zh="搜尋" data-en="Search">搜尋</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:6px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<!-- HEYBOSS CTA -->
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss" title="Contact Us">💬</a>
+
+<!-- BGM -->
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+bgmBtn.addEventListener('click',()=>{
+  if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪';}
+  else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸';}
+  bgmPlaying=!bgmPlaying;
+});
+
+let currentLang='zh';
+const langBtn=document.getElementById('langBtn');
+langBtn.addEventListener('click',()=>{
+  currentLang=currentLang==='zh'?'en':'zh';
+  langBtn.textContent=currentLang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+currentLang);if(t)el.textContent=t;
+  });
+  // Handle placeholder
+  const si=document.getElementById('searchInput');
+  si.placeholder=si.getAttribute('data-'+currentLang+'-placeholder')||si.placeholder;
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.stat-card,.app-feat,.plan-card').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

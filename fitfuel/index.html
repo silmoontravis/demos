@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>健力補給 FitFuel — 運動營養品電商</title>
+<meta name="description" content="健力補給 FitFuel 提供高品質蛋白粉、增肌補劑、BCAA及能量棒，助您突破體能極限。">
+<meta name="keywords" content="健力補給,FitFuel,蛋白粉,運動營養,BCAA,增肌,健身補劑">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"健力補給 FitFuel",
+  "url":"https://silmoontravis.github.io/demos/fitfuel",
+  "logo":"logos/logo_final.png",
+  "description":"運動營養品電商，提供蛋白粉、增肌補劑、BCAA及能量棒。"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#22c55e;--black:#111;--white:#fff;--gray:#888;--dark:#0a0a0a}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;color:var(--white);background:var(--black);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+[lang="en"]{display:none}
+body.en [lang="en"]{display:block}
+body.en [lang="zh"]{display:none}
+
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(34,197,94,.1);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.5)}
+.nav-logo{height:40px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{font-size:14px;color:var(--white);opacity:.7;padding:6px 10px;border-radius:6px;transition:all .2s}
+.nav-links a:hover{opacity:1;color:var(--green)}
+.ctrl-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.ctrl-btn:hover{background:var(--green);color:var(--black)}
+.ctrl-btn.playing{background:var(--green);color:var(--black);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 20px}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 35%,rgba(10,10,10,.4))}
+.hero-content{position:relative;z-index:2;max-width:600px;padding-left:5%}
+.hero-content h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.1;margin-bottom:16px;font-weight:900;text-transform:uppercase;letter-spacing:-1px}
+.hero-content h1 em{font-style:normal;color:var(--green)}
+.hero-content p{color:var(--gray);font-size:clamp(1rem,2.5vw,1.15rem);margin-bottom:32px;line-height:1.7;max-width:480px}
+.btn{display:inline-block;padding:14px 32px;border-radius:4px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;border:none;text-transform:uppercase;letter-spacing:1px}
+.btn-green{background:var(--green);color:var(--black)}
+.btn-green:hover{background:#16a34a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,.3)}
+.btn-outline{border:2px solid var(--green);color:var(--green);background:transparent}
+.btn-outline:hover{background:var(--green);color:var(--black)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:12px;font-weight:800;text-transform:uppercase}
+.section-title h2 em{font-style:normal;color:var(--green)}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7}
+.container{max-width:1100px;margin:0 auto}
+
+/* PRODUCTS */
+.products{background:var(--dark)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:rgba(255,255,255,.04);border:1px solid rgba(34,197,94,.1);border-radius:12px;overflow:hidden;transition:all .3s;position:relative}
+.product-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--green);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.product-card:hover{transform:translateY(-4px);border-color:var(--green)}
+.product-card:hover::after{transform:scaleX(1)}
+.product-card img{width:100%;aspect-ratio:1;object-fit:cover}
+.product-card-body{padding:20px}
+.product-card-body .tag{display:inline-block;background:var(--green);color:var(--black);padding:3px 10px;border-radius:4px;font-size:.75rem;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.product-card-body h3{margin-bottom:6px;font-size:1.1rem}
+.product-card-body .desc{color:var(--gray);font-size:.85rem;margin-bottom:12px;line-height:1.5}
+.product-card-body .price{font-size:1.3rem;font-weight:700;color:var(--green)}
+.product-card-body .price small{font-size:.8rem;color:#666;text-decoration:line-through;margin-left:8px}
+.cart-btn{display:block;width:100%;padding:10px;border:none;border-radius:6px;background:var(--green);color:var(--black);font-size:.95rem;font-weight:700;cursor:pointer;margin-top:12px;transition:background .2s;text-transform:uppercase}
+.cart-btn:hover{background:#16a34a}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.split img{border-radius:12px;width:100%}
+.split-text h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:16px;text-transform:uppercase;font-weight:800}
+.split-text h2 em{font-style:normal;color:var(--green)}
+.split-text p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+
+/* SUBSCRIPTION */
+.subscription{background:var(--dark)}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:32px 24px;text-align:center;transition:all .3s;position:relative}
+.plan-card.featured{border-color:var(--green);background:rgba(34,197,94,.06)}
+.plan-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--black);padding:4px 16px;border-radius:20px;font-size:.75rem;font-weight:700}
+.plan-card h3{font-size:1.3rem;margin-bottom:8px;text-transform:uppercase}
+.plan-card .plan-price{font-size:2.5rem;font-weight:900;color:var(--green);margin:16px 0}
+.plan-card .plan-price small{font-size:1rem;color:var(--gray);font-weight:400}
+.plan-card ul{list-style:none;text-align:left;margin:20px 0}
+.plan-card ul li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);color:var(--gray);font-size:.9rem}
+.plan-card ul li::before{content:'✓ ';color:var(--green);font-weight:700}
+.plan-card .btn{width:100%;margin-top:16px}
+
+/* SHOP CTA */
+.shop-cta{background:linear-gradient(135deg,var(--green),#059669);text-align:center;color:var(--black)}
+.shop-cta h2{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:12px;font-weight:900;text-transform:uppercase}
+.shop-cta p{max-width:500px;margin:0 auto 32px;line-height:1.7;opacity:.8}
+.shop-cta .btn{background:var(--black);color:var(--green);font-size:1.1rem;padding:16px 48px}
+.shop-cta .btn:hover{background:#222}
+
+.footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:32px 20px;font-size:.85rem}
+.footer a{color:var(--green)}
+.footer p{margin-top:8px}
+
+.heyboss{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.4);transition:transform .2s}
+.heyboss:hover{transform:scale(1.1)}
+.heyboss svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.ctrl-btn){display:none}
+  .split{grid-template-columns:1fr}
+  .split img{order:-1}
+  .hero-content{padding-left:0}
+  .plan-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .product-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <img src="logos/logo_final.png" alt="FitFuel Logo" class="nav-logo">
+  <div class="nav-links">
+    <a href="#products" lang="zh">產品</a><a href="#products" lang="en">Products</a>
+    <a href="#training" lang="zh">訓練</a><a href="#training" lang="en">Training</a>
+    <a href="#plans" lang="zh">方案</a><a href="#plans" lang="en">Plans</a>
+    <button class="ctrl-btn" id="bgmBtn" aria-label="Toggle BGM">♫</button>
+    <button class="ctrl-btn" id="langBtn">EN</button>
+  </div>
+</nav>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 lang="zh">突破<em>極限</em><br>補給你的力量</h1>
+    <h1 lang="en">Break Your <em>Limits</em><br>Fuel Your Power</h1>
+    <p lang="zh">專為運動員與健身愛好者打造的頂級營養補給品，科學配方，極致表現。</p>
+    <p lang="en">Premium sports nutrition for athletes and fitness enthusiasts. Science-backed formulas for peak performance.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-green" lang="zh">立即選購</a>
+      <a href="#products" class="btn btn-green" lang="en">Shop Now</a>
+      <a href="#plans" class="btn btn-outline" lang="zh">訂閱方案</a>
+      <a href="#plans" class="btn btn-outline" lang="en">Subscription</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">核心<em>產品線</em></h2><h2 lang="en">Core <em>Products</em></h2>
+      <p lang="zh">嚴選原料，第三方檢驗，每一款都是為了極致表現而生。</p>
+      <p lang="en">Premium ingredients, third-party tested. Every product built for peak performance.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="乳清蛋白">
+        <div class="product-card-body">
+          <span class="tag" lang="zh">蛋白質</span><span class="tag" lang="en">Protein</span>
+          <h3 lang="zh">黃金乳清蛋白 2.2kg</h3><h3 lang="en">Gold Whey Protein 2.2kg</h3>
+          <p class="desc" lang="zh">每份30g蛋白質，低脂低糖，6種口味</p>
+          <p class="desc" lang="en">30g protein per serving, low fat & sugar, 6 flavors</p>
+          <div class="price">NT$1,680 <small>NT$2,280</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="訓練前補給">
+        <div class="product-card-body">
+          <span class="tag" lang="zh">訓練前</span><span class="tag" lang="en">Pre-Workout</span>
+          <h3 lang="zh">爆發力訓練前 300g</h3><h3 lang="en">Explosive Pre-Workout 300g</h3>
+          <p class="desc" lang="zh">咖啡因+瓜氨酸+β-丙氨酸，極限泵感</p>
+          <p class="desc" lang="en">Caffeine + Citrulline + Beta-Alanine, extreme pump</p>
+          <div class="price">NT$980 <small>NT$1,380</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="BCAA">
+        <div class="product-card-body">
+          <span class="tag">BCAA</span>
+          <h3 lang="zh">支鏈胺基酸 BCAA 400g</h3><h3 lang="en">BCAA Amino Acids 400g</h3>
+          <p class="desc" lang="zh">2:1:1黃金比例，加速恢復，減少肌肉流失</p>
+          <p class="desc" lang="en">2:1:1 golden ratio, faster recovery, reduced muscle loss</p>
+          <div class="price">NT$780 <small>NT$1,080</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/product.png" alt="能量棒">
+        <div class="product-card-body">
+          <span class="tag" lang="zh">能量棒</span><span class="tag" lang="en">Bars</span>
+          <h3 lang="zh">高蛋白能量棒 12入</h3><h3 lang="en">Protein Energy Bars 12pk</h3>
+          <p class="desc" lang="zh">每條20g蛋白質，真實堅果，零添加糖</p>
+          <p class="desc" lang="en">20g protein per bar, real nuts, zero added sugar</p>
+          <div class="price">NT$720 <small>NT$960</small></div>
+          <button class="cart-btn" lang="zh">加入購物車</button><button class="cart-btn" lang="en">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training" style="background:var(--black)">
+  <div class="container">
+    <div class="split">
+      <img src="photos/workout.png" alt="訓練" class="reveal">
+      <div class="split-text reveal">
+        <h2 lang="zh">你的<em>訓練燃料</em></h2><h2 lang="en">Your <em>Training Fuel</em></h2>
+        <p lang="zh">無論是重訓、有氧還是高強度間歇，FitFuel 的運動營養系列都能為你提供最佳的能量補給。我們的配方經過運動科學專家設計，幫助你在每一次訓練中突破自我極限。</p>
+        <p lang="en">Whether it's weightlifting, cardio, or HIIT, FitFuel's sports nutrition line provides optimal energy support. Our formulas are designed by sports scientists to help you push beyond your limits in every session.</p>
+        <a href="#products" class="btn btn-green" lang="zh">探索全系列</a>
+        <a href="#products" class="btn btn-green" lang="en">Explore All</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEAL PREP -->
+<section style="background:var(--dark)">
+  <div class="container">
+    <div class="split">
+      <div class="split-text reveal">
+        <h2 lang="zh"><em>備餐</em>計畫</h2><h2 lang="en"><em>Meal Prep</em> Guide</h2>
+        <p lang="zh">搭配我們的營養補給品，制定科學的飲食計畫。從增肌到減脂，我們提供完整的營養指南與食譜，讓你的訓練成果最大化。七日備餐計畫免費下載，開始你的蛻變之旅。</p>
+        <p lang="en">Pair our supplements with a scientific meal plan. From bulking to cutting, we provide complete nutrition guides and recipes to maximize your gains. Download our free 7-day meal prep plan and start your transformation.</p>
+        <a href="#" class="btn btn-outline" lang="zh">免費下載食譜</a>
+        <a href="#" class="btn btn-outline" lang="en">Free Recipe Download</a>
+      </div>
+      <img src="photos/prep.png" alt="備餐" class="reveal">
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIPTION -->
+<section class="subscription" id="plans">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 lang="zh">訂閱<em>方案</em></h2><h2 lang="en">Subscription <em>Plans</em></h2>
+      <p lang="zh">每月自動配送，享受最高25%折扣，隨時可調整或取消。</p>
+      <p lang="en">Monthly auto-delivery with up to 25% off. Adjust or cancel anytime.</p>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-card reveal">
+        <h3 lang="zh">基礎補給</h3><h3 lang="en">Starter</h3>
+        <div class="plan-price">NT$999<small lang="zh">/月</small><small lang="en">/mo</small></div>
+        <ul>
+          <li lang="zh">乳清蛋白 1kg</li><li lang="en">Whey Protein 1kg</li>
+          <li lang="zh">BCAA 200g</li><li lang="en">BCAA 200g</li>
+          <li lang="zh">免運費配送</li><li lang="en">Free shipping</li>
+          <li lang="zh">10% 折扣</li><li lang="en">10% discount</li>
+        </ul>
+        <button class="btn btn-outline" lang="zh">選擇方案</button>
+        <button class="btn btn-outline" lang="en">Choose Plan</button>
+      </div>
+      <div class="plan-card featured reveal">
+        <h3 lang="zh">進階戰士</h3><h3 lang="en">Warrior</h3>
+        <div class="plan-price">NT$1,799<small lang="zh">/月</small><small lang="en">/mo</small></div>
+        <ul>
+          <li lang="zh">乳清蛋白 2.2kg</li><li lang="en">Whey Protein 2.2kg</li>
+          <li lang="zh">訓練前補給 300g</li><li lang="en">Pre-Workout 300g</li>
+          <li lang="zh">BCAA 400g</li><li lang="en">BCAA 400g</li>
+          <li lang="zh">免運費 + 20% 折扣</li><li lang="en">Free shipping + 20% off</li>
+          <li lang="zh">專屬營養師諮詢</li><li lang="en">Nutrition consultation</li>
+        </ul>
+        <button class="btn btn-green" lang="zh">選擇方案</button>
+        <button class="btn btn-green" lang="en">Choose Plan</button>
+      </div>
+      <div class="plan-card reveal">
+        <h3 lang="zh">極限菁英</h3><h3 lang="en">Elite</h3>
+        <div class="plan-price">NT$2,999<small lang="zh">/月</small><small lang="en">/mo</small></div>
+        <ul>
+          <li lang="zh">全系列產品任選</li><li lang="en">All products included</li>
+          <li lang="zh">能量棒 12入</li><li lang="en">Protein Bars 12pk</li>
+          <li lang="zh">25% 折扣</li><li lang="en">25% discount</li>
+          <li lang="zh">VIP 優先出貨</li><li lang="en">VIP priority shipping</li>
+          <li lang="zh">1對1 訓練計畫</li><li lang="en">1-on-1 training plan</li>
+        </ul>
+        <button class="btn btn-outline" lang="zh">選擇方案</button>
+        <button class="btn btn-outline" lang="en">Choose Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP CTA -->
+<section class="shop-cta">
+  <div class="container reveal">
+    <h2 lang="zh">開始你的蛻變</h2><h2 lang="en">Start Your Transformation</h2>
+    <p lang="zh">現在下單享全站免運，首購再享9折優惠。用科學的力量，打造最強的自己。</p>
+    <p lang="en">Order now for free shipping sitewide. 10% off your first order. Fuel your body with science.</p>
+    <a href="#products" class="btn" lang="zh">立即選購</a>
+    <a href="#products" class="btn" lang="en">Shop Now</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss" aria-label="Contact HeyBoss">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<script>
+const bgm=document.getElementById('bgm'),bgmBtn=document.getElementById('bgmBtn');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgm.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}
+  else{bgm.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}
+  playing=!playing;
+});
+const langBtn=document.getElementById('langBtn');
+let isEn=false;
+langBtn.addEventListener('click',()=>{
+  isEn=!isEn;document.body.classList.toggle('en',isEn);
+  langBtn.textContent=isEn?'中':'EN';
+  document.documentElement.lang=isEn?'en':'zh-Hant';
+});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>
