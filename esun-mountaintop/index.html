@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eSun Science & Mountain Top Int'l — Technology + Resource Integration</title>
+    <meta name="description" content="eSun Science Co., Ltd and Mountain Top International Ltd — Precision Technology, Global Resources, Trusted Partnership. Laser module technology and energy commodity trading solutions for international business partners.">
+    <meta name="keywords" content="laser module, photonics, energy trading, commodity trading, international logistics, precision optics, eSun Science, Mountain Top International">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    [{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "eSun Science Co., Ltd",
+        "alternateName": "貫博科技有限公司",
+        "description": "Laser module R&D, precision optics, and photonics solutions provider.",
+        "url": "",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+886-2-2700-0000",
+            "contactType": "sales",
+            "availableLanguage": ["English", "Chinese"]
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Mountain Top International Ltd",
+        "alternateName": "墾樂股份有限公司",
+        "description": "Energy trading, bulk commodities, and international logistics solutions.",
+        "url": "",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+886-2-2700-0001",
+            "contactType": "sales",
+            "availableLanguage": ["English", "Chinese"]
+        }
+    }]
+    </script>
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0f172a;
+            --navy-light: #1e293b;
+            --navy-mid: #334155;
+            --blue: #2563eb;
+            --blue-light: #3b82f6;
+            --blue-dark: #1d4ed8;
+            --amber: #d97706;
+            --amber-light: #f59e0b;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-tc: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            --letter-wide: 0.08em;
+            --letter-wider: 0.14em;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-en);
+            color: var(--navy);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        [data-lang="tc"] .en { display: none !important; }
+        [data-lang="en"] .tc { display: none !important; }
+
+        /* ===== TYPOGRAPHY ===== */
+        .section-label {
+            font-family: var(--font-en);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wider);
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 2rem;
+            height: 2px;
+            background: var(--blue);
+        }
+
+        h2 {
+            font-family: var(--font-en);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--navy);
+            margin-bottom: 1.25rem;
+        }
+        h2 .tc-title {
+            font-family: var(--font-tc);
+            font-weight: 700;
+        }
+
+        h3 {
+            font-family: var(--font-en);
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--navy);
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .nav.scrolled {
+            background: rgba(15, 23, 42, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.6rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+        .nav-logo-text {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+        .nav-logo-text small {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: var(--letter-wide);
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--amber);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .lang-toggle {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+            padding: 0.4rem 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wide);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-family: var(--font-en);
+        }
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.35);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .nav-mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('photos/hero.png') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.75) 50%, rgba(30,41,59,0.85) 100%);
+        }
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            padding-top: 6rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: var(--blue-light);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wider);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .hero h1 {
+            font-family: var(--font-en);
+            font-size: clamp(2.75rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--white);
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        .hero h1 .tc-title {
+            font-family: var(--font-tc);
+            font-weight: 900;
+        }
+        .hero h1 .accent { color: var(--amber); }
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-en);
+        }
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(37,99,235,0.4);
+        }
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.5);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-stat {
+            text-align: left;
+        }
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+        .hero-stat-value .unit {
+            font-size: 1.5rem;
+            color: var(--amber);
+        }
+        .hero-stat-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wider);
+            margin-top: 0.35rem;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 7rem 0;
+            background: var(--white);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3.5rem;
+        }
+        .about-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-card:hover {
+            box-shadow: var(--shadow-xl);
+            border-color: var(--blue);
+            transform: translateY(-4px);
+        }
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .about-card:nth-child(1)::before { background: var(--blue); }
+        .about-card:nth-child(2)::before { background: var(--amber); }
+        .about-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .about-card:nth-child(1) .about-card-icon { background: rgba(37,99,235,0.1); }
+        .about-card:nth-child(2) .about-card-icon { background: rgba(217,119,6,0.1); }
+        .about-card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+        .about-card h3 { margin-bottom: 0.5rem; }
+        .about-card .company-name-cn {
+            font-family: var(--font-tc);
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+        .about-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .about-card ul {
+            list-style: none;
+            margin-top: 1.25rem;
+        }
+        .about-card li {
+            padding: 0.4rem 0;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .about-card li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .about-card:nth-child(1) li::before { background: var(--blue); }
+        .about-card:nth-child(2) li::before { background: var(--amber); }
+
+        .about-integration {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--navy);
+            border-radius: 12px;
+            color: var(--white);
+            text-align: center;
+        }
+        .about-integration h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .about-integration p {
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .stat-number .amber { color: var(--amber); }
+        .stat-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wider);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== TECHNOLOGY ===== */
+        .technology {
+            padding: 7rem 0;
+            background: var(--gray-50);
+        }
+        .tech-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        .tech-image {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+        }
+        .tech-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tech-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(15,23,42,0.9));
+        }
+        .tech-image-tag {
+            display: inline-block;
+            background: var(--blue);
+            color: var(--white);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+        }
+
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue);
+            transform: translateY(-4px);
+        }
+        .product-card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(37,99,235,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+        }
+        .product-card-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .product-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        .product-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .tech-specs {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--navy);
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .tech-spec {
+            text-align: center;
+            padding: 1rem;
+        }
+        .tech-spec-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wider);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.4rem;
+        }
+        .tech-spec-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .tech-spec-value .highlight { color: var(--amber); }
+
+        /* ===== TRADING ===== */
+        .trading {
+            padding: 7rem 0;
+            background: var(--white);
+        }
+        .trading-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        .trading-image {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            order: 2;
+        }
+        .trading-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .commodity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+        .commodity-tag {
+            background: rgba(217,119,6,0.08);
+            color: var(--amber);
+            padding: 0.35rem 0.85rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--amber);
+            transform: translateY(-4px);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--amber);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-card-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gray-200);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .service-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects {
+            padding: 7rem 0;
+            background: var(--navy);
+            color: var(--white);
+        }
+        .projects .section-label { color: var(--amber); }
+        .projects .section-label::before { background: var(--amber); }
+        .projects h2 { color: var(--white); }
+        .projects .subtitle { color: rgba(255,255,255,0.6); }
+
+        .projects-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .project-img-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .project-img-wrapper:hover img { transform: scale(1.05); }
+
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .case-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+        .case-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+        }
+        .case-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .case-card:nth-child(1) .case-card-icon { background: rgba(37,99,235,0.2); }
+        .case-card:nth-child(2) .case-card-icon { background: rgba(217,119,6,0.2); }
+        .case-card:nth-child(3) .case-card-icon { background: rgba(37,99,235,0.2); }
+        .case-card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .case-card h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .case-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .case-card-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+        }
+        .case-card:nth-child(1) .case-card-tag { background: rgba(37,99,235,0.2); color: var(--blue-light); }
+        .case-card:nth-child(2) .case-card-tag { background: rgba(217,119,6,0.2); color: var(--amber-light); }
+        .case-card:nth-child(3) .case-card-tag { background: rgba(37,99,235,0.2); color: var(--blue-light); }
+
+        .collab-process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .collab-step {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+        }
+        .collab-step::after {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            right: -0.75rem;
+            width: 1.5rem;
+            height: 2px;
+            background: rgba(255,255,255,0.15);
+        }
+        .collab-step:last-child::after { display: none; }
+        .collab-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--blue-light);
+            margin: 0 auto 1rem;
+        }
+        .collab-step h4 {
+            color: var(--white);
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+        .collab-step p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .partnership-banner {
+            margin-top: 4rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            border-radius: 12px;
+            text-align: center;
+        }
+        .partnership-banner h3 {
+            color: var(--white);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .partnership-banner p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+        .partnership-banner .btn-outline {
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 7rem 0;
+            background: var(--gray-50);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3.5rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: var(--font-en);
+            color: var(--navy);
+            background: var(--white);
+            transition: var(--transition);
+            outline: none;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-submit {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .contact-info-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .contact-info-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-info-card h4 svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .contact-detail svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--gray-400);
+            fill: none;
+            stroke-width: 1.5;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .contact-detail strong {
+            color: var(--navy);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 360px;
+        }
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wider);
+            margin-bottom: 1rem;
+        }
+        .footer-col p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            font-size: 0.75rem;
+        }
+        .footer-bottom a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+        }
+
+        /* ===== HEYBOSS CTA ===== */
+        .heyboss-cta {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            z-index: 999;
+            background: var(--blue);
+            color: var(--white);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,99,235,0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        .heyboss-cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37,99,235,0.6);
+        }
+        .heyboss-cta svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ===== MOBILE NAV ===== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+        }
+        .mobile-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .product-cards, .service-cards { grid-template-columns: repeat(2, 1fr); }
+            .case-studies { grid-template-columns: repeat(2, 1fr); }
+            .case-studies > :last-child { grid-column: 1 / -1; }
+            .tech-specs { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .tech-header { grid-template-columns: 1fr; }
+            .tech-image { order: -1; }
+            .trading-header { grid-template-columns: 1fr; }
+            .trading-image { order: -1 !important; }
+            .product-cards, .service-cards { grid-template-columns: 1fr; }
+            .case-studies { grid-template-columns: 1fr; }
+            .case-studies > :last-child { grid-column: auto; }
+            .collab-process { grid-template-columns: repeat(2, 1fr); }
+            .collab-step::after { display: none; }
+            .projects-images { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+            .tech-specs { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body data-lang="en">
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">
+                <img src="logos/logo_final.png" alt="eSun & Mountain Top Logo">
+                <span class="nav-logo-text">
+                    <span class="en">eSun & Mountain Top</span>
+                    <span class="tc">貫博 & 墾樂</span>
+                    <small class="en">Technology + Resource Integration</small>
+                    <small class="tc">科技 + 資源整合</small>
+                </span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about"><span class="en">About</span><span class="tc">關於我們</span></a></li>
+                <li><a href="#technology"><span class="en">Technology</span><span class="tc">科技</span></a></li>
+                <li><a href="#trading"><span class="en">Trading</span><span class="tc">貿易</span></a></li>
+                <li><a href="#projects"><span class="en">Projects</span><span class="tc">專案</span></a></li>
+                <li><a href="#contact"><span class="en">Contact</span><span class="tc">聯絡</span></a></li>
+                <li><button class="lang-toggle" onclick="toggleLang()"><span class="en">中文</span><span class="tc">EN</span></button></li>
+            </ul>
+            <button class="nav-mobile-toggle" onclick="openMobileMenu()" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" onclick="closeMobileMenu()">&times;</button>
+        <a href="#about" onclick="closeMobileMenu()"><span class="en">About</span><span class="tc">關於我們</span></a>
+        <a href="#technology" onclick="closeMobileMenu()"><span class="en">Technology</span><span class="tc">科技</span></a>
+        <a href="#trading" onclick="closeMobileMenu()"><span class="en">Trading</span><span class="tc">貿易</span></a>
+        <a href="#projects" onclick="closeMobileMenu()"><span class="en">Projects</span><span class="tc">專案</span></a>
+        <a href="#contact" onclick="closeMobileMenu()"><span class="en">Contact</span><span class="tc">聯絡</span></a>
+        <button class="lang-toggle" onclick="toggleLang()" style="margin-top:1rem;"><span class="en">中文</span><span class="tc">EN</span></button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="en">Technology + Resource Integration Portal</span>
+                <span class="tc">科技 + 資源整合國際商務平台</span>
+            </div>
+            <h1>
+                <span class="en">Precision <span class="accent">Technology.</span><br>Global Resources.<br>Trusted Partnership.</span>
+                <span class="tc"><span class="tc-title">精密<span class="accent">科技。</span><br>全球資源。<br>值得信賴的夥伴關係。</span></span>
+            </h1>
+            <p class="hero-tagline">
+                <span class="en">Two industry leaders — one integrated platform. eSun Science delivers cutting-edge laser module technology while Mountain Top International connects global energy and commodity markets.</span>
+                <span class="tc">兩家產業領導者——一個整合平台。貫博科技提供尖端雷射模組技術，墾樂國際連接全球能源與大宗商品市場。</span>
+            </p>
+            <div class="hero-ctas">
+                <a href="#technology" class="btn btn-primary">
+                    <span class="en">Explore Solutions</span>
+                    <span class="tc">探索解決方案</span>
+                    <svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span class="en">Contact Us</span>
+                    <span class="tc">聯絡我們</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">15<span class="unit">+</span></div>
+                    <div class="hero-stat-label">
+                        <span class="en">Years Experience</span>
+                        <span class="tc">年經驗</span>
+                    </div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">30<span class="unit">+</span></div>
+                    <div class="hero-stat-label">
+                        <span class="en">Countries Served</span>
+                        <span class="tc">服務國家</span>
+                    </div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">200<span class="unit">+</span></div>
+                    <div class="hero-stat-label">
+                        <span class="en">Global Partners</span>
+                        <span class="tc">全球合作夥伴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">
+                    <span class="en">About the Group</span>
+                    <span class="tc">關於集團</span>
+                </div>
+                <h2>
+                    <span class="en">Two Companies,<br>One Vision</span>
+                    <span class="tc"><span class="tc-title">兩家公司，<br>一個願景</span></span>
+                </h2>
+                <p class="subtitle">
+                    <span class="en">Bridging advanced photonics technology with global resource networks to deliver integrated solutions for international partners.</span>
+                    <span class="tc">將先進光子技術與全球資源網路串聯，為國際合作夥伴提供整合解決方案。</span>
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card reveal reveal-delay-1">
+                    <div class="about-card-icon">
+                        <svg viewBox="0 0 28 28" fill="none" stroke="#2563eb" stroke-width="1.5">
+                            <circle cx="14" cy="14" r="4"/>
+                            <path d="M14 2v4M14 22v4M2 14h4M22 14h4M5.5 5.5l2.8 2.8M19.7 19.7l2.8 2.8M5.5 22.5l2.8-2.8M19.7 8.3l2.8-2.8"/>
+                        </svg>
+                    </div>
+                    <h3>
+                        <span class="en">eSun Science Co., Ltd</span>
+                        <span class="tc">貫博科技有限公司</span>
+                    </h3>
+                    <div class="company-name-cn">
+                        <span class="en">貫博科技有限公司</span>
+                        <span class="tc">eSun Science Co., Ltd</span>
+                    </div>
+                    <p>
+                        <span class="en">Specializing in laser module research & development, precision optics engineering, and advanced photonics solutions for industrial and scientific applications worldwide.</span>
+                        <span class="tc">專精於雷射模組研發、精密光學工程，以及為全球工業與科學應用提供先進光子解決方案。</span>
+                    </p>
+                    <ul>
+                        <li><span class="en">Laser Module R&D & Manufacturing</span><span class="tc">雷射模組研發與製造</span></li>
+                        <li><span class="en">Precision Optics Engineering</span><span class="tc">精密光學工程</span></li>
+                        <li><span class="en">Photonics System Integration</span><span class="tc">光子系統整合</span></li>
+                        <li><span class="en">OEM/ODM Custom Solutions</span><span class="tc">OEM/ODM 客製化方案</span></li>
+                    </ul>
+                </div>
+
+                <div class="about-card reveal reveal-delay-2">
+                    <div class="about-card-icon">
+                        <svg viewBox="0 0 28 28" fill="none" stroke="#d97706" stroke-width="1.5">
+                            <path d="M14 2L4 8v12l10 6 10-6V8L14 2z"/>
+                            <path d="M14 14L4 8M14 14v12M14 14l10-6"/>
+                        </svg>
+                    </div>
+                    <h3>
+                        <span class="en">Mountain Top Int'l Ltd</span>
+                        <span class="tc">墾樂股份有限公司</span>
+                    </h3>
+                    <div class="company-name-cn">
+                        <span class="en">墾樂股份有限公司</span>
+                        <span class="tc">Mountain Top International Ltd</span>
+                    </div>
+                    <p>
+                        <span class="en">A global energy and commodity trading firm providing end-to-end solutions in international sourcing, logistics management, and strategic resource distribution across emerging and developed markets.</span>
+                        <span class="tc">全球能源與大宗商品貿易公司，提供國際採購、物流管理及策略資源配送的端到端解決方案，涵蓋新興與成熟市場。</span>
+                    </p>
+                    <ul>
+                        <li><span class="en">Energy Trading (Oil, Gas, Renewables)</span><span class="tc">能源貿易（石油、天然氣、再生能源）</span></li>
+                        <li><span class="en">Bulk Commodity Sourcing</span><span class="tc">大宗商品採購</span></li>
+                        <li><span class="en">International Logistics & Distribution</span><span class="tc">國際物流與配送</span></li>
+                        <li><span class="en">Risk Management & Compliance</span><span class="tc">風險管理與合規</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-integration reveal">
+                <h3>
+                    <span class="en">Integrated Technology + Resource Solutions</span>
+                    <span class="tc">整合科技 + 資源解決方案</span>
+                </h3>
+                <p>
+                    <span class="en">Together, eSun Science and Mountain Top International offer a unique synergy — combining precision technology capabilities with deep expertise in global resource management. Our integrated platform enables partners to access cutting-edge laser solutions alongside reliable energy and commodity supply chains, creating unmatched value for international businesses.</span>
+                    <span class="tc">貫博科技與墾樂國際共同提供獨特的協同效應——結合精密技術能力與深厚的全球資源管理專業知識。我們的整合平台使合作夥伴能夠獲得尖端雷射解決方案以及可靠的能源和商品供應鏈，為國際企業創造無與倫比的價值。</span>
+                </p>
+            </div>
+
+            <div class="stats-row reveal">
+                <div class="stat-card">
+                    <div class="stat-number">15<span class="amber">+</span></div>
+                    <div class="stat-text">
+                        <span class="en">Years of Industry Experience</span>
+                        <span class="tc">年產業經驗</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30<span class="amber">+</span></div>
+                    <div class="stat-text">
+                        <span class="en">Countries & Territories</span>
+                        <span class="tc">國家與地區</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200<span class="amber">+</span></div>
+                    <div class="stat-text">
+                        <span class="en">Global Business Partners</span>
+                        <span class="tc">全球商業夥伴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY & PRODUCTS -->
+    <section class="technology" id="technology">
+        <div class="container">
+            <div class="tech-header">
+                <div class="reveal">
+                    <div class="section-label">
+                        <span class="en">eSun Science</span>
+                        <span class="tc">貫博科技</span>
+                    </div>
+                    <h2>
+                        <span class="en">Laser Module<br>Technology</span>
+                        <span class="tc"><span class="tc-title">雷射模組<br>技術</span></span>
+                    </h2>
+                    <p class="subtitle">
+                        <span class="en">Precision-engineered laser modules designed for demanding industrial, medical, sensing, and telecommunications applications. From concept to production — we deliver photonics excellence.</span>
+                        <span class="tc">精密工程雷射模組，專為嚴苛的工業、醫療、感測和電信應用而設計。從概念到生產——我們提供卓越的光子技術。</span>
+                    </p>
+                </div>
+                <div class="tech-image reveal reveal-delay-1">
+                    <img src="photos/laser.png" alt="Laser Module Technology">
+                    <div class="tech-image-overlay">
+                        <span class="tech-image-tag">
+                            <span class="en">Photonics Innovation</span>
+                            <span class="tc">光子創新</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-cards">
+                <div class="product-card reveal reveal-delay-1">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 30 30"><path d="M5 15h20M15 5v20"/><circle cx="15" cy="15" r="3"/><path d="M8 8l2 2M20 8l-2 2M8 22l2-2M20 22l-2-2"/></svg>
+                    </div>
+                    <h4><span class="en">Industrial Cutting</span><span class="tc">工業切割</span></h4>
+                    <p><span class="en">High-power laser modules for precision metal cutting, engraving, and material processing applications.</span><span class="tc">高功率雷射模組，用於精密金屬切割、雕刻和材料加工應用。</span></p>
+                </div>
+                <div class="product-card reveal reveal-delay-2">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 30 30"><path d="M15 3v6M15 21v6M3 15h6M21 15h6"/><circle cx="15" cy="15" r="8"/><circle cx="15" cy="15" r="3"/></svg>
+                    </div>
+                    <h4><span class="en">Medical & Biotech</span><span class="tc">醫療與生技</span></h4>
+                    <p><span class="en">FDA-compliant laser systems for surgical, diagnostic, and therapeutic medical device applications.</span><span class="tc">符合 FDA 規範的雷射系統，用於外科手術、診斷和治療醫療器材應用。</span></p>
+                </div>
+                <div class="product-card reveal reveal-delay-3">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 30 30"><path d="M5 25L15 5l10 20H5z"/><circle cx="15" cy="17" r="3"/><path d="M15 10v4"/></svg>
+                    </div>
+                    <h4><span class="en">Sensing & LiDAR</span><span class="tc">感測與光達</span></h4>
+                    <p><span class="en">Advanced sensing modules for autonomous vehicles, environmental monitoring, and industrial measurement.</span><span class="tc">先進感測模組，用於自動駕駛、環境監測和工業測量。</span></p>
+                </div>
+                <div class="product-card reveal reveal-delay-4">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 30 30"><path d="M3 15c0-6.6 5.4-12 12-12s12 5.4 12 12-5.4 12-12 12"/><path d="M3 15h24M15 3c-3.3 3.3-5 7-5 12s1.7 8.7 5 12c3.3-3.3 5-7 5-12s-1.7-8.7-5-12"/></svg>
+                    </div>
+                    <h4><span class="en">Communications</span><span class="tc">通訊</span></h4>
+                    <p><span class="en">Fiber-optic laser transmitters and receivers for high-speed data communication and telecom infrastructure.</span><span class="tc">光纖雷射發射器與接收器，用於高速數據通訊和電信基礎設施。</span></p>
+                </div>
+            </div>
+
+            <div class="tech-specs reveal">
+                <div class="tech-spec">
+                    <div class="tech-spec-label">
+                        <span class="en">Wavelength Range</span>
+                        <span class="tc">波長範圍</span>
+                    </div>
+                    <div class="tech-spec-value">405<span class="highlight">-</span>1550<span class="highlight">nm</span></div>
+                </div>
+                <div class="tech-spec">
+                    <div class="tech-spec-label">
+                        <span class="en">Power Output</span>
+                        <span class="tc">輸出功率</span>
+                    </div>
+                    <div class="tech-spec-value">Up to <span class="highlight">500W</span></div>
+                </div>
+                <div class="tech-spec">
+                    <div class="tech-spec-label">
+                        <span class="en">Beam Quality</span>
+                        <span class="tc">光束品質</span>
+                    </div>
+                    <div class="tech-spec-value">M<sup>2</sup> <span class="highlight">&lt;1.2</span></div>
+                </div>
+                <div class="tech-spec">
+                    <div class="tech-spec-label">
+                        <span class="en">Operating Temp</span>
+                        <span class="tc">工作溫度</span>
+                    </div>
+                    <div class="tech-spec-value"><span class="highlight">-40</span> to <span class="highlight">85</span>&deg;C</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRADING & SERVICES -->
+    <section class="trading" id="trading">
+        <div class="container">
+            <div class="trading-header">
+                <div class="reveal">
+                    <div class="section-label">
+                        <span class="en">Mountain Top International</span>
+                        <span class="tc">墾樂國際</span>
+                    </div>
+                    <h2>
+                        <span class="en">Energy & Commodity<br>Trading</span>
+                        <span class="tc"><span class="tc-title">能源與大宗<br>商品貿易</span></span>
+                    </h2>
+                    <p class="subtitle">
+                        <span class="en">Connecting suppliers and buyers across global energy and commodity markets with reliable sourcing, strategic logistics, and comprehensive risk management solutions.</span>
+                        <span class="tc">透過可靠的採購、策略物流和全面的風險管理解決方案，連接全球能源和大宗商品市場的供應商與買家。</span>
+                    </p>
+                    <div class="commodity-tags">
+                        <span class="commodity-tag"><span class="en">Crude Oil</span><span class="tc">原油</span></span>
+                        <span class="commodity-tag"><span class="en">Natural Gas</span><span class="tc">天然氣</span></span>
+                        <span class="commodity-tag"><span class="en">Renewables</span><span class="tc">再生能源</span></span>
+                        <span class="commodity-tag"><span class="en">Metals</span><span class="tc">金屬</span></span>
+                        <span class="commodity-tag"><span class="en">Agriculture</span><span class="tc">農產品</span></span>
+                        <span class="commodity-tag"><span class="en">Petrochemical</span><span class="tc">石化</span></span>
+                    </div>
+                </div>
+                <div class="trading-image reveal reveal-delay-1">
+                    <img src="photos/energy.png" alt="Energy Trading">
+                </div>
+            </div>
+
+            <div class="service-cards">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-card-number">01</div>
+                    <h4><span class="en">Strategic Sourcing</span><span class="tc">策略採購</span></h4>
+                    <p><span class="en">Direct access to verified suppliers across Asia, Middle East, and Africa. Competitive pricing through long-term relationships and volume aggregation.</span><span class="tc">直接接觸亞洲、中東和非洲的認證供應商。透過長期關係和批量整合提供具競爭力的定價。</span></p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-card-number">02</div>
+                    <h4><span class="en">Logistics & Shipping</span><span class="tc">物流與運輸</span></h4>
+                    <p><span class="en">End-to-end logistics coordination including chartering, freight forwarding, customs clearance, and last-mile delivery management.</span><span class="tc">端到端物流協調，包括包船、貨運代理、清關和最後一哩配送管理。</span></p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-card-number">03</div>
+                    <h4><span class="en">Risk Management</span><span class="tc">風險管理</span></h4>
+                    <p><span class="en">Hedging strategies, price risk mitigation, and market intelligence to protect margins and ensure supply chain stability.</span><span class="tc">對沖策略、價格風險緩解和市場情報，保護利潤率並確保供應鏈穩定。</span></p>
+                </div>
+                <div class="service-card reveal reveal-delay-4">
+                    <div class="service-card-number">04</div>
+                    <h4><span class="en">Compliance & Legal</span><span class="tc">合規與法務</span></h4>
+                    <p><span class="en">Full regulatory compliance support including sanctions screening, trade documentation, and international trade law advisory.</span><span class="tc">完整的法規合規支援，包括制裁審查、貿易文件和國際貿易法諮詢。</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS & PARTNERSHIPS -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">
+                    <span class="en">Projects & Partnerships</span>
+                    <span class="tc">專案與合作</span>
+                </div>
+                <h2>
+                    <span class="en">Proven Track Record,<br>Global Impact</span>
+                    <span class="tc"><span class="tc-title">實績證明，<br>全球影響力</span></span>
+                </h2>
+                <p class="subtitle">
+                    <span class="en">Selected engagements showcasing our integrated technology and resource capabilities across diverse industries and geographies.</span>
+                    <span class="tc">精選案例展示我們在不同產業和地區的整合技術與資源能力。</span>
+                </p>
+            </div>
+
+            <div class="projects-images reveal">
+                <div class="project-img-wrapper">
+                    <img src="photos/projects.png" alt="Projects">
+                </div>
+                <div class="project-img-wrapper">
+                    <img src="photos/team.png" alt="Our Team">
+                </div>
+            </div>
+
+            <div class="case-studies">
+                <div class="case-card reveal reveal-delay-1">
+                    <div class="case-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h4><span class="en">Southeast Asia Industrial Park</span><span class="tc">東南亞工業園區</span></h4>
+                    <p><span class="en">Delivered integrated laser cutting systems and energy supply agreements for a 50-hectare manufacturing complex in Vietnam, serving 12 tenant companies.</span><span class="tc">為越南50公頃製造園區提供整合雷射切割系統和能源供應協議，服務12家進駐企業。</span></p>
+                    <span class="case-card-tag"><span class="en">Technology + Energy</span><span class="tc">科技 + 能源</span></span>
+                </div>
+                <div class="case-card reveal reveal-delay-2">
+                    <div class="case-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <h4><span class="en">Middle East Energy Corridor</span><span class="tc">中東能源走廊</span></h4>
+                    <p><span class="en">Structured a multi-year LNG supply agreement with a major Gulf state utility, including shipping logistics and quality assurance protocols for 2M tonnes annually.</span><span class="tc">與一家主要海灣國家公用事業公司建立多年期 LNG 供應協議，包含年200萬噸的運輸物流和品質保證流程。</span></p>
+                    <span class="case-card-tag"><span class="en">Commodity Trading</span><span class="tc">大宗商品貿易</span></span>
+                </div>
+                <div class="case-card reveal reveal-delay-3">
+                    <div class="case-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h4><span class="en">Medical Photonics Partnership</span><span class="tc">醫療光子合作</span></h4>
+                    <p><span class="en">Co-developed a precision surgical laser platform with a European medtech firm, now deployed in 45+ hospitals across 8 countries with CE and FDA clearance.</span><span class="tc">與歐洲醫療科技公司共同開發精密手術雷射平台，目前已在8個國家45+家醫院部署，獲得 CE 和 FDA 認證。</span></p>
+                    <span class="case-card-tag"><span class="en">Technology Partnership</span><span class="tc">技術合作</span></span>
+                </div>
+            </div>
+
+            <div class="reveal">
+                <h3 style="color:var(--white); text-align:center; margin-bottom:0.5rem;">
+                    <span class="en">Our Collaboration Process</span>
+                    <span class="tc">我們的合作流程</span>
+                </h3>
+                <p style="color:rgba(255,255,255,0.5); text-align:center; font-size:0.9rem; margin-bottom:1rem;">
+                    <span class="en">A structured approach to building lasting partnerships</span>
+                    <span class="tc">建立持久合作關係的結構化方法</span>
+                </p>
+            </div>
+
+            <div class="collab-process reveal">
+                <div class="collab-step">
+                    <div class="collab-number">1</div>
+                    <h4><span class="en">Discovery</span><span class="tc">探索</span></h4>
+                    <p><span class="en">Understanding your needs, market context, and strategic goals</span><span class="tc">了解您的需求、市場背景和策略目標</span></p>
+                </div>
+                <div class="collab-step">
+                    <div class="collab-number">2</div>
+                    <h4><span class="en">Solution Design</span><span class="tc">方案設計</span></h4>
+                    <p><span class="en">Crafting integrated technology + resource proposals tailored to your requirements</span><span class="tc">量身打造整合科技 + 資源提案</span></p>
+                </div>
+                <div class="collab-step">
+                    <div class="collab-number">3</div>
+                    <h4><span class="en">Execution</span><span class="tc">執行</span></h4>
+                    <p><span class="en">Deploying solutions with dedicated project management and quality assurance</span><span class="tc">透過專案管理和品質保證部署解決方案</span></p>
+                </div>
+                <div class="collab-step">
+                    <div class="collab-number">4</div>
+                    <h4><span class="en">Partnership</span><span class="tc">夥伴關係</span></h4>
+                    <p><span class="en">Ongoing support, optimization, and expansion of the collaboration</span><span class="tc">持續支援、優化和擴展合作</span></p>
+                </div>
+            </div>
+
+            <div class="partnership-banner reveal">
+                <h3>
+                    <span class="en">Ready to Build Together?</span>
+                    <span class="tc">準備好一起合作了嗎？</span>
+                </h3>
+                <p>
+                    <span class="en">Join our network of 200+ international partners across 30+ countries.</span>
+                    <span class="tc">加入我們遍布30+國家的200+國際合作夥伴網路。</span>
+                </p>
+                <a href="#contact" class="btn btn-outline">
+                    <span class="en">Start a Conversation</span>
+                    <span class="tc">開始對話</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">
+                    <span class="en">Get in Touch</span>
+                    <span class="tc">聯絡我們</span>
+                </div>
+                <h2>
+                    <span class="en">Business Inquiry</span>
+                    <span class="tc"><span class="tc-title">商務洽詢</span></span>
+                </h2>
+                <p class="subtitle">
+                    <span class="en">Whether you need laser technology solutions, commodity sourcing, or integrated services — our team is ready to discuss your requirements.</span>
+                    <span class="tc">無論您需要雷射技術解決方案、大宗商品採購或整合服務——我們的團隊隨時準備討論您的需求。</span>
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault(); alert('Thank you for your inquiry. Our team will respond within 24 hours.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="en">Company Name *</span>
+                                <span class="tc">公司名稱 *</span>
+                            </label>
+                            <input type="text" class="form-input" required placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="en">Contact Person *</span>
+                                <span class="tc">聯絡人 *</span>
+                            </label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="en">Email Address *</span>
+                                <span class="tc">電子郵件 *</span>
+                            </label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="en">Phone Number</span>
+                                <span class="tc">電話號碼</span>
+                            </label>
+                            <input type="tel" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="en">Inquiry Type *</span>
+                            <span class="tc">洽詢類型 *</span>
+                        </label>
+                        <select class="form-select" required>
+                            <option value="" disabled selected>
+                                Select inquiry type...
+                            </option>
+                            <option value="technology">Technology Solutions / 技術解決方案</option>
+                            <option value="trading">Trading & Commodities / 貿易與大宗商品</option>
+                            <option value="partnership">Partnership Opportunity / 合作機會</option>
+                            <option value="other">Other / 其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="en">Message *</span>
+                            <span class="tc">訊息 *</span>
+                        </label>
+                        <textarea class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <span class="en">Submit Inquiry</span>
+                        <span class="tc">提交洽詢</span>
+                        <svg viewBox="0 0 16 16"><path d="M2 14L14 2M14 2H4M14 2v10" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    </button>
+                </form>
+
+                <div class="contact-info reveal reveal-delay-2">
+                    <div class="contact-info-card">
+                        <h4>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5.5 5.5l2.8 2.8M15.7 15.7l2.8 2.8M5.5 18.5l2.8-2.8M15.7 8.3l2.8-2.8"/></svg>
+                            <span class="en">eSun Science Co., Ltd</span>
+                            <span class="tc">貫博科技有限公司</span>
+                        </h4>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <div>
+                                <strong><span class="en">Office Address</span><span class="tc">辦公室地址</span></strong>
+                                <span class="en">Taipei, Taiwan (R.O.C.)</span>
+                                <span class="tc">台灣台北市</span>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <div>
+                                <strong>Email</strong>
+                                info@esunscience.com
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                            <div>
+                                <strong><span class="en">Phone</span><span class="tc">電話</span></strong>
+                                +886-2-2700-0000
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h4>
+                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/><path d="M12 12L2 7M12 12v10M12 12l10-5"/></svg>
+                            <span class="en">Mountain Top Int'l Ltd</span>
+                            <span class="tc">墾樂股份有限公司</span>
+                        </h4>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <div>
+                                <strong><span class="en">Office Address</span><span class="tc">辦公室地址</span></strong>
+                                <span class="en">Taipei, Taiwan (R.O.C.)</span>
+                                <span class="tc">台灣台北市</span>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <div>
+                                <strong>Email</strong>
+                                info@mountaintopintl.com
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                            <div>
+                                <strong><span class="en">Phone</span><span class="tc">電話</span></strong>
+                                +886-2-2700-0001
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card" style="background: var(--navy); border-color: var(--navy);">
+                        <h4 style="color: var(--white);">
+                            <svg viewBox="0 0 24 24" stroke="var(--amber)"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span class="en">Business Hours</span>
+                            <span class="tc">營業時間</span>
+                        </h4>
+                        <div class="contact-detail" style="color: rgba(255,255,255,0.7);">
+                            <svg viewBox="0 0 24 24" stroke="rgba(255,255,255,0.4)"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <div>
+                                <strong style="color: var(--white);">
+                                    <span class="en">Monday - Friday</span>
+                                    <span class="tc">週一至週五</span>
+                                </strong>
+                                09:00 - 18:00 (GMT+8)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>
+                        <span class="en">eSun Science & Mountain Top International</span>
+                        <span class="tc">貫博科技 & 墾樂國際</span>
+                    </h3>
+                    <p>
+                        <span class="en">Technology + Resource Integration International Business Portal. Connecting precision photonics with global commodity networks for trusted international partnerships.</span>
+                        <span class="tc">科技 + 資源整合國際商務平台。連接精密光子技術與全球大宗商品網路，建立值得信賴的國際夥伴關係。</span>
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>
+                        <span class="en">eSun Science Co., Ltd</span>
+                        <span class="tc">貫博科技有限公司</span>
+                    </h4>
+                    <p>
+                        <span class="en">Registered in Taiwan (R.O.C.)<br>Laser Module Technology<br>Precision Optics & Photonics</span>
+                        <span class="tc">台灣登記<br>雷射模組技術<br>精密光學與光子</span>
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>
+                        <span class="en">Mountain Top Int'l Ltd</span>
+                        <span class="tc">墾樂股份有限公司</span>
+                    </h4>
+                    <p>
+                        <span class="en">Registered in Taiwan (R.O.C.)<br>Energy & Commodity Trading<br>International Logistics</span>
+                        <span class="tc">台灣登記<br>能源與大宗商品貿易<br>國際物流</span>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024 eSun Science Co., Ltd & Mountain Top International Ltd. All rights reserved.</span>
+                <span>
+                    <span class="en">Powered by <a href="#">HeyBoss</a></span>
+                    <span class="tc">由 <a href="#">HeyBoss</a> 驅動</span>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HEYBOSS CTA WIDGET -->
+    <button class="heyboss-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Contact us">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </button>
+
+    <script>
+        // ===== LANGUAGE TOGGLE =====
+        function toggleLang() {
+            const body = document.body;
+            const current = body.getAttribute('data-lang');
+            body.setAttribute('data-lang', current === 'en' ? 'tc' : 'en');
+        }
+
+        // ===== MOBILE MENU =====
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== NAVBAR SCROLL =====
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== ACTIVE NAV LINK HIGHLIGHT =====
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = 'var(--amber)';
+                }
+            });
+        }, { passive: true });
+    </script>
+</body>
+</html>
