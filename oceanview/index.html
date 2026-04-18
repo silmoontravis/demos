@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海景民宿 OceanView — 海岸第一排度假民宿 | Oceanfront B&B</title>
+<meta name="description" content="海景民宿 OceanView 位於海岸第一排，提供海景套房、陽台早餐與私人沙灘，讓您享受最愜意的海邊假期。">
+<meta name="keywords" content="民宿,海景民宿,OceanView,海邊住宿,度假民宿,oceanfront,B&B,beach vacation">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BedAndBreakfast",
+  "name": "海景民宿 OceanView",
+  "description": "海岸第一排度假民宿，提供海景套房與私人沙灘",
+  "url": "https://silmoontravis.github.io/demos/oceanview/",
+  "logo": "logos/logo_final.png",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "花蓮縣", "addressCountry": "TW" },
+  "priceRange": "$$-$$$",
+  "checkinTime": "15:00",
+  "checkoutTime": "11:00",
+  "starRating": { "@type": "Rating", "ratingValue": "4.8" }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#0ea5e9;--coral:#f97316;--cream:#fef3c7;--sand:#fefdf5;--dark:#1e293b;--gray:#64748b}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','PingFang TC','Microsoft JhengHei',serif;color:var(--dark);background:var(--sand);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(254,253,245,.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.06)}
+nav .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1200px;margin:0 auto}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--blue);font-weight:700;font-size:1.1rem}
+nav .logo img{height:36px}
+nav .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--dark);font-size:.9rem;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--coral)}
+.lang-btn{background:var(--coral);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:#ea580c}
+.bgm-btn{background:none;border:2px solid var(--blue);color:var(--blue);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--blue);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--blue)}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(254,253,245,.98);padding:20px;gap:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  nav .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,165,233,.15),rgba(254,243,199,.4),rgba(249,115,22,.2))}
+.hero-content{position:relative;z-index:2;padding:120px 20px 80px;max-width:700px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:var(--dark);line-height:1.3;margin-bottom:16px;text-shadow:0 2px 20px rgba(255,255,255,.8)}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--gray);margin-bottom:32px;line-height:1.7}
+.btn-primary{display:inline-block;background:var(--coral);color:#fff;padding:14px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{background:#ea580c;transform:translateY(-2px);box-shadow:0 10px 30px rgba(249,115,22,.3)}
+.btn-outline{display:inline-block;border:2px solid var(--blue);color:var(--blue);padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:600;margin-left:12px;transition:all .3s}
+.btn-outline:hover{background:var(--blue);color:#fff}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--dark);font-weight:700;margin-bottom:12px}
+.section-title p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto}
+.section-title .accent-line{width:60px;height:4px;background:linear-gradient(90deg,var(--blue),var(--coral));margin:16px auto 0;border-radius:2px}
+
+.rooms{background:#fff}
+.rooms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.room-card{background:var(--sand);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .4s}
+.room-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.room-card img{width:100%;height:220px;object-fit:cover}
+.room-card .room-info{padding:24px}
+.room-card h3{color:var(--dark);font-size:1.2rem;margin-bottom:8px}
+.room-card p{color:var(--gray);font-size:.9rem;line-height:1.6;margin-bottom:12px}
+.room-price{color:var(--coral);font-size:1.3rem;font-weight:700}
+.room-price span{font-size:.8rem;color:var(--gray);font-weight:400}
+
+.morning{background:var(--cream)}
+.morning .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.morning img{width:100%;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.morning-info h3{color:var(--coral);font-size:1.5rem;margin-bottom:16px}
+.morning-info p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+@media(max-width:768px){.morning .content-wrap{grid-template-columns:1fr}}
+
+.beach .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.beach img{width:100%;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.beach-info h3{color:var(--blue);font-size:1.5rem;margin-bottom:16px}
+.beach-info p{color:var(--gray);line-height:1.8;margin-bottom:12px}
+.beach-activities{display:flex;flex-wrap:wrap;gap:10px}
+.beach-activities span{background:var(--blue);color:#fff;padding:6px 16px;border-radius:20px;font-size:.85rem}
+@media(max-width:768px){.beach .content-wrap{grid-template-columns:1fr}}
+
+.location{background:#fff}
+.location .map-placeholder{background:linear-gradient(135deg,var(--blue),var(--coral));border-radius:20px;height:300px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;max-width:800px;margin:0 auto}
+
+.booking-section{background:linear-gradient(135deg,var(--blue),#0284c7);color:#fff;padding:80px 0}
+.booking-section .section-title h2{color:#fff}
+.booking-section .section-title p{color:rgba(255,255,255,.7)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:14px 18px;border:2px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font-size:1rem;transition:border-color .3s;font-family:inherit}
+.form-grid input::placeholder,.form-grid textarea::placeholder{color:rgba(255,255,255,.5)}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:none;border-color:var(--coral)}
+.form-grid select{appearance:none}
+.form-grid select option{background:var(--blue);color:#fff}
+.form-grid textarea{resize:vertical;min-height:80px}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}}
+
+footer{background:#0c2d4a;color:rgba(255,255,255,.6);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--coral);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .8s ease-out}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .8s ease-out}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999;width:60px;height:60px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:1.5rem}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
+.heyboss-widget .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #2563eb;animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="OceanView Logo"><span>海景民宿</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#rooms" data-zh="房型" data-en="Rooms">房型</a></li>
+      <li><a href="#morning" data-zh="早餐" data-en="Breakfast">早餐</a></li>
+      <li><a href="#beach" data-zh="沙灘" data-en="Beach">沙灘</a></li>
+      <li><a href="#location" data-zh="位置" data-en="Location">位置</a></li>
+      <li><a href="#booking" data-zh="訂房" data-en="Book">訂房</a></li>
+      <li><button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">♫</button></li>
+      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="在海浪聲中醒來" data-en="Wake Up to the Sound of Waves">在海浪聲中醒來</h1>
+    <p data-zh="海岸第一排度假民宿，推開窗就是蔚藍大海。陽台早餐、私人沙灘，讓每一天都像假期。" data-en="Oceanfront B&B — open your window to the azure sea. Terrace breakfast, private beach, every day feels like vacation.">海岸第一排度假民宿，推開窗就是蔚藍大海。陽台早餐、私人沙灘，讓每一天都像假期。</p>
+    <a href="#booking" class="btn-primary" data-zh="立即訂房" data-en="Book Now">立即訂房</a>
+    <a href="#rooms" class="btn-outline" data-zh="瀏覽房型" data-en="View Rooms">瀏覽房型</a>
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="精選房型" data-en="Our Rooms">精選房型</h2>
+      <p data-zh="三種風格房型，每間都坐擁無敵海景" data-en="Three room styles, each with unbeatable ocean views">三種風格房型，每間都坐擁無敵海景</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card fade-up">
+        <img src="photos/room.png" alt="Ocean View Suite" loading="lazy">
+        <div class="room-info">
+          <h3 data-zh="經典海景雙人房" data-en="Classic Ocean Double">經典海景雙人房</h3>
+          <p data-zh="15坪寬敞空間，落地窗正對大海，獨立陽台可賞日出。含早餐、免費 Wi-Fi。" data-en="15-ping spacious room, floor-to-ceiling windows facing the ocean, private balcony for sunrise. Breakfast & Wi-Fi included.">15坪寬敞空間，落地窗正對大海，獨立陽台可賞日出。含早餐、免費 Wi-Fi。</p>
+          <div class="room-price">NT$ 3,800 <span data-zh="/每晚" data-en="/night">/每晚</span></div>
+        </div>
+      </div>
+      <div class="room-card fade-up">
+        <img src="photos/room.png" alt="Deluxe Suite" loading="lazy">
+        <div class="room-info">
+          <h3 data-zh="豪華海景套房" data-en="Deluxe Ocean Suite">豪華海景套房</h3>
+          <p data-zh="22坪套房，獨立客廳與浴缸，270度全景海景。含早餐、下午茶、免費 Wi-Fi。" data-en="22-ping suite with separate living room and bathtub, 270-degree panoramic ocean view. Breakfast, afternoon tea & Wi-Fi included.">22坪套房，獨立客廳與浴缸，270度全景海景。含早餐、下午茶、免費 Wi-Fi。</p>
+          <div class="room-price">NT$ 5,600 <span data-zh="/每晚" data-en="/night">/每晚</span></div>
+        </div>
+      </div>
+      <div class="room-card fade-up">
+        <img src="photos/room.png" alt="Family Villa" loading="lazy">
+        <div class="room-info">
+          <h3 data-zh="家庭海景別墅" data-en="Family Ocean Villa">家庭海景別墅</h3>
+          <p data-zh="35坪獨棟別墅，兩間臥室可住4人，私人花園直通沙灘。含早餐、BBQ 設備。" data-en="35-ping detached villa, 2 bedrooms for 4 guests, private garden leading to the beach. Breakfast & BBQ facilities included.">35坪獨棟別墅，兩間臥室可住4人，私人花園直通沙灘。含早餐、BBQ 設備。</p>
+          <div class="room-price">NT$ 8,200 <span data-zh="/每晚" data-en="/night">/每晚</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="morning" id="morning">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="陽台早餐" data-en="Terrace Breakfast">陽台早餐</h2>
+      <p data-zh="面朝大海，享受悠閒的晨光時刻" data-en="Facing the ocean, enjoy the leisurely morning light">面朝大海，享受悠閒的晨光時刻</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <img src="photos/terrace.png" alt="Terrace Breakfast" class="fade-left" loading="lazy">
+      <div class="morning-info fade-right">
+        <h3 data-zh="每日新鮮現做" data-en="Freshly Made Daily">每日新鮮現做</h3>
+        <p data-zh="我們的早餐使用在地小農新鮮食材，每日由主廚親手烹調。在海風輕拂的陽台上，搭配現磨咖啡與鮮榨果汁，開啟美好的一天。" data-en="Our breakfast uses fresh local farm ingredients, prepared daily by our chef. On the breezy terrace with freshly ground coffee and fresh-squeezed juice, start your beautiful day.">我們的早餐使用在地小農新鮮食材，每日由主廚親手烹調。在海風輕拂的陽台上，搭配現磨咖啡與鮮榨果汁，開啟美好的一天。</p>
+        <p data-zh="供餐時間：每日 07:30 - 10:00" data-en="Serving hours: Daily 07:30 - 10:00">供餐時間：每日 07:30 - 10:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="beach" id="beach">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="私人沙灘" data-en="Private Beach">私人沙灘</h2>
+      <p data-zh="專屬房客的黃金沙灘" data-en="Exclusive golden beach for our guests">專屬房客的黃金沙灘</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <div class="beach-info fade-left">
+        <h3 data-zh="陽光、沙灘、碧海藍天" data-en="Sun, Sand, and Endless Blue">陽光、沙灘、碧海藍天</h3>
+        <p data-zh="從民宿步行不到一分鐘即可抵達私人沙灘。躺在沙灘椅上聽浪、在清澈海水中暢游，或體驗豐富的水上活動。" data-en="Less than a one-minute walk from the B&B to our private beach. Relax on beach chairs, swim in crystal-clear water, or enjoy exciting water activities.">從民宿步行不到一分鐘即可抵達私人沙灘。躺在沙灘椅上聽浪、在清澈海水中暢游，或體驗豐富的水上活動。</p>
+        <div class="beach-activities">
+          <span data-zh="浮潛" data-en="Snorkeling">浮潛</span>
+          <span data-zh="獨木舟" data-en="Kayaking">獨木舟</span>
+          <span data-zh="SUP 立槳" data-en="SUP">SUP 立槳</span>
+          <span data-zh="沙灘排球" data-en="Beach Volleyball">沙灘排球</span>
+          <span data-zh="日落瑜伽" data-en="Sunset Yoga">日落瑜伽</span>
+        </div>
+      </div>
+      <img src="photos/beach.png" alt="Private Beach" class="fade-right" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="交通位置" data-en="Location">交通位置</h2>
+      <p data-zh="位於花蓮海岸線最美的一段" data-en="Located on the most beautiful stretch of Hualien coastline">位於花蓮海岸線最美的一段</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="map-placeholder fade-up" data-zh="📍 花蓮縣壽豐鄉海岸路 168 號 — 距花蓮車站 25 分鐘車程" data-en="📍 No. 168, Coastal Rd, Shoufeng, Hualien — 25 min from Hualien Station">📍 花蓮縣壽豐鄉海岸路 168 號 — 距花蓮車站 25 分鐘車程</div>
+  </div>
+</section>
+
+<section class="booking-section" id="booking">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="線上訂房" data-en="Book Your Stay">線上訂房</h2>
+      <p data-zh="選擇日期，開始您的海邊假期" data-en="Choose your dates and start your beach getaway">選擇日期，開始您的海邊假期</p>
+      <div class="accent-line"></div>
+    </div>
+    <form class="form-grid fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'訂房需求已送出！我們將盡快確認。':'Booking request submitted! We will confirm shortly.')">
+      <input type="text" placeholder="姓名 / Name" data-ph-zh="姓名" data-ph-en="Name" required>
+      <input type="tel" placeholder="電話 / Phone" data-ph-zh="電話" data-ph-en="Phone" required>
+      <input type="email" placeholder="Email" required class="full">
+      <div>
+        <label style="font-size:.85rem;opacity:.7" data-zh="入住日期" data-en="Check-in Date">入住日期</label>
+        <input type="date" required>
+      </div>
+      <div>
+        <label style="font-size:.85rem;opacity:.7" data-zh="退房日期" data-en="Check-out Date">退房日期</label>
+        <input type="date" required>
+      </div>
+      <select class="full">
+        <option data-zh="經典海景雙人房 NT$3,800" data-en="Classic Ocean Double NT$3,800">經典海景雙人房 NT$3,800</option>
+        <option data-zh="豪華海景套房 NT$5,600" data-en="Deluxe Ocean Suite NT$5,600">豪華海景套房 NT$5,600</option>
+        <option data-zh="家庭海景別墅 NT$8,200" data-en="Family Ocean Villa NT$8,200">家庭海景別墅 NT$8,200</option>
+      </select>
+      <textarea class="full" placeholder="特殊需求 / Special requests" data-ph-zh="特殊需求" data-ph-en="Special requests"></textarea>
+      <div class="full"><button type="submit" class="btn-primary" style="width:100%" data-zh="送出訂房需求" data-en="Submit Booking">送出訂房需求</button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="Contact HeyBoss">
+  <span>💬</span>
+  <div class="pulse"></div>
+</a>
+
+<script>
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+currentLang+']').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val)el.textContent=val;
+  });
+  document.querySelectorAll('[data-ph-'+currentLang+']').forEach(el=>{
+    el.placeholder=el.getAttribute('data-ph-'+currentLang);
+  });
+  document.querySelectorAll('select option').forEach(op=>{
+    const val=op.getAttribute('data-'+currentLang);
+    if(val)op.textContent=val;
+  });
+}
+function toggleBGM(){
+  const a=document.getElementById('bgm'),b=document.querySelector('.bgm-btn');
+  if(a.paused){a.play();b.classList.add('playing');b.textContent='♪'}
+  else{a.pause();b.classList.remove('playing');b.textContent='♫'}
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

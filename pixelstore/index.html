@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>像素商城 PixelStore — 數位素材市集</title>
+<meta name="description" content="像素商城 PixelStore 是最大的數位素材市集，提供模板、圖示、照片、字型、UI Kit 與 3D 模型，讓創作者買賣數位資產。">
+<meta name="keywords" content="數位素材,模板,圖示,字型,UI Kit,3D,marketplace,digital assets">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"像素商城 PixelStore",
+  "description":"數位素材市集，提供模板、圖示、照片、字型、UI Kit 與 3D 模型。",
+  "url":"https://silmoontravis.github.io/demos/pixelstore/",
+  "potentialAction":{"@type":"SearchAction","target":"https://silmoontravis.github.io/demos/pixelstore/?q={search_term}","query-input":"required name=search_term"}
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7c3aed;--cyan:#06b6d4;--dark:#111;--darker:#0a0a0a;--white:#fff;--gray:#888;--bg:#0a0a0a}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,.1);padding:14px 0;transition:all .3s}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:.9rem;opacity:.7;transition:opacity .3s}
+.nav-links a:hover{opacity:1;color:var(--cyan)}
+.lang-btn{background:rgba(6,182,212,.15);border:1px solid var(--cyan);color:var(--cyan);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:var(--cyan);color:#000}
+.mobile-menu{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+.bgm-btn{position:fixed;top:80px;right:20px;z-index:99;width:44px;height:44px;border-radius:50%;background:var(--purple);border:none;color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(124,58,237,.4);transition:transform .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.5)}50%{box-shadow:0 0 0 12px rgba(124,58,237,0)}}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(6,182,212,.08));z-index:1}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.2}
+.hero .container{position:relative;z-index:2;text-align:center}
+.hero-text h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero-text h1 span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-text p{font-size:1.1rem;color:rgba(255,255,255,.6);max-width:550px;margin:0 auto 30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:700;font-size:1rem;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--purple),#9333ea);color:#fff;box-shadow:0 4px 24px rgba(124,58,237,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,.5)}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),#0891b2);color:#fff;box-shadow:0 4px 24px rgba(6,182,212,.35)}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(6,182,212,.45)}
+.btn-outline{background:transparent;border:2px solid rgba(255,255,255,.2);color:#fff}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:48px}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{font-size:.8rem;color:var(--gray);margin-top:4px}
+
+section{padding:80px 0}
+.section-tag{display:inline-block;background:rgba(6,182,212,.1);color:var(--cyan);padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px}
+.section-desc{color:rgba(255,255,255,.5);max-width:600px;font-size:1rem;margin-bottom:40px}
+
+/* CATEGORIES */
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.category-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px;text-align:center;transition:all .4s;cursor:pointer}
+.category-card:hover{background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.3);transform:translateY(-4px)}
+.category-icon{font-size:2rem;margin-bottom:12px}
+.category-card h3{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.category-card p{font-size:.75rem;color:var(--gray)}
+
+/* FEATURED */
+.featured-section{background:linear-gradient(180deg,var(--bg),rgba(124,58,237,.04))}
+.featured-showcase{margin-bottom:32px;border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06)}
+.featured-showcase img{width:100%}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.product-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;transition:all .4s}
+.product-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.product-thumb{height:180px;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.15));display:flex;align-items:center;justify-content:center;font-size:3rem}
+.product-info{padding:20px}
+.product-info h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+.product-info .product-meta{display:flex;justify-content:space-between;align-items:center}
+.product-info .product-price{color:var(--cyan);font-weight:900;font-size:1.1rem}
+.product-info .product-type{font-size:.75rem;color:var(--gray);background:rgba(255,255,255,.06);padding:4px 10px;border-radius:8px}
+
+/* CREATORS */
+.creators-content{display:grid;grid-template-columns:1fr;gap:40px}
+.creators-img{border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06)}
+.creators-img img{width:100%}
+.creator-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.creator-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;text-align:center}
+.creator-stat .num{font-size:1.5rem;font-weight:900;color:var(--cyan)}
+.creator-stat .label{font-size:.75rem;color:var(--gray);margin-top:4px}
+
+/* HOW IT WORKS */
+.how-content{display:grid;grid-template-columns:1fr;gap:40px}
+.how-img{border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06)}
+.how-img img{width:100%}
+.steps{display:grid;gap:20px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-num{width:44px;height:44px;min-width:44px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem}
+.step h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+.step p{font-size:.9rem;color:rgba(255,255,255,.5)}
+
+/* CTA */
+.cta-section{text-align:center;padding:100px 0;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(6,182,212,.08))}
+.cta-section h2{font-size:clamp(2rem,5vw,3rem);font-weight:900;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,.5);margin-bottom:32px;font-size:1.1rem;max-width:500px;margin-left:auto;margin-right:auto}
+
+footer{background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.05);padding:40px 0;text-align:center}
+footer p{color:var(--gray);font-size:.85rem}
+footer a{color:var(--cyan);transition:color .3s}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 24px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:.7rem;font-weight:700;text-align:center;line-height:1.1}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,99,235,.6)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:rgba(10,10,10,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(124,58,237,.15)}
+  .nav-links.open{display:flex}
+  .mobile-menu{display:block}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;justify-content:center}
+  .hero-stats{gap:20px}
+  .hero-stat .num{font-size:1.5rem}
+  section{padding:60px 0}
+  .categories-grid{grid-template-columns:repeat(2,1fr)}
+  .creator-stats{grid-template-columns:1fr}
+}
+@media(min-width:769px){
+  .creators-content{grid-template-columns:1fr 1fr;align-items:center}
+  .how-content{grid-template-columns:1fr 1fr;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="PixelStore Logo">像素商城</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#categories" data-zh="分類" data-en="Categories">分類</a>
+      <a href="#featured" data-zh="精選" data-en="Featured">精選</a>
+      <a href="#creators" data-zh="創作者" data-en="Creators">創作者</a>
+      <a href="#how" data-zh="運作方式" data-en="How It Works">運作方式</a>
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="背景音樂">♪</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<section class="hero">
+  <div class="hero-bg"><img src="photos/hero.png" alt="PixelStore Hero"></div>
+  <div class="container">
+    <div class="hero-text fade-up">
+      <h1 data-zh="創作者的<br><span>數位素材天堂</span>" data-en="The Creator's<br><span>Digital Asset Paradise</span>">創作者的<br><span>數位素材天堂</span></h1>
+      <p data-zh="像素商城匯集全球頂尖數位素材——模板、圖示、字型、UI Kit、3D 模型，一站購齊，即買即用。" data-en="PixelStore gathers the world's best digital assets — templates, icons, fonts, UI kits, 3D models — buy and use instantly.">像素商城匯集全球頂尖數位素材——模板、圖示、字型、UI Kit、3D 模型，一站購齊，即買即用。</p>
+      <div class="hero-btns">
+        <a href="#categories" class="btn btn-primary" data-zh="開始探索" data-en="Start Exploring">開始探索</a>
+        <a href="#cta" class="btn btn-outline" data-zh="成為賣家" data-en="Start Selling">成為賣家</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-up">
+      <div class="hero-stat">
+        <div class="num">50K+</div>
+        <div class="label" data-zh="數位素材" data-en="Digital Assets">數位素材</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">8K+</div>
+        <div class="label" data-zh="創作者" data-en="Creators">創作者</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">200K+</div>
+        <div class="label" data-zh="下載次數" data-en="Downloads">下載次數</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="素材分類" data-en="Categories">素材分類</span>
+      <h2 class="section-title" data-zh="探索六大類別" data-en="Explore 6 Categories">探索六大類別</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="從網頁模板到 3D 模型，找到你專案所需的一切。" data-en="From web templates to 3D models, find everything your project needs.">從網頁模板到 3D 模型，找到你專案所需的一切。</p>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card fade-up">
+        <div class="category-icon">📐</div>
+        <h3 data-zh="模板" data-en="Templates">模板</h3>
+        <p data-zh="12,000+ 素材" data-en="12,000+ assets">12,000+ 素材</p>
+      </div>
+      <div class="category-card fade-up">
+        <div class="category-icon">✨</div>
+        <h3 data-zh="圖示" data-en="Icons">圖示</h3>
+        <p data-zh="15,000+ 素材" data-en="15,000+ assets">15,000+ 素材</p>
+      </div>
+      <div class="category-card fade-up">
+        <div class="category-icon">📷</div>
+        <h3 data-zh="照片" data-en="Photos">照片</h3>
+        <p data-zh="8,000+ 素材" data-en="8,000+ assets">8,000+ 素材</p>
+      </div>
+      <div class="category-card fade-up">
+        <div class="category-icon">🔤</div>
+        <h3 data-zh="字型" data-en="Fonts">字型</h3>
+        <p data-zh="5,000+ 素材" data-en="5,000+ assets">5,000+ 素材</p>
+      </div>
+      <div class="category-card fade-up">
+        <div class="category-icon">🎨</div>
+        <h3 data-zh="UI Kit" data-en="UI Kits">UI Kit</h3>
+        <p data-zh="6,000+ 素材" data-en="6,000+ assets">6,000+ 素材</p>
+      </div>
+      <div class="category-card fade-up">
+        <div class="category-icon">🧊</div>
+        <h3 data-zh="3D 模型" data-en="3D Models">3D 模型</h3>
+        <p data-zh="4,000+ 素材" data-en="4,000+ assets">4,000+ 素材</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured-section" id="featured">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="精選商品" data-en="Featured Products">精選商品</span>
+      <h2 class="section-title" data-zh="本週熱門素材" data-en="Trending This Week">本週熱門素材</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="精選最受歡迎的數位素材，品質保證。" data-en="Hand-picked popular digital assets, quality guaranteed.">精選最受歡迎的數位素材，品質保證。</p>
+    </div>
+    <div class="featured-showcase fade-up">
+      <img src="photos/assets.png" alt="Featured Digital Assets">
+    </div>
+    <div class="products-grid">
+      <div class="product-card fade-up">
+        <div class="product-thumb">📐</div>
+        <div class="product-info">
+          <h4 data-zh="商務簡報模板包" data-en="Business Pitch Deck Pack">商務簡報模板包</h4>
+          <div class="product-meta">
+            <span class="product-price">$590</span>
+            <span class="product-type" data-zh="模板" data-en="Template">模板</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb">✨</div>
+        <div class="product-info">
+          <h4 data-zh="3000 枚線性圖示" data-en="3000 Line Icons Bundle">3000 枚線性圖示</h4>
+          <div class="product-meta">
+            <span class="product-price">$390</span>
+            <span class="product-type" data-zh="圖示" data-en="Icons">圖示</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb">🎨</div>
+        <div class="product-info">
+          <h4 data-zh="電商 UI Kit 完整版" data-en="E-commerce UI Kit Full">電商 UI Kit 完整版</h4>
+          <div class="product-meta">
+            <span class="product-price">$890</span>
+            <span class="product-type">UI Kit</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb">🧊</div>
+        <div class="product-info">
+          <h4 data-zh="抽象 3D 幾何組合" data-en="Abstract 3D Geometry Set">抽象 3D 幾何組合</h4>
+          <div class="product-meta">
+            <span class="product-price">$690</span>
+            <span class="product-type">3D</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="creators">
+  <div class="container">
+    <div class="creators-content">
+      <div class="creators-img fade-left">
+        <img src="photos/creator.png" alt="For Creators">
+      </div>
+      <div class="fade-right">
+        <span class="section-tag" data-zh="創作者專區" data-en="For Creators">創作者專區</span>
+        <h2 class="section-title" data-zh="讓你的作品<br>為你賺錢" data-en="Let Your Work<br>Earn for You">讓你的作品<br>為你賺錢</h2>
+        <p class="section-desc" data-zh="上架你的數位素材，觸及全球買家。高達 80% 分潤比例，即時提領收益。" data-en="List your digital assets, reach global buyers. Up to 80% revenue share, instant payouts.">上架你的數位素材，觸及全球買家。高達 80% 分潤比例，即時提領收益。</p>
+        <div class="creator-stats">
+          <div class="creator-stat">
+            <div class="num">80%</div>
+            <div class="label" data-zh="分潤比例" data-en="Revenue Share">分潤比例</div>
+          </div>
+          <div class="creator-stat">
+            <div class="num">24hr</div>
+            <div class="label" data-zh="審核上架" data-en="Review Time">審核上架</div>
+          </div>
+          <div class="creator-stat">
+            <div class="num">$0</div>
+            <div class="label" data-zh="上架費用" data-en="Listing Fee">上架費用</div>
+          </div>
+        </div>
+        <div style="margin-top:24px">
+          <a href="#cta" class="btn btn-cyan" data-zh="成為創作者" data-en="Become a Creator">成為創作者</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:linear-gradient(180deg,rgba(6,182,212,.04),var(--bg))">
+  <div class="container">
+    <div class="how-content">
+      <div class="fade-left">
+        <span class="section-tag" data-zh="運作方式" data-en="How It Works">運作方式</span>
+        <h2 class="section-title" data-zh="三步驟<br>開始創作之旅" data-en="3 Steps to Start<br>Your Creative Journey">三步驟<br>開始創作之旅</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h4 data-zh="瀏覽與搜尋" data-en="Browse & Search">瀏覽與搜尋</h4>
+              <p data-zh="在六大分類中找到你需要的素材，支援關鍵字搜尋與篩選。" data-en="Find what you need across 6 categories with keyword search and filters.">在六大分類中找到你需要的素材，支援關鍵字搜尋與篩選。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h4 data-zh="購買與下載" data-en="Purchase & Download">購買與下載</h4>
+              <p data-zh="安全付款後即時下載，支援信用卡、LINE Pay、Apple Pay。" data-en="Secure payment with instant download. Supports credit card, LINE Pay, Apple Pay.">安全付款後即時下載，支援信用卡、LINE Pay、Apple Pay。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h4 data-zh="應用到專案" data-en="Use in Your Project">應用到專案</h4>
+              <p data-zh="所有素材皆附商業授權，立即用在你的設計專案中。" data-en="All assets include commercial license — use them in your projects right away.">所有素材皆附商業授權，立即用在你的設計專案中。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-img fade-right">
+        <img src="photos/download.png" alt="How It Works">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <div class="container fade-up">
+    <h2 data-zh="準備好開始販售了嗎？" data-en="Ready to Start Selling?">準備好開始販售了嗎？</h2>
+    <p data-zh="加入像素商城，讓你的數位作品觸及全球買家，開始賺取被動收入。" data-en="Join PixelStore, reach global buyers with your digital creations, and start earning passive income.">加入像素商城，讓你的數位作品觸及全球買家，開始賺取被動收入。</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn-primary" data-zh="免費開店" data-en="Open Shop Free">免費開店</a>
+      <a href="#categories" class="btn btn-outline" data-zh="逛逛商城" data-en="Browse Store">逛逛商城</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved. <a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+  </div>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-widget" title="聯繫 HEY!BOSS">HEY!<br>BOSS</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+function toggleBgm(){bgmPlaying?(bgmAudio.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪'):(bgmAudio.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫');bgmPlaying=!bgmPlaying}
+
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else if(el.tagName==='OPTION')el.textContent=val;
+    else el.innerHTML=val;
+  });
+}
+
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{const n=document.querySelector('nav');window.scrollY>100?n.style.padding='8px 0':n.style.padding='14px 0'});
+</script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>棋藝大師 ChessMaster — 國際象棋教育平台 | Chess Education</title>
+<meta name="description" content="棋藝大師 ChessMaster 提供從入門到大師級的國際象棋課程，會員制教學、線上對弈與國際錦標賽。">
+<meta name="keywords" content="國際象棋,西洋棋,chess,ChessMaster,棋藝大師,chess education,chess courses,chess membership">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "棋藝大師 ChessMaster",
+  "description": "國際象棋教育平台，提供會員制課程與國際錦標賽",
+  "url": "https://silmoontravis.github.io/demos/chessmaster/",
+  "logo": "logos/logo_final.png",
+  "image": "photos/hero.png",
+  "offers": [
+    { "@type": "Offer", "name": "Free Plan", "price": "0", "priceCurrency": "TWD" },
+    { "@type": "Offer", "name": "Knight Plan", "price": "299", "priceCurrency": "TWD" },
+    { "@type": "Offer", "name": "Master Plan", "price": "599", "priceCurrency": "TWD" }
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e3a5f;--gold:#c8a45e;--cream:#fefdf5;--dark:#0f1d30;--gray:#8896a7;--light:#f4f1eb}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','PingFang TC','Microsoft JhengHei',serif;color:#1e293b;background:var(--cream);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(254,253,245,.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.06)}
+nav .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1200px;margin:0 auto}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:700;font-size:1.1rem;letter-spacing:1px}
+nav .logo img{height:36px}
+nav .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--navy);font-size:.9rem;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--gold)}
+.lang-btn{background:var(--gold);color:#fff;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:#a88940}
+.bgm-btn{background:none;border:2px solid var(--navy);color:var(--navy);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--gold);border-color:var(--gold);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--navy)}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(254,253,245,.98);padding:20px;gap:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  nav .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.4)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,95,.85),rgba(200,164,94,.3))}
+.hero-content{position:relative;z-index:2;color:#fff;padding:100px 20px 60px;max-width:750px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:20px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);opacity:.85;margin-bottom:36px;line-height:1.7}
+.btn-primary{display:inline-block;background:var(--gold);color:#fff;padding:14px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s;border:none;cursor:pointer;letter-spacing:1px}
+.btn-primary:hover{background:#a88940;transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,164,94,.4)}
+.btn-outline{display:inline-block;border:2px solid #fff;color:#fff;padding:12px 30px;border-radius:4px;text-decoration:none;font-weight:600;margin-left:12px;transition:all .3s;letter-spacing:1px}
+.btn-outline:hover{background:#fff;color:var(--navy)}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--navy);font-weight:700;margin-bottom:12px}
+.section-title p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto}
+.section-title .accent-line{width:60px;height:4px;background:var(--gold);margin:16px auto 0;border-radius:2px}
+
+.courses{background:var(--light)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.course-card{background:#fff;border-radius:12px;padding:30px 24px;border-top:4px solid var(--gold);box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .4s}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.course-level{display:inline-block;background:var(--navy);color:#fff;padding:4px 12px;border-radius:4px;font-size:.75rem;font-weight:600;letter-spacing:1px;margin-bottom:16px}
+.course-card h3{color:var(--navy);font-size:1.2rem;margin-bottom:10px}
+.course-card p{color:var(--gray);font-size:.9rem;line-height:1.6}
+.course-card ul{list-style:none;margin-top:12px;color:var(--gray);font-size:.85rem}
+.course-card ul li{padding:4px 0}
+.course-card ul li::before{content:'♟ ';color:var(--gold)}
+
+.membership{background:var(--cream)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:960px;margin:0 auto}
+.price-card{background:#fff;border-radius:16px;padding:40px 30px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .4s;position:relative}
+.price-card.featured{border:3px solid var(--gold);transform:scale(1.05)}
+.price-card.featured::before{content:'POPULAR';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;padding:4px 20px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:1px}
+.price-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.price-card.featured:hover{transform:scale(1.05) translateY(-8px)}
+.price-card h3{color:var(--navy);font-size:1.3rem;margin-bottom:8px}
+.price-amount{font-size:2.5rem;font-weight:800;color:var(--gold);margin:16px 0}
+.price-amount span{font-size:1rem;color:var(--gray);font-weight:400}
+.price-card ul{list-style:none;text-align:left;margin:20px 0;color:var(--gray);font-size:.9rem}
+.price-card ul li{padding:8px 0;border-bottom:1px solid #f0f0f0}
+.price-card ul li::before{content:'✓ ';color:var(--gold);font-weight:700}
+
+.tournaments{background:var(--light)}
+.tournaments .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.tournaments img{width:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.tournament-info h3{color:var(--gold);font-size:1.5rem;margin-bottom:16px}
+.tournament-info p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.stat{text-align:center}
+.stat .num{font-size:2rem;font-weight:800;color:var(--navy)}
+.stat .label{font-size:.8rem;color:var(--gray)}
+@media(max-width:768px){.tournaments .content-wrap{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(3,1fr)}}
+
+.app-section .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.app-section img{width:100%;max-width:400px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.15);margin:0 auto;display:block}
+.app-info h3{color:var(--navy);font-size:1.5rem;margin-bottom:16px}
+.app-info p{color:var(--gray);line-height:1.8;margin-bottom:20px}
+.app-features{display:flex;flex-wrap:wrap;gap:10px}
+.app-features span{background:var(--navy);color:#fff;padding:6px 16px;border-radius:4px;font-size:.85rem}
+@media(max-width:768px){.app-section .content-wrap{grid-template-columns:1fr}}
+
+.signup{background:linear-gradient(135deg,var(--navy),var(--dark));color:#fff;padding:80px 0}
+.signup .section-title h2{color:#fff}
+.signup .section-title p{color:rgba(255,255,255,.6)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:14px 18px;border:2px solid rgba(200,164,94,.3);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:1rem;transition:border-color .3s;font-family:inherit}
+.form-grid input::placeholder{color:rgba(255,255,255,.4)}
+.form-grid input:focus,.form-grid select:focus{outline:none;border-color:var(--gold)}
+.form-grid select{appearance:none}
+.form-grid select option{background:var(--navy);color:#fff}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}}
+
+footer{background:#0a1424;color:rgba(255,255,255,.5);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .8s ease-out}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .8s ease-out}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999;width:60px;height:60px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:1.5rem}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
+.heyboss-widget .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #2563eb;animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="ChessMaster Logo"><span>棋藝大師</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#courses" data-zh="課程" data-en="Courses">課程</a></li>
+      <li><a href="#membership" data-zh="會員" data-en="Membership">會員</a></li>
+      <li><a href="#tournaments" data-zh="錦標賽" data-en="Tournaments">錦標賽</a></li>
+      <li><a href="#app" data-zh="App" data-en="App">App</a></li>
+      <li><a href="#signup" data-zh="註冊" data-en="Sign Up">註冊</a></li>
+      <li><button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">♫</button></li>
+      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="掌握棋局，掌握人生" data-en="Master the Board, Master Your Life">掌握棋局，<span>掌握人生</span></h1>
+    <p data-zh="從入門到大師，系統化的國際象棋教育。線上課程、實戰對弈、國際錦標賽 — 在棋盤上找到你的無限可能。" data-en="From beginner to grandmaster — systematic chess education. Online courses, live matches, international tournaments — discover your limitless potential on the board.">從入門到大師，系統化的國際象棋教育。線上課程、實戰對弈、國際錦標賽 — 在棋盤上找到你的無限可能。</p>
+    <a href="#signup" class="btn-primary" data-zh="免費開始" data-en="Start Free">免費開始</a>
+    <a href="#courses" class="btn-outline" data-zh="瀏覽課程" data-en="View Courses">瀏覽課程</a>
+  </div>
+</section>
+
+<section class="courses" id="courses">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="系統化課程" data-en="Structured Courses">系統化課程</h2>
+      <p data-zh="四個級別，循序漸進培養棋藝" data-en="Four levels, progressively building your chess mastery">四個級別，循序漸進培養棋藝</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card fade-up">
+        <span class="course-level" data-zh="入門" data-en="BEGINNER">入門</span>
+        <h3 data-zh="棋盤初探" data-en="Board Basics">棋盤初探</h3>
+        <p data-zh="從零開始認識國際象棋，學習每顆棋子的走法與基本規則。" data-en="Start from zero — learn how each piece moves and basic rules.">從零開始認識國際象棋，學習每顆棋子的走法與基本規則。</p>
+        <ul>
+          <li data-zh="棋子走法與規則" data-en="Piece movements & rules">棋子走法與規則</li>
+          <li data-zh="基礎開局原則" data-en="Basic opening principles">基礎開局原則</li>
+          <li data-zh="簡單殘局技巧" data-en="Simple endgame techniques">簡單殘局技巧</li>
+        </ul>
+      </div>
+      <div class="course-card fade-up">
+        <span class="course-level" data-zh="中級" data-en="INTERMEDIATE">中級</span>
+        <h3 data-zh="戰術精進" data-en="Tactical Mastery">戰術精進</h3>
+        <p data-zh="深入學習戰術組合、開局理論與中盤策略。" data-en="Deep dive into tactical combinations, opening theory, and middlegame strategy.">深入學習戰術組合、開局理論與中盤策略。</p>
+        <ul>
+          <li data-zh="Pin / Fork / Skewer 戰術" data-en="Pin / Fork / Skewer tactics">Pin / Fork / Skewer 戰術</li>
+          <li data-zh="經典開局變化" data-en="Classic opening variations">經典開局變化</li>
+          <li data-zh="位置判斷力" data-en="Positional judgment">位置判斷力</li>
+        </ul>
+      </div>
+      <div class="course-card fade-up">
+        <span class="course-level" data-zh="高級" data-en="ADVANCED">高級</span>
+        <h3 data-zh="大師之路" data-en="Path to Mastery">大師之路</h3>
+        <p data-zh="挑戰高階策略、複雜殘局與心理博弈。" data-en="Challenge advanced strategies, complex endgames, and psychological warfare.">挑戰高階策略、複雜殘局與心理博弈。</p>
+        <ul>
+          <li data-zh="高階殘局理論" data-en="Advanced endgame theory">高階殘局理論</li>
+          <li data-zh="時間管理與心理學" data-en="Time management & psychology">時間管理與心理學</li>
+          <li data-zh="經典棋局分析" data-en="Classic game analysis">經典棋局分析</li>
+        </ul>
+      </div>
+      <div class="course-card fade-up">
+        <span class="course-level" data-zh="大師" data-en="MASTER">大師</span>
+        <h3 data-zh="冠軍殿堂" data-en="Champion's Hall">冠軍殿堂</h3>
+        <p data-zh="一對一大師指導、比賽備戰與個人風格塑造。" data-en="One-on-one master coaching, competition prep, and personal style development.">一對一大師指導、比賽備戰與個人風格塑造。</p>
+        <ul>
+          <li data-zh="GM 一對一指導" data-en="GM one-on-one coaching">GM 一對一指導</li>
+          <li data-zh="比賽心理準備" data-en="Competition mental prep">比賽心理準備</li>
+          <li data-zh="個人開局庫建立" data-en="Personal opening repertoire">個人開局庫建立</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+      <p data-zh="選擇適合你的方案，開始你的棋藝之旅" data-en="Choose your plan and start your chess journey">選擇適合你的方案，開始你的棋藝之旅</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card fade-up">
+        <h3 data-zh="免費會員" data-en="Free">免費會員</h3>
+        <div class="price-amount">$0 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul>
+          <li data-zh="入門課程全部免費" data-en="All beginner courses free">入門課程全部免費</li>
+          <li data-zh="每日一題棋謎" data-en="Daily chess puzzle">每日一題棋謎</li>
+          <li data-zh="社群論壇參與" data-en="Community forum access">社群論壇參與</li>
+          <li data-zh="基礎對弈配對" data-en="Basic matchmaking">基礎對弈配對</li>
+        </ul>
+        <a href="#signup" class="btn-primary" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+      </div>
+      <div class="price-card featured fade-up">
+        <h3 data-zh="騎士會員" data-en="Knight">騎士會員</h3>
+        <div class="price-amount">$299 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul>
+          <li data-zh="全部課程無限觀看" data-en="Unlimited access to all courses">全部課程無限觀看</li>
+          <li data-zh="進階戰術訓練模組" data-en="Advanced tactical training modules">進階戰術訓練模組</li>
+          <li data-zh="每週一次團體指導" data-en="Weekly group coaching">每週一次團體指導</li>
+          <li data-zh="月度積分錦標賽" data-en="Monthly ranked tournaments">月度積分錦標賽</li>
+          <li data-zh="對弈覆盤分析" data-en="Post-game analysis">對弈覆盤分析</li>
+        </ul>
+        <a href="#signup" class="btn-primary" data-zh="加入騎士" data-en="Join Knight">加入騎士</a>
+      </div>
+      <div class="price-card fade-up">
+        <h3 data-zh="大師會員" data-en="Master">大師會員</h3>
+        <div class="price-amount">$599 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul>
+          <li data-zh="騎士會員全部權益" data-en="All Knight benefits included">騎士會員全部權益</li>
+          <li data-zh="每月兩次 GM 一對一" data-en="Bi-monthly GM one-on-one">每月兩次 GM 一對一</li>
+          <li data-zh="國際錦標賽參賽資格" data-en="International tournament eligibility">國際錦標賽參賽資格</li>
+          <li data-zh="個人化學習計畫" data-en="Personalized learning plan">個人化學習計畫</li>
+          <li data-zh="專屬開局庫與分析" data-en="Exclusive opening database">專屬開局庫與分析</li>
+        </ul>
+        <a href="#signup" class="btn-primary" data-zh="加入大師" data-en="Join Master">加入大師</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tournaments" id="tournaments">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="錦標賽" data-en="Tournaments">錦標賽</h2>
+      <p data-zh="與全球棋手一較高下" data-en="Compete with players worldwide">與全球棋手一較高下</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <img src="photos/tournament.png" alt="Chess Tournament" class="fade-left" loading="lazy">
+      <div class="tournament-info fade-right">
+        <h3 data-zh="國際級賽事平台" data-en="International Tournament Platform">國際級賽事平台</h3>
+        <p data-zh="棋藝大師定期舉辦線上與線下錦標賽，從月度積分賽到年度冠軍爭奪戰，為每位棋手提供展現實力的舞台。大師會員更可獲得國際賽事的參賽推薦。" data-en="ChessMaster hosts regular online and offline tournaments — from monthly ranked matches to annual championship battles. Master members receive recommendations for international competitions.">棋藝大師定期舉辦線上與線下錦標賽，從月度積分賽到年度冠軍爭奪戰，為每位棋手提供展現實力的舞台。大師會員更可獲得國際賽事的參賽推薦。</p>
+        <div class="stats-row">
+          <div class="stat"><div class="num" data-zh="12,000+" data-en="12,000+">12,000+</div><div class="label" data-zh="註冊棋手" data-en="Registered Players">註冊棋手</div></div>
+          <div class="stat"><div class="num" data-zh="500+" data-en="500+">500+</div><div class="label" data-zh="場次 / 年" data-en="Matches / Year">場次 / 年</div></div>
+          <div class="stat"><div class="num" data-zh="30+" data-en="30+">30+</div><div class="label" data-zh="合作國家" data-en="Partner Countries">合作國家</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-section" id="app">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="隨時對弈 App" data-en="Play Anywhere App">隨時對弈 App</h2>
+      <p data-zh="口袋中的棋盤，隨時隨地磨練棋藝" data-en="A chessboard in your pocket — practice anytime, anywhere">口袋中的棋盤，隨時隨地磨練棋藝</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <div class="app-info fade-left">
+        <h3 data-zh="功能強大的行動體驗" data-en="Powerful Mobile Experience">功能強大的行動體驗</h3>
+        <p data-zh="棋藝大師 App 集課程學習、對弈配對、棋謎訓練與社群互動於一身。即使在通勤途中，也能下上一盤精彩的棋局。" data-en="ChessMaster App integrates course learning, matchmaking, puzzle training, and community interaction. Even during commute, enjoy an exciting chess game.">棋藝大師 App 集課程學習、對弈配對、棋謎訓練與社群互動於一身。即使在通勤途中，也能下上一盤精彩的棋局。</p>
+        <div class="app-features">
+          <span data-zh="即時對弈" data-en="Live Matches">即時對弈</span>
+          <span data-zh="每日棋謎" data-en="Daily Puzzles">每日棋謎</span>
+          <span data-zh="覆盤分析" data-en="Game Review">覆盤分析</span>
+          <span data-zh="排行榜" data-en="Leaderboard">排行榜</span>
+          <span data-zh="離線練習" data-en="Offline Play">離線練習</span>
+        </div>
+      </div>
+      <img src="photos/app.png" alt="ChessMaster App" class="fade-right" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="立即註冊" data-en="Sign Up Now">立即註冊</h2>
+      <p data-zh="開始你的棋藝之旅，第一步永遠免費" data-en="Start your chess journey — the first step is always free">開始你的棋藝之旅，第一步永遠免費</p>
+      <div class="accent-line"></div>
+    </div>
+    <form class="form-grid fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'註冊成功！歡迎加入棋藝大師。':'Registration successful! Welcome to ChessMaster.')">
+      <input type="text" placeholder="姓名 / Name" data-ph-zh="姓名" data-ph-en="Name" required>
+      <input type="email" placeholder="Email" required>
+      <select class="full">
+        <option data-zh="免費會員" data-en="Free Plan">免費會員</option>
+        <option data-zh="騎士會員 $299/月" data-en="Knight $299/mo">騎士會員 $299/月</option>
+        <option data-zh="大師會員 $599/月" data-en="Master $599/mo">大師會員 $599/月</option>
+      </select>
+      <select class="full">
+        <option data-zh="棋力：初學者" data-en="Level: Beginner">棋力：初學者</option>
+        <option data-zh="棋力：業餘" data-en="Level: Amateur">棋力：業餘</option>
+        <option data-zh="棋力：中級" data-en="Level: Intermediate">棋力：中級</option>
+        <option data-zh="棋力：高級" data-en="Level: Advanced">棋力：高級</option>
+      </select>
+      <div class="full"><button type="submit" class="btn-primary" style="width:100%" data-zh="建立帳號" data-en="Create Account">建立帳號</button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="Contact HeyBoss">
+  <span>💬</span>
+  <div class="pulse"></div>
+</a>
+
+<script>
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+currentLang+']').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val)el.textContent=val;
+  });
+  document.querySelectorAll('[data-ph-'+currentLang+']').forEach(el=>{
+    el.placeholder=el.getAttribute('data-ph-'+currentLang);
+  });
+  document.querySelectorAll('select option').forEach(op=>{
+    const val=op.getAttribute('data-'+currentLang);
+    if(val)op.textContent=val;
+  });
+}
+function toggleBGM(){
+  const a=document.getElementById('bgm'),b=document.querySelector('.bgm-btn');
+  if(a.paused){a.play();b.classList.add('playing');b.textContent='♪'}
+  else{a.pause();b.classList.remove('playing');b.textContent='♫'}
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

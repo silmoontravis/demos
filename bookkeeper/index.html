@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>帳務通 BookKeeper — 智慧記帳與財務管理</title>
+<meta name="description" content="帳務通 BookKeeper 提供簡單直覺的記帳、發票管理、稅務準備與財務報表功能，讓企業財務一目了然。">
+<meta name="keywords" content="記帳,會計,發票,稅務,財務報表,accounting,bookkeeping">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"帳務通 BookKeeper",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"Web, iOS, Android",
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Plus","price":"199","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Business","price":"499","priceCurrency":"TWD"}
+  ],
+  "description":"智慧記帳與財務管理應用程式，提供費用追蹤、發票管理與財務報表。",
+  "url":"https://silmoontravis.github.io/demos/bookkeeper/"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e3a5f;--green:#22c55e;--white:#fff;--light:#f8fafc;--dark:#0f172a;--gray:#64748b}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,58,95,.08);padding:14px 0;transition:all .3s}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--navy)}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:.9rem;color:var(--gray);transition:color .3s}
+.nav-links a:hover{color:var(--navy)}
+.lang-btn{background:rgba(30,58,95,.08);border:1px solid var(--navy);color:var(--navy);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:var(--navy);color:#fff}
+.mobile-menu{display:none;background:none;border:none;color:var(--dark);font-size:1.5rem;cursor:pointer}
+
+.bgm-btn{position:fixed;top:80px;right:20px;z-index:99;width:44px;height:44px;border-radius:50%;background:var(--navy);border:none;color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(30,58,95,.3);transition:transform .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(30,58,95,.4)}50%{box-shadow:0 0 0 12px rgba(30,58,95,0)}}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px;overflow:hidden;background:linear-gradient(135deg,#f0f4ff,#ecfdf5)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.2}
+.hero .container{position:relative;z-index:2}
+.hero-text h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero-text h1 span{color:var(--green)}
+.hero-text p{font-size:1.1rem;color:var(--gray);max-width:500px;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:700;font-size:1rem;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--navy),#2d5a8e);color:#fff;box-shadow:0 4px 24px rgba(30,58,95,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(30,58,95,.4)}
+.btn-green{background:linear-gradient(135deg,var(--green),#16a34a);color:#fff;box-shadow:0 4px 24px rgba(34,197,94,.3)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,.4)}
+.btn-outline{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+
+section{padding:80px 0}
+.section-tag{display:inline-block;background:rgba(34,197,94,.1);color:var(--green);padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px}
+.section-desc{color:var(--gray);max-width:600px;font-size:1rem;margin-bottom:40px}
+.bg-light{background:var(--light)}
+
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feature-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:32px;transition:all .4s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(30,58,95,.08);border-color:var(--green)}
+.feature-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px}
+.feature-card:nth-child(1) .feature-icon{background:rgba(30,58,95,.1);color:var(--navy)}
+.feature-card:nth-child(2) .feature-icon{background:rgba(34,197,94,.1);color:var(--green)}
+.feature-card:nth-child(3) .feature-icon{background:rgba(249,115,22,.1);color:#f97316}
+.feature-card:nth-child(4) .feature-icon{background:rgba(124,58,237,.1);color:#7c3aed}
+.feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px}
+.feature-card p{color:var(--gray);font-size:.9rem;line-height:1.6}
+
+.app-content{display:grid;grid-template-columns:1fr;gap:40px}
+.app-img{border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.app-img img{width:100%;display:block}
+
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:36px;text-align:center;transition:all .4s;position:relative}
+.plan-card.popular{border-color:var(--green);box-shadow:0 8px 32px rgba(34,197,94,.12)}
+.plan-card.popular::before{content:'推薦';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--green),#16a34a);color:#fff;padding:4px 20px;border-radius:20px;font-size:.75rem;font-weight:700}
+.plan-name{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.plan-price{font-size:2.5rem;font-weight:900;margin-bottom:4px;color:var(--navy)}
+.plan-price span{font-size:1rem;font-weight:400;color:var(--gray)}
+.plan-period{color:var(--gray);font-size:.85rem;margin-bottom:24px}
+.plan-features{list-style:none;margin-bottom:30px;text-align:left}
+.plan-features li{padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem;color:var(--gray)}
+.plan-features li::before{content:'✓';color:var(--green);margin-right:10px;font-weight:700}
+.plan-card .btn{width:100%;justify-content:center}
+
+.reports-img{border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.reports-img img{width:100%}
+
+.testimonials{display:grid;grid-template-columns:1fr;gap:40px}
+.testimonials-photos img{border-radius:16px;width:100%;height:300px;object-fit:cover}
+.testimonial-cards{display:grid;gap:16px}
+.testimonial-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
+.testimonial-card p{color:var(--gray);font-size:.95rem;font-style:italic;margin-bottom:12px}
+.testimonial-card .author{font-weight:700;font-size:.85rem;color:var(--navy)}
+
+.signup-section{text-align:center;padding:100px 0;background:linear-gradient(135deg,rgba(30,58,95,.05),rgba(34,197,94,.05))}
+.signup-section h2{font-size:clamp(2rem,5vw,3rem);font-weight:900;margin-bottom:16px}
+.signup-section p{color:var(--gray);margin-bottom:32px;font-size:1.1rem}
+
+footer{background:var(--dark);padding:40px 0;text-align:center}
+footer p{color:rgba(255,255,255,.5);font-size:.85rem}
+footer a{color:var(--green);transition:color .3s}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 24px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:.7rem;font-weight:700;text-align:center;line-height:1.1}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,99,235,.6)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:rgba(255,255,255,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(30,58,95,.08)}
+  .nav-links.open{display:flex}
+  .mobile-menu{display:block}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;justify-content:center}
+  section{padding:60px 0}
+}
+@media(min-width:769px){
+  .app-content{grid-template-columns:1fr 1fr;align-items:center}
+  .testimonials{grid-template-columns:1fr 1fr;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="BookKeeper Logo">帳務通</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features" data-zh="功能" data-en="Features">功能</a>
+      <a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+      <a href="#reports" data-zh="報表" data-en="Reports">報表</a>
+      <a href="#users" data-zh="用戶" data-en="Users">用戶</a>
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="背景音樂">♪</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<section class="hero">
+  <div class="hero-bg"><img src="photos/hero.png" alt="BookKeeper Hero"></div>
+  <div class="container">
+    <div class="hero-text fade-up">
+      <h1 data-zh="輕鬆掌握<br>每一筆<span>帳務</span>" data-en="Effortlessly Manage<br>Every <span>Transaction</span>">輕鬆掌握<br>每一筆<span>帳務</span></h1>
+      <p data-zh="帳務通讓記帳變得簡單直覺，從費用追蹤到稅務準備，一個應用全搞定。" data-en="BookKeeper makes accounting simple and intuitive — from expense tracking to tax prep, all in one app.">帳務通讓記帳變得簡單直覺，從費用追蹤到稅務準備，一個應用全搞定。</p>
+      <div class="hero-btns">
+        <a href="#signup" class="btn btn-primary" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+        <a href="#features" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="核心功能" data-en="Core Features">核心功能</span>
+      <h2 class="section-title" data-zh="讓財務管理變得輕鬆" data-en="Make Financial Management Easy">讓財務管理變得輕鬆</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="直覺操作、即時同步，專為中小企業與自由工作者打造。" data-en="Intuitive, real-time sync — built for SMBs and freelancers.">直覺操作、即時同步，專為中小企業與自由工作者打造。</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📝</div>
+        <h3 data-zh="費用追蹤" data-en="Expense Tracking">費用追蹤</h3>
+        <p data-zh="拍照即記帳，自動分類歸檔，掃描發票秒速入帳。" data-en="Snap a photo to log expenses, auto-categorize, scan invoices instantly.">拍照即記帳，自動分類歸檔，掃描發票秒速入帳。</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📄</div>
+        <h3 data-zh="發票管理" data-en="Invoicing">發票管理</h3>
+        <p data-zh="專業發票模板，一鍵寄送，自動追蹤付款狀態。" data-en="Professional templates, one-click send, auto-track payment status.">專業發票模板，一鍵寄送，自動追蹤付款狀態。</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🧾</div>
+        <h3 data-zh="稅務準備" data-en="Tax Prep">稅務準備</h3>
+        <p data-zh="年度稅務報表自動生成，支援營業稅、所得稅申報格式。" data-en="Auto-generate annual tax reports, supporting sales and income tax formats.">年度稅務報表自動生成，支援營業稅、所得稅申報格式。</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📊</div>
+        <h3 data-zh="財務報表" data-en="Financial Reports">財務報表</h3>
+        <p data-zh="即時損益表、資產負債表、現金流量表，財務狀況一目了然。" data-en="Real-time P&L, balance sheet, cash flow — your finances at a glance.">即時損益表、資產負債表、現金流量表，財務狀況一目了然。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light" id="app">
+  <div class="container">
+    <div class="app-content">
+      <div class="fade-left">
+        <span class="section-tag" data-zh="應用程式" data-en="The App">應用程式</span>
+        <h2 class="section-title" data-zh="隨時隨地<br>管理財務" data-en="Manage Finances<br>Anytime, Anywhere">隨時隨地<br>管理財務</h2>
+        <p class="section-desc" data-zh="支援 Web、iOS、Android 三平台同步，無論你在辦公室還是外出，帳務通都是你最佳的財務夥伴。" data-en="Synced across Web, iOS, and Android — BookKeeper is your financial partner wherever you go.">支援 Web、iOS、Android 三平台同步，無論你在辦公室還是外出，帳務通都是你最佳的財務夥伴。</p>
+        <a href="#signup" class="btn btn-green" data-zh="免費下載" data-en="Download Free">免費下載</a>
+      </div>
+      <div class="app-img fade-right">
+        <img src="photos/app.png" alt="BookKeeper App">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="訂閱方案" data-en="Pricing">訂閱方案</span>
+      <h2 class="section-title" data-zh="選擇適合你的方案" data-en="Choose Your Plan">選擇適合你的方案</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="從個人記帳到企業財務，我們都能滿足。" data-en="From personal bookkeeping to business finance, we've got you covered.">從個人記帳到企業財務，我們都能滿足。</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card fade-up">
+        <div class="plan-name" data-zh="免費版" data-en="Free">免費版</div>
+        <div class="plan-price">$0<span>/月</span></div>
+        <div class="plan-period" data-zh="永久免費" data-en="Forever free">永久免費</div>
+        <ul class="plan-features">
+          <li data-zh="每月 50 筆記帳" data-en="50 entries/month">每月 50 筆記帳</li>
+          <li data-zh="基礎報表" data-en="Basic reports">基礎報表</li>
+          <li data-zh="1 個使用者" data-en="1 user">1 個使用者</li>
+          <li data-zh="社群支援" data-en="Community support">社群支援</li>
+        </ul>
+        <a href="#signup" class="btn btn-outline" data-zh="免費開始" data-en="Start Free">免費開始</a>
+      </div>
+      <div class="plan-card popular fade-up">
+        <div class="plan-name" data-zh="Plus 進階版" data-en="Plus">Plus 進階版</div>
+        <div class="plan-price">$199<span>/月</span></div>
+        <div class="plan-period" data-zh="年繳享 8 折" data-en="20% off annually">年繳享 8 折</div>
+        <ul class="plan-features">
+          <li data-zh="無限記帳筆數" data-en="Unlimited entries">無限記帳筆數</li>
+          <li data-zh="進階報表與圖表" data-en="Advanced reports & charts">進階報表與圖表</li>
+          <li data-zh="發票管理" data-en="Invoice management">發票管理</li>
+          <li data-zh="3 個使用者" data-en="3 users">3 個使用者</li>
+          <li data-zh="優先客服" data-en="Priority support">優先客服</li>
+        </ul>
+        <a href="#signup" class="btn btn-green" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</a>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="plan-name" data-zh="Business 企業版" data-en="Business">Business 企業版</div>
+        <div class="plan-price">$499<span>/月</span></div>
+        <div class="plan-period" data-zh="年繳享 8 折" data-en="20% off annually">年繳享 8 折</div>
+        <ul class="plan-features">
+          <li data-zh="Plus 方案全部功能" data-en="All Plus features">Plus 方案全部功能</li>
+          <li data-zh="稅務自動申報" data-en="Auto tax filing">稅務自動申報</li>
+          <li data-zh="多幣別支援" data-en="Multi-currency">多幣別支援</li>
+          <li data-zh="10 個使用者" data-en="10 users">10 個使用者</li>
+          <li data-zh="專屬會計顧問" data-en="Dedicated accountant">專屬會計顧問</li>
+        </ul>
+        <a href="#signup" class="btn btn-outline" data-zh="聯繫我們" data-en="Contact Us">聯繫我們</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light" id="reports">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="智慧報表" data-en="Smart Reports">智慧報表</span>
+      <h2 class="section-title" data-zh="財務狀況一目了然" data-en="Your Finances at a Glance">財務狀況一目了然</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="視覺化圖表呈現收支趨勢、利潤分析、稅務摘要。" data-en="Visual charts showing revenue trends, profit analysis, and tax summaries.">視覺化圖表呈現收支趨勢、利潤分析、稅務摘要。</p>
+    </div>
+    <div class="reports-img fade-up">
+      <img src="photos/report.png" alt="Financial Reports">
+    </div>
+  </div>
+</section>
+
+<section id="users">
+  <div class="container">
+    <div class="testimonials">
+      <div class="testimonials-photos fade-left">
+        <img src="photos/team.png" alt="Happy Users">
+      </div>
+      <div class="fade-right">
+        <span class="section-tag" data-zh="用戶好評" data-en="Happy Users">用戶好評</span>
+        <h2 class="section-title" data-zh="深受企業信賴" data-en="Trusted by Businesses">深受企業信賴</h2>
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <p data-zh="「帳務通讓我們的會計作業效率提升了 3 倍，再也不用加班對帳了！」" data-en="&quot;BookKeeper tripled our accounting efficiency — no more overtime reconciling!&quot;">「帳務通讓我們的會計作業效率提升了 3 倍，再也不用加班對帳了！」</p>
+            <div class="author" data-zh="— 王經理，甜心烘焙坊" data-en="— Manager Wang, Sweetheart Bakery">— 王經理，甜心烘焙坊</div>
+          </div>
+          <div class="testimonial-card">
+            <p data-zh="「發票功能太好用了，客戶都說我們很專業。」" data-en="&quot;The invoicing feature is amazing — clients say we look so professional.&quot;">「發票功能太好用了，客戶都說我們很專業。」</p>
+            <div class="author" data-zh="— 林老闆，創意設計工作室" data-en="— Owner Lin, Creative Design Studio">— 林老闆，創意設計工作室</div>
+          </div>
+          <div class="testimonial-card">
+            <p data-zh="「報稅季不再手忙腳亂，帳務通自動生成報表，真的省了超多時間。」" data-en="&quot;Tax season is no longer stressful — auto-generated reports saved us so much time.&quot;">「報稅季不再手忙腳亂，帳務通自動生成報表，真的省了超多時間。」</p>
+            <div class="author" data-zh="— 陳會計師" data-en="— CPA Chen">— 陳會計師</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup-section" id="signup">
+  <div class="container fade-up">
+    <h2 data-zh="開始掌握你的財務" data-en="Take Control of Your Finances">開始掌握你的財務</h2>
+    <p data-zh="免費註冊帳務通，讓記帳不再是負擔。" data-en="Sign up for BookKeeper free — bookkeeping made effortless.">免費註冊帳務通，讓記帳不再是負擔。</p>
+    <a href="#" class="btn btn-green" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved. <a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+  </div>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-widget" title="聯繫 HEY!BOSS">HEY!<br>BOSS</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+function toggleBgm(){bgmPlaying?(bgmAudio.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪'):(bgmAudio.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫');bgmPlaying=!bgmPlaying}
+
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else el.innerHTML=val;
+  });
+}
+
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{const n=document.querySelector('nav');window.scrollY>100?n.style.padding='8px 0':n.style.padding='14px 0'});
+</script>
+</body>
+</html>

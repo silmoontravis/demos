@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陽光工坊 SolarCraft — 太陽能安裝專家 | Solar Energy Installation</title>
+<meta name="description" content="陽光工坊 SolarCraft 提供住宅、商業太陽能安裝與維護服務，專業團隊為您打造綠色能源解決方案。">
+<meta name="keywords" content="太陽能,太陽能安裝,綠能,SolarCraft,陽光工坊,solar energy,solar installation">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "陽光工坊 SolarCraft",
+  "description": "專業太陽能安裝與維護服務",
+  "url": "https://silmoontravis.github.io/demos/solarcraft/",
+  "logo": "logos/logo_final.png",
+  "image": "photos/hero.png",
+  "telephone": "+886-2-1234-5678",
+  "address": { "@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW" },
+  "priceRange": "$$",
+  "serviceType": ["Residential Solar Installation", "Commercial Solar Installation", "Solar Maintenance"]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#d97706;--blue:#1e3a5f;--white:#ffffff;--light:#f8fafc;--gray:#64748b}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;color:#1e293b;background:var(--white);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.08);transition:all .3s}
+nav .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1200px;margin:0 auto}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--blue);font-weight:700;font-size:1.1rem}
+nav .logo img{height:36px}
+nav .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--blue);font-size:.9rem;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--gold)}
+.lang-btn{background:var(--gold);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:#b45309}
+.bgm-btn{background:none;border:2px solid var(--blue);color:var(--blue);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--gold);border-color:var(--gold);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--blue)}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(255,255,255,.98);padding:20px;gap:16px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+  nav .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.7)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,95,.8),rgba(217,119,6,.4))}
+.hero-content{position:relative;z-index:2;color:#fff;padding:100px 20px 60px;max-width:700px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;line-height:1.2;margin-bottom:20px}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);opacity:.9;margin-bottom:30px;line-height:1.6}
+.btn-primary{display:inline-block;background:var(--gold);color:#fff;padding:14px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{background:#b45309;transform:translateY(-2px);box-shadow:0 10px 30px rgba(217,119,6,.4)}
+.btn-outline{display:inline-block;border:2px solid #fff;color:#fff;padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:600;margin-left:12px;transition:all .3s}
+.btn-outline:hover{background:#fff;color:var(--blue)}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--blue);font-weight:800;margin-bottom:12px}
+.section-title p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto}
+.section-title .accent-line{width:60px;height:4px;background:var(--gold);margin:16px auto 0;border-radius:2px}
+
+/* SERVICES */
+.services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.service-card{background:#fff;border-radius:16px;padding:40px 30px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .4s}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.service-icon{font-size:3rem;margin-bottom:20px}
+.service-card h3{color:var(--blue);font-size:1.3rem;margin-bottom:12px}
+.service-card p{color:var(--gray);line-height:1.6}
+
+/* HOW IT WORKS */
+.how-it-works .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.how-it-works img{width:100%;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+.steps{display:flex;flex-direction:column;gap:24px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-num{flex-shrink:0;width:48px;height:48px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem}
+.step h4{color:var(--blue);font-size:1.1rem;margin-bottom:4px}
+.step p{color:var(--gray);font-size:.95rem}
+@media(max-width:768px){.how-it-works .content-wrap{grid-template-columns:1fr}}
+
+/* SYSTEMS */
+.systems{background:var(--light)}
+.systems .img-showcase{text-align:center}
+.systems .img-showcase img{width:100%;max-width:800px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.testimonials-grid img{width:100%;border-radius:16px}
+.testimonial-cards{display:flex;flex-direction:column;gap:20px}
+.testimonial{background:var(--light);border-radius:12px;padding:24px;border-left:4px solid var(--gold)}
+.testimonial p{color:#333;line-height:1.6;font-style:italic;margin-bottom:8px}
+.testimonial .author{color:var(--gold);font-weight:600;font-size:.9rem}
+@media(max-width:768px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* FORM */
+.quote-form{background:linear-gradient(135deg,var(--blue),#0f2340);color:#fff;padding:80px 0}
+.quote-form .section-title h2{color:#fff}
+.quote-form .section-title p{color:rgba(255,255,255,.7)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:14px 18px;border:2px solid rgba(255,255,255,.2);border-radius:10px;background:rgba(255,255,255,.1);color:#fff;font-size:1rem;transition:border-color .3s}
+.form-grid input::placeholder,.form-grid textarea::placeholder{color:rgba(255,255,255,.5)}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:none;border-color:var(--gold)}
+.form-grid textarea{resize:vertical;min-height:100px}
+.form-grid .btn-primary{width:100%}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:#0a1628;color:rgba(255,255,255,.6);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .8s ease-out}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .8s ease-out}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+/* HEYBOSS WIDGET */
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999;width:60px;height:60px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:1.5rem}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
+.heyboss-widget .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #2563eb;animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="SolarCraft Logo"><span>陽光工坊</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#services" data-zh="服務項目" data-en="Services">服務項目</a></li>
+      <li><a href="#how" data-zh="安裝流程" data-en="How It Works">安裝流程</a></li>
+      <li><a href="#systems" data-zh="系統方案" data-en="Systems">系統方案</a></li>
+      <li><a href="#testimonials" data-zh="客戶見證" data-en="Testimonials">客戶見證</a></li>
+      <li><a href="#quote" data-zh="免費報價" data-en="Free Quote">免費報價</a></li>
+      <li><button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">♫</button></li>
+      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="讓陽光為您創造價值" data-en="Let Sunshine Create Value for You">讓陽光為您創造價值</h1>
+    <p data-zh="專業太陽能安裝團隊，從評估、設計到施工，一站式服務為您的家庭與企業帶來永續綠色能源。" data-en="Professional solar installation team — from assessment, design to construction, one-stop service bringing sustainable green energy to your home and business.">專業太陽能安裝團隊，從評估、設計到施工，一站式服務為您的家庭與企業帶來永續綠色能源。</p>
+    <a href="#quote" class="btn-primary" data-zh="立即免費報價" data-en="Get Free Quote">立即免費報價</a>
+    <a href="#services" class="btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="我們的服務" data-en="Our Services">我們的服務</h2>
+      <p data-zh="三大核心服務，滿足各種太陽能需求" data-en="Three core services to meet all solar energy needs">三大核心服務，滿足各種太陽能需求</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🏠</div>
+        <h3 data-zh="住宅太陽能" data-en="Residential Solar">住宅太陽能</h3>
+        <p data-zh="為您的家庭量身打造太陽能系統，降低電費開支，同時提升房產價值。我們提供完整的屋頂評估與客製化設計方案。" data-en="Custom solar systems for your home — reduce electricity bills while increasing property value. We provide complete roof assessment and customized design solutions.">為您的家庭量身打造太陽能系統，降低電費開支，同時提升房產價值。我們提供完整的屋頂評估與客製化設計方案。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🏢</div>
+        <h3 data-zh="商用太陽能" data-en="Commercial Solar">商用太陽能</h3>
+        <p data-zh="為企業提供大規模太陽能發電解決方案，降低營運成本，展現企業社會責任，符合 ESG 永續發展目標。" data-en="Large-scale solar power solutions for businesses — reduce operational costs, demonstrate CSR, and align with ESG sustainability goals.">為企業提供大規模太陽能發電解決方案，降低營運成本，展現企業社會責任，符合 ESG 永續發展目標。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔧</div>
+        <h3 data-zh="系統維護" data-en="Maintenance">系統維護</h3>
+        <p data-zh="定期巡檢與專業維護服務，確保您的太陽能系統持續以最佳效率運作。包含清潔、檢測與效能優化。" data-en="Regular inspection and professional maintenance to ensure your solar system operates at peak efficiency. Includes cleaning, testing, and performance optimization.">定期巡檢與專業維護服務，確保您的太陽能系統持續以最佳效率運作。包含清潔、檢測與效能優化。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="安裝流程" data-en="How It Works">安裝流程</h2>
+      <p data-zh="簡單四步驟，讓陽光為您發電" data-en="Four simple steps to harness the power of the sun">簡單四步驟，讓陽光為您發電</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <img src="photos/install.png" alt="Solar Installation Process" class="fade-left" loading="lazy">
+      <div class="steps">
+        <div class="step fade-right">
+          <div class="step-num">1</div>
+          <div><h4 data-zh="免費現場評估" data-en="Free Site Assessment">免費現場評估</h4><p data-zh="專業工程師到府勘查屋頂條件、日照方位與電力需求，為您量身規劃最佳方案。" data-en="Professional engineers visit your site to assess roof conditions, sun orientation, and power needs for the optimal plan.">專業工程師到府勘查屋頂條件、日照方位與電力需求，為您量身規劃最佳方案。</p></div>
+        </div>
+        <div class="step fade-right">
+          <div class="step-num">2</div>
+          <div><h4 data-zh="客製化設計" data-en="Custom Design">客製化設計</h4><p data-zh="根據評估結果設計系統配置，包含面板數量、逆變器規格與預期發電量計算。" data-en="Design system configuration based on assessment — panel count, inverter specs, and expected power generation.">根據評估結果設計系統配置，包含面板數量、逆變器規格與預期發電量計算。</p></div>
+        </div>
+        <div class="step fade-right">
+          <div class="step-num">3</div>
+          <div><h4 data-zh="專業安裝施工" data-en="Professional Installation">專業安裝施工</h4><p data-zh="認證技師團隊進行安裝，嚴格遵循安全標準，通常一至三天內完工。" data-en="Certified technician team performs installation following strict safety standards, typically completed in 1-3 days.">認證技師團隊進行安裝，嚴格遵循安全標準，通常一至三天內完工。</p></div>
+        </div>
+        <div class="step fade-right">
+          <div class="step-num">4</div>
+          <div><h4 data-zh="啟用與監控" data-en="Activation & Monitoring">啟用與監控</h4><p data-zh="系統啟用後提供即時監控 App，隨時掌握發電量與節省金額，安心享受綠色電力。" data-en="After activation, enjoy real-time monitoring via our App — track power generation and savings anytime.">系統啟用後提供即時監控 App，隨時掌握發電量與節省金額，安心享受綠色電力。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="systems" id="systems">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="系統方案" data-en="Our Systems">系統方案</h2>
+      <p data-zh="採用國際認證高效能太陽能板，提供 25 年發電保固" data-en="International certified high-efficiency solar panels with 25-year power generation warranty">採用國際認證高效能太陽能板，提供 25 年發電保固</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="img-showcase fade-up">
+      <img src="photos/system.png" alt="Solar Panel Systems" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="客戶見證" data-en="Happy Customers">客戶見證</h2>
+      <p data-zh="聽聽他們怎麼說" data-en="Hear what they say">聽聽他們怎麼說</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="testimonials-grid">
+      <img src="photos/family.png" alt="Happy Customer Family" class="fade-left" loading="lazy">
+      <div class="testimonial-cards">
+        <div class="testimonial fade-right">
+          <p data-zh="「安裝後第一個月電費就降了 60%，投資回報超乎預期！團隊非常專業，全程都很放心。」" data-en="\"Our electricity bill dropped 60% in the first month after installation — ROI exceeded expectations! The team is very professional.\"">「安裝後第一個月電費就降了 60%，投資回報超乎預期！團隊非常專業，全程都很放心。」</p>
+          <div class="author" data-zh="— 林先生，台北市" data-en="— Mr. Lin, Taipei">— 林先生，台北市</div>
+        </div>
+        <div class="testimonial fade-right">
+          <p data-zh="「從評估到安裝只花了兩週，效率驚人。現在每天看著 App 上的發電數據，很有成就感！」" data-en="\"From assessment to installation in just two weeks — amazing efficiency. Now I check the power generation data on the App daily — very rewarding!\"">「從評估到安裝只花了兩週，效率驚人。現在每天看著 App 上的發電數據，很有成就感！」</p>
+          <div class="author" data-zh="— 張太太，新竹市" data-en="— Mrs. Chang, Hsinchu">— 張太太，新竹市</div>
+        </div>
+        <div class="testimonial fade-right">
+          <p data-zh="「公司廠房安裝後不僅節省了大量電費，更幫助我們達成 ESG 目標。強力推薦！」" data-en="\"After installing on our factory roof, we saved significantly on electricity and achieved our ESG goals. Highly recommended!\"">「公司廠房安裝後不僅節省了大量電費，更幫助我們達成 ESG 目標。強力推薦！」</p>
+          <div class="author" data-zh="— 王經理，台中市" data-en="— Manager Wang, Taichung">— 王經理，台中市</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-form" id="quote">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="免費報價" data-en="Get a Free Quote">免費報價</h2>
+      <p data-zh="填寫表單，我們將在 24 小時內與您聯繫" data-en="Fill out the form and we'll contact you within 24 hours">填寫表單，我們將在 24 小時內與您聯繫</p>
+      <div class="accent-line"></div>
+    </div>
+    <form class="form-grid fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'感謝您的填寫！我們將盡快與您聯繫。':'Thank you! We will contact you soon.')">
+      <input type="text" placeholder="姓名 / Name" data-ph-zh="姓名" data-ph-en="Name" required>
+      <input type="tel" placeholder="電話 / Phone" data-ph-zh="電話" data-ph-en="Phone" required>
+      <input type="email" placeholder="Email" required class="full">
+      <select class="full">
+        <option data-zh="住宅太陽能" data-en="Residential Solar">住宅太陽能</option>
+        <option data-zh="商用太陽能" data-en="Commercial Solar">商用太陽能</option>
+        <option data-zh="系統維護" data-en="Maintenance">系統維護</option>
+      </select>
+      <textarea class="full" placeholder="請描述您的需求 / Describe your needs" data-ph-zh="請描述您的需求" data-ph-en="Describe your needs"></textarea>
+      <div class="full"><button type="submit" class="btn-primary" style="width:100%" data-zh="送出報價需求" data-en="Submit Quote Request">送出報價需求</button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="Contact HeyBoss">
+  <span>💬</span>
+  <div class="pulse"></div>
+</a>
+
+<script>
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+currentLang+']').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val)el.textContent=val;
+  });
+  document.querySelectorAll('[data-ph-'+currentLang+']').forEach(el=>{
+    el.placeholder=el.getAttribute('data-ph-'+currentLang);
+  });
+  document.querySelectorAll('select option').forEach(op=>{
+    const val=op.getAttribute('data-'+currentLang);
+    if(val)op.textContent=val;
+  });
+}
+function toggleBGM(){
+  const a=document.getElementById('bgm'),b=document.querySelector('.bgm-btn');
+  if(a.paused){a.play();b.classList.add('playing');b.textContent='♪'}
+  else{a.pause();b.classList.remove('playing');b.textContent='♫'}
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

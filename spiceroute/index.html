@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香料航線 SpiceRoute — 異國香料電商 | Exotic Spice E-commerce</title>
+<meta name="description" content="香料航線 SpiceRoute 嚴選全球六大產區頂級香料，產地直送、新鮮研磨，為您的廚房帶來世界風味。">
+<meta name="keywords" content="香料,spice,SpiceRoute,香料航線,異國香料,spice shop,印度香料,摩洛哥香料,泰式香料">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "香料航線 SpiceRoute",
+  "description": "嚴選全球六大產區頂級香料電商",
+  "url": "https://silmoontravis.github.io/demos/spiceroute/",
+  "logo": "logos/logo_final.png",
+  "image": "photos/hero.png",
+  "priceRange": "$-$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Spice Collection",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Kashmir Saffron", "description": "頂級喀什米爾番紅花" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Ras el Hanout", "description": "摩洛哥皇家綜合香料" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Thai Lemongrass Set", "description": "泰式香茅套組" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Japanese Shichimi", "description": "日本七味唐辛子" } }
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--saffron:#d97706;--brown:#78350f;--cream:#fefdf5;--warm:#fef3c7;--dark:#3b1a06;--gray:#8b7355;--light:#faf7f0}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','PingFang TC','Microsoft JhengHei',serif;color:#3b1a06;background:var(--cream);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(254,253,245,.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(120,53,15,.08)}
+nav .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1200px;margin:0 auto}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brown);font-weight:700;font-size:1.1rem}
+nav .logo img{height:36px}
+nav .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--brown);font-size:.9rem;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--saffron)}
+.lang-btn{background:var(--saffron);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:#b45309}
+.bgm-btn{background:none;border:2px solid var(--brown);color:var(--brown);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--brown)}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(254,253,245,.98);padding:20px;gap:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  nav .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.5) saturate(1.3)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(120,53,15,.8),rgba(217,119,6,.3))}
+.hero-content{position:relative;z-index:2;color:#fff;padding:100px 20px 60px;max-width:750px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:20px}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);opacity:.9;margin-bottom:36px;line-height:1.7}
+.btn-primary{display:inline-block;background:var(--saffron);color:#fff;padding:14px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{background:#b45309;transform:translateY(-2px);box-shadow:0 10px 30px rgba(217,119,6,.4)}
+.btn-outline{display:inline-block;border:2px solid #fff;color:#fff;padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:600;margin-left:12px;transition:all .3s}
+.btn-outline:hover{background:#fff;color:var(--brown)}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--brown);font-weight:700;margin-bottom:12px}
+.section-title p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto}
+.section-title .accent-line{width:60px;height:4px;background:var(--saffron);margin:16px auto 0;border-radius:2px}
+
+.regions{background:var(--light)}
+.regions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.region-card{background:var(--cream);border-radius:16px;padding:30px 20px;text-align:center;box-shadow:0 4px 16px rgba(120,53,15,.06);transition:all .4s;border:2px solid transparent;cursor:pointer}
+.region-card:hover{transform:translateY(-6px);border-color:var(--saffron);box-shadow:0 12px 40px rgba(217,119,6,.15)}
+.region-icon{font-size:2.5rem;margin-bottom:12px}
+.region-card h3{color:var(--brown);font-size:1rem;margin-bottom:6px}
+.region-card p{color:var(--gray);font-size:.8rem}
+
+.bestsellers{background:var(--cream)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.product-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .4s}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.product-card img{width:100%;height:200px;object-fit:cover}
+.product-info{padding:20px}
+.product-info .tag{display:inline-block;background:var(--warm);color:var(--saffron);padding:3px 10px;border-radius:12px;font-size:.75rem;font-weight:600;margin-bottom:8px}
+.product-info h3{color:var(--brown);font-size:1.1rem;margin-bottom:6px}
+.product-info p{color:var(--gray);font-size:.85rem;line-height:1.5;margin-bottom:12px}
+.product-price{display:flex;align-items:center;justify-content:space-between}
+.product-price .price{color:var(--saffron);font-size:1.3rem;font-weight:700}
+.product-price .cart-btn{background:var(--saffron);color:#fff;border:none;padding:8px 18px;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;transition:all .3s}
+.product-price .cart-btn:hover{background:#b45309}
+
+.kitchen{background:var(--warm)}
+.kitchen .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.kitchen img{width:100%;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.kitchen-info h3{color:var(--brown);font-size:1.5rem;margin-bottom:16px}
+.kitchen-info p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+.recipe-tags{display:flex;flex-wrap:wrap;gap:8px}
+.recipe-tags span{background:var(--brown);color:#fff;padding:6px 14px;border-radius:20px;font-size:.8rem}
+@media(max-width:768px){.kitchen .content-wrap{grid-template-columns:1fr}}
+
+.origin{background:var(--light)}
+.origin .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.origin img{width:100%;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.origin-info h3{color:var(--saffron);font-size:1.5rem;margin-bottom:16px}
+.origin-info p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+@media(max-width:768px){.origin .content-wrap{grid-template-columns:1fr}}
+
+.subscription{background:linear-gradient(135deg,var(--brown),var(--dark));color:#fff;padding:80px 0}
+.subscription .section-title h2{color:#fff}
+.subscription .section-title p{color:rgba(255,255,255,.6)}
+.sub-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:900px;margin:0 auto}
+.sub-box{background:rgba(255,255,255,.08);border:2px solid rgba(217,119,6,.3);border-radius:20px;padding:40px 30px;text-align:center}
+.sub-box h3{color:var(--saffron);font-size:1.5rem;margin-bottom:12px}
+.sub-price{font-size:2.5rem;font-weight:800;color:#fff;margin:16px 0}
+.sub-price span{font-size:1rem;color:rgba(255,255,255,.5);font-weight:400}
+.sub-box ul{list-style:none;text-align:left;margin:20px 0;color:rgba(255,255,255,.7);font-size:.9rem}
+.sub-box ul li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.sub-box ul li::before{content:'✦ ';color:var(--saffron)}
+.sub-form{display:flex;flex-direction:column;gap:16px}
+.sub-form input,.sub-form select{width:100%;padding:14px 18px;border:2px solid rgba(217,119,6,.3);border-radius:12px;background:rgba(255,255,255,.08);color:#fff;font-size:1rem;transition:border-color .3s;font-family:inherit}
+.sub-form input::placeholder{color:rgba(255,255,255,.4)}
+.sub-form input:focus,.sub-form select:focus{outline:none;border-color:var(--saffron)}
+.sub-form select{appearance:none}
+.sub-form select option{background:var(--brown);color:#fff}
+@media(max-width:768px){.sub-content{grid-template-columns:1fr}}
+
+footer{background:#1a0a02;color:rgba(255,255,255,.5);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--saffron);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .8s ease-out}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .8s ease-out}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999;width:60px;height:60px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:1.5rem}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
+.heyboss-widget .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #2563eb;animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="SpiceRoute Logo"><span>香料航線</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#regions" data-zh="產區" data-en="Regions">產區</a></li>
+      <li><a href="#bestsellers" data-zh="熱銷" data-en="Bestsellers">熱銷</a></li>
+      <li><a href="#kitchen" data-zh="廚房" data-en="Kitchen">廚房</a></li>
+      <li><a href="#origin" data-zh="溯源" data-en="Origins">溯源</a></li>
+      <li><a href="#subscribe" data-zh="訂閱" data-en="Subscribe">訂閱</a></li>
+      <li><button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">♫</button></li>
+      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="世界的味道，在你指尖" data-en="World Flavors at Your Fingertips">世界的味道，在你指尖</h1>
+    <p data-zh="嚴選六大產區頂級香料，產地直送、新鮮研磨。從喀什米爾的番紅花到摩洛哥的皇家綜合香料，讓每道料理都是一趟味覺旅行。" data-en="Premium spices from six regions, direct from origin, freshly ground. From Kashmir saffron to Moroccan Ras el Hanout — every dish becomes a flavor journey.">嚴選六大產區頂級香料，產地直送、新鮮研磨。從喀什米爾的番紅花到摩洛哥的皇家綜合香料，讓每道料理都是一趟味覺旅行。</p>
+    <a href="#bestsellers" class="btn-primary" data-zh="立即選購" data-en="Shop Now">立即選購</a>
+    <a href="#regions" class="btn-outline" data-zh="探索產區" data-en="Explore Regions">探索產區</a>
+  </div>
+</section>
+
+<section class="regions" id="regions">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="六大產區" data-en="Shop by Region">六大產區</h2>
+      <p data-zh="從世界各地精心挑選，每款香料都有它的故事" data-en="Carefully curated from around the world — every spice has its story">從世界各地精心挑選，每款香料都有它的故事</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="regions-grid">
+      <div class="region-card fade-up">
+        <div class="region-icon">🇮🇳</div>
+        <h3 data-zh="印度" data-en="India">印度</h3>
+        <p data-zh="薑黃、番紅花、小荳蔻" data-en="Turmeric, Saffron, Cardamom">薑黃、番紅花、小荳蔻</p>
+      </div>
+      <div class="region-card fade-up">
+        <div class="region-icon">🇲🇦</div>
+        <h3 data-zh="摩洛哥" data-en="Morocco">摩洛哥</h3>
+        <p data-zh="孜然、Ras el Hanout" data-en="Cumin, Ras el Hanout">孜然、Ras el Hanout</p>
+      </div>
+      <div class="region-card fade-up">
+        <div class="region-icon">🇹🇭</div>
+        <h3 data-zh="泰國" data-en="Thailand">泰國</h3>
+        <p data-zh="香茅、南薑、泰式辣椒" data-en="Lemongrass, Galangal, Thai Chili">香茅、南薑、泰式辣椒</p>
+      </div>
+      <div class="region-card fade-up">
+        <div class="region-icon">🇲🇽</div>
+        <h3 data-zh="墨西哥" data-en="Mexico">墨西哥</h3>
+        <p data-zh="墨西哥辣椒、可可粉" data-en="Chipotle, Ancho, Cacao">墨西哥辣椒、可可粉</p>
+      </div>
+      <div class="region-card fade-up">
+        <div class="region-icon">🇯🇵</div>
+        <h3 data-zh="日本" data-en="Japan">日本</h3>
+        <p data-zh="七味、山椒、柚子粉" data-en="Shichimi, Sansho, Yuzu">七味、山椒、柚子粉</p>
+      </div>
+      <div class="region-card fade-up">
+        <div class="region-icon">🌿</div>
+        <h3 data-zh="地中海" data-en="Mediterranean">地中海</h3>
+        <p data-zh="迷迭香、奧勒岡、百里香" data-en="Rosemary, Oregano, Thyme">迷迭香、奧勒岡、百里香</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bestsellers" id="bestsellers">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="熱銷商品" data-en="Bestsellers">熱銷商品</h2>
+      <p data-zh="最受歡迎的四款明星香料" data-en="Our four most popular star spices">最受歡迎的四款明星香料</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Kashmir Saffron" loading="lazy">
+        <div class="product-info">
+          <span class="tag" data-zh="印度" data-en="India">印度</span>
+          <h3 data-zh="喀什米爾番紅花" data-en="Kashmir Saffron">喀什米爾番紅花</h3>
+          <p data-zh="頂級 A++ 等級，手工採摘，每克含超過 150 根花蕊絲。色澤深紅、香氣濃郁。" data-en="Top A++ grade, hand-picked, 150+ stigma threads per gram. Deep red color, rich aroma.">頂級 A++ 等級，手工採摘，每克含超過 150 根花蕊絲。色澤深紅、香氣濃郁。</p>
+          <div class="product-price">
+            <span class="price">NT$ 680</span>
+            <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Ras el Hanout" loading="lazy">
+        <div class="product-info">
+          <span class="tag" data-zh="摩洛哥" data-en="Morocco">摩洛哥</span>
+          <h3 data-zh="皇家綜合香料 Ras el Hanout" data-en="Royal Ras el Hanout">皇家綜合香料 Ras el Hanout</h3>
+          <p data-zh="摩洛哥傳統配方，融合 25 種以上香料。適合塔吉鍋、烤肉與中東料理。" data-en="Traditional Moroccan recipe blending 25+ spices. Perfect for tagine, grilled meats, and Middle Eastern cuisine.">摩洛哥傳統配方，融合 25 種以上香料。適合塔吉鍋、烤肉與中東料理。</p>
+          <div class="product-price">
+            <span class="price">NT$ 420</span>
+            <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Thai Lemongrass Set" loading="lazy">
+        <div class="product-info">
+          <span class="tag" data-zh="泰國" data-en="Thailand">泰國</span>
+          <h3 data-zh="泰式香茅套組" data-en="Thai Lemongrass Set">泰式香茅套組</h3>
+          <p data-zh="含乾燥香茅、南薑片、卡菲爾萊姆葉。一包搞定正宗泰式酸辣湯底。" data-en="Includes dried lemongrass, galangal slices, kaffir lime leaves. One pack for authentic Thai tom yum base.">含乾燥香茅、南薑片、卡菲爾萊姆葉。一包搞定正宗泰式酸辣湯底。</p>
+          <div class="product-price">
+            <span class="price">NT$ 280</span>
+            <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Japanese Shichimi" loading="lazy">
+        <div class="product-info">
+          <span class="tag" data-zh="日本" data-en="Japan">日本</span>
+          <h3 data-zh="京都七味唐辛子" data-en="Kyoto Shichimi Togarashi">京都七味唐辛子</h3>
+          <p data-zh="京都百年老舖配方，七種辛香料完美調和。烏龍麵、丼飯、烤物的靈魂調味。" data-en="Century-old Kyoto recipe, perfect harmony of seven spices. Essential seasoning for udon, donburi, and grilled dishes.">京都百年老舖配方，七種辛香料完美調和。烏龍麵、丼飯、烤物的靈魂調味。</p>
+          <div class="product-price">
+            <span class="price">NT$ 350</span>
+            <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kitchen" id="kitchen">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="主廚廚房" data-en="Chef's Kitchen">主廚廚房</h2>
+      <p data-zh="跟著大廚學用香料，每週更新食譜" data-en="Learn spice techniques from top chefs — new recipes weekly">跟著大廚學用香料，每週更新食譜</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <img src="photos/kitchen.png" alt="Chef's Kitchen" class="fade-left" loading="lazy">
+      <div class="kitchen-info fade-right">
+        <h3 data-zh="從產地到餐桌的風味旅程" data-en="A Flavor Journey from Origin to Table">從產地到餐桌的風味旅程</h3>
+        <p data-zh="我們的主廚團隊深入產區學習在地烹飪技法，將傳統智慧轉化為易學的食譜。每週更新的影片與圖文教學，讓您在家就能端出世界級料理。" data-en="Our chef team travels to spice origins to learn local cooking techniques, transforming traditional wisdom into easy-to-follow recipes. Weekly video and written tutorials bring world-class cuisine to your home kitchen.">我們的主廚團隊深入產區學習在地烹飪技法，將傳統智慧轉化為易學的食譜。每週更新的影片與圖文教學，讓您在家就能端出世界級料理。</p>
+        <div class="recipe-tags">
+          <span data-zh="印度咖哩" data-en="Indian Curry">印度咖哩</span>
+          <span data-zh="摩洛哥塔吉" data-en="Moroccan Tagine">摩洛哥塔吉</span>
+          <span data-zh="泰式酸辣" data-en="Thai Tom Yum">泰式酸辣</span>
+          <span data-zh="日式七味" data-en="Japanese Shichimi">日式七味</span>
+          <span data-zh="地中海燉菜" data-en="Mediterranean Stew">地中海燉菜</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="origin" id="origin">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="產地溯源" data-en="Origin Stories">產地溯源</h2>
+      <p data-zh="每一款香料背後，都有農人的用心" data-en="Behind every spice, there's a farmer's dedication">每一款香料背後，都有農人的用心</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <div class="origin-info fade-left">
+        <h3 data-zh="透明供應鏈，直接貿易" data-en="Transparent Supply Chain, Direct Trade">透明供應鏈，直接貿易</h3>
+        <p data-zh="香料航線堅持與產地農戶直接合作，不經過中間商。我們定期拜訪每一個合作農場，確保種植方式符合永續標準，同時以公平價格回饋當地社區。" data-en="SpiceRoute works directly with origin farmers, bypassing middlemen. We regularly visit every partner farm to ensure sustainable practices while giving back to local communities with fair pricing.">香料航線堅持與產地農戶直接合作，不經過中間商。我們定期拜訪每一個合作農場，確保種植方式符合永續標準，同時以公平價格回饋當地社區。</p>
+        <p data-zh="掃描包裝上的 QR Code，即可查看您手中香料的完整產銷履歷 — 從農場到您的廚房。" data-en="Scan the QR code on our packaging to view your spice's complete journey — from farm to your kitchen.">掃描包裝上的 QR Code，即可查看您手中香料的完整產銷履歷 — 從農場到您的廚房。</p>
+      </div>
+      <img src="photos/origin.png" alt="Spice Origin Farm" class="fade-right" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="subscription" id="subscribe">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="香料箱訂閱" data-en="Spice Box Subscription">香料箱訂閱</h2>
+      <p data-zh="每月驚喜，世界風味送到家" data-en="Monthly surprises — world flavors delivered to your door">每月驚喜，世界風味送到家</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="sub-content">
+      <div class="sub-box fade-left">
+        <h3 data-zh="月度香料箱" data-en="Monthly Spice Box">月度香料箱</h3>
+        <div class="sub-price">NT$ 799 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul>
+          <li data-zh="3-5 款主題精選香料" data-en="3-5 themed curated spices">3-5 款主題精選香料</li>
+          <li data-zh="獨家食譜卡與料理指南" data-en="Exclusive recipe cards & cooking guide">獨家食譜卡與料理指南</li>
+          <li data-zh="產地故事與文化小冊" data-en="Origin story & culture booklet">產地故事與文化小冊</li>
+          <li data-zh="會員專屬商城折扣" data-en="Member-only shop discounts">會員專屬商城折扣</li>
+          <li data-zh="免運費宅配到府" data-en="Free shipping to your door">免運費宅配到府</li>
+        </ul>
+      </div>
+      <form class="sub-form fade-right" onsubmit="event.preventDefault();alert(currentLang==='zh'?'訂閱成功！期待您的第一個香料箱。':'Subscription confirmed! Look forward to your first spice box.')">
+        <input type="text" placeholder="姓名 / Name" data-ph-zh="姓名" data-ph-en="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="寄送地址 / Shipping Address" data-ph-zh="寄送地址" data-ph-en="Shipping Address" required>
+        <select>
+          <option data-zh="月繳 NT$799" data-en="Monthly NT$799">月繳 NT$799</option>
+          <option data-zh="季繳 NT$2,199 (省 8%)" data-en="Quarterly NT$2,199 (Save 8%)">季繳 NT$2,199 (省 8%)</option>
+          <option data-zh="年繳 NT$7,999 (省 17%)" data-en="Yearly NT$7,999 (Save 17%)">年繳 NT$7,999 (省 17%)</option>
+        </select>
+        <button type="submit" class="btn-primary" style="width:100%" data-zh="開始訂閱" data-en="Start Subscription">開始訂閱</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="Contact HeyBoss">
+  <span>💬</span>
+  <div class="pulse"></div>
+</a>
+
+<script>
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+currentLang+']').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val)el.textContent=val;
+  });
+  document.querySelectorAll('[data-ph-'+currentLang+']').forEach(el=>{
+    el.placeholder=el.getAttribute('data-ph-'+currentLang);
+  });
+  document.querySelectorAll('select option').forEach(op=>{
+    const val=op.getAttribute('data-'+currentLang);
+    if(val)op.textContent=val;
+  });
+}
+function toggleBGM(){
+  const a=document.getElementById('bgm'),b=document.querySelector('.bgm-btn');
+  if(a.paused){a.play();b.classList.add('playing');b.textContent='♪'}
+  else{a.pause();b.classList.remove('playing');b.textContent='♫'}
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

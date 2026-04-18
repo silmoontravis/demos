@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>聲堡播客 PodCastle — 專業播客託管平台</title>
+<meta name="description" content="聲堡播客 PodCastle 提供專業播客託管、數據分析、變現工具與全球分發服務，讓您的聲音被全世界聽見。">
+<meta name="keywords" content="播客,podcast,託管,hosting,分析,變現,分發">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"聲堡播客 PodCastle",
+  "applicationCategory":"MultimediaApplication",
+  "operatingSystem":"Web",
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Creator","price":"299","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Pro","price":"699","priceCurrency":"TWD"}
+  ],
+  "description":"專業播客託管平台，提供數據分析、變現工具與全球分發服務。",
+  "url":"https://silmoontravis.github.io/demos/podcastle/"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7c3aed;--coral:#f97316;--dark:#111;--white:#fff;--gray:#888;--bg:#0a0a0a}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,.15);padding:14px 0;transition:all .3s}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:.9rem;opacity:.8;transition:opacity .3s}
+.nav-links a:hover{opacity:1;color:var(--purple)}
+.lang-btn{background:rgba(124,58,237,.2);border:1px solid var(--purple);color:var(--purple);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:var(--purple);color:#fff}
+.mobile-menu{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* BGM */
+.bgm-btn{position:fixed;top:80px;right:20px;z-index:99;width:44px;height:44px;border-radius:50%;background:var(--purple);border:none;color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(124,58,237,.4);transition:transform .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.5)}50%{box-shadow:0 0 0 12px rgba(124,58,237,0)}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(249,115,22,.08));z-index:1}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+.hero-text h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero-text h1 span{background:linear-gradient(135deg,var(--purple),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-text p{font-size:1.1rem;color:rgba(255,255,255,.7);max-width:500px;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:700;font-size:1rem;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--purple),#9333ea);color:#fff;box-shadow:0 4px 24px rgba(124,58,237,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,.5)}
+.btn-outline{background:transparent;border:2px solid rgba(255,255,255,.2);color:#fff}
+.btn-outline:hover{border-color:var(--purple);color:var(--purple)}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-tag{display:inline-block;background:rgba(124,58,237,.15);color:var(--purple);padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px}
+.section-desc{color:rgba(255,255,255,.6);max-width:600px;font-size:1rem;margin-bottom:40px}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feature-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:32px;transition:all .4s}
+.feature-card:hover{background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2);transform:translateY(-4px)}
+.feature-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px}
+.feature-card:nth-child(1) .feature-icon{background:rgba(124,58,237,.15);color:var(--purple)}
+.feature-card:nth-child(2) .feature-icon{background:rgba(249,115,22,.15);color:var(--coral)}
+.feature-card:nth-child(3) .feature-icon{background:rgba(34,197,94,.15);color:#22c55e}
+.feature-card:nth-child(4) .feature-icon{background:rgba(6,182,212,.15);color:#06b6d4}
+.feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px}
+.feature-card p{color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.6}
+
+/* DASHBOARD */
+.dashboard{background:linear-gradient(180deg,var(--bg),rgba(124,58,237,.05))}
+.dashboard-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+.dashboard-img img{width:100%;display:block}
+.dashboard-content{display:grid;grid-template-columns:1fr;gap:40px}
+
+/* PLANS */
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:36px;text-align:center;transition:all .4s;position:relative}
+.plan-card.popular{border-color:var(--purple);background:rgba(124,58,237,.08)}
+.plan-card.popular::before{content:'熱門';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--purple),var(--coral));color:#fff;padding:4px 20px;border-radius:20px;font-size:.75rem;font-weight:700}
+.plan-name{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.plan-price{font-size:2.5rem;font-weight:900;margin-bottom:4px}
+.plan-price span{font-size:1rem;font-weight:400;color:var(--gray)}
+.plan-period{color:var(--gray);font-size:.85rem;margin-bottom:24px}
+.plan-features{list-style:none;margin-bottom:30px;text-align:left}
+.plan-features li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.9rem;color:rgba(255,255,255,.7)}
+.plan-features li::before{content:'✓';color:var(--purple);margin-right:10px;font-weight:700}
+.plan-card .btn{width:100%;justify-content:center}
+
+/* COMMUNITY */
+.community{background:linear-gradient(180deg,rgba(124,58,237,.04),var(--bg))}
+.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.community-grid img{border-radius:16px;width:100%;height:300px;object-fit:cover;border:1px solid rgba(255,255,255,.06)}
+
+/* CTA */
+.cta-section{text-align:center;padding:100px 0;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(249,115,22,.05))}
+.cta-section h2{font-size:clamp(2rem,5vw,3rem);font-weight:900;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,.6);margin-bottom:32px;font-size:1.1rem}
+
+/* FOOTER */
+footer{background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.05);padding:40px 0;text-align:center}
+footer p{color:var(--gray);font-size:.85rem}
+footer a{color:var(--purple);transition:color .3s}
+footer a:hover{color:var(--coral)}
+
+/* HEYBOSS WIDGET */
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 24px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:.7rem;font-weight:700;text-align:center;line-height:1.1}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,99,235,.6)}
+
+/* SCROLL ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:rgba(10,10,10,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(124,58,237,.2)}
+  .nav-links.open{display:flex}
+  .mobile-menu{display:block}
+  .community-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;justify-content:center}
+  section{padding:60px 0}
+}
+@media(min-width:769px){
+  .hero .container{grid-template-columns:1fr 1fr}
+  .dashboard-content{grid-template-columns:1fr 1fr;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="PodCastle Logo">聲堡播客</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features" data-zh="功能" data-en="Features">功能</a>
+      <a href="#dashboard" data-zh="控制台" data-en="Dashboard">控制台</a>
+      <a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+      <a href="#community" data-zh="社群" data-en="Community">社群</a>
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- BGM -->
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="背景音樂">♪</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"><img src="photos/hero.png" alt="PodCastle Hero"></div>
+  <div class="container">
+    <div class="hero-text fade-up">
+      <h1 data-zh="讓你的聲音<br><span>被全世界聽見</span>" data-en="Let Your Voice<br><span>Be Heard Worldwide</span>">讓你的聲音<br><span>被全世界聽見</span></h1>
+      <p data-zh="聲堡播客提供一站式播客託管平台，從錄製到變現，一切盡在掌握。" data-en="PodCastle offers an all-in-one podcast hosting platform — from recording to monetization, all in your hands.">聲堡播客提供一站式播客託管平台，從錄製到變現，一切盡在掌握。</p>
+      <div class="hero-btns">
+        <a href="#plans" class="btn btn-primary" data-zh="免費開始" data-en="Start Free">免費開始</a>
+        <a href="#features" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+      </div>
+    </div>
+    <div class="fade-right" style="display:none"></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-tag" data-zh="核心功能" data-en="Core Features">核心功能</span>
+      <h2 class="section-title" data-zh="播客創作者的全能工具箱" data-en="The All-in-One Toolkit for Podcasters">播客創作者的全能工具箱</h2>
+      <p class="section-desc" data-zh="從託管到分發，從數據到變現，聲堡播客為您提供一切所需。" data-en="From hosting to distribution, analytics to monetization — PodCastle has everything you need.">從託管到分發，從數據到變現，聲堡播客為您提供一切所需。</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🎙️</div>
+        <h3 data-zh="無限託管" data-en="Unlimited Hosting">無限託管</h3>
+        <p data-zh="無限儲存空間、無限集數上傳，高速 CDN 全球加速播放。" data-en="Unlimited storage, unlimited episodes, with global CDN for fast playback.">無限儲存空間、無限集數上傳，高速 CDN 全球加速播放。</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📊</div>
+        <h3 data-zh="深度分析" data-en="Deep Analytics">深度分析</h3>
+        <p data-zh="即時收聽數據、聽眾輪廓分析、集數表現追蹤，洞察每一次播放。" data-en="Real-time listener data, audience profiles, episode performance tracking.">即時收聽數據、聽眾輪廓分析、集數表現追蹤，洞察每一次播放。</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">💰</div>
+        <h3 data-zh="多元變現" data-en="Monetization">多元變現</h3>
+        <p data-zh="內建付費訂閱、廣告插入、贊助管理，讓內容直接產生收益。" data-en="Built-in subscriptions, ad insertion, sponsorship management for direct revenue.">內建付費訂閱、廣告插入、贊助管理，讓內容直接產生收益。</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🌐</div>
+        <h3 data-zh="全球分發" data-en="Global Distribution">全球分發</h3>
+        <p data-zh="一鍵同步至 Apple Podcasts、Spotify、Google 等全球主流平台。" data-en="One-click sync to Apple Podcasts, Spotify, Google, and all major platforms.">一鍵同步至 Apple Podcasts、Spotify、Google 等全球主流平台。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dashboard" id="dashboard">
+  <div class="container">
+    <div class="dashboard-content">
+      <div class="fade-left">
+        <span class="section-tag" data-zh="創作者控制台" data-en="Creator Dashboard">創作者控制台</span>
+        <h2 class="section-title" data-zh="一目了然的<br>數據控制台" data-en="Your Data<br>At a Glance">一目了然的<br>數據控制台</h2>
+        <p class="section-desc" data-zh="直覺操作介面，即時查看收聽數據、收益報表、聽眾互動，讓創作決策有據可依。" data-en="Intuitive interface with real-time listener data, revenue reports, and audience engagement for data-driven decisions.">直覺操作介面，即時查看收聽數據、收益報表、聽眾互動，讓創作決策有據可依。</p>
+        <a href="#plans" class="btn btn-primary" data-zh="免費體驗" data-en="Try Free">免費體驗</a>
+      </div>
+      <div class="dashboard-img fade-right">
+        <img src="photos/dashboard.png" alt="PodCastle Dashboard">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section id="plans">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="訂閱方案" data-en="Pricing Plans">訂閱方案</span>
+      <h2 class="section-title" style="margin:0 auto 16px" data-zh="選擇適合你的方案" data-en="Choose Your Plan">選擇適合你的方案</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="無論你是剛起步還是專業創作者，都有適合你的方案。" data-en="Whether you're just starting out or a professional creator, there's a plan for you.">無論你是剛起步還是專業創作者，都有適合你的方案。</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card fade-up">
+        <div class="plan-name" data-zh="免費版" data-en="Free">免費版</div>
+        <div class="plan-price">$0<span>/月</span></div>
+        <div class="plan-period" data-zh="永久免費" data-en="Forever free">永久免費</div>
+        <ul class="plan-features">
+          <li data-zh="5 集節目上傳" data-en="5 episode uploads">5 集節目上傳</li>
+          <li data-zh="基礎數據分析" data-en="Basic analytics">基礎數據分析</li>
+          <li data-zh="標準音質" data-en="Standard audio quality">標準音質</li>
+          <li data-zh="社群支援" data-en="Community support">社群支援</li>
+        </ul>
+        <a href="#" class="btn btn-outline" data-zh="免費開始" data-en="Start Free">免費開始</a>
+      </div>
+      <div class="plan-card popular fade-up">
+        <div class="plan-name" data-zh="Creator 創作者" data-en="Creator">Creator 創作者</div>
+        <div class="plan-price">$299<span>/月</span></div>
+        <div class="plan-period" data-zh="年繳享 8 折" data-en="20% off annually">年繳享 8 折</div>
+        <ul class="plan-features">
+          <li data-zh="無限集數上傳" data-en="Unlimited uploads">無限集數上傳</li>
+          <li data-zh="進階數據分析" data-en="Advanced analytics">進階數據分析</li>
+          <li data-zh="付費訂閱功能" data-en="Paid subscriptions">付費訂閱功能</li>
+          <li data-zh="自訂品牌頁面" data-en="Custom branding">自訂品牌頁面</li>
+          <li data-zh="優先客服" data-en="Priority support">優先客服</li>
+        </ul>
+        <a href="#" class="btn btn-primary" data-zh="立即訂閱" data-en="Subscribe Now">立即訂閱</a>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="plan-name" data-zh="Pro 專業版" data-en="Pro">Pro 專業版</div>
+        <div class="plan-price">$699<span>/月</span></div>
+        <div class="plan-period" data-zh="年繳享 8 折" data-en="20% off annually">年繳享 8 折</div>
+        <ul class="plan-features">
+          <li data-zh="Creator 方案全部功能" data-en="All Creator features">Creator 方案全部功能</li>
+          <li data-zh="團隊協作（5 人）" data-en="Team collaboration (5 users)">團隊協作（5 人）</li>
+          <li data-zh="廣告收益分潤" data-en="Ad revenue sharing">廣告收益分潤</li>
+          <li data-zh="API 串接" data-en="API integration">API 串接</li>
+          <li data-zh="專屬客戶經理" data-en="Dedicated account manager">專屬客戶經理</li>
+        </ul>
+        <a href="#" class="btn btn-outline" data-zh="聯繫我們" data-en="Contact Us">聯繫我們</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="community">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="創作者社群" data-en="Creator Community">創作者社群</span>
+      <h2 class="section-title" data-zh="加入 10,000+ 播客創作者" data-en="Join 10,000+ Podcasters">加入 10,000+ 播客創作者</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="與志同道合的創作者交流、學習、成長。" data-en="Connect, learn, and grow with like-minded creators.">與志同道合的創作者交流、學習、成長。</p>
+    </div>
+    <div class="community-grid fade-up">
+      <img src="photos/community.png" alt="PodCastle Community">
+      <img src="photos/recording.png" alt="Recording Studio">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container fade-up">
+    <h2 data-zh="準備好開始你的播客了嗎？" data-en="Ready to Start Your Podcast?">準備好開始你的播客了嗎？</h2>
+    <p data-zh="立即加入聲堡播客，免費開始你的聲音之旅。" data-en="Join PodCastle today — start your audio journey for free.">立即加入聲堡播客，免費開始你的聲音之旅。</p>
+    <a href="#plans" class="btn btn-primary" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved. <a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+  </div>
+</footer>
+
+<!-- HEYBOSS WIDGET -->
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-widget" title="聯繫 HEY!BOSS">HEY!<br>BOSS</a>
+
+<script>
+// BGM Toggle
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+function toggleBgm(){bgmPlaying?(bgmAudio.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪'):(bgmAudio.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫');bgmPlaying=!bgmPlaying}
+
+// Language Toggle
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else el.innerHTML=val;
+  });
+}
+
+// Scroll Animations
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+
+// Nav scroll
+let lastScroll=0;
+window.addEventListener('scroll',()=>{const n=document.querySelector('nav');window.scrollY>100?n.style.padding='8px 0':n.style.padding='14px 0'});
+</script>
+</body>
+</html>

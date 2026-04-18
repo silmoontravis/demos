@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>墨刺紋身 InkMaster — 專業紋身工作室 | Tattoo Studio</title>
+<meta name="description" content="墨刺紋身 InkMaster 提供傳統、日式、極簡、寫實、水彩等多種紋身風格，預約制私人工作室。">
+<meta name="keywords" content="紋身,刺青,tattoo,InkMaster,墨刺紋身,tattoo studio,日式紋身,極簡紋身">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TattooParlor",
+  "name": "墨刺紋身 InkMaster",
+  "description": "專業紋身工作室，提供多種風格紋身服務",
+  "url": "https://silmoontravis.github.io/demos/tattoostudio/",
+  "logo": "logos/logo_final.png",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW" },
+  "priceRange": "$$-$$$"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#111;--red:#991b1b;--white:#f5f5f5;--dark:#1a1a1a;--gray:#999}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;color:var(--white);background:var(--black);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(17,17,17,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(153,27,27,.3)}
+nav .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1200px;margin:0 auto}
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--red);font-weight:800;font-size:1.2rem;letter-spacing:2px;text-transform:uppercase}
+nav .logo img{height:36px}
+nav .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--white);font-size:.85rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+nav .nav-links a:hover{color:var(--red)}
+.lang-btn{background:var(--red);color:#fff;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.8rem;font-weight:600;letter-spacing:1px;transition:all .3s}
+.lang-btn:hover{background:#7f1d1d}
+.bgm-btn{background:none;border:2px solid var(--red);color:var(--red);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--red);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--red)}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(17,17,17,.98);padding:20px;gap:16px;border-bottom:1px solid var(--red)}
+  nav .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.3) contrast(1.2)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.6),rgba(153,27,27,.2),rgba(17,17,17,.9))}
+.hero-content{position:relative;z-index:2;padding:100px 20px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;line-height:1;margin-bottom:20px;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--white),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--gray);margin-bottom:36px;line-height:1.7;letter-spacing:1px}
+.btn-primary{display:inline-block;background:var(--red);color:#fff;padding:14px 40px;border-radius:0;text-decoration:none;font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;border:2px solid var(--red);cursor:pointer}
+.btn-primary:hover{background:transparent;color:var(--red)}
+.btn-outline{display:inline-block;border:2px solid var(--white);color:var(--white);padding:12px 34px;text-decoration:none;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-left:16px;transition:all .3s}
+.btn-outline:hover{background:var(--white);color:var(--black)}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--white);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.section-title p{color:var(--gray);font-size:1rem;max-width:600px;margin:0 auto}
+.section-title .accent-line{width:60px;height:3px;background:var(--red);margin:16px auto 0}
+
+.styles-section{background:var(--dark)}
+.styles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.style-card{background:rgba(153,27,27,.1);border:1px solid rgba(153,27,27,.3);padding:30px 20px;text-align:center;transition:all .4s;position:relative;overflow:hidden}
+.style-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transition:transform .4s}
+.style-card:hover{background:rgba(153,27,27,.2);transform:translateY(-6px)}
+.style-card:hover::before{transform:scaleX(1)}
+.style-icon{font-size:2.5rem;margin-bottom:16px}
+.style-card h3{color:var(--white);font-size:1.1rem;margin-bottom:8px;letter-spacing:1px}
+.style-card p{color:var(--gray);font-size:.85rem;line-height:1.5}
+
+.flash-art{background:var(--black)}
+.flash-art .img-wrap{text-align:center}
+.flash-art .img-wrap img{width:100%;max-width:900px;border-radius:0;border:2px solid rgba(153,27,27,.3);filter:contrast(1.1)}
+
+.studio-section .content-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.studio-section img{width:100%;border:2px solid rgba(153,27,27,.3)}
+.studio-info h3{color:var(--red);font-size:1.5rem;margin-bottom:16px;letter-spacing:2px}
+.studio-info p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+.studio-info ul{list-style:none;color:var(--gray)}
+.studio-info ul li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.studio-info ul li::before{content:'▸ ';color:var(--red)}
+@media(max-width:768px){.studio-section .content-wrap{grid-template-columns:1fr}}
+
+.portfolio{background:var(--dark)}
+.portfolio .img-wrap{text-align:center}
+.portfolio .img-wrap img{width:100%;max-width:800px;border:2px solid rgba(153,27,27,.3)}
+
+.booking{background:linear-gradient(180deg,var(--black),#1a0a0a)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:14px 18px;border:1px solid rgba(153,27,27,.3);background:rgba(255,255,255,.05);color:#fff;font-size:1rem;transition:border-color .3s;font-family:inherit}
+.form-grid input::placeholder,.form-grid textarea::placeholder{color:rgba(255,255,255,.3)}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:none;border-color:var(--red)}
+.form-grid select{appearance:none}
+.form-grid select option{background:var(--black);color:#fff}
+.form-grid textarea{resize:vertical;min-height:100px}
+.form-grid .btn-primary{width:100%}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}}
+
+footer{background:#0a0a0a;color:rgba(255,255,255,.4);text-align:center;padding:30px 20px;font-size:.85rem;border-top:1px solid rgba(153,27,27,.2)}
+footer a{color:var(--red);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .8s ease-out}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .8s ease-out}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999;width:60px;height:60px;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:1.5rem}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
+.heyboss-widget .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #2563eb;animation:pulse-ring 2s infinite}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="InkMaster Logo">墨刺紋身</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#styles" data-zh="風格" data-en="Styles">風格</a></li>
+      <li><a href="#flash" data-zh="閃圖" data-en="Flash Art">閃圖</a></li>
+      <li><a href="#studio" data-zh="工作室" data-en="Studio">工作室</a></li>
+      <li><a href="#portfolio" data-zh="作品集" data-en="Portfolio">作品集</a></li>
+      <li><a href="#book" data-zh="預約" data-en="Book">預約</a></li>
+      <li><button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">♫</button></li>
+      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="墨刺紋身" data-en="InkMaster">墨刺紋身</h1>
+    <p data-zh="每一道刺痕，都是靈魂的獨白。預約制私人工作室，為您打造獨一無二的身體藝術。" data-en="Every mark tells your story. By-appointment private studio crafting one-of-a-kind body art.">每一道刺痕，都是靈魂的獨白。預約制私人工作室，為您打造獨一無二的身體藝術。</p>
+    <a href="#book" class="btn-primary" data-zh="立即預約" data-en="Book Now">立即預約</a>
+    <a href="#styles" class="btn-outline" data-zh="瀏覽風格" data-en="View Styles">瀏覽風格</a>
+  </div>
+</section>
+
+<section class="styles-section" id="styles">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="紋身風格" data-en="Tattoo Styles">紋身風格</h2>
+      <p data-zh="五大經典風格，由資深刺青師為您量身打造" data-en="Five classic styles, crafted by our senior tattoo artists">五大經典風格，由資深刺青師為您量身打造</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="styles-grid">
+      <div class="style-card fade-up">
+        <div class="style-icon">⚓</div>
+        <h3 data-zh="傳統 Old School" data-en="Traditional">傳統 Old School</h3>
+        <p data-zh="粗黑線條、飽和色彩，經典不朽的美式傳統風格。" data-en="Bold lines, saturated colors — timeless American traditional style.">粗黑線條、飽和色彩，經典不朽的美式傳統風格。</p>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon">🐉</div>
+        <h3 data-zh="日式 Irezumi" data-en="Japanese Irezumi">日式 Irezumi</h3>
+        <p data-zh="龍鳳花鳥、浮世繪元素，東方美學的極致呈現。" data-en="Dragons, phoenixes, ukiyo-e elements — the pinnacle of Eastern aesthetics.">龍鳳花鳥、浮世繪元素，東方美學的極致呈現。</p>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon">✦</div>
+        <h3 data-zh="極簡 Minimalist" data-en="Minimalist">極簡 Minimalist</h3>
+        <p data-zh="細線條、幾何圖形，簡約而深邃的現代美學。" data-en="Fine lines, geometric shapes — minimalist modern aesthetics.">細線條、幾何圖形，簡約而深邃的現代美學。</p>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon">👁</div>
+        <h3 data-zh="寫實 Realistic" data-en="Realistic">寫實 Realistic</h3>
+        <p data-zh="照片級精細度，黑灰或全彩肖像、風景栩栩如生。" data-en="Photo-level precision — black & grey or full color portraits and landscapes.">照片級精細度，黑灰或全彩肖像、風景栩栩如生。</p>
+      </div>
+      <div class="style-card fade-up">
+        <div class="style-icon">🎨</div>
+        <h3 data-zh="水彩 Watercolor" data-en="Watercolor">水彩 Watercolor</h3>
+        <p data-zh="潑墨暈染、色彩流動，將水彩畫的靈動感刻入肌膚。" data-en="Ink splashes, flowing colors — watercolor painting dynamism etched into skin.">潑墨暈染、色彩流動，將水彩畫的靈動感刻入肌膚。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flash-art" id="flash">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="閃圖作品" data-en="Flash Art">閃圖作品</h2>
+      <p data-zh="精選現成圖稿，可直接預約刺製" data-en="Curated flash designs ready for your appointment">精選現成圖稿，可直接預約刺製</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="img-wrap fade-up">
+      <img src="photos/art.png" alt="Flash Art Collection" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="studio-section" id="studio">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="工作室" data-en="Our Studio">工作室</h2>
+      <p data-zh="私密、衛生、專業的創作空間" data-en="Private, hygienic, and professional creative space">私密、衛生、專業的創作空間</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="content-wrap">
+      <img src="photos/studio.png" alt="InkMaster Studio" class="fade-left" loading="lazy">
+      <div class="studio-info fade-right">
+        <h3 data-zh="您的安全是我們的堅持" data-en="Your Safety Is Our Priority">您的安全是我們的堅持</h3>
+        <p data-zh="墨刺紋身工作室採用最高衛生標準，所有器材均為一次性使用或經醫療級消毒處理。私密的空間讓您能完全放鬆，專注享受創作過程。" data-en="InkMaster studio adheres to the highest hygiene standards. All equipment is single-use or medically sterilized. Our private space lets you fully relax and enjoy the creative process.">墨刺紋身工作室採用最高衛生標準，所有器材均為一次性使用或經醫療級消毒處理。私密的空間讓您能完全放鬆，專注享受創作過程。</p>
+        <ul>
+          <li data-zh="一次性針具與墨杯" data-en="Single-use needles and ink cups">一次性針具與墨杯</li>
+          <li data-zh="醫療級高壓滅菌設備" data-en="Medical-grade autoclave sterilization">醫療級高壓滅菌設備</li>
+          <li data-zh="進口高品質色料" data-en="Premium imported ink pigments">進口高品質色料</li>
+          <li data-zh="獨立包間，完全隱私" data-en="Private rooms, complete privacy">獨立包間，完全隱私</li>
+          <li data-zh="免費諮詢與客製化設計" data-en="Free consultation and custom design">免費諮詢與客製化設計</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="作品集" data-en="Portfolio">作品集</h2>
+      <p data-zh="近期精選作品" data-en="Recent featured works">近期精選作品</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="img-wrap fade-up">
+      <img src="photos/detail.png" alt="Tattoo Portfolio Detail" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="預約紋身" data-en="Book Your Appointment">預約紋身</h2>
+      <p data-zh="填寫表單，我們將與您確認時段與細節" data-en="Fill out the form and we'll confirm your slot and details">填寫表單，我們將與您確認時段與細節</p>
+      <div class="accent-line"></div>
+    </div>
+    <form class="form-grid fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'預約已送出！我們將盡快與您確認。':'Booking submitted! We will confirm shortly.')">
+      <input type="text" placeholder="姓名 / Name" data-ph-zh="姓名" data-ph-en="Name" required>
+      <input type="tel" placeholder="電話 / Phone" data-ph-zh="電話" data-ph-en="Phone" required>
+      <input type="email" placeholder="Email" required class="full">
+      <select class="full">
+        <option data-zh="傳統 Old School" data-en="Traditional">傳統 Old School</option>
+        <option data-zh="日式 Irezumi" data-en="Japanese Irezumi">日式 Irezumi</option>
+        <option data-zh="極簡 Minimalist" data-en="Minimalist">極簡 Minimalist</option>
+        <option data-zh="寫實 Realistic" data-en="Realistic">寫實 Realistic</option>
+        <option data-zh="水彩 Watercolor" data-en="Watercolor">水彩 Watercolor</option>
+      </select>
+      <input type="text" placeholder="希望的紋身部位 / Preferred body area" data-ph-zh="希望的紋身部位" data-ph-en="Preferred body area" class="full">
+      <textarea class="full" placeholder="描述您的紋身構想 / Describe your tattoo idea" data-ph-zh="描述您的紋身構想" data-ph-en="Describe your tattoo idea"></textarea>
+      <div class="full"><button type="submit" class="btn-primary" style="width:100%" data-zh="送出預約" data-en="Submit Booking">送出預約</button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="Contact HeyBoss">
+  <span>💬</span>
+  <div class="pulse"></div>
+</a>
+
+<script>
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';
+  document.querySelectorAll('[data-'+currentLang+']').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val)el.textContent=val;
+  });
+  document.querySelectorAll('[data-ph-'+currentLang+']').forEach(el=>{
+    el.placeholder=el.getAttribute('data-ph-'+currentLang);
+  });
+  document.querySelectorAll('select option').forEach(op=>{
+    const val=op.getAttribute('data-'+currentLang);
+    if(val)op.textContent=val;
+  });
+}
+function toggleBGM(){
+  const a=document.getElementById('bgm'),b=document.querySelector('.bgm-btn');
+  if(a.paused){a.play();b.classList.add('playing');b.textContent='♪'}
+  else{a.pause();b.classList.remove('playing');b.textContent='♫'}
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

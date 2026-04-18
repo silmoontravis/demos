@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玻璃屋花房 GlassHouse — 溫室餐廳</title>
+<meta name="description" content="玻璃屋花房 GlassHouse 是一間坐落在溫室花園中的精緻餐廳，提供從產地到餐桌的美食體驗與私人活動場地。">
+<meta name="keywords" content="溫室餐廳,花園餐廳,farm to table,私人聚會,fine dining,精緻料理">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Playfair+Display:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"玻璃屋花房 GlassHouse",
+  "description":"坐落在溫室花園中的精緻餐廳，提供從產地到餐桌的美食體驗。",
+  "url":"https://silmoontravis.github.io/demos/glasshouse/",
+  "servesCuisine":"Farm-to-Table Fine Dining",
+  "priceRange":"$$$",
+  "address":{"@type":"PostalAddress","addressCountry":"TW"},
+  "acceptsReservations":"True"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--forest:#166534;--amber:#d97706;--cream:#fefdf5;--dark:#1a1a0e;--white:#fff;--gray:#6b7060;--light:#f7f6ee}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;line-height:1.7}
+h1,h2,h3{font-family:'Noto Serif TC','Playfair Display',serif}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(254,253,245,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(22,101,52,.08);padding:14px 0;transition:all .3s}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--forest);font-family:'Noto Serif TC',serif}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:.9rem;color:var(--gray);transition:color .3s}
+.nav-links a:hover{color:var(--forest)}
+.lang-btn{background:rgba(22,101,52,.08);border:1px solid var(--forest);color:var(--forest);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s}
+.lang-btn:hover{background:var(--forest);color:#fff}
+.mobile-menu{display:none;background:none;border:none;color:var(--dark);font-size:1.5rem;cursor:pointer}
+
+.bgm-btn{position:fixed;top:80px;right:20px;z-index:99;width:44px;height:44px;border-radius:50%;background:var(--forest);border:none;color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(22,101,52,.3);transition:transform .3s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,101,52,.4)}50%{box-shadow:0 0 0 12px rgba(22,101,52,0)}}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,14,.4),rgba(26,26,14,.6));z-index:1}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero .container{position:relative;z-index:2;text-align:center}
+.hero-text h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:900;line-height:1.15;margin-bottom:20px;color:var(--cream)}
+.hero-text h1 span{color:var(--amber)}
+.hero-text p{font-size:1.15rem;color:rgba(254,253,245,.75);max-width:550px;margin:0 auto 30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:700;font-size:1rem;transition:all .3s;cursor:pointer;border:none;font-family:'Noto Sans TC',sans-serif}
+.btn-primary{background:linear-gradient(135deg,var(--forest),#15803d);color:#fff;box-shadow:0 4px 24px rgba(22,101,52,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(22,101,52,.4)}
+.btn-amber{background:linear-gradient(135deg,var(--amber),#b45309);color:#fff;box-shadow:0 4px 24px rgba(217,119,6,.3)}
+.btn-amber:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;border:2px solid var(--cream);color:var(--cream)}
+.btn-outline:hover{background:var(--cream);color:var(--forest)}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+
+section{padding:80px 0}
+.section-tag{display:inline-block;background:rgba(22,101,52,.08);color:var(--forest);padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;color:var(--dark)}
+.section-desc{color:var(--gray);max-width:600px;font-size:1rem;margin-bottom:40px}
+.bg-white{background:var(--white)}
+.bg-light{background:var(--light)}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.menu-category{background:var(--white);border-radius:20px;overflow:hidden;border:1px solid rgba(22,101,52,.06);transition:all .4s}
+.menu-category:hover{box-shadow:0 12px 40px rgba(0,0,0,.06);transform:translateY(-4px)}
+.menu-category img{width:100%;height:200px;object-fit:cover}
+.menu-category-content{padding:28px}
+.menu-category h3{font-size:1.3rem;font-weight:700;margin-bottom:12px;color:var(--forest)}
+.menu-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,.08);font-size:.9rem}
+.menu-item .price{color:var(--amber);font-weight:700}
+
+/* GARDEN */
+.garden-content{display:grid;grid-template-columns:1fr;gap:40px}
+.garden-img{border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.garden-img img{width:100%}
+
+/* EVENTS */
+.events-content{display:grid;grid-template-columns:1fr;gap:40px}
+.events-img{border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.events-img img{width:100%}
+.event-pricing{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.event-price-card{background:var(--cream);border:1px solid rgba(22,101,52,.08);border-radius:12px;padding:20px;text-align:center}
+.event-price-card h4{font-size:.9rem;color:var(--forest);margin-bottom:4px}
+.event-price-card .price{font-size:1.5rem;font-weight:900;color:var(--amber)}
+.event-price-card .note{font-size:.75rem;color:var(--gray);margin-top:4px}
+
+/* RESERVATION FORM */
+.reservation-form{max-width:600px;margin:0 auto;background:var(--white);border-radius:20px;padding:40px;box-shadow:0 8px 40px rgba(0,0,0,.06);border:1px solid rgba(22,101,52,.06)}
+.reservation-form h3{font-size:1.5rem;font-weight:700;margin-bottom:8px;text-align:center;color:var(--forest);font-family:'Noto Serif TC',serif}
+.reservation-form > p{color:var(--gray);text-align:center;margin-bottom:24px;font-size:.95rem}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--dark)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid #e8e6d9;border-radius:10px;font-size:.95rem;transition:border-color .3s;font-family:inherit;background:var(--cream)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--forest)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reservation-form .btn{width:100%;justify-content:center;margin-top:8px}
+
+footer{background:var(--dark);padding:40px 0;text-align:center}
+footer p{color:rgba(255,255,255,.4);font-size:.85rem}
+footer a{color:var(--amber);transition:color .3s}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 24px rgba(37,99,235,.5);transition:all .3s;text-decoration:none;color:#fff;font-size:.7rem;font-weight:700;text-align:center;line-height:1.1}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,99,235,.6)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:rgba(254,253,245,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(22,101,52,.08)}
+  .nav-links.open{display:flex}
+  .mobile-menu{display:block}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;justify-content:center}
+  section{padding:60px 0}
+  .form-row{grid-template-columns:1fr}
+  .event-pricing{grid-template-columns:1fr}
+}
+@media(min-width:769px){
+  .garden-content{grid-template-columns:1fr 1fr;align-items:center}
+  .events-content{grid-template-columns:1fr 1fr;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="GlassHouse Logo">玻璃屋花房</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#menu" data-zh="菜單" data-en="Menu">菜單</a>
+      <a href="#garden" data-zh="花園" data-en="Garden">花園</a>
+      <a href="#events" data-zh="活動" data-en="Events">活動</a>
+      <a href="#reservation" data-zh="訂位" data-en="Reserve">訂位</a>
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="背景音樂">♪</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<section class="hero">
+  <div class="hero-bg"><img src="photos/hero.png" alt="GlassHouse Hero"></div>
+  <div class="container">
+    <div class="hero-text fade-up">
+      <h1 data-zh="在花園裡<br>遇見<span>美食</span>" data-en="Where the Garden<br>Meets <span>Fine Dining</span>">在花園裡<br>遇見<span>美食</span></h1>
+      <p data-zh="玻璃屋花房，一間坐落在溫室花園中的精緻餐廳，從產地到餐桌，每一口都是自然的饋贈。" data-en="GlassHouse — a fine dining restaurant nestled in a greenhouse garden. Farm-to-table, every bite a gift from nature.">玻璃屋花房，一間坐落在溫室花園中的精緻餐廳，從產地到餐桌，每一口都是自然的饋贈。</p>
+      <div class="hero-btns">
+        <a href="#reservation" class="btn btn-primary" data-zh="立即訂位" data-en="Reserve Now">立即訂位</a>
+        <a href="#menu" class="btn btn-outline" data-zh="瀏覽菜單" data-en="View Menu">瀏覽菜單</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <span class="section-tag" data-zh="精選菜單" data-en="Our Menu">精選菜單</span>
+      <h2 class="section-title" data-zh="從產地到餐桌的美味" data-en="Farm-to-Table Delights">從產地到餐桌的美味</h2>
+      <p class="section-desc" style="margin:0 auto 40px" data-zh="以當季食材為靈感，主廚每月更新菜色，呈現最純粹的美味。" data-en="Inspired by seasonal ingredients, our chef refreshes the menu monthly for the purest flavors.">以當季食材為靈感，主廚每月更新菜色，呈現最純粹的美味。</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-category fade-up">
+        <img src="photos/food.png" alt="Appetizers">
+        <div class="menu-category-content">
+          <h3 data-zh="前菜 Appetizers" data-en="Appetizers">前菜 Appetizers</h3>
+          <div class="menu-item"><span data-zh="溫室沙拉佐柑橘醬" data-en="Greenhouse Salad w/ Citrus">溫室沙拉佐柑橘醬</span><span class="price">$380</span></div>
+          <div class="menu-item"><span data-zh="煙燻鴨胸薄片" data-en="Smoked Duck Breast Carpaccio">煙燻鴨胸薄片</span><span class="price">$420</span></div>
+          <div class="menu-item"><span data-zh="松露野菇濃湯" data-en="Truffle Mushroom Soup">松露野菇濃湯</span><span class="price">$350</span></div>
+        </div>
+      </div>
+      <div class="menu-category fade-up">
+        <img src="photos/food.png" alt="Main Courses">
+        <div class="menu-category-content">
+          <h3 data-zh="主菜 Main Courses" data-en="Main Courses">主菜 Main Courses</h3>
+          <div class="menu-item"><span data-zh="香草慢烤春雞" data-en="Herb-Roasted Spring Chicken">香草慢烤春雞</span><span class="price">$680</span></div>
+          <div class="menu-item"><span data-zh="炭烤牛排佐時蔬" data-en="Charcoal Steak w/ Vegetables">炭烤牛排佐時蔬</span><span class="price">$980</span></div>
+          <div class="menu-item"><span data-zh="香煎鱸魚佐白酒醬" data-en="Pan-Seared Sea Bass">香煎鱸魚佐白酒醬</span><span class="price">$780</span></div>
+        </div>
+      </div>
+      <div class="menu-category fade-up">
+        <img src="photos/food.png" alt="Desserts">
+        <div class="menu-category-content">
+          <h3 data-zh="甜點 Desserts" data-en="Desserts">甜點 Desserts</h3>
+          <div class="menu-item"><span data-zh="花園莓果塔" data-en="Garden Berry Tart">花園莓果塔</span><span class="price">$280</span></div>
+          <div class="menu-item"><span data-zh="溫室巧克力熔岩" data-en="Greenhouse Chocolate Lava">溫室巧克力熔岩</span><span class="price">$320</span></div>
+          <div class="menu-item"><span data-zh="季節水果盤" data-en="Seasonal Fruit Platter">季節水果盤</span><span class="price">$250</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light" id="garden">
+  <div class="container">
+    <div class="garden-content">
+      <div class="garden-img fade-left">
+        <img src="photos/garden.png" alt="GlassHouse Garden">
+      </div>
+      <div class="fade-right">
+        <span class="section-tag" data-zh="我們的花園" data-en="Our Garden">我們的花園</span>
+        <h2 class="section-title" data-zh="自然與美食<br>在此交會" data-en="Where Nature Meets<br>Gastronomy">自然與美食<br>在此交會</h2>
+        <p class="section-desc" data-zh="佔地 500 坪的溫室花園，種植超過 60 種有機香草與蔬菜。陽光穿透玻璃灑落，每一餐都是與自然的對話。" data-en="A 500-ping greenhouse garden with over 60 organic herbs and vegetables. Sunlight filters through glass — every meal is a conversation with nature.">佔地 500 坪的溫室花園，種植超過 60 種有機香草與蔬菜。陽光穿透玻璃灑落，每一餐都是與自然的對話。</p>
+        <a href="#reservation" class="btn btn-primary" data-zh="預約參觀" data-en="Book a Visit">預約參觀</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="container">
+    <div class="events-content">
+      <div class="fade-left">
+        <span class="section-tag" data-zh="私人活動" data-en="Private Events">私人活動</span>
+        <h2 class="section-title" data-zh="在花園中<br>創造回憶" data-en="Create Memories<br>In the Garden">在花園中<br>創造回憶</h2>
+        <p class="section-desc" data-zh="婚禮、派對、企業聚餐——玻璃屋花房為您打造獨一無二的活動體驗。" data-en="Weddings, parties, corporate dinners — GlassHouse creates a one-of-a-kind event experience.">婚禮、派對、企業聚餐——玻璃屋花房為您打造獨一無二的活動體驗。</p>
+        <div class="event-pricing">
+          <div class="event-price-card">
+            <h4 data-zh="午間包場" data-en="Daytime Rental">午間包場</h4>
+            <div class="price">$30,000</div>
+            <div class="note" data-zh="含基本佈置・20人起" data-en="Incl. basic decor, 20+ guests">含基本佈置・20人起</div>
+          </div>
+          <div class="event-price-card">
+            <h4 data-zh="晚間包場" data-en="Evening Rental">晚間包場</h4>
+            <div class="price">$50,000</div>
+            <div class="note" data-zh="含燈光佈置・30人起" data-en="Incl. lighting, 30+ guests">含燈光佈置・30人起</div>
+          </div>
+          <div class="event-price-card">
+            <h4 data-zh="婚禮專案" data-en="Wedding Package">婚禮專案</h4>
+            <div class="price">$120,000</div>
+            <div class="note" data-zh="全日含主廚菜單" data-en="Full day w/ chef's menu">全日含主廚菜單</div>
+          </div>
+          <div class="event-price-card">
+            <h4 data-zh="企業包場" data-en="Corporate Event">企業包場</h4>
+            <div class="price" data-zh="專案報價" data-en="Custom Quote">專案報價</div>
+            <div class="note" data-zh="客製化餐飲與場地規劃" data-en="Custom catering & venue planning">客製化餐飲與場地規劃</div>
+          </div>
+        </div>
+      </div>
+      <div class="events-img fade-right">
+        <img src="photos/event.png" alt="Private Events">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light" id="reservation">
+  <div class="container">
+    <div class="reservation-form fade-up">
+      <h3 data-zh="線上訂位" data-en="Make a Reservation">線上訂位</h3>
+      <p data-zh="填寫以下資訊，我們將儘速為您確認座位。" data-en="Fill in the details below and we'll confirm your reservation promptly.">填寫以下資訊，我們將儘速為您確認座位。</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="姓名" data-en="Name">姓名</label>
+          <input type="text" data-zh="您的姓名" data-en="Your name" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label data-zh="電話" data-en="Phone">電話</label>
+          <input type="tel" data-zh="您的電話" data-en="Your phone" placeholder="您的電話">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="日期" data-en="Date">日期</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label data-zh="時段" data-en="Time">時段</label>
+          <select>
+            <option data-zh="午餐 11:30-14:00" data-en="Lunch 11:30-14:00">午餐 11:30-14:00</option>
+            <option data-zh="下午茶 14:30-17:00" data-en="Afternoon Tea 14:30-17:00">下午茶 14:30-17:00</option>
+            <option data-zh="晚餐 17:30-21:00" data-en="Dinner 17:30-21:00">晚餐 17:30-21:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-zh="人數" data-en="Guests">人數</label>
+        <select>
+          <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option data-zh="7人以上（請來電）" data-en="7+ (please call)">7人以上（請來電）</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-zh="備註" data-en="Notes">備註</label>
+        <textarea rows="3" data-zh="特殊需求或過敏原告知" data-en="Special requests or allergen info" placeholder="特殊需求或過敏原告知"></textarea>
+      </div>
+      <button class="btn btn-primary" data-zh="送出訂位" data-en="Submit Reservation">送出訂位</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved. <a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+  </div>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-widget" title="聯繫 HEY!BOSS">HEY!<br>BOSS</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let bgmPlaying=false;
+function toggleBgm(){bgmPlaying?(bgmAudio.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪'):(bgmAudio.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫');bgmPlaying=!bgmPlaying}
+
+let currentLang='zh';
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.getElementById('langToggle').textContent=currentLang==='zh'?'EN':'中文';
+  document.documentElement.lang=currentLang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(el.tagName==='INPUT')el.placeholder=val;
+    else if(el.tagName==='TEXTAREA')el.placeholder=val;
+    else if(el.tagName==='OPTION')el.textContent=val;
+    else el.innerHTML=val;
+  });
+}
+
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{const n=document.querySelector('nav');window.scrollY>100?n.style.padding='8px 0':n.style.padding='14px 0'});
+</script>
+</body>
+</html>
