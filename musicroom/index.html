@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>樂室 MusicRoom — 用音樂點亮每一天</title>
+<meta name="description" content="樂室 MusicRoom 音樂教室提供鋼琴、吉他、爵士鼓、小提琴、聲樂等專業課程，適合各年齡層學員。">
+<meta name="keywords" content="音樂教室,鋼琴課,吉他課,爵士鼓,小提琴,聲樂,MusicRoom,樂室">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/musicroom/">
+<meta property="og:title" content="樂室 MusicRoom — 音樂教室">
+<meta property="og:description" content="專業音樂教育，鋼琴、吉他、爵士鼓、小提琴、聲樂課程。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicSchool",
+  "name": "樂室 MusicRoom",
+  "description": "專業音樂教室，提供鋼琴、吉他、爵士鼓、小提琴、聲樂等課程",
+  "url": "https://silmoontravis.github.io/demos/musicroom/",
+  "logo": "logos/logo_final.png",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "音樂課程",
+    "itemListElement": [
+      {"@type": "Course", "name": "鋼琴課程"},
+      {"@type": "Course", "name": "吉他課程"},
+      {"@type": "Course", "name": "爵士鼓課程"},
+      {"@type": "Course", "name": "小提琴課程"},
+      {"@type": "Course", "name": "聲樂課程"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--purple:#7c3aed;--gold:#c8a45e;--cream:#fefdf5;--dark:#1a1a1a;--gray:#6b7280;--light-purple:#ede9fe}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden;background:var(--cream)}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(254,253,245,.95);backdrop-filter:blur(10px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-logo{height:36px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:var(--purple)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-btn{background:var(--purple);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:.85rem;cursor:pointer;font-weight:600;transition:background .3s}
+.lang-btn:hover{background:var(--gold)}
+.bgm-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--purple);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .3s}
+.bgm-btn.playing{background:var(--purple);color:#fff}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.45)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;margin-bottom:16px}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);max-width:560px;margin:0 auto 30px;opacity:.9}
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:transform .3s,box-shadow .3s}
+.btn-primary{background:var(--purple);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,.35)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,164,94,.4)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+.accent{color:var(--purple)}
+
+/* INSTRUMENTS */
+.instruments{background:#fff}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.inst-card{text-align:center;padding:30px 16px;border-radius:16px;background:var(--light-purple);transition:transform .3s,box-shadow .3s}
+.inst-card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(124,58,237,.15)}
+.inst-icon{font-size:3rem;margin-bottom:12px}
+.inst-card h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.inst-card p{font-size:.85rem;color:var(--gray)}
+
+/* LESSONS */
+.lessons-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.lessons-grid{grid-template-columns:1fr 1fr}}
+.lessons-img{border-radius:16px;overflow:hidden}
+.lessons-img img{width:100%;height:100%;object-fit:cover}
+.lessons-text{display:flex;flex-direction:column;justify-content:center}
+.lessons-text h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.lessons-text p{color:var(--gray);margin-bottom:16px;line-height:1.8}
+.lessons-text ul{list-style:none;padding:0}
+.lessons-text ul li{padding:6px 0;font-size:.95rem}
+.lessons-text ul li::before{content:"♫ ";color:var(--gold)}
+
+/* STUDIO */
+.studio{position:relative;min-height:50vh;display:flex;align-items:center;overflow:hidden}
+.studio-bg{position:absolute;inset:0;background:url('photos/studio.png') center/cover no-repeat;filter:brightness(.4)}
+.studio-content{position:relative;z-index:2;color:#fff;max-width:600px;padding:40px 20px}
+.studio-content h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:16px}
+.studio-content p{opacity:.9;margin-bottom:20px}
+
+/* RECITALS */
+.recitals{background:#fff}
+.recitals-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.recitals-grid{grid-template-columns:1fr 1fr}}
+.recitals-img{border-radius:16px;overflow:hidden}
+.recitals-img img{width:100%;height:100%;object-fit:cover}
+.recitals-text{display:flex;flex-direction:column;justify-content:center}
+.recitals-text h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.recitals-text p{color:var(--gray);margin-bottom:16px}
+
+/* ENROLL */
+.enroll{background:var(--light-purple)}
+.enroll-form{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.enroll-form input,.enroll-form select,.enroll-form textarea{padding:14px 18px;border:2px solid #e5e7eb;border-radius:12px;font-size:1rem;font-family:inherit;transition:border-color .3s;background:#fff}
+.enroll-form input:focus,.enroll-form select:focus,.enroll-form textarea:focus{outline:none;border-color:var(--purple)}
+.enroll-form textarea{min-height:100px;resize:vertical}
+
+.footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}
+.footer a{color:var(--gold);text-decoration:underline}
+.footer p{font-size:.85rem;opacity:.8}
+
+.heyboss-widget{position:fixed;bottom:28px;left:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.4);cursor:pointer;transition:transform .3s;border:none}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget svg{width:28px;height:28px;fill:#fff}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:480px){section{padding:60px 16px}.hero h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="logos/logo_final.png" alt="樂室 Logo" class="nav-logo">
+    <span class="nav-brand" data-zh="樂室 MusicRoom" data-en="MusicRoom">樂室 MusicRoom</span>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Background Music">♪</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="用音樂，點亮每一天" data-en="Light Up Every Day with Music">用音樂，點亮每一天</h1>
+    <p data-zh="專業師資、頂級錄音設備、溫暖的學習環境——讓音樂夢想在樂室綻放。" data-en="Expert instructors, premium studios, a warm learning environment — let your musical dreams blossom at MusicRoom.">專業師資、頂級錄音設備、溫暖的學習環境——讓音樂夢想在樂室綻放。</p>
+    <a href="#enroll" class="btn btn-primary" data-zh="立即報名" data-en="Enroll Now">立即報名</a>
+  </div>
+</section>
+
+<section class="instruments" id="instruments">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="課程<span class='accent'>樂器</span>" data-en="Our <span class='accent'>Instruments</span>">課程<span class="accent">樂器</span></h2>
+      <p data-zh="五大專業課程，適合各年齡層與程度" data-en="Five professional programs for all ages and skill levels">五大專業課程，適合各年齡層與程度</p>
+    </div>
+    <div class="inst-grid">
+      <div class="inst-card fade-up"><div class="inst-icon">🎹</div><h3 data-zh="鋼琴" data-en="Piano">鋼琴</h3><p data-zh="古典・流行・爵士" data-en="Classical, Pop, Jazz">古典・流行・爵士</p></div>
+      <div class="inst-card fade-up"><div class="inst-icon">🎸</div><h3 data-zh="吉他" data-en="Guitar">吉他</h3><p data-zh="木吉他・電吉他・烏克麗麗" data-en="Acoustic, Electric, Ukulele">木吉他・電吉他・烏克麗麗</p></div>
+      <div class="inst-card fade-up"><div class="inst-icon">🥁</div><h3 data-zh="爵士鼓" data-en="Drums">爵士鼓</h3><p data-zh="節奏訓練・即興演奏" data-en="Rhythm training, Improvisation">節奏訓練・即興演奏</p></div>
+      <div class="inst-card fade-up"><div class="inst-icon">🎻</div><h3 data-zh="小提琴" data-en="Violin">小提琴</h3><p data-zh="獨奏・合奏・室內樂" data-en="Solo, Ensemble, Chamber">獨奏・合奏・室內樂</p></div>
+      <div class="inst-card fade-up"><div class="inst-icon">🎤</div><h3 data-zh="聲樂" data-en="Vocals">聲樂</h3><p data-zh="發聲技巧・歌曲詮釋" data-en="Vocal technique, Song interpretation">發聲技巧・歌曲詮釋</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lessons">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="專業<span class='accent'>課程</span>" data-en="Professional <span class='accent'>Lessons</span>">專業<span class="accent">課程</span></h2>
+    </div>
+    <div class="lessons-grid">
+      <div class="lessons-img fade-left"><img src="photos/lesson.png" alt="音樂課程"></div>
+      <div class="lessons-text fade-right">
+        <h3 data-zh="因材施教的教學方針" data-en="Personalized Teaching Approach">因材施教的教學方針</h3>
+        <p data-zh="每位學員都有專屬的學習計畫，從零基礎到進階演奏，循序漸進、扎實培養。" data-en="Every student receives a personalized learning plan, progressing steadily from beginner to advanced.">每位學員都有專屬的學習計畫，從零基礎到進階演奏，循序漸進、扎實培養。</p>
+        <ul>
+          <li data-zh="一對一個別課 / 小班制團體課" data-en="1-on-1 private / Small group classes">一對一個別課 / 小班制團體課</li>
+          <li data-zh="每月成果發表與交流" data-en="Monthly recitals and networking">每月成果發表與交流</li>
+          <li data-zh="免費試堂體驗" data-en="Free trial lesson">免費試堂體驗</li>
+          <li data-zh="線上與實體課程同步" data-en="Online and in-person available">線上與實體課程同步</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="studio">
+  <div class="studio-bg"></div>
+  <div class="studio-content fade-left">
+    <h2 data-zh="頂級錄音室等級教室" data-en="Studio-Grade Classrooms">頂級錄音室等級教室</h2>
+    <p data-zh="專業隔音設計、高品質樂器設備，讓每一次練習都如同正式演出。" data-en="Professional soundproofing, premium instruments — every practice feels like a real performance.">專業隔音設計、高品質樂器設備，讓每一次練習都如同正式演出。</p>
+    <a href="#enroll" class="btn btn-gold" data-zh="預約參觀" data-en="Book a Tour">預約參觀</a>
+  </div>
+</section>
+
+<section class="recitals" id="recitals">
+  <div class="container">
+    <div class="recitals-grid">
+      <div class="recitals-text fade-left">
+        <h3 data-zh="學員成果發表會" data-en="Student Recitals">學員成果發表會</h3>
+        <p data-zh="每季舉辦正式發表會，邀請家人朋友一同見證成長。專業舞台燈光音響，給每位學員最完整的演出體驗。" data-en="Quarterly recitals with professional stage production invite family and friends to witness every student's growth.">每季舉辦正式發表會，邀請家人朋友一同見證成長。專業舞台燈光音響，給每位學員最完整的演出體驗。</p>
+        <a href="#enroll" class="btn btn-primary" data-zh="加入我們" data-en="Join Us">加入我們</a>
+      </div>
+      <div class="recitals-img fade-right"><img src="photos/recital.png" alt="成果發表會"></div>
+    </div>
+  </div>
+</section>
+
+<section class="enroll" id="enroll">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="立即<span class='accent'>報名</span>" data-en="Enroll <span class='accent'>Now</span>">立即<span class="accent">報名</span></h2>
+      <p data-zh="填寫表單，我們將為您安排免費試堂" data-en="Fill out the form and we'll arrange a free trial lesson">填寫表單，我們將為您安排免費試堂</p>
+    </div>
+    <form class="enroll-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'感謝報名！我們將盡快與您聯繫安排試堂。':'Thank you! We will contact you to arrange a trial lesson.')">
+      <input type="text" required data-zh-placeholder="學員姓名" data-en-placeholder="Student Name" placeholder="學員姓名">
+      <input type="tel" required data-zh-placeholder="聯絡電話" data-en-placeholder="Phone Number" placeholder="聯絡電話">
+      <input type="email" data-zh-placeholder="電子郵件" data-en-placeholder="Email" placeholder="電子郵件">
+      <select>
+        <option data-zh="選擇課程" data-en="Select Course">選擇課程</option>
+        <option data-zh="鋼琴" data-en="Piano">鋼琴</option>
+        <option data-zh="吉他" data-en="Guitar">吉他</option>
+        <option data-zh="爵士鼓" data-en="Drums">爵士鼓</option>
+        <option data-zh="小提琴" data-en="Violin">小提琴</option>
+        <option data-zh="聲樂" data-en="Vocals">聲樂</option>
+      </select>
+      <select>
+        <option data-zh="學員程度" data-en="Skill Level">學員程度</option>
+        <option data-zh="零基礎" data-en="Beginner">零基礎</option>
+        <option data-zh="初學者" data-en="Elementary">初學者</option>
+        <option data-zh="中級" data-en="Intermediate">中級</option>
+        <option data-zh="進階" data-en="Advanced">進階</option>
+      </select>
+      <textarea data-zh-placeholder="想對我們說的話..." data-en-placeholder="Any message for us..." placeholder="想對我們說的話..."></textarea>
+      <button type="submit" class="btn btn-primary" data-zh="送出報名" data-en="Submit Enrollment">送出報名</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" aria-label="Contact HEY!BOSS">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+currentLang)});document.querySelectorAll('[data-zh-placeholder]').forEach(el=>{el.placeholder=el.getAttribute('data-'+currentLang+'-placeholder')})}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浪遊旅行社 Wanderlust — 探索世界的每一個角落</title>
+<meta name="description" content="浪遊旅行社 Wanderlust 提供精選旅遊行程、深度文化體驗與奢華度假方案，帶您探索世界每一個角落。">
+<meta name="keywords" content="旅行社,旅遊,自由行,跟團,深度旅遊,Wanderlust">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/wanderlust/">
+<meta property="og:title" content="浪遊旅行社 Wanderlust">
+<meta property="og:description" content="探索世界的每一個角落，精選旅遊行程與深度文化體驗。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "浪遊旅行社 Wanderlust",
+  "description": "提供精選旅遊行程、深度文化體驗與奢華度假方案",
+  "url": "https://silmoontravis.github.io/demos/wanderlust/",
+  "logo": "logos/logo_final.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service"
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--orange:#f97316;--sky:#38bdf8;--white:#ffffff;--dark:#1a1a1a;--gray:#6b7280;--light:#f8fafc}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.08);transition:transform .3s}
+.nav-logo{height:36px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-btn{background:var(--sky);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:.85rem;cursor:pointer;font-weight:600;transition:background .3s}
+.lang-btn:hover{background:var(--orange)}
+.bgm-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--orange);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .3s}
+.bgm-btn.playing{background:var(--orange);color:#fff}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.6)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px}
+.hero h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.hero p{font-size:clamp(1rem,2.5vw,1.4rem);max-width:600px;margin:0 auto 30px;opacity:.9}
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:transform .3s,box-shadow .3s}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(249,115,22,.4)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+/* SECTIONS */
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto;font-size:1rem}
+.accent{color:var(--orange)}
+
+/* DESTINATIONS */
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.dest-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
+.dest-card:hover{transform:translateY(-6px);box-shadow:0 12px 35px rgba(0,0,0,.12)}
+.dest-card-img{height:180px;background:linear-gradient(135deg,var(--sky),var(--orange));display:flex;align-items:center;justify-content:center;font-size:3rem}
+.dest-card-body{padding:20px}
+.dest-card-body h3{font-size:1.15rem;font-weight:700;margin-bottom:6px}
+.dest-card-body p{font-size:.9rem;color:var(--gray)}
+
+/* TOURS */
+.tours-section{background:var(--light)}
+.tours-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.tours-grid{grid-template-columns:1fr 1fr}}
+.tours-img{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.tours-img img{width:100%;height:100%;object-fit:cover}
+.tours-text{display:flex;flex-direction:column;justify-content:center}
+.tours-text h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.tours-text p{color:var(--gray);margin-bottom:20px}
+.tour-features{list-style:none;padding:0}
+.tour-features li{padding:8px 0;border-bottom:1px solid #e5e7eb;font-size:.95rem}
+.tour-features li::before{content:"✦ ";color:var(--orange);font-weight:bold}
+
+/* LUXURY */
+.luxury{position:relative;min-height:60vh;display:flex;align-items:center;overflow:hidden}
+.luxury-bg{position:absolute;inset:0;background:url('photos/relax.png') center/cover no-repeat;filter:brightness(.5)}
+.luxury-content{position:relative;z-index:2;color:#fff;max-width:600px;padding:40px}
+.luxury-content h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:16px}
+.luxury-content p{font-size:1.05rem;opacity:.9;margin-bottom:24px}
+
+/* CONTACT */
+.contact{background:var(--light)}
+.contact-form{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.contact-form input,.contact-form textarea,.contact-form select{padding:14px 18px;border:2px solid #e5e7eb;border-radius:12px;font-size:1rem;font-family:inherit;transition:border-color .3s}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:none;border-color:var(--orange)}
+.contact-form textarea{min-height:120px;resize:vertical}
+
+/* FOOTER */
+.footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}
+.footer a{color:var(--sky);text-decoration:underline}
+.footer p{font-size:.85rem;opacity:.8}
+
+/* HEYBOSS WIDGET */
+.heyboss-widget{position:fixed;bottom:28px;left:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(56,189,248,.4);cursor:pointer;transition:transform .3s,box-shadow .3s;border:none}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(56,189,248,.5)}
+.heyboss-widget svg{width:28px;height:28px;fill:#fff}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:480px){
+  section{padding:60px 16px}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="logos/logo_final.png" alt="浪遊旅行社 Logo" class="nav-logo">
+    <span class="nav-brand" data-zh="浪遊旅行社" data-en="Wanderlust">浪遊旅行社</span>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Background Music">♪</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="探索世界的每一個角落" data-en="Explore Every Corner of the World">探索世界的每一個角落</h1>
+    <p data-zh="從文化深度旅遊到奢華度假，浪遊旅行社為您量身打造難忘旅程。" data-en="From cultural immersion to luxury getaways, Wanderlust crafts unforgettable journeys just for you.">從文化深度旅遊到奢華度假，浪遊旅行社為您量身打造難忘旅程。</p>
+    <a href="#destinations" class="btn btn-primary" data-zh="探索行程" data-en="Explore Tours">探索行程</a>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="熱門<span class='accent'>目的地</span>" data-en="Popular <span class='accent'>Destinations</span>">熱門<span class="accent">目的地</span></h2>
+      <p data-zh="精選全球最令人嚮往的旅遊勝地" data-en="Curated selection of the world's most coveted travel destinations">精選全球最令人嚮往的旅遊勝地</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card fade-up">
+        <div class="dest-card-img" style="background:linear-gradient(135deg,#f97316,#fb923c)">🗼</div>
+        <div class="dest-card-body">
+          <h3 data-zh="東京・日本" data-en="Tokyo, Japan">東京・日本</h3>
+          <p data-zh="傳統與現代交融的迷人都市" data-en="A captivating city where tradition meets modernity">傳統與現代交融的迷人都市</p>
+        </div>
+      </div>
+      <div class="dest-card fade-up">
+        <div class="dest-card-img" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)">🏔</div>
+        <div class="dest-card-body">
+          <h3 data-zh="冰島・雷克雅維克" data-en="Reykjavik, Iceland">冰島・雷克雅維克</h3>
+          <p data-zh="極光與冰川的夢幻國度" data-en="A dreamland of northern lights and glaciers">極光與冰川的夢幻國度</p>
+        </div>
+      </div>
+      <div class="dest-card fade-up">
+        <div class="dest-card-img" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">🏛</div>
+        <div class="dest-card-body">
+          <h3 data-zh="羅馬・義大利" data-en="Rome, Italy">羅馬・義大利</h3>
+          <p data-zh="千年歷史的永恆之城" data-en="The Eternal City with millennia of history">千年歷史的永恆之城</p>
+        </div>
+      </div>
+      <div class="dest-card fade-up">
+        <div class="dest-card-img" style="background:linear-gradient(135deg,#34d399,#059669)">🌴</div>
+        <div class="dest-card-body">
+          <h3 data-zh="峇里島・印尼" data-en="Bali, Indonesia">峇里島・印尼</h3>
+          <p data-zh="熱帶天堂的療癒之旅" data-en="A healing journey in a tropical paradise">熱帶天堂的療癒之旅</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOURS -->
+<section class="tours-section" id="tours">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="精選<span class='accent'>行程</span>" data-en="Featured <span class='accent'>Tours</span>">精選<span class="accent">行程</span></h2>
+    </div>
+    <div class="tours-grid">
+      <div class="tours-img fade-left">
+        <img src="photos/tour.png" alt="精選旅遊行程">
+      </div>
+      <div class="tours-text fade-right">
+        <h3 data-zh="深度文化之旅" data-en="Deep Cultural Immersion">深度文化之旅</h3>
+        <p data-zh="走進當地生活，品嚐道地美食，體驗最真實的文化風情。" data-en="Immerse in local life, savor authentic cuisine, and experience genuine cultural charm.">走進當地生活，品嚐道地美食，體驗最真實的文化風情。</p>
+        <ul class="tour-features">
+          <li data-zh="專屬在地導遊帶路" data-en="Exclusive local guide service">專屬在地導遊帶路</li>
+          <li data-zh="特色手作體驗工坊" data-en="Artisan craft workshops">特色手作體驗工坊</li>
+          <li data-zh="隱藏版美食探索" data-en="Hidden culinary discoveries">隱藏版美食探索</li>
+          <li data-zh="文化古蹟深度導覽" data-en="In-depth heritage site tours">文化古蹟深度導覽</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tours-grid" style="margin-top:50px">
+      <div class="tours-text fade-left">
+        <h3 data-zh="文化體驗行程" data-en="Cultural Experience Tours">文化體驗行程</h3>
+        <p data-zh="從古老神殿到現代藝術，感受每個文明的獨特魅力。" data-en="From ancient temples to modern art, feel the unique charm of every civilization.">從古老神殿到現代藝術，感受每個文明的獨特魅力。</p>
+        <a href="#contact" class="btn btn-primary" data-zh="立即諮詢" data-en="Inquire Now">立即諮詢</a>
+      </div>
+      <div class="tours-img fade-right">
+        <img src="photos/culture.png" alt="文化體驗">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LUXURY -->
+<section class="luxury">
+  <div class="luxury-bg"></div>
+  <div class="luxury-content fade-left">
+    <h2 data-zh="奢華度假體驗" data-en="Luxury Retreat Experience">奢華度假體驗</h2>
+    <p data-zh="頂級度假村、私人管家服務、專屬行程規劃——讓每一刻都成為珍貴回憶。" data-en="Premium resorts, private butler service, exclusive itineraries — making every moment a precious memory.">頂級度假村、私人管家服務、專屬行程規劃——讓每一刻都成為珍貴回憶。</p>
+    <a href="#contact" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="聯絡<span class='accent'>我們</span>" data-en="Contact <span class='accent'>Us</span>">聯絡<span class="accent">我們</span></h2>
+      <p data-zh="告訴我們您的旅行夢想，我們來實現" data-en="Tell us your travel dreams, and we'll make them come true">告訴我們您的旅行夢想，我們來實現</p>
+    </div>
+    <form class="contact-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'感謝您的訊息！我們將盡快與您聯繫。':'Thank you! We will contact you soon.')">
+      <input type="text" required data-zh-placeholder="您的姓名" data-en-placeholder="Your Name" placeholder="您的姓名">
+      <input type="email" required data-zh-placeholder="電子郵件" data-en-placeholder="Email Address" placeholder="電子郵件">
+      <input type="tel" data-zh-placeholder="聯絡電話" data-en-placeholder="Phone Number" placeholder="聯絡電話">
+      <select>
+        <option data-zh="選擇目的地" data-en="Select Destination">選擇目的地</option>
+        <option data-zh="東京・日本" data-en="Tokyo, Japan">東京・日本</option>
+        <option data-zh="冰島" data-en="Iceland">冰島</option>
+        <option data-zh="羅馬・義大利" data-en="Rome, Italy">羅馬・義大利</option>
+        <option data-zh="峇里島" data-en="Bali">峇里島</option>
+      </select>
+      <textarea data-zh-placeholder="告訴我們您的旅行夢想..." data-en-placeholder="Tell us about your dream trip..." placeholder="告訴我們您的旅行夢想..."></textarea>
+      <button type="submit" class="btn btn-primary" data-zh="送出諮詢" data-en="Submit Inquiry">送出諮詢</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<!-- HEYBOSS WIDGET -->
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" aria-label="Contact HEY!BOSS">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<!-- BGM -->
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+// Language toggle
+let currentLang = 'zh';
+function toggleLang() {
+  currentLang = currentLang === 'zh' ? 'en' : 'zh';
+  document.querySelector('.lang-btn').textContent = currentLang === 'zh' ? 'EN' : '中文';
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + currentLang);
+  });
+  document.querySelectorAll('[data-zh-placeholder]').forEach(el => {
+    el.placeholder = el.getAttribute('data-' + currentLang + '-placeholder');
+  });
+}
+
+// BGM toggle
+let bgmPlaying = false;
+const bgmAudio = document.getElementById('bgmAudio');
+const bgmBtn = document.getElementById('bgmBtn');
+function toggleBGM() {
+  if (bgmPlaying) {
+    bgmAudio.pause();
+    bgmBtn.classList.remove('playing');
+    bgmBtn.textContent = '♪';
+  } else {
+    bgmAudio.play();
+    bgmBtn.classList.add('playing');
+    bgmBtn.textContent = '⏸';
+  }
+  bgmPlaying = !bgmPlaying;
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

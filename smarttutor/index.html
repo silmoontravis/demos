@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智學家教 SmartTutor — 最聰明的學習配對平台</title>
+<meta name="description" content="智學家教 SmartTutor 是專業家教配對平台，提供數學、英文、物理、化學、程式、國文六大科目，三種方案滿足不同學習需求。">
+<meta name="keywords" content="家教,補習,線上家教,家教配對,SmartTutor,智學家教,數學家教,英文家教">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/smarttutor/">
+<meta property="og:title" content="智學家教 SmartTutor — 家教配對平台">
+<meta property="og:description" content="最聰明的學習配對平台，三步驟找到最適合的家教老師。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "智學家教 SmartTutor",
+  "description": "專業家教配對平台，提供數學、英文、物理、化學、程式、國文課程",
+  "url": "https://silmoontravis.github.io/demos/smarttutor/",
+  "logo": "logos/logo_final.png",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "會員方案",
+    "itemListElement": [
+      {"@type": "Offer", "name": "Free 免費方案", "price": "0", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "Plus 進階方案", "price": "299", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "Pro 專業方案", "price": "599", "priceCurrency": "TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#3b82f6;--yellow:#eab308;--white:#ffffff;--dark:#1a1a1a;--gray:#6b7280;--light:#f0f9ff;--dark-blue:#1e40af}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden;background:var(--white)}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-logo{height:36px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:var(--blue)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-btn{background:var(--blue);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:.85rem;cursor:pointer;font-weight:600;transition:background .3s}
+.lang-btn:hover{background:var(--yellow);color:var(--dark)}
+.bgm-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--blue);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .3s}
+.bgm-btn.playing{background:var(--blue);color:#fff}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.45)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;margin-bottom:16px}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);max-width:580px;margin:0 auto 30px;opacity:.9}
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:transform .3s,box-shadow .3s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,.35)}
+.btn-yellow{background:var(--yellow);color:var(--dark)}
+.btn-yellow:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(234,179,8,.4)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+.accent{color:var(--blue)}
+
+/* HOW IT WORKS */
+.how{background:var(--light)}
+.how-top{display:grid;grid-template-columns:1fr;gap:40px;margin-bottom:50px}
+@media(min-width:768px){.how-top{grid-template-columns:1fr 1fr}}
+.how-img{border-radius:16px;overflow:hidden}
+.how-img img{width:100%;height:100%;object-fit:cover}
+.how-text{display:flex;flex-direction:column;justify-content:center}
+.how-text h3{font-size:1.4rem;font-weight:700;margin-bottom:16px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.step{text-align:center;padding:24px 16px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.step-num{width:48px;height:48px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;margin:0 auto 12px}
+.step h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+.step p{font-size:.85rem;color:var(--gray)}
+
+/* SUBJECTS */
+.subjects-header{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:40px}
+@media(min-width:768px){.subjects-header{grid-template-columns:1fr 1fr}}
+.subjects-img{border-radius:16px;overflow:hidden}
+.subjects-img img{width:100%;height:100%;object-fit:cover}
+.subj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.subj-card{text-align:center;padding:24px 12px;background:var(--light);border-radius:16px;transition:transform .3s,box-shadow .3s}
+.subj-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(59,130,246,.12)}
+.subj-icon{font-size:2.5rem;margin-bottom:8px}
+.subj-card h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+.subj-card p{font-size:.8rem;color:var(--gray)}
+
+/* PLANS */
+.plans{background:var(--light)}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:#fff;border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s;position:relative}
+.plan-card:hover{transform:translateY(-6px)}
+.plan-card.featured{border:3px solid var(--blue);box-shadow:0 8px 30px rgba(59,130,246,.15)}
+.plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--yellow);color:var(--dark);padding:4px 20px;border-radius:20px;font-size:.8rem;font-weight:700}
+.plan-card h3{font-size:1.3rem;font-weight:800;margin-bottom:8px}
+.plan-price{font-size:2.4rem;font-weight:800;color:var(--blue);margin-bottom:4px}
+.plan-price span{font-size:.9rem;font-weight:400;color:var(--gray)}
+.plan-features{list-style:none;padding:0;margin:20px 0;text-align:left}
+.plan-features li{padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem}
+.plan-features li::before{content:"✓ ";color:var(--blue);font-weight:bold}
+
+/* SUCCESS */
+.success-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.success-grid{grid-template-columns:1fr 1fr}}
+.success-img{border-radius:16px;overflow:hidden}
+.success-img img{width:100%;height:100%;object-fit:cover}
+.testimonials{display:flex;flex-direction:column;gap:20px;justify-content:center}
+.testimonial{background:var(--light);padding:20px;border-radius:14px;border-left:4px solid var(--blue)}
+.testimonial p{font-size:.95rem;font-style:italic;margin-bottom:8px;color:var(--dark)}
+.testimonial .author{font-size:.8rem;color:var(--gray);font-weight:600}
+
+/* SIGNUP */
+.signup{background:var(--blue);color:#fff;text-align:center;padding:80px 20px}
+.signup h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:16px}
+.signup p{opacity:.9;max-width:500px;margin:0 auto 30px}
+.signup-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.signup-form input,.signup-form select{padding:14px 18px;border:none;border-radius:12px;font-size:1rem;font-family:inherit}
+.signup-form input:focus,.signup-form select:focus{outline:3px solid var(--yellow)}
+.signup-form .btn{background:var(--yellow);color:var(--dark)}
+.signup-form .btn:hover{background:#fbbf24;transform:translateY(-2px)}
+
+.footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}
+.footer a{color:var(--yellow);text-decoration:underline}
+.footer p{font-size:.85rem;opacity:.8}
+
+.heyboss-widget{position:fixed;bottom:28px;left:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.4);cursor:pointer;transition:transform .3s;border:none}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget svg{width:28px;height:28px;fill:#fff}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:480px){section{padding:60px 16px}.hero h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="logos/logo_final.png" alt="智學家教 Logo" class="nav-logo">
+    <span class="nav-brand" data-zh="智學家教" data-en="SmartTutor">智學家教</span>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Background Music">♪</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="最聰明的學習配對平台" data-en="The Smartest Tutor Matching Platform">最聰明的學習配對平台</h1>
+    <p data-zh="三步驟找到最適合你的家教老師，讓學習不再走彎路。" data-en="Find your perfect tutor in 3 steps. No more trial and error in learning.">三步驟找到最適合你的家教老師，讓學習不再走彎路。</p>
+    <a href="#signup" class="btn btn-yellow" data-zh="免費開始" data-en="Start Free">免費開始</a>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="如何<span class='accent'>運作</span>" data-en="How It <span class='accent'>Works</span>">如何<span class="accent">運作</span></h2>
+    </div>
+    <div class="how-top">
+      <div class="how-img fade-left"><img src="photos/match.png" alt="配對系統"></div>
+      <div class="how-text fade-right">
+        <h3 data-zh="精準配對，高效學習" data-en="Precise Matching, Efficient Learning">精準配對，高效學習</h3>
+        <p style="color:var(--gray);margin-bottom:20px" data-zh="我們的配對系統根據學生的學習風格、程度、目標與時間偏好，為您找到最合適的家教老師。" data-en="Our matching system finds the ideal tutor based on your learning style, level, goals, and schedule preferences.">我們的配對系統根據學生的學習風格、程度、目標與時間偏好，為您找到最合適的家教老師。</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4 data-zh="填寫需求" data-en="Submit Needs">填寫需求</h4>
+        <p data-zh="告訴我們科目、程度與學習目標" data-en="Tell us your subject, level, and goals">告訴我們科目、程度與學習目標</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4 data-zh="系統配對" data-en="Smart Match">系統配對</h4>
+        <p data-zh="根據多維度分析推薦最佳老師" data-en="Multi-dimensional analysis recommends the best tutor">根據多維度分析推薦最佳老師</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4 data-zh="開始學習" data-en="Start Learning">開始學習</h4>
+        <p data-zh="線上或面對面，立即展開課程" data-en="Online or in-person, start your lessons right away">線上或面對面，立即展開課程</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subjects">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="開設<span class='accent'>科目</span>" data-en="Available <span class='accent'>Subjects</span>">開設<span class="accent">科目</span></h2>
+    </div>
+    <div class="subjects-header fade-up">
+      <div class="subjects-img"><img src="photos/subjects.png" alt="學科課程"></div>
+      <div style="display:flex;flex-direction:column;justify-content:center">
+        <h3 data-zh="六大核心科目，全面覆蓋" data-en="Six Core Subjects, Full Coverage" style="font-size:1.4rem;font-weight:700;margin-bottom:12px">六大核心科目，全面覆蓋</h3>
+        <p style="color:var(--gray)" data-zh="從國小到大學，從基礎到競賽，智學家教的師資庫涵蓋所有主流學科。" data-en="From elementary to university, from basics to competitions, SmartTutor's tutor pool covers all major subjects.">從國小到大學，從基礎到競賽，智學家教的師資庫涵蓋所有主流學科。</p>
+      </div>
+    </div>
+    <div class="subj-grid">
+      <div class="subj-card fade-up"><div class="subj-icon">📐</div><h4 data-zh="數學" data-en="Math">數學</h4><p data-zh="代數・幾何・微積分" data-en="Algebra, Geometry, Calculus">代數・幾何・微積分</p></div>
+      <div class="subj-card fade-up"><div class="subj-icon">🔤</div><h4 data-zh="英文" data-en="English">英文</h4><p data-zh="文法・閱讀・寫作・口說" data-en="Grammar, Reading, Writing, Speaking">文法・閱讀・寫作・口說</p></div>
+      <div class="subj-card fade-up"><div class="subj-icon">⚡</div><h4 data-zh="物理" data-en="Physics">物理</h4><p data-zh="力學・電磁・光學" data-en="Mechanics, Electromagnetics, Optics">力學・電磁・光學</p></div>
+      <div class="subj-card fade-up"><div class="subj-icon">🧪</div><h4 data-zh="化學" data-en="Chemistry">化學</h4><p data-zh="有機・無機・分析" data-en="Organic, Inorganic, Analytical">有機・無機・分析</p></div>
+      <div class="subj-card fade-up"><div class="subj-icon">💻</div><h4 data-zh="程式" data-en="Programming">程式</h4><p data-zh="Python・JavaScript・C++" data-en="Python, JavaScript, C++">Python・JavaScript・C++</p></div>
+      <div class="subj-card fade-up"><div class="subj-icon">📖</div><h4 data-zh="國文" data-en="Chinese">國文</h4><p data-zh="閱讀・作文・文言文" data-en="Reading, Composition, Classical Chinese">閱讀・作文・文言文</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="plans" id="plans">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="會員<span class='accent'>方案</span>" data-en="Membership <span class='accent'>Plans</span>">會員<span class="accent">方案</span></h2>
+      <p data-zh="選擇最適合您的方案，隨時可升級" data-en="Choose the plan that fits you best, upgrade anytime">選擇最適合您的方案，隨時可升級</p>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-card fade-up">
+        <h3 data-zh="Free 免費" data-en="Free">Free 免費</h3>
+        <div class="plan-price">$0 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul class="plan-features">
+          <li data-zh="配對推薦 3 位老師" data-en="Match with 3 tutors">配對推薦 3 位老師</li>
+          <li data-zh="每月 1 堂免費試聽" data-en="1 free trial/month">每月 1 堂免費試聽</li>
+          <li data-zh="基礎學習報告" data-en="Basic learning report">基礎學習報告</li>
+          <li data-zh="社群討論區" data-en="Community forum access">社群討論區</li>
+        </ul>
+        <a href="#signup" class="btn btn-primary" data-zh="免費加入" data-en="Join Free">免費加入</a>
+      </div>
+      <div class="plan-card featured fade-up">
+        <div class="plan-badge" data-zh="最熱門" data-en="Most Popular">最熱門</div>
+        <h3 data-zh="Plus 進階" data-en="Plus">Plus 進階</h3>
+        <div class="plan-price">$299 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul class="plan-features">
+          <li data-zh="配對推薦 10 位老師" data-en="Match with 10 tutors">配對推薦 10 位老師</li>
+          <li data-zh="每月 3 堂免費試聽" data-en="3 free trials/month">每月 3 堂免費試聽</li>
+          <li data-zh="進階學習分析報告" data-en="Advanced learning analytics">進階學習分析報告</li>
+          <li data-zh="優先客服支援" data-en="Priority support">優先客服支援</li>
+          <li data-zh="錄影回放功能" data-en="Lesson recording & replay">錄影回放功能</li>
+        </ul>
+        <a href="#signup" class="btn btn-yellow" data-zh="選擇 Plus" data-en="Choose Plus">選擇 Plus</a>
+      </div>
+      <div class="plan-card fade-up">
+        <h3 data-zh="Pro 專業" data-en="Pro">Pro 專業</h3>
+        <div class="plan-price">$599 <span data-zh="/月" data-en="/mo">/月</span></div>
+        <ul class="plan-features">
+          <li data-zh="無限配對推薦" data-en="Unlimited tutor matching">無限配對推薦</li>
+          <li data-zh="每月 8 堂免費試聽" data-en="8 free trials/month">每月 8 堂免費試聽</li>
+          <li data-zh="專屬學習顧問" data-en="Dedicated learning advisor">專屬學習顧問</li>
+          <li data-zh="全科目開放" data-en="All subjects unlocked">全科目開放</li>
+          <li data-zh="家長即時追蹤面板" data-en="Parent real-time dashboard">家長即時追蹤面板</li>
+          <li data-zh="考試衝刺方案" data-en="Exam prep sprint plan">考試衝刺方案</li>
+        </ul>
+        <a href="#signup" class="btn btn-primary" data-zh="選擇 Pro" data-en="Choose Pro">選擇 Pro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="success">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="學員<span class='accent'>成功故事</span>" data-en="Student <span class='accent'>Success Stories</span>">學員<span class="accent">成功故事</span></h2>
+    </div>
+    <div class="success-grid">
+      <div class="success-img fade-left"><img src="photos/success.png" alt="學員成功"></div>
+      <div class="testimonials fade-right">
+        <div class="testimonial">
+          <p data-zh="「透過智學家教，我的數學從 60 分進步到 92 分，老師的教法真的很適合我！」" data-en="\"Thanks to SmartTutor, my math score jumped from 60 to 92. The tutor's teaching style truly suits me!\"">「透過智學家教，我的數學從 60 分進步到 92 分，老師的教法真的很適合我！」</p>
+          <div class="author" data-zh="— 林同學，國三生" data-en="— Student Lin, 9th Grade">— 林同學，國三生</div>
+        </div>
+        <div class="testimonial">
+          <p data-zh="「配對系統很精準，第一次試聽就遇到很合拍的英文老師，現在已經上了半年。」" data-en="\"The matching system is incredibly accurate. Found my perfect English tutor on the first try, been learning for 6 months now.\"">「配對系統很精準，第一次試聽就遇到很合拍的英文老師，現在已經上了半年。」</p>
+          <div class="author" data-zh="— 張同學，高一生" data-en="— Student Zhang, 10th Grade">— 張同學，高一生</div>
+        </div>
+        <div class="testimonial">
+          <p data-zh="「兒子從排斥學習到主動要求加課，智學家教真的改變了我們全家的學習氛圍。」" data-en="\"My son went from resisting study to actively requesting more lessons. SmartTutor truly transformed our family's learning atmosphere.\"">「兒子從排斥學習到主動要求加課，智學家教真的改變了我們全家的學習氛圍。」</p>
+          <div class="author" data-zh="— 陳媽媽" data-en="— Parent Chen">— 陳媽媽</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <h2 data-zh="立即加入智學家教" data-en="Join SmartTutor Today">立即加入智學家教</h2>
+  <p data-zh="免費註冊，三分鐘完成配對，今天就開始學習之旅！" data-en="Sign up free, get matched in 3 minutes, and start your learning journey today!">免費註冊，三分鐘完成配對，今天就開始學習之旅！</p>
+  <form class="signup-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'註冊成功！我們正在為您配對最佳老師。':'Registration successful! We are matching you with the best tutor.')">
+    <input type="text" required data-zh-placeholder="您的姓名" data-en-placeholder="Your Name" placeholder="您的姓名">
+    <input type="email" required data-zh-placeholder="電子郵件" data-en-placeholder="Email Address" placeholder="電子郵件">
+    <input type="tel" data-zh-placeholder="聯絡電話" data-en-placeholder="Phone Number" placeholder="聯絡電話">
+    <select>
+      <option data-zh="選擇科目" data-en="Select Subject">選擇科目</option>
+      <option data-zh="數學" data-en="Math">數學</option>
+      <option data-zh="英文" data-en="English">英文</option>
+      <option data-zh="物理" data-en="Physics">物理</option>
+      <option data-zh="化學" data-en="Chemistry">化學</option>
+      <option data-zh="程式" data-en="Programming">程式</option>
+      <option data-zh="國文" data-en="Chinese">國文</option>
+    </select>
+    <select>
+      <option data-zh="選擇方案" data-en="Select Plan">選擇方案</option>
+      <option data-zh="Free 免費" data-en="Free">Free 免費</option>
+      <option data-zh="Plus $299/月" data-en="Plus $299/mo">Plus $299/月</option>
+      <option data-zh="Pro $599/月" data-en="Pro $599/mo">Pro $599/月</option>
+    </select>
+    <button type="submit" class="btn" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</button>
+  </form>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" aria-label="Contact HEY!BOSS">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+currentLang)});document.querySelectorAll('[data-zh-placeholder]').forEach(el=>{el.placeholder=el.getAttribute('data-'+currentLang+'-placeholder')})}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

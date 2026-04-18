@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鐵線手作 IronThread — 手工金屬飾品，獨一無二</title>
+<meta name="description" content="鐵線手作 IronThread 提供手工金屬飾品，從戒指到項鍊，每一件都是匠人精心打造的獨特作品。支持客製化訂製。">
+<meta name="keywords" content="手工飾品,金屬飾品,客製化,手作,IronThread,鐵線手作,戒指,項鍊">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/ironthread/">
+<meta property="og:title" content="鐵線手作 IronThread — 手工金屬飾品">
+<meta property="og:description" content="匠人手工打造，獨一無二的金屬飾品。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "鐵線手作 IronThread",
+  "description": "手工金屬飾品電商，提供客製化訂製服務",
+  "url": "https://silmoontravis.github.io/demos/ironthread/",
+  "logo": "logos/logo_final.png",
+  "priceRange": "$$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "金屬飾品系列",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "手工戒指系列", "offers": {"@type": "Offer", "priceCurrency": "TWD", "price": "1280"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "編織項鍊系列", "offers": {"@type": "Offer", "priceCurrency": "TWD", "price": "2380"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "金屬耳環系列", "offers": {"@type": "Offer", "priceCurrency": "TWD", "price": "980"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "手環與袖扣", "offers": {"@type": "Offer", "priceCurrency": "TWD", "price": "1680"}}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--steel:#374151;--rose:#b76e79;--cream:#faf5f0;--dark:#1a1a1a;--gray:#6b7280;--light-rose:#f5e6e8}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden;background:var(--cream)}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(250,245,240,.95);backdrop-filter:blur(10px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-logo{height:36px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:var(--steel)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-btn{background:var(--rose);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:.85rem;cursor:pointer;font-weight:600;transition:background .3s}
+.lang-btn:hover{background:var(--steel)}
+.bgm-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--rose);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .3s}
+.bgm-btn.playing{background:var(--rose);color:#fff}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.4)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;margin-bottom:16px;letter-spacing:2px}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);max-width:560px;margin:0 auto 30px;opacity:.9}
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:transform .3s,box-shadow .3s}
+.btn-primary{background:var(--rose);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(183,110,121,.4)}
+.btn-steel{background:var(--steel);color:#fff}
+.btn-steel:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(55,65,81,.35)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+.accent{color:var(--rose)}
+
+/* COLLECTIONS */
+.collections{background:#fff}
+.coll-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.coll-card{background:var(--cream);border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s}
+.coll-card:hover{transform:translateY(-6px)}
+.coll-card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.coll-card-body{padding:20px}
+.coll-card-body h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.coll-card-body .price{color:var(--rose);font-weight:800;font-size:1.15rem;margin-bottom:6px}
+.coll-card-body p{font-size:.88rem;color:var(--gray)}
+.coll-card-body .shop-btn{margin-top:12px;width:100%;padding:10px;background:var(--steel);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;transition:background .3s}
+.coll-card-body .shop-btn:hover{background:var(--rose)}
+
+/* CRAFT */
+.craft-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.craft-grid{grid-template-columns:1fr 1fr}}
+.craft-img{border-radius:16px;overflow:hidden}
+.craft-img img{width:100%;height:100%;object-fit:cover}
+.craft-text{display:flex;flex-direction:column;justify-content:center}
+.craft-text h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.craft-text p{color:var(--gray);margin-bottom:16px;line-height:1.8}
+.craft-steps{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+.craft-step{text-align:center;flex:1;min-width:80px}
+.craft-step .num{width:40px;height:40px;background:var(--rose);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 8px}
+.craft-step .label{font-size:.8rem;color:var(--gray)}
+
+/* GALLERY */
+.gallery{background:var(--light-rose)}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}}
+.gallery-grid img{border-radius:16px;width:100%;height:300px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,.1);transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+
+/* CUSTOM ORDER */
+.custom-order{background:#fff}
+.order-form{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.order-form input,.order-form select,.order-form textarea{padding:14px 18px;border:2px solid #e5e7eb;border-radius:12px;font-size:1rem;font-family:inherit;transition:border-color .3s;background:var(--cream)}
+.order-form input:focus,.order-form select:focus,.order-form textarea:focus{outline:none;border-color:var(--rose)}
+.order-form textarea{min-height:120px;resize:vertical}
+
+.footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}
+.footer a{color:var(--rose);text-decoration:underline}
+.footer p{font-size:.85rem;opacity:.8}
+
+.heyboss-widget{position:fixed;bottom:28px;left:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.4);cursor:pointer;transition:transform .3s;border:none}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget svg{width:28px;height:28px;fill:#fff}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:480px){section{padding:60px 16px}.hero h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="logos/logo_final.png" alt="鐵線手作 Logo" class="nav-logo">
+    <span class="nav-brand" data-zh="鐵線手作" data-en="IronThread">鐵線手作</span>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Background Music">♪</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="手工金屬，獨一無二" data-en="Handcrafted Metal, One of a Kind">手工金屬，獨一無二</h1>
+    <p data-zh="每一件飾品都經由匠人雙手，從金屬線到藝術品，傾注心血打造。" data-en="Every piece is shaped by artisan hands, transforming raw metal wire into wearable art.">每一件飾品都經由匠人雙手，從金屬線到藝術品，傾注心血打造。</p>
+    <a href="#collections" class="btn btn-primary" data-zh="瀏覽作品" data-en="View Collections">瀏覽作品</a>
+  </div>
+</section>
+
+<section class="collections" id="collections">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="作品<span class='accent'>系列</span>" data-en="Our <span class='accent'>Collections</span>">作品<span class="accent">系列</span></h2>
+      <p data-zh="四大系列，從日常到典藏，找到屬於你的那一件" data-en="Four collections — from everyday to heirloom, find the piece that's yours">四大系列，從日常到典藏，找到屬於你的那一件</p>
+    </div>
+    <div class="coll-grid">
+      <div class="coll-card fade-up">
+        <div class="coll-card-img" style="background:linear-gradient(135deg,var(--rose),#d4a0a7)">💍</div>
+        <div class="coll-card-body">
+          <h3 data-zh="手工戒指系列" data-en="Handmade Rings">手工戒指系列</h3>
+          <div class="price" data-zh="NT$ 1,280 起" data-en="From NT$ 1,280">NT$ 1,280 起</div>
+          <p data-zh="純銀與玫瑰金手工纏繞戒指" data-en="Sterling silver & rose gold wire-wrapped rings">純銀與玫瑰金手工纏繞戒指</p>
+          <button class="shop-btn" data-zh="選購" data-en="Shop">選購</button>
+        </div>
+      </div>
+      <div class="coll-card fade-up">
+        <div class="coll-card-img" style="background:linear-gradient(135deg,var(--steel),#6b7280)">📿</div>
+        <div class="coll-card-body">
+          <h3 data-zh="編織項鍊系列" data-en="Woven Necklaces">編織項鍊系列</h3>
+          <div class="price" data-zh="NT$ 2,380 起" data-en="From NT$ 2,380">NT$ 2,380 起</div>
+          <p data-zh="金屬線與天然石材的完美結合" data-en="Perfect fusion of metal wire and natural gemstones">金屬線與天然石材的完美結合</p>
+          <button class="shop-btn" data-zh="選購" data-en="Shop">選購</button>
+        </div>
+      </div>
+      <div class="coll-card fade-up">
+        <div class="coll-card-img" style="background:linear-gradient(135deg,#c8a45e,#d4b96a)">✨</div>
+        <div class="coll-card-body">
+          <h3 data-zh="金屬耳環系列" data-en="Metal Earrings">金屬耳環系列</h3>
+          <div class="price" data-zh="NT$ 980 起" data-en="From NT$ 980">NT$ 980 起</div>
+          <p data-zh="輕巧精緻，日常穿搭的完美配件" data-en="Lightweight and exquisite, perfect for everyday styling">輕巧精緻，日常穿搭的完美配件</p>
+          <button class="shop-btn" data-zh="選購" data-en="Shop">選購</button>
+        </div>
+      </div>
+      <div class="coll-card fade-up">
+        <div class="coll-card-img" style="background:linear-gradient(135deg,#78350f,#92400e)">⌚</div>
+        <div class="coll-card-body">
+          <h3 data-zh="手環與袖扣" data-en="Bracelets & Cufflinks">手環與袖扣</h3>
+          <div class="price" data-zh="NT$ 1,680 起" data-en="From NT$ 1,680">NT$ 1,680 起</div>
+          <p data-zh="中性風格，男女皆宜的金屬質感" data-en="Unisex metallic style for everyone">中性風格，男女皆宜的金屬質感</p>
+          <button class="shop-btn" data-zh="選購" data-en="Shop">選購</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="craftsmanship">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="匠人<span class='accent'>工藝</span>" data-en="The <span class='accent'>Craft</span>">匠人<span class="accent">工藝</span></h2>
+    </div>
+    <div class="craft-grid">
+      <div class="craft-img fade-left"><img src="photos/craft.png" alt="匠人工藝"></div>
+      <div class="craft-text fade-right">
+        <h3 data-zh="從一根線到一件藝術品" data-en="From a Single Wire to Art">從一根線到一件藝術品</h3>
+        <p data-zh="每一件鐵線手作飾品，都經過設計、鍛造、打磨、拋光四道工序，由匠人親手完成。沒有機器量產，只有溫度與靈魂。" data-en="Every IronThread piece goes through design, forging, sanding, and polishing — entirely by hand. No mass production, only warmth and soul.">每一件鐵線手作飾品，都經過設計、鍛造、打磨、拋光四道工序，由匠人親手完成。沒有機器量產，只有溫度與靈魂。</p>
+        <div class="craft-steps">
+          <div class="craft-step"><div class="num">1</div><div class="label" data-zh="設計" data-en="Design">設計</div></div>
+          <div class="craft-step"><div class="num">2</div><div class="label" data-zh="鍛造" data-en="Forge">鍛造</div></div>
+          <div class="craft-step"><div class="num">3</div><div class="label" data-zh="打磨" data-en="Sand">打磨</div></div>
+          <div class="craft-step"><div class="num">4</div><div class="label" data-zh="拋光" data-en="Polish">拋光</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="作品<span class='accent'>展示</span>" data-en="<span class='accent'>Gallery</span>">作品<span class="accent">展示</span></h2>
+    </div>
+    <div class="gallery-grid fade-up">
+      <img src="photos/display.png" alt="飾品展示">
+      <img src="photos/detail.png" alt="飾品細節">
+    </div>
+  </div>
+</section>
+
+<section class="custom-order" id="custom-order">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="客製化<span class='accent'>訂製</span>" data-en="Custom <span class='accent'>Order</span>">客製化<span class="accent">訂製</span></h2>
+      <p data-zh="描述您心中的飾品，匠人為您量身打造" data-en="Describe your dream piece and our artisan will craft it for you">描述您心中的飾品，匠人為您量身打造</p>
+    </div>
+    <form class="order-form fade-up" onsubmit="event.preventDefault();alert(currentLang==='zh'?'感謝您的訂製需求！匠人將在 48 小時內與您聯繫。':'Thank you! Our artisan will contact you within 48 hours.')">
+      <input type="text" required data-zh-placeholder="您的姓名" data-en-placeholder="Your Name" placeholder="您的姓名">
+      <input type="email" required data-zh-placeholder="電子郵件" data-en-placeholder="Email Address" placeholder="電子郵件">
+      <input type="tel" data-zh-placeholder="聯絡電話" data-en-placeholder="Phone Number" placeholder="聯絡電話">
+      <select>
+        <option data-zh="飾品類型" data-en="Jewelry Type">飾品類型</option>
+        <option data-zh="戒指" data-en="Ring">戒指</option>
+        <option data-zh="項鍊" data-en="Necklace">項鍊</option>
+        <option data-zh="耳環" data-en="Earrings">耳環</option>
+        <option data-zh="手環" data-en="Bracelet">手環</option>
+        <option data-zh="其他" data-en="Other">其他</option>
+      </select>
+      <textarea data-zh-placeholder="描述您想要的飾品風格、材質、尺寸..." data-en-placeholder="Describe your desired style, material, size..." placeholder="描述您想要的飾品風格、材質、尺寸..."></textarea>
+      <button type="submit" class="btn btn-primary" data-zh="送出訂製需求" data-en="Submit Custom Order">送出訂製需求</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" aria-label="Contact HEY!BOSS">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+currentLang)});document.querySelectorAll('[data-zh-placeholder]').forEach(el=>{el.placeholder=el.getAttribute('data-'+currentLang+'-placeholder')})}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>環保袋袋 EcoBag — 永續生活從一個袋子開始</title>
+<meta name="description" content="環保袋袋 EcoBag 提供高品質環保產品，從可重複使用購物袋到永續生活用品，讓環保融入日常。">
+<meta name="keywords" content="環保袋,環保產品,永續生活,綠色消費,EcoBag,環保購物">
+<link rel="canonical" href="https://silmoontravis.github.io/demos/ecobag/">
+<meta property="og:title" content="環保袋袋 EcoBag">
+<meta property="og:description" content="永續生活從一個袋子開始，高品質環保產品。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/hero.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "環保袋袋 EcoBag",
+  "description": "高品質環保產品電商，永續生活從一個袋子開始",
+  "url": "https://silmoontravis.github.io/demos/ecobag/",
+  "logo": "logos/logo_final.png",
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "環保產品系列",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "有機棉帆布袋"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "竹纖維餐具組"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "蜂蠟保鮮布"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "不鏽鋼吸管組"}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#166534;--brown:#78350f;--cream:#fefdf5;--dark:#1a1a1a;--gray:#6b7280;--leaf:#22c55e}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden;background:var(--cream)}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.nav{position:fixed;top:0;left:0;width:100%;background:rgba(254,253,245,.95);backdrop-filter:blur(10px);z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-logo{height:36px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-btn{background:var(--green);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:.85rem;cursor:pointer;font-weight:600;transition:background .3s}
+.lang-btn:hover{background:var(--brown)}
+.bgm-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--green);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .3s}
+.bgm-btn.playing{background:var(--green);color:#fff}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat;filter:brightness(.55)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;margin-bottom:16px}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);max-width:560px;margin:0 auto 30px;opacity:.9}
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;border:none;transition:transform .3s,box-shadow .3s}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(22,101,52,.35)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+.accent{color:var(--green)}
+
+/* PRODUCTS */
+.products{background:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:var(--cream);border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s}
+.product-card:hover{transform:translateY(-6px)}
+.product-card-img{height:200px;background:linear-gradient(135deg,var(--green),var(--leaf));display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.product-card-body{padding:20px}
+.product-card-body h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.product-card-body .price{color:var(--green);font-weight:800;font-size:1.2rem;margin-bottom:8px}
+.product-card-body p{font-size:.88rem;color:var(--gray)}
+.product-card-body .cart-btn{margin-top:12px;width:100%;padding:10px;background:var(--green);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;transition:background .3s}
+.product-card-body .cart-btn:hover{background:var(--brown)}
+
+/* MISSION */
+.mission-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.mission-grid{grid-template-columns:1fr 1fr}}
+.mission-img{border-radius:16px;overflow:hidden}
+.mission-img img{width:100%;height:100%;object-fit:cover}
+.mission-text{display:flex;flex-direction:column;justify-content:center}
+.mission-text h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.mission-text p{color:var(--gray);margin-bottom:16px;line-height:1.8}
+.stat-row{display:flex;gap:24px;margin-top:16px}
+.stat{text-align:center}
+.stat .num{font-size:2rem;font-weight:800;color:var(--green)}
+.stat .label{font-size:.8rem;color:var(--gray)}
+
+/* LIFESTYLE */
+.lifestyle{position:relative;min-height:55vh;display:flex;align-items:center;overflow:hidden}
+.lifestyle-bg{position:absolute;inset:0;background:url('photos/lifestyle.png') center/cover no-repeat;filter:brightness(.5)}
+.lifestyle-content{position:relative;z-index:2;color:#fff;max-width:600px;padding:40px 20px;margin:0 auto;text-align:center}
+.lifestyle-content h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:16px}
+.lifestyle-content p{opacity:.9;margin-bottom:24px}
+
+/* SHOP CTA */
+.shop-cta{background:var(--green);color:#fff;text-align:center;padding:60px 20px}
+.shop-cta h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:16px}
+.shop-cta p{opacity:.9;max-width:500px;margin:0 auto 30px}
+.shop-cta .btn{background:#fff;color:var(--green)}
+.shop-cta .btn:hover{background:var(--cream);transform:translateY(-2px)}
+
+.footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}
+.footer a{color:var(--leaf);text-decoration:underline}
+.footer p{font-size:.85rem;opacity:.8}
+
+.heyboss-widget{position:fixed;bottom:28px;left:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.4);cursor:pointer;transition:transform .3s;border:none}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget svg{width:28px;height:28px;fill:#fff}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:480px){section{padding:60px 16px}.hero h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="logos/logo_final.png" alt="環保袋袋 Logo" class="nav-logo">
+    <span class="nav-brand" data-zh="環保袋袋" data-en="EcoBag">環保袋袋</span>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Background Music">♪</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <h1 data-zh="永續生活，從一個袋子開始" data-en="Sustainable Living Starts with One Bag">永續生活，從一個袋子開始</h1>
+    <p data-zh="高品質環保產品，讓綠色理念融入日常每一刻。" data-en="Premium eco-friendly products that bring green living into every moment.">高品質環保產品，讓綠色理念融入日常每一刻。</p>
+    <a href="#products" class="btn btn-primary" data-zh="立即選購" data-en="Shop Now">立即選購</a>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="人氣<span class='accent'>商品</span>" data-en="Popular <span class='accent'>Products</span>">人氣<span class="accent">商品</span></h2>
+      <p data-zh="每一件產品都是對地球的溫柔承諾" data-en="Every product is a gentle promise to our planet">每一件產品都是對地球的溫柔承諾</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card fade-up">
+        <div class="product-card-img">🛍</div>
+        <div class="product-card-body">
+          <h3 data-zh="有機棉帆布袋" data-en="Organic Cotton Tote">有機棉帆布袋</h3>
+          <div class="price">NT$ 380</div>
+          <p data-zh="100% 有機棉，耐用好洗，多色可選" data-en="100% organic cotton, durable & washable, multiple colors">100% 有機棉，耐用好洗，多色可選</p>
+          <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#78350f,#a16207)">🥢</div>
+        <div class="product-card-body">
+          <h3 data-zh="竹纖維餐具組" data-en="Bamboo Cutlery Set">竹纖維餐具組</h3>
+          <div class="price">NT$ 450</div>
+          <p data-zh="天然竹材製作，附收納袋，外出必備" data-en="Natural bamboo, includes carry pouch, perfect for on-the-go">天然竹材製作，附收納袋，外出必備</p>
+          <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#eab308,#ca8a04)">🐝</div>
+        <div class="product-card-body">
+          <h3 data-zh="蜂蠟保鮮布" data-en="Beeswax Wrap Set">蜂蠟保鮮布</h3>
+          <div class="price">NT$ 520</div>
+          <p data-zh="天然蜂蠟，取代保鮮膜，三入組" data-en="Natural beeswax, replaces plastic wrap, set of 3">天然蜂蠟，取代保鮮膜，三入組</p>
+          <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#64748b,#334155)">🥤</div>
+        <div class="product-card-body">
+          <h3 data-zh="不鏽鋼吸管組" data-en="Stainless Steel Straw Set">不鏽鋼吸管組</h3>
+          <div class="price">NT$ 280</div>
+          <p data-zh="食品級不鏽鋼，附清潔刷，四入組" data-en="Food-grade stainless steel, includes brush, set of 4">食品級不鏽鋼，附清潔刷，四入組</p>
+          <button class="cart-btn" data-zh="加入購物車" data-en="Add to Cart">加入購物車</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mission">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 data-zh="我們的<span class='accent'>使命</span>" data-en="Our <span class='accent'>Mission</span>">我們的<span class="accent">使命</span></h2>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-img fade-left">
+        <img src="photos/nature.png" alt="自然環保">
+      </div>
+      <div class="mission-text fade-right">
+        <h3 data-zh="為地球做更多" data-en="Do More for the Planet">為地球做更多</h3>
+        <p data-zh="環保袋袋創立於對地球的熱愛。我們相信，每一個小小的選擇都能帶來巨大的改變。從源頭減塑到永續包裝，我們堅持使用天然材料，支持公平貿易，讓消費成為一種善的力量。" data-en="EcoBag was born from a love for our planet. We believe every small choice creates big change. From source reduction to sustainable packaging, we use natural materials and support fair trade.">環保袋袋創立於對地球的熱愛。我們相信，每一個小小的選擇都能帶來巨大的改變。從源頭減塑到永續包裝，我們堅持使用天然材料，支持公平貿易，讓消費成為一種善的力量。</p>
+        <div class="stat-row">
+          <div class="stat"><div class="num">50K+</div><div class="label" data-zh="減塑數量" data-en="Plastics Saved">減塑數量</div></div>
+          <div class="stat"><div class="num">12K+</div><div class="label" data-zh="滿意顧客" data-en="Happy Customers">滿意顧客</div></div>
+          <div class="stat"><div class="num">100%</div><div class="label" data-zh="天然材料" data-en="Natural Materials">天然材料</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lifestyle">
+  <div class="lifestyle-bg"></div>
+  <div class="lifestyle-content fade-up">
+    <h2 data-zh="讓環保成為生活態度" data-en="Make Eco-Friendly a Lifestyle">讓環保成為生活態度</h2>
+    <p data-zh="不只是產品，更是一種生活方式的選擇。加入我們，一起守護地球。" data-en="More than products — it's a lifestyle choice. Join us in protecting our planet.">不只是產品，更是一種生活方式的選擇。加入我們，一起守護地球。</p>
+    <a href="#shop-cta" class="btn btn-outline" data-zh="加入我們" data-en="Join Us">加入我們</a>
+  </div>
+</section>
+
+<section class="shop-cta" id="shop-cta">
+  <h2 data-zh="準備好開始綠色生活了嗎？" data-en="Ready to Go Green?">準備好開始綠色生活了嗎？</h2>
+  <p data-zh="首次購物輸入折扣碼 ECOFIRST 享 85 折優惠" data-en="Use code ECOFIRST for 15% off your first order">首次購物輸入折扣碼 ECOFIRST 享 85 折優惠</p>
+  <a href="#products" class="btn" data-zh="立即選購" data-en="Shop Now">立即選購</a>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" aria-label="Contact HEY!BOSS">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</a>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+let currentLang='zh';
+function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.querySelector('.lang-btn').textContent=currentLang==='zh'?'EN':'中文';document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+currentLang)});document.querySelectorAll('[data-zh-placeholder]').forEach(el=>{el.placeholder=el.getAttribute('data-'+currentLang+'-placeholder')})}
+let bgmPlaying=false;const bgmAudio=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){if(bgmPlaying){bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♪'}else{bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='⏸'}bgmPlaying=!bgmPlaying}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

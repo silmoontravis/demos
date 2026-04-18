@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藝牆 ArtWall — 線上藝廊與藝術品電商</title>
+<meta name="description" content="藝牆 ArtWall 是台灣領先的線上藝廊，精選當代藝術作品，讓藝術走進你的生活。探索原創畫作、版畫與雕塑。">
+<meta name="keywords" content="藝牆, ArtWall, 線上藝廊, 藝術品, 當代藝術, 原創畫作, 版畫, 藝術電商, 買畫">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "藝牆 ArtWall",
+  "description": "Online art gallery and e-commerce platform featuring curated contemporary artworks",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2780-6688",
+  "priceRange": "$$$",
+  "openingHours": "Mo-Su 00:00-23:59",
+  "offers": [
+    {"@type": "Offer", "name": "Original Paintings", "description": "原創畫作"},
+    {"@type": "Offer", "name": "Limited Edition Prints", "description": "限量版畫"},
+    {"@type": "Offer", "name": "Sculptures", "description": "雕塑作品"},
+    {"@type": "Offer", "name": "Photography", "description": "藝術攝影"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1e3a5f;--magenta:#ec4899;--white:#ffffff;--light:#f8fafc;--gray:#6b7280;--dark:#111827;--mag-light:rgba(236,72,153,.1);--navy-light:rgba(30,58,95,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(30,58,95,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--white);border:2px solid var(--magenta);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--magenta);font-size:14px;font-weight:600;transition:all .3s}
+.lang-toggle:hover{background:var(--magenta);color:var(--white)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,58,95,.1);padding:12px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:36px;width:36px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--navy)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--gray);font-size:14px;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--magenta)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+nav .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(255,255,255,.98);flex-direction:column;padding:20px;gap:16px}
+nav .nav-links.open{display:flex}
+.menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,58,95,.55),rgba(30,58,95,.8))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2rem,5.5vw,3.4rem);font-weight:300;letter-spacing:3px;margin-bottom:16px;line-height:1.35;color:var(--white)}
+.hero h1 .accent{color:var(--magenta);font-weight:600}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.8);margin-bottom:30px;line-height:1.8}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:600;font-size:15px;transition:all .3s;cursor:pointer;border:none}
+.btn-mag{background:var(--magenta);color:var(--white)}
+.btn-mag:hover{background:#db2777;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid var(--white);margin-left:12px}
+.btn-outline:hover{background:var(--white);color:var(--navy);transform:translateY(-2px)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:300;letter-spacing:2px;color:var(--dark)}
+.section-title .wave{width:50px;height:3px;background:linear-gradient(90deg,var(--navy),var(--magenta));margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px}
+
+.art-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.art-card{background:var(--white);border-radius:16px;overflow:hidden;transition:all .4s;box-shadow:0 2px 15px rgba(0,0,0,.06)}
+.art-card:hover{transform:translateY(-8px);box-shadow:0 12px 35px rgba(236,72,153,.15)}
+.art-card .art-img{height:240px;background:var(--navy-light);overflow:hidden;position:relative}
+.art-card .art-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.art-card:hover .art-img img{transform:scale(1.05)}
+.art-card .art-info{padding:20px}
+.art-card h3{font-size:16px;font-weight:600;margin-bottom:4px}
+.art-card .artist-name{color:var(--gray);font-size:13px;margin-bottom:8px}
+.art-card .price{color:var(--magenta);font-weight:700;font-size:18px}
+.art-card .price small{font-size:12px;color:var(--gray);font-weight:400}
+
+.artists-section{background:var(--light);border-radius:0}
+.artist-showcase{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.artist-showcase img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.artist-showcase .artist-text h3{font-size:clamp(1.2rem,3vw,1.8rem);margin-bottom:16px;color:var(--navy)}
+.artist-showcase .artist-text p{color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:15px}
+@media(max-width:768px){.artist-showcase{grid-template-columns:1fr}}
+
+.home-section .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.home-section img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.home-section .home-text h3{font-size:clamp(1.2rem,3vw,1.8rem);margin-bottom:16px;color:var(--navy)}
+.home-section .home-text p{color:var(--gray);line-height:1.8;font-size:15px;margin-bottom:16px}
+.home-section .home-text ul{list-style:none;padding:0}
+.home-section .home-text ul li{padding:8px 0;color:var(--gray);font-size:14px;display:flex;align-items:center;gap:8px}
+.home-section .home-text ul li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--magenta);flex-shrink:0}
+@media(max-width:768px){.home-section .home-grid{grid-template-columns:1fr}}
+
+.cta-section{background:linear-gradient(135deg,var(--navy),#2d4a73);text-align:center;border-radius:24px;margin:0 20px;padding:60px 20px}
+.cta-section h2{color:var(--white);font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:16px;font-weight:300;letter-spacing:2px}
+.cta-section p{color:rgba(255,255,255,.7);margin-bottom:30px;font-size:15px}
+
+footer{text-align:center;padding:30px 20px;background:var(--dark);color:rgba(255,255,255,.5);font-size:13px}
+footer a{color:rgba(255,255,255,.5);text-decoration:underline}
+footer a:hover{color:var(--magenta)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+.heyboss-cta{position:fixed;bottom:20px;left:20px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.5);transition:transform .3s}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta svg{width:26px;height:26px;fill:#fff}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Music">
+<svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss">
+<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+</a>
+
+<nav>
+<div class="nav-inner">
+<a href="#" class="logo-area"><img src="logos/logo_final.png" alt="藝牆 ArtWall"><span>藝牆 ArtWall</span></a>
+<button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+<ul class="nav-links">
+<li><a href="#artworks" data-zh="精選作品" data-en="Artworks">精選作品</a></li>
+<li><a href="#artists" data-zh="藝術家" data-en="Artists">藝術家</a></li>
+<li><a href="#home-art" data-zh="藝術生活" data-en="Art at Home">藝術生活</a></li>
+<li><a href="#collect" data-zh="開始收藏" data-en="Collect">開始收藏</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 data-zh="讓 <span class='accent'>藝術</span> 走進你的生活" data-en="Bring <span class='accent'>Art</span> Into Your Life">讓 <span class="accent">藝術</span> 走進你的生活</h1>
+<p data-zh="精選全球當代藝術家的原創作品，從畫作到雕塑，為你的空間注入靈感與美學。" data-en="Curated original works from contemporary artists worldwide. From paintings to sculptures, infuse your space with inspiration.">精選全球當代藝術家的原創作品，從畫作到雕塑，為你的空間注入靈感與美學。</p>
+<a href="#artworks" class="btn btn-mag" data-zh="探索作品" data-en="Explore Art">探索作品</a>
+<a href="#collect" class="btn btn-outline" data-zh="開始收藏" data-en="Start Collecting">開始收藏</a>
+</div>
+</section>
+
+<section id="artworks">
+<div class="section-inner reveal">
+<div class="section-title">
+<h2 data-zh="精選作品" data-en="Featured Artworks">精選作品</h2>
+<div class="wave"></div>
+<p data-zh="本季策展精選，探索藝術的無限可能" data-en="This season's curated selection — explore endless artistic possibilities">本季策展精選，探索藝術的無限可能</p>
+</div>
+<div class="art-grid">
+<div class="art-card">
+<div class="art-img"><img src="photos/art.png" alt="Abstract Horizon"></div>
+<div class="art-info">
+<h3 data-zh="抽象地平線" data-en="Abstract Horizon">抽象地平線</h3>
+<p class="artist-name" data-zh="陳思維 — 油畫 120×90cm" data-en="S. Chen — Oil on Canvas 120×90cm">陳思維 — 油畫 120×90cm</p>
+<p class="price">NT$ 85,000 <small data-zh="含框" data-en="framed">含框</small></p>
+</div>
+</div>
+<div class="art-card">
+<div class="art-img"><img src="photos/art.png" alt="Crimson Bloom"></div>
+<div class="art-info">
+<h3 data-zh="緋紅綻放" data-en="Crimson Bloom">緋紅綻放</h3>
+<p class="artist-name" data-zh="林芷涵 — 壓克力 100×80cm" data-en="C. Lin — Acrylic 100×80cm">林芷涵 — 壓克力 100×80cm</p>
+<p class="price">NT$ 62,000 <small data-zh="含框" data-en="framed">含框</small></p>
+</div>
+</div>
+<div class="art-card">
+<div class="art-img"><img src="photos/art.png" alt="Solitude"></div>
+<div class="art-info">
+<h3 data-zh="孤寂之聲" data-en="Solitude">孤寂之聲</h3>
+<p class="artist-name" data-zh="張哲瑋 — 版畫 60×45cm" data-en="C. Chang — Print 60×45cm">張哲瑋 — 版畫 60×45cm</p>
+<p class="price">NT$ 28,000 <small data-zh="限量50版" data-en="limited 50 ed.">限量50版</small></p>
+</div>
+</div>
+<div class="art-card">
+<div class="art-img"><img src="photos/art.png" alt="Urban Flow"></div>
+<div class="art-info">
+<h3 data-zh="都市流動" data-en="Urban Flow">都市流動</h3>
+<p class="artist-name" data-zh="王映璇 — 複合媒材 150×100cm" data-en="Y. Wang — Mixed Media 150×100cm">王映璇 — 複合媒材 150×100cm</p>
+<p class="price">NT$ 120,000 <small data-zh="含框" data-en="framed">含框</small></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="artists" class="artists-section">
+<div class="section-inner reveal">
+<div class="section-title">
+<h2 data-zh="合作藝術家" data-en="Our Artists">合作藝術家</h2>
+<div class="wave"></div>
+<p data-zh="與超過 150 位當代藝術家攜手合作" data-en="Partnering with over 150 contemporary artists">與超過 150 位當代藝術家攜手合作</p>
+</div>
+<div class="artist-showcase">
+<img src="photos/artist.png" alt="Artist at work">
+<div class="artist-text">
+<h3 data-zh="每件作品，都是一段對話" data-en="Every Piece Tells a Story">每件作品，都是一段對話</h3>
+<p data-zh="藝牆嚴選來自亞洲與歐美的當代藝術家，涵蓋抽象、寫實、數位藝術等多元風格。我們相信藝術不應只存在於美術館，更應走進你的日常。" data-en="ArtWall curates contemporary artists from Asia and beyond, spanning abstract, realism, and digital art. We believe art belongs not just in museums, but in everyday life.">藝牆嚴選來自亞洲與歐美的當代藝術家，涵蓋抽象、寫實、數位藝術等多元風格。我們相信藝術不應只存在於美術館，更應走進你的日常。</p>
+<p data-zh="每位合作藝術家都經過專業策展團隊審核，確保作品品質與收藏價值。" data-en="Each artist is reviewed by our professional curatorial team, ensuring quality and collectible value.">每位合作藝術家都經過專業策展團隊審核，確保作品品質與收藏價值。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="home-art" class="home-section">
+<div class="section-inner reveal">
+<div class="section-title">
+<h2 data-zh="藝術走進你的家" data-en="Art in Your Home">藝術走進你的家</h2>
+<div class="wave"></div>
+</div>
+<div class="home-grid">
+<div class="home-text">
+<h3 data-zh="用藝術定義你的空間" data-en="Define Your Space with Art">用藝術定義你的空間</h3>
+<p data-zh="我們提供完整的藝術佈置服務，從選品到掛裝，讓藝術與你的居家風格完美融合。" data-en="We offer complete art styling services, from selection to installation, seamlessly blending art with your home aesthetic.">我們提供完整的藝術佈置服務，從選品到掛裝，讓藝術與你的居家風格完美融合。</p>
+<ul>
+<li data-zh="免費線上諮詢與空間評估" data-en="Free online consultation & space assessment">免費線上諮詢與空間評估</li>
+<li data-zh="AR 預覽 — 在家就能試掛" data-en="AR preview — try before you buy">AR 預覽 — 在家就能試掛</li>
+<li data-zh="專業裱框與掛裝服務" data-en="Professional framing & installation">專業裱框與掛裝服務</li>
+<li data-zh="七天鑑賞期，不滿意全額退" data-en="7-day satisfaction guarantee">七天鑑賞期，不滿意全額退</li>
+</ul>
+</div>
+<img src="photos/home.png" alt="Art in home setting">
+</div>
+</div>
+</section>
+
+<section id="collect">
+<div class="cta-section reveal">
+<h2 data-zh="開始你的藝術收藏之旅" data-en="Start Your Art Collection Journey">開始你的藝術收藏之旅</h2>
+<p data-zh="無論你是初次收藏者還是資深藏家，藝牆都能為你找到心動的那幅作品。" data-en="Whether you're a first-time collector or seasoned connoisseur, ArtWall will help you find that perfect piece.">無論你是初次收藏者還是資深藏家，藝牆都能為你找到心動的那幅作品。</p>
+<a href="#" class="btn btn-mag" data-zh="立即探索" data-en="Explore Now">立即探索</a>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved. | <a href="https://silmoontravis.github.io/demos/">HEY!BOSS</a></p>
+</footer>
+
+<script>
+let bgmPlaying=false;const bgm=document.getElementById('bgm');
+function toggleBGM(){bgmPlaying?bgm.pause():bgm.play();bgmPlaying=!bgmPlaying;document.getElementById('bgmBtn').style.background=bgmPlaying?'var(--magenta)':'var(--navy)'}
+
+let lang='zh';
+function toggleLang(){
+lang=lang==='zh'?'en':'zh';
+document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中文';
+document.querySelectorAll('[data-zh]').forEach(el=>{
+const t=el.getAttribute('data-'+lang);
+if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;
+else el.innerHTML=t;
+});
+document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+}
+
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelector('.menu-toggle')?.addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>速修達人 QuickFix — 居家修繕平台</title>
+<meta name="description" content="速修達人 QuickFix 提供水電維修、電器安裝、木工油漆等居家修繕服務。專業師傅，透明報價，快速到府。">
+<meta name="keywords" content="速修達人, QuickFix, 居家修繕, 水電維修, 電器安裝, 木工, 油漆, 修繕平台, 到府維修">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "速修達人 QuickFix",
+  "description": "Professional home repair and maintenance platform connecting homeowners with certified technicians",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2456-7890",
+  "openingHours": "Mo-Su 08:00-22:00",
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Home Repair Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Plumbing", "description": "水電維修"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electrical", "description": "電器安裝"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Carpentry", "description": "木工修繕"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Painting", "description": "油漆粉刷"}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#3b82f6;--orange:#f97316;--white:#ffffff;--light:#f9fafb;--gray:#6b7280;--dark:#111827;--blue-light:rgba(59,130,246,.08);--orange-light:rgba(249,115,22,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(59,130,246,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--white);border:2px solid var(--orange);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--orange);font-size:14px;font-weight:600;transition:all .3s}
+.lang-toggle:hover{background:var(--orange);color:var(--white)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(59,130,246,.1);padding:12px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:36px;width:36px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--blue)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--gray);font-size:14px;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--orange)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--blue);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+nav .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(255,255,255,.98);flex-direction:column;padding:20px;gap:16px}
+nav .nav-links.open{display:flex}
+.menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,130,246,.45),rgba(17,24,39,.75))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2rem,5.5vw,3.2rem);font-weight:700;margin-bottom:16px;line-height:1.35;color:var(--white)}
+.hero h1 .accent{color:var(--orange)}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.85);margin-bottom:30px;line-height:1.8}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:600;font-size:15px;transition:all .3s;cursor:pointer;border:none}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-orange:hover{background:#ea580c;transform:translateY(-2px)}
+.btn-white{background:var(--white);color:var(--blue);margin-left:12px}
+.btn-white:hover{background:var(--light);transform:translateY(-2px)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--dark)}
+.section-title .wave{width:50px;height:3px;background:linear-gradient(90deg,var(--blue),var(--orange));margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px}
+
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:30px 24px;text-align:center;transition:all .4s;border:2px solid transparent;box-shadow:0 2px 15px rgba(0,0,0,.05)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(59,130,246,.12)}
+.service-card:nth-child(1){border-color:var(--blue)}
+.service-card:nth-child(2){border-color:var(--orange)}
+.service-card:nth-child(3){border-color:var(--blue)}
+.service-card:nth-child(4){border-color:var(--orange)}
+.service-icon{font-size:40px;margin-bottom:14px}
+.service-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.service-card p{color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:12px}
+.service-card .price-tag{background:var(--orange-light);color:var(--orange);padding:6px 16px;border-radius:20px;font-weight:600;font-size:14px;display:inline-block}
+
+.how-section{background:var(--light)}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.how-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.steps{list-style:none}
+.steps li{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0}
+.step-text h4{font-size:16px;font-weight:600;margin-bottom:4px}
+.step-text p{color:var(--gray);font-size:14px;line-height:1.6}
+@media(max-width:768px){.how-grid{grid-template-columns:1fr}}
+
+.pros-section .pros-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pros-section .pro-card{border-radius:16px;overflow:hidden;position:relative}
+.pros-section .pro-card img{width:100%;height:300px;object-fit:cover}
+.pros-section .pro-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:20px;color:var(--white)}
+.pros-section .pro-overlay h3{font-size:18px;margin-bottom:4px}
+.pros-section .pro-overlay p{font-size:13px;opacity:.85}
+@media(max-width:768px){.pros-section .pros-grid{grid-template-columns:1fr}}
+
+.book-section{background:linear-gradient(135deg,var(--blue),#1d4ed8);border-radius:24px;margin:0 20px;padding:60px 20px}
+.book-section .section-title h2{color:var(--white)}
+.book-section .section-title p{color:rgba(255,255,255,.7)}
+.book-form{max-width:500px;margin:0 auto}
+.book-form input,.book-form select,.book-form textarea{width:100%;padding:14px 18px;border:2px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.1);color:var(--white);font-size:15px;margin-bottom:14px;font-family:inherit}
+.book-form input::placeholder,.book-form textarea::placeholder{color:rgba(255,255,255,.5)}
+.book-form select{appearance:none;color:rgba(255,255,255,.7)}
+.book-form select option{color:var(--dark);background:var(--white)}
+.book-form textarea{height:100px;resize:vertical}
+.book-form .btn-orange{width:100%;padding:16px;font-size:16px}
+
+footer{text-align:center;padding:30px 20px;background:var(--dark);color:rgba(255,255,255,.5);font-size:13px}
+footer a{color:rgba(255,255,255,.5);text-decoration:underline}
+footer a:hover{color:var(--orange)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+.heyboss-cta{position:fixed;bottom:20px;left:20px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.5);transition:transform .3s}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta svg{width:26px;height:26px;fill:#fff}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
+<button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle Music">
+<svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" aria-label="Contact HeyBoss">
+<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+</a>
+
+<nav>
+<div class="nav-inner">
+<a href="#" class="logo-area"><img src="logos/logo_final.png" alt="速修達人 QuickFix"><span>速修達人 QuickFix</span></a>
+<button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+<ul class="nav-links">
+<li><a href="#services" data-zh="服務項目" data-en="Services">服務項目</a></li>
+<li><a href="#how" data-zh="預約流程" data-en="How It Works">預約流程</a></li>
+<li><a href="#pros" data-zh="專業師傅" data-en="Our Pros">專業師傅</a></li>
+<li><a href="#book" data-zh="立即預約" data-en="Book Now">立即預約</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 data-zh="居家修繕，<span class='accent'>快速到位</span>" data-en="Home Repairs, <span class='accent'>Done Right</span>">居家修繕，<span class="accent">快速到位</span></h1>
+<p data-zh="水電、電器、木工、油漆 — 專業師傅30分鐘內回覆，最快當日到府。透明報價，修好再付款。" data-en="Plumbing, electrical, carpentry, painting — certified pros respond within 30 minutes, same-day service available. Transparent pricing, pay after completion.">水電、電器、木工、油漆 — 專業師傅30分鐘內回覆，最快當日到府。透明報價，修好再付款。</p>
+<a href="#book" class="btn btn-orange" data-zh="立即預約" data-en="Book Now">立即預約</a>
+<a href="#services" class="btn btn-white" data-zh="查看服務" data-en="View Services">查看服務</a>
+</div>
+</section>
+
+<section id="services">
+<div class="section-inner reveal">
+<div class="section-title">
+<h2 data-zh="服務項目" data-en="Our Services">服務項目</h2>
+<div class="wave"></div>
+<p data-zh="涵蓋你的居家修繕所有需求" data-en="Covering all your home repair needs">涵蓋你的居家修繕所有需求</p>
+</div>
+<div class="service-grid">
+<div class="service-card">
+<div class="service-icon">🔧</div>
+<h3 data-zh="水電維修" data-en="Plumbing">水電維修</h3>
+<p data-zh="漏水修復、水管更換、水龍頭安裝、馬桶維修。經驗豐富的水電師傅，快速解決問題。" data-en="Leak repair, pipe replacement, faucet installation, toilet repair. Experienced plumbers for fast solutions.">漏水修復、水管更換、水龍頭安裝、馬桶維修。經驗豐富的水電師傅，快速解決問題。</p>
+<span class="price-tag" data-zh="NT$ 800 起" data-en="From NT$ 800">NT$ 800 起</span>
+</div>
+<div class="service-card">
+<div class="service-icon">⚡</div>
+<h3 data-zh="電器安裝" data-en="Electrical">電器安裝</h3>
+<p data-zh="插座更換、燈具安裝、配電檢修、冷氣安裝。合格電匠，安全有保障。" data-en="Outlet replacement, lighting installation, wiring inspection, AC installation. Licensed electricians for safety.">插座更換、燈具安裝、配電檢修、冷氣安裝。合格電匠，安全有保障。</p>
+<span class="price-tag" data-zh="NT$ 1,200 起" data-en="From NT$ 1,200">NT$ 1,200 起</span>
+</div>
+<div class="service-card">
+<div class="service-icon">🪚</div>
+<h3 data-zh="木工修繕" data-en="Carpentry">木工修繕</h3>
+<p data-zh="櫃體修繕、門窗調整、地板維修、層架安裝。精緻木工，恢復居家美觀。" data-en="Cabinet repair, door/window adjustment, flooring repair, shelf installation. Skilled carpentry to restore your home.">櫃體修繕、門窗調整、地板維修、層架安裝。精緻木工，恢復居家美觀。</p>
+<span class="price-tag" data-zh="NT$ 1,500 起" data-en="From NT$ 1,500">NT$ 1,500 起</span>
+</div>
+<div class="service-card">
+<div class="service-icon">🎨</div>
+<h3 data-zh="油漆粉刷" data-en="Painting">油漆粉刷</h3>
+<p data-zh="牆面粉刷、壁癌處理、防水塗裝、木器噴漆。專業色彩建議，讓空間煥然一新。" data-en="Wall painting, mold treatment, waterproofing, wood finishing. Professional color advice for a refreshed space.">牆面粉刷、壁癌處理、防水塗裝、木器噴漆。專業色彩建議，讓空間煥然一新。</p>
+<span class="price-tag" data-zh="NT$ 2,000 起" data-en="From NT$ 2,000">NT$ 2,000 起</span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how" class="how-section">
+<div class="section-inner reveal">
+<div class="section-title">
+<h2 data-zh="預約流程" data-en="How It Works">預約流程</h2>
+<div class="wave"></div>
+<p data-zh="三步驟，輕鬆搞定居家修繕" data-en="Three simple steps to get your home fixed">三步驟，輕鬆搞定居家修繕</p>
+</div>
+<div class="how-grid">
+<img src="photos/app.png" alt="QuickFix App">
+<ul class="steps">
+<li>
+<div class="step-num">1</div>
+<div class="step-text">
+<h4 data-zh="描述問題" data-en="Describe the Issue">描述問題</h4>
+<p data-zh="拍照上傳或文字描述你的修繕需求，系統自動匹配最適合的師傅。" data-en="Upload photos or describe your repair needs. Our system automatically matches the best technician.">拍照上傳或文字描述你的修繕需求，系統自動匹配最適合的師傅。</p>
+</div>
+</li>
+<li>
+<div class="step-num">2</div>
+<div class="step-text">
+<h4 data-zh="確認報價" data-en="Confirm Quote">確認報價</h4>
+<p data-zh="師傅30分鐘內回覆報價，價格透明無隱藏費用。滿意再預約。" data-en="Technician responds within 30 minutes with a transparent quote. No hidden fees. Book only if satisfied.">師傅30分鐘內回覆報價，價格透明無隱藏費用。滿意再預約。</p>
+</div>
+</li>
+<li>
+<div class="step-num">3</div>
+<div class="step-text">
+<h4 data-zh="到府服務" data-en="On-Site Service">到府服務</h4>
+<p data-zh="師傅按約定時間到府維修，修好驗收後再付款。提供保固服務。" data-en="Technician arrives on schedule. Pay after inspection. Warranty included.">師傅按約定時間到府維修，修好驗收後再付款。提供保固服務。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="pros" class="pros-section">
+<div class="section-inner reveal">
+<div class="section-title">
+<h2 data-zh="專業師傅" data-en="Our Professionals">專業師傅</h2>
+<div class="wave"></div>
+<p data-zh="嚴格審核，技術認證，安心託付" data-en="Rigorously vetted, certified, and trusted">嚴格審核，技術認證，安心託付</p>
+</div>
+<div class="pros-grid">
+<div class="pro-card">
+<img src="photos/plumbing.png" alt="Plumbing professional">
+<div class="pro-overlay">
+<h3 data-zh="水電團隊" data-en="Plumbing Team">水電團隊</h3>
+<p data-zh="平均15年經驗 ｜ 甲級水電執照" data-en="Avg. 15 years exp. | Licensed plumbers">平均15年經驗 ｜ 甲級水電執照</p>
+</div>
+</div>
+<div class="pro-card">
+<img src="photos/electrical.png" alt="Electrical professional">
+<div class="pro-overlay">
+<h3 data-zh="電機團隊" data-en="Electrical Team">電機團隊</h3>
+<p data-zh="合格電匠 ｜ 用電安全保障" data-en="Licensed electricians | Safety guaranteed">合格電匠 ｜ 用電安全保障</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="book">
+<div class="book-section reveal">
+<div class="section-title">
+<h2 data-zh="立即預約修繕" data-en="Book a Repair">立即預約修繕</h2>
+<div class="wave" style="background:linear-gradient(90deg,var(--orange),#fff)"></div>
+<p data-zh="填寫表單，30分鐘內專人回覆" data-en="Fill out the form, get a response within 30 minutes">填寫表單，30分鐘內專人回覆</p>
+</div>
+<form class="book-form" onsubmit="event.preventDefault();alert('已送出！我們將盡快與您聯繫。')">
+<input type="text" placeholder="姓名 Name" data-zh="姓名" data-en="Name" required>
+<input type="tel" placeholder="手機 Phone" data-zh="手機" data-en="Phone" required>
+<select>
+<option value="" data-zh="選擇服務項目" data-en="Select Service">選擇服務項目</option>
+<option data-zh="水電維修" data-en="Plumbing">水電維修</option>
+<option data-zh="電器安裝" data-en="Electrical">電器安裝</option>
+<option data-zh="木工修繕" data-en="Carpentry">木工修繕</option>
+<option data-zh="油漆粉刷" data-en="Painting">油漆粉刷</option>
+</select>
+<textarea placeholder="問題描述（可附照片連結）" data-zh="問題描述（可附照片連結）" data-en="Describe the issue (attach photo links if possible)"></textarea>
+<button type="submit" class="btn btn-orange" data-zh="送出預約" data-en="Submit Booking">送出預約</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved. | <a href="https://silmoontravis.github.io/demos/">HEY!BOSS</a></p>
+</footer>
+
+<script>
+let bgmPlaying=false;const bgm=document.getElementById('bgm');
+function toggleBGM(){bgmPlaying?bgm.pause():bgm.play();bgmPlaying=!bgmPlaying;document.getElementById('bgmBtn').style.background=bgmPlaying?'var(--orange)':'var(--blue)'}
+
+let lang='zh';
+function toggleLang(){
+lang=lang==='zh'?'en':'zh';
+document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中文';
+document.querySelectorAll('[data-zh]').forEach(el=>{
+const t=el.getAttribute('data-'+lang);
+if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;
+else el.innerHTML=t;
+});
+document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+}
+
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelector('.menu-toggle')?.addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+</script>
+</body>
+</html>
