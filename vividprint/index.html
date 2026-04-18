@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>彩印工坊 VividPrint — 專業印刷設計 | Print & Design E-commerce</title>
+<meta name="description" content="彩印工坊 VividPrint 提供名片、海報、包裝、客製化印刷服務。從設計到交付，一站式完成。">
+<meta name="keywords" content="彩印工坊,VividPrint,印刷,名片,海報,包裝設計,客製化印刷,print,design">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"彩印工坊 VividPrint",
+  "image":"photos/hero.png",
+  "url":"https://silmoontravis.github.io/demos/vividprint/",
+  "telephone":"+886-2-5678-1234",
+  "address":{"@type":"PostalAddress","streetAddress":"台北市松山區南京東路四段100號","addressLocality":"台北市","addressCountry":"TW"},
+  "priceRange":"$-$$$"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--cyan:#06b6d4;--magenta:#ec4899;--yellow:#eab308;--dark:#111;--light:#f8fafc}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC','Poppins',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(6,182,212,.1);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:18px;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:#333;transition:color .3s}
+.nav-links a:hover{color:var(--cyan)}
+.lang-btn{background:linear-gradient(135deg,var(--cyan),var(--magenta));color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit}
+.bgm-btn{background:none;border:2px solid var(--cyan);color:var(--cyan);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--cyan);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--cyan)}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:#fff;flex-direction:column;padding:40px 30px;gap:30px;transition:right .3s;box-shadow:-4px 0 20px rgba(0,0,0,.1)}
+  .nav-links.open{right:0}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,182,212,.8),rgba(236,72,153,.6))}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-content h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;margin-bottom:16px;letter-spacing:-1px}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);opacity:.9;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:#fff;color:var(--dark);padding:14px 40px;border-radius:40px;font-size:16px;font-weight:700;transition:transform .3s,box-shadow .3s}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:12px}
+.section-title h2 .gradient{background:linear-gradient(135deg,var(--cyan),var(--magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title p{color:#666;font-size:16px;max-width:600px;margin:0 auto}
+.section-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--magenta));margin:16px auto 0;border-radius:2px}
+
+/* PRODUCTS */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.product-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;transition:all .4s;cursor:pointer}
+.product-card:hover{border-color:var(--cyan);box-shadow:0 8px 30px rgba(6,182,212,.15);transform:translateY(-4px)}
+.product-card img{height:140px;width:100%;object-fit:cover}
+.product-card-body{padding:16px;text-align:center}
+.product-card-body h3{font-size:16px;margin-bottom:6px}
+.product-card-body .price{color:var(--magenta);font-weight:700;font-size:15px}
+.product-card-body p{font-size:12px;color:#888;margin-top:4px}
+
+/* CUSTOM */
+.custom-section{background:linear-gradient(135deg,#f0fdfa,#fdf2f8)}
+.custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.custom-text h3{font-size:24px;margin-bottom:16px}
+.custom-text p{color:#555;line-height:1.8;font-size:15px}
+.custom-features{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.custom-tag{background:#fff;border:1px solid #e5e7eb;padding:8px 16px;border-radius:20px;font-size:13px;color:#555}
+.custom-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+@media(max-width:768px){.custom-grid{grid-template-columns:1fr}}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.process-step{text-align:center;padding:30px 20px}
+.process-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--magenta));color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin:0 auto 16px}
+.process-step h3{font-size:17px;margin-bottom:8px}
+.process-step p{font-size:13px;color:#666;line-height:1.6}
+.process-img{margin-top:40px;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+
+/* QUOTE */
+.quote-section{background:var(--dark);color:#fff}
+.quote-form{max-width:500px;margin:0 auto;background:#1a1a1a;padding:40px;border-radius:20px;border:1px solid #333}
+.quote-form label{display:block;font-size:14px;color:#aaa;margin-bottom:6px;margin-top:16px}
+.quote-form input,.quote-form select,.quote-form textarea{width:100%;padding:12px 16px;border:1px solid #333;border-radius:10px;font-size:15px;font-family:inherit;background:#222;color:#fff;transition:border .3s}
+.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{outline:none;border-color:var(--cyan)}
+.quote-form button{width:100%;margin-top:24px;padding:14px;background:linear-gradient(135deg,var(--cyan),var(--magenta));color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-family:inherit;font-weight:700;transition:opacity .3s}
+.quote-form button:hover{opacity:.9}
+
+footer{background:#000;color:#aaa;text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:#aaa;text-decoration:underline}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:transform .3s,box-shadow .3s}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.5)}
+.heyboss-cta img{width:32px;height:32px;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="VividPrint Logo"><span>彩印工坊</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#products" data-zh="商品" data-en="Products">商品</a>
+      <a href="#custom" data-zh="客製化" data-en="Custom">客製化</a>
+      <a href="#process" data-zh="流程" data-en="Process">流程</a>
+      <a href="#quote" data-zh="報價" data-en="Quote">報價</a>
+      <button class="bgm-btn" id="bgmBtn" title="BGM">♫</button>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 data-zh="彩印工坊" data-en="VividPrint">彩印工坊</h1>
+    <p data-zh="從構想到成品，讓每一張印刷品都成為品牌的最佳代言。專業設計＋頂級印刷，一站搞定。" data-en="From concept to print, make every piece your brand's best ambassador. Design + premium printing, all in one place.">從構想到成品，讓每一張印刷品都成為品牌的最佳代言。專業設計＋頂級印刷，一站搞定。</p>
+    <a href="#quote" class="hero-cta" data-zh="免費估價" data-en="Free Quote">免費估價</a>
+  </div>
+</section>
+
+<section id="products">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2><span class="gradient" data-zh="印刷商品" data-en="Products">印刷商品</span></h2>
+      <p data-zh="滿足您所有印刷需求的一站式商城" data-en="Your one-stop shop for all printing needs">滿足您所有印刷需求的一站式商城</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <img src="photos/products.png" alt="名片">
+        <div class="product-card-body">
+          <h3 data-zh="名片" data-en="Business Cards">名片</h3>
+          <div class="price" data-zh="NT$ 350 起" data-en="From NT$ 350">NT$ 350 起</div>
+          <p data-zh="300g 銅版紙 / 500張" data-en="300g coated / 500 pcs">300g 銅版紙 / 500張</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/products.png" alt="DM傳單">
+        <div class="product-card-body">
+          <h3 data-zh="DM 傳單" data-en="Brochures">DM 傳單</h3>
+          <div class="price" data-zh="NT$ 1,200 起" data-en="From NT$ 1,200">NT$ 1,200 起</div>
+          <p data-zh="A4 雙面彩色 / 1000張" data-en="A4 double-sided / 1000 pcs">A4 雙面彩色 / 1000張</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/products.png" alt="海報">
+        <div class="product-card-body">
+          <h3 data-zh="海報" data-en="Posters">海報</h3>
+          <div class="price" data-zh="NT$ 800 起" data-en="From NT$ 800">NT$ 800 起</div>
+          <p data-zh="A1 / A2 大圖輸出" data-en="A1 / A2 large format">A1 / A2 大圖輸出</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/products.png" alt="包裝盒">
+        <div class="product-card-body">
+          <h3 data-zh="包裝盒" data-en="Packaging">包裝盒</h3>
+          <div class="price" data-zh="NT$ 2,500 起" data-en="From NT$ 2,500">NT$ 2,500 起</div>
+          <p data-zh="客製尺寸 / 含刀模" data-en="Custom size / die-cut">客製尺寸 / 含刀模</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/products.png" alt="周邊商品">
+        <div class="product-card-body">
+          <h3 data-zh="周邊商品" data-en="Merchandise">周邊商品</h3>
+          <div class="price" data-zh="NT$ 500 起" data-en="From NT$ 500">NT$ 500 起</div>
+          <p data-zh="T恤/杯子/帆布袋" data-en="T-shirts/mugs/tote bags">T恤/杯子/帆布袋</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img src="photos/products.png" alt="貼紙">
+        <div class="product-card-body">
+          <h3 data-zh="貼紙" data-en="Stickers">貼紙</h3>
+          <div class="price" data-zh="NT$ 200 起" data-en="From NT$ 200">NT$ 200 起</div>
+          <p data-zh="模切/透明/防水" data-en="Die-cut/clear/waterproof">模切/透明/防水</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="custom" class="custom-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2><span class="gradient" data-zh="客製化服務" data-en="Custom Orders">客製化服務</span></h2>
+      <p data-zh="獨一無二的設計，只為您的品牌打造" data-en="One-of-a-kind designs crafted exclusively for your brand">獨一無二的設計，只為您的品牌打造</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="custom-grid">
+      <img src="photos/custom.png" alt="客製化" class="reveal-left">
+      <div class="custom-text reveal-right">
+        <h3 data-zh="您的想像，我們實現" data-en="Your Vision, We Deliver">您的想像，我們實現</h3>
+        <p data-zh="從品牌識別系統到活動物料，我們的設計師團隊與您一對一溝通，量身打造最符合需求的印刷解決方案。支援小量客製，快速打樣，品質保證。" data-en="From brand identity systems to event materials, our design team works one-on-one with you. Small batch customization, rapid prototyping, quality guaranteed.">從品牌識別系統到活動物料，我們的設計師團隊與您一對一溝通，量身打造最符合需求的印刷解決方案。支援小量客製，快速打樣，品質保證。</p>
+        <div class="custom-features">
+          <span class="custom-tag" data-zh="免費打樣" data-en="Free Samples">免費打樣</span>
+          <span class="custom-tag" data-zh="48H 快速交件" data-en="48H Rush">48H 快速交件</span>
+          <span class="custom-tag" data-zh="專屬設計師" data-en="Dedicated Designer">專屬設計師</span>
+          <span class="custom-tag" data-zh="小量起印" data-en="Low MOQ">小量起印</span>
+          <span class="custom-tag" data-zh="環保材質" data-en="Eco Materials">環保材質</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2><span class="gradient" data-zh="合作流程" data-en="Our Process">合作流程</span></h2>
+      <p data-zh="簡單四步，從下單到取件" data-en="Four simple steps from order to delivery">簡單四步，從下單到取件</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-num">1</div>
+        <h3 data-zh="需求溝通" data-en="Consultation">需求溝通</h3>
+        <p data-zh="填寫報價表單或來電，告訴我們您的需求與預算。" data-en="Fill out the quote form or call us with your requirements and budget.">填寫報價表單或來電，告訴我們您的需求與預算。</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">2</div>
+        <h3 data-zh="設計提案" data-en="Design Proposal">設計提案</h3>
+        <p data-zh="設計師提供 2-3 套方案，您確認方向後進行修改。" data-en="Our designer provides 2-3 concepts for your review and refinement.">設計師提供 2-3 套方案，您確認方向後進行修改。</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">3</div>
+        <h3 data-zh="打樣確認" data-en="Proofing">打樣確認</h3>
+        <p data-zh="實體打樣確認色彩與材質，滿意後進入量產。" data-en="Physical proof to confirm colors and materials before mass production.">實體打樣確認色彩與材質，滿意後進入量產。</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">4</div>
+        <h3 data-zh="印製交付" data-en="Delivery">印製交付</h3>
+        <p data-zh="專業印刷，品質把關，準時配送到府。" data-en="Professional printing, quality control, and on-time delivery.">專業印刷，品質把關，準時配送到府。</p>
+      </div>
+    </div>
+    <div class="process-img reveal">
+      <img src="photos/design.png" alt="設計流程" style="width:100%;border-radius:16px">
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="quote-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 style="color:#fff" data-zh="索取報價" data-en="Get a Quote">索取報價</h2>
+      <p style="color:#aaa" data-zh="填寫需求，24小時內回覆報價" data-en="Submit your requirements, quote within 24 hours">填寫需求，24小時內回覆報價</p>
+      <div class="section-divider"></div>
+    </div>
+    <form class="quote-form reveal" onsubmit="event.preventDefault();alert(this.dataset.lang==='en'?'Quote request sent!':'報價需求已送出！')">
+      <label data-zh="公司 / 姓名" data-en="Company / Name">公司 / 姓名</label>
+      <input type="text" required>
+      <label data-zh="Email" data-en="Email">Email</label>
+      <input type="email" required>
+      <label data-zh="電話" data-en="Phone">電話</label>
+      <input type="tel" required>
+      <label data-zh="印刷品類型" data-en="Product Type">印刷品類型</label>
+      <select>
+        <option data-zh="名片" data-en="Business Cards">名片</option>
+        <option data-zh="DM 傳單" data-en="Brochures">DM 傳單</option>
+        <option data-zh="海報" data-en="Posters">海報</option>
+        <option data-zh="包裝盒" data-en="Packaging">包裝盒</option>
+        <option data-zh="周邊商品" data-en="Merchandise">周邊商品</option>
+        <option data-zh="其他" data-en="Other">其他</option>
+      </select>
+      <label data-zh="數量" data-en="Quantity">數量</label>
+      <input type="number" min="1">
+      <label data-zh="需求說明" data-en="Details">需求說明</label>
+      <textarea rows="4"></textarea>
+      <button type="submit" data-zh="送出報價需求" data-en="Submit Quote Request">送出報價需求</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" title="Contact HEY!BOSS">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+bgmBtn.onclick=()=>{if(bgmAudio.paused){bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪'}else{bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}};
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+lang);
+    if(t){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.textContent=t;}
+  });
+}
+
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

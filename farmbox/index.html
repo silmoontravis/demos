@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>農場盒子 FarmBox — 有機農場訂閱制蔬果箱</title>
+<meta name="description" content="農場盒子 FarmBox，產地直送有機蔬果訂閱制電商。每週新鮮配送，從農場到餐桌，吃得安心又健康。">
+<meta name="keywords" content="有機蔬果, 蔬果箱, organic farm, FarmBox, 農場盒子, 訂閱制, 產地直送, 有機農場">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "農場盒子 FarmBox",
+  "description": "Organic farm subscription e-commerce — weekly farm-to-table delivery of fresh produce",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "宜蘭縣",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-3-956-8800",
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Subscription Plans",
+    "itemListElement": [
+      {"@type": "Offer", "name": "小資蔬果箱", "price": "599", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "經典蔬果箱", "price": "999", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "家庭蔬果箱", "price": "1499", "priceCurrency": "TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--brown:#78350f;--green:#22c55e;--cream:#fefce8;--dark:#2d1f0e;--white:#fff;--light:#f7fee7;--gray:#7c6f5f;--green-dark:#16a34a;--warm:#fef3c7}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Microsoft JhengHei',serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--green);border:3px solid var(--brown);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(34,197,94,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--brown);border:2px solid var(--green);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--cream);font-size:14px;font-weight:700;letter-spacing:1px}
+.lang-toggle:hover{background:var(--green-dark);border-color:var(--brown)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(254,252,232,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(120,53,15,.15);padding:12px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:38px;width:38px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--brown)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--dark);font-size:14px;transition:color .3s}
+nav .nav-links a:hover{color:var(--green)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--green);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:62px;left:0;width:100%;background:rgba(254,252,232,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(120,53,15,.15)}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(120,53,15,.3),rgba(45,31,14,.7))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;letter-spacing:2px;margin-bottom:16px;line-height:1.3;color:var(--white)}
+.hero h1 .accent{color:var(--green)}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.85);margin-bottom:30px;line-height:1.8}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:700;font-size:15px;transition:all .3s;cursor:pointer;border:none;font-family:inherit}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-dark);transform:translateY(-2px)}
+.btn-outline{border:2px solid rgba(255,255,255,.6);color:var(--white);background:transparent;margin-left:12px}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;color:var(--dark)}
+.section-title .line{width:60px;height:3px;background:linear-gradient(90deg,var(--green),var(--brown));margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px}
+
+.how-it-works{background:var(--light)}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px}
+.step-card{text-align:center;padding:30px 24px}
+.step-num{width:50px;height:50px;border-radius:50%;background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;margin:0 auto 16px}
+.step-card h3{font-size:18px;color:var(--brown);margin-bottom:8px}
+.step-card p{font-size:14px;color:var(--gray);line-height:1.7}
+.how-img{margin-top:40px;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1);max-width:700px;margin-left:auto;margin-right:auto}
+.how-img img{width:100%;object-fit:cover}
+
+.farm{background:var(--cream)}
+.farm-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+.farm-grid img{border-radius:16px;width:100%;height:350px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+@media(max-width:768px){.farm-grid{grid-template-columns:1fr}.farm-grid img{height:250px}}
+
+.plans{background:var(--light)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+.plan-card{background:var(--white);border-radius:16px;padding:36px 28px;text-align:center;border:2px solid rgba(34,197,94,.15);transition:all .4s;position:relative}
+.plan-card.featured{border-color:var(--green);box-shadow:0 8px 30px rgba(34,197,94,.15)}
+.plan-card.featured::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:3px;background:var(--green);border-radius:0 0 3px 3px}
+.plan-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(34,197,94,.15)}
+.plan-card h3{font-size:20px;color:var(--brown);margin-bottom:4px}
+.plan-card .plan-desc{font-size:13px;color:var(--gray);margin-bottom:16px}
+.plan-price{font-size:40px;font-weight:900;color:var(--green);margin:12px 0}
+.plan-price span{font-size:14px;color:var(--gray);font-weight:400}
+.plan-details{list-style:none;text-align:left;margin:20px 0}
+.plan-details li{padding:8px 0;border-bottom:1px solid rgba(120,53,15,.08);color:var(--gray);font-size:14px}
+.plan-details li::before{content:'🌿 ';font-size:12px}
+.plan-btn{display:block;width:100%;padding:14px;border-radius:30px;font-weight:700;font-size:15px;cursor:pointer;border:none;margin-top:16px;transition:all .3s;font-family:inherit}
+.plan-btn-green{background:var(--green);color:var(--white)}
+.plan-btn-green:hover{background:var(--green-dark)}
+.plan-btn-outline{background:transparent;border:2px solid var(--green);color:var(--green)}
+.plan-btn-outline:hover{background:rgba(34,197,94,.1)}
+
+.calendar{background:var(--cream)}
+.calendar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;max-width:900px;margin:0 auto}
+.month-card{background:var(--white);border-radius:12px;padding:20px 16px;text-align:center;border:1px solid rgba(120,53,15,.1);transition:transform .3s}
+.month-card:hover{transform:translateY(-4px)}
+.month-card .month-name{font-size:15px;font-weight:700;color:var(--brown);margin-bottom:8px}
+.month-card .crops{font-size:12px;color:var(--gray);line-height:1.6}
+
+.order{background:var(--light)}
+.order-form{max-width:600px;margin:0 auto;background:var(--white);padding:40px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1px solid rgba(120,53,15,.15);border-radius:10px;font-size:14px;font-family:inherit;transition:border .3s;background:var(--cream)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--green)}
+.form-group textarea{height:80px;resize:vertical}
+.submit-btn{width:100%;padding:14px;background:var(--green);color:var(--white);border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:background .3s;font-family:inherit}
+.submit-btn:hover{background:var(--green-dark)}
+
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:var(--green);transition:color .3s}
+footer a:hover{color:var(--cream)}
+
+.heyboss-cta{position:fixed;bottom:20px;left:20px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.5);cursor:pointer;transition:transform .3s}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta img{width:32px;height:32px;object-fit:contain;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo-area"><img src="logos/logo_final.png" alt="FarmBox Logo"><span data-zh="農場盒子" data-en="FarmBox">農場盒子</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#how" data-zh="如何運作" data-en="How It Works">如何運作</a></li>
+      <li><a href="#farm" data-zh="我們的農場" data-en="Our Farm">我們的農場</a></li>
+      <li><a href="#plans" data-zh="訂閱方案" data-en="Plans">訂閱方案</a></li>
+      <li><a href="#calendar" data-zh="產季日曆" data-en="Calendar">產季日曆</a></li>
+      <li><a href="#order" data-zh="立即訂購" data-en="Order">立即訂購</a></li>
+    </ul>
+  </div>
+</nav>
+
+<button class="lang-toggle" onclick="toggleLang()" data-zh="EN" data-en="中文">EN</button>
+
+<button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">
+  <svg id="bgm-icon" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="從產地到餐桌<br>最<span class='accent'>新鮮</span>的距離" data-en="Farm to Table<br>The <span class='accent'>Freshest</span> Distance">從產地到餐桌<br>最<span class="accent">新鮮</span>的距離</h1>
+    <p data-zh="農場盒子嚴選宜蘭有機農場當季蔬果，每週新鮮直送到府。無農藥、無化肥，讓全家人吃得安心又健康。" data-en="FarmBox curates seasonal organic produce from Yilan farms, delivered fresh weekly. No pesticides, no chemicals — wholesome food for the whole family.">農場盒子嚴選宜蘭有機農場當季蔬果，每週新鮮直送到府。無農藥、無化肥，讓全家人吃得安心又健康。</p>
+    <a href="#order" class="btn btn-green" data-zh="立即訂購" data-en="Order Now">立即訂購</a>
+    <a href="#how" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="三步驟，開始健康生活" data-en="3 Steps to Healthy Living">三步驟，開始健康生活</h2>
+      <div class="line"></div>
+      <p data-zh="簡單訂閱，新鮮直送" data-en="Simple subscription, fresh delivery">簡單訂閱，新鮮直送</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3 data-zh="選擇方案" data-en="Choose a Plan">選擇方案</h3>
+        <p data-zh="依照家庭人數與需求，選擇小資、經典或家庭蔬果箱方案。" data-en="Select from Small, Medium, or Family box based on your household size and needs.">依照家庭人數與需求，選擇小資、經典或家庭蔬果箱方案。</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3 data-zh="農場採收" data-en="Farm Harvest">農場採收</h3>
+        <p data-zh="每週由農夫清晨採收當季最新鮮的有機蔬果，確保最佳風味。" data-en="Our farmers harvest the freshest seasonal organic produce at dawn each week for peak flavor.">每週由農夫清晨採收當季最新鮮的有機蔬果，確保最佳風味。</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3 data-zh="新鮮到府" data-en="Delivered Fresh">新鮮到府</h3>
+        <p data-zh="冷鏈配送，採收後 24 小時內送達您的家門口，鮮度看得見。" data-en="Cold-chain delivery within 24 hours of harvest, right to your doorstep. Freshness guaranteed.">冷鏈配送，採收後 24 小時內送達您的家門口，鮮度看得見。</p>
+      </div>
+    </div>
+    <div class="how-img reveal">
+      <img src="photos/box.png" alt="FarmBox Delivery">
+    </div>
+  </div>
+</section>
+
+<section class="farm" id="farm">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="我們的農場" data-en="Our Farm">我們的農場</h2>
+      <div class="line"></div>
+      <p data-zh="宜蘭好山好水，孕育最純淨的有機蔬果" data-en="Yilan's pristine mountains and waters nurture the purest organic produce">宜蘭好山好水，孕育最純淨的有機蔬果</p>
+    </div>
+    <div class="farm-grid reveal">
+      <img src="photos/farmer.png" alt="Our Farmers">
+      <img src="photos/harvest.png" alt="Fresh Harvest">
+    </div>
+  </div>
+</section>
+
+<section class="plans" id="plans">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="訂閱方案" data-en="Subscription Plans">訂閱方案</h2>
+      <div class="line"></div>
+      <p data-zh="選擇適合您家庭的蔬果箱，每週新鮮配送" data-en="Choose the right box for your family — delivered fresh weekly">選擇適合您家庭的蔬果箱，每週新鮮配送</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <h3 data-zh="小資蔬果箱" data-en="Small Box">小資蔬果箱</h3>
+        <div class="plan-desc" data-zh="適合 1-2 人" data-en="For 1-2 people">適合 1-2 人</div>
+        <div class="plan-price">NT$599 <span data-zh="/週" data-en="/week">/週</span></div>
+        <ul class="plan-details">
+          <li data-zh="5-6 種當季蔬果" data-en="5-6 seasonal vegetables & fruits">5-6 種當季蔬果</li>
+          <li data-zh="有機認證農產品" data-en="Certified organic produce">有機認證農產品</li>
+          <li data-zh="每週配送一次" data-en="Weekly delivery">每週配送一次</li>
+          <li data-zh="附食材小卡與食譜" data-en="Includes info cards & recipes">附食材小卡與食譜</li>
+        </ul>
+        <button class="plan-btn plan-btn-outline" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</button>
+      </div>
+      <div class="plan-card featured reveal">
+        <h3 data-zh="經典蔬果箱" data-en="Medium Box">經典蔬果箱</h3>
+        <div class="plan-desc" data-zh="適合 2-3 人（最受歡迎）" data-en="For 2-3 people (Most Popular)">適合 2-3 人（最受歡迎）</div>
+        <div class="plan-price">NT$999 <span data-zh="/週" data-en="/week">/週</span></div>
+        <ul class="plan-details">
+          <li data-zh="8-10 種當季蔬果" data-en="8-10 seasonal vegetables & fruits">8-10 種當季蔬果</li>
+          <li data-zh="有機認證農產品" data-en="Certified organic produce">有機認證農產品</li>
+          <li data-zh="每週配送一次" data-en="Weekly delivery">每週配送一次</li>
+          <li data-zh="附食材小卡與食譜" data-en="Includes info cards & recipes">附食材小卡與食譜</li>
+          <li data-zh="優先選擇配送時段" data-en="Priority delivery window">優先選擇配送時段</li>
+        </ul>
+        <button class="plan-btn plan-btn-green" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</button>
+      </div>
+      <div class="plan-card reveal">
+        <h3 data-zh="家庭蔬果箱" data-en="Family Box">家庭蔬果箱</h3>
+        <div class="plan-desc" data-zh="適合 4-5 人" data-en="For 4-5 people">適合 4-5 人</div>
+        <div class="plan-price">NT$1,499 <span data-zh="/週" data-en="/week">/週</span></div>
+        <ul class="plan-details">
+          <li data-zh="12-15 種當季蔬果" data-en="12-15 seasonal vegetables & fruits">12-15 種當季蔬果</li>
+          <li data-zh="有機認證農產品" data-en="Certified organic produce">有機認證農產品</li>
+          <li data-zh="每週配送一次" data-en="Weekly delivery">每週配送一次</li>
+          <li data-zh="附食材小卡與食譜" data-en="Includes info cards & recipes">附食材小卡與食譜</li>
+          <li data-zh="優先選擇配送時段" data-en="Priority delivery window">優先選擇配送時段</li>
+          <li data-zh="每月加贈限量農產禮盒" data-en="Monthly bonus farm gift box">每月加贈限量農產禮盒</li>
+        </ul>
+        <button class="plan-btn plan-btn-outline" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calendar" id="calendar">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="產季日曆" data-en="Seasonal Calendar">產季日曆</h2>
+      <div class="line"></div>
+      <p data-zh="跟著季節吃，最健康也最美味" data-en="Eat with the seasons — the healthiest and most delicious way">跟著季節吃，最健康也最美味</p>
+    </div>
+    <div class="calendar-grid reveal">
+      <div class="month-card"><div class="month-name" data-zh="1月" data-en="Jan">1月</div><div class="crops" data-zh="高麗菜・白蘿蔔・草莓" data-en="Cabbage・Radish・Strawberry">高麗菜・白蘿蔔・草莓</div></div>
+      <div class="month-card"><div class="month-name" data-zh="2月" data-en="Feb">2月</div><div class="crops" data-zh="花椰菜・菠菜・茼蒿" data-en="Broccoli・Spinach・Garland chrysanthemum">花椰菜・菠菜・茼蒿</div></div>
+      <div class="month-card"><div class="month-name" data-zh="3月" data-en="Mar">3月</div><div class="crops" data-zh="蘆筍・豌豆・桑椹" data-en="Asparagus・Peas・Mulberry">蘆筍・豌豆・桑椹</div></div>
+      <div class="month-card"><div class="month-name" data-zh="4月" data-en="Apr">4月</div><div class="crops" data-zh="竹筍・絲瓜・枇杷" data-en="Bamboo shoots・Sponge gourd・Loquat">竹筍・絲瓜・枇杷</div></div>
+      <div class="month-card"><div class="month-name" data-zh="5月" data-en="May">5月</div><div class="crops" data-zh="小黃瓜・番茄・荔枝" data-en="Cucumber・Tomato・Lychee">小黃瓜・番茄・荔枝</div></div>
+      <div class="month-card"><div class="month-name" data-zh="6月" data-en="Jun">6月</div><div class="crops" data-zh="苦瓜・茄子・芒果" data-en="Bitter melon・Eggplant・Mango">苦瓜・茄子・芒果</div></div>
+      <div class="month-card"><div class="month-name" data-zh="7月" data-en="Jul">7月</div><div class="crops" data-zh="空心菜・秋葵・西瓜" data-en="Water spinach・Okra・Watermelon">空心菜・秋葵・西瓜</div></div>
+      <div class="month-card"><div class="month-name" data-zh="8月" data-en="Aug">8月</div><div class="crops" data-zh="龍鬚菜・青椒・火龍果" data-en="Chayote vine・Bell pepper・Dragon fruit">龍鬚菜・青椒・火龍果</div></div>
+      <div class="month-card"><div class="month-name" data-zh="9月" data-en="Sep">9月</div><div class="crops" data-zh="地瓜葉・南瓜・柚子" data-en="Sweet potato leaves・Pumpkin・Pomelo">地瓜葉・南瓜・柚子</div></div>
+      <div class="month-card"><div class="month-name" data-zh="10月" data-en="Oct">10月</div><div class="crops" data-zh="芥菜・山藥・柿子" data-en="Mustard greens・Yam・Persimmon">芥菜・山藥・柿子</div></div>
+      <div class="month-card"><div class="month-name" data-zh="11月" data-en="Nov">11月</div><div class="crops" data-zh="大白菜・紅蘿蔔・蘋果" data-en="Napa cabbage・Carrot・Apple">大白菜・紅蘿蔔・蘋果</div></div>
+      <div class="month-card"><div class="month-name" data-zh="12月" data-en="Dec">12月</div><div class="crops" data-zh="青蔥・白菜・橘子" data-en="Green onion・Bok choy・Tangerine">青蔥・白菜・橘子</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="立即訂購" data-en="Order Now">立即訂購</h2>
+      <div class="line"></div>
+      <p data-zh="填寫資料，開始您的有機生活" data-en="Fill in your details and start your organic journey">填寫資料，開始您的有機生活</p>
+    </div>
+    <form class="order-form reveal" onsubmit="event.preventDefault();alert(currentLang==='zh'?'訂購成功！我們將在下次配送日為您安排出貨。':'Order placed! We will arrange delivery on the next shipping date.')">
+      <div class="form-group">
+        <label data-zh="姓名" data-en="Name">姓名</label>
+        <input type="text" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="電話" data-en="Phone">電話</label>
+        <input type="tel" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="配送地址" data-en="Delivery Address">配送地址</label>
+        <input type="text" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="訂閱方案" data-en="Subscription Plan">訂閱方案</label>
+        <select required>
+          <option value="" data-zh="請選擇" data-en="Please select">請選擇</option>
+          <option value="small" data-zh="小資蔬果箱 NT$599/週" data-en="Small Box NT$599/week">小資蔬果箱 NT$599/週</option>
+          <option value="medium" data-zh="經典蔬果箱 NT$999/週" data-en="Medium Box NT$999/week">經典蔬果箱 NT$999/週</option>
+          <option value="family" data-zh="家庭蔬果箱 NT$1,499/週" data-en="Family Box NT$1,499/week">家庭蔬果箱 NT$1,499/週</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-zh="備註" data-en="Notes">備註</label>
+        <textarea></textarea>
+      </div>
+      <button type="submit" class="submit-btn" data-zh="確認訂購" data-en="Place Order">確認訂購</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/" target="_blank">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-cta" aria-label="Contact HeyBoss">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+let currentLang='zh';
+const bgm=document.getElementById('bgm');
+let bgmPlaying=false;
+
+function toggleBGM(){
+  if(bgmPlaying){bgm.pause();bgmPlaying=false;document.getElementById('bgm-icon').style.opacity='.4'}
+  else{bgm.play();bgmPlaying=true;document.getElementById('bgm-icon').style.opacity='1'}
+}
+
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val}
+      else{el.innerHTML=val}
+    }
+  });
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('nav .nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+</body>
+</html>

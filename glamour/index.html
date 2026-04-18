@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魅力美甲 Glamour Nails — 頂級美甲藝術工作室</title>
+<meta name="description" content="魅力美甲 Glamour Nails，提供凝膠美甲、指甲彩繪、美甲延甲及專業指甲護理。預約體驗奢華美甲藝術。">
+<meta name="keywords" content="美甲, nail art, 凝膠美甲, gel nails, 指甲彩繪, 美甲工作室, Glamour Nails, 魅力美甲">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "魅力美甲 Glamour Nails",
+  "description": "Premium nail art studio offering gel nails, nail art, extensions, and professional nail care",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2788-6688",
+  "priceRange": "$$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Nail Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "凝膠美甲 Gel Nails"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "指甲彩繪 Nail Art"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "美甲延甲 Extensions"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "指甲護理 Nail Care"}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--rose:#f472b6;--gold:#c8956c;--cream:#fff5f5;--dark:#2d1a1a;--white:#fff;--light:#fdf2f8;--gray:#999;--rose-dark:#db2777}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Microsoft JhengHei',serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--rose);border:3px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(244,114,182,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--rose);border:2px solid var(--gold);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--white);font-size:14px;font-weight:700;letter-spacing:1px}
+.lang-toggle:hover{background:var(--rose-dark)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(255,245,245,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,149,108,.3);padding:12px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:38px;width:38px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--rose-dark)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--dark);font-size:14px;transition:color .3s}
+nav .nav-links a:hover{color:var(--rose)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--rose);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:62px;left:0;width:100%;background:rgba(255,245,245,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(200,149,108,.3)}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,114,182,.3),rgba(45,26,26,.7))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:900;letter-spacing:2px;margin-bottom:16px;line-height:1.3;color:var(--white)}
+.hero h1 .accent{color:var(--rose)}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,.85);margin-bottom:30px;line-height:1.8}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:700;font-size:15px;transition:all .3s;cursor:pointer;border:none;font-family:inherit}
+.btn-rose{background:var(--rose);color:var(--white)}
+.btn-rose:hover{background:var(--rose-dark);transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--white);color:var(--white);background:transparent;margin-left:12px}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;color:var(--dark)}
+.section-title .line{width:60px;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold));margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px}
+
+.services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:30px 24px;text-align:center;transition:all .4s;border:1px solid rgba(200,149,108,.15);position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(244,114,182,.15);border-color:var(--rose)}
+.service-card .icon{font-size:44px;margin-bottom:16px}
+.service-card h3{font-size:18px;color:var(--rose-dark);margin-bottom:8px}
+.service-card p{font-size:14px;color:var(--gray);line-height:1.7}
+.service-card .price{font-size:20px;font-weight:700;color:var(--gold);margin-top:12px}
+.service-img{margin-top:40px;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.service-img img{width:100%;height:350px;object-fit:cover}
+
+.gallery{background:var(--cream)}
+.gallery-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1);max-width:900px;margin:0 auto}
+.gallery-img img{width:100%;object-fit:cover}
+
+.studio-section{background:var(--light)}
+.studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.studio-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.studio-text h3{font-size:24px;color:var(--rose-dark);margin-bottom:16px}
+.studio-text p{color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:15px}
+@media(max-width:768px){.studio-grid{grid-template-columns:1fr}}
+
+.booking{background:var(--cream)}
+.booking-form{max-width:600px;margin:0 auto;background:var(--white);padding:40px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1px solid rgba(200,149,108,.3);border-radius:10px;font-size:14px;font-family:inherit;transition:border .3s;background:var(--cream)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--rose)}
+.form-group textarea{height:100px;resize:vertical}
+.submit-btn{width:100%;padding:14px;background:var(--rose);color:var(--white);border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:background .3s;font-family:inherit}
+.submit-btn:hover{background:var(--rose-dark)}
+
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:var(--rose);transition:color .3s}
+footer a:hover{color:var(--gold)}
+
+.heyboss-cta{position:fixed;bottom:20px;left:20px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.5);cursor:pointer;transition:transform .3s}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta img{width:32px;height:32px;object-fit:contain;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo-area"><img src="logos/logo_final.png" alt="Glamour Nails Logo"><span data-zh="魅力美甲" data-en="Glamour Nails">魅力美甲</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#services" data-zh="服務項目" data-en="Services">服務項目</a></li>
+      <li><a href="#gallery" data-zh="作品集" data-en="Gallery">作品集</a></li>
+      <li><a href="#studio" data-zh="工作室" data-en="Studio">工作室</a></li>
+      <li><a href="#booking" data-zh="立即預約" data-en="Book Now">立即預約</a></li>
+    </ul>
+  </div>
+</nav>
+
+<button class="lang-toggle" onclick="toggleLang()" data-zh="EN" data-en="中文">EN</button>
+
+<button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">
+  <svg id="bgm-icon" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="綻放指尖的<br><span class='accent'>極致魅力</span>" data-en="Unleash Your<br><span class='accent'>Nail Glamour</span>">綻放指尖的<br><span class="accent">極致魅力</span></h1>
+    <p data-zh="每一片指甲，都是我們精心雕琢的藝術品。頂級凝膠、獨家設計，讓您的雙手成為最耀眼的焦點。" data-en="Every nail is a masterpiece we craft with care. Premium gel, exclusive designs — let your hands become the center of attention.">每一片指甲，都是我們精心雕琢的藝術品。頂級凝膠、獨家設計，讓您的雙手成為最耀眼的焦點。</p>
+    <a href="#booking" class="btn btn-rose" data-zh="立即預約" data-en="Book Now">立即預約</a>
+    <a href="#services" class="btn btn-outline" data-zh="瀏覽服務" data-en="Our Services">瀏覽服務</a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="精緻服務項目" data-en="Our Services">精緻服務項目</h2>
+      <div class="line"></div>
+      <p data-zh="為您的雙手量身打造專屬美甲方案" data-en="Tailored nail solutions crafted just for you">為您的雙手量身打造專屬美甲方案</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="icon">💎</div>
+        <h3 data-zh="凝膠美甲" data-en="Gel Nails">凝膠美甲</h3>
+        <p data-zh="日本進口頂級凝膠，持久亮澤長達四週，溫和不傷甲面。" data-en="Premium Japanese gel for lasting shine up to 4 weeks, gentle on natural nails.">日本進口頂級凝膠，持久亮澤長達四週，溫和不傷甲面。</p>
+        <div class="price" data-zh="NT$1,200 起" data-en="From NT$1,200">NT$1,200 起</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🎨</div>
+        <h3 data-zh="指甲彩繪" data-en="Nail Art">指甲彩繪</h3>
+        <p data-zh="從極簡線條到繁複手繪，由資深美甲師為您創作獨一無二的指尖藝術。" data-en="From minimalist lines to intricate hand-painted designs by our senior nail artists.">從極簡線條到繁複手繪，由資深美甲師為您創作獨一無二的指尖藝術。</p>
+        <div class="price" data-zh="NT$1,800 起" data-en="From NT$1,800">NT$1,800 起</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">✨</div>
+        <h3 data-zh="美甲延甲" data-en="Extensions">美甲延甲</h3>
+        <p data-zh="水晶延甲、穿戴甲訂製，完美弧度與長度，打造夢幻修長指型。" data-en="Crystal extensions & custom press-ons with perfect curvature for dreamy, elongated nails.">水晶延甲、穿戴甲訂製，完美弧度與長度，打造夢幻修長指型。</p>
+        <div class="price" data-zh="NT$2,500 起" data-en="From NT$2,500">NT$2,500 起</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🌿</div>
+        <h3 data-zh="指甲護理" data-en="Nail Care">指甲護理</h3>
+        <p data-zh="深層保濕護甲療程，修復受損甲面，搭配精油手部按摩，全方位呵護。" data-en="Deep moisturizing nail treatment, repairing damaged nails with essential oil hand massage.">深層保濕護甲療程，修復受損甲面，搭配精油手部按摩，全方位呵護。</p>
+        <div class="price" data-zh="NT$800 起" data-en="From NT$800">NT$800 起</div>
+      </div>
+    </div>
+    <div class="service-img reveal">
+      <img src="photos/work.png" alt="Nail Art Work">
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="作品展示" data-en="Gallery">作品展示</h2>
+      <div class="line"></div>
+      <p data-zh="每一款設計，都蘊含我們對美的極致追求" data-en="Every design embodies our relentless pursuit of beauty">每一款設計，都蘊含我們對美的極致追求</p>
+    </div>
+    <div class="gallery-img reveal">
+      <img src="photos/collection.png" alt="Nail Collection">
+    </div>
+  </div>
+</section>
+
+<section class="studio-section" id="studio">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="我們的工作室" data-en="Our Studio">我們的工作室</h2>
+      <div class="line"></div>
+    </div>
+    <div class="studio-grid reveal">
+      <img src="photos/studio.png" alt="Glamour Nails Studio">
+      <div class="studio-text">
+        <h3 data-zh="奢華舒適的美甲空間" data-en="A Luxurious Nail Sanctuary">奢華舒適的美甲空間</h3>
+        <p data-zh="魅力美甲工作室位於台北市中心精華地段，以暖白色調搭配玫瑰金點綴，營造出優雅私密的美甲體驗空間。每個座位皆配備獨立照明與通風系統，確保您在最舒適的環境中享受服務。" data-en="Located in the heart of Taipei, our studio features warm whites with rose-gold accents, creating an elegant and private nail experience. Each station is equipped with individual lighting and ventilation for maximum comfort.">魅力美甲工作室位於台北市中心精華地段，以暖白色調搭配玫瑰金點綴，營造出優雅私密的美甲體驗空間。每個座位皆配備獨立照明與通風系統，確保您在最舒適的環境中享受服務。</p>
+        <p data-zh="我們堅持使用一次性工具與日本進口凝膠材料，所有器具經高溫消毒處理，給您最安心的美甲體驗。" data-en="We use disposable tools and imported Japanese gel products. All instruments are sterilized at high temperatures for your peace of mind.">我們堅持使用一次性工具與日本進口凝膠材料，所有器具經高溫消毒處理，給您最安心的美甲體驗。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="立即預約" data-en="Book Your Appointment">立即預約</h2>
+      <div class="line"></div>
+      <p data-zh="選擇您喜愛的服務，讓我們為您打造完美指甲" data-en="Choose your service and let us create perfect nails for you">選擇您喜愛的服務，讓我們為您打造完美指甲</p>
+    </div>
+    <form class="booking-form reveal" onsubmit="event.preventDefault();alert(currentLang==='zh'?'預約成功！我們將盡快與您聯繫。':'Booked! We will contact you shortly.')">
+      <div class="form-group">
+        <label data-zh="姓名" data-en="Name">姓名</label>
+        <input type="text" required placeholder="">
+      </div>
+      <div class="form-group">
+        <label data-zh="電話" data-en="Phone">電話</label>
+        <input type="tel" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="選擇服務" data-en="Select Service">選擇服務</label>
+        <select required>
+          <option value="" data-zh="請選擇服務項目" data-en="Please select a service">請選擇服務項目</option>
+          <option value="gel" data-zh="凝膠美甲" data-en="Gel Nails">凝膠美甲</option>
+          <option value="art" data-zh="指甲彩繪" data-en="Nail Art">指甲彩繪</option>
+          <option value="ext" data-zh="美甲延甲" data-en="Extensions">美甲延甲</option>
+          <option value="care" data-zh="指甲護理" data-en="Nail Care">指甲護理</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-zh="偏好日期" data-en="Preferred Date">偏好日期</label>
+        <input type="date" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="備註" data-en="Notes">備註</label>
+        <textarea data-zh-placeholder="想要的款式、特殊需求等" data-en-placeholder="Desired style, special requests, etc."></textarea>
+      </div>
+      <button type="submit" class="submit-btn" data-zh="確認預約" data-en="Confirm Booking">確認預約</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/" target="_blank">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-cta" aria-label="Contact HeyBoss">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+let currentLang='zh';
+const bgm=document.getElementById('bgm');
+let bgmPlaying=false;
+
+function toggleBGM(){
+  if(bgmPlaying){bgm.pause();bgmPlaying=false;document.getElementById('bgm-icon').style.opacity='.4'}
+  else{bgm.play();bgmPlaying=true;document.getElementById('bgm-icon').style.opacity='1'}
+}
+
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val}
+      else{el.innerHTML=val}
+    }
+  });
+  document.querySelectorAll('[data-'+currentLang+'-placeholder]').forEach(el=>{
+    el.placeholder=el.getAttribute('data-'+currentLang+'-placeholder');
+  });
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('nav .nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+</body>
+</html>

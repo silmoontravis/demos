@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夢想婚禮 DreamWedding — 頂級婚禮企劃</title>
+<meta name="description" content="夢想婚禮 DreamWedding，專業婚禮策劃團隊，從求婚企劃到婚禮當日統籌，為您打造一生難忘的夢幻婚禮。">
+<meta name="keywords" content="婚禮企劃, wedding planning, 婚禮佈置, 婚禮統籌, DreamWedding, 夢想婚禮, 婚禮規劃">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EventPlanner",
+  "name": "夢想婚禮 DreamWedding",
+  "description": "Luxury wedding planning studio — full planning, partial planning, and day-of coordination",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2750-5500",
+  "priceRange": "$$$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Wedding Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "全程婚禮企劃 Full Planning"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "部分規劃 Partial Planning"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "婚禮當日統籌 Day-of Coordination"}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blush:#f5e1d0;--gold:#c8a45e;--rose:#e8b4b8;--dark:#3d2b2b;--white:#fff;--cream:#fdf8f4;--gray:#8a7a7a;--gold-dark:#a88a3e}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Microsoft JhengHei',serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--gold);border:3px solid var(--rose);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(200,164,94,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--gold);border:2px solid var(--blush);padding:6px 14px;border-radius:20px;cursor:pointer;color:var(--white);font-size:14px;font-weight:700;letter-spacing:1px}
+.lang-toggle:hover{background:var(--gold-dark)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(253,248,244,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,164,94,.2);padding:12px 0}
+nav .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:38px;width:38px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--gold-dark)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:var(--dark);font-size:14px;transition:color .3s}
+nav .nav-links a:hover{color:var(--gold)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--gold);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:62px;left:0;width:100%;background:rgba(253,248,244,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(200,164,94,.2)}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,225,208,.2),rgba(61,43,43,.65))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:900;letter-spacing:3px;margin-bottom:16px;line-height:1.4;color:var(--white)}
+.hero h1 .accent{color:var(--gold)}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.85);margin-bottom:30px;line-height:1.9;font-style:italic}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:700;font-size:15px;transition:all .3s;cursor:pointer;border:none;font-family:inherit}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.btn-outline{border:2px solid rgba(255,255,255,.6);color:var(--white);background:transparent;margin-left:12px}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;color:var(--dark)}
+.section-title .line{width:60px;height:2px;background:linear-gradient(90deg,var(--rose),var(--gold));margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px;font-style:italic}
+
+.services{background:var(--blush)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.service-card{background:var(--white);border-radius:16px;padding:36px 28px;text-align:center;transition:all .4s;border:1px solid rgba(200,164,94,.15)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(200,164,94,.15);border-color:var(--gold)}
+.service-card .icon{font-size:44px;margin-bottom:16px}
+.service-card h3{font-size:20px;color:var(--gold-dark);margin-bottom:10px}
+.service-card p{font-size:14px;color:var(--gray);line-height:1.8}
+.service-card .price{font-size:18px;font-weight:700;color:var(--gold);margin-top:14px}
+
+.portfolio{background:var(--cream)}
+.portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+.portfolio-grid img{border-radius:16px;width:100%;height:350px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.1);transition:transform .4s}
+.portfolio-grid img:hover{transform:scale(1.03)}
+@media(max-width:768px){.portfolio-grid{grid-template-columns:1fr}.portfolio-grid img{height:250px}}
+
+.process{background:var(--blush)}
+.process-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.process-steps{list-style:none}
+.process-steps li{display:flex;gap:16px;margin-bottom:28px;align-items:flex-start}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.step-text h4{font-size:16px;color:var(--dark);margin-bottom:4px}
+.step-text p{font-size:13px;color:var(--gray);line-height:1.6}
+.process-content img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+@media(max-width:768px){.process-content{grid-template-columns:1fr}}
+
+.consultation{background:var(--cream)}
+.consultation-form{max-width:600px;margin:0 auto;background:var(--white);padding:40px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1px solid rgba(200,164,94,.25);border-radius:10px;font-size:14px;font-family:inherit;transition:border .3s;background:var(--cream)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold)}
+.form-group textarea{height:100px;resize:vertical}
+.submit-btn{width:100%;padding:14px;background:var(--gold);color:var(--white);border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:background .3s;font-family:inherit}
+.submit-btn:hover{background:var(--gold-dark)}
+
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:var(--gold);transition:color .3s}
+footer a:hover{color:var(--rose)}
+
+.heyboss-cta{position:fixed;bottom:20px;left:20px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.5);cursor:pointer;transition:transform .3s}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta img{width:32px;height:32px;object-fit:contain;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo-area"><img src="logos/logo_final.png" alt="DreamWedding Logo"><span data-zh="夢想婚禮" data-en="DreamWedding">夢想婚禮</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#services" data-zh="服務方案" data-en="Services">服務方案</a></li>
+      <li><a href="#portfolio" data-zh="作品集" data-en="Portfolio">作品集</a></li>
+      <li><a href="#process" data-zh="規劃流程" data-en="Process">規劃流程</a></li>
+      <li><a href="#consultation" data-zh="免費諮詢" data-en="Consultation">免費諮詢</a></li>
+    </ul>
+  </div>
+</nav>
+
+<button class="lang-toggle" onclick="toggleLang()" data-zh="EN" data-en="中文">EN</button>
+
+<button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">
+  <svg id="bgm-icon" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="讓愛，成為<br>最美的<span class='accent'>夢想</span>" data-en="Let Love Become<br>The Most Beautiful <span class='accent'>Dream</span>">讓愛，成為<br>最美的<span class="accent">夢想</span></h1>
+    <p data-zh="從心動的瞬間到永恆的誓言，夢想婚禮為您精心策劃每一個動人細節，讓您的婚禮成為一生珍藏的回憶。" data-en="From the first spark to the eternal vow, DreamWedding meticulously plans every touching detail, creating a wedding you will treasure forever.">從心動的瞬間到永恆的誓言，夢想婚禮為您精心策劃每一個動人細節，讓您的婚禮成為一生珍藏的回憶。</p>
+    <a href="#consultation" class="btn btn-gold" data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</a>
+    <a href="#portfolio" class="btn btn-outline" data-zh="欣賞作品" data-en="View Portfolio">欣賞作品</a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="服務方案" data-en="Our Services">服務方案</h2>
+      <div class="line"></div>
+      <p data-zh="三種方案，滿足不同新人的需求" data-en="Three plans tailored to every couple's needs">三種方案，滿足不同新人的需求</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="icon">👑</div>
+        <h3 data-zh="全程婚禮企劃" data-en="Full Planning">全程婚禮企劃</h3>
+        <p data-zh="從場地挑選、主題設計、花藝佈置到婚禮當日全程統籌，一站式服務讓您全然放鬆，盡享幸福時光。" data-en="From venue selection, theme design, floral arrangement to full day-of coordination — a one-stop service so you can fully relax and enjoy every moment.">從場地挑選、主題設計、花藝佈置到婚禮當日全程統籌，一站式服務讓您全然放鬆，盡享幸福時光。</p>
+        <div class="price" data-zh="NT$180,000 起" data-en="From NT$180,000">NT$180,000 起</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">💐</div>
+        <h3 data-zh="部分規劃服務" data-en="Partial Planning">部分規劃服務</h3>
+        <p data-zh="已有初步構想？我們協助您完善細節，提供場地推薦、廠商媒合、時間軸規劃等專業支援。" data-en="Already have a vision? We help refine the details — venue suggestions, vendor matching, timeline planning, and professional support.">已有初步構想？我們協助您完善細節，提供場地推薦、廠商媒合、時間軸規劃等專業支援。</p>
+        <div class="price" data-zh="NT$80,000 起" data-en="From NT$80,000">NT$80,000 起</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">✨</div>
+        <h3 data-zh="婚禮當日統籌" data-en="Day-of Coordination">婚禮當日統籌</h3>
+        <p data-zh="婚禮當天的專業統籌，確保每個環節完美銜接。專屬婚禮秘書全程陪伴，讓新人安心享受每一刻。" data-en="Professional day-of coordination ensuring every moment flows perfectly. A dedicated wedding secretary by your side all day long.">婚禮當天的專業統籌，確保每個環節完美銜接。專屬婚禮秘書全程陪伴，讓新人安心享受每一刻。</p>
+        <div class="price" data-zh="NT$35,000 起" data-en="From NT$35,000">NT$35,000 起</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="精選作品" data-en="Portfolio">精選作品</h2>
+      <div class="line"></div>
+      <p data-zh="每一場婚禮，都是一個獨一無二的愛情故事" data-en="Every wedding is a unique love story">每一場婚禮，都是一個獨一無二的愛情故事</p>
+    </div>
+    <div class="portfolio-grid reveal">
+      <img src="photos/decor.png" alt="Wedding Decoration">
+      <img src="photos/couple.png" alt="Happy Couple">
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="規劃流程" data-en="Our Process">規劃流程</h2>
+      <div class="line"></div>
+      <p data-zh="五個步驟，從夢想到實現" data-en="Five steps, from dream to reality">五個步驟，從夢想到實現</p>
+    </div>
+    <div class="process-content reveal">
+      <ul class="process-steps">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4 data-zh="初次諮詢" data-en="Initial Consultation">初次諮詢</h4>
+            <p data-zh="了解您的夢想婚禮願景、預算範圍及偏好風格" data-en="Understanding your dream wedding vision, budget, and style preferences">了解您的夢想婚禮願景、預算範圍及偏好風格</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4 data-zh="企劃提案" data-en="Proposal Design">企劃提案</h4>
+            <p data-zh="量身設計婚禮企劃書，包含主題、色彩、場地建議" data-en="Custom wedding proposal with theme, color palette, and venue recommendations">量身設計婚禮企劃書，包含主題、色彩、場地建議</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4 data-zh="廠商媒合" data-en="Vendor Matching">廠商媒合</h4>
+            <p data-zh="嚴選花藝、攝影、主持、餐飲等優質合作廠商" data-en="Curating premium florists, photographers, hosts, and caterers">嚴選花藝、攝影、主持、餐飲等優質合作廠商</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <h4 data-zh="細節執行" data-en="Detail Execution">細節執行</h4>
+            <p data-zh="場地佈置、流程彩排、時間軸確認，萬全準備" data-en="Venue setup, rehearsal, timeline confirmation — fully prepared">場地佈置、流程彩排、時間軸確認，萬全準備</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">5</div>
+          <div class="step-text">
+            <h4 data-zh="完美婚禮日" data-en="The Perfect Day">完美婚禮日</h4>
+            <p data-zh="全程統籌執行，讓您只需要享受最幸福的一天" data-en="Full coordination so you only need to enjoy the happiest day of your life">全程統籌執行，讓您只需要享受最幸福的一天</p>
+          </div>
+        </li>
+      </ul>
+      <img src="photos/planning.png" alt="Wedding Planning">
+    </div>
+  </div>
+</section>
+
+<section class="consultation" id="consultation">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</h2>
+      <div class="line"></div>
+      <p data-zh="告訴我們您的夢想婚禮，讓我們為您實現" data-en="Tell us about your dream wedding and let us make it real">告訴我們您的夢想婚禮，讓我們為您實現</p>
+    </div>
+    <form class="consultation-form reveal" onsubmit="event.preventDefault();alert(currentLang==='zh'?'諮詢已送出！我們的婚禮顧問將盡快與您聯繫。':'Submitted! Our wedding consultant will contact you soon.')">
+      <div class="form-group">
+        <label data-zh="新人姓名" data-en="Couple Names">新人姓名</label>
+        <input type="text" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="聯絡電話" data-en="Phone">聯絡電話</label>
+        <input type="tel" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="電子郵件" data-en="Email">電子郵件</label>
+        <input type="email" required>
+      </div>
+      <div class="form-group">
+        <label data-zh="預計婚期" data-en="Wedding Date">預計婚期</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label data-zh="服務方案" data-en="Service Plan">服務方案</label>
+        <select>
+          <option value="" data-zh="請選擇" data-en="Please select">請選擇</option>
+          <option value="full" data-zh="全程婚禮企劃" data-en="Full Planning">全程婚禮企劃</option>
+          <option value="partial" data-zh="部分規劃服務" data-en="Partial Planning">部分規劃服務</option>
+          <option value="dayof" data-zh="婚禮當日統籌" data-en="Day-of Coordination">婚禮當日統籌</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-zh="您的婚禮夢想" data-en="Your Wedding Dream">您的婚禮夢想</label>
+        <textarea></textarea>
+      </div>
+      <button type="submit" class="submit-btn" data-zh="送出諮詢" data-en="Submit">送出諮詢</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/" target="_blank">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-cta" aria-label="Contact HeyBoss">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+let currentLang='zh';
+const bgm=document.getElementById('bgm');
+let bgmPlaying=false;
+
+function toggleBGM(){
+  if(bgmPlaying){bgm.pause();bgmPlaying=false;document.getElementById('bgm-icon').style.opacity='.4'}
+  else{bgm.play();bgmPlaying=true;document.getElementById('bgm-icon').style.opacity='1'}
+}
+
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val}
+      else{el.innerHTML=val}
+    }
+  });
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('nav .nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+</body>
+</html>

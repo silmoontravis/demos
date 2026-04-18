@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>毛小孩診所 PetDoc — 寵物醫療中心 | Veterinary Clinic</title>
+<meta name="description" content="毛小孩診所 PetDoc 提供專業寵物醫療服務，包含健檢、手術、牙科、疫苗與急診。用愛守護每一個毛孩子。">
+<meta name="keywords" content="毛小孩診所,PetDoc,寵物醫院,動物醫院,獸醫,寵物健檢,pet clinic,veterinary">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"VeterinaryCare",
+  "name":"毛小孩診所 PetDoc",
+  "image":"photos/hero.png",
+  "url":"https://silmoontravis.github.io/demos/petdoc/",
+  "telephone":"+886-2-8765-4321",
+  "address":{"@type":"PostalAddress","streetAddress":"台北市中山區民生東路三段52號","addressLocality":"台北市","addressCountry":"TW"},
+  "openingHours":"Mo-Su 09:00-21:00"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#0d9488;--coral:#f97316;--teal-light:#ccfbf1;--coral-light:#fff7ed}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(13,148,136,.1);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:18px;font-weight:700;color:var(--teal)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:#333;transition:color .3s}
+.nav-links a:hover{color:var(--teal)}
+.lang-btn{background:var(--teal);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit}
+.bgm-btn{background:none;border:2px solid var(--teal);color:var(--teal);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--teal);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--teal)}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:#fff;flex-direction:column;padding:40px 30px;gap:30px;transition:right .3s;box-shadow:-4px 0 20px rgba(0,0,0,.1)}
+  .nav-links.open{right:0}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,148,136,.85) 0%,rgba(13,148,136,.4) 60%,transparent 100%)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px 20px 20px 40px;max-width:600px}
+.hero-content h1{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:16px}
+.hero-content p{font-size:clamp(1rem,2vw,1.2rem);opacity:.9;margin-bottom:32px;line-height:1.7}
+.hero-cta{display:inline-block;background:var(--coral);color:#fff;padding:14px 36px;border-radius:40px;font-size:16px;font-weight:600;transition:transform .3s,box-shadow .3s;font-family:inherit}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,.4)}
+@media(max-width:768px){.hero-content{padding:20px}}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--teal);margin-bottom:12px}
+.section-title p{color:#666;font-size:16px;max-width:600px;margin:0 auto}
+.section-divider{width:60px;height:3px;background:var(--coral);margin:16px auto 0;border-radius:2px}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.service-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px 20px;text-align:center;transition:all .4s;cursor:default}
+.service-card:hover{border-color:var(--teal);box-shadow:0 8px 30px rgba(13,148,136,.12);transform:translateY(-4px)}
+.service-icon{font-size:36px;margin-bottom:14px}
+.service-card h3{font-size:17px;color:var(--teal);margin-bottom:8px}
+.service-card p{font-size:13px;color:#666;line-height:1.6}
+
+/* FACILITIES */
+.facilities{background:var(--teal-light)}
+.facilities-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.facilities-text h3{font-size:24px;color:var(--teal);margin-bottom:16px}
+.facilities-text p{color:#555;line-height:1.8;font-size:15px}
+.facilities-text ul{margin-top:16px;list-style:none}
+.facilities-text li{padding:8px 0;padding-left:24px;position:relative;color:#444;font-size:14px}
+.facilities-text li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700}
+.facilities-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+@media(max-width:768px){.facilities-grid{grid-template-columns:1fr}}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.team-grid img{border-radius:16px;height:100%;object-fit:cover}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr}}
+.team-info{display:flex;flex-direction:column;gap:20px}
+.team-member{background:var(--coral-light);padding:24px;border-radius:16px}
+.team-member h3{color:var(--coral);font-size:18px;margin-bottom:4px}
+.team-member .role{font-size:13px;color:#888;margin-bottom:10px}
+.team-member p{font-size:14px;color:#555;line-height:1.6}
+
+/* BOOKING */
+.booking{background:var(--coral-light)}
+.booking-form{max-width:500px;margin:0 auto;background:#fff;padding:40px;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.booking-form label{display:block;font-size:14px;color:#444;margin-bottom:6px;margin-top:16px}
+.booking-form input,.booking-form select,.booking-form textarea{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:10px;font-size:15px;font-family:inherit;transition:border .3s}
+.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{outline:none;border-color:var(--teal)}
+.booking-form button{width:100%;margin-top:24px;padding:14px;background:var(--coral);color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-family:inherit;font-weight:600;transition:background .3s}
+.booking-form button:hover{background:#ea580c}
+
+footer{background:#111;color:#aaa;text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:#aaa;text-decoration:underline}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:transform .3s,box-shadow .3s}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.5)}
+.heyboss-cta img{width:32px;height:32px;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="PetDoc Logo"><span>毛小孩診所</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services" data-zh="服務" data-en="Services">服務</a>
+      <a href="#facilities" data-zh="設施" data-en="Facilities">設施</a>
+      <a href="#team" data-zh="團隊" data-en="Team">團隊</a>
+      <a href="#booking" data-zh="預約" data-en="Book">預約</a>
+      <button class="bgm-btn" id="bgmBtn" title="BGM">♫</button>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 data-zh="毛小孩診所" data-en="PetDoc Clinic">毛小孩診所</h1>
+    <p data-zh="用專業與愛心，守護您最珍貴的家人。全方位寵物醫療，讓毛孩子健康快樂每一天。" data-en="Professional care with love for your most precious family members. Comprehensive veterinary services for happy, healthy pets.">用專業與愛心，守護您最珍貴的家人。全方位寵物醫療，讓毛孩子健康快樂每一天。</p>
+    <a href="#booking" class="hero-cta" data-zh="立即預約" data-en="Book Now">立即預約</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="醫療服務" data-en="Our Services">醫療服務</h2>
+      <p data-zh="涵蓋寵物健康的每一個面向" data-en="Covering every aspect of your pet's health">涵蓋寵物健康的每一個面向</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🩺</div>
+        <h3 data-zh="全身健檢" data-en="Health Checkup">全身健檢</h3>
+        <p data-zh="血液、超音波、X光等完整檢查，早期發現潛在問題。" data-en="Complete blood work, ultrasound, and X-ray for early detection.">血液、超音波、X光等完整檢查，早期發現潛在問題。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏥</div>
+        <h3 data-zh="外科手術" data-en="Surgery">外科手術</h3>
+        <p data-zh="結紮、腫瘤切除等手術，配備先進麻醉監控設備。" data-en="Spay/neuter, tumor removal with advanced anesthesia monitoring.">結紮、腫瘤切除等手術，配備先進麻醉監控設備。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🦷</div>
+        <h3 data-zh="牙科護理" data-en="Dental Care">牙科護理</h3>
+        <p data-zh="洗牙、拔牙、口腔疾病治療，維護寵物口腔健康。" data-en="Cleaning, extraction, and oral disease treatment for dental health.">洗牙、拔牙、口腔疾病治療，維護寵物口腔健康。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💉</div>
+        <h3 data-zh="疫苗接種" data-en="Vaccination">疫苗接種</h3>
+        <p data-zh="完整疫苗計畫，預防犬瘟熱、腸病毒等常見疾病。" data-en="Complete vaccine programs preventing distemper, parvovirus, and more.">完整疫苗計畫，預防犬瘟熱、腸病毒等常見疾病。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚨</div>
+        <h3 data-zh="24H 急診" data-en="24H Emergency">24H 急診</h3>
+        <p data-zh="全天候急診服務，緊急時刻不讓您與毛孩無助等待。" data-en="Round-the-clock emergency care — we're here when you need us most.">全天候急診服務，緊急時刻不讓您與毛孩無助等待。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="facilities" class="facilities">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="醫療設施" data-en="Our Facilities">醫療設施</h2>
+      <p data-zh="配備國際水準的診療設備" data-en="Equipped with international-standard medical devices">配備國際水準的診療設備</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="facilities-grid">
+      <div class="facilities-text reveal-left">
+        <h3 data-zh="先進設備・安心醫療" data-en="Advanced Equipment. Trusted Care.">先進設備・安心醫療</h3>
+        <p data-zh="我們投資最新醫療設備，確保每一次診療都精準有效。" data-en="We invest in the latest medical equipment for precise and effective care every time.">我們投資最新醫療設備，確保每一次診療都精準有效。</p>
+        <ul>
+          <li data-zh="數位 X 光與超音波" data-en="Digital X-ray & Ultrasound">數位 X 光與超音波</li>
+          <li data-zh="全自動血液分析儀" data-en="Fully Automated Blood Analyzer">全自動血液分析儀</li>
+          <li data-zh="無菌手術室" data-en="Sterile Operating Room">無菌手術室</li>
+          <li data-zh="ICU 重症監護病房" data-en="ICU Intensive Care Unit">ICU 重症監護病房</li>
+          <li data-zh="獨立貓犬候診區" data-en="Separate Cat & Dog Waiting Areas">獨立貓犬候診區</li>
+        </ul>
+      </div>
+      <img src="photos/clinic.png" alt="診所設施" class="reveal-right">
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="專業團隊" data-en="Our Team">專業團隊</h2>
+      <p data-zh="用心傾聽，用愛治療" data-en="Listening with heart, healing with love">用心傾聽，用愛治療</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="team-grid">
+      <img src="photos/team.png" alt="醫療團隊" class="reveal-left">
+      <div class="team-info">
+        <div class="team-member reveal-right">
+          <h3 data-zh="陳醫師" data-en="Dr. Chen">陳醫師</h3>
+          <div class="role" data-zh="院長 / 外科專科" data-en="Director / Surgery Specialist">院長 / 外科專科</div>
+          <p data-zh="20年臨床經驗，專精軟組織外科與腫瘤治療。" data-en="20 years of clinical experience specializing in soft tissue surgery and oncology.">20年臨床經驗，專精軟組織外科與腫瘤治療。</p>
+        </div>
+        <div class="team-member reveal-right">
+          <h3 data-zh="林醫師" data-en="Dr. Lin">林醫師</h3>
+          <div class="role" data-zh="內科 / 牙科專科" data-en="Internal Medicine / Dental Specialist">內科 / 牙科專科</div>
+          <p data-zh="擅長老年寵物慢性病管理與口腔健康照護。" data-en="Expert in senior pet chronic disease management and oral health care.">擅長老年寵物慢性病管理與口腔健康照護。</p>
+        </div>
+        <img src="photos/care.png" alt="寵物照護" class="reveal-right" style="border-radius:16px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="booking">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="線上預約" data-en="Book an Appointment">線上預約</h2>
+      <p data-zh="填寫表單，我們將盡快與您確認" data-en="Fill out the form and we'll confirm shortly">填寫表單，我們將盡快與您確認</p>
+      <div class="section-divider"></div>
+    </div>
+    <form class="booking-form reveal" onsubmit="event.preventDefault();alert(this.dataset.lang==='en'?'Booking submitted!':'預約已送出！')">
+      <label data-zh="飼主姓名" data-en="Owner Name">飼主姓名</label>
+      <input type="text" required>
+      <label data-zh="聯絡電話" data-en="Phone">聯絡電話</label>
+      <input type="tel" required>
+      <label data-zh="寵物名字" data-en="Pet Name">寵物名字</label>
+      <input type="text" required>
+      <label data-zh="寵物種類" data-en="Pet Type">寵物種類</label>
+      <select>
+        <option data-zh="狗" data-en="Dog">狗</option>
+        <option data-zh="貓" data-en="Cat">貓</option>
+        <option data-zh="其他" data-en="Other">其他</option>
+      </select>
+      <label data-zh="預約日期" data-en="Date">預約日期</label>
+      <input type="date" required>
+      <label data-zh="症狀描述" data-en="Symptoms">症狀描述</label>
+      <textarea rows="3"></textarea>
+      <button type="submit" data-zh="送出預約" data-en="Submit Booking">送出預約</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" title="Contact HEY!BOSS">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+bgmBtn.onclick=()=>{if(bgmAudio.paused){bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪'}else{bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}};
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+lang);
+    if(t){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.textContent=t;}
+  });
+}
+
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

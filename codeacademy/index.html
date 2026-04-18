@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>碼學堂 CodeNest — 程式教育平台 | Coding Education Platform</title>
+<meta name="description" content="碼學堂 CodeNest 提供 Web、Mobile、Data、AI 四大學習路徑，會員制線上程式教育平台。加入我們，開啟你的程式職涯。">
+<meta name="keywords" content="碼學堂,CodeNest,程式教育,coding bootcamp,web development,mobile,data science,線上課程">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"EducationalOrganization",
+  "name":"碼學堂 CodeNest",
+  "image":"photos/hero.png",
+  "url":"https://silmoontravis.github.io/demos/codeacademy/",
+  "description":"Premium coding education platform with membership tiers",
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Pro","price":"499","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Elite","price":"999","priceCurrency":"TWD"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#0d9488;--orange:#f97316;--dark:#111;--darker:#0a0a0a;--card:#1a1a1a;--border:#2a2a2a;--text:#e5e5e5;--muted:#888}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC','Space Grotesk',sans-serif;background:var(--darker);color:var(--text);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(10,10,10,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.5)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:18px;font-weight:700;color:#fff}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:#ccc;transition:color .3s}
+.nav-links a:hover{color:var(--teal)}
+.nav-login{background:transparent;border:1px solid var(--teal);color:var(--teal);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;transition:all .3s}
+.nav-login:hover{background:var(--teal);color:#fff}
+.lang-btn{background:var(--orange);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit}
+.bgm-btn{background:none;border:2px solid var(--teal);color:var(--teal);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--teal);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--teal)}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:var(--darker);flex-direction:column;padding:40px 30px;gap:30px;transition:right .3s;box-shadow:-4px 0 20px rgba(0,0,0,.5)}
+  .nav-links.open{right:0}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover;filter:brightness(.3)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,148,136,.3),rgba(249,115,22,.2))}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.2),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-content h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;margin-bottom:16px;letter-spacing:-1px}
+.hero-content h1 .highlight{color:var(--teal)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);color:#ccc;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:#fff;padding:14px 36px;border-radius:40px;font-size:16px;font-weight:600;transition:transform .3s,box-shadow .3s;font-family:inherit;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(13,148,136,.4)}
+.btn-secondary{background:transparent;border:2px solid #555;color:#fff;padding:14px 36px;border-radius:40px;font-size:16px;font-weight:600;transition:all .3s;font-family:inherit;cursor:pointer}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:12px}
+.section-title p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto}
+.section-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--teal),var(--orange));margin:16px auto 0;border-radius:2px}
+
+/* COURSES */
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.course-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .4s;cursor:pointer}
+.course-card:hover{border-color:var(--teal);box-shadow:0 8px 40px rgba(13,148,136,.15);transform:translateY(-4px)}
+.course-card img{height:160px;width:100%;object-fit:cover}
+.course-card-body{padding:20px}
+.course-card-body .track-badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:600;margin-bottom:10px}
+.track-web{background:rgba(13,148,136,.2);color:var(--teal)}
+.track-mobile{background:rgba(249,115,22,.2);color:var(--orange)}
+.track-data{background:rgba(168,85,247,.2);color:#a855f7}
+.track-ai{background:rgba(236,72,153,.2);color:#ec4899}
+.course-card-body h3{font-size:17px;color:#fff;margin-bottom:8px}
+.course-card-body p{font-size:13px;color:var(--muted);line-height:1.6}
+.course-meta{display:flex;justify-content:space-between;margin-top:14px;font-size:12px;color:var(--muted)}
+
+/* MEMBERSHIP */
+.membership{background:var(--dark)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;transition:all .4s;position:relative}
+.plan-card.featured{border-color:var(--teal);box-shadow:0 0 40px rgba(13,148,136,.2)}
+.plan-card.featured::before{content:"POPULAR";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;padding:4px 16px;border-radius:12px;font-size:11px;font-weight:700}
+.plan-card h3{font-size:22px;color:#fff;margin-bottom:8px}
+.plan-price{font-size:40px;font-weight:900;color:#fff;margin:16px 0}
+.plan-price span{font-size:16px;font-weight:400;color:var(--muted)}
+.plan-features{list-style:none;margin:24px 0;text-align:left}
+.plan-features li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;color:#ccc;padding-left:24px;position:relative}
+.plan-features li::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:16px;height:16px;border-radius:50%;border:2px solid var(--teal)}
+.plan-features li.included::before{background:var(--teal);box-shadow:inset 0 0 0 2px var(--card)}
+.plan-features li.excluded{color:#555}
+.plan-btn{width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .3s;border:none}
+.plan-btn-free{background:var(--border);color:#fff}
+.plan-btn-free:hover{background:#444}
+.plan-btn-pro{background:var(--teal);color:#fff}
+.plan-btn-pro:hover{background:#0f766e}
+.plan-btn-elite{background:linear-gradient(135deg,var(--orange),#ea580c);color:#fff}
+.plan-btn-elite:hover{opacity:.9}
+
+/* COMMUNITY */
+.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.community-text h3{font-size:24px;color:#fff;margin-bottom:16px}
+.community-text p{color:#bbb;line-height:1.8;font-size:15px}
+.community-stats{display:flex;gap:32px;margin-top:24px}
+.c-stat .num{font-size:28px;font-weight:900;color:var(--teal)}
+.c-stat .label{font-size:12px;color:var(--muted);margin-top:4px}
+.community-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+@media(max-width:768px){.community-grid{grid-template-columns:1fr}}
+
+/* SUCCESS */
+.success{background:var(--dark)}
+.success-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.success-grid img{border-radius:16px}
+.testimonials{display:flex;flex-direction:column;gap:20px}
+.testimonial{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+.testimonial p{font-size:14px;color:#ccc;line-height:1.7;font-style:italic}
+.testimonial .author{margin-top:12px;font-size:13px;color:var(--orange);font-weight:600}
+@media(max-width:768px){.success-grid{grid-template-columns:1fr}}
+
+/* SIGNUP */
+.signup{background:linear-gradient(135deg,rgba(13,148,136,.15),rgba(249,115,22,.1));border-top:1px solid var(--border)}
+.signup-form{max-width:500px;margin:0 auto;background:var(--card);padding:40px;border-radius:20px;border:1px solid var(--border)}
+.signup-form label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px;margin-top:16px}
+.signup-form input,.signup-form select{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;background:#222;color:#fff;transition:border .3s}
+.signup-form input:focus,.signup-form select:focus{outline:none;border-color:var(--teal)}
+.signup-form button{width:100%;margin-top:24px;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-family:inherit;font-weight:700;transition:background .3s}
+.signup-form button:hover{background:#0f766e}
+
+/* LOGIN MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;width:90%;max-width:400px;position:relative}
+.modal h3{color:#fff;font-size:22px;margin-bottom:20px;text-align:center}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer}
+.modal label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px;margin-top:16px}
+.modal input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:10px;font-size:15px;background:#222;color:#fff}
+.modal input:focus{outline:none;border-color:var(--teal)}
+.modal button[type="submit"]{width:100%;margin-top:20px;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-weight:700}
+
+footer{background:#000;color:#555;text-align:center;padding:30px 20px;font-size:13px;border-top:1px solid var(--border)}
+footer a{color:#555;text-decoration:underline}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:transform .3s,box-shadow .3s}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.5)}
+.heyboss-cta img{width:32px;height:32px;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="CodeNest Logo"><span>碼學堂</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#courses" data-zh="課程" data-en="Courses">課程</a>
+      <a href="#membership" data-zh="方案" data-en="Plans">方案</a>
+      <a href="#community" data-zh="社群" data-en="Community">社群</a>
+      <a href="#success" data-zh="成果" data-en="Success">成果</a>
+      <button class="nav-login" id="loginBtn" data-zh="登入" data-en="Login">登入</button>
+      <button class="bgm-btn" id="bgmBtn" title="BGM">♫</button>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('show')">&times;</button>
+    <h3 data-zh="會員登入" data-en="Member Login">會員登入</h3>
+    <form onsubmit="event.preventDefault();alert('Login feature coming soon!')">
+      <label>Email</label>
+      <input type="email" required placeholder="you@example.com">
+      <label data-zh="密碼" data-en="Password">密碼</label>
+      <input type="password" required>
+      <button type="submit" data-zh="登入" data-en="Login">登入</button>
+    </form>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content reveal">
+    <h1><span data-zh="碼學堂" data-en="CodeNest">碼學堂</span></h1>
+    <p data-zh="從零開始，成為全端工程師。四大學習路徑、業界導師、實戰專題，加入碼學堂，讓程式成為你的超能力。" data-en="Start from zero, become a full-stack developer. Four learning tracks, industry mentors, real projects. Join CodeNest and make coding your superpower.">從零開始，成為全端工程師。四大學習路徑、業界導師、實戰專題，加入碼學堂，讓程式成為你的超能力。</p>
+    <div class="hero-btns">
+      <a href="#signup" class="btn-primary" data-zh="免費開始" data-en="Start Free">免費開始</a>
+      <a href="#courses" class="btn-secondary" data-zh="探索課程" data-en="Explore Courses">探索課程</a>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="學習路徑" data-en="Learning Tracks">學習路徑</h2>
+      <p data-zh="四大領域，從入門到就業，系統化學習" data-en="Four domains, from beginner to career-ready, systematic learning">四大領域，從入門到就業，系統化學習</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card reveal">
+        <img src="photos/course.png" alt="Web 開發">
+        <div class="course-card-body">
+          <span class="track-badge track-web" data-zh="Web 開發" data-en="Web Dev">Web 開發</span>
+          <h3 data-zh="全端網頁工程師" data-en="Full-Stack Web Developer">全端網頁工程師</h3>
+          <p data-zh="HTML/CSS、JavaScript、React、Node.js、資料庫，從前端到後端完整掌握。" data-en="HTML/CSS, JavaScript, React, Node.js, databases — master front-end to back-end.">HTML/CSS、JavaScript、React、Node.js、資料庫，從前端到後端完整掌握。</p>
+          <div class="course-meta"><span data-zh="36 堂課" data-en="36 Lessons">36 堂課</span><span data-zh="初級 → 進階" data-en="Beginner → Advanced">初級 → 進階</span></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <img src="photos/course.png" alt="Mobile 開發">
+        <div class="course-card-body">
+          <span class="track-badge track-mobile" data-zh="行動開發" data-en="Mobile Dev">行動開發</span>
+          <h3 data-zh="跨平台 App 工程師" data-en="Cross-Platform App Developer">跨平台 App 工程師</h3>
+          <p data-zh="Flutter、React Native、Swift、Kotlin，一次學會 iOS 與 Android 開發。" data-en="Flutter, React Native, Swift, Kotlin — learn iOS and Android development at once.">Flutter、React Native、Swift、Kotlin，一次學會 iOS 與 Android 開發。</p>
+          <div class="course-meta"><span data-zh="28 堂課" data-en="28 Lessons">28 堂課</span><span data-zh="初級 → 進階" data-en="Beginner → Advanced">初級 → 進階</span></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <img src="photos/course.png" alt="數據分析">
+        <div class="course-card-body">
+          <span class="track-badge track-data" data-zh="數據科學" data-en="Data Science">數據科學</span>
+          <h3 data-zh="數據分析師" data-en="Data Analyst">數據分析師</h3>
+          <p data-zh="Python、Pandas、SQL、Tableau、統計學，用數據驅動商業決策。" data-en="Python, Pandas, SQL, Tableau, Statistics — drive business decisions with data.">Python、Pandas、SQL、Tableau、統計學，用數據驅動商業決策。</p>
+          <div class="course-meta"><span data-zh="32 堂課" data-en="32 Lessons">32 堂課</span><span data-zh="初級 → 中階" data-en="Beginner → Intermediate">初級 → 中階</span></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <img src="photos/course.png" alt="人工智慧">
+        <div class="course-card-body">
+          <span class="track-badge track-ai" data-zh="人工智慧" data-en="Artificial Intelligence">人工智慧</span>
+          <h3 data-zh="機器學習工程師" data-en="ML Engineer">機器學習工程師</h3>
+          <p data-zh="TensorFlow、PyTorch、NLP、電腦視覺，掌握最前沿的技術。" data-en="TensorFlow, PyTorch, NLP, Computer Vision — master cutting-edge technology.">TensorFlow、PyTorch、NLP、電腦視覺，掌握最前沿的技術。</p>
+          <div class="course-meta"><span data-zh="24 堂課" data-en="24 Lessons">24 堂課</span><span data-zh="中階 → 進階" data-en="Intermediate → Advanced">中階 → 進階</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="membership" class="membership">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="會員方案" data-en="Membership Plans">會員方案</h2>
+      <p data-zh="選擇最適合你的學習方式" data-en="Choose the plan that fits your learning style">選擇最適合你的學習方式</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <h3 data-zh="免費方案" data-en="Free Plan">免費方案</h3>
+        <div class="plan-price">NT$ 0<span>/mo</span></div>
+        <ul class="plan-features">
+          <li class="included" data-zh="基礎課程（前 5 堂）" data-en="Basic courses (first 5 lessons)">基礎課程（前 5 堂）</li>
+          <li class="included" data-zh="社群論壇瀏覽" data-en="Community forum access">社群論壇瀏覽</li>
+          <li class="included" data-zh="每週直播回放" data-en="Weekly livestream replays">每週直播回放</li>
+          <li class="excluded" data-zh="完整課程內容" data-en="Full course content">完整課程內容</li>
+          <li class="excluded" data-zh="導師 1-on-1" data-en="1-on-1 mentoring">導師 1-on-1</li>
+          <li class="excluded" data-zh="就業輔導" data-en="Career coaching">就業輔導</li>
+        </ul>
+        <button class="plan-btn plan-btn-free" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</button>
+      </div>
+      <div class="plan-card featured reveal">
+        <h3 data-zh="Pro 方案" data-en="Pro Plan">Pro 方案</h3>
+        <div class="plan-price">NT$ 499<span>/mo</span></div>
+        <ul class="plan-features">
+          <li class="included" data-zh="全部課程無限觀看" data-en="Unlimited access to all courses">全部課程無限觀看</li>
+          <li class="included" data-zh="實戰專題指導" data-en="Guided real-world projects">實戰專題指導</li>
+          <li class="included" data-zh="社群完整權限" data-en="Full community access">社群完整權限</li>
+          <li class="included" data-zh="每月 2 次導師會議" data-en="2 mentor sessions/month">每月 2 次導師會議</li>
+          <li class="included" data-zh="結業證書" data-en="Completion certificate">結業證書</li>
+          <li class="excluded" data-zh="就業保證" data-en="Job guarantee">就業保證</li>
+        </ul>
+        <button class="plan-btn plan-btn-pro" data-zh="選擇 Pro" data-en="Choose Pro">選擇 Pro</button>
+      </div>
+      <div class="plan-card reveal">
+        <h3 data-zh="Elite 方案" data-en="Elite Plan">Elite 方案</h3>
+        <div class="plan-price">NT$ 999<span>/mo</span></div>
+        <ul class="plan-features">
+          <li class="included" data-zh="Pro 方案所有權益" data-en="Everything in Pro">Pro 方案所有權益</li>
+          <li class="included" data-zh="無限次導師 1-on-1" data-en="Unlimited 1-on-1 mentoring">無限次導師 1-on-1</li>
+          <li class="included" data-zh="履歷 / 作品集審閱" data-en="Resume & portfolio review">履歷 / 作品集審閱</li>
+          <li class="included" data-zh="模擬面試練習" data-en="Mock interview practice">模擬面試練習</li>
+          <li class="included" data-zh="企業合作推薦" data-en="Partner company referrals">企業合作推薦</li>
+          <li class="included" data-zh="就業保證方案" data-en="Job guarantee program">就業保證方案</li>
+        </ul>
+        <button class="plan-btn plan-btn-elite" data-zh="選擇 Elite" data-en="Choose Elite">選擇 Elite</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="學習社群" data-en="Community">學習社群</h2>
+      <p data-zh="與志同道合的夥伴一起成長" data-en="Grow alongside like-minded peers">與志同道合的夥伴一起成長</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="community-grid">
+      <div class="community-text reveal-left">
+        <h3 data-zh="你不是一個人在學" data-en="You're Not Learning Alone">你不是一個人在學</h3>
+        <p data-zh="碼學堂擁有活躍的線上學習社群，每週舉辦讀書會、Hackathon 與技術分享。從新手到資深工程師，在這裡你永遠能找到一起 debug 的夥伴。" data-en="CodeNest has an active online learning community with weekly study groups, hackathons, and tech talks. From beginners to senior engineers, you'll always find a debugging buddy here.">碼學堂擁有活躍的線上學習社群，每週舉辦讀書會、Hackathon 與技術分享。從新手到資深工程師，在這裡你永遠能找到一起 debug 的夥伴。</p>
+        <div class="community-stats">
+          <div class="c-stat"><div class="num" data-zh="12,000+" data-en="12,000+">12,000+</div><div class="label" data-zh="學員" data-en="Students">學員</div></div>
+          <div class="c-stat"><div class="num" data-zh="500+" data-en="500+">500+</div><div class="label" data-zh="企業合作" data-en="Partners">企業合作</div></div>
+          <div class="c-stat"><div class="num" data-zh="94%" data-en="94%">94%</div><div class="label" data-zh="就業率" data-en="Job Rate">就業率</div></div>
+        </div>
+      </div>
+      <img src="photos/community.png" alt="學習社群" class="reveal-right">
+    </div>
+  </div>
+</section>
+
+<section id="success" class="success">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="學員成果" data-en="Success Stories">學員成果</h2>
+      <p data-zh="他們的故事，也許就是你的未來" data-en="Their stories could be your future">他們的故事，也許就是你的未來</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="success-grid">
+      <img src="photos/success.png" alt="學員成果" class="reveal-left">
+      <div class="testimonials">
+        <div class="testimonial reveal-right">
+          <p data-zh="「從行銷轉職前端工程師，碼學堂的課程幫助我在 6 個月內拿到第一份 offer。導師的 code review 讓我成長最快。」" data-en="\"Transitioning from marketing to front-end engineering, CodeNest helped me land my first offer in 6 months. The mentor code reviews accelerated my growth the most.\"">"從行銷轉職前端工程師，碼學堂的課程幫助我在 6 個月內拿到第一份 offer。導師的 code review 讓我成長最快。"</p>
+          <div class="author" data-zh="— 王小明，前端工程師 @ 科技公司" data-en="— Kevin Wang, Frontend Engineer @ Tech Co.">— 王小明，前端工程師 @ 科技公司</div>
+        </div>
+        <div class="testimonial reveal-right">
+          <p data-zh="「Elite 方案的模擬面試太實用了！面試官問的題目，有八成在碼學堂都練過。現在年薪翻了一倍。」" data-en="\"The Elite plan's mock interviews were incredibly practical! 80% of interview questions were ones I'd practiced at CodeNest. My salary doubled.\"">"Elite 方案的模擬面試太實用了！面試官問的題目，有八成在碼學堂都練過。現在年薪翻了一倍。"</p>
+          <div class="author" data-zh="— 李美玲，全端工程師 @ 新創公司" data-en="— Mei-Ling Li, Full-Stack Engineer @ Startup">— 李美玲，全端工程師 @ 新創公司</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="signup" class="signup">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="立即加入" data-en="Sign Up">立即加入</h2>
+      <p data-zh="免費註冊，開始你的程式之旅" data-en="Register for free and start your coding journey">免費註冊，開始你的程式之旅</p>
+      <div class="section-divider"></div>
+    </div>
+    <form class="signup-form reveal" onsubmit="event.preventDefault();alert(this.dataset.lang==='en'?'Registration successful!':'註冊成功！')">
+      <label data-zh="姓名" data-en="Name">姓名</label>
+      <input type="text" required>
+      <label>Email</label>
+      <input type="email" required>
+      <label data-zh="密碼" data-en="Password">密碼</label>
+      <input type="password" required minlength="8">
+      <label data-zh="有興趣的路徑" data-en="Interested Track">有興趣的路徑</label>
+      <select>
+        <option data-zh="Web 開發" data-en="Web Development">Web 開發</option>
+        <option data-zh="行動開發" data-en="Mobile Development">行動開發</option>
+        <option data-zh="數據科學" data-en="Data Science">數據科學</option>
+        <option data-zh="人工智慧" data-en="Artificial Intelligence">人工智慧</option>
+      </select>
+      <button type="submit" data-zh="免費註冊" data-en="Sign Up Free">免費註冊</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" title="Contact HEY!BOSS">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+bgmBtn.onclick=()=>{if(bgmAudio.paused){bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪'}else{bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}};
+
+document.getElementById('loginBtn').onclick=()=>document.getElementById('loginModal').classList.add('show');
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+lang);
+    if(t){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.textContent=t;}
+  });
+}
+
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

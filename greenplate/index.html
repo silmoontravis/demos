@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>綠盤子 GreenPlate — 純植物蔬食餐廳 | Vegan Restaurant</title>
+<meta name="description" content="綠盤子 GreenPlate 提供新鮮有機的純植物料理，從農場到餐桌，每一口都是大地的禮物。預約您的綠色饗宴。">
+<meta name="keywords" content="綠盤子,GreenPlate,蔬食,素食,vegan,植物性飲食,有機,organic restaurant">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"綠盤子 GreenPlate",
+  "image":"photos/hero.png",
+  "url":"https://silmoontravis.github.io/demos/greenplate/",
+  "telephone":"+886-2-3456-7890",
+  "address":{"@type":"PostalAddress","streetAddress":"台北市大安區永康街28號","addressLocality":"台北市","addressCountry":"TW"},
+  "servesCuisine":"Vegan",
+  "priceRange":"$$",
+  "openingHours":"Mo-Su 11:00-21:00",
+  "menu":"https://silmoontravis.github.io/demos/greenplate/#menu"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#22c55e;--brown:#78350f;--cream:#fefce8;--green-light:#dcfce7;--green-dark:#15803d}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC','DM Sans',sans-serif;background:var(--cream);color:#1a1a1a;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(254,252,232,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(34,197,94,.12);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:18px;font-weight:700;color:var(--green-dark)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:#333;transition:color .3s}
+.nav-links a:hover{color:var(--green)}
+.lang-btn{background:var(--green);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit}
+.bgm-btn{background:none;border:2px solid var(--green);color:var(--green);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--green);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--green)}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:var(--cream);flex-direction:column;padding:40px 30px;gap:30px;transition:right .3s;box-shadow:-4px 0 20px rgba(0,0,0,.1)}
+  .nav-links.open{right:0}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(34,197,94,.3),rgba(120,53,15,.4))}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-content h1{font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);opacity:.95;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:var(--green);color:#fff;padding:14px 40px;border-radius:40px;font-size:16px;font-weight:600;transition:transform .3s,box-shadow .3s;font-family:inherit}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(34,197,94,.4)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--green-dark);margin-bottom:12px}
+.section-title p{color:#666;font-size:16px;max-width:600px;margin:0 auto}
+.section-divider{width:60px;height:3px;background:var(--brown);margin:16px auto 0;border-radius:2px}
+
+/* MENU */
+.menu-categories{display:flex;justify-content:center;gap:16px;margin-bottom:40px;flex-wrap:wrap}
+.menu-cat{padding:10px 24px;border-radius:30px;border:2px solid var(--green);color:var(--green-dark);cursor:pointer;font-size:14px;font-weight:600;transition:all .3s;background:transparent}
+.menu-cat.active,.menu-cat:hover{background:var(--green);color:#fff}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.menu-item{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.05);transition:transform .4s}
+.menu-item:hover{transform:translateY(-4px)}
+.menu-item img{height:180px;width:100%;object-fit:cover}
+.menu-item-body{padding:20px}
+.menu-item-body h3{font-size:17px;color:var(--green-dark);margin-bottom:4px}
+.menu-item-body .price{color:var(--brown);font-weight:700;font-size:16px;margin-bottom:8px}
+.menu-item-body p{font-size:13px;color:#888;line-height:1.6}
+.menu-item-body .tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.menu-item-body .tag{font-size:11px;padding:3px 10px;border-radius:12px;background:var(--green-light);color:var(--green-dark)}
+
+/* PHILOSOPHY */
+.philosophy{background:var(--green-dark);color:#fff}
+.philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.philosophy-text h3{font-size:24px;margin-bottom:16px}
+.philosophy-text p{opacity:.9;line-height:1.8;font-size:15px}
+.philosophy-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.stat{text-align:center}
+.stat .num{font-size:32px;font-weight:700;color:var(--cream)}
+.stat .label{font-size:12px;opacity:.7;margin-top:4px}
+.philosophy-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+@media(max-width:768px){.philosophy-grid{grid-template-columns:1fr}.philosophy-stats{grid-template-columns:repeat(3,1fr)}}
+
+/* SPACE */
+.space-section{background:#fff}
+.space-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.space-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.space-text h3{font-size:24px;color:var(--green-dark);margin-bottom:16px}
+.space-text p{color:#555;line-height:1.8;font-size:15px}
+@media(max-width:768px){.space-grid{grid-template-columns:1fr}}
+
+/* RESERVATION */
+.reserve{background:var(--green-light)}
+.reserve-form{max-width:500px;margin:0 auto;background:#fff;padding:40px;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.reserve-form label{display:block;font-size:14px;color:#444;margin-bottom:6px;margin-top:16px}
+.reserve-form input,.reserve-form select,.reserve-form textarea{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:10px;font-size:15px;font-family:inherit;transition:border .3s}
+.reserve-form input:focus,.reserve-form select:focus,.reserve-form textarea:focus{outline:none;border-color:var(--green)}
+.reserve-form button{width:100%;margin-top:24px;padding:14px;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-family:inherit;font-weight:600;transition:background .3s}
+.reserve-form button:hover{background:var(--green-dark)}
+
+footer{background:#111;color:#aaa;text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:#aaa;text-decoration:underline}
+
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:transform .3s,box-shadow .3s}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.5)}
+.heyboss-cta img{width:32px;height:32px;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="GreenPlate Logo"><span>綠盤子</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#menu" data-zh="菜單" data-en="Menu">菜單</a>
+      <a href="#philosophy" data-zh="理念" data-en="Philosophy">理念</a>
+      <a href="#space" data-zh="空間" data-en="Space">空間</a>
+      <a href="#reserve" data-zh="訂位" data-en="Reserve">訂位</a>
+      <button class="bgm-btn" id="bgmBtn" title="BGM">♫</button>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 data-zh="綠盤子" data-en="GreenPlate">綠盤子</h1>
+    <p data-zh="從農場到餐桌，每一口都是大地的禮物。新鮮有機的純植物料理，讓味蕾與地球一起微笑。" data-en="From farm to table, every bite is a gift from the earth. Fresh organic plant-based cuisine that makes taste buds and the planet smile.">從農場到餐桌，每一口都是大地的禮物。新鮮有機的純植物料理，讓味蕾與地球一起微笑。</p>
+    <a href="#reserve" class="hero-cta" data-zh="立即訂位" data-en="Reserve Now">立即訂位</a>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="精選菜單" data-en="Our Menu">精選菜單</h2>
+      <p data-zh="以當季食材打造的純植物創意料理" data-en="Creative plant-based dishes crafted with seasonal ingredients">以當季食材打造的純植物創意料理</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="menu-categories reveal">
+      <span class="menu-cat active" data-zh="沙拉碗" data-en="Bowls">沙拉碗</span>
+      <span class="menu-cat" data-zh="主餐" data-en="Mains">主餐</span>
+      <span class="menu-cat" data-zh="甜點" data-en="Desserts">甜點</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <img src="photos/dish.png" alt="能量碗">
+        <div class="menu-item-body">
+          <h3 data-zh="超級能量碗" data-en="Super Power Bowl">超級能量碗</h3>
+          <div class="price">NT$ 320</div>
+          <p data-zh="藜麥、酪梨、烤地瓜、鷹嘴豆、芝麻醬" data-en="Quinoa, avocado, roasted sweet potato, chickpeas, tahini">藜麥、酪梨、烤地瓜、鷹嘴豆、芝麻醬</p>
+          <div class="tags"><span class="tag" data-zh="高蛋白" data-en="High Protein">高蛋白</span><span class="tag" data-zh="無麩質" data-en="Gluten-Free">無麩質</span></div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="photos/dish.png" alt="松露燉飯">
+        <div class="menu-item-body">
+          <h3 data-zh="松露野菇燉飯" data-en="Truffle Mushroom Risotto">松露野菇燉飯</h3>
+          <div class="price">NT$ 380</div>
+          <p data-zh="義大利米、黑松露、牛肝菌、杏鮑菇、腰果奶油" data-en="Arborio rice, black truffle, porcini, king oyster, cashew cream">義大利米、黑松露、牛肝菌、杏鮑菇、腰果奶油</p>
+          <div class="tags"><span class="tag" data-zh="主廚推薦" data-en="Chef's Pick">主廚推薦</span></div>
+        </div>
+      </div>
+      <div class="menu-item reveal">
+        <img src="photos/dish.png" alt="提拉米蘇">
+        <div class="menu-item-body">
+          <h3 data-zh="燕麥提拉米蘇" data-en="Oat Tiramisu">燕麥提拉米蘇</h3>
+          <div class="price">NT$ 180</div>
+          <p data-zh="燕麥奶油、手沖咖啡、可可粉、椰子糖" data-en="Oat cream, pour-over coffee, cocoa, coconut sugar">燕麥奶油、手沖咖啡、可可粉、椰子糖</p>
+          <div class="tags"><span class="tag" data-zh="低糖" data-en="Low Sugar">低糖</span><span class="tag" data-zh="無奶蛋" data-en="Dairy-Free">無奶蛋</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="philosophy" class="philosophy">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 style="color:#fff" data-zh="我們的理念" data-en="Our Philosophy">我們的理念</h2>
+      <p style="color:rgba(255,255,255,.8)" data-zh="善待土地，善待自己" data-en="Kind to the earth, kind to yourself">善待土地，善待自己</p>
+      <div class="section-divider" style="background:var(--cream)"></div>
+    </div>
+    <div class="philosophy-grid">
+      <div class="philosophy-text reveal-left">
+        <h3 data-zh="從土壤開始的承諾" data-en="A Promise Starting from the Soil">從土壤開始的承諾</h3>
+        <p data-zh="綠盤子堅持使用在地有機小農的新鮮食材，不使用任何動物性成分、人工添加物或基改原料。我們相信，最好的料理來自最純淨的食材，而永續的飲食方式，是對地球最溫柔的善意。" data-en="GreenPlate insists on fresh ingredients from local organic farms, free from animal products, artificial additives, or GMOs. We believe the best cuisine comes from the purest ingredients, and sustainable eating is the gentlest kindness to our planet.">綠盤子堅持使用在地有機小農的新鮮食材，不使用任何動物性成分、人工添加物或基改原料。我們相信，最好的料理來自最純淨的食材，而永續的飲食方式，是對地球最溫柔的善意。</p>
+        <div class="philosophy-stats">
+          <div class="stat"><div class="num" data-zh="100%" data-en="100%">100%</div><div class="label" data-zh="純植物" data-en="Plant-Based">純植物</div></div>
+          <div class="stat"><div class="num" data-zh="30+" data-en="30+">30+</div><div class="label" data-zh="合作小農" data-en="Partner Farms">合作小農</div></div>
+          <div class="stat"><div class="num" data-zh="零" data-en="Zero">零</div><div class="label" data-zh="食物浪費" data-en="Food Waste">食物浪費</div></div>
+        </div>
+      </div>
+      <img src="photos/ingredients.png" alt="有機食材" class="reveal-right">
+    </div>
+  </div>
+</section>
+
+<section id="space" class="space-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="用餐空間" data-en="Our Space">用餐空間</h2>
+      <p data-zh="綠意盎然的舒適角落" data-en="A lush, comfortable corner of greenery">綠意盎然的舒適角落</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="space-grid">
+      <img src="photos/interior.png" alt="餐廳空間" class="reveal-left">
+      <div class="space-text reveal-right">
+        <h3 data-zh="在植物中用餐" data-en="Dine Among Plants">在植物中用餐</h3>
+        <p data-zh="綠盤子的空間以活體植物牆、原木家具與自然光線打造，讓您彷彿置身溫室花園。開放式廚房讓您看見每一道料理的誕生，二樓半露天座位區適合聚會與慶祝。" data-en="Our space features living plant walls, natural wood furniture, and abundant natural light. An open kitchen lets you watch every dish being crafted, while the semi-outdoor second floor is perfect for gatherings.">綠盤子的空間以活體植物牆、原木家具與自然光線打造，讓您彷彿置身溫室花園。開放式廚房讓您看見每一道料理的誕生，二樓半露天座位區適合聚會與慶祝。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserve" class="reserve">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="線上訂位" data-en="Reservations">線上訂位</h2>
+      <p data-zh="為您保留一席綠意" data-en="We'll save a green seat for you">為您保留一席綠意</p>
+      <div class="section-divider"></div>
+    </div>
+    <form class="reserve-form reveal" onsubmit="event.preventDefault();alert(this.dataset.lang==='en'?'Reservation submitted!':'訂位已送出！')">
+      <label data-zh="姓名" data-en="Name">姓名</label>
+      <input type="text" required>
+      <label data-zh="電話" data-en="Phone">電話</label>
+      <input type="tel" required>
+      <label data-zh="日期" data-en="Date">日期</label>
+      <input type="date" required>
+      <label data-zh="時段" data-en="Time">時段</label>
+      <select>
+        <option data-zh="午餐 11:00-14:00" data-en="Lunch 11:00-14:00">午餐 11:00-14:00</option>
+        <option data-zh="下午茶 14:00-17:00" data-en="Afternoon 14:00-17:00">下午茶 14:00-17:00</option>
+        <option data-zh="晚餐 17:00-21:00" data-en="Dinner 17:00-21:00">晚餐 17:00-21:00</option>
+      </select>
+      <label data-zh="人數" data-en="Guests">人數</label>
+      <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
+      <label data-zh="特殊需求" data-en="Special Requests">特殊需求</label>
+      <textarea rows="3"></textarea>
+      <button type="submit" data-zh="確認訂位" data-en="Confirm Reservation">確認訂位</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" title="Contact HEY!BOSS">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+bgmBtn.onclick=()=>{if(bgmAudio.paused){bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪'}else{bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}};
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+lang);
+    if(t){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.textContent=t;}
+  });
+}
+
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

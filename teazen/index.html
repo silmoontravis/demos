@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>禪茶居 TeaZen — 傳統茶藝空間 | Traditional Tea House</title>
+<meta name="description" content="禪茶居 TeaZen 提供傳統茶道體驗、精選台灣好茶與寧靜雅致的品茗空間。預約您的茶席，感受東方禪意。">
+<meta name="keywords" content="禪茶居,TeaZen,茶道,茶藝,台灣茶,品茗,tea house,tea ceremony">
+<link rel="icon" href="logos/logo_final.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"禪茶居 TeaZen",
+  "image":"photos/hero.png",
+  "url":"https://silmoontravis.github.io/demos/teazen/",
+  "telephone":"+886-2-2345-6789",
+  "address":{"@type":"PostalAddress","streetAddress":"台北市大安區和平東路二段88號","addressLocality":"台北市","addressCountry":"TW"},
+  "servesCuisine":"Tea",
+  "priceRange":"$$",
+  "openingHours":"Tu-Su 10:00-21:00"
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--jade:#166534;--brown:#92400e;--cream:#fefdf5;--jade-light:#dcfce7;--brown-light:#fef3c7}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Serif TC',serif;background:var(--cream);color:#1a1a1a;overflow-x:hidden}
+.en{font-family:'Playfair Display','Noto Serif TC',serif}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(254,253,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(22,101,52,.12);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:18px;font-weight:700;color:var(--jade)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:#333;transition:color .3s}
+.nav-links a:hover{color:var(--jade)}
+.lang-btn{background:var(--jade);color:#fff;border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit}
+.bgm-btn{background:none;border:2px solid var(--jade);color:var(--jade);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.bgm-btn.playing{background:var(--jade);color:#fff}
+.hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--jade)}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:var(--cream);flex-direction:column;padding:40px 30px;gap:30px;transition:right .3s;box-shadow:-4px 0 20px rgba(0,0,0,.1)}
+  .nav-links.open{right:0}
+  .hamburger{display:block}
+}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover;filter:brightness(.55)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(22,101,52,.4),rgba(146,64,14,.3))}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-content h1{font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.4rem);opacity:.9;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:var(--jade);color:#fff;padding:14px 40px;border-radius:40px;font-size:16px;transition:transform .3s,box-shadow .3s;font-family:inherit}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(22,101,52,.4)}
+
+/* SECTIONS */
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--jade);margin-bottom:12px}
+.section-title p{color:#666;font-size:16px;max-width:600px;margin:0 auto}
+.section-divider{width:60px;height:3px;background:var(--brown);margin:16px auto 0;border-radius:2px}
+
+/* TEAS */
+.teas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.tea-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .4s,box-shadow .4s}
+.tea-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.tea-card img{height:200px;width:100%;object-fit:cover}
+.tea-card-body{padding:20px}
+.tea-card-body h3{color:var(--jade);font-size:18px;margin-bottom:8px}
+.tea-card-body p{font-size:14px;color:#666;line-height:1.7}
+
+/* SPACE */
+.space-section{background:var(--jade);color:#fff}
+.space-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.space-grid img{border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.space-text h3{font-size:24px;margin-bottom:16px}
+.space-text p{opacity:.85;line-height:1.8;font-size:15px}
+@media(max-width:768px){.space-grid{grid-template-columns:1fr}}
+
+/* CEREMONY */
+.ceremony-section{background:var(--brown-light)}
+.ceremony-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.ceremony-grid img{border-radius:16px}
+.ceremony-text h3{font-size:24px;color:var(--brown);margin-bottom:16px}
+.ceremony-text p{color:#555;line-height:1.8;font-size:15px}
+.ceremony-steps{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.ceremony-step{display:flex;align-items:center;gap:12px}
+.ceremony-step .num{width:32px;height:32px;background:var(--brown);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+@media(max-width:768px){.ceremony-grid{grid-template-columns:1fr}}
+
+/* RESERVATION */
+.reserve-section{background:var(--jade-light)}
+.reserve-form{max-width:500px;margin:0 auto;background:#fff;padding:40px;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.reserve-form label{display:block;font-size:14px;color:#444;margin-bottom:6px;margin-top:16px}
+.reserve-form input,.reserve-form select,.reserve-form textarea{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:10px;font-size:15px;font-family:inherit;transition:border .3s}
+.reserve-form input:focus,.reserve-form select:focus,.reserve-form textarea:focus{outline:none;border-color:var(--jade)}
+.reserve-form button{width:100%;margin-top:24px;padding:14px;background:var(--jade);color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;font-family:inherit;transition:background .3s}
+.reserve-form button:hover{background:#14532d}
+
+/* FOOTER */
+footer{background:#111;color:#aaa;text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:#aaa;text-decoration:underline}
+
+/* HEYBOSS CTA */
+.heyboss-cta{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:transform .3s,box-shadow .3s;cursor:pointer}
+.heyboss-cta:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.5)}
+.heyboss-cta img{width:32px;height:32px;border-radius:50%}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logos/logo_final.png" alt="禪茶居 Logo"><span>禪茶居</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#teas" data-zh="茶品" data-en="Teas">茶品</a>
+      <a href="#space" data-zh="空間" data-en="Space">空間</a>
+      <a href="#ceremony" data-zh="茶席" data-en="Ceremony">茶席</a>
+      <a href="#reserve" data-zh="預約" data-en="Reserve">預約</a>
+      <button class="bgm-btn" id="bgmBtn" title="BGM">♫</button>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <h1 data-zh="禪茶居" data-en="TeaZen">禪茶居</h1>
+    <p data-zh="一杯茶，一段靜謐時光。品味千年茶道文化，在城市中尋得心靈的安寧。" data-en="One cup of tea, a moment of tranquility. Experience centuries of tea culture and find peace in the city.">一杯茶，一段靜謐時光。品味千年茶道文化，在城市中尋得心靈的安寧。</p>
+    <a href="#reserve" class="hero-cta" data-zh="預約品茗" data-en="Reserve a Seat">預約品茗</a>
+  </div>
+</section>
+
+<!-- TEAS -->
+<section id="teas">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="精選茶品" data-en="Our Teas">精選茶品</h2>
+      <p data-zh="嚴選台灣高山好茶，每一口都是大自然的饋贈" data-en="Carefully selected premium Taiwanese teas, each sip a gift from nature">嚴選台灣高山好茶，每一口都是大自然的饋贈</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="teas-grid">
+      <div class="tea-card reveal">
+        <img src="photos/tea.png" alt="高山烏龍茶">
+        <div class="tea-card-body">
+          <h3 data-zh="高山烏龍" data-en="High Mountain Oolong">高山烏龍</h3>
+          <p data-zh="海拔1500公尺以上的阿里山茶園，清香甘醇，喉韻悠長。" data-en="From Alishan gardens above 1500m altitude. Light, sweet aroma with a lingering finish.">海拔1500公尺以上的阿里山茶園，清香甘醇，喉韻悠長。</p>
+        </div>
+      </div>
+      <div class="tea-card reveal">
+        <img src="photos/tea.png" alt="東方美人茶">
+        <div class="tea-card-body">
+          <h3 data-zh="東方美人" data-en="Oriental Beauty">東方美人</h3>
+          <p data-zh="北埔特有的白毫烏龍，蜜香果韻，被譽為茶中珍品。" data-en="A unique Beipu white-tip oolong with honey-fruited notes, a treasure among teas.">北埔特有的白毫烏龍，蜜香果韻，被譽為茶中珍品。</p>
+        </div>
+      </div>
+      <div class="tea-card reveal">
+        <img src="photos/tea.png" alt="鐵觀音">
+        <div class="tea-card-body">
+          <h3 data-zh="鐵觀音" data-en="Tieguanyin">鐵觀音</h3>
+          <p data-zh="木柵正欉鐵觀音，焙火醇厚，帶有獨特的弱果酸與焦糖香。" data-en="Muzha heritage Tieguanyin, deeply roasted with caramel notes and subtle acidity.">木柵正欉鐵觀音，焙火醇厚，帶有獨特的弱果酸與焦糖香。</p>
+        </div>
+      </div>
+      <div class="tea-card reveal">
+        <img src="photos/tea.png" alt="日月潭紅茶">
+        <div class="tea-card-body">
+          <h3 data-zh="日月潭紅茶" data-en="Sun Moon Lake Black Tea">日月潭紅茶</h3>
+          <p data-zh="台茶18號紅玉，薄荷與肉桂的交織香氣，國際評比屢獲金獎。" data-en="Ruby #18, with intertwined mint and cinnamon aromas, internationally awarded.">台茶18號紅玉，薄荷與肉桂的交織香氣，國際評比屢獲金獎。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACE -->
+<section id="space" class="space-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 style="color:#fff" data-zh="品茗空間" data-en="Tea Space">品茗空間</h2>
+      <p style="color:rgba(255,255,255,.8)" data-zh="融合東方禪意與現代設計的靜謐角落" data-en="A tranquil corner blending Eastern zen with modern design">融合東方禪意與現代設計的靜謐角落</p>
+      <div class="section-divider" style="background:#fef3c7"></div>
+    </div>
+    <div class="space-grid">
+      <img src="photos/interior.png" alt="禪茶居空間" class="reveal-left">
+      <div class="space-text reveal-right">
+        <h3 data-zh="靜心・品茗・悟道" data-en="Calm Mind. Taste Tea. Find Wisdom.">靜心・品茗・悟道</h3>
+        <p data-zh="禪茶居坐落於城市巷弄之間，以原木、竹編與水石打造的和風空間，讓您暫離塵囂。室內設有和式包廂、露天茶庭與共享長桌，無論獨自品茗或三五好友聚會，都能找到最舒適的角落。" data-en="Nestled in a quiet city alley, TeaZen features natural wood, bamboo weaving, and water stones creating a Japanese-inspired sanctuary. With private tatami rooms, an open-air tea garden, and communal tables, every guest finds their perfect corner.">禪茶居坐落於城市巷弄之間，以原木、竹編與水石打造的和風空間，讓您暫離塵囂。室內設有和式包廂、露天茶庭與共享長桌，無論獨自品茗或三五好友聚會，都能找到最舒適的角落。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CEREMONY -->
+<section id="ceremony" class="ceremony-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="茶席體驗" data-en="Tea Ceremony">茶席體驗</h2>
+      <p data-zh="跟隨茶師的引導，感受傳統茶道的每一個步驟" data-en="Follow our tea master's guidance through every step of the traditional ceremony">跟隨茶師的引導，感受傳統茶道的每一個步驟</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="ceremony-grid">
+      <div class="ceremony-text reveal-left">
+        <h3 data-zh="從水溫到心境" data-en="From Water Temperature to Mindset">從水溫到心境</h3>
+        <p data-zh="禪茶居的茶席體驗由資深茶師親自帶領，從選茶、溫壺、注水到品飲，每個環節都蘊含千年智慧。" data-en="Our ceremony is led by senior tea masters, with centuries of wisdom embedded in every step from tea selection to the final sip.">禪茶居的茶席體驗由資深茶師親自帶領，從選茶、溫壺、注水到品飲，每個環節都蘊含千年智慧。</p>
+        <div class="ceremony-steps">
+          <div class="ceremony-step"><span class="num">1</span><span data-zh="溫壺暖杯・淨手焚香" data-en="Warm the pot, cleanse hands, light incense">溫壺暖杯・淨手焚香</span></div>
+          <div class="ceremony-step"><span class="num">2</span><span data-zh="投茶聞香・觀葉色形" data-en="Add leaves, appreciate aroma and appearance">投茶聞香・觀葉色形</span></div>
+          <div class="ceremony-step"><span class="num">3</span><span data-zh="高沖低注・回旋出湯" data-en="High pour, low drain, circular extraction">高沖低注・回旋出湯</span></div>
+          <div class="ceremony-step"><span class="num">4</span><span data-zh="靜心品飲・三口回甘" data-en="Mindful tasting, three sips to sweetness">靜心品飲・三口回甘</span></div>
+        </div>
+      </div>
+      <img src="photos/set.png" alt="茶席" class="reveal-right">
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reserve" class="reserve-section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="預約品茗" data-en="Reservations">預約品茗</h2>
+      <p data-zh="為您保留一方寧靜，請提前預約" data-en="We'll save a quiet moment for you — please reserve in advance">為您保留一方寧靜，請提前預約</p>
+      <div class="section-divider"></div>
+    </div>
+    <form class="reserve-form reveal" onsubmit="event.preventDefault();alert(this.dataset.lang==='en'?'Reservation submitted!':'預約已送出！')">
+      <label data-zh="姓名" data-en="Name">姓名</label>
+      <input type="text" required placeholder="">
+      <label data-zh="電話" data-en="Phone">電話</label>
+      <input type="tel" required>
+      <label data-zh="日期" data-en="Date">日期</label>
+      <input type="date" required>
+      <label data-zh="時段" data-en="Time">時段</label>
+      <select>
+        <option data-zh="上午 10:00-12:00" data-en="Morning 10:00-12:00">上午 10:00-12:00</option>
+        <option data-zh="下午 14:00-17:00" data-en="Afternoon 14:00-17:00">下午 14:00-17:00</option>
+        <option data-zh="晚間 18:00-21:00" data-en="Evening 18:00-21:00">晚間 18:00-21:00</option>
+      </select>
+      <label data-zh="人數" data-en="Guests">人數</label>
+      <select>
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
+      </select>
+      <label data-zh="備註" data-en="Notes">備註</label>
+      <textarea rows="3"></textarea>
+      <button type="submit" data-zh="確認預約" data-en="Confirm Reservation">確認預約</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<!-- HEYBOSS CTA -->
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-cta" title="Contact HEY!BOSS">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+// BGM
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+bgmBtn.onclick=()=>{if(bgmAudio.paused){bgmAudio.play();bgmBtn.classList.add('playing');bgmBtn.textContent='♪'}else{bgmAudio.pause();bgmBtn.classList.remove('playing');bgmBtn.textContent='♫'}};
+
+// LANG
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const t=el.getAttribute('data-'+lang);
+    if(t){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t;else el.textContent=t;}
+  });
+}
+
+// NAV SCROLL
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+
+// CLOSE MOBILE NAV ON CLICK
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+// SCROLL REVEAL
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天際物流 SkyLogistics — 全球物流解決方案</title>
+<meta name="description" content="天際物流 SkyLogistics，提供空運、海運、陸運及倉儲管理的一站式全球物流服務，高效率、高品質的供應鏈解決方案。">
+<meta name="keywords" content="物流, logistics, 空運, 海運, 陸運, 倉儲, SkyLogistics, 天際物流, 國際物流">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "天際物流 SkyLogistics",
+  "description": "Global logistics solutions provider — air, sea, land freight and warehousing",
+  "image": "photos/hero.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "telephone": "+886-2-2700-8800",
+  "url": "https://skylogistics.example.com",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Logistics Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "空運 Air Freight"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "海運 Sea Freight"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "陸運 Land Transport"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "倉儲管理 Warehousing"}}
+    ]
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1e3a5f;--blue:#3b82f6;--white:#fff;--light:#f0f5ff;--dark:#0f1d2f;--gray:#6b7280;--sky:#dbeafe}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--navy);border:3px solid var(--blue);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 15px rgba(59,130,246,.4)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:var(--white)}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--navy);border:2px solid var(--blue);padding:6px 14px;border-radius:4px;cursor:pointer;color:var(--white);font-size:14px;font-weight:700;letter-spacing:1px}
+.lang-toggle:hover{background:var(--blue)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:900;background:rgba(30,58,95,.97);backdrop-filter:blur(10px);padding:12px 0}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo-area{display:flex;align-items:center;gap:10px}
+nav .logo-area img{height:38px;width:38px;object-fit:contain}
+nav .logo-area span{font-weight:700;font-size:18px;color:var(--white)}
+nav .nav-links{display:flex;gap:24px;list-style:none}
+nav .nav-links a{color:rgba(255,255,255,.8);font-size:14px;transition:color .3s}
+nav .nav-links a:hover{color:var(--blue)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--blue);margin:5px 0;border-radius:2px}
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:62px;left:0;width:100%;background:rgba(30,58,95,.98);flex-direction:column;padding:20px;gap:16px}
+  nav .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,58,95,.7),rgba(15,29,47,.85))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:800px}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;letter-spacing:2px;margin-bottom:16px;line-height:1.3;color:var(--white)}
+.hero h1 .accent{color:var(--blue)}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.75);margin-bottom:30px;line-height:1.8}
+.btn{display:inline-block;padding:14px 34px;border-radius:6px;font-weight:700;font-size:15px;transition:all .3s;cursor:pointer;border:none;font-family:inherit}
+.btn-blue{background:var(--blue);color:var(--white)}
+.btn-blue:hover{background:#2563eb;transform:translateY(-2px)}
+.btn-outline{border:2px solid rgba(255,255,255,.5);color:var(--white);background:transparent;margin-left:12px}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800}
+.section-title .line{width:60px;height:3px;background:var(--blue);margin:14px auto;border-radius:3px}
+.section-title p{color:var(--gray);font-size:14px}
+
+.services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:12px;padding:30px 24px;text-align:center;transition:all .4s;border:1px solid rgba(59,130,246,.1)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(59,130,246,.12);border-color:var(--blue)}
+.service-card .icon{font-size:44px;margin-bottom:16px}
+.service-card h3{font-size:18px;color:var(--navy);margin-bottom:8px;font-weight:700}
+.service-card p{font-size:14px;color:var(--gray);line-height:1.7}
+
+.stats-bar{background:var(--navy);padding:50px 20px;color:var(--white)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px;max-width:1000px;margin:0 auto;text-align:center}
+.stat-item .stat-num{font-size:36px;font-weight:900;color:var(--blue)}
+.stat-item .stat-label{font-size:13px;color:rgba(255,255,255,.7);margin-top:6px}
+
+.network{background:var(--white)}
+.network-img{border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1);max-width:900px;margin:0 auto;position:relative}
+.network-img img{width:100%;object-fit:cover}
+.network-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,95,.3),transparent);display:flex;align-items:center;justify-content:center}
+.network-overlay span{background:rgba(30,58,95,.8);color:var(--white);padding:16px 32px;border-radius:8px;font-size:20px;font-weight:700;letter-spacing:2px}
+
+.facilities{background:var(--light)}
+.facilities-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.facilities-grid img{border-radius:12px;width:100%;height:300px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+@media(max-width:768px){.facilities-grid{grid-template-columns:1fr}}
+
+.contact{background:var(--white)}
+.contact-form{max-width:650px;margin:0 auto;background:var(--light);padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1px solid rgba(59,130,246,.2);border-radius:8px;font-size:14px;font-family:inherit;transition:border .3s;background:var(--white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--blue)}
+.form-group textarea{height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.form-row{grid-template-columns:1fr}}
+.submit-btn{width:100%;padding:14px;background:var(--blue);color:var(--white);border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;transition:background .3s;font-family:inherit}
+.submit-btn:hover{background:#2563eb}
+
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:var(--blue);transition:color .3s}
+footer a:hover{color:var(--white)}
+
+.heyboss-cta{position:fixed;bottom:20px;left:20px;z-index:1000;width:56px;height:56px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(59,130,246,.5);cursor:pointer;transition:transform .3s}
+.heyboss-cta:hover{transform:scale(1.1)}
+.heyboss-cta img{width:32px;height:32px;object-fit:contain;border-radius:50%}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo-area"><img src="logos/logo_final.png" alt="SkyLogistics Logo"><span data-zh="天際物流" data-en="SkyLogistics">天際物流</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#services" data-zh="服務項目" data-en="Services">服務項目</a></li>
+      <li><a href="#network" data-zh="全球網絡" data-en="Network">全球網絡</a></li>
+      <li><a href="#facilities" data-zh="設施" data-en="Facilities">設施</a></li>
+      <li><a href="#contact" data-zh="聯絡我們" data-en="Contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<button class="lang-toggle" onclick="toggleLang()" data-zh="EN" data-en="中文">EN</button>
+
+<button class="bgm-btn" onclick="toggleBGM()" aria-label="Toggle Music">
+  <svg id="bgm-icon" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="連結世界的<br><span class='accent'>物流力量</span>" data-en="The <span class='accent'>Logistics Power</span><br>Connecting the World">連結世界的<br><span class="accent">物流力量</span></h1>
+    <p data-zh="天際物流以全球化視野，為您提供空運、海運、陸運及智能倉儲的一站式物流解決方案，使命必達。" data-en="SkyLogistics offers one-stop global solutions for air, sea, land freight and smart warehousing. Mission guaranteed.">天際物流以全球化視野，為您提供空運、海運、陸運及智能倉儲的一站式物流解決方案，使命必達。</p>
+    <a href="#contact" class="btn btn-blue" data-zh="立即諮詢" data-en="Get a Quote">立即諮詢</a>
+    <a href="#services" class="btn btn-outline" data-zh="了解服務" data-en="Our Services">了解服務</a>
+  </div>
+</section>
+
+<div class="stats-bar reveal">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-num" data-zh="50+" data-en="50+">50+</div><div class="stat-label" data-zh="覆蓋國家" data-en="Countries Covered">覆蓋國家</div></div>
+    <div class="stat-item"><div class="stat-num" data-zh="120+" data-en="120+">120+</div><div class="stat-label" data-zh="合作港口" data-en="Partner Ports">合作港口</div></div>
+    <div class="stat-item"><div class="stat-num" data-zh="8,000+" data-en="8,000+">8,000+</div><div class="stat-label" data-zh="企業客戶" data-en="Corporate Clients">企業客戶</div></div>
+    <div class="stat-item"><div class="stat-num" data-zh="99.7%" data-en="99.7%">99.7%</div><div class="stat-label" data-zh="準時率" data-en="On-time Rate">準時率</div></div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="核心服務" data-en="Core Services">核心服務</h2>
+      <div class="line"></div>
+      <p data-zh="全方位物流解決方案，滿足您的每一個需求" data-en="Comprehensive logistics solutions for every need">全方位物流解決方案，滿足您的每一個需求</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="icon">✈️</div>
+        <h3 data-zh="空運服務" data-en="Air Freight">空運服務</h3>
+        <p data-zh="全球航空貨運網絡，時效優先的快速配送。提供標準空運、快遞空運及包機服務。" data-en="Global air cargo network for time-critical shipments. Standard, express, and charter services available.">全球航空貨運網絡，時效優先的快速配送。提供標準空運、快遞空運及包機服務。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🚢</div>
+        <h3 data-zh="海運服務" data-en="Sea Freight">海運服務</h3>
+        <p data-zh="整櫃 FCL 與併櫃 LCL 靈活選擇，連結全球主要港口，大宗貨物的最佳選擇。" data-en="FCL and LCL options connecting major ports worldwide. The best choice for bulk cargo shipments.">整櫃 FCL 與併櫃 LCL 靈活選擇，連結全球主要港口，大宗貨物的最佳選擇。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🚛</div>
+        <h3 data-zh="陸運服務" data-en="Land Transport">陸運服務</h3>
+        <p data-zh="國內外公路運輸、鐵路聯運，門到門配送服務，最後一哩路也安心交付。" data-en="Domestic and cross-border trucking, rail intermodal, and door-to-door delivery services.">國內外公路運輸、鐵路聯運，門到門配送服務，最後一哩路也安心交付。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon">🏭</div>
+        <h3 data-zh="智能倉儲" data-en="Smart Warehousing">智能倉儲</h3>
+        <p data-zh="現代化倉儲設施搭配 WMS 系統，提供存儲、揀貨、包裝及庫存管理全流程服務。" data-en="Modern facilities with WMS systems offering storage, picking, packing, and full inventory management.">現代化倉儲設施搭配 WMS 系統，提供存儲、揀貨、包裝及庫存管理全流程服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="network" id="network">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="全球物流網絡" data-en="Global Network">全球物流網絡</h2>
+      <div class="line"></div>
+      <p data-zh="覆蓋五大洲的物流據點，讓您的貨物無遠弗屆" data-en="Logistics hubs across five continents — your cargo reaches everywhere">覆蓋五大洲的物流據點，讓您的貨物無遠弗屆</p>
+    </div>
+    <div class="network-img reveal">
+      <img src="photos/tracking.png" alt="Global Logistics Network">
+      <div class="network-overlay">
+        <span data-zh="🌐 全球即時追蹤" data-en="🌐 Real-time Global Tracking">🌐 全球即時追蹤</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facilities" id="facilities">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="現代化設施" data-en="Modern Facilities">現代化設施</h2>
+      <div class="line"></div>
+      <p data-zh="先進設備與專業團隊，確保每一件貨物安全送達" data-en="Advanced equipment and expert teams ensuring safe delivery of every shipment">先進設備與專業團隊，確保每一件貨物安全送達</p>
+    </div>
+    <div class="facilities-grid reveal">
+      <img src="photos/warehouse.png" alt="Warehouse Facility">
+      <img src="photos/delivery.png" alt="Delivery Fleet">
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <h2 data-zh="聯絡我們" data-en="Contact Us">聯絡我們</h2>
+      <div class="line"></div>
+      <p data-zh="留下您的需求，專業顧問將在 24 小時內與您聯繫" data-en="Leave your inquiry and our team will reach out within 24 hours">留下您的需求，專業顧問將在 24 小時內與您聯繫</p>
+    </div>
+    <form class="contact-form reveal" onsubmit="event.preventDefault();alert(currentLang==='zh'?'詢價已送出！我們將盡快回覆您。':'Inquiry sent! We will reply shortly.')">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="公司名稱" data-en="Company">公司名稱</label>
+          <input type="text" required>
+        </div>
+        <div class="form-group">
+          <label data-zh="聯絡人" data-en="Contact Person">聯絡人</label>
+          <input type="text" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-zh="電話" data-en="Phone">電話</label>
+          <input type="tel" required>
+        </div>
+        <div class="form-group">
+          <label data-zh="電子郵件" data-en="Email">電子郵件</label>
+          <input type="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-zh="服務類型" data-en="Service Type">服務類型</label>
+        <select required>
+          <option value="" data-zh="請選擇" data-en="Please select">請選擇</option>
+          <option value="air" data-zh="空運" data-en="Air Freight">空運</option>
+          <option value="sea" data-zh="海運" data-en="Sea Freight">海運</option>
+          <option value="land" data-zh="陸運" data-en="Land Transport">陸運</option>
+          <option value="warehouse" data-zh="倉儲" data-en="Warehousing">倉儲</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-zh="需求說明" data-en="Details">需求說明</label>
+        <textarea placeholder=""></textarea>
+      </div>
+      <button type="submit" class="submit-btn" data-zh="送出詢價" data-en="Submit Inquiry">送出詢價</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://silmoontravis.github.io/demos/" target="_blank">&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-cta" aria-label="Contact HeyBoss">
+  <img src="logos/logo_final.png" alt="HEY!BOSS">
+</a>
+
+<script>
+let currentLang='zh';
+const bgm=document.getElementById('bgm');
+let bgmPlaying=false;
+
+function toggleBGM(){
+  if(bgmPlaying){bgm.pause();bgmPlaying=false;document.getElementById('bgm-icon').style.opacity='.4'}
+  else{bgm.play();bgmPlaying=true;document.getElementById('bgm-icon').style.opacity='1'}
+}
+
+function toggleLang(){
+  currentLang=currentLang==='zh'?'en':'zh';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(val){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val}
+      else{el.innerHTML=val}
+    }
+  });
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('nav .nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+</body>
+</html>
