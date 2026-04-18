@@ -292,14 +292,9 @@ button { cursor: pointer; font-family: inherit; }
 }
 .portfolio-card-bg {
   position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.4s ease;
 }
-.portfolio-card-bg img {
-  height: 48px; width: auto;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-  transition: transform 0.3s ease;
-}
-.portfolio-card:hover .portfolio-card-bg img { transform: scale(1.1); }
+.portfolio-card:hover .portfolio-card-bg { transform: scale(1.05); }
 .portfolio-card-name {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 12px 14px;
@@ -309,14 +304,12 @@ button { cursor: pointer; font-family: inherit; }
 
 @media (min-width: 768px) {
   .portfolio-grid { gap: 16px; }
-  .portfolio-card-bg img { height: 56px; }
   .portfolio-card-name { font-size: 14px; padding: 16px; }
   .tag-filter { margin-bottom: 32px; }
   .tag-btn { font-size: 14px; padding: 8px 20px; }
 }
 @media (min-width: 1200px) {
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .portfolio-card-bg img { height: 64px; }
 }
 
 /* ===== FOUNDER ===== */
@@ -552,612 +545,512 @@ button { cursor: pointer; font-family: inherit; }
     <div class="portfolio-grid" id="portfolioGrid">
       <!-- Existing 11 sites -->
       <a href="lantern-alley/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a100a,#3a2a1d)">
-          <img src="lantern-alley/logos/logo_final.png" alt="燈籠橫丁" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/lantern-alley.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">燈籠橫丁</div>
       </a>
       <a href="hanami-wagashi/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fff0f5,#ffe0e8)">
-          <img src="hanami-wagashi/logos/logo_final.png" alt="花見和菓子" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/hanami-wagashi.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">花見和菓子</div>
       </a>
       <a href="nightcrawler/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a14,#1a0a24)">
-          <img src="nightcrawler/logos/logo_final.png" alt="夜行者" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/nightcrawler.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">NightCrawler</div>
       </a>
       <a href="morning-haze/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#faf6f0,#f0e6d6)">
-          <img src="morning-haze/logos/logo_final.png" alt="晨霧珈琲" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/morning-haze.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">晨霧珈琲</div>
       </a>
       <a href="ironwake/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a0a,#2a1000)">
-          <img src="ironwake/logos/logo_final.png" alt="鐵覺" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/ironwake.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">IRONWAKE</div>
       </a>
       <a href="tiderush/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a4a6a,#1a8aaa)">
-          <img src="tiderush/logos/logo_final.png" alt="浪潮衝浪" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/tiderush.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">TideRush</div>
       </a>
       <a href="inkverse/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f5f0ea,#e8e0d5)">
-          <img src="inkverse/logos/logo_final.png" alt="墨語書房" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/inkverse.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">墨語書房</div>
       </a>
       <a href="oasis-flora/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#e8f5e0,#c8e8b8)">
-          <img src="oasis-flora/logos/logo_final.png" alt="綠洲花藝" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/oasis-flora.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">Oasis Flora</div>
       </a>
       <a href="furplanet/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fff0f5,#ffe0f0)">
-          <img src="furplanet/logos/logo_final.png" alt="毛星球" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/furplanet.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">FurPlanet</div>
       </a>
       <a href="neuralarc/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0c0c1a,#1a1030)">
-          <img src="neuralarc/logos/logo_final.png" alt="NeuralArc" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/neuralarc.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">NeuralArc</div>
       </a>
       <a href="amcl-consulting/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a2332,#2a3a50)">
-          <span style="font-family:'Inter',sans-serif;font-size:28px;font-weight:800;color:#fff;letter-spacing:3px">AMCL</span>
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/amcl-consulting.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">啟和管理顧問</div>
       </a>
       <!-- 10 new sites -->
       <a href="dolice/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fdf6f0,#f5e6d8)">
-          <img src="dolice/logos/logo_final.png" alt="朵莉絲 Dolice" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/dolice.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">朵莉絲 Dolice</div>
       </a>
       <a href="goodday/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#faf5ee,#f0e4d0)">
-          <img src="goodday/logos/logo_final.png" alt="好日選物 GoodDay" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/goodday.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">好日選物 GoodDay</div>
       </a>
       <a href="trustdental/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#e8f4f8,#d0eaf2)">
-          <img src="trustdental/logos/logo_final.png" alt="安心牙醫 TrustDental" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/trustdental.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">安心牙醫 TrustDental</div>
       </a>
       <a href="buildpro/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#2a2a2a,#4a4a3a)">
-          <img src="buildpro/logos/logo_final.png" alt="築盛工程 BuildPro" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/buildpro.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">築盛工程 BuildPro</div>
       </a>
       <a href="lumiere/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a1520,#3a2a40)">
-          <img src="lumiere/logos/logo_final.png" alt="沐光美學 LUMIÈRE" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/lumiere.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">沐光美學 LUMIERE</div>
       </a>
       <a href="playbox/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a12,#1a1028)">
-          <img src="playbox/logos/logo_final.png" alt="PLAYBOX" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/playbox.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">PLAYBOX</div>
       </a>
       <a href="lightframe/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fdf8f0,#f5e8d5)">
-          <img src="lightframe/logos/logo_final.png" alt="光影紀事 LightFrame" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/lightframe.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">光影紀事 LightFrame</div>
       </a>
       <a href="mistlodge/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#e0ece4,#c5d8cc)">
-          <img src="mistlodge/logos/logo_final.png" alt="山嵐旅宿 MistLodge" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/mistlodge.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">山嵐旅宿 MistLodge</div>
       </a>
       <a href="justword/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1c2530,#2c3a4a)">
-          <img src="justword/logos/logo_final.png" alt="正言法律 JustWord" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/justword.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">正言法律 JustWord</div>
       </a>
       <a href="pixelforge/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0c0c18,#1a1a30)">
-          <img src="pixelforge/logos/logo_final.png" alt="PixelForge" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/pixelforge.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">PixelForge</div>
       </a>
       <!-- 10 new sites (22-31) -->
       <a href="purelab/" class="portfolio-card reveal" target="_blank" data-tags="電商,會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">
-          <img src="purelab/logos/logo_final.png" alt="純淨研究所 PureLab" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/purelab.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">純淨研究所 PureLab</div>
       </a>
       <a href="stride/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a0a,#1a0000)">
-          <img src="stride/logos/logo_final.png" alt="STRIDE" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/stride.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">STRIDE</div>
       </a>
       <a href="freshmart/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#22c55e,#86efac)">
-          <img src="freshmart/logos/logo_final.png" alt="鮮市集 FreshMart" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/freshmart.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">鮮市集 FreshMart</div>
       </a>
       <a href="woodlife/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c4a2a,#a3744e)">
-          <img src="woodlife/logos/logo_final.png" alt="木質生活 WoodLife" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/woodlife.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">木質生活 WoodLife</div>
       </a>
       <a href="learnsphere/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#4f46e5,#818cf8)">
-          <img src="learnsphere/logos/logo_final.png" alt="知識星球 LearnSphere" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/learnsphere.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">知識星球 LearnSphere</div>
       </a>
       <a href="fitclub/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111111,#1a2e1a)">
-          <img src="fitclub/logos/logo_final.png" alt="FitClub Pro" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/fitclub.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">FitClub Pro</div>
       </a>
       <a href="soundwave/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#581c87,#7e22ce)">
-          <img src="soundwave/logos/logo_final.png" alt="SoundWave" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/soundwave.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">SoundWave</div>
       </a>
       <a href="chefchannel/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#dc2626,#f87171)">
-          <img src="chefchannel/logos/logo_final.png" alt="主廚頻道 ChefChannel" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/chefchannel.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">主廚頻道 ChefChannel</div>
       </a>
       <a href="heherb/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#22c55e)">
-          <img src="heherb/logos/logo_final.png" alt="和安中醫 HeHerb" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/heherb.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">和安中醫 HeHerb</div>
       </a>
       <a href="formstudio/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#27272a,#52525b)">
-          <img src="formstudio/logos/logo_final.png" alt="形塑設計 FormStudio" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/formstudio.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">形塑設計 FormStudio</div>
       </a>
       <!-- 10 new sites (32-41) -->
       <a href="autoedge/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111,#2a0000)">
-          <img src="autoedge/logos/logo_final.png" alt="速馳車業 AutoEdge" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/autoedge.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">速馳車業 AutoEdge</div>
       </a>
       <a href="sunkids/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">
-          <img src="sunkids/logos/logo_final.png" alt="小太陽幼兒園 SunKids" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/sunkids.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">小太陽幼兒園 SunKids</div>
       </a>
       <a href="eterngem/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111,#1a1a2e)">
-          <img src="eterngem/logos/logo_final.png" alt="永恆珠寶 EternGem" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/eterngem.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">永恆珠寶 EternGem</div>
       </a>
       <a href="zenflow/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#a78bfa,#5eead4)">
-          <img src="zenflow/logos/logo_final.png" alt="靜心瑜伽 ZenFlow" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/zenflow.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">靜心瑜伽 ZenFlow</div>
       </a>
       <a href="alleybrew/" class="portfolio-card reveal" target="_blank" data-tags="餐飲,電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#3e1f0d,#78350f)">
-          <img src="alleybrew/logos/logo_final.png" alt="老巷精釀 AlleyBrew" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/alleybrew.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">老巷精釀 AlleyBrew</div>
       </a>
       <a href="appforge/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#4f46e5,#818cf8)">
-          <img src="appforge/logos/logo_final.png" alt="AppForge" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/appforge.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">AppForge</div>
       </a>
       <a href="lightyear/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
-          <img src="lightyear/logos/logo_final.png" alt="光年劇場 LightYear" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/lightyear.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">光年劇場 LightYear</div>
       </a>
       <a href="purestay/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1f1f1f,#3a3a3a)">
-          <img src="purestay/logos/logo_final.png" alt="璞旅 PureStay" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/purestay.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">璞旅 PureStay</div>
       </a>
       <a href="pawacademy/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#92400e,#b45309)">
-          <img src="pawacademy/logos/logo_final.png" alt="汪星人學院 PawAcademy" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/pawacademy.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">汪星人學院 PawAcademy</div>
       </a>
       <a href="wealthwise/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a2332,#2d3b4e)">
-          <img src="wealthwise/logos/logo_final.png" alt="穩富理財 WealthWise" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/wealthwise.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">穩富理財 WealthWise</div>
       </a>
       <!-- 10 new sites (42-51) -->
       <a href="teazen/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a3c2a,#2d5a3d)">
-          <img src="teazen/logos/logo_final.png" alt="禪茶居 TeaZen" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/teazen.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">禪茶居 TeaZen</div>
       </a>
       <a href="petdoc/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">
-          <img src="petdoc/logos/logo_final.png" alt="毛小孩診所 PetDoc" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/petdoc.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">毛小孩診所 PetDoc</div>
       </a>
       <a href="vividprint/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#06b6d4,#ec4899)">
-          <img src="vividprint/logos/logo_final.png" alt="彩印工坊 VividPrint" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/vividprint.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">彩印工坊 VividPrint</div>
       </a>
       <a href="greenplate/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#4ade80)">
-          <img src="greenplate/logos/logo_final.png" alt="綠盤子 GreenPlate" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/greenplate.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">綠盤子 GreenPlate</div>
       </a>
       <a href="codeacademy/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0d9488,#f97316)">
-          <img src="codeacademy/logos/logo_final.png" alt="碼學堂 CodeNest" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/codeacademy.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">碼學堂 CodeNest</div>
       </a>
       <a href="glamour/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f9a8d4,#f472b6)">
-          <img src="glamour/logos/logo_final.png" alt="魅力美甲 Glamour" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/glamour.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">魅力美甲 Glamour</div>
       </a>
       <a href="skylogistics/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#3b82f6)">
-          <img src="skylogistics/logos/logo_final.png" alt="天際物流 SkyLogistics" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/skylogistics.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">天際物流 SkyLogistics</div>
       </a>
       <a href="dreamwedding/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#c8956c,#f5e1d0)">
-          <img src="dreamwedding/logos/logo_final.png" alt="夢想婚禮 DreamWedding" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/dreamwedding.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">夢想婚禮 DreamWedding</div>
       </a>
       <a href="cryptovault/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)">
-          <img src="cryptovault/logos/logo_final.png" alt="鏈金庫 CryptoVault" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/cryptovault.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">鏈金庫 CryptoVault</div>
       </a>
       <a href="farmbox/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#78350f,#a16207)">
-          <img src="farmbox/logos/logo_final.png" alt="農場盒子 FarmBox" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/farmbox.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">農場盒子 FarmBox</div>
       </a>
       <!-- 10 new sites (52-61) -->
       <a href="aromalife/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#92400e,#d97706)">
-          <img src="aromalife/logos/logo_final.png" alt="香氛生活 AromaLife" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/aromalife.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">香氛生活 AromaLife</div>
       </a>
       <a href="urbanroots/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#6b7280)">
-          <img src="urbanroots/logos/logo_final.png" alt="城市根源 UrbanRoots" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/urbanroots.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">城市根源 UrbanRoots</div>
       </a>
       <a href="pawfashion/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f97316,#1e3a5f)">
-          <img src="pawfashion/logos/logo_final.png" alt="毛孩衣櫃 PawFashion" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/pawfashion.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">毛孩衣櫃 PawFashion</div>
       </a>
       <a href="mindforge/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c3aed,#c8956c)">
-          <img src="mindforge/logos/logo_final.png" alt="心智鍛造 MindForge" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/mindforge.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">心智鍛造 MindForge</div>
       </a>
       <a href="raceway/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#dc2626,#111)">
-          <img src="raceway/logos/logo_final.png" alt="極速賽道 RaceWay" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/raceway.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">極速賽道 RaceWay</div>
       </a>
       <a href="artisan/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#92400e,#c8956c)">
-          <img src="artisan/logos/logo_final.png" alt="匠心陶坊 Artisan Clay" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/artisan.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">匠心陶坊 Artisan Clay</div>
       </a>
       <a href="cloudkitchen/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f97316,#38bdf8)">
-          <img src="cloudkitchen/logos/logo_final.png" alt="雲端廚房 CloudKitchen" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/cloudkitchen.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">雲端廚房 CloudKitchen</div>
       </a>
       <a href="starcamp/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e1b4b,#f97316)">
-          <img src="starcamp/logos/logo_final.png" alt="星空營地 StarCamp" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/starcamp.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">星空營地 StarCamp</div>
       </a>
       <a href="lexicon/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#3b82f6,#f97316)">
-          <img src="lexicon/logos/logo_final.png" alt="語匯學院 Lexicon" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/lexicon.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">語匯學院 Lexicon</div>
       </a>
       <a href="securehome/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#22c55e)">
-          <img src="securehome/logos/logo_final.png" alt="安居智能 SecureHome" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/securehome.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">安居智能 SecureHome</div>
       </a>
       <!-- 10 new sites (62-71) -->
       <a href="vintagevault/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#78350f,#991b1b)">
-          <img src="vintagevault/logos/logo_final.png" alt="舊時光 VintageVault" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/vintagevault.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">舊時光 VintageVault</div>
       </a>
       <a href="dronesky/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#38bdf8,#475569)">
-          <img src="dronesky/logos/logo_final.png" alt="翔天科技 DroneSky" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/dronesky.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">翔天科技 DroneSky</div>
       </a>
       <a href="babybloom/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f9a8d4,#86efac)">
-          <img src="babybloom/logos/logo_final.png" alt="花苞寶貝 BabyBloom" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/babybloom.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">花苞寶貝 BabyBloom</div>
       </a>
       <a href="boardroom/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c3aed,#f97316)">
-          <img src="boardroom/logos/logo_final.png" alt="策略桌遊 BoardRoom" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/boardroom.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">策略桌遊 BoardRoom</div>
       </a>
       <a href="cleanpro/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
-          <img src="cleanpro/logos/logo_final.png" alt="潔淨專家 CleanPro" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/cleanpro.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">潔淨專家 CleanPro</div>
       </a>
       <a href="silkroad/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#14532d,#c8a45e)">
-          <img src="silkroad/logos/logo_final.png" alt="絲路茶行 SilkRoad" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/silkroad.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">絲路茶行 SilkRoad</div>
       </a>
       <a href="nextstep/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#0d9488)">
-          <img src="nextstep/logos/logo_final.png" alt="前進人資 NextStep" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/nextstep.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">前進人資 NextStep</div>
       </a>
       <a href="pixelperfect/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111,#3b82f6)">
-          <img src="pixelperfect/logos/logo_final.png" alt="像素完美 PixelPerfect" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/pixelperfect.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">像素完美 PixelPerfect</div>
       </a>
       <a href="zenspace/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#581c87,#a78bfa)">
-          <img src="zenspace/logos/logo_final.png" alt="禪空間 ZenSpace" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/zenspace.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">禪空間 ZenSpace</div>
       </a>
       <a href="steelworks/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#374151,#f97316)">
-          <img src="steelworks/logos/logo_final.png" alt="鋼構世家 SteelWorks" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/steelworks.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">鋼構世家 SteelWorks</div>
       </a>
       <!-- 10 new sites (72-81) -->
       <a href="herbgarden/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#c8a45e)">
-          <img src="herbgarden/logos/logo_final.png" alt="草本花園 HerbGarden" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/herbgarden.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">草本花園 HerbGarden</div>
       </a>
       <a href="motionpic/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1f1f1f,#dc2626)">
-          <img src="motionpic/logos/logo_final.png" alt="動態影像 MotionPic" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/motionpic.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">動態影像 MotionPic</div>
       </a>
       <a href="bakehaus/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#d97706,#78350f)">
-          <img src="bakehaus/logos/logo_final.png" alt="烘焙之家 BakeHaus" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/bakehaus.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">烘焙之家 BakeHaus</div>
       </a>
       <a href="fitfuel/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111,#22c55e)">
-          <img src="fitfuel/logos/logo_final.png" alt="健力補給 FitFuel" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/fitfuel.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">健力補給 FitFuel</div>
       </a>
       <a href="storybook/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c3aed,#c8a45e)">
-          <img src="storybook/logos/logo_final.png" alt="故事盒子 StoryBook" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/storybook.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">故事盒子 StoryBook</div>
       </a>
       <a href="petpark/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#22c55e,#f97316)">
-          <img src="petpark/logos/logo_final.png" alt="毛孩公園 PetPark" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/petpark.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">毛孩公園 PetPark</div>
       </a>
       <a href="elitewatch/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111,#c8a45e)">
-          <img src="elitewatch/logos/logo_final.png" alt="菁英錶藏 EliteWatch" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/elitewatch.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">菁英錶藏 EliteWatch</div>
       </a>
       <a href="greencharge/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#22c55e)">
-          <img src="greencharge/logos/logo_final.png" alt="綠能充電 GreenCharge" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/greencharge.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">綠能充電 GreenCharge</div>
       </a>
       <a href="dancefloor/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#ec4899,#7c3aed)">
-          <img src="dancefloor/logos/logo_final.png" alt="舞動空間 DanceFloor" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/dancefloor.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">舞動空間 DanceFloor</div>
       </a>
       <a href="legalshield/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#0d9488)">
-          <img src="legalshield/logos/logo_final.png" alt="法盾律師 LegalShield" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/legalshield.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">法盾律師 LegalShield</div>
       </a>
       <!-- 10 new sites (82-91) -->
       <a href="solarcraft/" class="portfolio-card reveal" target="_blank" data-tags="科技">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#d97706,#1e3a5f)">
-          <img src="solarcraft/logos/logo_final.png" alt="陽光工坊 SolarCraft" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/solarcraft.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">陽光工坊 SolarCraft</div>
       </a>
       <a href="tattoostudio/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#111,#991b1b)">
-          <img src="tattoostudio/logos/logo_final.png" alt="墨刺紋身 InkMaster" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/tattoostudio.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">墨刺紋身 InkMaster</div>
       </a>
       <a href="oceanview/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0ea5e9,#f97316)">
-          <img src="oceanview/logos/logo_final.png" alt="海景民宿 OceanView" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/oceanview.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">海景民宿 OceanView</div>
       </a>
       <a href="chessmaster/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#c8a45e)">
-          <img src="chessmaster/logos/logo_final.png" alt="棋藝大師 ChessMaster" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/chessmaster.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">棋藝大師 ChessMaster</div>
       </a>
       <a href="spiceroute/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#92400e,#d97706)">
-          <img src="spiceroute/logos/logo_final.png" alt="香料航線 SpiceRoute" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/spiceroute.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">香料航線 SpiceRoute</div>
       </a>
       <a href="podcastle/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c3aed,#f97316)">
-          <img src="podcastle/logos/logo_final.png" alt="聲堡播客 PodCastle" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/podcastle.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">聲堡播客 PodCastle</div>
       </a>
       <a href="aquafit/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4)">
-          <img src="aquafit/logos/logo_final.png" alt="水適能 AquaFit" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/aquafit.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">水適能 AquaFit</div>
       </a>
       <a href="bookkeeper/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#22c55e)">
-          <img src="bookkeeper/logos/logo_final.png" alt="帳務通 BookKeeper" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/bookkeeper.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">帳務通 BookKeeper</div>
       </a>
       <a href="glasshouse/" class="portfolio-card reveal" target="_blank" data-tags="餐飲">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#d97706)">
-          <img src="glasshouse/logos/logo_final.png" alt="玻璃屋花房 GlassHouse" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/glasshouse.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">玻璃屋花房 GlassHouse</div>
       </a>
       <a href="pixelstore/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">
-          <img src="pixelstore/logos/logo_final.png" alt="像素商城 PixelStore" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/pixelstore.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">像素商城 PixelStore</div>
       </a>
       <!-- 9 FINAL sites (92-100) -->
       <a href="wanderlust/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f97316,#38bdf8)">
-          <img src="wanderlust/logos/logo_final.png" alt="浪遊旅行社 Wanderlust" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/wanderlust.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">浪遊旅行社 Wanderlust</div>
       </a>
       <a href="ecobag/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#78350f)">
-          <img src="ecobag/logos/logo_final.png" alt="環保袋袋 EcoBag" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/ecobag.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">環保袋袋 EcoBag</div>
       </a>
       <a href="musicroom/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#7c3aed,#c8a45e)">
-          <img src="musicroom/logos/logo_final.png" alt="樂室 MusicRoom" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/musicroom.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">樂室 MusicRoom</div>
       </a>
       <a href="ironthread/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#374151,#b76e79)">
-          <img src="ironthread/logos/logo_final.png" alt="鐵線手作 IronThread" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/ironthread.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">鐵線手作 IronThread</div>
       </a>
       <a href="smarttutor/" class="portfolio-card reveal" target="_blank" data-tags="會員制">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#3b82f6,#eab308)">
-          <img src="smarttutor/logos/logo_final.png" alt="智學家教 SmartTutor" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/smarttutor.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">智學家教 SmartTutor</div>
       </a>
       <a href="artwall/" class="portfolio-card reveal" target="_blank" data-tags="電商">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#ec4899)">
-          <img src="artwall/logos/logo_final.png" alt="藝牆 ArtWall" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/artwall.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">藝牆 ArtWall</div>
       </a>
       <a href="quickfix/" class="portfolio-card reveal" target="_blank" data-tags="生活休閒">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#3b82f6,#f97316)">
-          <img src="quickfix/logos/logo_final.png" alt="速修達人 QuickFix" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/quickfix.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">速修達人 QuickFix</div>
       </a>
       <a href="leafpress/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#166534,#78350f)">
-          <img src="leafpress/logos/logo_final.png" alt="葉刊出版 LeafPress" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/leafpress.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">葉刊出版 LeafPress</div>
       </a>
       <a href="summit/" class="portfolio-card reveal" target="_blank" data-tags="專業服務">
-        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1e3a5f,#c8a45e)">
-          <img src="summit/logos/logo_final.png" alt="巔峰顧問 Summit" loading="lazy">
-        </div>
+        <div class="portfolio-card-bg" style="background:url('_screenshots/summit.jpg') center/cover no-repeat">
+      </div>
         <div class="portfolio-card-name">巔峰顧問 Summit</div>
       </a>
     </div>
