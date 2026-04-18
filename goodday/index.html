@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好日選物 GoodDay Select — 生活風格選品</title>
+<meta name="description" content="好日選物 GoodDay Select，嚴選生活風格好物，從居家、餐廚到戶外，為每一天注入質感。Curated lifestyle goods for every good day.">
+<meta name="keywords" content="選物, 生活風格, 居家用品, lifestyle, curated goods, GoodDay Select, 好日選物">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "好日選物 GoodDay Select",
+  "description": "嚴選生活風格好物 — Curated lifestyle goods",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "台中市", "addressCountry": "TW" },
+  "url": "https://gooddayselect.tw",
+  "priceRange": "$$"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--orange:#e8834a;--cream:#faf6f0;--green:#2d5a3d;--dark:#2a2a2a;--transition:0.3s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(232,131,74,.4);transition:var(--transition)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing svg.play{display:none}
+.bgm-btn:not(.playing) svg.pause{display:none}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--green);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 10px rgba(0,0,0,.15);transition:var(--transition)}
+.lang-toggle:hover{opacity:.85}
+[data-lang="en"] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(250,246,240,.95);backdrop-filter:blur(10px);z-index:999;padding:12px 0;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:bold;color:var(--green)}
+nav .logo img{height:36px;width:36px;object-fit:contain}
+nav ul{list-style:none;display:flex;gap:24px}
+nav ul li a{font-size:14px;color:var(--dark);transition:var(--transition)}
+nav ul li a:hover{color:var(--orange)}
+@media(max-width:768px){nav ul{display:none}}
+
+.hero{min-height:100vh;background:url('photos/hero.png') center/cover no-repeat;display:flex;align-items:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(250,246,240,.9) 0%,rgba(250,246,240,.3) 100%)}
+.hero-content{position:relative;z-index:1;padding:20px 40px;max-width:600px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--dark);margin-bottom:16px}
+.hero h1 span.brand{color:var(--orange)}
+.hero p{font-size:clamp(1rem,2vw,1.2rem);color:#666;margin-bottom:32px;line-height:1.7}
+.hero .cta{display:inline-block;background:var(--orange);color:#fff;padding:14px 36px;border-radius:30px;font-size:16px;transition:var(--transition);font-weight:bold}
+.hero .cta:hover{background:#d06f38;transform:translateY(-2px)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--dark);margin-bottom:12px}
+.section-title .line{width:60px;height:3px;background:var(--orange);margin:0 auto 16px}
+.section-title p{color:#888;font-size:16px}
+
+.featured{background:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.product-card{background:var(--cream);border-radius:14px;overflow:hidden;transition:var(--transition);box-shadow:0 2px 15px rgba(0,0,0,.05)}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 10px 35px rgba(232,131,74,.15)}
+.product-card img{width:100%;height:240px;object-fit:cover}
+.product-card .info{padding:20px}
+.product-card .tag{display:inline-block;background:var(--green);color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;margin-bottom:8px}
+.product-card h3{font-size:17px;margin-bottom:6px}
+.product-card .price{color:var(--orange);font-size:20px;font-weight:bold}
+.product-card .price .original{color:#aaa;font-size:14px;text-decoration:line-through;margin-left:8px;font-weight:normal}
+.product-card p.desc{color:#888;font-size:13px;margin-top:6px}
+.product-card .add-cart{display:block;margin-top:14px;background:var(--orange);color:#fff;border:none;width:100%;padding:10px;border-radius:8px;font-size:14px;cursor:pointer;transition:var(--transition)}
+.product-card .add-cart:hover{background:#d06f38}
+
+.why{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px}
+.why-card{text-align:center;padding:30px 20px}
+.why-card .icon{width:64px;height:64px;margin:0 auto 20px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.why-card .icon svg{width:28px;height:28px;fill:#fff}
+.why-card h3{font-size:18px;margin-bottom:10px;color:var(--green)}
+.why-card p{color:#777;font-size:14px;line-height:1.7}
+
+.shipping{background:#fff}
+.shipping-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.shipping-img{border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.shipping-text h3{font-size:24px;color:var(--green);margin-bottom:16px}
+.shipping-text p{line-height:1.9;color:#555;margin-bottom:14px}
+.shipping-text ul{list-style:none;padding:0}
+.shipping-text ul li{padding:8px 0;color:#555;position:relative;padding-left:24px}
+.shipping-text ul li::before{content:'✓';position:absolute;left:0;color:var(--orange);font-weight:bold}
+@media(max-width:768px){.shipping-grid{grid-template-columns:1fr}}
+
+.lifestyle{background:var(--cream);text-align:center}
+.lifestyle-img{max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.lifestyle blockquote{font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--green);margin-top:30px;font-style:italic;line-height:1.8}
+
+footer{background:var(--green);color:#ddd;text-align:center;padding:30px 20px;font-size:14px}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body data-lang="zh">
+
+<button class="lang-toggle" onclick="toggleLang()">EN / 中</button>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="GoodDay Logo">好日選物</a>
+    <ul>
+      <li><a href="#featured"><span class="zh">精選商品</span><span class="en">Products</span></a></li>
+      <li><a href="#why"><span class="zh">為何選擇</span><span class="en">Why Us</span></a></li>
+      <li><a href="#shipping"><span class="zh">配送</span><span class="en">Shipping</span></a></li>
+      <li><a href="#lifestyle"><span class="zh">生活提案</span><span class="en">Lifestyle</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content fade-up">
+    <h1><span class="zh">每一天，都是 <span class="brand">好日</span></span><span class="en">Every Day is a <span class="brand">GoodDay</span></span></h1>
+    <p><span class="zh">嚴選來自世界各地的生活好物，讓日常注入質感與溫度。從晨間的第一杯咖啡，到夜晚的舒適時光。</span><span class="en">Curated lifestyle goods from around the world, bringing warmth and quality to your everyday moments. From your morning coffee to evening comfort.</span></p>
+    <a href="#featured" class="cta"><span class="zh">立即選購</span><span class="en">Shop Now</span></a>
+  </div>
+</section>
+
+<section class="featured" id="featured">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">精選商品</span><span class="en">Featured Products</span></h2>
+      <div class="line"></div>
+      <p><span class="zh">每一件，都是為好日子而選</span><span class="en">Every piece, curated for your good days</span></p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Product 1">
+        <div class="info">
+          <span class="tag"><span class="zh">人氣推薦</span><span class="en">Popular</span></span>
+          <h3><span class="zh">手工陶瓷咖啡杯</span><span class="en">Handmade Ceramic Mug</span></h3>
+          <p class="price">NT$ 680 <span class="original">NT$ 880</span></p>
+          <p class="desc"><span class="zh">日本職人手作，溫潤觸感</span><span class="en">Japanese artisan crafted, warm texture</span></p>
+          <button class="add-cart"><span class="zh">加入購物車</span><span class="en">Add to Cart</span></button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Product 2">
+        <div class="info">
+          <span class="tag"><span class="zh">新品上市</span><span class="en">New</span></span>
+          <h3><span class="zh">有機棉居家毯</span><span class="en">Organic Cotton Blanket</span></h3>
+          <p class="price">NT$ 1,980</p>
+          <p class="desc"><span class="zh">100% 有機棉，四季適用</span><span class="en">100% organic cotton, all-season comfort</span></p>
+          <button class="add-cart"><span class="zh">加入購物車</span><span class="en">Add to Cart</span></button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Product 3">
+        <div class="info">
+          <span class="tag"><span class="zh">限量</span><span class="en">Limited</span></span>
+          <h3><span class="zh">黃銅香氛蠟燭</span><span class="en">Brass Scented Candle</span></h3>
+          <p class="price">NT$ 1,280</p>
+          <p class="desc"><span class="zh">天然大豆蠟，黃銅容器可重複使用</span><span class="en">Natural soy wax, reusable brass vessel</span></p>
+          <button class="add-cart"><span class="zh">加入購物車</span><span class="en">Add to Cart</span></button>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Product 4">
+        <div class="info">
+          <span class="tag"><span class="zh">經典</span><span class="en">Classic</span></span>
+          <h3><span class="zh">原木砧板</span><span class="en">Solid Wood Cutting Board</span></h3>
+          <p class="price">NT$ 1,580 <span class="original">NT$ 1,980</span></p>
+          <p class="desc"><span class="zh">整塊原木裁切，附保養油</span><span class="en">Single-piece hardwood, includes care oil</span></p>
+          <button class="add-cart"><span class="zh">加入購物車</span><span class="en">Add to Cart</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">為何選擇好日？</span><span class="en">Why GoodDay?</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3><span class="zh">嚴格選品</span><span class="en">Curated Selection</span></h3>
+        <p><span class="zh">每件商品經過層層篩選，確保品質與設計兼具</span><span class="en">Every item passes rigorous selection for quality and design</span></p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+        <h3><span class="zh">產地直送</span><span class="en">Direct Sourcing</span></h3>
+        <p><span class="zh">與全球職人與品牌直接合作，確保正品與合理價格</span><span class="en">Direct partnerships with artisans worldwide for authentic goods</span></p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3><span class="zh">永續理念</span><span class="en">Sustainability</span></h3>
+        <p><span class="zh">堅持環保包裝，支持對地球友善的品牌與材質</span><span class="en">Eco-friendly packaging, supporting earth-conscious brands</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shipping" id="shipping">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">配送服務</span><span class="en">Shipping</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="shipping-grid">
+      <div class="shipping-img fade-left"><img src="photos/shipping.png" alt="Shipping"></div>
+      <div class="shipping-text fade-right">
+        <h3><span class="zh">快速安心到貨</span><span class="en">Fast & Reliable Delivery</span></h3>
+        <p><span class="zh">我們與最可靠的物流夥伴合作，確保您的選物安全準時送達。</span><span class="en">We partner with the most reliable logistics providers to ensure your goods arrive safely and on time.</span></p>
+        <ul>
+          <li><span class="zh">全台滿 NT$1,500 免運</span><span class="en">Free shipping over NT$1,500</span></li>
+          <li><span class="zh">台北市當日配送</span><span class="en">Same-day delivery in Taipei</span></li>
+          <li><span class="zh">精美環保包裝</span><span class="en">Beautiful eco-friendly packaging</span></li>
+          <li><span class="zh">七天鑑賞期</span><span class="en">7-day return policy</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lifestyle" id="lifestyle">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">生活提案</span><span class="en">Lifestyle</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="lifestyle-img fade-up"><img src="photos/lifestyle.png" alt="Lifestyle"></div>
+    <blockquote class="fade-up"><span class="zh">「生活不在別處，就在你精心挑選的每一個物件裡。」</span><span class="en">"Life isn't somewhere else — it's in every object you carefully choose."</span></blockquote>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 好日選物 GoodDay Select. All rights reserved.</p>
+</footer>
+
+<button class="bgm-btn" onclick="toggleBgm()" aria-label="Toggle music">
+  <svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){const b=document.body;b.dataset.lang=b.dataset.lang==='zh'?'en':'zh'}
+function toggleBgm(){const a=document.getElementById('bgm'),btn=document.querySelector('.bgm-btn');if(a.paused){a.play();btn.classList.add('playing')}else{a.pause();btn.classList.remove('playing')}}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

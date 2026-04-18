@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影紀事 LightFrame — 婚禮攝影 | Wedding Photography</title>
+<meta name="description" content="光影紀事 LightFrame 專業婚禮攝影，以溫暖細膩的鏡頭記錄每一個珍貴瞬間。">
+<meta name="keywords" content="婚禮攝影, wedding photography, 光影紀事, LightFrame, 婚紗, 婚禮紀錄">
+<link rel="icon" type="image/png" href="logos/logo_final.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "光影紀事 LightFrame",
+  "description": "專業婚禮攝影工作室",
+  "image": "photos/hero.png",
+  "priceRange": "$$",
+  "@id": "https://lightframe.com",
+  "url": "https://lightframe.com",
+  "address": {"@type": "PostalAddress", "addressLocality": "Taipei", "addressCountry": "TW"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Wedding Photography Packages",
+    "itemListElement": [
+      {"@type": "Offer", "name": "經典方案", "price": "58000", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "精選方案", "price": "88000", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "尊榮方案", "price": "128000", "priceCurrency": "TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#c8956c;--white:#fdfaf5;--blush:#f5e1d0;--dark:#3a2e28;--mid:#7a6a5f}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Times New Roman',serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .3s,box-shadow .3s}
+nav.scrolled{background:rgba(253,250,245,.97);box-shadow:0 1px 20px rgba(0,0,0,.08)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.4rem;font-weight:400;color:var(--gold);letter-spacing:3px}
+.logo img{height:32px;margin-right:8px;vertical-align:middle}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:var(--dark);text-decoration:none;font-size:.85rem;letter-spacing:1px;opacity:.7;transition:opacity .3s}
+.nav-links a:hover{opacity:1}
+.btn{display:inline-block;padding:12px 28px;border-radius:4px;font-weight:400;text-decoration:none;cursor:pointer;border:none;font-size:.9rem;letter-spacing:1px;transition:all .3s}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{background:#b8855c;transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);background:transparent}
+.btn-outline:hover{background:var(--gold);color:#fff}
+
+/* BGM */
+.bgm-btn{position:fixed;bottom:24px;right:24px;z-index:99;width:48px;height:48px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,149,108,.3);transition:transform .2s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:20px;height:20px;fill:#fff}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 12px rgba(200,149,108,.3)}50%{box-shadow:0 4px 25px rgba(200,149,108,.6)}}
+
+.lang-toggle{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:5px 12px;border-radius:4px;cursor:pointer;font-size:.8rem;letter-spacing:1px;transition:all .3s}
+.lang-toggle:hover{background:var(--gold);color:#fff}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(253,250,245,.15),rgba(253,250,245,.7) 70%,rgba(253,250,245,.95))}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:400;letter-spacing:6px;margin-bottom:12px;color:var(--dark)}
+.hero .subtitle{font-size:1.1rem;color:var(--gold);letter-spacing:4px;margin-bottom:8px}
+.hero p{font-size:1rem;opacity:.7;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8}
+.divider{width:60px;height:1px;background:var(--gold);margin:20px auto}
+
+/* SECTION */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;letter-spacing:4px;margin-bottom:8px}
+.section-title .accent{color:var(--gold)}
+.section-title p{opacity:.6;font-size:.95rem;line-height:1.7}
+
+/* PORTFOLIO */
+.portfolio-section{background:var(--blush)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-item{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:3/4}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .overlay{position:absolute;inset:0;background:rgba(200,149,108,.3);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .overlay{opacity:1}
+.gallery-item .overlay span{color:#fff;font-size:.9rem;letter-spacing:2px}
+
+/* PACKAGES */
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.package-card{background:#fff;border:1px solid var(--blush);border-radius:8px;padding:40px 28px;text-align:center;transition:transform .3s,box-shadow .3s}
+.package-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.package-card.featured{border-color:var(--gold);position:relative}
+.package-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.pkg-name{font-size:1.2rem;letter-spacing:3px;margin-bottom:8px;color:var(--gold)}
+.pkg-price{font-size:2.4rem;font-weight:400;margin:16px 0;color:var(--dark)}
+.pkg-price small{font-size:.85rem;color:var(--mid)}
+.pkg-features{list-style:none;margin:20px 0;text-align:left}
+.pkg-features li{padding:8px 0;border-bottom:1px solid var(--blush);font-size:.88rem;color:var(--mid)}
+.pkg-features li::before{content:'—';color:var(--gold);margin-right:10px}
+
+/* ABOUT */
+.about-section{background:var(--blush)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about-img img{width:100%;border-radius:8px}
+.about-text h3{font-size:1.4rem;letter-spacing:2px;margin-bottom:16px}
+.about-text p{color:var(--mid);line-height:1.8;margin-bottom:16px;font-size:.95rem}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.contact-info h3{font-size:1.2rem;letter-spacing:2px;margin-bottom:20px}
+.contact-info p{color:var(--mid);line-height:1.8;margin-bottom:12px;font-size:.9rem}
+.contact-form input,.contact-form textarea{width:100%;padding:12px 16px;border:1px solid var(--blush);border-radius:4px;font-size:.9rem;font-family:inherit;background:transparent;margin-bottom:14px;transition:border-color .3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold);outline:none}
+.contact-form textarea{height:120px;resize:vertical}
+
+/* FOOTER */
+footer{padding:40px 0;text-align:center;border-top:1px solid var(--blush)}
+footer p{opacity:.5;font-size:.8rem;letter-spacing:1px}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.btn):not(.lang-toggle){display:none}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero h1{letter-spacing:3px}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="logo"><img src="logos/logo_final.png" alt="光影紀事 Logo">光影紀事</div>
+    <div class="nav-links">
+      <a href="#portfolio" data-zh="作品集" data-en="Portfolio">作品集</a>
+      <a href="#packages" data-zh="方案" data-en="Packages">方案</a>
+      <a href="#about" data-zh="關於" data-en="About">關於</a>
+      <a href="#contact" data-zh="聯繫" data-en="Contact">聯繫</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="subtitle reveal">LIGHTFRAME PHOTOGRAPHY</p>
+    <h1 class="reveal" data-zh="光影紀事" data-en="LightFrame">光影紀事</h1>
+    <div class="divider reveal"></div>
+    <p class="reveal" data-zh="以溫暖的鏡頭，記錄你們最珍貴的瞬間。每一張照片，都是一段永恆的故事。" data-en="Capturing your most precious moments through a warm lens. Every photograph tells an eternal story.">以溫暖的鏡頭，記錄你們最珍貴的瞬間。每一張照片，都是一段永恆的故事。</p>
+    <a href="#portfolio" class="btn btn-primary" data-zh="欣賞作品" data-en="View Portfolio">欣賞作品</a>
+  </div>
+</section>
+
+<section class="portfolio-section" id="portfolio">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="精選 <span class='accent'>作品集</span>" data-en="Selected <span class='accent'>Portfolio</span>">精選 <span class="accent">作品集</span></h2>
+      <p data-zh="每一場婚禮，都是獨一無二的篇章" data-en="Every wedding is a unique chapter">每一場婚禮，都是獨一無二的篇章</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="photos/portrait.png" alt="Wedding Portrait" loading="lazy">
+        <div class="overlay"><span data-zh="人像" data-en="Portrait">人像</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="photos/detail.png" alt="Wedding Details" loading="lazy">
+        <div class="overlay"><span data-zh="細節" data-en="Details">細節</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="photos/reception.png" alt="Wedding Reception" loading="lazy">
+        <div class="overlay"><span data-zh="宴會" data-en="Reception">宴會</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="photos/hero.png" alt="Wedding Ceremony" loading="lazy">
+        <div class="overlay"><span data-zh="儀式" data-en="Ceremony">儀式</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="photos/portrait.png" alt="Couple Portrait" loading="lazy">
+        <div class="overlay"><span data-zh="雙人" data-en="Couple">雙人</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="photos/detail.png" alt="Floral Details" loading="lazy">
+        <div class="overlay"><span data-zh="花藝" data-en="Florals">花藝</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="攝影 <span class='accent'>方案</span>" data-en="Photography <span class='accent'>Packages</span>">攝影 <span class="accent">方案</span></h2>
+      <p data-zh="依據您的需求，量身打造專屬方案" data-en="Tailored packages designed for your needs">依據您的需求，量身打造專屬方案</p>
+    </div>
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="pkg-name" data-zh="經典方案" data-en="Classic">經典方案</div>
+        <div class="pkg-price">NT$ 58,000</div>
+        <ul class="pkg-features">
+          <li data-zh="婚禮當日 8 小時拍攝" data-en="8-hour wedding day coverage">婚禮當日 8 小時拍攝</li>
+          <li data-zh="300 張精修照片" data-en="300 edited photos">300 張精修照片</li>
+          <li data-zh="線上相簿" data-en="Online gallery">線上相簿</li>
+          <li data-zh="單攝影師" data-en="Single photographer">單攝影師</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+      </div>
+      <div class="package-card featured reveal">
+        <div class="pkg-name" data-zh="精選方案" data-en="Signature">精選方案</div>
+        <div class="pkg-price">NT$ 88,000</div>
+        <ul class="pkg-features">
+          <li data-zh="婚禮當日全程拍攝" data-en="Full-day wedding coverage">婚禮當日全程拍攝</li>
+          <li data-zh="500 張精修照片" data-en="500 edited photos">500 張精修照片</li>
+          <li data-zh="婚紗外拍 1 場" data-en="1 pre-wedding shoot">婚紗外拍 1 場</li>
+          <li data-zh="精裝相冊 1 本" data-en="1 premium album">精裝相冊 1 本</li>
+          <li data-zh="雙攝影師" data-en="Two photographers">雙攝影師</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" data-zh="立即預約" data-en="Book Now">立即預約</a>
+      </div>
+      <div class="package-card reveal">
+        <div class="pkg-name" data-zh="尊榮方案" data-en="Luxury">尊榮方案</div>
+        <div class="pkg-price">NT$ 128,000</div>
+        <ul class="pkg-features">
+          <li data-zh="婚禮 + 婚紗全包" data-en="Wedding + pre-wedding full package">婚禮 + 婚紗全包</li>
+          <li data-zh="800 張精修照片" data-en="800 edited photos">800 張精修照片</li>
+          <li data-zh="精裝相冊 2 本" data-en="2 premium albums">精裝相冊 2 本</li>
+          <li data-zh="精華影片 3 分鐘" data-en="3-min highlight reel">精華影片 3 分鐘</li>
+          <li data-zh="雙攝影師 + 助理" data-en="Two photographers + assistant">雙攝影師 + 助理</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" data-zh="了解更多" data-en="Learn More">了解更多</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal-left">
+        <img src="photos/portrait.png" alt="Photographer" loading="lazy">
+      </div>
+      <div class="about-text reveal-right">
+        <h3 data-zh="關於攝影師" data-en="About the Photographer">關於攝影師</h3>
+        <p data-zh="從事婚禮攝影超過十年，走遍世界各地的婚禮現場。我相信每對新人都有屬於自己的故事，而我的鏡頭就是為了捕捉那些真摯而動人的瞬間。" data-en="With over ten years of wedding photography experience across the globe, I believe every couple has their own unique story. My lens is dedicated to capturing those genuine, moving moments.">從事婚禮攝影超過十年，走遍世界各地的婚禮現場。我相信每對新人都有屬於自己的故事，而我的鏡頭就是為了捕捉那些真摯而動人的瞬間。</p>
+        <p data-zh="我追求自然、不做作的風格，用光影說故事，讓每一張照片都充滿溫度與情感。" data-en="I pursue a natural, unposed style, telling stories through light and shadow, filling every photograph with warmth and emotion.">我追求自然、不做作的風格，用光影說故事，讓每一張照片都充滿溫度與情感。</p>
+        <div class="divider" style="margin-left:0"></div>
+        <p style="color:var(--gold);letter-spacing:2px;font-size:.85rem" data-zh="—— 光影紀事 主理人" data-en="—— LightFrame, Principal Photographer">—— 光影紀事 主理人</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="聯繫 <span class='accent'>我們</span>" data-en="Get In <span class='accent'>Touch</span>">聯繫 <span class="accent">我們</span></h2>
+      <p data-zh="讓我們一起討論您的婚禮攝影需求" data-en="Let's discuss your wedding photography needs">讓我們一起討論您的婚禮攝影需求</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3 data-zh="工作室資訊" data-en="Studio Info">工作室資訊</h3>
+        <p data-zh="地址：台北市大安區光復南路 100 號" data-en="Address: No. 100, Guangfu S. Rd., Da'an Dist., Taipei">地址：台北市大安區光復南路 100 號</p>
+        <p data-zh="電話：02-2700-0000" data-en="Phone: +886-2-2700-0000">電話：02-2700-0000</p>
+        <p>Email: hello@lightframe.com</p>
+        <p data-zh="營業時間：週一至週六 10:00 - 19:00" data-en="Hours: Mon-Sat 10:00 AM - 7:00 PM">營業時間：週一至週六 10:00 - 19:00</p>
+      </div>
+      <form class="contact-form reveal-right" onsubmit="return false">
+        <input type="text" placeholder="姓名 / Name" data-zh-placeholder="姓名" data-en-placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="婚禮日期 / Wedding Date" data-zh-placeholder="婚禮日期" data-en-placeholder="Wedding Date">
+        <textarea placeholder="留言訊息 / Message" data-zh-placeholder="留言訊息" data-en-placeholder="Your message"></textarea>
+        <button class="btn btn-primary" style="width:100%" data-zh="送出訊息" data-en="Send Message">送出訊息</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 光影紀事 LightFrame. All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgmAudio.pause();bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.classList.add('playing')}
+  playing=!playing;
+});
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.querySelector('.lang-toggle').textContent=lang==='zh'?'EN':'中文';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+  document.querySelectorAll('[data-'+lang+'-placeholder]').forEach(el=>{el.placeholder=el.getAttribute('data-'+lang+'-placeholder')});
+}
+
+const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.15});
+revealEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

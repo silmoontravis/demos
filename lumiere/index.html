@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沐光美學 LUMIERE — 頂級髮藝沙龍</title>
+<meta name="description" content="沐光美學 LUMIERE 頂級髮藝沙龍，提供剪髮、染髮、護髮、新娘造型等服務。以光為名，為您打造獨一無二的美學風格。Premium hair salon offering cutting, coloring, treatments, and bridal styling.">
+<meta name="keywords" content="髮廊, 美髮沙龍, 染髮, 護髮, 新娘造型, hair salon, styling, coloring, LUMIERE, 沐光美學">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "沐光美學 LUMIERE",
+  "description": "頂級髮藝沙龍 — Premium hair salon",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW" },
+  "telephone": "+886-2-2789-0123",
+  "url": "https://lumiere-salon.tw",
+  "priceRange": "$$$"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--rosegold:#b76e79;--black:#1a1a1a;--cream:#faf5f0;--white:#ffffff;--transition:0.3s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;color:var(--black);background:var(--cream);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--rosegold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(183,110,121,.4);transition:var(--transition)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing svg.play{display:none}
+.bgm-btn:not(.playing) svg.pause{display:none}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--rosegold);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.lang-toggle:hover{opacity:.85}
+[data-lang="en"] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(26,26,26,.95);backdrop-filter:blur(10px);z-index:999;padding:12px 0}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:bold;color:var(--rosegold);letter-spacing:3px;text-transform:uppercase}
+nav .logo img{height:36px;width:36px;object-fit:contain}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul li a{font-size:13px;color:#ccc;transition:var(--transition);letter-spacing:1px;text-transform:uppercase}
+nav ul li a:hover{color:var(--rosegold)}
+@media(max-width:768px){nav ul{display:none}}
+
+.hero{min-height:100vh;background:url('photos/hero.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;text-align:center}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,26,26,.5),rgba(26,26,26,.7))}
+.hero-content{position:relative;z-index:1;padding:20px}
+.hero h1{font-size:clamp(2.5rem,7vw,5rem);color:#fff;margin-bottom:8px;letter-spacing:8px;text-transform:uppercase;font-weight:400}
+.hero .subtitle{font-size:clamp(1rem,2vw,1.3rem);color:var(--rosegold);letter-spacing:4px;margin-bottom:36px}
+.hero .cta{display:inline-block;border:2px solid var(--rosegold);color:var(--rosegold);padding:14px 40px;font-size:14px;letter-spacing:3px;text-transform:uppercase;transition:var(--transition)}
+.hero .cta:hover{background:var(--rosegold);color:#fff}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--black);margin-bottom:12px;letter-spacing:3px;font-weight:400}
+.section-title .line{width:60px;height:2px;background:var(--rosegold);margin:0 auto 16px}
+.section-title p{color:#888;font-size:15px;letter-spacing:1px}
+
+.services{background:var(--black);color:#fff}
+.services .section-title h2{color:#fff}
+.services .section-title p{color:rgba(255,255,255,.5)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{border:1px solid rgba(183,110,121,.3);border-radius:2px;padding:36px 24px;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--rosegold);transform:scaleX(0);transition:transform .5s ease;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{border-color:var(--rosegold)}
+.service-card .price{color:var(--rosegold);font-size:13px;letter-spacing:2px;margin-bottom:16px;text-transform:uppercase}
+.service-card h3{font-size:20px;margin-bottom:12px;color:#fff;font-weight:400;letter-spacing:2px}
+.service-card p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.8}
+
+.gallery{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.gallery-item{border-radius:4px;overflow:hidden;position:relative;height:400px;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item .overlay{position:absolute;inset:0;background:rgba(26,26,26,.3);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .overlay{opacity:1}
+.gallery-item .overlay span{color:#fff;font-size:14px;letter-spacing:3px;text-transform:uppercase;border:1px solid #fff;padding:8px 20px}
+
+.products{background:var(--black);color:#fff}
+.products .section-title h2{color:#fff}
+.products .section-title p{color:rgba(255,255,255,.5)}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.products-img{border-radius:4px;overflow:hidden}
+.products-text h3{font-size:24px;color:var(--rosegold);margin-bottom:16px;font-weight:400;letter-spacing:2px}
+.products-text p{color:rgba(255,255,255,.7);line-height:1.9;margin-bottom:14px}
+.products-text .product-list{list-style:none;padding:0}
+.products-text .product-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);display:flex;justify-content:space-between}
+.products-text .product-list li span.pricetag{color:var(--rosegold)}
+@media(max-width:768px){.products-grid{grid-template-columns:1fr}}
+
+.booking{background:var(--cream)}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.booking-info h3{font-size:24px;color:var(--rosegold);margin-bottom:20px;font-weight:400;letter-spacing:2px}
+.booking-info p{margin-bottom:14px;line-height:1.8;color:#555}
+.booking-info .hours{margin-top:20px}
+.booking-info .hours p{margin-bottom:6px}
+.booking form{display:flex;flex-direction:column;gap:14px}
+.booking input,.booking select,.booking textarea{padding:14px;border:1px solid #ddd;border-radius:2px;font-size:15px;font-family:inherit;background:#fff}
+.booking input:focus,.booking textarea:focus{border-color:var(--rosegold);outline:none}
+.booking textarea{height:100px;resize:vertical}
+.booking button{background:var(--rosegold);color:#fff;border:none;padding:16px;border-radius:2px;font-size:14px;cursor:pointer;letter-spacing:3px;text-transform:uppercase;transition:var(--transition)}
+.booking button:hover{background:#a05a64}
+@media(max-width:768px){.booking-grid{grid-template-columns:1fr}}
+
+footer{background:var(--black);color:#666;text-align:center;padding:30px 20px;font-size:13px;letter-spacing:2px}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body data-lang="zh">
+
+<button class="lang-toggle" onclick="toggleLang()">EN / 中</button>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="LUMIERE Logo">LUMIERE</a>
+    <ul>
+      <li><a href="#services"><span class="zh">服務</span><span class="en">Services</span></a></li>
+      <li><a href="#gallery"><span class="zh">作品</span><span class="en">Gallery</span></a></li>
+      <li><a href="#products"><span class="zh">產品</span><span class="en">Products</span></a></li>
+      <li><a href="#booking"><span class="zh">預約</span><span class="en">Book</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content fade-up">
+    <h1>LUMIERE</h1>
+    <div class="subtitle"><span class="zh">沐光美學 — 頂級髮藝沙龍</span><span class="en">Premium Hair Salon</span></div>
+    <a href="#booking" class="cta"><span class="zh">立即預約</span><span class="en">Book Now</span></a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">服務項目</span><span class="en">Services</span></h2>
+      <div class="line"></div>
+      <p><span class="zh">以光為靈感，為您量身打造專屬風格</span><span class="en">Inspired by light, crafting your unique style</span></p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="price"><span class="zh">NT$ 1,200 起</span><span class="en">From NT$ 1,200</span></div>
+        <h3><span class="zh">精緻剪髮</span><span class="en">Precision Cut</span></h3>
+        <p><span class="zh">專業諮詢、頭皮檢測、精準剪裁，含洗護造型完整服務。</span><span class="en">Professional consultation, scalp analysis, precision cutting with full wash and styling service.</span></p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="price"><span class="zh">NT$ 3,500 起</span><span class="en">From NT$ 3,500</span></div>
+        <h3><span class="zh">時尚染髮</span><span class="en">Color Design</span></h3>
+        <p><span class="zh">採用頂級染劑，結合色彩學為您設計最適合的髮色方案。</span><span class="en">Premium color products combined with color theory to design your ideal shade.</span></p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="price"><span class="zh">NT$ 2,800 起</span><span class="en">From NT$ 2,800</span></div>
+        <h3><span class="zh">深層護髮</span><span class="en">Hair Treatment</span></h3>
+        <p><span class="zh">深層修護受損髮質，還原秀髮光澤與彈性，重現健康光采。</span><span class="en">Deep repair for damaged hair, restoring shine, elasticity, and healthy radiance.</span></p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="price"><span class="zh">NT$ 8,000 起</span><span class="en">From NT$ 8,000</span></div>
+        <h3><span class="zh">新娘造型</span><span class="en">Bridal Styling</span></h3>
+        <p><span class="zh">婚禮當日整體造型服務，含試妝、髮型設計與全天跟妝。</span><span class="en">Complete wedding day styling including trial, hair design, and full-day touch-up service.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">作品集</span><span class="en">Gallery</span></h2>
+      <div class="line"></div>
+      <p><span class="zh">每一次創作，都是光與美的對話</span><span class="en">Every creation, a dialogue between light and beauty</span></p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-up">
+        <img src="photos/styling.png" alt="Styling Work">
+        <div class="overlay"><span><span class="zh">查看更多</span><span class="en">View</span></span></div>
+      </div>
+      <div class="gallery-item fade-up">
+        <img src="photos/result.png" alt="Hair Result">
+        <div class="overlay"><span><span class="zh">查看更多</span><span class="en">View</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">沙龍產品</span><span class="en">Salon Products</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="products-grid">
+      <div class="products-img fade-left"><img src="photos/products.png" alt="Hair Products"></div>
+      <div class="products-text fade-right">
+        <h3><span class="zh">專業級居家護理</span><span class="en">Professional Home Care</span></h3>
+        <p><span class="zh">延續沙龍級的護髮體驗，我們嚴選頂級品牌產品，讓您在家也能維持完美髮質。</span><span class="en">Extend the salon experience at home with our curated selection of premium hair care products for maintaining perfect hair quality.</span></p>
+        <ul class="product-list">
+          <li><span><span class="zh">修護洗髮精 300ml</span><span class="en">Repair Shampoo 300ml</span></span><span class="pricetag">NT$ 980</span></li>
+          <li><span><span class="zh">深層護髮膜 200ml</span><span class="en">Deep Mask 200ml</span></span><span class="pricetag">NT$ 1,280</span></li>
+          <li><span><span class="zh">護色精華油 100ml</span><span class="en">Color Serum Oil 100ml</span></span><span class="pricetag">NT$ 1,580</span></li>
+          <li><span><span class="zh">造型噴霧 150ml</span><span class="en">Styling Spray 150ml</span></span><span class="pricetag">NT$ 780</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">預約服務</span><span class="en">Book an Appointment</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="booking-grid">
+      <div class="booking-info fade-left">
+        <h3><span class="zh">歡迎預約</span><span class="en">We Look Forward to Seeing You</span></h3>
+        <p><span class="zh">沐光美學位於台北市東區精華地段，為您提供私密舒適的頂級沙龍體驗。</span><span class="en">LUMIERE is located in Taipei's premium East District, offering a private and luxurious salon experience.</span></p>
+        <p><span class="zh">地址：台北市大安區忠孝東路四段 128 號 2F</span><span class="en">Address: 2F, No. 128, Sec. 4, Zhongxiao E. Rd., Da'an Dist., Taipei</span></p>
+        <p><span class="zh">電話：02-2789-0123</span><span class="en">Phone: 02-2789-0123</span></p>
+        <p>Email: hello@lumiere-salon.tw</p>
+        <div class="hours">
+          <p><span class="zh">營業時間</span><span class="en">Hours</span></p>
+          <p><span class="zh">週二至週五 11:00 - 21:00</span><span class="en">Tue–Fri 11:00 AM – 9:00 PM</span></p>
+          <p><span class="zh">週六至週日 10:00 - 20:00</span><span class="en">Sat–Sun 10:00 AM – 8:00 PM</span></p>
+          <p><span class="zh">週一公休</span><span class="en">Closed on Mondays</span></p>
+        </div>
+      </div>
+      <form class="fade-right" onsubmit="event.preventDefault()">
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone" required>
+        <select>
+          <option value="">Select Service</option>
+          <option>剪髮 / Cut</option>
+          <option>染髮 / Color</option>
+          <option>護髮 / Treatment</option>
+          <option>新娘造型 / Bridal</option>
+        </select>
+        <input type="date">
+        <textarea placeholder="Special requests or preferred stylist"></textarea>
+        <button type="submit"><span class="zh">送出預約</span><span class="en">Submit Booking</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 沐光美學 LUMIERE. All rights reserved.</p>
+</footer>
+
+<button class="bgm-btn" onclick="toggleBgm()" aria-label="Toggle music">
+  <svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){const b=document.body;b.dataset.lang=b.dataset.lang==='zh'?'en':'zh'}
+function toggleBgm(){const a=document.getElementById('bgm'),btn=document.querySelector('.bgm-btn');if(a.paused){a.play();btn.classList.add('playing')}else{a.pause();btn.classList.remove('playing')}}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

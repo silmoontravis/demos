@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安心牙醫 TrustDental — 值得信賴的牙科診所</title>
+<meta name="description" content="安心牙醫 TrustDental，提供植牙、矯正、美白等全方位牙科服務。專業團隊、先進設備，守護您的笑容。Professional dental clinic offering implants, orthodontics, and whitening.">
+<meta name="keywords" content="牙醫, 植牙, 矯正, 美白, dental clinic, implants, orthodontics, TrustDental, 安心牙醫">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "安心牙醫 TrustDental",
+  "description": "值得信賴的全方位牙科診所",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "新北市", "addressCountry": "TW" },
+  "telephone": "+886-2-8765-4321",
+  "url": "https://trustdental.tw",
+  "medicalSpecialty": "Dentistry",
+  "priceRange": "$$"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#0d9488;--white:#ffffff;--lightblue:#e0f2fe;--dark:#1a2a3a;--transition:0.3s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Noto Sans TC',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(13,148,136,.4);transition:var(--transition)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing svg.play{display:none}
+.bgm-btn:not(.playing) svg.pause{display:none}
+
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--teal);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.lang-toggle:hover{opacity:.85}
+[data-lang="en"] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:999;padding:12px 0;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:bold;color:var(--teal)}
+nav .logo img{height:36px;width:36px;object-fit:contain}
+nav ul{list-style:none;display:flex;gap:24px}
+nav ul li a{font-size:14px;color:var(--dark);transition:var(--transition)}
+nav ul li a:hover{color:var(--teal)}
+@media(max-width:768px){nav ul{display:none}}
+
+.hero{min-height:100vh;background:url('photos/hero.png') center/cover no-repeat;display:flex;align-items:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(224,242,254,.85),rgba(255,255,255,.5))}
+.hero-content{position:relative;z-index:1;padding:20px 40px;max-width:650px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--dark);margin-bottom:16px}
+.hero h1 .brand{color:var(--teal)}
+.hero p{font-size:clamp(1rem,2vw,1.2rem);color:#555;margin-bottom:32px;line-height:1.7}
+.hero .cta{display:inline-block;background:var(--teal);color:#fff;padding:14px 36px;border-radius:30px;font-size:16px;transition:var(--transition);font-weight:bold}
+.hero .cta:hover{background:#0b7c72;transform:translateY(-2px)}
+
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--dark);margin-bottom:12px}
+.section-title .line{width:60px;height:3px;background:var(--teal);margin:0 auto 16px}
+.section-title p{color:#888;font-size:16px}
+
+.services{background:var(--lightblue)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:#fff;border-radius:14px;padding:32px 24px;text-align:center;transition:var(--transition);box-shadow:0 2px 15px rgba(0,0,0,.05)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 10px 35px rgba(13,148,136,.12)}
+.service-card .icon{width:64px;height:64px;margin:0 auto 20px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.service-card .icon svg{width:28px;height:28px;fill:#fff}
+.service-card h3{font-size:18px;margin-bottom:10px;color:var(--teal)}
+.service-card p{color:#777;font-size:14px;line-height:1.7}
+
+.team{background:#fff}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.team-img{border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.team-text h3{font-size:24px;color:var(--teal);margin-bottom:16px}
+.team-text p{line-height:1.9;color:#555;margin-bottom:14px}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr}}
+
+.facilities{background:var(--lightblue)}
+.facilities-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.facilities-img{border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.facilities-text h3{font-size:24px;color:var(--teal);margin-bottom:16px}
+.facilities-text p{line-height:1.9;color:#555;margin-bottom:14px}
+@media(max-width:768px){.facilities-grid{grid-template-columns:1fr}.facilities-img{order:-1}}
+
+.testimonials{background:#fff}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.testimonial-card{background:var(--lightblue);border-radius:14px;padding:30px;position:relative}
+.testimonial-card .stars{color:#f59e0b;font-size:18px;margin-bottom:12px}
+.testimonial-card p{color:#555;line-height:1.8;font-style:italic;margin-bottom:16px}
+.testimonial-card .author{font-weight:bold;color:var(--teal);font-size:14px}
+
+.contact{background:var(--teal);color:#fff}
+.contact .section-title h2{color:#fff}
+.contact .section-title p{color:rgba(255,255,255,.7)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info h3{font-size:22px;margin-bottom:20px}
+.contact-info p{margin-bottom:12px;line-height:1.8;color:rgba(255,255,255,.9)}
+.contact form{display:flex;flex-direction:column;gap:14px}
+.contact input,.contact select,.contact textarea{padding:14px;border:none;border-radius:10px;font-size:15px;font-family:inherit}
+.contact textarea{height:100px;resize:vertical}
+.contact button{background:#fff;color:var(--teal);border:none;padding:14px;border-radius:10px;font-size:16px;cursor:pointer;font-weight:bold;transition:var(--transition)}
+.contact button:hover{background:var(--lightblue)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+
+footer{background:var(--dark);color:#aaa;text-align:center;padding:30px 20px;font-size:14px}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body data-lang="zh">
+
+<button class="lang-toggle" onclick="toggleLang()">EN / 中</button>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="TrustDental Logo">安心牙醫</a>
+    <ul>
+      <li><a href="#services"><span class="zh">服務</span><span class="en">Services</span></a></li>
+      <li><a href="#team"><span class="zh">團隊</span><span class="en">Team</span></a></li>
+      <li><a href="#facilities"><span class="zh">設備</span><span class="en">Facilities</span></a></li>
+      <li><a href="#testimonials"><span class="zh">評價</span><span class="en">Reviews</span></a></li>
+      <li><a href="#contact"><span class="zh">預約</span><span class="en">Book</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content fade-up">
+    <h1><span class="zh"><span class="brand">安心</span>牙醫</span><span class="en"><span class="brand">Trust</span>Dental</span></h1>
+    <p><span class="zh">專業、溫暖、值得信賴。以先進技術與細心照護，守護您與家人的口腔健康。</span><span class="en">Professional, warm, and trustworthy. Advanced technology and attentive care to protect your family's oral health.</span></p>
+    <a href="#contact" class="cta"><span class="zh">立即預約</span><span class="en">Book Appointment</span></a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">診療項目</span><span class="en">Our Services</span></h2>
+      <div class="line"></div>
+      <p><span class="zh">全方位牙科照護，滿足您的一切需求</span><span class="en">Comprehensive dental care for all your needs</span></p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h3><span class="zh">人工植牙</span><span class="en">Dental Implants</span></h3>
+        <p><span class="zh">採用頂級植體品牌，搭配數位導航技術，精準安全，恢復自然咀嚼功能。</span><span class="en">Premium implant brands with digital navigation technology for precise, safe restoration of natural chewing function.</span></p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-1 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z"/></svg></div>
+        <h3><span class="zh">齒列矯正</span><span class="en">Orthodontics</span></h3>
+        <p><span class="zh">傳統矯正與隱形矯正方案，量身打造最適合您的治療計畫。</span><span class="en">Traditional braces and clear aligner options, with treatment plans customized for you.</span></p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16z"/></svg></div>
+        <h3><span class="zh">牙齒美白</span><span class="en">Teeth Whitening</span></h3>
+        <p><span class="zh">冷光美白與居家美白雙重方案，安全有效，讓笑容更自信閃耀。</span><span class="en">In-office and at-home whitening solutions for a safely brighter, more confident smile.</span></p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H8v-2h4v2zm4-4H8v-2h8v2zm0-4H8V7h8v2z"/></svg></div>
+        <h3><span class="zh">一般牙科</span><span class="en">General Dentistry</span></h3>
+        <p><span class="zh">定期檢查、洗牙、補牙、根管治療等基礎牙科服務，守護日常口腔健康。</span><span class="en">Checkups, cleaning, fillings, root canal — foundational care for everyday oral health.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">專業團隊</span><span class="en">Our Team</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-img fade-left"><img src="photos/team.png" alt="Dental Team"></div>
+      <div class="team-text fade-right">
+        <h3><span class="zh">經驗豐富的醫療團隊</span><span class="en">Experienced Medical Team</span></h3>
+        <p><span class="zh">安心牙醫由多位資深牙醫師組成，涵蓋植牙、矯正、牙周、兒童牙科等專科。每位醫師皆持續進修，掌握最新醫療技術。</span><span class="en">TrustDental comprises senior dentists specializing in implants, orthodontics, periodontics, and pediatric dentistry. Each physician continuously advances their skills with the latest techniques.</span></p>
+        <p><span class="zh">我們相信，溫暖的溝通與耐心的傾聽，和精湛的醫術同樣重要。</span><span class="en">We believe warm communication and patient listening are just as important as clinical excellence.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facilities" id="facilities">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">先進設備</span><span class="en">Our Facilities</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="facilities-grid">
+      <div class="facilities-text fade-left">
+        <h3><span class="zh">頂尖醫療環境</span><span class="en">State-of-the-Art Environment</span></h3>
+        <p><span class="zh">引進 3D 電腦斷層掃描、數位口掃機、水雷射等先進設備，搭配舒適的診療空間，讓每次看診都是安心的體驗。</span><span class="en">Equipped with 3D CT scanning, digital oral scanners, and water laser technology in a comfortable clinical environment for a reassuring experience every visit.</span></p>
+        <p><span class="zh">全診所嚴格執行感染控制，所有器械均經高壓滅菌處理。</span><span class="en">Strict infection control throughout the clinic with all instruments undergoing high-pressure sterilization.</span></p>
+      </div>
+      <div class="facilities-img fade-right"><img src="photos/treatment.png" alt="Treatment Room"></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">患者好評</span><span class="en">Patient Testimonials</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p><span class="zh">「第一次看牙不再緊張！醫師很有耐心，環境也很舒適，植牙效果非常自然。」</span><span class="en">"First time not feeling anxious at the dentist! The doctor was very patient, the environment comfortable, and my implant looks completely natural."</span></p>
+        <div class="author"><span class="zh">— 陳小姐</span><span class="en">— Ms. Chen</span></div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p><span class="zh">「帶小朋友來看牙，護理師和醫師都很親切，小孩完全不害怕，非常推薦！」</span><span class="en">"Brought my kids here — the nurses and doctors were so friendly that my children weren't scared at all. Highly recommended!"</span></p>
+        <div class="author"><span class="zh">— 王先生</span><span class="en">— Mr. Wang</span></div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p><span class="zh">「矯正諮詢很詳細，醫師會用模型解說，讓我完全理解治療方案。」</span><span class="en">"The orthodontic consultation was thorough — the doctor used models to explain, so I fully understood the treatment plan."</span></p>
+        <div class="author"><span class="zh">— 林小姐</span><span class="en">— Ms. Lin</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">預約看診</span><span class="en">Book an Appointment</span></h2>
+      <div class="line"></div>
+      <p><span class="zh">線上預約或來電諮詢，我們竭誠為您服務</span><span class="en">Book online or call us — we're here for you</span></p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-left">
+        <h3><span class="zh">診所資訊</span><span class="en">Clinic Info</span></h3>
+        <p><span class="zh">地址：新北市板橋區文化路一段 200 號</span><span class="en">Address: No. 200, Sec. 1, Wenhua Rd., Banqiao Dist., New Taipei</span></p>
+        <p><span class="zh">電話：02-8765-4321</span><span class="en">Phone: 02-8765-4321</span></p>
+        <p><span class="zh">看診時間：週一至週六 9:00 - 21:00</span><span class="en">Hours: Mon–Sat 9:00 AM – 9:00 PM</span></p>
+        <p>Email: info@trustdental.tw</p>
+      </div>
+      <form class="fade-right" onsubmit="event.preventDefault()">
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <select>
+          <option value=""><span class="zh">選擇服務項目</span></option>
+          <option>植牙 / Implants</option>
+          <option>矯正 / Orthodontics</option>
+          <option>美白 / Whitening</option>
+          <option>一般牙科 / General</option>
+        </select>
+        <textarea placeholder="Additional notes"></textarea>
+        <button type="submit"><span class="zh">送出預約</span><span class="en">Submit Booking</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 安心牙醫 TrustDental. All rights reserved.</p>
+</footer>
+
+<button class="bgm-btn" onclick="toggleBgm()" aria-label="Toggle music">
+  <svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){const b=document.body;b.dataset.lang=b.dataset.lang==='zh'?'en':'zh'}
+function toggleBgm(){const a=document.getElementById('bgm'),btn=document.querySelector('.bgm-btn');if(a.paused){a.play();btn.classList.add('playing')}else{a.pause();btn.classList.remove('playing')}}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山嵐旅宿 MistLodge — 山間秘境住宿 | Mountain Lodge Retreat</title>
+<meta name="description" content="山嵐旅宿 MistLodge，隱身山林間的質感旅宿，體驗大自然的寧靜與療癒。">
+<meta name="keywords" content="山嵐旅宿, MistLodge, 民宿, 山林住宿, 度假, mountain lodge, retreat">
+<link rel="icon" type="image/png" href="logos/logo_final.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "山嵐旅宿 MistLodge",
+  "description": "隱身山林間的質感旅宿體驗",
+  "image": "photos/hero.png",
+  "url": "https://mistlodge.com",
+  "address": {"@type": "PostalAddress", "addressLocality": "Nantou", "addressCountry": "TW"},
+  "priceRange": "$$",
+  "starRating": {"@type": "Rating", "ratingValue": "4.8"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Room Types",
+    "itemListElement": [
+      {"@type": "Offer", "name": "山景雙人房", "price": "4800", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "森林家庭房", "price": "7200", "priceCurrency": "TWD"},
+      {"@type": "Offer", "name": "雲端套房", "price": "12000", "priceCurrency": "TWD"}
+    ]
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#2d5a3d;--brown:#8b6914;--cream:#f5f0e8;--dark:#1a2e1f;--mid:#6b7c6f;--light-green:#e8f0e8}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .3s}
+nav.scrolled{background:rgba(245,240,232,.97);box-shadow:0 1px 15px rgba(0,0,0,.06)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.3rem;color:var(--green);letter-spacing:3px}
+.logo img{height:32px;margin-right:8px;vertical-align:middle}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a{color:var(--dark);text-decoration:none;font-size:.85rem;opacity:.7;transition:opacity .3s;letter-spacing:1px}
+.nav-links a:hover{opacity:1}
+.btn{display:inline-block;padding:12px 28px;border-radius:4px;font-weight:400;text-decoration:none;cursor:pointer;border:none;font-size:.9rem;letter-spacing:1px;transition:all .3s}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:#1e4a2d;transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--green);color:var(--green);background:transparent}
+.btn-outline:hover{background:var(--green);color:#fff}
+
+.bgm-btn{position:fixed;bottom:24px;right:24px;z-index:99;width:48px;height:48px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(45,90,61,.3);transition:transform .2s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:20px;height:20px;fill:#fff}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 12px rgba(45,90,61,.3)}50%{box-shadow:0 4px 25px rgba(45,90,61,.6)}}
+
+.lang-toggle{background:transparent;border:1px solid var(--green);color:var(--green);padding:5px 12px;border-radius:4px;cursor:pointer;font-size:.8rem;letter-spacing:1px;transition:all .3s}
+.lang-toggle:hover{background:var(--green);color:#fff}
+
+/* HERO PARALLAX */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:-20%;background:url('photos/hero.png') center/cover no-repeat;will-change:transform}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,46,31,.3),rgba(245,240,232,.6) 80%,var(--cream))}
+.hero-content{position:relative;z-index:2;padding:40px 20px}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:400;letter-spacing:8px;color:var(--dark);margin-bottom:12px}
+.hero .subtitle{color:var(--green);font-size:1rem;letter-spacing:4px;margin-bottom:8px}
+.hero p{font-size:1rem;opacity:.7;margin:0 auto 32px;max-width:480px;line-height:1.8}
+.divider{width:60px;height:1px;background:var(--green);margin:20px auto}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;letter-spacing:4px;margin-bottom:8px}
+.section-title .accent{color:var(--green)}
+.section-title p{opacity:.6;font-size:.95rem;line-height:1.7}
+
+/* ROOMS */
+.rooms-section{background:var(--light-green)}
+.rooms-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:40px}
+.rooms-header img{width:100%;border-radius:8px}
+.rooms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.room-card{background:#fff;border-radius:8px;padding:32px 24px;border:1px solid rgba(45,90,61,.1);transition:transform .3s,box-shadow .3s}
+.room-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.room-icon{font-size:2rem;margin-bottom:12px}
+.room-name{font-size:1.1rem;letter-spacing:2px;margin-bottom:8px;color:var(--green)}
+.room-price{font-size:1.4rem;color:var(--brown);margin-bottom:12px}
+.room-price small{font-size:.8rem;color:var(--mid)}
+.room-desc{font-size:.88rem;color:var(--mid);line-height:1.7}
+
+/* EXPERIENCE */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.exp-grid img{width:100%;border-radius:8px;aspect-ratio:4/3;object-fit:cover}
+.exp-text{padding:20px 0}
+.exp-text h3{font-size:1.3rem;letter-spacing:2px;margin-bottom:14px;color:var(--green)}
+.exp-text p{color:var(--mid);line-height:1.8;margin-bottom:12px;font-size:.92rem}
+.exp-list{list-style:none;margin-top:16px}
+.exp-list li{padding:8px 0;font-size:.9rem;color:var(--mid)}
+.exp-list li::before{content:'🌿';margin-right:8px}
+
+/* LOCATION */
+.location-section{background:var(--light-green)}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.location-info h3{font-size:1.3rem;letter-spacing:2px;margin-bottom:16px;color:var(--green)}
+.location-info p{color:var(--mid);line-height:1.8;font-size:.92rem;margin-bottom:12px}
+.map-placeholder{background:var(--green);border-radius:8px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;letter-spacing:2px;opacity:.8}
+
+/* BOOKING */
+.booking-form{max-width:600px;margin:0 auto;background:#fff;padding:40px;border-radius:8px;border:1px solid rgba(45,90,61,.1)}
+.booking-form input,.booking-form select{width:100%;padding:12px 16px;border:1px solid rgba(45,90,61,.15);border-radius:4px;font-size:.9rem;font-family:inherit;background:transparent;margin-bottom:14px;transition:border-color .3s}
+.booking-form input:focus,.booking-form select:focus{border-color:var(--green);outline:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+footer{padding:40px 0;text-align:center;border-top:1px solid rgba(45,90,61,.1)}
+footer p{opacity:.5;font-size:.8rem;letter-spacing:1px}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.btn):not(.lang-toggle){display:none}
+  .rooms-header,.exp-grid,.location-grid,.form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="logo"><img src="logos/logo_final.png" alt="山嵐旅宿 Logo">山嵐旅宿</div>
+    <div class="nav-links">
+      <a href="#rooms" data-zh="房型" data-en="Rooms">房型</a>
+      <a href="#experience" data-zh="體驗" data-en="Experience">體驗</a>
+      <a href="#location" data-zh="位置" data-en="Location">位置</a>
+      <a href="#booking" data-zh="預訂" data-en="Book">預訂</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="subtitle reveal">MISTLODGE</p>
+    <h1 class="reveal" data-zh="山嵐旅宿" data-en="MistLodge">山嵐旅宿</h1>
+    <div class="divider reveal"></div>
+    <p class="reveal" data-zh="隱身山林之間，與自然共呼吸。在雲霧繚繞的山巔，找到屬於你的寧靜時光。" data-en="Nestled among the mountains, breathe with nature. Find your moment of serenity above the clouds.">隱身山林之間，與自然共呼吸。在雲霧繚繞的山巔，找到屬於你的寧靜時光。</p>
+    <a href="#booking" class="btn btn-primary" data-zh="立即預訂" data-en="Book Now">立即預訂</a>
+  </div>
+</section>
+
+<section class="rooms-section" id="rooms">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="精選 <span class='accent'>房型</span>" data-en="Our <span class='accent'>Rooms</span>">精選 <span class="accent">房型</span></h2>
+      <p data-zh="每間房都擁有獨特的山林視野" data-en="Every room offers a unique mountain view">每間房都擁有獨特的山林視野</p>
+    </div>
+    <div class="rooms-header reveal">
+      <img src="photos/room.png" alt="Room View" loading="lazy">
+      <div>
+        <h3 style="font-size:1.3rem;letter-spacing:2px;margin-bottom:14px;color:var(--green)" data-zh="與自然共眠" data-en="Sleep with Nature">與自然共眠</h3>
+        <p style="color:var(--mid);line-height:1.8;font-size:.92rem" data-zh="每間房型皆採用天然木質建材，搭配落地窗設計，讓你在清晨被山嵐與鳥鳴喚醒，享受最純粹的山林生活。" data-en="Each room features natural wood materials and floor-to-ceiling windows, letting you wake to mountain mist and birdsong for the purest forest living experience.">每間房型皆採用天然木質建材，搭配落地窗設計，讓你在清晨被山嵐與鳥鳴喚醒，享受最純粹的山林生活。</p>
+      </div>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card reveal">
+        <div class="room-icon">🏔️</div>
+        <div class="room-name" data-zh="山景雙人房" data-en="Mountain View Double">山景雙人房</div>
+        <div class="room-price">NT$ 4,800 <small data-zh="/晚" data-en="/night">/晚</small></div>
+        <p class="room-desc" data-zh="面山落地窗、檜木浴缸、獨立陽台。適合雙人浪漫旅行。" data-en="Mountain-facing windows, cypress bathtub, private balcony. Perfect for romantic getaways.">面山落地窗、檜木浴缸、獨立陽台。適合雙人浪漫旅行。</p>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-icon">🌲</div>
+        <div class="room-name" data-zh="森林家庭房" data-en="Forest Family Suite">森林家庭房</div>
+        <div class="room-price">NT$ 7,200 <small data-zh="/晚" data-en="/night">/晚</small></div>
+        <p class="room-desc" data-zh="寬敞空間、上下舖設計、兒童遊戲角、家庭專屬露台。" data-en="Spacious layout, bunk beds, children's play corner, family terrace.">寬敞空間、上下舖設計、兒童遊戲角、家庭專屬露台。</p>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-icon">☁️</div>
+        <div class="room-name" data-zh="雲端套房" data-en="Cloud Suite">雲端套房</div>
+        <div class="room-price">NT$ 12,000 <small data-zh="/晚" data-en="/night">/晚</small></div>
+        <p class="room-desc" data-zh="頂樓獨立套房、360度環景、私人湯屋、專屬管家服務。" data-en="Rooftop suite, 360-degree panorama, private hot spring, personal concierge.">頂樓獨立套房、360度環景、私人湯屋、專屬管家服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="山林 <span class='accent'>體驗</span>" data-en="Mountain <span class='accent'>Experience</span>">山林 <span class="accent">體驗</span></h2>
+      <p data-zh="在大自然中找回生活的節奏" data-en="Rediscover life's rhythm in nature">在大自然中找回生活的節奏</p>
+    </div>
+    <div class="exp-grid">
+      <div class="reveal-left">
+        <img src="photos/view.png" alt="Mountain View" loading="lazy">
+      </div>
+      <div class="exp-text reveal-right">
+        <h3 data-zh="沉浸自然" data-en="Immerse in Nature">沉浸自然</h3>
+        <p data-zh="我們精心策劃多種山林體驗活動，讓每位旅人都能深度感受大自然的魅力。" data-en="We curate diverse mountain experiences, allowing every traveler to deeply connect with nature's beauty.">我們精心策劃多種山林體驗活動，讓每位旅人都能深度感受大自然的魅力。</p>
+        <ul class="exp-list">
+          <li data-zh="清晨森林浴導覽" data-en="Morning forest bathing tour">清晨森林浴導覽</li>
+          <li data-zh="日出觀景步道" data-en="Sunrise viewpoint trail">日出觀景步道</li>
+          <li data-zh="星空觀測之夜" data-en="Stargazing night">星空觀測之夜</li>
+          <li data-zh="在地茶席體驗" data-en="Local tea ceremony">在地茶席體驗</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-grid" style="margin-top:40px">
+      <div class="exp-text reveal-left">
+        <h3 data-zh="在地美食" data-en="Local Cuisine">在地美食</h3>
+        <p data-zh="選用在地小農食材，主廚精心料理每一道餐點，從早餐到晚餐，品嚐山林間最鮮美的味道。" data-en="Using locally-sourced ingredients, our chef crafts every meal from breakfast to dinner with the freshest mountain flavors.">選用在地小農食材，主廚精心料理每一道餐點，從早餐到晚餐，品嚐山林間最鮮美的味道。</p>
+      </div>
+      <div class="reveal-right">
+        <img src="photos/nature.png" alt="Nature Experience" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location-section" id="location">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="交通 <span class='accent'>位置</span>" data-en="Our <span class='accent'>Location</span>">交通 <span class="accent">位置</span></h2>
+    </div>
+    <div class="location-grid">
+      <div class="location-info reveal-left">
+        <h3 data-zh="如何抵達" data-en="How to Get Here">如何抵達</h3>
+        <p data-zh="地址：南投縣鹿谷鄉山嵐路 88 號" data-en="Address: No. 88, Shanlan Rd., Lugu Township, Nantou">地址：南投縣鹿谷鄉山嵐路 88 號</p>
+        <p data-zh="自行開車：國道三號竹山交流道下，車程約 40 分鐘" data-en="By car: 40 min from Zhushan IC on Freeway 3">自行開車：國道三號竹山交流道下，車程約 40 分鐘</p>
+        <p data-zh="接駁服務：提供台中高鐵站免費接駁（需預約）" data-en="Shuttle: Free pickup from Taichung HSR Station (reservation required)">接駁服務：提供台中高鐵站免費接駁（需預約）</p>
+        <p data-zh="電話：049-275-0088" data-en="Phone: +886-49-275-0088">電話：049-275-0088</p>
+      </div>
+      <div class="map-placeholder reveal-right" data-zh="地圖載入中..." data-en="Map loading...">地圖載入中...</div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="線上 <span class='accent'>預訂</span>" data-en="Online <span class='accent'>Booking</span>">線上 <span class="accent">預訂</span></h2>
+      <p data-zh="填寫以下資訊，我們將於 24 小時內確認您的訂房" data-en="Fill in the details below and we'll confirm within 24 hours">填寫以下資訊，我們將於 24 小時內確認您的訂房</p>
+    </div>
+    <form class="booking-form reveal" onsubmit="return false">
+      <div class="form-row">
+        <input type="text" placeholder="姓名 / Name">
+        <input type="tel" placeholder="電話 / Phone">
+      </div>
+      <input type="email" placeholder="Email">
+      <div class="form-row">
+        <input type="date" placeholder="入住日期 / Check-in">
+        <input type="date" placeholder="退房日期 / Check-out">
+      </div>
+      <select>
+        <option value="" data-zh="選擇房型" data-en="Select room type">選擇房型</option>
+        <option data-zh="山景雙人房" data-en="Mountain View Double">山景雙人房</option>
+        <option data-zh="森林家庭房" data-en="Forest Family Suite">森林家庭房</option>
+        <option data-zh="雲端套房" data-en="Cloud Suite">雲端套房</option>
+      </select>
+      <button class="btn btn-primary" style="width:100%" data-zh="送出預訂" data-en="Submit Booking">送出預訂</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 山嵐旅宿 MistLodge. All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+// Parallax
+const heroBg=document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(y<window.innerHeight){heroBg.style.transform='translateY('+y*0.3+'px)'}
+});
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgmAudio.pause();bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.classList.add('playing')}
+  playing=!playing;
+});
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.querySelector('.lang-toggle').textContent=lang==='zh'?'EN':'中文';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+}
+
+const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.15});
+revealEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

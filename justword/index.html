@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>正言法律 JustWord — 專業法律事務所 | Law Firm</title>
+<meta name="description" content="正言法律事務所提供企業法務、訴訟代理、智慧財產權等專業法律服務，守護您的權益。">
+<meta name="keywords" content="正言法律, JustWord, 律師事務所, 法律服務, law firm, legal services">
+<link rel="icon" type="image/png" href="logos/logo_final.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "正言法律 JustWord",
+  "description": "專業法律事務所，提供企業法務、訴訟代理、智慧財產權等法律服務",
+  "image": "photos/hero.png",
+  "url": "https://justword.com",
+  "address": {"@type": "PostalAddress", "streetAddress": "信義路五段 7 號 30 樓", "addressLocality": "Taipei", "addressCountry": "TW"},
+  "telephone": "+886-2-8101-0000",
+  "priceRange": "$$$",
+  "areaServed": {"@type": "Country", "name": "TW"},
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Legal Services",
+    "itemListElement": [
+      {"@type": "Offer", "name": "企業法務"},
+      {"@type": "Offer", "name": "訴訟代理"},
+      {"@type": "Offer", "name": "智慧財產權"}
+    ]
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2332;--gold:#c8a45e;--white:#ffffff;--light:#f8f9fa;--mid:#6b7b8d;--dark-gray:#2a3a4e}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;background:var(--white);color:var(--navy);overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .3s}
+nav.scrolled{background:rgba(26,35,50,.97);box-shadow:0 2px 20px rgba(0,0,0,.15)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.3rem;color:var(--gold);letter-spacing:3px;font-weight:400}
+.logo img{height:32px;margin-right:8px;vertical-align:middle}
+nav:not(.scrolled) .logo{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;letter-spacing:1px;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-block;padding:12px 28px;border-radius:4px;font-weight:400;text-decoration:none;cursor:pointer;border:none;font-size:.9rem;letter-spacing:1px;transition:all .3s}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:#b8943e;transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);background:transparent}
+.btn-outline:hover{background:var(--gold);color:var(--navy)}
+.btn-outline-dark{border:1px solid var(--navy);color:var(--navy);background:transparent}
+.btn-outline-dark:hover{background:var(--navy);color:#fff}
+
+.bgm-btn{position:fixed;bottom:24px;right:24px;z-index:99;width:48px;height:48px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(26,35,50,.3);transition:transform .2s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:20px;height:20px;fill:var(--gold)}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 12px rgba(26,35,50,.3)}50%{box-shadow:0 4px 25px rgba(200,164,94,.5)}}
+
+.lang-toggle{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:5px 12px;border-radius:4px;cursor:pointer;font-size:.8rem;letter-spacing:1px;transition:all .3s}
+.lang-toggle:hover{background:var(--gold);color:var(--navy)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,35,50,.92),rgba(26,35,50,.7))}
+.hero-content{position:relative;z-index:2;max-width:650px;padding:100px 0 60px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:400;letter-spacing:4px;color:#fff;margin-bottom:12px;line-height:1.3}
+.hero h1 span{color:var(--gold)}
+.hero p{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.8;margin-bottom:32px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.gold-line{width:60px;height:2px;background:var(--gold);margin-bottom:20px}
+
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;letter-spacing:4px;margin-bottom:8px}
+.section-title .accent{color:var(--gold)}
+.section-title p{opacity:.6;font-size:.95rem;line-height:1.7}
+
+/* PRACTICE AREAS */
+.practice-section{background:var(--light)}
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.practice-card{background:#fff;padding:32px 24px;border-radius:4px;border-left:3px solid var(--gold);transition:transform .3s,box-shadow .3s}
+.practice-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.practice-icon{font-size:1.8rem;margin-bottom:12px}
+.practice-card h3{font-size:1.05rem;letter-spacing:2px;margin-bottom:8px;color:var(--navy)}
+.practice-card p{font-size:.88rem;color:var(--mid);line-height:1.7}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.team-img img{width:100%;border-radius:4px}
+.team-text h3{font-size:1.3rem;letter-spacing:2px;margin-bottom:16px}
+.team-text p{color:var(--mid);line-height:1.8;font-size:.92rem;margin-bottom:14px}
+.team-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.t-stat{text-align:center;padding:16px;background:var(--light);border-radius:4px}
+.t-stat-num{font-size:1.6rem;color:var(--gold);font-weight:400}
+.t-stat-label{font-size:.78rem;color:var(--mid);margin-top:4px}
+
+/* WHY US */
+.why-section{background:var(--navy);color:#fff}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.why-img img{width:100%;border-radius:4px}
+.why-text h3{font-size:1.3rem;letter-spacing:2px;margin-bottom:16px;color:var(--gold)}
+.why-text p{color:rgba(255,255,255,.7);line-height:1.8;font-size:.92rem;margin-bottom:14px}
+.why-list{list-style:none}
+.why-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.9rem;color:rgba(255,255,255,.8)}
+.why-list li::before{content:'■';color:var(--gold);margin-right:10px;font-size:.6rem}
+
+/* OFFICE */
+.office-img{text-align:center}
+.office-img img{width:100%;border-radius:4px;max-height:400px;object-fit:cover}
+
+/* CONTACT */
+.contact-section{background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info h3{font-size:1.2rem;letter-spacing:2px;margin-bottom:20px}
+.contact-info p{color:var(--mid);line-height:1.8;margin-bottom:10px;font-size:.9rem}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:4px;font-size:.9rem;font-family:inherit;background:#fff;margin-bottom:14px;transition:border-color .3s}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:var(--gold);outline:none}
+.contact-form textarea{height:120px;resize:vertical}
+
+footer{background:var(--navy);padding:40px 0;text-align:center}
+footer p{color:rgba(255,255,255,.4);font-size:.8rem;letter-spacing:1px}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links a:not(.btn):not(.lang-toggle){display:none}
+  .team-grid,.why-grid,.contact-grid{grid-template-columns:1fr}
+  .team-stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="logo"><img src="logos/logo_final.png" alt="正言法律 Logo">正言法律</div>
+    <div class="nav-links">
+      <a href="#practice" data-zh="業務領域" data-en="Practice">業務領域</a>
+      <a href="#team" data-zh="專業團隊" data-en="Team">專業團隊</a>
+      <a href="#why" data-zh="為何選擇" data-en="Why Us">為何選擇</a>
+      <a href="#contact" data-zh="聯繫我們" data-en="Contact">聯繫我們</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="gold-line reveal"></div>
+    <h1 class="reveal" data-zh="以<span>正義</span>為言，<br>以<span>專業</span>為守" data-en="Speaking <span>Justice</span>,<br>Guarding with <span>Expertise</span>">以<span>正義</span>為言，<br>以<span>專業</span>為守</h1>
+    <p class="reveal" data-zh="正言法律事務所，匯聚資深律師團隊，專注企業法務、訴訟代理、智慧財產權等領域，為您的權益提供最堅實的法律後盾。" data-en="JustWord Law Firm brings together a team of senior attorneys, specializing in corporate law, litigation, and intellectual property, providing the strongest legal protection for your rights.">正言法律事務所，匯聚資深律師團隊，專注企業法務、訴訟代理、智慧財產權等領域，為您的權益提供最堅實的法律後盾。</p>
+    <div class="hero-btns reveal">
+      <a href="#contact" class="btn btn-primary" data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</a>
+      <a href="#practice" class="btn btn-outline" data-zh="了解服務" data-en="Our Services">了解服務</a>
+    </div>
+  </div>
+</section>
+
+<section class="practice-section" id="practice">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="業務 <span class='accent'>領域</span>" data-en="Practice <span class='accent'>Areas</span>">業務 <span class="accent">領域</span></h2>
+      <p data-zh="橫跨六大法律領域，提供全方位專業服務" data-en="Comprehensive services across six major legal domains">橫跨六大法律領域，提供全方位專業服務</p>
+    </div>
+    <div class="practice-grid">
+      <div class="practice-card reveal">
+        <div class="practice-icon">⚖️</div>
+        <h3 data-zh="企業法務" data-en="Corporate Law">企業法務</h3>
+        <p data-zh="公司設立、股權架構、合約審閱、董事會治理等企業全生命週期法律服務。" data-en="Company formation, equity structure, contract review, and board governance for the full corporate lifecycle.">公司設立、股權架構、合約審閱、董事會治理等企業全生命週期法律服務。</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="practice-icon">🏛️</div>
+        <h3 data-zh="訴訟代理" data-en="Litigation">訴訟代理</h3>
+        <p data-zh="民事、刑事、行政訴訟全程代理，從策略擬定到法庭攻防，全力捍衛當事人權益。" data-en="Full representation in civil, criminal, and administrative cases, from strategy to courtroom advocacy.">民事、刑事、行政訴訟全程代理，從策略擬定到法庭攻防，全力捍衛當事人權益。</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="practice-icon">💡</div>
+        <h3 data-zh="智慧財產權" data-en="Intellectual Property">智慧財產權</h3>
+        <p data-zh="專利、商標、著作權申請與維護，營業秘密保護，侵權訴訟處理。" data-en="Patent, trademark, and copyright registration, trade secret protection, and infringement litigation.">專利、商標、著作權申請與維護，營業秘密保護，侵權訴訟處理。</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="practice-icon">🏠</div>
+        <h3 data-zh="不動產法律" data-en="Real Estate">不動產法律</h3>
+        <p data-zh="買賣交易、租賃糾紛、都市更新、土地開發等不動產法律事務。" data-en="Property transactions, lease disputes, urban renewal, and land development legal matters.">買賣交易、租賃糾紛、都市更新、土地開發等不動產法律事務。</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="practice-icon">👥</div>
+        <h3 data-zh="勞動法規" data-en="Labor Law">勞動法規</h3>
+        <p data-zh="勞資糾紛調解、勞動合約擬定、職災補償、解僱爭議處理。" data-en="Labor dispute mediation, employment contracts, workplace injury compensation, and dismissal disputes.">勞資糾紛調解、勞動合約擬定、職災補償、解僱爭議處理。</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="practice-icon">🌐</div>
+        <h3 data-zh="跨境法務" data-en="Cross-border Legal">跨境法務</h3>
+        <p data-zh="國際貿易、外國投資、跨境併購、國際仲裁等涉外法律服務。" data-en="International trade, foreign investment, cross-border M&A, and international arbitration.">國際貿易、外國投資、跨境併購、國際仲裁等涉外法律服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="專業 <span class='accent'>團隊</span>" data-en="Our <span class='accent'>Team</span>">專業 <span class="accent">團隊</span></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-img reveal-left">
+        <img src="photos/meeting.png" alt="Team Meeting" loading="lazy">
+      </div>
+      <div class="team-text reveal-right">
+        <h3 data-zh="經驗豐富的律師團隊" data-en="Experienced Legal Professionals">經驗豐富的律師團隊</h3>
+        <p data-zh="我們的團隊由 15 位資深律師組成，平均執業年資超過 12 年，來自頂尖法學院與國際知名律所，具備深厚的學術底蘊與豐富的實務經驗。" data-en="Our team of 15 senior attorneys averages over 12 years of practice, coming from top law schools and internationally renowned firms with deep academic foundations and extensive practical experience.">我們的團隊由 15 位資深律師組成，平均執業年資超過 12 年，來自頂尖法學院與國際知名律所，具備深厚的學術底蘊與豐富的實務經驗。</p>
+        <div class="team-stats">
+          <div class="t-stat"><div class="t-stat-num">15+</div><div class="t-stat-label" data-zh="資深律師" data-en="Senior Attorneys">資深律師</div></div>
+          <div class="t-stat"><div class="t-stat-num">2,000+</div><div class="t-stat-label" data-zh="成功案件" data-en="Cases Won">成功案件</div></div>
+          <div class="t-stat"><div class="t-stat-num">98%</div><div class="t-stat-label" data-zh="客戶滿意度" data-en="Satisfaction">客戶滿意度</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text reveal-left">
+        <h3 data-zh="為何選擇正言法律" data-en="Why Choose JustWord">為何選擇正言法律</h3>
+        <p data-zh="二十年來，我們始終秉持「正言直行」的理念，為每一位當事人提供最專業、最負責任的法律服務。" data-en="For two decades, we have upheld the principle of 'speaking truth with integrity,' providing the most professional and responsible legal services to every client.">二十年來，我們始終秉持「正言直行」的理念，為每一位當事人提供最專業、最負責任的法律服務。</p>
+        <ul class="why-list">
+          <li data-zh="一對一資深律師專責服務" data-en="One-on-one senior attorney dedicated service">一對一資深律師專責服務</li>
+          <li data-zh="透明合理的收費標準" data-en="Transparent and reasonable fee structure">透明合理的收費標準</li>
+          <li data-zh="24 小時緊急法律諮詢" data-en="24-hour emergency legal consultation">24 小時緊急法律諮詢</li>
+          <li data-zh="跨領域整合型法律解決方案" data-en="Cross-disciplinary integrated legal solutions">跨領域整合型法律解決方案</li>
+          <li data-zh="嚴格的客戶資料保密制度" data-en="Strict client confidentiality protocols">嚴格的客戶資料保密制度</li>
+        </ul>
+      </div>
+      <div class="why-img reveal-right">
+        <img src="photos/court.png" alt="Court" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="office">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="辦公 <span class='accent'>環境</span>" data-en="Our <span class='accent'>Office</span>">辦公 <span class="accent">環境</span></h2>
+      <p data-zh="位於信義區核心地段，提供專業舒適的法律服務空間" data-en="Located in the heart of Xinyi District, offering a professional and comfortable legal service environment">位於信義區核心地段，提供專業舒適的法律服務空間</p>
+    </div>
+    <div class="office-img reveal">
+      <img src="photos/office.png" alt="Office" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="聯繫 <span class='accent'>我們</span>" data-en="Contact <span class='accent'>Us</span>">聯繫 <span class="accent">我們</span></h2>
+      <p data-zh="預約免費法律諮詢，讓我們為您分析案情" data-en="Schedule a free consultation and let us analyze your case">預約免費法律諮詢，讓我們為您分析案情</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3 data-zh="事務所資訊" data-en="Firm Information">事務所資訊</h3>
+        <p data-zh="地址：台北市信義區信義路五段 7 號 30 樓" data-en="Address: 30F, No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei">地址：台北市信義區信義路五段 7 號 30 樓</p>
+        <p data-zh="電話：02-8101-0000" data-en="Phone: +886-2-8101-0000">電話：02-8101-0000</p>
+        <p>Email: contact@justword.com</p>
+        <p data-zh="營業時間：週一至週五 09:00 - 18:00" data-en="Hours: Mon-Fri 9:00 AM - 6:00 PM">營業時間：週一至週五 09:00 - 18:00</p>
+        <p data-zh="緊急專線：0800-000-000（24小時）" data-en="Emergency Line: 0800-000-000 (24hrs)">緊急專線：0800-000-000（24小時）</p>
+      </div>
+      <form class="contact-form reveal-right" onsubmit="return false">
+        <input type="text" placeholder="姓名 / Name">
+        <input type="email" placeholder="Email">
+        <input type="tel" placeholder="電話 / Phone">
+        <select>
+          <option value="" data-zh="選擇諮詢領域" data-en="Select practice area">選擇諮詢領域</option>
+          <option data-zh="企業法務" data-en="Corporate Law">企業法務</option>
+          <option data-zh="訴訟代理" data-en="Litigation">訴訟代理</option>
+          <option data-zh="智慧財產權" data-en="Intellectual Property">智慧財產權</option>
+          <option data-zh="其他" data-en="Other">其他</option>
+        </select>
+        <textarea placeholder="案情描述 / Case Description"></textarea>
+        <button class="btn btn-primary" style="width:100%" data-zh="預約諮詢" data-en="Schedule Consultation">預約諮詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 正言法律事務所 JustWord Law Firm. All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgmAudio.pause();bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.classList.add('playing')}
+  playing=!playing;
+});
+
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.querySelector('.lang-toggle').textContent=lang==='zh'?'EN':'中文';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+}
+
+const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.15});
+revealEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

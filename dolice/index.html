@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>朵莉絲 Dolice — 法式甜點工作室 | French Patisserie</title>
+<meta name="description" content="朵莉絲 Dolice 法式甜點工作室，提供馬卡龍、閃電泡芙、法式蛋糕等精緻甜點。Exquisite French patisserie offering macarons, eclairs, and artisan cakes.">
+<meta name="keywords" content="法式甜點, 馬卡龍, 閃電泡芙, 蛋糕, French patisserie, macarons, eclairs, Dolice, 朵莉絲">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "朵莉絲 Dolice",
+  "description": "法式甜點工作室 — 精緻馬卡龍、閃電泡芙與手工蛋糕",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "台北市", "addressCountry": "TW" },
+  "telephone": "+886-2-2345-6789",
+  "url": "https://dolice.tw",
+  "servesCuisine": "French Pastry",
+  "priceRange": "$$"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#f8b4c8;--cream:#fff5f0;--gold:#c8956c;--dark:#3a2a2a;--transition:0.3s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Noto Serif TC',serif;color:var(--dark);background:var(--cream);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* BGM Button */
+.bgm-btn{position:fixed;bottom:20px;right:20px;z-index:1000;width:50px;height:50px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(200,149,108,.4);transition:var(--transition)}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing svg.play{display:none}
+.bgm-btn:not(.playing) svg.pause{display:none}
+
+/* Lang Toggle */
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--gold);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 2px 10px rgba(0,0,0,.15);transition:var(--transition)}
+.lang-toggle:hover{opacity:.85}
+[data-lang="en"] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,245,240,.95);backdrop-filter:blur(10px);z-index:999;padding:12px 0;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:var(--transition)}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+nav .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:bold;color:var(--gold)}
+nav .logo img{height:36px;width:36px;object-fit:contain}
+nav ul{list-style:none;display:flex;gap:24px}
+nav ul li a{font-size:14px;color:var(--dark);transition:var(--transition)}
+nav ul li a:hover{color:var(--gold)}
+@media(max-width:768px){nav ul{display:none}}
+
+/* Hero */
+.hero{min-height:100vh;background:url('photos/hero.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(248,180,200,.6),rgba(255,245,240,.4))}
+.hero-content{position:relative;z-index:1;text-align:center;padding:20px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--dark);margin-bottom:16px;letter-spacing:4px}
+.hero p{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--gold);margin-bottom:32px;letter-spacing:2px}
+.hero .cta{display:inline-block;background:var(--gold);color:#fff;padding:14px 40px;border-radius:30px;font-size:16px;transition:var(--transition);letter-spacing:1px}
+.hero .cta:hover{background:#b07e5a;transform:translateY(-2px)}
+
+/* Section base */
+section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--dark);margin-bottom:12px}
+.section-title .line{width:60px;height:3px;background:var(--gold);margin:0 auto 16px}
+.section-title p{color:#888;font-size:16px}
+
+/* Products */
+.products{background:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.product-card{background:var(--cream);border-radius:16px;overflow:hidden;transition:var(--transition);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(200,149,108,.2)}
+.product-card img{width:100%;height:220px;object-fit:cover}
+.product-card .info{padding:24px;text-align:center}
+.product-card h3{font-size:20px;color:var(--dark);margin-bottom:8px}
+.product-card .price{color:var(--gold);font-size:18px;font-weight:bold}
+.product-card p{color:#888;font-size:14px;margin-top:8px}
+
+/* Story */
+.story{background:var(--cream)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.story-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.story-text h3{font-size:24px;color:var(--gold);margin-bottom:16px}
+.story-text p{line-height:1.9;color:#555;margin-bottom:16px}
+@media(max-width:768px){.story-grid{grid-template-columns:1fr}}
+
+/* Chef */
+.chef{background:#fff}
+.chef-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.chef-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.chef-text h3{font-size:24px;color:var(--gold);margin-bottom:16px}
+.chef-text p{line-height:1.9;color:#555;margin-bottom:12px}
+@media(max-width:768px){.chef-grid{grid-template-columns:1fr}.chef-img{order:-1}}
+
+/* Contact */
+.contact{background:var(--pink);color:var(--dark)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info h3{font-size:22px;margin-bottom:20px}
+.contact-info p{margin-bottom:12px;line-height:1.8}
+.contact form{display:flex;flex-direction:column;gap:14px}
+.contact input,.contact textarea{padding:14px;border:none;border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+.contact textarea{height:120px;resize:vertical}
+.contact button{background:var(--gold);color:#fff;border:none;padding:14px;border-radius:10px;font-size:16px;cursor:pointer;transition:var(--transition)}
+.contact button:hover{background:#b07e5a}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+
+/* Footer */
+footer{background:var(--dark);color:#ccc;text-align:center;padding:30px 20px;font-size:14px}
+
+/* Animations */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+</style>
+</head>
+<body data-lang="zh">
+
+<button class="lang-toggle" onclick="toggleLang()">EN / 中</button>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logos/logo_final.png" alt="Dolice Logo">朵莉絲</a>
+    <ul>
+      <li><a href="#products"><span class="zh">甜點</span><span class="en">Products</span></a></li>
+      <li><a href="#story"><span class="zh">故事</span><span class="en">Story</span></a></li>
+      <li><a href="#chef"><span class="zh">主廚</span><span class="en">Chef</span></a></li>
+      <li><a href="#contact"><span class="zh">聯繫</span><span class="en">Contact</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content fade-up">
+    <h1><span class="zh">朵莉絲</span><span class="en">Dolice</span></h1>
+    <p><span class="zh">法式甜點工作室 — 每一口都是巴黎的浪漫</span><span class="en">French Patisserie — A taste of Parisian romance</span></p>
+    <a href="#products" class="cta"><span class="zh">探索甜點</span><span class="en">Explore Our Creations</span></a>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">精緻甜點</span><span class="en">Our Patisserie</span></h2>
+      <div class="line"></div>
+      <p><span class="zh">以法式工藝，呈現極致風味</span><span class="en">Crafted with French artistry, delivering exquisite flavors</span></p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Macarons">
+        <div class="info">
+          <h3><span class="zh">經典馬卡龍</span><span class="en">Classic Macarons</span></h3>
+          <p class="price">NT$ 280 / 6<span class="zh">入</span><span class="en">pcs</span></p>
+          <p><span class="zh">外酥內軟，十二種經典風味</span><span class="en">Crisp shell, soft center, twelve classic flavors</span></p>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Eclairs">
+        <div class="info">
+          <h3><span class="zh">閃電泡芙</span><span class="en">Signature Eclairs</span></h3>
+          <p class="price">NT$ 180 / <span class="zh">個</span><span class="en">pc</span></p>
+          <p><span class="zh">巴黎正統配方，手工灌餡</span><span class="en">Authentic Parisian recipe, hand-filled</span></p>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <img src="photos/product.png" alt="Cakes">
+        <div class="info">
+          <h3><span class="zh">季節蛋糕</span><span class="en">Seasonal Cakes</span></h3>
+          <p class="price">NT$ 1,280 / 6"</p>
+          <p><span class="zh">嚴選當季食材，限量供應</span><span class="en">Seasonal ingredients, limited availability</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">我們的故事</span><span class="en">Our Story</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="story-grid">
+      <div class="story-img fade-left"><img src="photos/interior.png" alt="Dolice Interior"></div>
+      <div class="story-text fade-right">
+        <h3><span class="zh">從巴黎到台北的甜蜜旅程</span><span class="en">A Sweet Journey from Paris to Taipei</span></h3>
+        <p><span class="zh">朵莉絲誕生於對法式甜點的純粹熱愛。我們的創辦人在巴黎藍帶學院深造後，將正統法式技藝帶回台灣，融合在地食材，創造出屬於這片土地的浪漫滋味。</span><span class="en">Dolice was born from a pure passion for French patisserie. After training at Le Cordon Bleu in Paris, our founder brought authentic French techniques back to Taiwan, blending local ingredients to create romantic flavors rooted in this land.</span></p>
+        <p><span class="zh">每一件甜點都經過嚴格品質把關，從原料挑選到製作工序，我們堅持手工製作，只為呈現最完美的法式體驗。</span><span class="en">Every creation undergoes rigorous quality control. From ingredient selection to crafting, we insist on handmade excellence to deliver the perfect French experience.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chef" id="chef">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">甜點主廚</span><span class="en">Our Chef</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="chef-grid">
+      <div class="chef-text fade-left">
+        <h3><span class="zh">林芷萱 主廚</span><span class="en">Chef Chih-Hsuan Lin</span></h3>
+        <p><span class="zh">巴黎藍帶學院甜點文憑。曾任職於巴黎米其林三星餐廳甜點部門，擁有超過十五年法式甜點製作經驗。</span><span class="en">Diploma from Le Cordon Bleu Paris. Former pastry chef at a Michelin three-star restaurant in Paris, with over fifteen years of French patisserie expertise.</span></p>
+        <p><span class="zh">「甜點是一種語言，它能傳遞溫暖、愛與幸福。」</span><span class="en">"Pastry is a language — it conveys warmth, love, and happiness."</span></p>
+      </div>
+      <div class="chef-img fade-right"><img src="photos/chef.png" alt="Chef"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <h2><span class="zh">聯繫我們</span><span class="en">Contact Us</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-left">
+        <h3><span class="zh">歡迎蒞臨</span><span class="en">Visit Us</span></h3>
+        <p><span class="zh">地址：台北市大安區仁愛路四段 68 號</span><span class="en">Address: No. 68, Sec. 4, Ren'ai Rd., Da'an Dist., Taipei</span></p>
+        <p><span class="zh">電話：02-2345-6789</span><span class="en">Phone: 02-2345-6789</span></p>
+        <p><span class="zh">營業時間：週二至週日 10:00 - 20:00</span><span class="en">Hours: Tue–Sun 10:00 AM – 8:00 PM</span></p>
+        <p>Email: hello@dolice.tw</p>
+      </div>
+      <form class="fade-right" onsubmit="event.preventDefault()">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button type="submit"><span class="zh">送出訊息</span><span class="en">Send Message</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 朵莉絲 Dolice. All rights reserved.</p>
+</footer>
+
+<button class="bgm-btn" onclick="toggleBgm()" aria-label="Toggle music">
+  <svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){const b=document.body;b.dataset.lang=b.dataset.lang==='zh'?'en':'zh'}
+function toggleBgm(){const a=document.getElementById('bgm'),btn=document.querySelector('.bgm-btn');if(a.paused){a.play();btn.classList.add('playing')}else{a.pause();btn.classList.remove('playing')}}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

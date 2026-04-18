@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLAYBOX — 會員影音串流平台 | Membership Video Streaming</title>
+<meta name="description" content="PLAYBOX 提供最豐富的影音串流內容，支援多裝置觀看，立即加入會員享受無限娛樂。">
+<meta name="keywords" content="PLAYBOX, 影音串流, 會員, 追劇, 電影, streaming, membership">
+<link rel="icon" type="image/png" href="logos/logo_final.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PLAYBOX",
+  "url": "https://playbox.com",
+  "description": "會員影音串流平台，提供電影、劇集、動畫等豐富內容",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://playbox.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7c3aed;--pink:#ec4899;--dark:#0f0f1a;--gray:#1a1a2e;--light:#e2e8f0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--dark);color:var(--light);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .3s}
+nav.scrolled{background:rgba(15,15,26,.95);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.5)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
+.logo img{height:36px;margin-right:8px;vertical-align:middle}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{color:var(--light);text-decoration:none;font-size:.9rem;opacity:.8;transition:opacity .3s}
+.nav-links a:hover{opacity:1}
+.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:700;text-decoration:none;cursor:pointer;border:none;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,.4)}
+.btn-outline{border:2px solid var(--purple);color:var(--purple);background:transparent}
+.btn-outline:hover{background:var(--purple);color:#fff}
+.btn-sm{padding:8px 18px;font-size:.85rem}
+
+/* BGM */
+.bgm-btn{position:fixed;bottom:24px;right:24px;z-index:99;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(124,58,237,.4);transition:transform .2s}
+.bgm-btn:hover{transform:scale(1.1)}
+.bgm-btn svg{width:22px;height:22px;fill:#fff}
+.bgm-btn.playing{animation:pulse-bgm 2s infinite}
+@keyframes pulse-bgm{0%,100%{box-shadow:0 4px 15px rgba(124,58,237,.4)}50%{box-shadow:0 4px 30px rgba(236,72,153,.6)}}
+
+/* LANG */
+.lang-toggle{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.85rem;transition:background .3s}
+.lang-toggle:hover{background:rgba(255,255,255,.2)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,15,26,.92),rgba(124,58,237,.3))}
+.hero-content{position:relative;z-index:2;max-width:650px;padding:100px 0 60px}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero h1 span{background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;opacity:.85;margin-bottom:32px;line-height:1.7}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+
+/* SECTION */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;margin-bottom:12px}
+.section-title h2 span{background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title p{opacity:.7;max-width:600px;margin:0 auto;line-height:1.6}
+
+/* PLANS */
+.plans-section{background:var(--gray)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:36px 28px;text-align:center;transition:transform .3s,border-color .3s}
+.plan-card:hover{transform:translateY(-8px);border-color:var(--purple)}
+.plan-card.featured{border-color:var(--pink);position:relative;overflow:hidden}
+.plan-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--pink))}
+.plan-name{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.plan-price{font-size:2.8rem;font-weight:900;margin:16px 0;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.plan-price small{font-size:.9rem;-webkit-text-fill-color:var(--light);opacity:.6}
+.plan-features{list-style:none;margin:24px 0;text-align:left}
+.plan-features li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.92rem;opacity:.8}
+.plan-features li::before{content:'✓';color:var(--pink);margin-right:10px;font-weight:700}
+
+/* CONTENT LIBRARY */
+.content-section img{width:100%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.content-text h3{font-size:1.6rem;font-weight:700;margin-bottom:16px}
+.content-text p{opacity:.75;line-height:1.7;margin-bottom:20px}
+.content-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.stat{text-align:center;padding:16px;background:rgba(255,255,255,.04);border-radius:12px}
+.stat-num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:.8rem;opacity:.6;margin-top:4px}
+
+/* DEVICES */
+.devices-section{background:var(--gray)}
+.devices-img{text-align:center}
+.devices-img img{max-width:100%;border-radius:16px}
+
+/* SOCIAL */
+.social-section img{width:100%;border-radius:16px}
+
+/* FOOTER */
+footer{background:rgba(0,0,0,.3);padding:40px 0;text-align:center}
+footer p{opacity:.5;font-size:.85rem}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links a:not(.btn):not(.lang-toggle){display:none}
+  .content-grid{grid-template-columns:1fr;text-align:center}
+  .hero-content{padding:80px 0 40px}
+  .content-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="logo"><img src="logos/logo_final.png" alt="PLAYBOX Logo">PLAYBOX</div>
+    <div class="nav-links">
+      <a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+      <a href="#content" data-zh="內容" data-en="Content">內容</a>
+      <a href="#devices" data-zh="裝置" data-en="Devices">裝置</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+      <a href="#plans" class="btn btn-primary btn-sm" data-zh="登入" data-en="Login">登入</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1 class="reveal" data-zh="無限娛樂，<span>盡在指尖</span>" data-en="Unlimited Entertainment, <span>At Your Fingertips</span>">無限娛樂，<span>盡在指尖</span></h1>
+    <p class="reveal" data-zh="數以萬計的電影、劇集、動畫等你探索。隨時隨地，多螢幕同步觀看，開啟你的專屬影音旅程。" data-en="Thousands of movies, series, and animations waiting for you. Watch anytime, anywhere, on multiple screens. Start your streaming journey today.">數以萬計的電影、劇集、動畫等你探索。隨時隨地，多螢幕同步觀看，開啟你的專屬影音旅程。</p>
+    <div class="hero-btns reveal">
+      <a href="#plans" class="btn btn-primary" data-zh="立即加入" data-en="Join Now">立即加入</a>
+      <a href="#content" class="btn btn-outline" data-zh="探索內容" data-en="Explore">探索內容</a>
+    </div>
+  </div>
+</section>
+
+<section class="plans-section" id="plans">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="選擇你的 <span>方案</span>" data-en="Choose Your <span>Plan</span>">選擇你的 <span>方案</span></h2>
+      <p data-zh="靈活的會員方案，滿足每一位觀眾的需求" data-en="Flexible membership plans for every viewer">靈活的會員方案，滿足每一位觀眾的需求</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <div class="plan-name" data-zh="免費方案" data-en="Free">免費方案</div>
+        <div class="plan-price">$0<small>/mo</small></div>
+        <ul class="plan-features">
+          <li data-zh="含廣告觀看" data-en="Ad-supported viewing">含廣告觀看</li>
+          <li data-zh="720p 畫質" data-en="720p quality">720p 畫質</li>
+          <li data-zh="單一裝置" data-en="Single device">單一裝置</li>
+          <li data-zh="基礎內容庫" data-en="Basic library">基礎內容庫</li>
+        </ul>
+        <a href="#" class="btn btn-outline" data-zh="免費開始" data-en="Start Free">免費開始</a>
+      </div>
+      <div class="plan-card featured reveal">
+        <div class="plan-name" data-zh="Premium 方案" data-en="Premium">Premium 方案</div>
+        <div class="plan-price">$299<small>/mo</small></div>
+        <ul class="plan-features">
+          <li data-zh="無廣告觀看" data-en="Ad-free viewing">無廣告觀看</li>
+          <li data-zh="4K Ultra HD" data-en="4K Ultra HD">4K Ultra HD</li>
+          <li data-zh="雙裝置同時觀看" data-en="2 devices simultaneously">雙裝置同時觀看</li>
+          <li data-zh="完整內容庫" data-en="Full library access">完整內容庫</li>
+          <li data-zh="離線下載" data-en="Offline downloads">離線下載</li>
+        </ul>
+        <a href="#" class="btn btn-primary" data-zh="立即訂閱" data-en="Subscribe">立即訂閱</a>
+      </div>
+      <div class="plan-card reveal">
+        <div class="plan-name" data-zh="家庭方案" data-en="Family">家庭方案</div>
+        <div class="plan-price">$449<small>/mo</small></div>
+        <ul class="plan-features">
+          <li data-zh="無廣告觀看" data-en="Ad-free viewing">無廣告觀看</li>
+          <li data-zh="4K Ultra HD + HDR" data-en="4K Ultra HD + HDR">4K Ultra HD + HDR</li>
+          <li data-zh="四裝置同時觀看" data-en="4 devices simultaneously">四裝置同時觀看</li>
+          <li data-zh="完整內容庫" data-en="Full library access">完整內容庫</li>
+          <li data-zh="兒童模式" data-en="Kids mode">兒童模式</li>
+          <li data-zh="5 個個人檔案" data-en="5 profiles">5 個個人檔案</li>
+        </ul>
+        <a href="#" class="btn btn-outline" data-zh="家庭訂閱" data-en="Family Plan">家庭訂閱</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="豐富的 <span>內容庫</span>" data-en="Rich <span>Content Library</span>">豐富的 <span>內容庫</span></h2>
+      <p data-zh="從好萊塢大片到亞洲獨家，應有盡有" data-en="From Hollywood blockbusters to Asian exclusives, we have it all">從好萊塢大片到亞洲獨家，應有盡有</p>
+    </div>
+    <div class="content-grid">
+      <div class="reveal-left">
+        <img src="photos/content.png" alt="Content Library" loading="lazy">
+      </div>
+      <div class="content-text reveal-right">
+        <h3 data-zh="萬部影音，一鍵暢享" data-en="Thousands of titles, one click away">萬部影音，一鍵暢享</h3>
+        <p data-zh="涵蓋電影、劇集、紀錄片、動畫與綜藝節目。每週更新，永遠有新鮮內容等你發掘。" data-en="Covering movies, series, documentaries, animation, and variety shows. Updated weekly with fresh content to discover.">涵蓋電影、劇集、紀錄片、動畫與綜藝節目。每週更新，永遠有新鮮內容等你發掘。</p>
+        <div class="content-stats">
+          <div class="stat"><div class="stat-num">10,000+</div><div class="stat-label" data-zh="影片數量" data-en="Titles">影片數量</div></div>
+          <div class="stat"><div class="stat-num">50+</div><div class="stat-label" data-zh="國家地區" data-en="Regions">國家地區</div></div>
+          <div class="stat"><div class="stat-num">4K</div><div class="stat-label" data-zh="最高畫質" data-en="Max Quality">最高畫質</div></div>
+          <div class="stat"><div class="stat-num">24/7</div><div class="stat-label" data-zh="隨時觀看" data-en="Anytime">隨時觀看</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="devices-section" id="devices">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="多裝置 <span>無縫體驗</span>" data-en="Multi-device <span>Seamless Experience</span>">多裝置 <span>無縫體驗</span></h2>
+      <p data-zh="手機、平板、電腦、電視，無論你在哪裡，都能繼續觀看" data-en="Phone, tablet, PC, TV — continue watching wherever you are">手機、平板、電腦、電視，無論你在哪裡，都能繼續觀看</p>
+    </div>
+    <div class="devices-img reveal">
+      <img src="photos/devices.png" alt="Multi-device Support" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="social">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-text reveal-left">
+        <h3 data-zh="社群互動，一起追劇" data-en="Social Features, Watch Together">社群互動，一起追劇</h3>
+        <p data-zh="分享你的觀影清單、撰寫評論、與好友同步觀看。PLAYBOX 不只是串流平台，更是影迷社群。" data-en="Share watchlists, write reviews, watch simultaneously with friends. PLAYBOX is more than streaming — it's a community.">分享你的觀影清單、撰寫評論、與好友同步觀看。PLAYBOX 不只是串流平台，更是影迷社群。</p>
+        <a href="#" class="btn btn-primary" data-zh="加入社群" data-en="Join Community">加入社群</a>
+      </div>
+      <div class="reveal-right">
+        <img src="photos/social.png" alt="Social Features" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 PLAYBOX. All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="bgm-btn" id="bgmBtn" aria-label="Toggle background music">
+  <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</button>
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+// NAV scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+// BGM
+const bgmBtn=document.getElementById('bgmBtn'),bgmAudio=document.getElementById('bgmAudio');
+let playing=false;
+bgmBtn.addEventListener('click',()=>{
+  if(playing){bgmAudio.pause();bgmBtn.classList.remove('playing')}
+  else{bgmAudio.play();bgmBtn.classList.add('playing')}
+  playing=!playing;
+});
+
+// LANGUAGE
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.querySelector('.lang-toggle').textContent=lang==='zh'?'EN':'中文';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    el.innerHTML=el.getAttribute('data-'+lang);
+  });
+}
+
+// SCROLL REVEAL
+const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.15});
+revealEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

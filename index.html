@@ -254,13 +254,37 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* ===== PORTFOLIO ===== */
+.tag-filter {
+  display: flex; gap: 8px; margin-bottom: 24px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0 12px;
+  scrollbar-width: none;
+}
+.tag-filter::-webkit-scrollbar { display: none; }
+.tag-btn {
+  flex: 0 0 auto; scroll-snap-align: start;
+  background: var(--white); border: 1.5px solid rgba(0,0,0,0.1);
+  color: var(--text-secondary); border-radius: 20px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600;
+  white-space: nowrap; transition: all 0.2s ease;
+  font-family: inherit; cursor: pointer;
+}
+.tag-btn:hover { border-color: var(--hey-blue); color: var(--hey-blue); }
+.tag-btn.active {
+  background: var(--hey-blue); color: var(--white);
+  border-color: var(--hey-blue);
+}
 .portfolio-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
 }
 .portfolio-card {
   display: block; position: relative; border-radius: var(--radius);
   overflow: hidden; aspect-ratio: 4/3;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+}
+.portfolio-card.hidden {
+  display: none;
 }
 .portfolio-card:hover {
   transform: translateY(-4px); box-shadow: var(--shadow-lg);
@@ -286,6 +310,8 @@ button { cursor: pointer; font-family: inherit; }
   .portfolio-grid { gap: 16px; }
   .portfolio-card-bg img { height: 56px; }
   .portfolio-card-name { font-size: 14px; padding: 16px; }
+  .tag-filter { margin-bottom: 32px; }
+  .tag-btn { font-size: 14px; padding: 8px 20px; }
 }
 @media (min-width: 1200px) {
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -513,72 +539,153 @@ button { cursor: pointer; font-family: inherit; }
       <h2 class="section-title" data-zh="作品展示" data-en="Portfolio">作品展示</h2>
       <p class="section-subtitle" data-zh="我們為不同產業打造的品牌網站" data-en="Brand websites we built for various industries">我們為不同產業打造的品牌網站</p>
     </div>
-    <div class="portfolio-grid">
-      <a href="lantern-alley/" class="portfolio-card reveal" target="_blank">
+    <div class="tag-filter" id="tagFilter">
+      <button class="tag-btn active" data-filter="全部">全部</button>
+      <button class="tag-btn" data-filter="餐飲">餐飲</button>
+      <button class="tag-btn" data-filter="電商">電商</button>
+      <button class="tag-btn" data-filter="醫療">醫療</button>
+      <button class="tag-btn" data-filter="工程">工程</button>
+      <button class="tag-btn" data-filter="美業">美業</button>
+      <button class="tag-btn" data-filter="會員制">會員制</button>
+      <button class="tag-btn" data-filter="攝影">攝影</button>
+      <button class="tag-btn" data-filter="旅遊">旅遊</button>
+      <button class="tag-btn" data-filter="專業服務">專業服務</button>
+      <button class="tag-btn" data-filter="科技">科技</button>
+      <button class="tag-btn" data-filter="咖啡">咖啡</button>
+      <button class="tag-btn" data-filter="運動">運動</button>
+      <button class="tag-btn" data-filter="戶外">戶外</button>
+      <button class="tag-btn" data-filter="文創">文創</button>
+      <button class="tag-btn" data-filter="寵物">寵物</button>
+      <button class="tag-btn" data-filter="顧問">顧問</button>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <!-- Existing 11 sites -->
+      <a href="lantern-alley/" class="portfolio-card reveal" target="_blank" data-tags="餐飲,暗色風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a100a,#3a2a1d)">
           <img src="lantern-alley/logos/logo_final.png" alt="燈籠橫丁" loading="lazy">
         </div>
         <div class="portfolio-card-name">燈籠橫丁</div>
       </a>
-      <a href="hanami-wagashi/" class="portfolio-card reveal" target="_blank">
+      <a href="hanami-wagashi/" class="portfolio-card reveal" target="_blank" data-tags="餐飲,精緻風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fff0f5,#ffe0e8)">
           <img src="hanami-wagashi/logos/logo_final.png" alt="花見和菓子" loading="lazy">
         </div>
         <div class="portfolio-card-name">花見和菓子</div>
       </a>
-      <a href="nightcrawler/" class="portfolio-card reveal" target="_blank">
+      <a href="nightcrawler/" class="portfolio-card reveal" target="_blank" data-tags="餐飲,暗黑風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a14,#1a0a24)">
           <img src="nightcrawler/logos/logo_final.png" alt="夜行者" loading="lazy">
         </div>
         <div class="portfolio-card-name">NightCrawler</div>
       </a>
-      <a href="morning-haze/" class="portfolio-card reveal" target="_blank">
+      <a href="morning-haze/" class="portfolio-card reveal" target="_blank" data-tags="咖啡,暖色調">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#faf6f0,#f0e6d6)">
           <img src="morning-haze/logos/logo_final.png" alt="晨霧珈琲" loading="lazy">
         </div>
         <div class="portfolio-card-name">晨霧珈琲</div>
       </a>
-      <a href="ironwake/" class="portfolio-card reveal" target="_blank">
+      <a href="ironwake/" class="portfolio-card reveal" target="_blank" data-tags="運動,高能量">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a0a,#2a1000)">
           <img src="ironwake/logos/logo_final.png" alt="鐵覺" loading="lazy">
         </div>
         <div class="portfolio-card-name">IRONWAKE</div>
       </a>
-      <a href="tiderush/" class="portfolio-card reveal" target="_blank">
+      <a href="tiderush/" class="portfolio-card reveal" target="_blank" data-tags="戶外,熱帶風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a4a6a,#1a8aaa)">
           <img src="tiderush/logos/logo_final.png" alt="浪潮衝浪" loading="lazy">
         </div>
         <div class="portfolio-card-name">TideRush</div>
       </a>
-      <a href="inkverse/" class="portfolio-card reveal" target="_blank">
+      <a href="inkverse/" class="portfolio-card reveal" target="_blank" data-tags="文創,文學風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#f5f0ea,#e8e0d5)">
           <img src="inkverse/logos/logo_final.png" alt="墨語書房" loading="lazy">
         </div>
         <div class="portfolio-card-name">墨語書房</div>
       </a>
-      <a href="oasis-flora/" class="portfolio-card reveal" target="_blank">
+      <a href="oasis-flora/" class="portfolio-card reveal" target="_blank" data-tags="文創,自然風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#e8f5e0,#c8e8b8)">
           <img src="oasis-flora/logos/logo_final.png" alt="綠洲花藝" loading="lazy">
         </div>
         <div class="portfolio-card-name">Oasis Flora</div>
       </a>
-      <a href="furplanet/" class="portfolio-card reveal" target="_blank">
+      <a href="furplanet/" class="portfolio-card reveal" target="_blank" data-tags="寵物,粉彩風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fff0f5,#ffe0f0)">
           <img src="furplanet/logos/logo_final.png" alt="毛星球" loading="lazy">
         </div>
         <div class="portfolio-card-name">FurPlanet</div>
       </a>
-      <a href="neuralarc/" class="portfolio-card reveal" target="_blank">
+      <a href="neuralarc/" class="portfolio-card reveal" target="_blank" data-tags="科技,暗色風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0c0c1a,#1a1030)">
           <img src="neuralarc/logos/logo_final.png" alt="NeuralArc" loading="lazy">
         </div>
         <div class="portfolio-card-name">NeuralArc</div>
       </a>
-      <a href="amcl-consulting/" class="portfolio-card reveal" target="_blank">
+      <a href="amcl-consulting/" class="portfolio-card reveal" target="_blank" data-tags="顧問,企業風">
         <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a2332,#2a3a50)">
           <span style="font-family:'Inter',sans-serif;font-size:28px;font-weight:800;color:#fff;letter-spacing:3px">AMCL</span>
         </div>
         <div class="portfolio-card-name">啟和管理顧問</div>
+      </a>
+      <!-- 10 new sites -->
+      <a href="dolice/" class="portfolio-card reveal" target="_blank" data-tags="餐飲,精緻風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fdf6f0,#f5e6d8)">
+          <img src="dolice/logos/logo_final.png" alt="朵莉絲 Dolice" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">朵莉絲 Dolice</div>
+      </a>
+      <a href="goodday/" class="portfolio-card reveal" target="_blank" data-tags="電商,暖色調">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#faf5ee,#f0e4d0)">
+          <img src="goodday/logos/logo_final.png" alt="好日選物 GoodDay" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">好日選物 GoodDay</div>
+      </a>
+      <a href="trustdental/" class="portfolio-card reveal" target="_blank" data-tags="醫療,專業風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#e8f4f8,#d0eaf2)">
+          <img src="trustdental/logos/logo_final.png" alt="安心牙醫 TrustDental" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">安心牙醫 TrustDental</div>
+      </a>
+      <a href="buildpro/" class="portfolio-card reveal" target="_blank" data-tags="工程,工業風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#2a2a2a,#4a4a3a)">
+          <img src="buildpro/logos/logo_final.png" alt="築盛工程 BuildPro" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">築盛工程 BuildPro</div>
+      </a>
+      <a href="lumiere/" class="portfolio-card reveal" target="_blank" data-tags="美業,奢華風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1a1520,#3a2a40)">
+          <img src="lumiere/logos/logo_final.png" alt="沐光美學 LUMIÈRE" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">沐光美學 LUMIERE</div>
+      </a>
+      <a href="playbox/" class="portfolio-card reveal" target="_blank" data-tags="會員制,暗黑風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0a0a12,#1a1028)">
+          <img src="playbox/logos/logo_final.png" alt="PLAYBOX" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">PLAYBOX</div>
+      </a>
+      <a href="lightframe/" class="portfolio-card reveal" target="_blank" data-tags="攝影,溫暖風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#fdf8f0,#f5e8d5)">
+          <img src="lightframe/logos/logo_final.png" alt="光影紀事 LightFrame" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">光影紀事 LightFrame</div>
+      </a>
+      <a href="mistlodge/" class="portfolio-card reveal" target="_blank" data-tags="旅遊,自然風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#e0ece4,#c5d8cc)">
+          <img src="mistlodge/logos/logo_final.png" alt="山嵐旅宿 MistLodge" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">山嵐旅宿 MistLodge</div>
+      </a>
+      <a href="justword/" class="portfolio-card reveal" target="_blank" data-tags="專業服務,企業風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#1c2530,#2c3a4a)">
+          <img src="justword/logos/logo_final.png" alt="正言法律 JustWord" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">正言法律 JustWord</div>
+      </a>
+      <a href="pixelforge/" class="portfolio-card reveal" target="_blank" data-tags="會員制,科技風">
+        <div class="portfolio-card-bg" style="background:linear-gradient(135deg,#0c0c18,#1a1a30)">
+          <img src="pixelforge/logos/logo_final.png" alt="PixelForge" loading="lazy">
+        </div>
+        <div class="portfolio-card-name">PixelForge</div>
       </a>
     </div>
   </div>
@@ -694,6 +801,33 @@ function toggleLang() {
     if (val) el.placeholder = val;
   });
 }
+
+/* ===== PORTFOLIO TAG FILTER ===== */
+(function() {
+  var filterBar = document.getElementById('tagFilter');
+  var grid = document.getElementById('portfolioGrid');
+  if (!filterBar || !grid) return;
+  filterBar.addEventListener('click', function(e) {
+    var btn = e.target.closest('.tag-btn');
+    if (!btn) return;
+    filterBar.querySelectorAll('.tag-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var filter = btn.getAttribute('data-filter');
+    var cards = grid.querySelectorAll('.portfolio-card');
+    cards.forEach(function(card) {
+      if (filter === '全部') {
+        card.classList.remove('hidden');
+      } else {
+        var tags = (card.getAttribute('data-tags') || '').split(',');
+        if (tags.indexOf(filter) !== -1) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    });
+  });
+})();
 
 /* ===== CONTACT FORM ===== */
 function handleSubmit(e) {
