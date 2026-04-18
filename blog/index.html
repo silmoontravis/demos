@@ -52,9 +52,23 @@
       <a href="../#portfolio" data-zh="作品" data-en="Portfolio">作品</a>
       <a href="../#contact" data-zh="聯繫" data-en="Contact">聯繫</a>
     </div>
-    <button id="lang-toggle" onclick="toggleLang()" style="background:var(--hey-blue);border:none;color:#fff;padding:6px 14px;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:700;letter-spacing:.5px;transition:all .2s;flex-shrink:0">EN/中</button>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button id="lang-toggle" onclick="toggleLang()" style="background:var(--hey-blue);border:none;color:#fff;padding:6px 14px;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:700;letter-spacing:.5px;transition:all .2s;flex-shrink:0">EN/中</button>
+      <button class="blog-hamburger" onclick="document.getElementById('blogMobileMenu').classList.add('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<div class="blog-mobile-menu" id="blogMobileMenu">
+  <button class="blog-mobile-close" onclick="document.getElementById('blogMobileMenu').classList.remove('open')">×</button>
+  <a href="../" data-zh="首頁" data-en="Home" onclick="document.getElementById('blogMobileMenu').classList.remove('open')">首頁</a>
+  <a href="../#services" data-zh="服務" data-en="Services" onclick="document.getElementById('blogMobileMenu').classList.remove('open')">服務</a>
+  <a href="../#portfolio" data-zh="作品" data-en="Portfolio" onclick="document.getElementById('blogMobileMenu').classList.remove('open')">作品</a>
+  <a href="../#contact" data-zh="聯繫" data-en="Contact" onclick="document.getElementById('blogMobileMenu').classList.remove('open')">聯繫</a>
+  <button onclick="toggleLang();document.getElementById('blogMobileMenu').classList.remove('open')" style="background:var(--hey-blue,#005FDF);border:none;color:#fff;padding:10px 24px;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:12px">EN/中</button>
+</div>
 
 <section class="blog-hero">
   <div class="blog-container">
