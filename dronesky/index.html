@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>翔天科技 DroneSky — 專業無人機服務</title>
+<meta name="description" content="翔天科技 DroneSky 提供專業空拍攝影、測量、巡檢與農業無人機服務，為您的事業開創全新視角。">
+<meta name="keywords" content="無人機, drone services, 空拍, 航拍, 無人機巡檢, 農業無人機">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "翔天科技 DroneSky",
+  "description": "專業無人機空拍、測量、巡檢與農業服務",
+  "url": "https://silmoontravis.github.io/demos/dronesky",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressCountry": "TW" },
+  "serviceType": ["Aerial Photography","Surveying","Inspection","Agriculture Drone"]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--sky:#38bdf8;--gunmetal:#475569;--dark:#0f172a;--white:#ffffff;--light:#f1f5f9;--sky-dark:#0284c7}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans TC',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+.lang-en .zh{display:none}.lang-zh .en{display:none}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(15,23,42,.92);backdrop-filter:blur(12px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:transform .3s}
+nav.hide{transform:translateY(-100%)}
+.nav-logo{display:flex;align-items:center;gap:8px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:1.1rem;font-weight:700;color:var(--sky)}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:.85rem;color:var(--light);transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--sky)}
+.nav-controls{display:flex;gap:10px;align-items:center}
+.btn-lang,.btn-bgm{background:var(--sky);color:var(--dark);border:none;padding:6px 12px;border-radius:20px;font-size:.75rem;cursor:pointer;font-weight:600;transition:all .3s}
+.btn-lang:hover,.btn-bgm:hover{background:var(--sky-dark);color:var(--white)}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;color:var(--sky);cursor:pointer}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(15,23,42,.97);flex-direction:column;padding:20px;gap:15px}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.8),rgba(56,189,248,.3))}
+.hero-content{position:relative;z-index:2;color:var(--white);padding:20px;max-width:700px;margin-left:8%}
+.hero-content h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;margin-bottom:16px;line-height:1.15;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .3s forwards}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:30px;opacity:.9;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .5s forwards}
+.btn-primary{display:inline-block;background:var(--sky);color:var(--dark);padding:14px 36px;border-radius:30px;font-size:1rem;font-weight:700;transition:all .3s;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .7s forwards}
+.btn-primary:hover{background:var(--sky-dark);color:var(--white);transform:translateY(-2px)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--dark);margin-bottom:10px}
+.section-title p{color:var(--gunmetal);font-size:1rem;max-width:600px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s ease}.reveal.active{opacity:1;transform:translateY(0)}
+
+/* SERVICES */
+#services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;border-top:4px solid var(--sky)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(56,189,248,.15)}
+.service-card .icon{width:60px;height:60px;background:linear-gradient(135deg,var(--sky),var(--sky-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--white);font-size:1.4rem}
+.service-card h3{font-size:1.15rem;margin-bottom:8px;color:var(--dark)}
+.service-card p{font-size:.9rem;color:var(--gunmetal);line-height:1.6}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.portfolio-item{border-radius:16px;overflow:hidden;position:relative;height:250px}
+.portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.portfolio-item:hover img{transform:scale(1.05)}
+.portfolio-item .overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(15,23,42,.7));display:flex;align-items:flex-end;padding:20px}
+.portfolio-item .overlay span{color:var(--white);font-weight:600}
+
+/* TEAM */
+#team{background:var(--light)}
+.team-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.team-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.team-img img{width:100%}
+.team-text h3{font-size:1.6rem;font-weight:700;margin-bottom:16px;color:var(--dark)}
+.team-text p{line-height:1.8;color:var(--gunmetal);margin-bottom:12px}
+.team-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.stat{text-align:center}
+.stat .num{font-size:1.8rem;font-weight:800;color:var(--sky)}
+.stat .label{font-size:.8rem;color:var(--gunmetal)}
+@media(max-width:768px){.team-content{grid-template-columns:1fr}.team-stats{grid-template-columns:repeat(3,1fr)}}
+
+/* QUOTE FORM */
+.quote-form{max-width:600px;margin:0 auto;background:var(--white);padding:40px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.quote-form .form-group{margin-bottom:20px}
+.quote-form label{display:block;font-weight:600;margin-bottom:6px;font-size:.9rem}
+.quote-form input,.quote-form select,.quote-form textarea{width:100%;padding:12px 16px;border:2px solid var(--light);border-radius:10px;font-size:1rem;transition:border-color .3s;font-family:inherit}
+.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{border-color:var(--sky);outline:none}
+.quote-form button{width:100%;padding:14px;background:var(--sky);color:var(--dark);border:none;border-radius:30px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.quote-form button:hover{background:var(--sky-dark);color:var(--white)}
+
+footer{text-align:center;padding:40px 20px;background:var(--dark);color:var(--light)}
+footer a{color:var(--sky)}
+footer p{font-size:.85rem;opacity:.8;margin-top:8px}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:all .3s;animation:pulse 2s infinite}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget i{color:#fff;font-size:1.4rem}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,99,235,.4)}50%{box-shadow:0 4px 30px rgba(37,99,235,.7)}}
+</style>
+</head>
+<body class="lang-zh">
+
+<nav id="navbar">
+  <div class="nav-logo"><img src="logos/logo_final.png" alt="DroneSky Logo"><span>翔天科技</span></div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="選單"><i class="fas fa-bars"></i></button>
+  <div class="nav-links">
+    <a href="#services"><span class="zh">服務項目</span><span class="en">Services</span></a>
+    <a href="#portfolio"><span class="zh">作品集</span><span class="en">Portfolio</span></a>
+    <a href="#team"><span class="zh">團隊</span><span class="en">Team</span></a>
+    <a href="#quote"><span class="zh">免費報價</span><span class="en">Get Quote</span></a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" onclick="toggleLang()">EN/中</button>
+    <button class="btn-bgm" onclick="toggleBGM()"><i class="fas fa-music"></i></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1><span class="zh">用飛行<br>改寫視角</span><span class="en">Redefine<br>Perspectives</span></h1>
+    <p><span class="zh">專業無人機服務，為您的事業開創全新空中視野</span><span class="en">Professional drone services opening new aerial horizons for your business</span></p>
+    <a href="#quote" class="btn-primary"><span class="zh">免費諮詢報價</span><span class="en">Request Free Quote</span></a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">服務項目</span><span class="en">Our Services</span></h2>
+      <p><span class="zh">從空拍到農業，提供全方位的無人機解決方案</span><span class="en">Comprehensive drone solutions from aerial photography to agriculture</span></p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-camera"></i></div>
+        <h3><span class="zh">空拍攝影</span><span class="en">Aerial Photography</span></h3>
+        <p><span class="zh">4K 超高畫質空拍，婚禮、活動、不動產、廣告片製作</span><span class="en">4K ultra-HD aerial shots for weddings, events, real estate & commercials</span></p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3><span class="zh">地形測量</span><span class="en">Land Surveying</span></h3>
+        <p><span class="zh">精準 3D 建模、正射影像、地形圖製作，工程與建築必備</span><span class="en">Precision 3D modeling, orthophotos & topographic maps for engineering</span></p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-search"></i></div>
+        <h3><span class="zh">設施巡檢</span><span class="en">Inspection</span></h3>
+        <p><span class="zh">太陽能板、電塔、橋樑、建築外牆無人機安全巡檢</span><span class="en">Solar panels, towers, bridges & building facade drone inspections</span></p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-seedling"></i></div>
+        <h3><span class="zh">農業應用</span><span class="en">Agriculture</span></h3>
+        <p><span class="zh">精準施藥、作物監測、NDVI 植被分析，智慧農業好幫手</span><span class="en">Precision spraying, crop monitoring & NDVI vegetation analysis</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">精選作品</span><span class="en">Portfolio</span></h2>
+      <p><span class="zh">捕捉世界最壯麗的空中視角</span><span class="en">Capturing the world's most magnificent aerial views</span></p>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-item"><img src="photos/aerial.png" alt="空拍作品" loading="lazy"><div class="overlay"><span><span class="zh">城市夜景空拍</span><span class="en">City Night Aerial</span></span></div></div>
+      <div class="portfolio-item"><img src="photos/service.png" alt="服務案例" loading="lazy"><div class="overlay"><span><span class="zh">工業巡檢</span><span class="en">Industrial Inspection</span></span></div></div>
+      <div class="portfolio-item"><img src="photos/aerial.png" alt="空拍作品" loading="lazy"><div class="overlay"><span><span class="zh">山岳航拍</span><span class="en">Mountain Aerial</span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <div class="team-content">
+      <div class="team-img reveal"><img src="photos/team.png" alt="翔天科技團隊" loading="lazy"></div>
+      <div class="team-text reveal">
+        <h3><span class="zh">專業團隊</span><span class="en">Expert Team</span></h3>
+        <p><span class="zh">翔天科技由一群熱愛飛行與技術的專業人士組成。團隊成員皆持有民航局核發的無人機操作證照，擁有豐富的飛行經驗與專業知識，確保每次任務安全、高效完成。</span><span class="en">DroneSky is composed of professionals passionate about flight and technology. All team members hold CAA drone operation licenses with extensive flight experience, ensuring every mission is completed safely and efficiently.</span></p>
+        <div class="team-stats">
+          <div class="stat"><div class="num">500+</div><div class="label"><span class="zh">完成專案</span><span class="en">Projects</span></div></div>
+          <div class="stat"><div class="num">12</div><div class="label"><span class="zh">認證飛手</span><span class="en">Pilots</span></div></div>
+          <div class="stat"><div class="num">8<span style="font-size:.9rem">yr</span></div><div class="label"><span class="zh">行業經驗</span><span class="en">Experience</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quote" style="background:var(--light)">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">免費報價</span><span class="en">Request a Quote</span></h2>
+      <p><span class="zh">告訴我們您的需求，24 小時內回覆</span><span class="en">Tell us your needs, we'll respond within 24 hours</span></p>
+    </div>
+    <form class="quote-form reveal" onsubmit="event.preventDefault();alert('已收到您的需求！We received your request!')">
+      <div class="form-group"><label><span class="zh">姓名</span><span class="en">Name</span></label><input type="text" required></div>
+      <div class="form-group"><label><span class="zh">Email</span><span class="en">Email</span></label><input type="email" required></div>
+      <div class="form-group"><label><span class="zh">服務類型</span><span class="en">Service Type</span></label>
+        <select><option value="photo"><span class="zh">空拍攝影</span><span class="en">Aerial Photography</span></option><option value="survey">地形測量 Surveying</option><option value="inspect">設施巡檢 Inspection</option><option value="agri">農業應用 Agriculture</option></select>
+      </div>
+      <div class="form-group"><label><span class="zh">需求描述</span><span class="en">Description</span></label><textarea rows="4"></textarea></div>
+      <button type="submit"><span class="zh">送出需求</span><span class="en">Submit Request</span></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="聯絡 HEY!BOSS"><i class="fas fa-comment-dots"></i></a>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){document.body.classList.toggle('lang-zh');document.body.classList.toggle('lang-en');if(!document.body.classList.contains('lang-zh')&&!document.body.classList.contains('lang-en'))document.body.classList.add('lang-zh')}
+let bgmPlaying=false;function toggleBGM(){const a=document.getElementById('bgm');if(bgmPlaying){a.pause();bgmPlaying=false}else{a.play();bgmPlaying=true}}
+const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.15});reveals.forEach(r=>observer.observe(r));
+let lastScroll=0;window.addEventListener('scroll',()=>{const s=window.scrollY;document.getElementById('navbar').classList.toggle('hide',s>lastScroll&&s>80);lastScroll=s});
+</script>
+</body>
+</html>

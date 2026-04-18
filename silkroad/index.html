@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>絲路茶行 SilkRoad Tea — 頂級茶葉專賣</title>
+<meta name="description" content="絲路茶行提供頂級烏龍、綠茶、紅茶與普洱茶，來自台灣與中國最優質的茶園。精選禮盒與訂閱服務。">
+<meta name="keywords" content="茶葉,烏龍茶,綠茶,紅茶,普洱茶,禮盒,訂閱,絲路茶行">
+<link rel="icon" href="logos/logo_final.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"絲路茶行 SilkRoad Tea",
+  "description":"Premium tea e-commerce — oolong, green, black, and puerh teas.",
+  "url":"https://silmoontravis.github.io/demos/silkroad",
+  "image":"https://silmoontravis.github.io/demos/silkroad/photos/hero.png",
+  "logo":"https://silmoontravis.github.io/demos/silkroad/logos/logo_final.png",
+  "address":{"@type":"PostalAddress","addressCountry":"TW"},
+  "offers":[
+    {"@type":"Offer","name":"高山烏龍","priceCurrency":"TWD","price":"1280"},
+    {"@type":"Offer","name":"龍井綠茶","priceCurrency":"TWD","price":"980"},
+    {"@type":"Offer","name":"日月潭紅茶","priceCurrency":"TWD","price":"860"},
+    {"@type":"Offer","name":"雲南普洱","priceCurrency":"TWD","price":"1580"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#14532d;--gold:#c8a45e;--cream:#fefdf5;--text:#2d2d2d;--radius:12px}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Serif TC',serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* Animations */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(20,83,45,.95);backdrop-filter:blur(10px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{color:var(--gold);font-weight:700;font-size:1.1rem}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:var(--cream);font-size:.85rem;padding:6px 10px;border-radius:6px;transition:background .3s}
+.nav-links a:hover{background:rgba(200,164,94,.2)}
+.lang-btn{background:var(--gold);color:var(--green);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.8rem}
+.bgm-btn{background:none;border:2px solid var(--gold);color:var(--gold);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.bgm-btn.playing{background:var(--gold);color:var(--green)}
+.menu-toggle{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
+
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:rgba(20,83,45,.98);flex-direction:column;padding:30px;gap:20px;transition:right .3s}
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1.1rem}
+  .menu-toggle{display:block}
+}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,83,45,.85),rgba(20,83,45,.6))}
+.hero-content{position:relative;z-index:2;text-align:center;padding:20px;max-width:700px}
+.hero-content h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);color:var(--gold);margin-bottom:16px;line-height:1.2}
+.hero-content p{color:var(--cream);font-size:clamp(1rem,2.5vw,1.3rem);margin-bottom:32px;opacity:.9;line-height:1.8}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--green);padding:14px 36px;border-radius:var(--radius);font-weight:700;font-size:1rem;transition:transform .3s,box-shadow .3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,94,.4)}
+.btn-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);padding:12px 32px;border-radius:var(--radius);font-weight:700;font-size:1rem;margin-left:12px;transition:background .3s}
+.btn-outline:hover{background:var(--gold);color:var(--green)}
+
+/* Sections */
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--green);margin-bottom:12px}
+.section-title .gold-line{width:60px;height:3px;background:var(--gold);margin:0 auto 16px}
+.section-title p{color:#666;font-size:1rem;max-width:600px;margin:0 auto;line-height:1.8}
+
+/* Tea Collections */
+.tea-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.tea-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}
+.tea-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.tea-icon{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.tea-card-body{padding:20px;text-align:center}
+.tea-card-body h3{color:var(--green);font-size:1.2rem;margin-bottom:8px}
+.tea-card-body p{color:#666;font-size:.9rem;line-height:1.6;margin-bottom:12px}
+.tea-price{font-size:1.4rem;font-weight:900;color:var(--gold)}
+.tea-price span{font-size:.8rem;font-weight:400;color:#999}
+.tea-card .btn-sm{display:inline-block;background:var(--green);color:var(--cream);padding:8px 20px;border-radius:6px;font-size:.85rem;margin-top:8px;transition:background .3s}
+.tea-card .btn-sm:hover{background:#1a6b3a}
+
+/* Origin */
+.origin-section{background:var(--green);color:var(--cream)}
+.origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.origin-img{border-radius:var(--radius);overflow:hidden;position:relative}
+.origin-img img{width:100%;height:350px;object-fit:cover}
+.origin-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--gold);margin-bottom:16px}
+.origin-text p{line-height:2;opacity:.9;margin-bottom:16px}
+.leaf-img{width:200px;margin-top:20px;border-radius:var(--radius)}
+@media(max-width:768px){.origin-grid{grid-template-columns:1fr}}
+
+/* Gift Sets */
+.gift-section{background:#f8f6ee}
+.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.gift-img{border-radius:var(--radius);overflow:hidden}
+.gift-img img{width:100%;height:400px;object-fit:cover}
+.gift-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--green);margin-bottom:16px}
+.gift-text p{line-height:2;color:#555;margin-bottom:16px}
+.gift-features{list-style:none;margin-bottom:24px}
+.gift-features li{padding:8px 0;padding-left:24px;position:relative;color:#555}
+.gift-features li::before{content:'✦';position:absolute;left:0;color:var(--gold)}
+@media(max-width:768px){.gift-grid{grid-template-columns:1fr}.gift-img{order:-1}}
+
+/* Subscription */
+.sub-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.sub-card{background:#fff;border-radius:var(--radius);padding:32px;text-align:center;border:2px solid #eee;transition:border-color .3s,transform .3s}
+.sub-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.sub-card.featured{border-color:var(--gold);position:relative}
+.sub-card.featured::before{content:'熱門';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--green);padding:4px 16px;border-radius:20px;font-size:.8rem;font-weight:700}
+.sub-card h3{color:var(--green);font-size:1.3rem;margin-bottom:8px}
+.sub-card .price{font-size:2.2rem;font-weight:900;color:var(--gold);margin-bottom:4px}
+.sub-card .price span{font-size:.9rem;color:#999;font-weight:400}
+.sub-card .period{color:#999;font-size:.85rem;margin-bottom:20px}
+.sub-card ul{list-style:none;margin-bottom:24px;text-align:left}
+.sub-card ul li{padding:8px 0;border-bottom:1px solid #f0f0f0;color:#555;font-size:.9rem;padding-left:20px;position:relative}
+.sub-card ul li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* Order */
+.order-section{background:var(--green)}
+.order-form{max-width:600px;margin:0 auto;background:rgba(255,255,255,.08);padding:40px;border-radius:var(--radius);border:1px solid rgba(200,164,94,.2)}
+.order-form .section-title h2{color:var(--gold)}
+.order-form .section-title p{color:rgba(254,253,245,.7)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:var(--gold);margin-bottom:6px;font-size:.9rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1px solid rgba(200,164,94,.3);border-radius:8px;background:rgba(255,255,255,.06);color:var(--cream);font-size:1rem;font-family:inherit}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(254,253,245,.4)}
+.form-group textarea{height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.form-row{grid-template-columns:1fr}}
+
+/* Footer */
+footer{background:#0a2e1a;padding:40px 20px;text-align:center}
+footer .footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+footer .footer-logo img{height:32px;width:32px;border-radius:50%}
+footer .footer-logo span{color:var(--gold);font-weight:700}
+footer p{color:rgba(254,253,245,.5);font-size:.85rem}
+footer a{color:var(--gold);transition:opacity .3s}
+footer a:hover{opacity:.7}
+
+/* HeyBoss Widget */
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999}
+.heyboss-btn{width:56px;height:56px;border-radius:50%;background:#3b82f6;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s;animation:heyboss-pulse 2s infinite}
+.heyboss-btn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(59,130,246,.6)}
+.heyboss-btn svg{width:28px;height:28px;fill:#fff}
+@keyframes heyboss-pulse{0%,100%{box-shadow:0 4px 20px rgba(59,130,246,.4)}50%{box-shadow:0 4px 30px rgba(59,130,246,.7)}}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="絲路茶行 Logo">
+    <span data-zh="絲路茶行" data-en="SilkRoad Tea">絲路茶行</span>
+  </div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="#collections" data-zh="茶品" data-en="Teas">茶品</a>
+    <a href="#origin" data-zh="茶源" data-en="Origin">茶源</a>
+    <a href="#gifts" data-zh="禮盒" data-en="Gifts">禮盒</a>
+    <a href="#subscription" data-zh="訂閱" data-en="Subscribe">訂閱</a>
+    <a href="#order" data-zh="訂購" data-en="Order">訂購</a>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle music">♪</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="千年茶道 一口傳承" data-en="A Thousand Years of Tea Heritage">千年茶道 一口傳承</h1>
+    <p data-zh="嚴選台灣高山茶園與中國百年老樹，每一片茶葉都承載著匠人的堅持與土地的芬芳。" data-en="Handpicked from Taiwan's high-mountain gardens and China's century-old trees. Every leaf carries the artisan's dedication and the fragrance of the earth.">嚴選台灣高山茶園與中國百年老樹，每一片茶葉都承載著匠人的堅持與土地的芬芳。</p>
+    <a href="#collections" class="btn-primary" data-zh="探索茶品" data-en="Explore Teas">探索茶品</a>
+    <a href="#order" class="btn-outline" data-zh="立即訂購" data-en="Order Now">立即訂購</a>
+  </div>
+</section>
+
+<!-- Tea Collections -->
+<section id="collections">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="精選茶品" data-en="Tea Collections">精選茶品</h2>
+      <div class="gold-line"></div>
+      <p data-zh="從高山烏龍到陳年普洱，每一款都是大師精心挑選的頂級之作。" data-en="From high-mountain oolong to aged puerh, each selection is a masterpiece curated by tea masters.">從高山烏龍到陳年普洱，每一款都是大師精心挑選的頂級之作。</p>
+    </div>
+    <div class="tea-grid">
+      <div class="tea-card reveal">
+        <div class="tea-icon" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">🍃</div>
+        <div class="tea-card-body">
+          <h3 data-zh="高山烏龍" data-en="High Mountain Oolong">高山烏龍</h3>
+          <p data-zh="海拔2000公尺以上的阿里山茶區，帶有天然花香與奶韻。" data-en="Grown above 2000m in Alishan, with natural floral aroma and creamy notes.">海拔2000公尺以上的阿里山茶區，帶有天然花香與奶韻。</p>
+          <div class="tea-price">NT$1,280 <span data-zh="/100g" data-en="/100g">/100g</span></div>
+          <a href="#order" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+        </div>
+      </div>
+      <div class="tea-card reveal">
+        <div class="tea-icon" style="background:linear-gradient(135deg,#f1f8e9,#dcedc8)">🌿</div>
+        <div class="tea-card-body">
+          <h3 data-zh="龍井綠茶" data-en="Longjing Green Tea">龍井綠茶</h3>
+          <p data-zh="明前採摘的西湖龍井，色翠香郁、味醇形美。" data-en="Pre-Qingming harvest West Lake Longjing, with vibrant color and rich aroma.">明前採摘的西湖龍井，色翠香郁、味醇形美。</p>
+          <div class="tea-price">NT$980 <span data-zh="/100g" data-en="/100g">/100g</span></div>
+          <a href="#order" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+        </div>
+      </div>
+      <div class="tea-card reveal">
+        <div class="tea-icon" style="background:linear-gradient(135deg,#fbe9e7,#ffccbc)">🫖</div>
+        <div class="tea-card-body">
+          <h3 data-zh="日月潭紅茶" data-en="Sun Moon Lake Black Tea">日月潭紅茶</h3>
+          <p data-zh="台灣18號紅玉紅茶，帶有肉桂與薄荷的獨特風味。" data-en="Taiwan No.18 Ruby Black Tea with unique cinnamon and mint undertones.">台灣18號紅玉紅茶，帶有肉桂與薄荷的獨特風味。</p>
+          <div class="tea-price">NT$860 <span data-zh="/100g" data-en="/100g">/100g</span></div>
+          <a href="#order" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+        </div>
+      </div>
+      <div class="tea-card reveal">
+        <div class="tea-icon" style="background:linear-gradient(135deg,#efebe9,#d7ccc8)">🏔️</div>
+        <div class="tea-card-body">
+          <h3 data-zh="雲南普洱" data-en="Yunnan Puerh">雲南普洱</h3>
+          <p data-zh="陳放十年以上的古樹普洱，醇厚甘甜、回甘持久。" data-en="Ancient tree puerh aged over 10 years, mellow, sweet with lingering aftertaste.">陳放十年以上的古樹普洱，醇厚甘甜、回甘持久。</p>
+          <div class="tea-price">NT$1,580 <span data-zh="/100g" data-en="/100g">/100g</span></div>
+          <a href="#order" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Origin Story -->
+<section class="origin-section" id="origin">
+  <div class="container">
+    <div class="origin-grid">
+      <div class="origin-img reveal-left">
+        <img src="photos/origin.png" alt="茶園風景">
+      </div>
+      <div class="origin-text reveal-right">
+        <h2 data-zh="源自山林 傳承百年" data-en="From Mountain to Cup, A Century of Tradition">源自山林 傳承百年</h2>
+        <p data-zh="絲路茶行的每一款茶葉，都來自海拔千米以上的天然茶園。我們與世代種茶的匠人合作，從採摘、烘焙到包裝，全程堅持手工工藝與傳統製法。" data-en="Every tea from SilkRoad comes from natural gardens above 1000 meters altitude. We partner with generational tea artisans, maintaining handcrafted processes from picking to roasting to packaging.">絲路茶行的每一款茶葉，都來自海拔千米以上的天然茶園。我們與世代種茶的匠人合作，從採摘、烘焙到包裝，全程堅持手工工藝與傳統製法。</p>
+        <p data-zh="三十年來，我們走遍絲路沿途每一處茶山，只為帶給您最純粹的東方茶韻。" data-en="For three decades, we've traversed every tea mountain along the Silk Road to bring you the purest Eastern tea experience.">三十年來，我們走遍絲路沿途每一處茶山，只為帶給您最純粹的東方茶韻。</p>
+        <img src="photos/leaf.png" alt="茶葉特寫" class="leaf-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gift Sets -->
+<section class="gift-section" id="gifts">
+  <div class="container">
+    <div class="gift-grid">
+      <div class="gift-text reveal-left">
+        <h2 data-zh="臻選禮盒 品味之選" data-en="Premium Gift Sets — The Choice of Taste">臻選禮盒 品味之選</h2>
+        <p data-zh="無論是商務贈禮還是節慶祝福，絲路茶行的精裝禮盒都能完美傳達您的心意。每一盒都經過精心設計，從外盒到內襯，盡顯東方美學。" data-en="Whether for corporate gifting or festive celebrations, our premium gift sets perfectly convey your sentiments. Each box is meticulously designed, showcasing Eastern aesthetics from cover to lining.">無論是商務贈禮還是節慶祝福，絲路茶行的精裝禮盒都能完美傳達您的心意。每一盒都經過精心設計，從外盒到內襯，盡顯東方美學。</p>
+        <ul class="gift-features">
+          <li data-zh="手工實木茶盒，可重複使用" data-en="Handcrafted solid wood tea box, reusable">手工實木茶盒，可重複使用</li>
+          <li data-zh="附專業品茶指南與沖泡說明" data-en="Includes professional tasting guide and brewing instructions">附專業品茶指南與沖泡說明</li>
+          <li data-zh="可客製化雷射雕刻企業 Logo" data-en="Custom laser-engraved corporate logo available">可客製化雷射雕刻企業 Logo</li>
+          <li data-zh="全台免運，海外寄送服務" data-en="Free shipping in Taiwan, international delivery available">全台免運，海外寄送服務</li>
+        </ul>
+        <a href="#order" class="btn-primary" data-zh="訂購禮盒" data-en="Order Gift Set">訂購禮盒</a>
+      </div>
+      <div class="gift-img reveal-right">
+        <img src="photos/set.png" alt="茶葉禮盒">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subscription -->
+<section id="subscription">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="茶葉訂閱方案" data-en="Tea Subscription Plans">茶葉訂閱方案</h2>
+      <div class="gold-line"></div>
+      <p data-zh="每月為您精選當季最佳茶款，宅配到府，享受最新鮮的茶香。" data-en="Monthly curated seasonal teas delivered to your door — freshness guaranteed.">每月為您精選當季最佳茶款，宅配到府，享受最新鮮的茶香。</p>
+    </div>
+    <div class="sub-cards">
+      <div class="sub-card reveal">
+        <h3 data-zh="入門品茗" data-en="Starter Sip">入門品茗</h3>
+        <div class="price">NT$680<span data-zh="/月" data-en="/mo">/月</span></div>
+        <div class="period" data-zh="每月配送" data-en="Monthly delivery">每月配送</div>
+        <ul>
+          <li data-zh="每月 2 款精選茶品各 50g" data-en="2 curated teas × 50g monthly">每月 2 款精選茶品各 50g</li>
+          <li data-zh="附品茶筆記卡" data-en="Tasting notes card included">附品茶筆記卡</li>
+          <li data-zh="免運費配送" data-en="Free shipping">免運費配送</li>
+        </ul>
+        <a href="#order" class="btn-primary" data-zh="開始訂閱" data-en="Subscribe">開始訂閱</a>
+      </div>
+      <div class="sub-card featured reveal">
+        <h3 data-zh="茶道深耕" data-en="Tea Connoisseur">茶道深耕</h3>
+        <div class="price">NT$1,280<span data-zh="/月" data-en="/mo">/月</span></div>
+        <div class="period" data-zh="每月配送" data-en="Monthly delivery">每月配送</div>
+        <ul>
+          <li data-zh="每月 4 款精選茶品各 50g" data-en="4 curated teas × 50g monthly">每月 4 款精選茶品各 50g</li>
+          <li data-zh="附品茶筆記卡 + 沖泡教學" data-en="Tasting notes + brewing tutorial">附品茶筆記卡 + 沖泡教學</li>
+          <li data-zh="季度限定茶具贈品" data-en="Quarterly limited-edition tea ware gift">季度限定茶具贈品</li>
+          <li data-zh="會員專屬折扣 85 折" data-en="Member exclusive 15% off">會員專屬折扣 85 折</li>
+        </ul>
+        <a href="#order" class="btn-primary" data-zh="開始訂閱" data-en="Subscribe">開始訂閱</a>
+      </div>
+      <div class="sub-card reveal">
+        <h3 data-zh="大師典藏" data-en="Master's Collection">大師典藏</h3>
+        <div class="price">NT$2,580<span data-zh="/月" data-en="/mo">/月</span></div>
+        <div class="period" data-zh="每月配送" data-en="Monthly delivery">每月配送</div>
+        <ul>
+          <li data-zh="每月 6 款頂級茶品各 100g" data-en="6 premium teas × 100g monthly">每月 6 款頂級茶品各 100g</li>
+          <li data-zh="含限量珍稀老茶" data-en="Includes limited rare aged teas">含限量珍稀老茶</li>
+          <li data-zh="專屬茶藝顧問一對一服務" data-en="Dedicated tea consultant 1-on-1 service">專屬茶藝顧問一對一服務</li>
+          <li data-zh="每季茶山體驗行程邀請" data-en="Quarterly tea garden tour invitation">每季茶山體驗行程邀請</li>
+        </ul>
+        <a href="#order" class="btn-primary" data-zh="開始訂閱" data-en="Subscribe">開始訂閱</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order -->
+<section class="order-section" id="order">
+  <div class="container">
+    <div class="order-form reveal">
+      <div class="section-title">
+        <h2 data-zh="立即訂購" data-en="Place Your Order">立即訂購</h2>
+        <div class="gold-line"></div>
+        <p data-zh="填寫以下資料，我們的茶藝顧問將在 24 小時內與您聯繫。" data-en="Fill in the form below and our tea consultant will contact you within 24 hours.">填寫以下資料，我們的茶藝顧問將在 24 小時內與您聯繫。</p>
+      </div>
+      <form onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Thank you! We will contact you soon.':'感謝您的訂購！我們將盡快與您聯繫。')">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-zh="姓名" data-en="Name">姓名</label>
+            <input type="text" required placeholder="王小明">
+          </div>
+          <div class="form-group">
+            <label data-zh="電話" data-en="Phone">電話</label>
+            <input type="tel" required placeholder="0912-345-678">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-zh="電子信箱" data-en="Email">電子信箱</label>
+          <input type="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label data-zh="想訂購的茶品" data-en="Tea Selection">想訂購的茶品</label>
+          <select>
+            <option data-zh="高山烏龍 NT$1,280" data-en="High Mountain Oolong NT$1,280">高山烏龍 NT$1,280</option>
+            <option data-zh="龍井綠茶 NT$980" data-en="Longjing Green NT$980">龍井綠茶 NT$980</option>
+            <option data-zh="日月潭紅茶 NT$860" data-en="Sun Moon Lake Black NT$860">日月潭紅茶 NT$860</option>
+            <option data-zh="雲南普洱 NT$1,580" data-en="Yunnan Puerh NT$1,580">雲南普洱 NT$1,580</option>
+            <option data-zh="精選禮盒" data-en="Gift Set">精選禮盒</option>
+            <option data-zh="訂閱方案" data-en="Subscription Plan">訂閱方案</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-zh="備註" data-en="Notes">備註</label>
+          <textarea placeholder="如有特殊需求請在此說明..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center" data-zh="送出訂單" data-en="Submit Order">送出訂單</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <img src="logos/logo_final.png" alt="Logo">
+    <span data-zh="絲路茶行" data-en="SilkRoad Tea">絲路茶行</span>
+  </div>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:8px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<!-- HeyBoss Widget -->
+<div class="heyboss-widget">
+  <a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-btn" aria-label="Contact HeyBoss">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+  </a>
+</div>
+
+<!-- BGM -->
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+// BGM
+const bgm=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){bgm.paused?(bgm.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫'):(bgm.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪')}
+
+// Nav scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+// Mobile menu close on link click
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+
+// Scroll animations
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+
+// Language toggle
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else el.textContent=val;
+  });
+}
+</script>
+</body>
+</html>

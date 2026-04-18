@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>策略桌遊 BoardRoom — 桌遊咖啡廳</title>
+<meta name="description" content="策略桌遊 BoardRoom 提供超過 500 款桌遊、舒適空間與精品咖啡，是朋友聚會與策略對決的最佳基地。">
+<meta name="keywords" content="桌遊, board game cafe, 桌遊咖啡廳, 聚會場所, 策略遊戲, 會員制">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "策略桌遊 BoardRoom",
+  "description": "桌遊咖啡廳，500+ 款遊戲，會員制服務",
+  "url": "https://silmoontravis.github.io/demos/boardroom",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressCountry": "TW" },
+  "priceRange": "$$",
+  "servesCuisine": "Coffee, Light Meals"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7c3aed;--orange:#f97316;--dark:#1a1a2e;--darker:#0f0f1e;--card:#252542;--text-light:#c4c4e0;--white:#ffffff;--purple-glow:rgba(124,58,237,.3)}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans TC',sans-serif;background:var(--dark);color:var(--text-light);overflow-x:hidden}
+.lang-en .zh{display:none}.lang-zh .en{display:none}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(15,15,30,.95);backdrop-filter:blur(12px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(124,58,237,.2);transition:transform .3s}
+nav.hide{transform:translateY(-100%)}
+.nav-logo{display:flex;align-items:center;gap:8px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:1.1rem;font-weight:700;color:var(--orange)}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:.85rem;color:var(--text-light);transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--orange)}
+.nav-controls{display:flex;gap:10px;align-items:center}
+.btn-lang,.btn-bgm{background:var(--purple);color:var(--white);border:none;padding:6px 12px;border-radius:20px;font-size:.75rem;cursor:pointer;font-weight:600;transition:all .3s}
+.btn-lang:hover,.btn-bgm:hover{background:var(--orange)}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;color:var(--orange);cursor:pointer}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(15,15,30,.97);flex-direction:column;padding:20px;gap:15px}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,46,.85),rgba(124,58,237,.4))}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--white);padding:20px;max-width:700px}
+.hero-content h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;margin-bottom:16px;line-height:1.15;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .3s forwards}
+.hero-content h1 span.highlight{color:var(--orange)}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:30px;color:var(--text-light);opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .5s forwards}
+.btn-primary{display:inline-block;background:var(--orange);color:var(--dark);padding:14px 36px;border-radius:30px;font-size:1rem;font-weight:700;transition:all .3s;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .7s forwards}
+.btn-primary:hover{background:#ea580c;color:var(--white);transform:translateY(-2px)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:10px}
+.section-title p{color:var(--text-light);font-size:1rem;max-width:600px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s ease}.reveal.active{opacity:1;transform:translateY(0)}
+
+/* GAME LIBRARY */
+#games{background:var(--darker)}
+.games-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.games-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px var(--purple-glow)}
+.games-img img{width:100%}
+.games-categories{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cat-item{background:var(--card);padding:20px;border-radius:12px;text-align:center;border:1px solid rgba(124,58,237,.2);transition:all .3s}
+.cat-item:hover{border-color:var(--orange);transform:translateY(-4px)}
+.cat-item i{font-size:1.5rem;color:var(--orange);margin-bottom:8px;display:block}
+.cat-item h4{color:var(--white);font-size:.95rem}
+.cat-item p{font-size:.75rem;color:var(--text-light);margin-top:4px}
+@media(max-width:768px){.games-content{grid-template-columns:1fr}}
+
+/* MEMBERSHIP */
+.membership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:var(--card);border-radius:20px;padding:36px 28px;text-align:center;border:2px solid rgba(124,58,237,.2);transition:all .3s;position:relative;overflow:hidden}
+.plan-card:hover{border-color:var(--purple);transform:translateY(-6px)}
+.plan-card.featured{border-color:var(--orange);background:linear-gradient(180deg,var(--card),rgba(249,115,22,.1))}
+.plan-card.featured::before{content:'POPULAR';position:absolute;top:16px;right:-28px;background:var(--orange);color:var(--dark);font-size:.7rem;font-weight:700;padding:4px 32px;transform:rotate(45deg)}
+.plan-card h3{color:var(--white);font-size:1.2rem;margin-bottom:8px}
+.plan-card .price{font-size:2.2rem;font-weight:700;color:var(--orange);margin-bottom:4px}
+.plan-card .price span{font-size:.9rem;color:var(--text-light)}
+.plan-card .price-note{font-size:.8rem;color:var(--text-light);margin-bottom:20px}
+.plan-card ul{list-style:none;text-align:left;margin-bottom:24px}
+.plan-card ul li{padding:8px 0;font-size:.9rem;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.05)}
+.plan-card ul li i{color:var(--purple);font-size:.85rem}
+.plan-btn{display:inline-block;width:100%;padding:12px;border:2px solid var(--purple);color:var(--purple);border-radius:30px;font-weight:700;transition:all .3s;background:transparent;cursor:pointer;font-size:.95rem}
+.plan-btn:hover{background:var(--purple);color:var(--white)}
+.plan-card.featured .plan-btn{background:var(--orange);border-color:var(--orange);color:var(--dark)}
+.plan-card.featured .plan-btn:hover{background:#ea580c}
+
+/* EVENTS */
+#events{background:var(--darker)}
+.events-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.events-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px var(--purple-glow)}
+.events-img img{width:100%}
+.events-text h3{font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:16px}
+.events-text p{line-height:1.8;margin-bottom:12px}
+.event-list{list-style:none;margin-top:16px}
+.event-list li{padding:12px 0;border-bottom:1px solid rgba(124,58,237,.15);display:flex;align-items:center;gap:12px}
+.event-list li i{color:var(--orange);font-size:1.1rem}
+@media(max-width:768px){.events-content{grid-template-columns:1fr}}
+
+/* CAFE */
+.cafe-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cafe-img{border-radius:16px;overflow:hidden}
+.cafe-img img{width:100%}
+.cafe-text h3{font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:16px}
+.cafe-text p{line-height:1.8;margin-bottom:12px}
+@media(max-width:768px){.cafe-content{grid-template-columns:1fr}}
+
+/* BOOK TABLE */
+.book-form{max-width:600px;margin:0 auto;background:var(--card);padding:40px;border-radius:16px;border:1px solid rgba(124,58,237,.2)}
+.book-form .form-group{margin-bottom:20px}
+.book-form label{display:block;font-weight:600;margin-bottom:6px;font-size:.9rem;color:var(--white)}
+.book-form input,.book-form select,.book-form textarea{width:100%;padding:12px 16px;border:2px solid rgba(124,58,237,.2);border-radius:10px;font-size:1rem;background:var(--dark);color:var(--white);transition:border-color .3s;font-family:inherit}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{border-color:var(--purple);outline:none}
+.book-form button{width:100%;padding:14px;background:var(--orange);color:var(--dark);border:none;border-radius:30px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.book-form button:hover{background:#ea580c;color:var(--white)}
+
+footer{text-align:center;padding:40px 20px;background:var(--darker);color:var(--text-light)}
+footer a{color:var(--orange)}
+footer p{font-size:.85rem;opacity:.8;margin-top:8px}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:all .3s;animation:pulse 2s infinite}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget i{color:#fff;font-size:1.4rem}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,99,235,.4)}50%{box-shadow:0 4px 30px rgba(37,99,235,.7)}}
+</style>
+</head>
+<body class="lang-zh">
+
+<nav id="navbar">
+  <div class="nav-logo"><img src="logos/logo_final.png" alt="BoardRoom Logo"><span>策略桌遊</span></div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="選單"><i class="fas fa-bars"></i></button>
+  <div class="nav-links">
+    <a href="#games"><span class="zh">遊戲庫</span><span class="en">Games</span></a>
+    <a href="#membership"><span class="zh">會員方案</span><span class="en">Membership</span></a>
+    <a href="#events"><span class="zh">活動</span><span class="en">Events</span></a>
+    <a href="#cafe"><span class="zh">咖啡廳</span><span class="en">Cafe</span></a>
+    <a href="#book"><span class="zh">訂位</span><span class="en">Book</span></a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" onclick="toggleLang()">EN/中</button>
+    <button class="btn-bgm" onclick="toggleBGM()"><i class="fas fa-music"></i></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1><span class="zh">你的下一步<br><span class="highlight">在這裡決勝</span></span><span class="en">Your Next Move<br><span class="highlight">Starts Here</span></span></h1>
+    <p><span class="zh">500+ 款桌遊、精品咖啡、無限歡笑 ── 歡迎來到策略桌遊</span><span class="en">500+ games, artisan coffee, endless fun ── Welcome to BoardRoom</span></p>
+    <a href="#membership" class="btn-primary"><span class="zh">加入會員</span><span class="en">Join Now</span></a>
+  </div>
+</section>
+
+<section id="games">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">遊戲庫</span><span class="en">Game Library</span></h2>
+      <p><span class="zh">超過 500 款桌遊，從入門到進階都能找到最愛</span><span class="en">Over 500 games from beginner to advanced</span></p>
+    </div>
+    <div class="games-content">
+      <div class="games-img reveal"><img src="photos/games.png" alt="桌遊庫" loading="lazy"></div>
+      <div class="games-categories reveal">
+        <div class="cat-item"><i class="fas fa-chess"></i><h4><span class="zh">策略</span><span class="en">Strategy</span></h4><p>120+ <span class="zh">款</span><span class="en">titles</span></p></div>
+        <div class="cat-item"><i class="fas fa-users"></i><h4><span class="zh">派對</span><span class="en">Party</span></h4><p>80+ <span class="zh">款</span><span class="en">titles</span></p></div>
+        <div class="cat-item"><i class="fas fa-dungeon"></i><h4><span class="zh">冒險</span><span class="en">Adventure</span></h4><p>100+ <span class="zh">款</span><span class="en">titles</span></p></div>
+        <div class="cat-item"><i class="fas fa-puzzle-piece"></i><h4><span class="zh">家庭</span><span class="en">Family</span></h4><p>90+ <span class="zh">款</span><span class="en">titles</span></p></div>
+        <div class="cat-item"><i class="fas fa-hat-wizard"></i><h4><span class="zh">角色扮演</span><span class="en">RPG</span></h4><p>50+ <span class="zh">款</span><span class="en">titles</span></p></div>
+        <div class="cat-item"><i class="fas fa-dice-d20"></i><h4><span class="zh">經典</span><span class="en">Classic</span></h4><p>60+ <span class="zh">款</span><span class="en">titles</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="membership">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">會員方案</span><span class="en">Membership Plans</span></h2>
+      <p><span class="zh">選擇最適合你的方案，享受更多優惠</span><span class="en">Choose the plan that fits you best</span></p>
+    </div>
+    <div class="membership-grid">
+      <div class="plan-card reveal">
+        <h3><span class="zh">散客</span><span class="en">Walk-in</span></h3>
+        <div class="price">$150<span>/hr</span></div>
+        <div class="price-note"><span class="zh">每人每小時</span><span class="en">per person per hour</span></div>
+        <ul>
+          <li><i class="fas fa-check"></i><span class="zh">自由入場</span><span class="en">Free entry</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">全遊戲庫暢玩</span><span class="en">Full game library access</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">附贈飲品一杯</span><span class="en">Complimentary drink</span></li>
+        </ul>
+        <button class="plan-btn"><span class="zh">直接來店</span><span class="en">Walk In</span></button>
+      </div>
+      <div class="plan-card featured reveal">
+        <h3><span class="zh">月費會員</span><span class="en">Monthly</span></h3>
+        <div class="price">$599<span>/mo</span></div>
+        <div class="price-note"><span class="zh">每月無限暢玩</span><span class="en">Unlimited monthly access</span></div>
+        <ul>
+          <li><i class="fas fa-check"></i><span class="zh">無限時數暢玩</span><span class="en">Unlimited play time</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">餐飲 9 折優惠</span><span class="en">10% off food & drinks</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">活動優先報名</span><span class="en">Priority event registration</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">生日免費包場 2hr</span><span class="en">Free 2hr birthday party</span></li>
+        </ul>
+        <button class="plan-btn"><span class="zh">立即加入</span><span class="en">Join Now</span></button>
+      </div>
+      <div class="plan-card reveal">
+        <h3><span class="zh">年費會員</span><span class="en">Annual</span></h3>
+        <div class="price">$5,990<span>/yr</span></div>
+        <div class="price-note"><span class="zh">等同月付 $499</span><span class="en">Just $499/mo equivalent</span></div>
+        <ul>
+          <li><i class="fas fa-check"></i><span class="zh">月費會員所有權益</span><span class="en">All monthly benefits</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">餐飲 8 折優惠</span><span class="en">20% off food & drinks</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">專屬置物櫃</span><span class="en">Dedicated locker</span></li>
+          <li><i class="fas fa-check"></i><span class="zh">可攜伴 1 人免費</span><span class="en">+1 guest plays free</span></li>
+        </ul>
+        <button class="plan-btn"><span class="zh">年費加入</span><span class="en">Join Annual</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="container">
+    <div class="events-content">
+      <div class="events-text reveal">
+        <h3><span class="zh">精彩活動</span><span class="en">Events & Tournaments</span></h3>
+        <p><span class="zh">每週都有精彩的桌遊活動與比賽等你來挑戰！從新手教學場到高手錦標賽，找到屬於你的舞台。</span><span class="en">Weekly gaming events and tournaments await! From beginner workshops to championship tournaments, find your stage.</span></p>
+        <ul class="event-list">
+          <li><i class="fas fa-calendar-alt"></i><span class="zh">每週三 ── 新手教學之夜</span><span class="en">Wed ── Beginner Night</span></li>
+          <li><i class="fas fa-calendar-alt"></i><span class="zh">每週五 ── 策略錦標賽</span><span class="en">Fri ── Strategy Tournament</span></li>
+          <li><i class="fas fa-calendar-alt"></i><span class="zh">每週六 ── 家庭歡樂日</span><span class="en">Sat ── Family Fun Day</span></li>
+          <li><i class="fas fa-calendar-alt"></i><span class="zh">每月一次 ── TRPG 馬拉松</span><span class="en">Monthly ── TRPG Marathon</span></li>
+        </ul>
+      </div>
+      <div class="events-img reveal"><img src="photos/event.png" alt="桌遊活動" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cafe">
+  <div class="container">
+    <div class="cafe-content">
+      <div class="cafe-img reveal"><img src="photos/cafe.png" alt="咖啡廳" loading="lazy"></div>
+      <div class="cafe-text reveal">
+        <h3><span class="zh">精品咖啡與輕食</span><span class="en">Artisan Coffee & Bites</span></h3>
+        <p><span class="zh">我們的咖啡廳提供手沖精品咖啡、特調飲品與美味輕食。在策略思考的同時，也要好好犒賞自己的味蕾。所有餐點皆為現點現做，使用新鮮食材。</span><span class="en">Our cafe offers hand-dripped specialty coffee, signature drinks and delicious bites. Reward your taste buds while strategizing. All items freshly prepared with quality ingredients.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="background:var(--darker)">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">預約訂位</span><span class="en">Book a Table</span></h2>
+      <p><span class="zh">預約專屬座位，確保您的遊戲之夜完美進行</span><span class="en">Reserve your seat for a perfect game night</span></p>
+    </div>
+    <form class="book-form reveal" onsubmit="event.preventDefault();alert('預約成功！Booking confirmed!')">
+      <div class="form-group"><label><span class="zh">姓名</span><span class="en">Name</span></label><input type="text" required></div>
+      <div class="form-group"><label><span class="zh">電話</span><span class="en">Phone</span></label><input type="tel" required></div>
+      <div class="form-group"><label><span class="zh">日期</span><span class="en">Date</span></label><input type="date" required></div>
+      <div class="form-group"><label><span class="zh">人數</span><span class="en">Party Size</span></label>
+        <select><option>2 人</option><option>3-4 人</option><option>5-6 人</option><option>7+ 人 (包場)</option></select>
+      </div>
+      <button type="submit"><span class="zh">確認預約</span><span class="en">Confirm Booking</span></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="聯絡 HEY!BOSS"><i class="fas fa-comment-dots"></i></a>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){document.body.classList.toggle('lang-zh');document.body.classList.toggle('lang-en');if(!document.body.classList.contains('lang-zh')&&!document.body.classList.contains('lang-en'))document.body.classList.add('lang-zh')}
+let bgmPlaying=false;function toggleBGM(){const a=document.getElementById('bgm');if(bgmPlaying){a.pause();bgmPlaying=false}else{a.play();bgmPlaying=true}}
+const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.15});reveals.forEach(r=>observer.observe(r));
+let lastScroll=0;window.addEventListener('scroll',()=>{const s=window.scrollY;document.getElementById('navbar').classList.toggle('hide',s>lastScroll&&s>80);lastScroll=s});
+</script>
+</body>
+</html>

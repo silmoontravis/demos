@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>舊時光 VintageVault — 復古時尚選物</title>
+<meta name="description" content="舊時光 VintageVault 精選復古服飾，從經典洋裝到古著外套，為您帶來獨一無二的時尚風格。">
+<meta name="keywords" content="復古服飾, vintage clothing, 古著, 二手精品, 舊時光">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "舊時光 VintageVault",
+  "description": "精選復古服飾電商，經典洋裝、古著外套、配飾與鞋履",
+  "url": "https://silmoontravis.github.io/demos/vintagevault",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressCountry": "TW" },
+  "brand": { "@type": "Brand", "name": "舊時光 VintageVault" },
+  "sameAs": []
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--sepia:#78350f;--burgundy:#991b1b;--cream:#fefdf5;--warm:#d4a574;--text:#3d2b1f;--light-sepia:#f5e6d3}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Serif TC',serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+.lang-en .zh{display:none}.lang-zh .en{display:none}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(254,253,245,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--light-sepia);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:transform .3s}
+nav.hide{transform:translateY(-100%)}
+.nav-logo{display:flex;align-items:center;gap:8px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--sepia)}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:.85rem;color:var(--text);transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--burgundy)}
+.nav-controls{display:flex;gap:10px;align-items:center}
+.btn-lang,.btn-bgm{background:var(--sepia);color:var(--cream);border:none;padding:6px 12px;border-radius:20px;font-size:.75rem;cursor:pointer;transition:all .3s}
+.btn-lang:hover,.btn-bgm:hover{background:var(--burgundy)}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;color:var(--sepia);cursor:pointer}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--cream);flex-direction:column;padding:20px;gap:15px;border-bottom:1px solid var(--light-sepia)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(120,53,15,.7),rgba(153,27,27,.5))}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--cream);padding:20px;max-width:700px}
+.hero-content h1{font-family:'Playfair Display','Noto Serif TC',serif;font-size:clamp(2.2rem,6vw,4.5rem);margin-bottom:16px;line-height:1.15;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .3s forwards}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.3rem);margin-bottom:30px;opacity:.9;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .5s forwards}
+.btn-primary{display:inline-block;background:var(--burgundy);color:var(--cream);padding:14px 36px;border-radius:30px;font-size:1rem;font-weight:600;transition:all .3s;border:2px solid transparent;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .7s forwards}
+.btn-primary:hover{background:transparent;border-color:var(--cream);transform:translateY(-2px)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-family:'Playfair Display','Noto Serif TC',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--sepia);margin-bottom:10px}
+.section-title p{color:#7a6555;font-size:1rem;max-width:600px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s ease}.reveal.active{opacity:1;transform:translateY(0)}
+
+/* COLLECTIONS */
+#collections{background:var(--light-sepia)}
+.collections-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.collection-card{background:var(--cream);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(120,53,15,.1);transition:transform .3s,box-shadow .3s;cursor:pointer}
+.collection-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(120,53,15,.2)}
+.collection-card .card-img{height:200px;background:url('photos/product.png') center/cover;position:relative}
+.collection-card .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.3))}
+.collection-card .card-body{padding:20px}
+.collection-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--sepia);margin-bottom:6px}
+.collection-card .price{color:var(--burgundy);font-weight:700;font-size:1.1rem}
+.collection-card .desc{font-size:.85rem;color:#7a6555;margin-top:6px}
+
+/* STORY */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.story-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-text h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--sepia);margin-bottom:16px}
+.story-text p{line-height:1.8;color:#5a4a3a;margin-bottom:12px}
+@media(max-width:768px){.story-grid{grid-template-columns:1fr}}
+
+/* DETAILS */
+#details{background:var(--light-sepia)}
+.details-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.details-img{border-radius:16px;overflow:hidden}
+.details-img img{width:100%}
+.details-text ul{list-style:none;padding:0}
+.details-text li{padding:12px 0;border-bottom:1px solid rgba(120,53,15,.15);display:flex;align-items:center;gap:10px}
+.details-text li i{color:var(--burgundy);font-size:1.1rem}
+@media(max-width:768px){.details-content{grid-template-columns:1fr}}
+
+/* NEWSLETTER */
+.newsletter{background:linear-gradient(135deg,var(--sepia),var(--burgundy));color:var(--cream);text-align:center;border-radius:24px;padding:60px 30px;margin:0 20px;max-width:800px;margin:0 auto}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:10px}
+.newsletter p{opacity:.9;margin-bottom:24px}
+.newsletter-form{display:flex;gap:10px;max-width:450px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.newsletter-form input{flex:1;min-width:200px;padding:14px 20px;border:none;border-radius:30px;font-size:1rem;outline:none}
+.newsletter-form button{background:var(--cream);color:var(--sepia);padding:14px 28px;border:none;border-radius:30px;font-weight:700;cursor:pointer;transition:all .3s}
+.newsletter-form button:hover{background:#fff;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 20px;background:var(--sepia);color:var(--cream)}
+footer a{color:var(--warm);text-decoration:underline}
+footer p{font-size:.85rem;opacity:.8;margin-top:8px}
+
+/* HEYBOSS WIDGET */
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:all .3s;animation:pulse 2s infinite}
+.heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
+.heyboss-widget i{color:#fff;font-size:1.4rem}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,99,235,.4)}50%{box-shadow:0 4px 30px rgba(37,99,235,.7)}}
+</style>
+</head>
+<body class="lang-zh">
+
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="舊時光 VintageVault Logo">
+    <span>舊時光</span>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="選單"><i class="fas fa-bars"></i></button>
+  <div class="nav-links">
+    <a href="#collections"><span class="zh">精選系列</span><span class="en">Collections</span></a>
+    <a href="#story"><span class="zh">品牌故事</span><span class="en">Our Story</span></a>
+    <a href="#details"><span class="zh">細節工藝</span><span class="en">Details</span></a>
+    <a href="#newsletter"><span class="zh">訂閱</span><span class="en">Subscribe</span></a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" onclick="toggleLang()" aria-label="切換語言">EN/中</button>
+    <button class="btn-bgm" onclick="toggleBGM()" aria-label="背景音樂"><i class="fas fa-music"></i></button>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1><span class="zh">尋找屬於你的<br>舊時光</span><span class="en">Discover Your<br>Vintage Story</span></h1>
+    <p><span class="zh">每一件古著，都承載著一段被遺忘的美好時光</span><span class="en">Every vintage piece carries a forgotten beautiful moment</span></p>
+    <a href="#collections" class="btn-primary"><span class="zh">探索系列</span><span class="en">Explore Collections</span></a>
+  </div>
+</section>
+
+<section id="collections">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">精選系列</span><span class="en">Curated Collections</span></h2>
+      <p><span class="zh">每一件都是精心挑選的經典之作</span><span class="en">Each piece is a carefully curated classic</span></p>
+    </div>
+    <div class="collections-grid">
+      <div class="collection-card reveal">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <h3><span class="zh">經典洋裝</span><span class="en">Vintage Dresses</span></h3>
+          <div class="price"><span class="zh">NT$1,280 起</span><span class="en">From NT$1,280</span></div>
+          <p class="desc"><span class="zh">50-70年代經典剪裁，獨特印花設計</span><span class="en">Classic 50s-70s cuts with unique prints</span></p>
+        </div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <h3><span class="zh">復古外套</span><span class="en">Retro Jackets</span></h3>
+          <div class="price"><span class="zh">NT$1,680 起</span><span class="en">From NT$1,680</span></div>
+          <p class="desc"><span class="zh">丹寧、皮革、軍裝風格，質感百搭</span><span class="en">Denim, leather & military styles</span></p>
+        </div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <h3><span class="zh">古董配飾</span><span class="en">Accessories</span></h3>
+          <div class="price"><span class="zh">NT$380 起</span><span class="en">From NT$380</span></div>
+          <p class="desc"><span class="zh">胸針、絲巾、手提包，點綴你的風格</span><span class="en">Brooches, scarves & handbags</span></p>
+        </div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <h3><span class="zh">懷舊鞋履</span><span class="en">Vintage Shoes</span></h3>
+          <div class="price"><span class="zh">NT$980 起</span><span class="en">From NT$980</span></div>
+          <p class="desc"><span class="zh">瑪莉珍、樂福鞋、牛津鞋，經典永不退流行</span><span class="en">Mary Janes, loafers & oxfords</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img reveal">
+        <img src="photos/shop.png" alt="舊時光 VintageVault 店舖" loading="lazy">
+      </div>
+      <div class="story-text reveal">
+        <h3><span class="zh">我們的故事</span><span class="en">Our Story</span></h3>
+        <p><span class="zh">舊時光 VintageVault 始於一個簡單的信念：每件衣服都有自己的故事。我們走訪歐美各地古董市集，從數以千計的物件中，為你挑選最具風格與品質的復古珍品。</span><span class="en">VintageVault was born from a simple belief: every garment has its own story. We travel to vintage markets across Europe and America, selecting the most stylish and quality vintage treasures for you.</span></p>
+        <p><span class="zh">從 50 年代的優雅洋裝到 90 年代的街頭風格，每一件都經過我們嚴格的品質檢驗與修復，確保你收到的不只是一件衣服，更是一段值得珍藏的時光。</span><span class="en">From elegant 50s dresses to 90s streetwear, each piece undergoes our rigorous quality inspection and restoration, ensuring you receive not just a garment, but a moment worth treasuring.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="details">
+  <div class="container">
+    <div class="details-content">
+      <div class="details-text reveal">
+        <div class="section-title" style="text-align:left">
+          <h2><span class="zh">細節工藝</span><span class="en">Crafted Details</span></h2>
+        </div>
+        <ul>
+          <li><i class="fas fa-check-circle"></i><span class="zh">專業鑑定，確保每件古著的真實年代</span><span class="en">Professional authentication for every vintage piece</span></li>
+          <li><i class="fas fa-check-circle"></i><span class="zh">環保乾洗，溫和處理珍貴面料</span><span class="en">Eco-friendly dry cleaning for precious fabrics</span></li>
+          <li><i class="fas fa-check-circle"></i><span class="zh">手工修補，完美還原原始風貌</span><span class="en">Hand repair to restore original beauty</span></li>
+          <li><i class="fas fa-check-circle"></i><span class="zh">精緻包裝，附贈年代背景故事卡</span><span class="en">Exquisite packaging with era story card</span></li>
+          <li><i class="fas fa-check-circle"></i><span class="zh">七天鑑賞期，安心購物保障</span><span class="en">7-day appreciation period guarantee</span></li>
+        </ul>
+      </div>
+      <div class="details-img reveal">
+        <img src="photos/detail.png" alt="復古服飾細節" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter">
+  <div class="container">
+    <div class="newsletter reveal">
+      <h2><span class="zh">訂閱舊時光</span><span class="en">Subscribe to VintageVault</span></h2>
+      <p><span class="zh">搶先獲得新品通知與會員專屬優惠</span><span class="en">Get early access to new arrivals and exclusive offers</span></p>
+      <form class="newsletter-form" onsubmit="event.preventDefault();alert('感謝訂閱！Thank you!')">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit"><span class="zh">立即訂閱</span><span class="en">Subscribe</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="聯絡 HEY!BOSS">
+  <i class="fas fa-comment-dots"></i>
+</a>
+
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+// Language toggle
+function toggleLang(){document.body.classList.toggle('lang-zh');document.body.classList.toggle('lang-en');if(!document.body.classList.contains('lang-zh')&&!document.body.classList.contains('lang-en'))document.body.classList.add('lang-zh')}
+// BGM
+let bgmPlaying=false;
+function toggleBGM(){const a=document.getElementById('bgm');if(bgmPlaying){a.pause();bgmPlaying=false}else{a.play();bgmPlaying=true}}
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.15});
+reveals.forEach(r=>observer.observe(r));
+// Navbar hide on scroll
+let lastScroll=0;
+window.addEventListener('scroll',()=>{const s=window.scrollY;document.getElementById('navbar').classList.toggle('hide',s>lastScroll&&s>80);lastScroll=s});
+</script>
+</body>
+</html>

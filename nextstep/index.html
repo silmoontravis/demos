@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前進人資 NextStep HR — 專業人資顧問</title>
+<meta name="description" content="前進人資提供全方位人力資源顧問服務，包含招募、培訓、組織設計與薪酬規劃。讓您的企業人才策略領先一步。">
+<meta name="keywords" content="人資顧問,HR,招募,培訓,組織設計,薪酬規劃,前進人資">
+<link rel="icon" href="logos/logo_final.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"前進人資 NextStep HR",
+  "description":"Professional HR consulting — recruitment, training, org design, compensation.",
+  "url":"https://silmoontravis.github.io/demos/nextstep",
+  "image":"https://silmoontravis.github.io/demos/nextstep/photos/hero.png",
+  "logo":"https://silmoontravis.github.io/demos/nextstep/logos/logo_final.png",
+  "address":{"@type":"PostalAddress","addressCountry":"TW"},
+  "serviceType":["Recruitment","Training","Organization Design","Compensation Planning"]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e3a5f;--teal:#0d9488;--white:#ffffff;--light:#f8fafb;--text:#334155;--radius:12px}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(30,58,95,.95);backdrop-filter:blur(10px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.2)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{color:var(--white);font-weight:700;font-size:1.1rem}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.85rem;padding:6px 10px;border-radius:6px;transition:background .3s}
+.nav-links a:hover{background:rgba(13,148,136,.3)}
+.lang-btn{background:var(--teal);color:var(--white);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.8rem}
+.bgm-btn{background:none;border:2px solid var(--teal);color:var(--teal);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.bgm-btn.playing{background:var(--teal);color:var(--white)}
+.menu-toggle{display:none;background:none;border:none;color:var(--teal);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:rgba(30,58,95,.98);flex-direction:column;padding:30px;gap:20px;transition:right .3s}
+  .nav-links.open{right:0}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,95,.9),rgba(30,58,95,.65))}
+.hero-content{position:relative;z-index:2;padding:20px;max-width:700px;margin-left:8%}
+.hero-content h1{font-size:clamp(2.2rem,5.5vw,4rem);color:var(--white);margin-bottom:16px;line-height:1.3}
+.hero-content h1 span{color:var(--teal)}
+.hero-content p{color:rgba(255,255,255,.8);font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:32px;line-height:1.8}
+.btn-primary{display:inline-block;background:var(--teal);color:var(--white);padding:14px 36px;border-radius:var(--radius);font-weight:700;font-size:1rem;transition:transform .3s,box-shadow .3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(13,148,136,.4)}
+.btn-outline{display:inline-block;border:2px solid var(--white);color:var(--white);padding:12px 32px;border-radius:var(--radius);font-weight:700;margin-left:12px;transition:background .3s}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--navy);margin-bottom:12px}
+.section-title .teal-line{width:60px;height:3px;background:var(--teal);margin:0 auto 16px}
+.section-title p{color:#64748b;font-size:1rem;max-width:600px;margin:0 auto;line-height:1.8}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--light);border-radius:var(--radius);padding:32px 24px;transition:transform .3s,box-shadow .3s;border:1px solid #e2e8f0}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.service-icon{width:56px;height:56px;border-radius:12px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:16px;color:var(--white)}
+.service-card h3{color:var(--navy);font-size:1.15rem;margin-bottom:8px}
+.service-card p{color:#64748b;font-size:.9rem;line-height:1.7}
+
+.approach-section{background:var(--navy);color:var(--white)}
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.approach-img{border-radius:var(--radius);overflow:hidden}
+.approach-img img{width:100%;height:380px;object-fit:cover}
+.approach-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px}
+.approach-text h2 span{color:var(--teal)}
+.approach-text p{line-height:2;opacity:.85;margin-bottom:16px}
+.approach-steps{list-style:none;counter-reset:steps}
+.approach-steps li{counter-increment:steps;padding:12px 0 12px 44px;position:relative;border-bottom:1px solid rgba(255,255,255,.1)}
+.approach-steps li::before{content:counter(steps);position:absolute;left:0;top:12px;width:32px;height:32px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+@media(max-width:768px){.approach-grid{grid-template-columns:1fr}}
+
+.results-section{background:var(--light)}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.results-img{border-radius:var(--radius);overflow:hidden}
+.results-img img{width:100%;height:350px;object-fit:cover}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.stat-card{background:var(--white);padding:24px;border-radius:var(--radius);text-align:center;border:1px solid #e2e8f0}
+.stat-number{font-size:2.2rem;font-weight:900;color:var(--teal)}
+.stat-label{color:#64748b;font-size:.85rem;margin-top:4px}
+@media(max-width:768px){.results-grid{grid-template-columns:1fr}}
+
+.team-section{padding:80px 20px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.team-card{text-align:center;padding:24px}
+.team-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--teal));margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--white)}
+.team-card h3{color:var(--navy);font-size:1.1rem;margin-bottom:4px}
+.team-card .role{color:var(--teal);font-size:.85rem;margin-bottom:8px}
+.team-card p{color:#64748b;font-size:.85rem;line-height:1.6}
+
+.contact-section{background:var(--navy)}
+.contact-form{max-width:600px;margin:0 auto;background:rgba(255,255,255,.06);padding:40px;border-radius:var(--radius);border:1px solid rgba(13,148,136,.2)}
+.contact-form .section-title h2{color:var(--white)}
+.contact-form .section-title p{color:rgba(255,255,255,.6)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:var(--teal);margin-bottom:6px;font-size:.9rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1px solid rgba(13,148,136,.3);border-radius:8px;background:rgba(255,255,255,.06);color:var(--white);font-size:1rem;font-family:inherit}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.35)}
+.form-group textarea{height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.form-row{grid-template-columns:1fr}}
+
+footer{background:#152d4a;padding:40px 20px;text-align:center}
+footer .footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+footer .footer-logo img{height:32px;width:32px;border-radius:50%}
+footer .footer-logo span{color:var(--white);font-weight:700}
+footer p{color:rgba(255,255,255,.45);font-size:.85rem}
+footer a{color:var(--teal);transition:opacity .3s}
+footer a:hover{opacity:.7}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999}
+.heyboss-btn{width:56px;height:56px;border-radius:50%;background:#3b82f6;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s;animation:pulse 2s infinite}
+.heyboss-btn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(59,130,246,.6)}
+.heyboss-btn svg{width:28px;height:28px;fill:#fff}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(59,130,246,.4)}50%{box-shadow:0 4px 30px rgba(59,130,246,.7)}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="前進人資 Logo">
+    <span data-zh="前進人資" data-en="NextStep HR">前進人資</span>
+  </div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="#services" data-zh="服務" data-en="Services">服務</a>
+    <a href="#approach" data-zh="方法" data-en="Approach">方法</a>
+    <a href="#results" data-zh="成果" data-en="Results">成果</a>
+    <a href="#team" data-zh="團隊" data-en="Team">團隊</a>
+    <a href="#contact" data-zh="聯繫" data-en="Contact">聯繫</a>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle music">♪</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="讓人才策略<span>領先一步</span>" data-en="Stay <span>One Step Ahead</span> in Talent Strategy" class="hero-h1">讓人才策略<span>領先一步</span></h1>
+    <p data-zh="前進人資擁有超過 15 年的企業人力資源顧問經驗，協助上百家企業打造高效能團隊。" data-en="With 15+ years of HR consulting experience, NextStep HR has helped hundreds of companies build high-performance teams.">前進人資擁有超過 15 年的企業人力資源顧問經驗，協助上百家企業打造高效能團隊。</p>
+    <a href="#services" class="btn-primary" data-zh="了解服務" data-en="Our Services">了解服務</a>
+    <a href="#contact" class="btn-outline" data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="專業服務" data-en="Our Services">專業服務</h2>
+      <div class="teal-line"></div>
+      <p data-zh="從招募到組織發展，為您的企業提供全方位人資解決方案。" data-en="From recruitment to organizational development — comprehensive HR solutions for your business.">從招募到組織發展，為您的企業提供全方位人資解決方案。</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">👥</div>
+        <h3 data-zh="人才招募" data-en="Recruitment">人才招募</h3>
+        <p data-zh="精準的人才搜尋與評估系統，協助您快速找到最適合的人才。從高階主管到專業技術人員，全方位獵才服務。" data-en="Precision talent search and assessment. From C-suite executives to technical specialists — full-spectrum recruitment services.">精準的人才搜尋與評估系統，協助您快速找到最適合的人才。從高階主管到專業技術人員，全方位獵才服務。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📚</div>
+        <h3 data-zh="教育培訓" data-en="Training & Development">教育培訓</h3>
+        <p data-zh="量身打造的企業培訓課程，涵蓋領導力發展、團隊協作與專業技能提升。讓員工持續成長。" data-en="Customized corporate training programs covering leadership development, teamwork, and professional skills enhancement.">量身打造的企業培訓課程，涵蓋領導力發展、團隊協作與專業技能提升。讓員工持續成長。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏗️</div>
+        <h3 data-zh="組織設計" data-en="Org Design">組織設計</h3>
+        <p data-zh="優化組織架構與流程，提升營運效率。從部門規劃到跨功能團隊建置，為企業成長奠定基礎。" data-en="Optimize organizational structure and processes for operational efficiency. From department planning to cross-functional team building.">優化組織架構與流程，提升營運效率。從部門規劃到跨功能團隊建置，為企業成長奠定基礎。</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💰</div>
+        <h3 data-zh="薪酬規劃" data-en="Compensation Planning">薪酬規劃</h3>
+        <p data-zh="具競爭力的薪酬架構設計，結合市場調研與績效管理，幫助企業留住核心人才並控制成本。" data-en="Competitive compensation structure design combining market research and performance management to retain talent and control costs.">具競爭力的薪酬架構設計，結合市場調研與績效管理，幫助企業留住核心人才並控制成本。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach-section" id="approach">
+  <div class="container">
+    <div class="approach-grid">
+      <div class="approach-img reveal-left">
+        <img src="photos/consulting.png" alt="顧問服務">
+      </div>
+      <div class="approach-text reveal-right">
+        <h2 data-zh="我們的 <span>顧問方法</span>" data-en="Our <span>Consulting Approach</span>">我們的 <span>顧問方法</span></h2>
+        <p data-zh="前進人資採用獨特的四階段顧問方法，確保每一個解決方案都精準對應您的企業需求。" data-en="NextStep HR uses a unique four-phase consulting method to ensure every solution precisely addresses your business needs.">前進人資採用獨特的四階段顧問方法，確保每一個解決方案都精準對應您的企業需求。</p>
+        <ol class="approach-steps">
+          <li data-zh="深度診斷 — 全面了解企業現況與挑戰" data-en="Deep Diagnosis — Comprehensive understanding of your current state and challenges">深度診斷 — 全面了解企業現況與挑戰</li>
+          <li data-zh="策略制定 — 擬定客製化人資策略藍圖" data-en="Strategy Design — Customized HR strategy blueprint">策略制定 — 擬定客製化人資策略藍圖</li>
+          <li data-zh="落地執行 — 專案團隊協同推動變革" data-en="Implementation — Project team drives transformation collaboratively">落地執行 — 專案團隊協同推動變革</li>
+          <li data-zh="持續優化 — 數據驅動的成效追蹤與調整" data-en="Continuous Improvement — Data-driven performance tracking and adjustment">持續優化 — 數據驅動的成效追蹤與調整</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section" id="results">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="實戰成果" data-en="Proven Results">實戰成果</h2>
+      <div class="teal-line"></div>
+    </div>
+    <div class="results-grid">
+      <div class="results-img reveal-left">
+        <img src="photos/growth.png" alt="成長數據">
+      </div>
+      <div class="reveal-right">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">300+</div>
+            <div class="stat-label" data-zh="服務企業" data-en="Companies Served">服務企業</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">95%</div>
+            <div class="stat-label" data-zh="客戶滿意度" data-en="Client Satisfaction">客戶滿意度</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">40%</div>
+            <div class="stat-label" data-zh="平均降低離職率" data-en="Avg. Turnover Reduction">平均降低離職率</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label" data-zh="年業界經驗" data-en="Years of Experience">年業界經驗</div>
+          </div>
+        </div>
+        <p style="margin-top:20px;color:#64748b;line-height:1.8" data-zh="我們已協助超過 300 家企業實現人才策略轉型，平均降低客戶離職率 40%，並顯著提升組織效能。" data-en="We've helped 300+ companies transform their talent strategy, reducing average turnover by 40% and significantly improving organizational performance.">我們已協助超過 300 家企業實現人才策略轉型，平均降低客戶離職率 40%，並顯著提升組織效能。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="專業團隊" data-en="Our Team">專業團隊</h2>
+      <div class="teal-line"></div>
+      <p data-zh="由資深人資專家與產業顧問組成的核心團隊，深耕各產業領域。" data-en="A core team of senior HR experts and industry consultants, deeply rooted in diverse industries.">由資深人資專家與產業顧問組成的核心團隊，深耕各產業領域。</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">陳</div>
+        <h3 data-zh="陳雅琳" data-en="Yalin Chen">陳雅琳</h3>
+        <div class="role" data-zh="創辦人暨執行長" data-en="Founder & CEO">創辦人暨執行長</div>
+        <p data-zh="前台積電人資長，20年跨國企業人資管理經驗。" data-en="Former TSMC CHRO, 20 years of multinational HR management experience.">前台積電人資長，20年跨國企業人資管理經驗。</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar">林</div>
+        <h3 data-zh="林偉宏" data-en="Weihong Lin">林偉宏</h3>
+        <div class="role" data-zh="招募事業部總監" data-en="Head of Recruitment">招募事業部總監</div>
+        <p data-zh="專精科技與金融業獵才，成功配對超過5,000位中高階人才。" data-en="Specializes in tech & finance recruitment, 5,000+ executive placements.">專精科技與金融業獵才，成功配對超過5,000位中高階人才。</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar">張</div>
+        <h3 data-zh="張美如" data-en="Meiru Zhang">張美如</h3>
+        <div class="role" data-zh="培訓發展總監" data-en="Director of L&D">培訓發展總監</div>
+        <p data-zh="擅長領導力發展與組織學習，服務過50+家上市企業。" data-en="Leadership development & organizational learning expert, 50+ listed company clients.">擅長領導力發展與組織學習，服務過50+家上市企業。</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar">王</div>
+        <h3 data-zh="王建銘" data-en="Jianming Wang">王建銘</h3>
+        <div class="role" data-zh="薪酬策略顧問" data-en="Compensation Strategy Consultant">薪酬策略顧問</div>
+        <p data-zh="CPA、SHRM-SCP認證，為企業量身設計具競爭力的薪酬福利架構。" data-en="CPA & SHRM-SCP certified, designs competitive compensation and benefits structures.">CPA、SHRM-SCP認證，為企業量身設計具競爭力的薪酬福利架構。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-form reveal">
+      <div class="section-title">
+        <h2 data-zh="免費諮詢" data-en="Free Consultation">免費諮詢</h2>
+        <div class="teal-line"></div>
+        <p data-zh="告訴我們您的需求，顧問團隊將在一個工作日內回覆您。" data-en="Share your needs and our consulting team will respond within one business day.">告訴我們您的需求，顧問團隊將在一個工作日內回覆您。</p>
+      </div>
+      <form onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Thank you! Our consultant will contact you within 1 business day.':'感謝您！顧問團隊將在一個工作日內與您聯繫。')">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-zh="姓名" data-en="Name">姓名</label>
+            <input type="text" required placeholder="王小明">
+          </div>
+          <div class="form-group">
+            <label data-zh="公司名稱" data-en="Company">公司名稱</label>
+            <input type="text" required placeholder="公司名稱">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-zh="電子信箱" data-en="Email">電子信箱</label>
+            <input type="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label data-zh="電話" data-en="Phone">電話</label>
+            <input type="tel" placeholder="02-1234-5678">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-zh="需要的服務" data-en="Service Needed">需要的服務</label>
+          <select>
+            <option data-zh="人才招募" data-en="Recruitment">人才招募</option>
+            <option data-zh="教育培訓" data-en="Training & Development">教育培訓</option>
+            <option data-zh="組織設計" data-en="Org Design">組織設計</option>
+            <option data-zh="薪酬規劃" data-en="Compensation Planning">薪酬規劃</option>
+            <option data-zh="全方位顧問" data-en="Comprehensive Consulting">全方位顧問</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-zh="需求說明" data-en="Description">需求說明</label>
+          <textarea placeholder="請簡述您的人資需求..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center" data-zh="送出諮詢" data-en="Submit">送出諮詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="logos/logo_final.png" alt="Logo">
+    <span data-zh="前進人資" data-en="NextStep HR">前進人資</span>
+  </div>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:8px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<div class="heyboss-widget">
+  <a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-btn" aria-label="Contact HeyBoss">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+  </a>
+</div>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgm=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){bgm.paused?(bgm.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫'):(bgm.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪')}
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else if(el.classList.contains('hero-h1'))el.innerHTML=val;
+    else el.textContent=val;
+  });
+}
+</script>
+</body>
+</html>

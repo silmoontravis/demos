@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>像素完美 PixelPerfect — 專業攝影器材</title>
+<meta name="description" content="像素完美提供專業相機、鏡頭、燈光與攝影配件。從入門到專業，為攝影師打造完美裝備。">
+<meta name="keywords" content="攝影器材,相機,鏡頭,燈光,攝影配件,像素完美,PixelPerfect">
+<link rel="icon" href="logos/logo_final.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"像素完美 PixelPerfect",
+  "description":"Professional camera gear e-commerce — cameras, lenses, lighting, accessories.",
+  "url":"https://silmoontravis.github.io/demos/pixelperfect",
+  "image":"https://silmoontravis.github.io/demos/pixelperfect/photos/hero.png",
+  "logo":"https://silmoontravis.github.io/demos/pixelperfect/logos/logo_final.png",
+  "address":{"@type":"PostalAddress","addressCountry":"TW"},
+  "offers":[
+    {"@type":"Offer","name":"專業相機","priceCurrency":"TWD","price":"68000"},
+    {"@type":"Offer","name":"頂級鏡頭","priceCurrency":"TWD","price":"42000"},
+    {"@type":"Offer","name":"攝影燈光","priceCurrency":"TWD","price":"15800"},
+    {"@type":"Offer","name":"攝影配件","priceCurrency":"TWD","price":"3200"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#111;--blue:#3b82f6;--white:#ffffff;--gray:#1a1a1a;--text-gray:#9ca3af;--radius:12px}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','Space Grotesk',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.scale-in{opacity:0;transform:scale(.9);transition:opacity .8s ease,transform .8s ease}
+.scale-in.active{opacity:1;transform:scale(1)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(17,17,17,.9);backdrop-filter:blur(12px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(59,130,246,.1);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(59,130,246,.15)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{color:var(--white);font-weight:700;font-size:1.1rem}
+.nav-logo span em{color:var(--blue);font-style:normal}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:var(--text-gray);font-size:.85rem;padding:6px 10px;border-radius:6px;transition:color .3s}
+.nav-links a:hover{color:var(--blue)}
+.lang-btn{background:var(--blue);color:var(--white);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.8rem}
+.bgm-btn{background:none;border:2px solid var(--blue);color:var(--blue);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.bgm-btn.playing{background:var(--blue);color:var(--white)}
+.menu-toggle{display:none;background:none;border:none;color:var(--blue);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:rgba(17,17,17,.98);flex-direction:column;padding:30px;gap:20px;transition:right .3s}
+  .nav-links.open{right:0}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.7) 0%,rgba(17,17,17,.9) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:20px;max-width:800px}
+.hero-content h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,5rem);color:var(--white);margin-bottom:16px;line-height:1.1;letter-spacing:-2px}
+.hero-content h1 span{color:var(--blue)}
+.hero-content p{color:var(--text-gray);font-size:clamp(1rem,2.5vw,1.3rem);margin-bottom:32px;line-height:1.7}
+.btn-primary{display:inline-block;background:var(--blue);color:var(--white);padding:14px 36px;border-radius:var(--radius);font-weight:700;font-size:1rem;transition:transform .3s,box-shadow .3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,.4)}
+.btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.3);color:var(--white);padding:12px 32px;border-radius:var(--radius);font-weight:700;margin-left:12px;transition:border-color .3s}
+.btn-outline:hover{border-color:var(--blue)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);margin-bottom:12px}
+.section-title .blue-line{width:60px;height:3px;background:var(--blue);margin:0 auto 16px}
+.section-title p{color:var(--text-gray);font-size:1rem;max-width:600px;margin:0 auto;line-height:1.8}
+
+.gear-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.gear-card{background:var(--gray);border-radius:var(--radius);overflow:hidden;border:1px solid #222;transition:transform .3s,border-color .3s}
+.gear-card:hover{transform:translateY(-6px);border-color:var(--blue)}
+.gear-icon{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:#0a0a0a}
+.gear-card-body{padding:20px}
+.gear-card-body h3{color:var(--white);font-size:1.15rem;margin-bottom:6px}
+.gear-card-body p{color:var(--text-gray);font-size:.85rem;line-height:1.6;margin-bottom:12px}
+.gear-price{display:flex;align-items:center;justify-content:space-between}
+.gear-price .price{font-size:1.3rem;font-weight:900;color:var(--blue)}
+.gear-price .price span{font-size:.75rem;color:var(--text-gray);font-weight:400}
+.gear-card .btn-sm{background:var(--blue);color:var(--white);padding:6px 16px;border-radius:6px;font-size:.8rem;font-weight:700;transition:opacity .3s}
+.gear-card .btn-sm:hover{opacity:.8}
+
+.review-section{background:var(--gray)}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.review-img{border-radius:var(--radius);overflow:hidden}
+.review-img img{width:100%;height:380px;object-fit:cover}
+.review-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px}
+.review-text h2 span{color:var(--blue)}
+.review-text p{color:var(--text-gray);line-height:2;margin-bottom:16px}
+.review-cards{display:flex;flex-direction:column;gap:12px}
+.review-card{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:8px;padding:16px}
+.review-card .stars{color:var(--blue);margin-bottom:4px}
+.review-card p{color:var(--text-gray);font-size:.85rem;line-height:1.6;margin:0}
+.review-card .reviewer{color:var(--white);font-size:.8rem;margin-top:6px;font-weight:700}
+@media(max-width:768px){.review-grid{grid-template-columns:1fr}}
+
+.store-section{position:relative;padding:100px 20px;overflow:hidden}
+.store-bg{position:absolute;inset:0;background:url('photos/studio.png') center/cover no-repeat}
+.store-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.85),rgba(17,17,17,.95))}
+.store-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto}
+.store-content h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:16px}
+.store-content h2 span{color:var(--blue)}
+.store-content p{color:var(--text-gray);line-height:1.8;margin-bottom:12px}
+.store-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:30px 0}
+.store-feature{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.1);border-radius:8px;padding:20px;text-align:center}
+.store-feature .icon{font-size:2rem;margin-bottom:8px}
+.store-feature h4{color:var(--white);font-size:.95rem;margin-bottom:4px}
+.store-feature p{color:var(--text-gray);font-size:.8rem;margin:0}
+
+.stories-section{background:var(--gray)}
+.stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.stories-img{border-radius:var(--radius);overflow:hidden}
+.stories-img img{width:100%;height:380px;object-fit:cover}
+.stories-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px}
+.stories-text h2 span{color:var(--blue)}
+.stories-text blockquote{border-left:3px solid var(--blue);padding-left:16px;color:var(--text-gray);line-height:1.8;font-style:italic;margin-bottom:12px}
+.stories-text .author{color:var(--white);font-weight:700;font-size:.9rem}
+@media(max-width:768px){.stories-grid{grid-template-columns:1fr}}
+
+.cta-section{text-align:center;padding:100px 20px;background:linear-gradient(135deg,var(--black),#0a1628)}
+.cta-section h2{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:16px}
+.cta-section h2 span{color:var(--blue)}
+.cta-section p{color:var(--text-gray);max-width:500px;margin:0 auto 32px;line-height:1.8}
+
+footer{background:#0a0a0a;padding:40px 20px;text-align:center;border-top:1px solid #1a1a1a}
+footer .footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+footer .footer-logo img{height:32px;width:32px;border-radius:50%}
+footer .footer-logo span{color:var(--white);font-weight:700}
+footer p{color:rgba(255,255,255,.35);font-size:.85rem}
+footer a{color:var(--blue);transition:opacity .3s}
+footer a:hover{opacity:.7}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999}
+.heyboss-btn{width:56px;height:56px;border-radius:50%;background:#3b82f6;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s;animation:pulse 2s infinite}
+.heyboss-btn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(59,130,246,.6)}
+.heyboss-btn svg{width:28px;height:28px;fill:#fff}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(59,130,246,.4)}50%{box-shadow:0 4px 30px rgba(59,130,246,.7)}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="PixelPerfect Logo">
+    <span data-zh="像素<em>完美</em>" data-en="Pixel<em>Perfect</em>">像素<em>完美</em></span>
+  </div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="#gear" data-zh="器材" data-en="Gear">器材</a>
+    <a href="#reviews" data-zh="評測" data-en="Reviews">評測</a>
+    <a href="#store" data-zh="門市" data-en="Store">門市</a>
+    <a href="#stories" data-zh="故事" data-en="Stories">故事</a>
+    <a href="#shop" data-zh="選購" data-en="Shop">選購</a>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle music">♪</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="捕捉每一個<span>完美瞬間</span>" data-en="Capture Every <span>Perfect Moment</span>">捕捉每一個<span>完美瞬間</span></h1>
+    <p data-zh="專業攝影器材專賣。從相機到燈光，為每一位攝影師打造完美裝備。" data-en="Professional photography gear store. From cameras to lighting — the perfect setup for every photographer.">專業攝影器材專賣。從相機到燈光，為每一位攝影師打造完美裝備。</p>
+    <a href="#gear" class="btn-primary" data-zh="探索器材" data-en="Explore Gear">探索器材</a>
+    <a href="#shop" class="btn-outline" data-zh="立即選購" data-en="Shop Now">立即選購</a>
+  </div>
+</section>
+
+<section id="gear">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="精選器材" data-en="Featured Gear">精選器材</h2>
+      <div class="blue-line"></div>
+      <p data-zh="嚴選全球頂級品牌，每一件器材都經過專業攝影師實測推薦。" data-en="Curated top global brands, each piece field-tested and recommended by professional photographers.">嚴選全球頂級品牌，每一件器材都經過專業攝影師實測推薦。</p>
+    </div>
+    <div class="gear-grid">
+      <div class="gear-card scale-in">
+        <div class="gear-icon">📷</div>
+        <div class="gear-card-body">
+          <h3 data-zh="專業相機" data-en="Professional Cameras">專業相機</h3>
+          <p data-zh="全片幅無反光鏡相機，8K錄影、50MP感光元件，輕量化機身設計。" data-en="Full-frame mirrorless cameras with 8K video, 50MP sensor, lightweight body design.">全片幅無反光鏡相機，8K錄影、50MP感光元件，輕量化機身設計。</p>
+          <div class="gear-price">
+            <div class="price">NT$68,000 <span data-zh="起" data-en="up">起</span></div>
+            <a href="#shop" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+          </div>
+        </div>
+      </div>
+      <div class="gear-card scale-in">
+        <div class="gear-icon">🔭</div>
+        <div class="gear-card-body">
+          <h3 data-zh="頂級鏡頭" data-en="Premium Lenses">頂級鏡頭</h3>
+          <p data-zh="從廣角到超望遠，恆定光圈大三元鏡頭與定焦神鏡，銳利還原每一個細節。" data-en="Wide-angle to super telephoto, f/2.8 zoom trinity and prime legends — razor-sharp detail reproduction.">從廣角到超望遠，恆定光圈大三元鏡頭與定焦神鏡，銳利還原每一個細節。</p>
+          <div class="gear-price">
+            <div class="price">NT$42,000 <span data-zh="起" data-en="up">起</span></div>
+            <a href="#shop" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+          </div>
+        </div>
+      </div>
+      <div class="gear-card scale-in">
+        <div class="gear-icon">💡</div>
+        <div class="gear-card-body">
+          <h3 data-zh="攝影燈光" data-en="Studio Lighting">攝影燈光</h3>
+          <p data-zh="專業棚燈、LED持續光源與閃光燈系統。精準色溫控制，打造完美光影。" data-en="Professional strobes, LED continuous lights and flash systems. Precise color temperature control for perfect lighting.">專業棚燈、LED持續光源與閃光燈系統。精準色溫控制，打造完美光影。</p>
+          <div class="gear-price">
+            <div class="price">NT$15,800 <span data-zh="起" data-en="up">起</span></div>
+            <a href="#shop" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+          </div>
+        </div>
+      </div>
+      <div class="gear-card scale-in">
+        <div class="gear-icon">🎒</div>
+        <div class="gear-card-body">
+          <h3 data-zh="攝影配件" data-en="Accessories">攝影配件</h3>
+          <p data-zh="腳架、濾鏡、記憶卡、攝影包與穩定器。完善您的攝影工作流程。" data-en="Tripods, filters, memory cards, camera bags and gimbals. Complete your photography workflow.">腳架、濾鏡、記憶卡、攝影包與穩定器。完善您的攝影工作流程。</p>
+          <div class="gear-price">
+            <div class="price">NT$3,200 <span data-zh="起" data-en="up">起</span></div>
+            <a href="#shop" class="btn-sm" data-zh="選購" data-en="Shop">選購</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="review-section" id="reviews">
+  <div class="container">
+    <div class="review-grid">
+      <div class="review-img reveal-left">
+        <img src="photos/gear.png" alt="器材評測">
+      </div>
+      <div class="review-text reveal-right">
+        <h2 data-zh="專業<span>實測評鑑</span>" data-en="Professional <span>Reviews</span>">專業<span>實測評鑑</span></h2>
+        <p data-zh="每一件器材上架前，都經過我們專業團隊的嚴格實測與評鑑。" data-en="Every piece of gear is rigorously field-tested by our professional team before listing.">每一件器材上架前，都經過我們專業團隊的嚴格實測與評鑑。</p>
+        <div class="review-cards">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p data-zh="高感光度表現令人驚艷，ISO 12800 仍保持極低雜訊。" data-en="High ISO performance is stunning — ISO 12800 maintains remarkably low noise.">高感光度表現令人驚艷，ISO 12800 仍保持極低雜訊。</p>
+            <div class="reviewer" data-zh="— 攝影師 李明哲" data-en="— Photographer M. Li">— 攝影師 李明哲</div>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p data-zh="自動對焦速度和精準度在業界堪稱頂級，追蹤鳥類也毫無壓力。" data-en="Autofocus speed and accuracy are top-tier — bird tracking with zero pressure.">自動對焦速度和精準度在業界堪稱頂級，追蹤鳥類也毫無壓力。</p>
+            <div class="reviewer" data-zh="— 生態攝影師 王佳欣" data-en="— Wildlife Photographer J. Wang">— 生態攝影師 王佳欣</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="store-section" id="store">
+  <div class="store-bg"></div>
+  <div class="store-overlay"></div>
+  <div class="store-content reveal">
+    <h2 data-zh="走進 <span>像素完美</span> 門市" data-en="Visit Our <span>PixelPerfect</span> Store">走進 <span>像素完美</span> 門市</h2>
+    <p data-zh="歡迎親臨全台門市，體驗最新器材，專業顧問為您量身推薦。" data-en="Visit our stores across Taiwan. Experience the latest gear with expert consultants to guide you.">歡迎親臨全台門市，體驗最新器材，專業顧問為您量身推薦。</p>
+    <div class="store-features">
+      <div class="store-feature">
+        <div class="icon">🏪</div>
+        <h4 data-zh="全台 5 間門市" data-en="5 Stores Nationwide">全台 5 間門市</h4>
+        <p data-zh="台北・台中・高雄・新竹・台南" data-en="Taipei · Taichung · Kaohsiung · Hsinchu · Tainan">台北・台中・高雄・新竹・台南</p>
+      </div>
+      <div class="store-feature">
+        <div class="icon">🎯</div>
+        <h4 data-zh="免費試用體驗" data-en="Free Hands-On Trial">免費試用體驗</h4>
+        <p data-zh="所有展示器材皆可現場試拍" data-en="All display gear available for test shots">所有展示器材皆可現場試拍</p>
+      </div>
+      <div class="store-feature">
+        <div class="icon">🔧</div>
+        <h4 data-zh="專業維修中心" data-en="Professional Repair Center">專業維修中心</h4>
+        <p data-zh="原廠授權維修，快速取件" data-en="Authorized repair, fast turnaround">原廠授權維修，快速取件</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stories-section" id="stories">
+  <div class="container">
+    <div class="stories-grid">
+      <div class="stories-text reveal-left">
+        <h2 data-zh="攝影師<span>故事</span>" data-en="Photographer <span>Stories</span>">攝影師<span>故事</span></h2>
+        <blockquote data-zh="「拿到 PixelPerfect 推薦的這台相機後，我完成了人生中最重要的一組作品 — 記錄台灣百岳的日出。感謝像素完美，讓我用最好的裝備追逐光影。」" data-en="\"After getting the camera PixelPerfect recommended, I completed the most important series of my life — capturing sunrises across Taiwan's hundred peaks. Thank you for giving me the best gear to chase light.\"">「拿到 PixelPerfect 推薦的這台相機後，我完成了人生中最重要的一組作品 — 記錄台灣百岳的日出。感謝像素完美，讓我用最好的裝備追逐光影。」</blockquote>
+        <div class="author" data-zh="風景攝影師 陳昱翔" data-en="Landscape Photographer Y. Chen">風景攝影師 陳昱翔</div>
+      </div>
+      <div class="stories-img reveal-right">
+        <img src="photos/action.png" alt="攝影師作品">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="shop">
+  <div class="container reveal">
+    <h2 data-zh="準備好升級你的<span>攝影裝備</span>了嗎？" data-en="Ready to Upgrade Your <span>Photography Gear</span>?">準備好升級你的<span>攝影裝備</span>了嗎？</h2>
+    <p data-zh="加入超過 10,000 位專業攝影師的行列，選擇像素完美作為您的器材夥伴。" data-en="Join 10,000+ professional photographers who trust PixelPerfect as their gear partner.">加入超過 10,000 位專業攝影師的行列，選擇像素完美作為您的器材夥伴。</p>
+    <a href="#gear" class="btn-primary" data-zh="開始選購" data-en="Start Shopping">開始選購</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="logos/logo_final.png" alt="Logo">
+    <span data-zh="像素完美" data-en="PixelPerfect">像素完美</span>
+  </div>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:8px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<div class="heyboss-widget">
+  <a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-btn" aria-label="Contact HeyBoss">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+  </a>
+</div>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgm=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){bgm.paused?(bgm.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫'):(bgm.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪')}
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.scale-in');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else if(val.includes('<'))el.innerHTML=val;
+    else el.textContent=val;
+  });
+}
+</script>
+</body>
+</html>

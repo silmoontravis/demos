@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>潔淨專家 CleanPro — 專業居家清潔服務</title>
+<meta name="description" content="潔淨專家 CleanPro 提供定期清潔、深層清潔、搬遷清潔與辦公室清潔服務，讓您的空間煥然一新。">
+<meta name="keywords" content="居家清潔, 清潔服務, home cleaning, 打掃, 深層清潔, 辦公室清潔">
+<link rel="icon" href="logos/logo_final.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "潔淨專家 CleanPro",
+  "description": "專業居家清潔服務，定期清潔、深層清潔、搬遷清潔、辦公室清潔",
+  "url": "https://silmoontravis.github.io/demos/cleanpro",
+  "image": "photos/hero.png",
+  "address": { "@type": "PostalAddress", "addressCountry": "TW" },
+  "priceRange": "$$",
+  "serviceType": ["Regular Cleaning","Deep Cleaning","Move-in Cleaning","Office Cleaning"]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#0ea5e9;--blue-dark:#0284c7;--white:#ffffff;--gray:#f5f5f5;--dark:#1e293b;--text:#475569;--light-blue:#e0f2fe;--green:#22c55e}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans TC',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+.lang-en .zh{display:none}.lang-zh .en{display:none}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2e8f0;transition:transform .3s}
+nav.hide{transform:translateY(-100%)}
+.nav-logo{display:flex;align-items:center;gap:8px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{font-size:1.1rem;font-weight:700;color:var(--blue)}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:.85rem;color:var(--text);transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--blue)}
+.nav-controls{display:flex;gap:10px;align-items:center}
+.btn-lang,.btn-bgm{background:var(--blue);color:var(--white);border:none;padding:6px 12px;border-radius:20px;font-size:.75rem;cursor:pointer;font-weight:600;transition:all .3s}
+.btn-lang:hover,.btn-bgm:hover{background:var(--blue-dark)}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;color:var(--blue);cursor:pointer}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--white);flex-direction:column;padding:20px;gap:15px;border-bottom:1px solid #e2e8f0}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,165,233,.75),rgba(30,41,59,.6))}
+.hero-content{position:relative;z-index:2;color:var(--white);padding:20px;max-width:700px;margin-left:8%}
+.hero-content h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;margin-bottom:16px;line-height:1.15;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .3s forwards}
+.hero-content p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:30px;opacity:.9;opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .5s forwards}
+.btn-primary{display:inline-block;background:var(--blue);color:var(--white);padding:14px 36px;border-radius:30px;font-size:1rem;font-weight:700;transition:all .3s;border:2px solid var(--blue);opacity:0;transform:translateY(30px);animation:fadeUp .8s ease .7s forwards}
+.btn-primary:hover{background:transparent;border-color:var(--white);transform:translateY(-2px)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--dark);margin-bottom:10px}
+.section-title p{color:var(--text);font-size:1rem;max-width:600px;margin:0 auto}
+.container{max-width:1100px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s ease}.reveal.active{opacity:1;transform:translateY(0)}
+
+/* SERVICES */
+#services{background:var(--gray)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;border-top:4px solid var(--blue)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(14,165,233,.15)}
+.service-card .icon{width:60px;height:60px;background:var(--light-blue);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--blue);font-size:1.4rem}
+.service-card h3{font-size:1.15rem;margin-bottom:6px;color:var(--dark)}
+.service-card .price{color:var(--blue);font-weight:700;font-size:1.1rem;margin-bottom:8px}
+.service-card p{font-size:.9rem;color:var(--text);line-height:1.6}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.why-images{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.why-images img{border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);width:100%;height:200px;object-fit:cover}
+.why-text h3{font-size:1.6rem;font-weight:700;color:var(--dark);margin-bottom:16px}
+.why-text p{line-height:1.8;margin-bottom:16px}
+.why-features{list-style:none;padding:0}
+.why-features li{padding:10px 0;display:flex;align-items:center;gap:12px;font-size:.95rem}
+.why-features li .check{width:28px;height:28px;background:var(--light-blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:.85rem;flex-shrink:0}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+
+/* HOW IT WORKS */
+#how{background:var(--gray)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;position:relative}
+.step{text-align:center;position:relative}
+.step-num{width:60px;height:60px;background:var(--blue);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 16px}
+.step h3{font-size:1.1rem;color:var(--dark);margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--text);line-height:1.6;max-width:280px;margin:0 auto}
+.step-connector{display:none}
+@media(min-width:769px){
+  .step-connector{display:block;position:absolute;top:30px;right:-15px;width:30px;height:2px;background:var(--blue)}
+  .step:last-child .step-connector{display:none}
+}
+
+/* BOOK FORM */
+.book-form{max-width:600px;margin:0 auto;background:var(--white);padding:40px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.book-form .form-group{margin-bottom:20px}
+.book-form label{display:block;font-weight:600;margin-bottom:6px;font-size:.9rem;color:var(--dark)}
+.book-form input,.book-form select,.book-form textarea{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:1rem;transition:border-color .3s;font-family:inherit}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{border-color:var(--blue);outline:none}
+.book-form button{width:100%;padding:14px;background:var(--blue);color:var(--white);border:none;border-radius:30px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.book-form button:hover{background:var(--blue-dark)}
+
+footer{text-align:center;padding:40px 20px;background:var(--dark);color:rgba(255,255,255,.7)}
+footer a{color:var(--blue)}
+footer p{font-size:.85rem;margin-top:8px}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);transition:all .3s;animation:pulse 2s infinite}
+.heyboss-widget:hover{transform:scale(1.1)}
+.heyboss-widget i{color:#fff;font-size:1.4rem}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,99,235,.4)}50%{box-shadow:0 4px 30px rgba(37,99,235,.7)}}
+</style>
+</head>
+<body class="lang-zh">
+
+<nav id="navbar">
+  <div class="nav-logo"><img src="logos/logo_final.png" alt="CleanPro Logo"><span>潔淨專家</span></div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="選單"><i class="fas fa-bars"></i></button>
+  <div class="nav-links">
+    <a href="#services"><span class="zh">服務項目</span><span class="en">Services</span></a>
+    <a href="#why"><span class="zh">為什麼選我們</span><span class="en">Why Us</span></a>
+    <a href="#how"><span class="zh">流程</span><span class="en">How It Works</span></a>
+    <a href="#book"><span class="zh">立即預約</span><span class="en">Book Now</span></a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-lang" onclick="toggleLang()">EN/中</button>
+    <button class="btn-bgm" onclick="toggleBGM()"><i class="fas fa-music"></i></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1><span class="zh">讓專業<br>還原潔淨</span><span class="en">Let Professionals<br>Restore Clean</span></h1>
+    <p><span class="zh">專業清潔團隊，讓您的居家與辦公空間煥然一新</span><span class="en">Professional cleaning team to refresh your home and office spaces</span></p>
+    <a href="#book" class="btn-primary"><span class="zh">立即預約清潔</span><span class="en">Book a Cleaning</span></a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">服務項目</span><span class="en">Our Services</span></h2>
+      <p><span class="zh">全方位清潔服務，滿足您的各種需求</span><span class="en">Comprehensive cleaning services for all your needs</span></p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-home"></i></div>
+        <h3><span class="zh">定期清潔</span><span class="en">Regular Cleaning</span></h3>
+        <div class="price"><span class="zh">NT$1,800 起/次</span><span class="en">From NT$1,800/session</span></div>
+        <p><span class="zh">每週或每月定期清掃，維持居家整潔舒適</span><span class="en">Weekly or monthly cleaning to maintain a tidy home</span></p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-sparkles"></i></div>
+        <h3><span class="zh">深層清潔</span><span class="en">Deep Cleaning</span></h3>
+        <div class="price"><span class="zh">NT$3,600 起/次</span><span class="en">From NT$3,600/session</span></div>
+        <p><span class="zh">徹底清潔每個角落，含廚房油垢、浴室水垢</span><span class="en">Thorough cleaning including kitchen grease & bathroom scale</span></p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-truck-moving"></i></div>
+        <h3><span class="zh">搬遷清潔</span><span class="en">Move-in Cleaning</span></h3>
+        <div class="price"><span class="zh">NT$4,500 起/次</span><span class="en">From NT$4,500/session</span></div>
+        <p><span class="zh">搬入搬出全面清潔，還原空間最佳狀態</span><span class="en">Complete cleaning for move-in/out, restoring spaces</span></p>
+      </div>
+      <div class="service-card reveal">
+        <div class="icon"><i class="fas fa-building"></i></div>
+        <h3><span class="zh">辦公室清潔</span><span class="en">Office Cleaning</span></h3>
+        <div class="price"><span class="zh">NT$2,500 起/次</span><span class="en">From NT$2,500/session</span></div>
+        <p><span class="zh">專業辦公空間清潔，提升工作環境品質</span><span class="en">Professional office cleaning for better work environment</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-images reveal">
+        <img src="photos/team.png" alt="清潔團隊" loading="lazy">
+        <img src="photos/tools.png" alt="專業設備" loading="lazy">
+      </div>
+      <div class="why-text reveal">
+        <h3><span class="zh">為什麼選擇潔淨專家？</span><span class="en">Why Choose CleanPro?</span></h3>
+        <p><span class="zh">我們不只是打掃，而是用專業態度與嚴謹流程，為您打造真正潔淨安心的生活空間。</span><span class="en">We don't just clean -- we create truly clean and safe living spaces with professional standards and rigorous processes.</span></p>
+        <ul class="why-features">
+          <li><div class="check"><i class="fas fa-check"></i></div><span class="zh">全員通過專業清潔培訓認證</span><span class="en">All staff professionally trained & certified</span></li>
+          <li><div class="check"><i class="fas fa-check"></i></div><span class="zh">使用環保無毒清潔劑</span><span class="en">Eco-friendly, non-toxic cleaning products</span></li>
+          <li><div class="check"><i class="fas fa-check"></i></div><span class="zh">全額投保，服務有保障</span><span class="en">Fully insured for your protection</span></li>
+          <li><div class="check"><i class="fas fa-check"></i></div><span class="zh">不滿意免費重新清潔</span><span class="en">Not satisfied? Free re-clean guarantee</span></li>
+          <li><div class="check"><i class="fas fa-check"></i></div><span class="zh">線上即時預約，彈性時段</span><span class="en">Online booking with flexible scheduling</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">預約流程</span><span class="en">How It Works</span></h2>
+      <p><span class="zh">三步驟輕鬆搞定，讓清潔變得超簡單</span><span class="en">Three simple steps to a sparkling clean space</span></p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3><span class="zh">線上預約</span><span class="en">Book Online</span></h3>
+        <p><span class="zh">選擇服務類型、日期與時段，填寫基本資料即可完成預約</span><span class="en">Choose your service type, date & time, fill in basic info to complete booking</span></p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3><span class="zh">專業到府</span><span class="en">We Come to You</span></h3>
+        <p><span class="zh">專業清潔人員準時到達，自備所有清潔工具與環保清潔劑</span><span class="en">Professional cleaners arrive on time with all tools & eco-friendly products</span></p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3><span class="zh">煥然一新</span><span class="en">Enjoy Clean</span></h3>
+        <p><span class="zh">驗收成果，享受潔淨舒適的空間。不滿意可免費重做</span><span class="en">Inspect results, enjoy your clean space. Free re-clean if not satisfied</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2><span class="zh">立即預約清潔</span><span class="en">Book a Cleaning</span></h2>
+      <p><span class="zh">填寫以下資料，我們將盡速與您聯繫確認</span><span class="en">Fill in the form below and we'll confirm your booking shortly</span></p>
+    </div>
+    <form class="book-form reveal" onsubmit="event.preventDefault();alert('預約成功！我們會盡快聯繫您。Booking submitted!')">
+      <div class="form-group"><label><span class="zh">姓名</span><span class="en">Name</span></label><input type="text" required></div>
+      <div class="form-group"><label><span class="zh">電話</span><span class="en">Phone</span></label><input type="tel" required></div>
+      <div class="form-group"><label><span class="zh">Email</span><span class="en">Email</span></label><input type="email" required></div>
+      <div class="form-group"><label><span class="zh">服務類型</span><span class="en">Service Type</span></label>
+        <select>
+          <option>定期清潔 Regular</option>
+          <option>深層清潔 Deep</option>
+          <option>搬遷清潔 Move-in</option>
+          <option>辦公室清潔 Office</option>
+        </select>
+      </div>
+      <div class="form-group"><label><span class="zh">預約日期</span><span class="en">Preferred Date</span></label><input type="date" required></div>
+      <div class="form-group"><label><span class="zh">地址</span><span class="en">Address</span></label><input type="text" required></div>
+      <div class="form-group"><label><span class="zh">備註</span><span class="en">Notes</span></label><textarea rows="3"></textarea></div>
+      <button type="submit"><span class="zh">送出預約</span><span class="en">Submit Booking</span></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<a href="https://silmoontravis.github.io/demos/#contact" class="heyboss-widget" target="_blank" rel="noopener" aria-label="聯絡 HEY!BOSS"><i class="fas fa-comment-dots"></i></a>
+<audio id="bgm" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+function toggleLang(){document.body.classList.toggle('lang-zh');document.body.classList.toggle('lang-en');if(!document.body.classList.contains('lang-zh')&&!document.body.classList.contains('lang-en'))document.body.classList.add('lang-zh')}
+let bgmPlaying=false;function toggleBGM(){const a=document.getElementById('bgm');if(bgmPlaying){a.pause();bgmPlaying=false}else{a.play();bgmPlaying=true}}
+const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.15});reveals.forEach(r=>observer.observe(r));
+let lastScroll=0;window.addEventListener('scroll',()=>{const s=window.scrollY;document.getElementById('navbar').classList.toggle('hide',s>lastScroll&&s>80);lastScroll=s});
+</script>
+</body>
+</html>

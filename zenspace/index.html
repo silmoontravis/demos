@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>禪空間 ZenSpace — 冥想與正念 App</title>
+<meta name="description" content="禪空間是您的數位正念夥伴，提供引導冥想、呼吸練習、助眠音樂與專注模式。Premium 與家庭方案任您選擇。">
+<meta name="keywords" content="冥想,正念,呼吸,睡眠,專注,禪空間,ZenSpace,App">
+<link rel="icon" href="logos/logo_final.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MobileApplication",
+  "name":"禪空間 ZenSpace",
+  "description":"Meditation and mindfulness app — guided meditation, breathing, sleep, focus.",
+  "url":"https://silmoontravis.github.io/demos/zenspace",
+  "image":"https://silmoontravis.github.io/demos/zenspace/photos/hero.png",
+  "applicationCategory":"HealthApplication",
+  "operatingSystem":"iOS, Android",
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"TWD"},
+    {"@type":"Offer","name":"Premium","price":"199","priceCurrency":"TWD","billingIncrement":"P1M"},
+    {"@type":"Offer","name":"Family","price":"399","priceCurrency":"TWD","billingIncrement":"P1M"}
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#581c87;--lavender:#a78bfa;--warm:#fefdf5;--light-purple:#f3e8ff;--text:#3b0764;--radius:16px}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans TC','DM Sans',sans-serif;background:var(--warm);color:var(--text);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .9s ease,transform .9s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .9s ease,transform .9s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(88,28,135,.92);backdrop-filter:blur(12px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 24px rgba(88,28,135,.3)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:36px;border-radius:50%}
+.nav-logo span{color:var(--warm);font-weight:700;font-size:1.1rem}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:rgba(254,253,245,.8);font-size:.85rem;padding:6px 10px;border-radius:6px;transition:background .3s}
+.nav-links a:hover{background:rgba(167,139,250,.2)}
+.lang-btn{background:var(--lavender);color:var(--purple);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.8rem}
+.bgm-btn{background:none;border:2px solid var(--lavender);color:var(--lavender);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.bgm-btn.playing{background:var(--lavender);color:var(--purple)}
+.menu-toggle{display:none;background:none;border:none;color:var(--lavender);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);background:rgba(88,28,135,.98);flex-direction:column;padding:30px;gap:20px;transition:right .3s}
+  .nav-links.open{right:0}
+  .menu-toggle{display:block}
+}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('photos/hero.png') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(88,28,135,.8),rgba(88,28,135,.55))}
+.hero-content{position:relative;z-index:2;text-align:center;padding:20px;max-width:700px}
+.hero-content h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--warm);margin-bottom:16px;line-height:1.2;font-weight:300;letter-spacing:2px}
+.hero-content h1 span{color:var(--lavender);font-weight:700}
+.hero-content p{color:rgba(254,253,245,.8);font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:32px;line-height:1.8;font-weight:300}
+.btn-primary{display:inline-block;background:var(--lavender);color:var(--purple);padding:14px 36px;border-radius:30px;font-weight:700;font-size:1rem;transition:transform .3s,box-shadow .3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(167,139,250,.4)}
+.btn-outline{display:inline-block;border:2px solid var(--lavender);color:var(--lavender);padding:12px 32px;border-radius:30px;font-weight:700;margin-left:12px;transition:background .3s}
+.btn-outline:hover{background:rgba(167,139,250,.15)}
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--purple);margin-bottom:12px;font-weight:700}
+.section-title .lav-line{width:60px;height:3px;background:var(--lavender);margin:0 auto 16px;border-radius:2px}
+.section-title p{color:#6b21a8;opacity:.7;font-size:1rem;max-width:600px;margin:0 auto;line-height:1.8}
+
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.feature-card{background:var(--light-purple);border-radius:var(--radius);padding:32px 24px;text-align:center;transition:transform .3s,box-shadow .3s;border:1px solid rgba(167,139,250,.15)}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(88,28,135,.1)}
+.feature-icon{font-size:2.8rem;margin-bottom:16px}
+.feature-card h3{color:var(--purple);font-size:1.15rem;margin-bottom:8px}
+.feature-card p{color:#6b21a8;opacity:.7;font-size:.9rem;line-height:1.7}
+
+.app-section{background:var(--purple);color:var(--warm);overflow:hidden}
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.app-img{text-align:center}
+.app-img img{max-width:320px;margin:0 auto;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.app-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px;font-weight:300}
+.app-text h2 span{color:var(--lavender);font-weight:700}
+.app-text p{line-height:2;opacity:.8;margin-bottom:16px}
+.app-stats{display:flex;gap:24px;margin-top:20px}
+.app-stat{text-align:center}
+.app-stat .num{font-size:1.8rem;font-weight:700;color:var(--lavender)}
+.app-stat .label{font-size:.8rem;opacity:.7;margin-top:2px}
+@media(max-width:768px){.app-grid{grid-template-columns:1fr}.app-img{order:-1}}
+
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.plan-card{background:#fff;border-radius:var(--radius);padding:36px 28px;text-align:center;border:2px solid var(--light-purple);transition:border-color .3s,transform .3s}
+.plan-card:hover{border-color:var(--lavender);transform:translateY(-4px)}
+.plan-card.featured{border-color:var(--lavender);position:relative;background:linear-gradient(180deg,#faf5ff,#fff)}
+.plan-card.featured::before{content:'推薦';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--lavender);color:var(--purple);padding:4px 20px;border-radius:20px;font-size:.8rem;font-weight:700}
+.plan-card h3{color:var(--purple);font-size:1.2rem;margin-bottom:8px}
+.plan-card .price{font-size:2.5rem;font-weight:700;color:var(--purple)}
+.plan-card .price span{font-size:.9rem;color:#9333ea;font-weight:400}
+.plan-card .period{color:#9333ea;font-size:.85rem;margin-bottom:20px}
+.plan-card ul{list-style:none;margin-bottom:24px;text-align:left}
+.plan-card ul li{padding:10px 0;border-bottom:1px solid var(--light-purple);color:#6b21a8;font-size:.9rem;padding-left:24px;position:relative}
+.plan-card ul li::before{content:'✓';position:absolute;left:0;color:var(--lavender);font-weight:700}
+
+.community-section{background:var(--purple);color:var(--warm)}
+.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:30px}
+.community-img{border-radius:var(--radius);overflow:hidden}
+.community-img img{width:100%;height:280px;object-fit:cover}
+.community-text{text-align:center;max-width:700px;margin:0 auto}
+.community-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px;font-weight:300}
+.community-text h2 span{color:var(--lavender);font-weight:700}
+.community-text p{opacity:.8;line-height:1.8;margin-bottom:24px}
+@media(max-width:768px){.community-grid{grid-template-columns:1fr}}
+
+.download-section{text-align:center;padding:100px 20px;background:linear-gradient(180deg,var(--warm),var(--light-purple))}
+.download-section h2{font-size:clamp(2rem,5vw,3.5rem);color:var(--purple);margin-bottom:16px;font-weight:300}
+.download-section h2 span{color:var(--lavender);font-weight:700}
+.download-section p{color:#6b21a8;opacity:.7;max-width:500px;margin:0 auto 32px;line-height:1.8}
+.download-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.download-btns .btn-primary{border-radius:30px;padding:14px 32px}
+
+footer{background:#3b0764;padding:40px 20px;text-align:center}
+footer .footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+footer .footer-logo img{height:32px;width:32px;border-radius:50%}
+footer .footer-logo span{color:var(--warm);font-weight:700}
+footer p{color:rgba(254,253,245,.4);font-size:.85rem}
+footer a{color:var(--lavender);transition:opacity .3s}
+footer a:hover{opacity:.7}
+
+.heyboss-widget{position:fixed;bottom:24px;left:24px;z-index:9999}
+.heyboss-btn{width:56px;height:56px;border-radius:50%;background:#3b82f6;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s;animation:pulse 2s infinite}
+.heyboss-btn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(59,130,246,.6)}
+.heyboss-btn svg{width:28px;height:28px;fill:#fff}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(59,130,246,.4)}50%{box-shadow:0 4px 30px rgba(59,130,246,.7)}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="logos/logo_final.png" alt="禪空間 Logo">
+    <span data-zh="禪空間" data-en="ZenSpace">禪空間</span>
+  </div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="#features" data-zh="功能" data-en="Features">功能</a>
+    <a href="#app" data-zh="App" data-en="App">App</a>
+    <a href="#plans" data-zh="方案" data-en="Plans">方案</a>
+    <a href="#community" data-zh="社群" data-en="Community">社群</a>
+    <a href="#download" data-zh="下載" data-en="Download">下載</a>
+    <button class="bgm-btn" id="bgmBtn" onclick="toggleBGM()" aria-label="Toggle music">♪</button>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-zh="在喧囂中 找到<span>內在寧靜</span>" data-en="Find <span>Inner Peace</span> Amidst the Noise">在喧囂中 找到<span>內在寧靜</span></h1>
+    <p data-zh="禪空間，您的數位正念夥伴。透過引導冥想、呼吸練習與助眠模式，帶您回到當下。" data-en="ZenSpace — your digital mindfulness companion. Guided meditation, breathing exercises, and sleep modes bring you back to the present.">禪空間，您的數位正念夥伴。透過引導冥想、呼吸練習與助眠模式，帶您回到當下。</p>
+    <a href="#download" class="btn-primary" data-zh="免費下載" data-en="Download Free">免費下載</a>
+    <a href="#features" class="btn-outline" data-zh="探索功能" data-en="Explore Features">探索功能</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="四大核心功能" data-en="Four Core Features">四大核心功能</h2>
+      <div class="lav-line"></div>
+      <p data-zh="為您的身心健康量身設計，每一個功能都經過正念導師與心理學家驗證。" data-en="Designed for your well-being, each feature validated by mindfulness teachers and psychologists.">為您的身心健康量身設計，每一個功能都經過正念導師與心理學家驗證。</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🧘</div>
+        <h3 data-zh="引導冥想" data-en="Guided Meditation">引導冥想</h3>
+        <p data-zh="超過 500 堂由資深導師錄製的冥想課程，涵蓋減壓、感恩、慈悲與自我覺察。" data-en="500+ meditation sessions by senior teachers, covering stress relief, gratitude, compassion, and self-awareness.">超過 500 堂由資深導師錄製的冥想課程，涵蓋減壓、感恩、慈悲與自我覺察。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🌬️</div>
+        <h3 data-zh="呼吸練習" data-en="Breathing Exercises">呼吸練習</h3>
+        <p data-zh="科學化呼吸法教學，包含 4-7-8 呼吸、箱式呼吸與腹式呼吸。即時引導與視覺化回饋。" data-en="Science-based breathing techniques — 4-7-8, box breathing, diaphragmatic. Real-time guidance with visual feedback.">科學化呼吸法教學，包含 4-7-8 呼吸、箱式呼吸與腹式呼吸。即時引導與視覺化回饋。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🌙</div>
+        <h3 data-zh="助眠模式" data-en="Sleep Mode">助眠模式</h3>
+        <p data-zh="結合白噪音、自然音景與睡前故事的助眠系統。追蹤您的睡眠品質，逐步改善作息。" data-en="Sleep system combining white noise, nature soundscapes, and bedtime stories. Track sleep quality and improve your rhythm.">結合白噪音、自然音景與睡前故事的助眠系統。追蹤您的睡眠品質，逐步改善作息。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🎯</div>
+        <h3 data-zh="專注模式" data-en="Focus Mode">專注模式</h3>
+        <p data-zh="番茄鐘 × 正念的結合。在工作與學習中保持專注，穿插微冥想讓大腦高效休息。" data-en="Pomodoro meets mindfulness. Stay focused during work and study, with micro-meditations for efficient brain rest.">番茄鐘 × 正念的結合。在工作與學習中保持專注，穿插微冥想讓大腦高效休息。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-section" id="app">
+  <div class="container">
+    <div class="app-grid">
+      <div class="app-text reveal-left">
+        <h2 data-zh="直覺設計 <span>美好體驗</span>" data-en="Intuitive Design, <span>Beautiful Experience</span>">直覺設計 <span>美好體驗</span></h2>
+        <p data-zh="禪空間的介面設計以「少即是多」為核心理念，柔和的色調與流暢的互動，讓您在打開 App 的瞬間就感受到平靜。" data-en="ZenSpace's interface design centers on 'less is more.' Soft colors and fluid interactions — feel calm the moment you open the app.">禪空間的介面設計以「少即是多」為核心理念，柔和的色調與流暢的互動，讓您在打開 App 的瞬間就感受到平靜。</p>
+        <p data-zh="支援離線使用，隨時隨地開始您的正念練習。" data-en="Offline support — start your mindfulness practice anytime, anywhere.">支援離線使用，隨時隨地開始您的正念練習。</p>
+        <div class="app-stats">
+          <div class="app-stat">
+            <div class="num">2M+</div>
+            <div class="label" data-zh="全球用戶" data-en="Global Users">全球用戶</div>
+          </div>
+          <div class="app-stat">
+            <div class="num">4.9</div>
+            <div class="label" data-zh="App Store 評分" data-en="App Store Rating">App Store 評分</div>
+          </div>
+          <div class="app-stat">
+            <div class="num">500+</div>
+            <div class="label" data-zh="冥想課程" data-en="Meditation Sessions">冥想課程</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-img reveal-right float">
+        <img src="photos/app.png" alt="禪空間 App 畫面">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2 data-zh="選擇您的方案" data-en="Choose Your Plan">選擇您的方案</h2>
+      <div class="lav-line"></div>
+      <p data-zh="從免費體驗到家庭共享，總有一個方案適合您。" data-en="From free trial to family sharing — there's always a plan that fits.">從免費體驗到家庭共享，總有一個方案適合您。</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <h3 data-zh="免費版" data-en="Free">免費版</h3>
+        <div class="price">NT$0</div>
+        <div class="period" data-zh="永久免費" data-en="Free forever">永久免費</div>
+        <ul>
+          <li data-zh="每日 1 堂引導冥想" data-en="1 guided meditation daily">每日 1 堂引導冥想</li>
+          <li data-zh="基礎呼吸練習" data-en="Basic breathing exercises">基礎呼吸練習</li>
+          <li data-zh="3 首助眠音景" data-en="3 sleep soundscapes">3 首助眠音景</li>
+          <li data-zh="基本專注計時器" data-en="Basic focus timer">基本專注計時器</li>
+        </ul>
+        <a href="#download" class="btn-primary" data-zh="免費開始" data-en="Start Free">免費開始</a>
+      </div>
+      <div class="plan-card featured reveal">
+        <h3 data-zh="Premium" data-en="Premium">Premium</h3>
+        <div class="price">NT$199<span data-zh="/月" data-en="/mo">/月</span></div>
+        <div class="period" data-zh="按月訂閱" data-en="Monthly">按月訂閱</div>
+        <ul>
+          <li data-zh="500+ 全部冥想課程" data-en="500+ meditation sessions">500+ 全部冥想課程</li>
+          <li data-zh="進階呼吸法與引導" data-en="Advanced breathing with guidance">進階呼吸法與引導</li>
+          <li data-zh="全部助眠音景 + 故事" data-en="All sleep soundscapes + stories">全部助眠音景 + 故事</li>
+          <li data-zh="睡眠品質追蹤報告" data-en="Sleep quality tracking report">睡眠品質追蹤報告</li>
+          <li data-zh="離線下載" data-en="Offline downloads">離線下載</li>
+        </ul>
+        <a href="#download" class="btn-primary" data-zh="升級 Premium" data-en="Upgrade Premium">升級 Premium</a>
+      </div>
+      <div class="plan-card reveal">
+        <h3 data-zh="家庭版" data-en="Family">家庭版</h3>
+        <div class="price">NT$399<span data-zh="/月" data-en="/mo">/月</span></div>
+        <div class="period" data-zh="最多 6 位家庭成員" data-en="Up to 6 family members">最多 6 位家庭成員</div>
+        <ul>
+          <li data-zh="Premium 全部功能" data-en="All Premium features">Premium 全部功能</li>
+          <li data-zh="6 個獨立帳號" data-en="6 independent accounts">6 個獨立帳號</li>
+          <li data-zh="兒童冥想專區" data-en="Kids meditation section">兒童冥想專區</li>
+          <li data-zh="家庭共修模式" data-en="Family group meditation mode">家庭共修模式</li>
+          <li data-zh="專屬客服通道" data-en="Priority customer support">專屬客服通道</li>
+        </ul>
+        <a href="#download" class="btn-primary" data-zh="選擇家庭版" data-en="Choose Family">選擇家庭版</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="community-section" id="community">
+  <div class="container">
+    <div class="community-grid reveal">
+      <div class="community-img">
+        <img src="photos/group.png" alt="社群活動">
+      </div>
+      <div class="community-img">
+        <img src="photos/nature.png" alt="自然冥想">
+      </div>
+    </div>
+    <div class="community-text reveal">
+      <h2 data-zh="加入全球 <span>正念社群</span>" data-en="Join the Global <span>Mindfulness Community</span>">加入全球 <span>正念社群</span></h2>
+      <p data-zh="超過 200 萬用戶在禪空間找到了內心的平靜。加入線上共修、參與正念挑戰、分享您的冥想旅程。一起在這條覺醒之路上前行。" data-en="Over 2 million users have found inner peace with ZenSpace. Join online group meditations, mindfulness challenges, and share your journey. Walk the path of awakening together.">超過 200 萬用戶在禪空間找到了內心的平靜。加入線上共修、參與正念挑戰、分享您的冥想旅程。一起在這條覺醒之路上前行。</p>
+      <a href="#download" class="btn-primary" data-zh="加入社群" data-en="Join Community">加入社群</a>
+    </div>
+  </div>
+</section>
+
+<section class="download-section" id="download">
+  <div class="container reveal">
+    <h2 data-zh="今天就開始您的<span>正念之旅</span>" data-en="Start Your <span>Mindfulness Journey</span> Today">今天就開始您的<span>正念之旅</span></h2>
+    <p data-zh="免費下載禪空間 App，解鎖每日冥想與呼吸練習。您的內在寧靜，只差一步。" data-en="Download ZenSpace for free. Unlock daily meditation and breathing exercises. Inner peace is just one step away.">免費下載禪空間 App，解鎖每日冥想與呼吸練習。您的內在寧靜，只差一步。</p>
+    <div class="download-btns">
+      <a href="#" class="btn-primary" data-zh="App Store 下載" data-en="App Store">App Store 下載</a>
+      <a href="#" class="btn-primary" style="background:var(--purple);color:var(--warm)" data-zh="Google Play 下載" data-en="Google Play">Google Play 下載</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="logos/logo_final.png" alt="Logo">
+    <span data-zh="禪空間" data-en="ZenSpace">禪空間</span>
+  </div>
+  <p>&copy; 2026 HEY!BOSS 銀月數位顧問股份有限公司 All Rights Reserved.</p>
+  <p style="margin-top:8px"><a href="https://silmoontravis.github.io/demos/">silmoontravis.github.io/demos</a></p>
+</footer>
+
+<div class="heyboss-widget">
+  <a href="https://silmoontravis.github.io/demos/#contact" target="_blank" class="heyboss-btn" aria-label="Contact HeyBoss">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+  </a>
+</div>
+
+<audio id="bgmAudio" loop preload="none"><source src="bgm.mp3" type="audio/mpeg"></audio>
+
+<script>
+const bgm=document.getElementById('bgmAudio'),bgmBtn=document.getElementById('bgmBtn');
+function toggleBGM(){bgm.paused?(bgm.play(),bgmBtn.classList.add('playing'),bgmBtn.textContent='♫'):(bgm.pause(),bgmBtn.classList.remove('playing'),bgmBtn.textContent='♪')}
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+let lang='zh';
+function toggleLang(){
+  lang=lang==='zh'?'en':'zh';
+  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
+  document.querySelector('.lang-btn').textContent=lang==='zh'?'EN':'中';
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else if(val.includes('<'))el.innerHTML=val;
+    else el.textContent=val;
+  });
+}
+</script>
+</body>
+</html>
