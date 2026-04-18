@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR System: Attendance, Leave, and Payroll All in One — HEY!BOSS Blog</title>
+<meta name="description" content="Still using paper leave forms and Excel for payroll? An HR system automates attendance tracking, leave approval, and payroll calculation. HEY!BOSS builds department-level management with RuoYi RBAC architecture.">
+<meta name="keywords" content="HR system, human resources, attendance management, leave system, payroll calculation, RBAC, RuoYi, HEY!BOSS">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/hr-attendance-system.html">
+<link rel="alternate" hreflang="zh-TW" href="https://hiboss.demosilvermoon.com.tw/blog/posts/hr-attendance-system.html">
+<link rel="alternate" hreflang="en" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/hr-attendance-system.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="HR System: Attendance, Leave, and Payroll All in One">
+<meta property="og:description" content="Still using paper leave forms and Excel for payroll? An HR system handles attendance, leave, and payroll in one place.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/en/hr-attendance-system.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-05-05">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="System Development">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "HR System: Attendance, Leave, and Payroll All in One",
+  "description": "An HR system automates attendance tracking, leave approval, and payroll calculation, with RuoYi RBAC architecture for department-level management.",
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/en/hr-attendance-system.html",
+  "articleSection": "System Development",
+  "wordCount": 1040,
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can the HR system handle local labor law requirements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The HR system developed by HEY!BOSS fully complies with local labor regulations, including automatic annual leave calculation based on seniority, overtime pay calculations (1.34x/1.67x for weekdays, 2x for holidays), and automatic exclusion of public holidays. The system has built-in logic for labor law compliance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can employees clock in using their phones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The system supports multiple clock-in methods: mobile app GPS clock-in (with configurable geofencing), web-based clock-in, and NFC tap clock-in. Field workers can also clock in at client locations using their phones, and the system records GPS coordinates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does HR system development cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using the RuoYi rapid development framework, the development cost for core HR modules (attendance + leave + payroll) is approximately 2-3 times the annual fee of market SaaS solutions, but the system is entirely yours — no monthly fees and no user count limits. It's more economical in the medium to long term."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../../#services">Services</a>
+      <a href="../../../#portfolio">Portfolio</a>
+      <a href="../../../#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">System Development</span>
+    <h1>HR System: Attendance, Leave, and Payroll All in One</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-05-05</span>
+      <span>7 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>At the end of every month, is your HR specialist doing this: opening Excel, manually calculating tardiness, early departures, overtime, and leave from attendance records... then opening another Excel to calculate payroll? For a 50-person company, payroll calculation alone takes 2-3 days.</p>
+
+<p>What's worse is when there's a mistake — employees complain and labor inspections result in fines. The pressure of manual payroll calculation is something only HR professionals truly understand.</p>
+
+<p>An <strong>HR system</strong> exists precisely to solve these problems.</p>
+
+<h2>1. Attendance Management: Leaving the Punch Clock Behind</h2>
+
+<p>Traditional fingerprint punch clocks have several issues: you can only clock in at the office (what about field workers?), if the machine breaks there's no record, and data export formats are inconsistent.</p>
+
+<p>Modern HR system attendance management is completely different:</p>
+
+<ul>
+<li><strong>Multiple clock-in methods</strong> — Mobile GPS clock-in, web-based clock-in, NFC tap — choose based on work type</li>
+<li><strong>GPS geofencing</strong> — Set a valid clock-in radius, such as within 100 meters of the office</li>
+<li><strong>Flexible scheduling support</strong> — Core hours, flexible start/end times, shift-based scheduling — different departments can have different attendance rules</li>
+<li><strong>Automatic calculation</strong> — Tardiness, early departures, and overtime hours are all calculated automatically, no manual reconciliation needed</li>
+</ul>
+
+<h2>2. Leave Management: Online Approval with Instant Notifications</h2>
+
+<p>Problems with paper leave forms: the manager isn't at their desk to sign, forms get lost, and leave balance calculations go wrong. An online leave system solves all of these at once:</p>
+
+<ul>
+<li><strong>Online requests</strong> — Employees submit leave requests via phone or computer, selecting the leave type, time period, and reason</li>
+<li><strong>Automated approval workflow</strong> — After submission, the direct supervisor is automatically notified and can approve or reject from their phone</li>
+<li><strong>Automatic leave balance tracking</strong> — How many annual leave days total, how many remaining, how many personal days used — employees can see it all themselves</li>
+<li><strong>Automatic annual leave calculation</strong> — Based on labor law regulations, annual leave days are automatically calculated from the hire date, no manual lookup required</li>
+<li><strong>Delegate assignment</strong> — When on leave, the system automatically notifies the designated delegate so work continues seamlessly</li>
+</ul>
+
+<h2>3. Payroll Calculation: The Most Error-Sensitive Process</h2>
+
+<p>Payroll calculation is HR's most critical and sensitive task. Pay too little and employees are unhappy; pay too much and the company loses money. Not to mention the various calculation rules for labor insurance, health insurance, and income tax withholding.</p>
+
+<p>The HR system's payroll module helps you:</p>
+
+<ul>
+<li><strong>Auto-import attendance data</strong> — Attendance records feed directly into payroll calculations, no manual entry needed</li>
+<li><strong>Automatic overtime calculation</strong> — Weekday overtime at 1.34x/1.67x, rest day at 1.34x/1.67x, public holidays at 2x — the system determines and calculates automatically</li>
+<li><strong>Insurance deductions</strong> — Automatically calculates labor insurance, health insurance, and retirement fund contributions based on salary brackets</li>
+<li><strong>Tax withholding</strong> — Automatically calculates the appropriate tax withholding amount based on tax tables</li>
+<li><strong>Pay slip generation</strong> — Automatically generates electronic pay slips that employees can view within the system</li>
+</ul>
+
+<h2>4. RuoYi RBAC: Department-Level Permission Management</h2>
+
+<p>Permission management in HR systems is especially critical because payroll data is highly sensitive. Who can see whose salary? Managers can see their subordinates' data but not other departments'. The CEO can see everyone's data, but outsourced IT cannot.</p>
+
+<p><strong>HEY!BOSS 銀月數位顧問</strong> uses the <strong>RuoYi framework</strong> with its built-in <strong>RBAC (Role-Based Access Control)</strong> permission system:</p>
+
+<ul>
+<li><strong>Role definitions</strong> — CEO, department managers, HR specialists, regular employees — each role sees different data and functions</li>
+<li><strong>Data permissions</strong> — Department managers can only see their own department's data, no additional configuration needed</li>
+<li><strong>Operation permissions</strong> — Granular down to the button level; for example, HR can "edit payroll" but managers can only "view attendance"</li>
+<li><strong>Organization hierarchy</strong> — Supports multi-level department tree structures with permissions automatically inherited along the org chart</li>
+</ul>
+
+<h2>5. Key Considerations When Implementing an HR System</h2>
+
+<p>The most common pitfalls when implementing an HR system:</p>
+
+<ol>
+<li><strong>Clarify your company's attendance rules first</strong> — Many companies can't clearly articulate their own attendance rules (just how flexible is "flexible hours"?). Before systematizing, you need to define the rules</li>
+<li><strong>Historical data migration</strong> — Employee tenure, remaining annual leave, accumulated overtime hours — all this historical data needs to be correctly imported into the new system</li>
+<li><strong>Employee training</strong> — No matter how good the system is, it's useless if employees can't use it. Especially older employees may need patient guidance</li>
+<li><strong>Parallel operation period</strong> — We recommend running old and new systems in parallel for 1-2 months to confirm the new system calculates correctly before fully switching over</li>
+</ol>
+
+<blockquote>"An HR system isn't just about making HR's life easier — it's about making your company's people management systematic and transparent. HEY!BOSS helps you go from paper to digital without losing a single record."</blockquote>
+
+<h2>Conclusion</h2>
+
+<p>HR operations are the foundation of business management. Attendance, leave, and payroll — get them right and nobody notices; get them wrong and everyone complains. A good HR system frees your HR team from tedious calculations so they can spend time on higher-value work — talent acquisition, training, and employee engagement.</p>
+
+<div class="article-cta">
+  <h3>Want to build your digital infrastructure?</h3>
+  <p>HEY!BOSS uses the RuoYi rapid development framework to build HR systems that comply with local labor laws.</p>
+  <a href="../../../#contact">Get Started</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">Back to Blog</a>
+</footer>
+
+</body>
+</html>

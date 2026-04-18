@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RWD Responsive Design: Does Your Website Look Good on Mobile? — HEY!BOSS Blog</title>
+<meta name="description" content="Over 70% of website traffic comes from mobile devices. Learn about Mobile-first design, viewport meta tags, CSS media queries, and how HEY!BOSS uses Playwright to automate mobile compatibility testing across 100 websites.">
+<meta name="keywords" content="RWD, responsive design, Mobile-first, mobile website, CSS media queries, Playwright, HEY!BOSS, mobile optimization">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/mobile-responsive-design.html">
+<link rel="alternate" hreflang="zh-TW" href="https://hiboss.demosilvermoon.com.tw/blog/posts/mobile-responsive-design.html">
+<link rel="alternate" hreflang="en" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/mobile-responsive-design.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="RWD Responsive Design: Does Your Website Look Good on Mobile?">
+<meta property="og:description" content="Over 70% of traffic comes from mobile. Is your website ready? A complete guide to Mobile-first design.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/en/mobile-responsive-design.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-05-12">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="AI Website Building">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "RWD Responsive Design: Does Your Website Look Good on Mobile?",
+  "description": "Learn about Mobile-first design, viewport meta tags, CSS media queries, and how to use Playwright to automate mobile compatibility testing.",
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/en/mobile-responsive-design.html",
+  "articleSection": "AI Website Building",
+  "wordCount": 1050,
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between RWD and a separate mobile website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RWD (Responsive Web Design) uses a single website that automatically adjusts its layout based on screen size, requiring only one codebase to maintain. A separate mobile site (like m.example.com) is a completely different website built specifically for phones, requiring two codebases. Google officially recommends RWD because having a single URL benefits SEO rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test if my website is responsive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The simplest method is to open your website on your phone and check whether you need to scroll horizontally to see all the content. You can also use Google's Mobile-Friendly Test tool by entering your URL. If the result shows 'Page is not mobile-friendly,' your website is not yet responsive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I already have a website. How much does it cost to make it responsive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the complexity of your existing website. For a simple corporate website, converting to RWD costs approximately $1,000-3,000. For complex e-commerce sites, costs will be higher. HEY!BOSS 銀月數位顧問 suggests that if your website architecture is too outdated, it may be faster and potentially cheaper to rebuild it with AI from scratch."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../../#services">Services</a>
+      <a href="../../../#portfolio">Portfolio</a>
+      <a href="../../../#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">AI Website Building</span>
+    <h1>RWD Responsive Design: Does Your Website Look Good on Mobile?</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-05-12</span>
+      <span>7 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>Open your phone and browse your own company's website. Is the text so small you need to zoom in to read it? Do you have to scroll horizontally to see the full content? Are the buttons too tiny to tap accurately?</p>
+
+<p>If the answer is "yes," you're losing over <strong>70% of your potential customers</strong>.</p>
+
+<p>According to Statcounter statistics, in 2026 over 70% of website traffic comes from mobile devices. That means most people see your website for the first time on their phone. If the mobile experience is poor, they'll leave within 3 seconds and find your competitor instead.</p>
+
+<h2>1. What Is RWD Responsive Design?</h2>
+
+<p>RWD (Responsive Web Design) is a design approach that allows the same website to automatically adjust its layout across different screen sizes. Whether it's a 27-inch desktop monitor, a 13-inch laptop, a 10-inch tablet, or a 6-inch phone, the website displays perfectly.</p>
+
+<p>RWD is built on three core technologies:</p>
+
+<ol>
+<li><strong>Viewport Meta Tag</strong> — Tells the browser to render the page according to the device width</li>
+<li><strong>Fluid Layout</strong> — Uses percentages rather than fixed pixels to define widths</li>
+<li><strong>CSS Media Queries</strong> — Applies different CSS styles based on screen width</li>
+</ol>
+
+<h2>2. Mobile-First: Design for Phones First</h2>
+
+<p>Traditional web design was "Desktop-First" — design for desktop, then shrink for mobile. Today's best practice is <strong>Mobile-First</strong>: design for mobile first, then expand to desktop.</p>
+
+<p>Why?</p>
+
+<ul>
+<li><strong>Mobile constraints are stricter</strong> — Small screen, touch-based interaction, potentially slower connection. If you design well within these constraints, expanding to desktop is natural</li>
+<li><strong>Forces you to prioritize</strong> — Limited mobile screen space forces you to decide what content matters most. This thinking process makes the entire website more refined</li>
+<li><strong>Google uses Mobile-First Indexing</strong> — Since 2019, Google uses mobile content for ranking. A poor mobile version directly hurts your SEO</li>
+</ul>
+
+<h2>3. The Viewport Meta Tag</h2>
+
+<p>The first step for any RWD website is adding the viewport meta tag in the HTML <code>&lt;head&gt;</code>:</p>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+<p>This one line does two things:</p>
+<ul>
+<li><code>width=device-width</code> — Tells the browser the page width equals the device screen width</li>
+<li><code>initial-scale=1.0</code> — Initial zoom level is 100%, no automatic shrinking</li>
+</ul>
+
+<p>Without this line, mobile browsers will render your site as if it were a desktop page, then shrink everything to fit the screen. The result: text too small to read, requiring zoom to interact.</p>
+
+<h2>4. CSS Media Queries in Practice</h2>
+
+<p>Media Queries are the heart of RWD. They let you apply different CSS styles based on screen width:</p>
+
+<pre><code>/* Mobile (default, Mobile-First) */
+.container {
+  width: 100%;
+  padding: 16px;
+}
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    width: 960px;
+  }
+}</code></pre>
+
+<p>Common breakpoints:</p>
+<ul>
+<li><strong>576px</strong> — Large phones (e.g., iPhone Plus models in landscape)</li>
+<li><strong>768px</strong> — Tablets in portrait</li>
+<li><strong>1024px</strong> — Tablets in landscape / small laptops</li>
+<li><strong>1200px</strong> — Desktop monitors</li>
+</ul>
+
+<h2>5. Common Mobile Design Issues</h2>
+
+<p>Even with viewport and media queries in place, many websites still have problems on mobile. Here are the most common ones:</p>
+
+<ul>
+<li><strong>Horizontal overflow</strong> — Elements wider than the screen cause horizontal scrollbars. Usually images or tables without <code>max-width: 100%</code></li>
+<li><strong>Buttons too small</strong> — Touch targets need to be at least 44x44 pixels; smaller buttons are impossible to tap accurately</li>
+<li><strong>Font too small</strong> — The minimum readable font size on mobile is 16px. Anything smaller requires zooming</li>
+<li><strong>Images too large</strong> — Not providing smaller images for mobile leads to painfully slow load times</li>
+<li><strong>Popups</strong> — Popups that can't be closed or that cover the entire screen on mobile are user experience killers</li>
+</ul>
+
+<h2>6. HEY!BOSS's Playwright Mobile Device QA Audit</h2>
+
+<p>Across the 100 brand websites built by <strong>HEY!BOSS 銀月數位顧問</strong>, every single one undergoes Playwright automated mobile device quality auditing. Our test scripts simulate the following devices:</p>
+
+<ul>
+<li>iPhone 14 Pro (390 x 844)</li>
+<li>Samsung Galaxy S23 (360 x 780)</li>
+<li>iPad Air (820 x 1180)</li>
+</ul>
+
+<p>On each device, we automatically check:</p>
+<ol>
+<li><strong>Horizontal overflow detection</strong> — Whether page width exceeds viewport width</li>
+<li><strong>Font size check</strong> — Whether all text meets minimum readable size</li>
+<li><strong>Touch target check</strong> — Whether tappable elements are at least 44x44 pixels</li>
+<li><strong>Image loading check</strong> — Whether all images load properly and have alt text</li>
+<li><strong>Screenshot comparison</strong> — Automatic screenshots compared against baseline images to detect layout anomalies</li>
+</ol>
+
+<p>This automated QA process lets us complete testing across all devices within minutes of deployment, rather than relying on someone to manually check each phone.</p>
+
+<blockquote>"In the mobile era, how your website looks on a phone is your brand's first impression in your customer's eyes."</blockquote>
+
+<h2>Not Sure If Your Mobile Site Has Issues?</h2>
+
+<p>HEY!BOSS can run a free mobile compatibility audit to tell you exactly what needs fixing.</p>
+
+<div class="article-cta">
+  <h3>Want to build your digital infrastructure?</h3>
+  <p>HEY!BOSS 銀月數位顧問 provides RWD responsive design services — from design to automated quality testing, all in one place.</p>
+  <a href="../../../#contact">Get Started</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">Back to Blog</a>
+</footer>
+
+</body>
+</html>

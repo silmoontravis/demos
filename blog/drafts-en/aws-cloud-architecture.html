@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Cloud Architecture Primer: EC2 + RDS Enterprise Deployment Guide — HEY!BOSS Blog</title>
+<meta name="description" content="An introductory guide to AWS cloud architecture. From EC2 virtual machines to RDS PostgreSQL databases and Security Groups configuration, learn how HEY!BOSS builds enterprise-grade infrastructure on AWS.">
+<meta name="keywords" content="AWS, EC2, RDS, PostgreSQL, cloud architecture, Security Groups, enterprise deployment, HEY!BOSS, DevOps">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/aws-cloud-architecture.html">
+<link rel="alternate" hreflang="zh-TW" href="https://hiboss.demosilvermoon.com.tw/blog/posts/aws-cloud-architecture.html">
+<link rel="alternate" hreflang="en" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/aws-cloud-architecture.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="AWS Cloud Architecture Primer: EC2 + RDS Enterprise Deployment Guide">
+<meta property="og:description" content="AWS cloud architecture primer. EC2 + RDS + Security Groups — a complete guide to enterprise-grade deployment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/en/aws-cloud-architecture.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-05-07">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="DevOps">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AWS Cloud Architecture Primer: EC2 + RDS Enterprise Deployment Guide",
+  "description": "An introductory guide to AWS cloud architecture — from EC2 to RDS PostgreSQL, a complete walkthrough of enterprise-grade deployment.",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/en/aws-cloud-architecture.html",
+  "articleSection": "DevOps",
+  "wordCount": 1080,
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does AWS cost? Can small businesses afford it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basic EC2 instance (t3.small) plus an RDS database costs approximately $50-100 USD per month. That's much cheaper than buying your own physical server, and you don't have to worry about hardware maintenance. HEY!BOSS recommends the most cost-effective plan based on your actual needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is AWS data stored? Is it secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AWS has multiple regions worldwide. HEY!BOSS typically uses the Singapore region (ap-southeast-1), which is closest to Taiwan with the lowest latency. AWS has passed ISO 27001, SOC 2, and many other international security certifications, offering data security that exceeds most self-hosted data centers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I already have physical servers. Do I still need to move to AWS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily everything. Consider a hybrid architecture — keep your core database on physical servers while moving websites and application services to AWS. This preserves your existing investment while gaining the flexibility and reliability of the cloud. HEY!BOSS can assess the best architecture for your situation."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../../#services">Services</a>
+      <a href="../../../#portfolio">Portfolio</a>
+      <a href="../../../#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">DevOps</span>
+    <h1>AWS Cloud Architecture Primer: EC2 + RDS Enterprise Deployment Guide</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-05-07</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>What does a typical small business "server" look like? A desktop computer sitting in a corner of the office, running Windows Server, hosting the company's ERP and website. No backups, no failover, goes offline during power outages, and if the hard drive fails — everything is gone.</p>
+
+<p>The cloud isn't some distant concept. <strong>AWS (Amazon Web Services)</strong> lets you rent instead of buy, pay only for what you use, and provides reliability several levels above what your own server room can offer.</p>
+
+<p>In this article, we'll explain AWS's two core services — <strong>EC2 and RDS</strong> — in plain language, and show you how to use them to build enterprise-grade infrastructure.</p>
+
+<h2>1. EC2: Virtual Computers in the Cloud</h2>
+
+<p><strong>EC2 (Elastic Compute Cloud)</strong> is essentially a virtual computer on AWS. Think of it as a computer you can't see, hosted in an AWS data center, that you operate remotely over the internet.</p>
+
+<h3>Choosing the Right Instance Type</h3>
+<p>EC2 offers many specifications (Instance Types), just like choosing CPU and RAM when buying a computer:</p>
+
+<ul>
+<li><strong>t3.micro / t3.small</strong> — Entry level, suitable for small websites and test environments. About $10-20/month</li>
+<li><strong>t3.medium / t3.large</strong> — Mid-range, suitable for small to medium application services. About $30-70/month</li>
+<li><strong>m5.large / m5.xlarge</strong> — High-end, suitable for high-traffic websites and data processing. About $70-150/month</li>
+<li><strong>c5 series</strong> — Compute-intensive, suitable for applications requiring heavy CPU processing</li>
+</ul>
+
+<p>In <strong>HEY!BOSS 銀月數位顧問</strong>'s actual deployments, most clients' brand websites run perfectly well on a <strong>t3.small</strong>. When traffic grows, upgrading takes just a few minutes — no system reinstallation required.</p>
+
+<h2>2. RDS: Managed Database Service</h2>
+
+<p><strong>RDS (Relational Database Service)</strong> is AWS's managed relational database. In plain terms, AWS manages the database server for you — installation, updates, backups, failover — all those tedious tasks are handled by AWS.</p>
+
+<h3>Why PostgreSQL?</h3>
+<p>RDS supports multiple database engines (MySQL, PostgreSQL, Oracle, etc.). HEY!BOSS recommends <strong>PostgreSQL</strong>:</p>
+
+<ul>
+<li><strong>Open source and free</strong> — No additional licensing fees</li>
+<li><strong>Feature-rich</strong> — JSON support, full-text search, geospatial queries — more comprehensive than MySQL</li>
+<li><strong>Reliable and stable</strong> — Over 30 years of development history with enterprise-grade stability</li>
+<li><strong>Rich ecosystem</strong> — Seamless integration with frameworks like RuoYi and Spring Boot</li>
+</ul>
+
+<h3>RDS Automated Management</h3>
+<ul>
+<li><strong>Automated backups</strong> — Daily automatic backups retained for 7-35 days, with point-in-time recovery to any moment</li>
+<li><strong>Automated updates</strong> — Security patches installed automatically — no need to wake up at midnight for manual updates</li>
+<li><strong>Multi-AZ failover</strong> — Database automatically syncs across two availability zones; if one goes down, it automatically switches to the other</li>
+<li><strong>Performance monitoring</strong> — Built-in Performance Insights tool makes slow queries immediately visible</li>
+</ul>
+
+<h2>3. Security Groups: Your First Line of Network Defense</h2>
+
+<p><strong>Security Groups</strong> are AWS's virtual firewalls. You set rules to determine what traffic can flow in and out of your EC2 and RDS instances:</p>
+
+<ul>
+<li><strong>EC2 Security Group</strong> — Typically only opens ports 80 (HTTP), 443 (HTTPS), and 22 (SSH, restricted to specific IPs)</li>
+<li><strong>RDS Security Group</strong> — Only allows access from the EC2 Security Group, never exposed publicly, ensuring the database can't be directly accessed from outside</li>
+</ul>
+
+<p>A common mistake: setting RDS to <code>0.0.0.0/0</code> (allowing all IPs to connect) for convenience. This leaves your database wide open for anyone to attempt connections. <strong>Never do this</strong>.</p>
+
+<h2>4. HEY!BOSS's AWS Architecture in Practice</h2>
+
+<p>The standard AWS architecture HEY!BOSS deploys for clients:</p>
+
+<ol>
+<li><strong>VPC network isolation</strong> — Each client's environment runs in an independent Virtual Private Cloud, completely isolated</li>
+<li><strong>Public / Private Subnets</strong> — EC2 sits in the public subnet (receiving external traffic), RDS sits in the private subnet (only accessible by EC2)</li>
+<li><strong>Nginx reverse proxy</strong> — Nginx on EC2 handles HTTPS termination and load distribution</li>
+<li><strong>Let's Encrypt SSL</strong> — Automatic SSL certificate provisioning and renewal, full HTTPS throughout</li>
+<li><strong>CloudWatch monitoring</strong> — Automatic alerts when CPU, memory, or disk usage exceeds thresholds</li>
+</ol>
+
+<h2>5. Cloud vs. On-Premises: Cost Comparison</h2>
+
+<p>Many business owners think: "Wouldn't buying my own server be cheaper?" Let's do the math:</p>
+
+<ul>
+<li><strong>On-premises</strong> — Server hardware $2,000-6,000, UPS $800-2,000, annual electricity $400-800, maintenance takes at least half a day per month. When a hard drive fails you wait for parts, backups are your responsibility, and power outages mean downtime</li>
+<li><strong>AWS</strong> — $50-150/month (depending on specs), including automated backups, 99.99% availability, global CDN, and auto-scaling</li>
+</ul>
+
+<p>Over three years, on-premises total cost isn't necessarily lower than AWS, but the <strong>risk and management burden are many times higher</strong>.</p>
+
+<blockquote>"The cloud doesn't cost money — it saves money. It saves you from the invisible costs of downtime, data loss risk, and IT staff hours."</blockquote>
+
+<h2>Conclusion</h2>
+
+<p>AWS cloud architecture isn't exclusive to large enterprises. Starting with a single t3.small instance at just tens of dollars per month, you can have enterprise-grade infrastructure. No need to maintain an IT department, no hardware purchases, and no midnight server crash emergencies.</p>
+
+<p>HEY!BOSS has already built stable, running systems on AWS for multiple clients. If you're considering moving your services to the cloud, we can help you plan the ideal architecture.</p>
+
+<div class="article-cta">
+  <h3>Want to build your digital infrastructure?</h3>
+  <p>HEY!BOSS provides AWS architecture planning and deployment services — full support from assessment to launch.</p>
+  <a href="../../../#contact">Get Started</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">Back to Blog</a>
+</footer>
+
+</body>
+</html>

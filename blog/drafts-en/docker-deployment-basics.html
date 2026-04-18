@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker Containerized Deployment: Zero-Downtime for Your Website — HEY!BOSS Blog</title>
+<meta name="description" content="Docker containerized deployment makes your website more stable and easier to manage. HEY!BOSS 銀月數位顧問 explains Docker basics, containerization benefits, and how to achieve zero-downtime deployment with Nginx Proxy Manager.">
+<meta name="keywords" content="Docker, containerized deployment, Nginx Proxy Manager, zero downtime, DevOps, HEY!BOSS, 銀月數位顧問, website deployment, CI/CD">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/docker-deployment-basics.html">
+<link rel="alternate" hreflang="zh-TW" href="https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html">
+<link rel="alternate" hreflang="en" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/docker-deployment-basics.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="Docker Containerized Deployment: Zero-Downtime for Your Website">
+<meta property="og:description" content="What is Docker? Why does it make websites more stable? A complete guide to zero-downtime deployment with Nginx Proxy Manager.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/en/docker-deployment-basics.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-04-27">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="DevOps">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Docker Containerized Deployment: Zero-Downtime for Your Website",
+  "description": "Docker containerization basics and practical applications, combined with Nginx Proxy Manager for zero-downtime deployment.",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-04-27",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/en/docker-deployment-basics.html",
+  "articleSection": "DevOps",
+  "wordCount": 1050,
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between Docker and virtual machines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Virtual machines emulate an entire computer (including the operating system), consuming significant resources. Docker containers share the host's OS kernel and only include the application and its necessary dependencies. Containers start in seconds (vs. minutes for VMs) and use far less resources (MBs vs. GBs). A single server can run a handful of VMs but hundreds of Docker containers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do small websites need Docker too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we recommend it. Docker's benefits go beyond large-scale deployments. Even for small websites, Docker provides environment consistency (development and production environments are identical), instant rollback (revert to a previous version in seconds if issues arise), and easy migration (move containers directly when switching servers). All HEY!BOSS websites, regardless of size, are deployed using Docker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does zero-downtime deployment work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The basic principle is: start the new version's container first, confirm it's running properly, then switch traffic from the old container to the new one, and finally shut down the old container. Throughout this process, visitors always have a working version available — they never see a downtime page. HEY!BOSS uses Nginx Proxy Manager with Docker to achieve this workflow."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../../#services">Services</a>
+      <a href="../../../#portfolio">Portfolio</a>
+      <a href="../../../#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">DevOps</span>
+    <h1>Docker Containerized Deployment: Zero-Downtime for Your Website</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-04-27</span>
+      <span>7 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>Have you ever experienced this: you update a minor feature on your website, and the entire site goes down for half an hour? Or an engineer says "it works on my machine," but everything breaks in production? The root cause of these problems is the same: <strong>inconsistent deployment environments</strong>.</p>
+
+<p>Docker containerization technology solves this problem and brings a powerful bonus: <strong>zero-downtime deployment</strong>. At <strong>HEY!BOSS 銀月數位顧問</strong>, all websites are deployed using Docker containers, combined with Nginx Proxy Manager, to deliver 24/7 uninterrupted service.</p>
+
+<h2>1. What Is Docker? A Moving Analogy</h2>
+
+<p>Imagine you're moving to a new house. The traditional approach: move furniture piece by piece, then reassemble everything, reconnect plumbing and electricity. If the old house and new house have different layouts, some furniture might not fit.</p>
+
+<p>Docker's approach: <strong>pack your entire room — furniture, plumbing, and wiring — into a shipping container</strong>. When you move, just place the container at the new location. No matter what the new house's foundation looks like, the environment inside the container never changes.</p>
+
+<p>In technical terms:</p>
+
+<ul>
+<li><strong>Shipping Container = Docker Container</strong> — Your application and all dependencies (runtime, libraries, config files) are packaged together</li>
+<li><strong>New House = Server</strong> — Whether it's AWS, GCP, or your own server, the container runs anywhere</li>
+<li><strong>Container Blueprint = Docker Image</strong> — A single blueprint that creates identical containers anywhere</li>
+</ul>
+
+<h2>2. Five Advantages of Containerized Deployment</h2>
+
+<h3>1. Environment Consistency</h3>
+<p>"It works on my machine" becomes a thing of the past. Development, staging, and production all run <strong>the same container image</strong> — 100% identical environments.</p>
+
+<h3>2. Fast Startup</h3>
+<p>Traditional VMs take minutes to boot. Docker containers start in <strong>seconds</strong>. Deploying a new version or rolling back happens almost instantly.</p>
+
+<h3>3. Resource Efficiency</h3>
+<p>Docker containers share the host OS kernel, eliminating the need for a full operating system per application. A single server can run hundreds of containers, with resource utilization many times better than VMs.</p>
+
+<h3>4. Isolation</h3>
+<p>Each container is independent. If Website A's container has problems, it won't affect Website B's container. This is far safer than running all websites on the same server.</p>
+
+<h3>5. Portability</h3>
+<p>Want to move from Server A to Server B? Just copy the container image over. No reinstalling environments, no reconfiguring dependencies.</p>
+
+<h2>3. Nginx Proxy Manager: The Traffic Director</h2>
+
+<p>When a server runs multiple website containers, you need a "traffic director" to route requests to the correct container. That's the role of <strong>Nginx Proxy Manager</strong>.</p>
+
+<p>Key features of Nginx Proxy Manager:</p>
+
+<ul>
+<li><strong>Reverse Proxy</strong> — Routes traffic to the appropriate container based on domain name</li>
+<li><strong>SSL Management</strong> — Automatically requests and renews Let's Encrypt SSL certificates</li>
+<li><strong>GUI Interface</strong> — No manual config file editing; add websites with a few clicks</li>
+<li><strong>Access Control</strong> — Set IP whitelists, basic authentication, and other security measures</li>
+</ul>
+
+<p>In HEY!BOSS's architecture, Nginx Proxy Manager serves as the gateway for the entire infrastructure. All incoming traffic passes through it before being distributed to individual Docker containers.</p>
+
+<h2>4. Zero-Downtime Deployment: How It Works</h2>
+
+<p>Traditional deployment: stop the old version, deploy the new version, start the new version. Between stopping and starting, the website is offline.</p>
+
+<p>Zero-downtime deployment works differently:</p>
+
+<ol>
+<li><strong>Build New Container</strong> — The new version's container is created and started, but not yet receiving traffic</li>
+<li><strong>Health Check</strong> — Verify the new container is operating correctly (pages load, APIs respond)</li>
+<li><strong>Traffic Switch</strong> — Nginx Proxy Manager redirects traffic from the old container to the new one</li>
+<li><strong>Shut Down Old Container</strong> — Once all traffic is confirmed on the new container, the old one is removed</li>
+</ol>
+
+<p>Throughout this process, <strong>visitors always have a working version serving them</strong>. They won't even notice the website was just updated.</p>
+
+<h2>5. HEY!BOSS Docker Deployment Architecture</h2>
+
+<p>Our deployment architecture:</p>
+
+<ul>
+<li><strong>AWS EC2</strong> — Cloud servers that scale on demand</li>
+<li><strong>Docker</strong> — All applications are containerized</li>
+<li><strong>Nginx Proxy Manager</strong> — Centralized traffic and SSL management</li>
+<li><strong>Jenkins CI/CD</strong> — Code is automatically built, tested, and deployed after push</li>
+<li><strong>Telegram Notifications</strong> — Instant push notifications for deployment success or failure</li>
+</ul>
+
+<p>From code commit to production deployment, the entire process is <strong>automated and takes under 2 minutes</strong>. Engineers push their code and can grab a coffee — by the time they return, deployment is complete and the notification is already in Telegram.</p>
+
+<h2>6. What This Means for Your Business</h2>
+
+<p>As a website owner, you don't need to understand Docker's technical details. You just need to know:</p>
+
+<ul>
+<li><strong>Your website won't go down during updates</strong> — Every change is a seamless switch</li>
+<li><strong>Issues can be rolled back instantly</strong> — If the new version has a bug, we can revert in seconds</li>
+<li><strong>Server migration isn't a disaster</strong> — Containers are portable; restored on a new server in seconds</li>
+<li><strong>Multiple websites don't affect each other</strong> — Site A having issues won't bring down Site B</li>
+</ul>
+
+<blockquote>"Docker isn't a trend — it's the standard. In 2026, a web services provider not using containerized deployment is as unthinkable as a restaurant without refrigeration."</blockquote>
+
+<div class="article-cta">
+  <h3>Ready to transform your business digitally?</h3>
+  <p>HEY!BOSS uses Docker + Nginx Proxy Manager + Jenkins CI/CD to provide enterprise-grade deployment infrastructure for every website.</p>
+  <a href="../../../#contact">Free Consultation</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">Back to Blog</a>
+</footer>
+
+</body>
+</html>

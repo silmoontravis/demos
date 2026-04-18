@@ -1,0 +1,121 @@
+name: Daily Blog Auto-Publish
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 09:00 UTC+8 (Taiwan time)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for drafts
+        id: check
+        run: |
+          DRAFT=$(ls blog/drafts/*.html 2>/dev/null | sort | head -1)
+          if [ -z "$DRAFT" ]; then
+            echo "No drafts available"
+            echo "has_draft=false" >> $GITHUB_OUTPUT
+          else
+            FILENAME=$(basename "$DRAFT")
+            echo "draft_path=$DRAFT" >> $GITHUB_OUTPUT
+            echo "filename=$FILENAME" >> $GITHUB_OUTPUT
+            echo "has_draft=true" >> $GITHUB_OUTPUT
+            echo "Publishing: $FILENAME"
+          fi
+
+      - name: Move draft to posts
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          mv "${{ steps.check.outputs.draft_path }}" "blog/posts/${{ steps.check.outputs.filename }}"
+
+      - name: Update blog index
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          FILE="blog/posts/${{ steps.check.outputs.filename }}"
+
+          # Extract article metadata
+          TITLE=$(grep -oP '<h1>\K[^<]+' "$FILE" | head -1)
+          DESC=$(grep -oP 'name="description" content="\K[^"]+' "$FILE" | head -1)
+          CATEGORY=$(grep -oP '<span class="category">\K[^<]+' "$FILE" | head -1)
+          DATE=$(date +%Y-%m-%d)
+          FILENAME="${{ steps.check.outputs.filename }}"
+
+          # Build new post card HTML
+          CARD="    <a href=\"posts/${FILENAME}\" class=\"post-card\">\n      <div class=\"post-card-content\">\n        <div class=\"post-card-meta\">\n          <span class=\"post-card-category\">${CATEGORY}</span>\n          <span>${DATE}</span>\n          <span>6 分鐘閱讀</span>\n        </div>\n        <h2>${TITLE}</h2>\n        <p>${DESC:0:120}...</p>\n      </div>\n    </a>\n"
+
+          # Insert before closing </div> of blog-container in post-grid
+          sed -i "/<\/section>/i\\${CARD}" blog/index.html || true
+
+      - name: Update sitemap
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          FILENAME="${{ steps.check.outputs.filename }}"
+          URL="https://hiboss.demosilvermoon.com.tw/blog/posts/${FILENAME}"
+          sed -i "/<\/urlset>/i\\  <url><loc>${URL}</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>" sitemap.xml
+
+      - name: Update RSS
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          FILE="blog/posts/${{ steps.check.outputs.filename }}"
+          FILENAME="${{ steps.check.outputs.filename }}"
+          TITLE=$(grep -oP '<h1>\K[^<]+' "$FILE" | head -1)
+          DESC=$(grep -oP 'name="description" content="\K[^"]+' "$FILE" | head -1)
+          CATEGORY=$(grep -oP '<span class="category">\K[^<]+' "$FILE" | head -1)
+          DATE=$(date -R)
+          URL="https://hiboss.demosilvermoon.com.tw/blog/posts/${FILENAME}"
+
+          ITEM="  <item>\n    <title>${TITLE}</title>\n    <link>${URL}</link>\n    <description>${DESC:0:200}</description>\n    <category>${CATEGORY}</category>\n    <pubDate>${DATE}</pubDate>\n    <guid>${URL}</guid>\n  </item>\n"
+
+          sed -i "/<\/channel>/i\\${ITEM}" blog/rss.xml
+
+      - name: Update article date to today
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          FILE="blog/posts/${{ steps.check.outputs.filename }}"
+          TODAY=$(date +%Y-%m-%d)
+          sed -i "s/\"datePublished\": \"[0-9-]*\"/\"datePublished\": \"${TODAY}\"/" "$FILE"
+          sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"${TODAY}\"/" "$FILE"
+
+      - name: Commit and push
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          git config user.name "HEY!BOSS Blog Bot"
+          git config user.email "blog-bot@hiboss.demosilvermoon.com.tw"
+          git add -A
+          git commit -m "Blog: publish ${{ steps.check.outputs.filename }}"
+          git push
+
+      - name: Notify Google Indexing API
+        if: steps.check.outputs.has_draft == 'true'
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          if [ -n "$GCP_SA_KEY" ]; then
+            echo "$GCP_SA_KEY" > /tmp/sa.json
+            pip install -q google-auth google-api-python-client
+            python3 -c "
+          from google.oauth2 import service_account
+          from googleapiclient.discovery import build
+          creds = service_account.Credentials.from_service_account_file('/tmp/sa.json', scopes=['https://www.googleapis.com/auth/indexing'])
+          svc = build('indexing', 'v3', credentials=creds)
+          url = 'https://hiboss.demosilvermoon.com.tw/blog/posts/${{ steps.check.outputs.filename }}'
+          svc.urlNotifications().publish(body={'url': url, 'type': 'URL_UPDATED'}).execute()
+          print(f'Indexed: {url}')
+          "
+            rm /tmp/sa.json
+          fi
+
+      - name: Notify Telegram
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          FILE="blog/posts/${{ steps.check.outputs.filename }}"
+          TITLE=$(grep -oP '<h1>\K[^<]+' "$FILE" | head -1)
+          URL="https://hiboss.demosilvermoon.com.tw/blog/posts/${{ steps.check.outputs.filename }}"
+          MSG="📝 Blog 每日自動發文%0A%0A${TITLE}%0A${URL}%0A%0AGoogle 索引已通知"
+          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${MSG}" > /dev/null

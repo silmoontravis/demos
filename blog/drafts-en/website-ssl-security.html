@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Your Website Secure? A Complete Guide to SSL Certificates and HTTPS — HEY!BOSS Blog</title>
+<meta name="description" content="Websites without SSL certificates are flagged as 'Not Secure' by browsers, scaring away visitors. HEY!BOSS 銀月數位顧問 explains how SSL works, how to get free certificates from Let's Encrypt, auto-renewal setup, and HTTPS redirection.">
+<meta name="keywords" content="SSL certificate, HTTPS, website security, Let's Encrypt, free SSL, auto renewal, HEY!BOSS, 銀月數位顧問, DevOps, website encryption">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/website-ssl-security.html">
+<link rel="alternate" hreflang="zh-TW" href="https://hiboss.demosilvermoon.com.tw/blog/posts/website-ssl-security.html">
+<link rel="alternate" hreflang="en" href="https://hiboss.demosilvermoon.com.tw/blog/posts/en/website-ssl-security.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="Is Your Website Secure? A Complete Guide to SSL Certificates and HTTPS">
+<meta property="og:description" content="SSL isn't just about security — it impacts SEO rankings and user trust. Learn how to get free SSL and set up auto-renewal.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/en/website-ssl-security.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-04-25">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="DevOps">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Is Your Website Secure? A Complete Guide to SSL Certificates and HTTPS",
+  "description": "A complete guide to SSL certificates, Let's Encrypt free setup, auto-renewal configuration, and HTTPS redirection.",
+  "datePublished": "2026-04-25",
+  "dateModified": "2026-04-25",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/en/website-ssl-security.html",
+  "articleSection": "DevOps",
+  "wordCount": 1050,
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to pay for an SSL certificate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Let's Encrypt provides completely free SSL certificates with the same functionality as paid certificates — full HTTPS encryption. The only difference is a 90-day validity period, but this is easily handled with auto-renewal. All HEY!BOSS websites use Let's Encrypt with automatic renewal configured."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does not having SSL affect Google rankings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Google has listed HTTPS as a ranking factor since 2014. While it's not the most heavily weighted factor, all else being equal, websites with HTTPS will rank higher than those without. More importantly, Chrome displays a 'Not Secure' warning on websites without SSL, directly impacting user trust and bounce rates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when an SSL certificate expires?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When an SSL certificate expires, browsers display a full-page security warning, requiring visitors to manually click 'Proceed to unsafe website' to enter. Most visitors will simply close the page and leave. This is devastating for both brand image and SEO, which is why automatic renewal is so important."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../../#services">Services</a>
+      <a href="../../../#portfolio">Portfolio</a>
+      <a href="../../../#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">DevOps</span>
+    <h1>Is Your Website Secure? A Complete Guide to SSL Certificates and HTTPS</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-04-25</span>
+      <span>7 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>Open a website and look at the address bar. If you see a <strong>padlock icon</strong>, the site has an SSL certificate and uses HTTPS encrypted connections. If you see <strong>"Not Secure"</strong> instead — congratulations, you just scared away roughly 80% of your visitors.</p>
+
+<p>In 2026, SSL certificates are not optional — they're <strong>essential</strong>. Websites without SSL are not only insecure but also penalized by Google in search rankings. In this article, <strong>HEY!BOSS 銀月數位顧問</strong> explains in plain language what SSL is, why it matters, and how to get it for free with automatic management.</p>
+
+<h2>1. What Is SSL? The Simplest Explanation</h2>
+
+<p>SSL (Secure Sockets Layer) is an encryption technology that does one simple thing: it <strong>encrypts</strong> the data transmitted between your website and its visitors.</p>
+
+<p>Think of it this way: without SSL, it's like writing a letter on a postcard — the mail carrier and passersby can all read it. With SSL, it's like putting the letter in a sealed envelope that only the recipient can open.</p>
+
+<p>Specifically, SSL protects:</p>
+
+<ul>
+<li><strong>Login Credentials</strong> — Usernames and passwords entered by users cannot be intercepted</li>
+<li><strong>Personal Data</strong> — Names, phone numbers, and email addresses submitted via forms are encrypted in transit</li>
+<li><strong>Transaction Information</strong> — Credit card numbers and payment details remain secure</li>
+<li><strong>Browsing Behavior</strong> — What visitors view on your site cannot be observed by third parties</li>
+</ul>
+
+<h2>2. Four Risks of Not Having SSL</h2>
+
+<h3>1. Browser Security Warnings</h3>
+<p>Chrome, Firefox, Safari, and all major browsers display a "Not Secure" warning on websites without SSL. For most consumers, seeing "Not Secure" means "this website has problems," and they immediately leave.</p>
+
+<h3>2. Lower Google Rankings</h3>
+<p>Google explicitly lists HTTPS as a ranking factor. Websites without SSL rank below those that have it. When your competitors all have SSL and you don't, the ranking gap only grows wider.</p>
+
+<h3>3. Data Theft</h3>
+<p>Without SSL, data is transmitted in plain text. On public Wi-Fi networks, attackers can easily intercept form data submitted by visitors. If your website has member login or any form functionality, this is an extremely serious security risk.</p>
+
+<h3>4. Brand Trust Collapse</h3>
+<p>You've invested heavily in branding, store design, and staff training, yet your website reads "Not Secure." It's like hanging a sign on your storefront that says "We're not very hygienic" — simply absurd.</p>
+
+<h2>3. Let's Encrypt: Free SSL Certificates</h2>
+
+<p>SSL certificates used to cost money — anywhere from a few hundred to several thousand dollars per year. But <strong>Let's Encrypt</strong> changed everything.</p>
+
+<p>Let's Encrypt is a nonprofit organization that provides <strong>completely free SSL certificates</strong>. Key features:</p>
+
+<ul>
+<li><strong>Completely Free</strong> — Whether you have one website or a thousand, it costs nothing</li>
+<li><strong>Automated</strong> — Supports automatic application and renewal</li>
+<li><strong>Trusted by All Browsers</strong> — Recognized by Chrome, Firefox, Safari, and more</li>
+<li><strong>Same Encryption Strength</strong> — Uses the same encryption technology as paid certificates</li>
+</ul>
+
+<p>The only limitation is a <strong>90-day</strong> validity period, but this is perfectly solved through automatic renewal.</p>
+
+<h2>4. Auto-Renewal: Set It Once, Never Worry Again</h2>
+
+<p>A 90-day validity period sounds short, but with auto-renewal configured, no manual intervention is ever needed:</p>
+
+<ol>
+<li><strong>Certbot</strong> — Let's Encrypt's official automation tool; set up a cron job for periodic checks and renewals</li>
+<li><strong>Nginx Proxy Manager</strong> — A GUI-based SSL management tool with built-in auto-renewal</li>
+<li><strong>Caddy Server</strong> — Automatically requests and renews SSL with zero configuration</li>
+</ol>
+
+<p>In HEY!BOSS's infrastructure, we use <strong>Nginx Proxy Manager</strong> to centrally manage SSL certificates for all websites. When a new website is added, SSL is automatically requested; certificates are renewed automatically 30 days before expiration. Clients don't need to do anything.</p>
+
+<h2>5. HTTPS Forced Redirect: Leave No Gaps</h2>
+
+<p>After obtaining an SSL certificate, you need to ensure all traffic goes through HTTPS. The standard approach is to set up <strong>HTTP to HTTPS forced redirection</strong>:</p>
+
+<ul>
+<li>Visitor types http://yoursite.com → automatically redirected to https://yoursite.com</li>
+<li>Prevents any traffic from traveling over unencrypted HTTP connections</li>
+<li>Ensures Google indexes the HTTPS version of your pages</li>
+</ul>
+
+<p>For all websites deployed by HEY!BOSS, <strong>HTTPS forced redirection is a standard configuration</strong> — clients don't need to request it separately. This is one of our deployment principles: all public-facing services must have SSL with forced redirection.</p>
+
+<h2>6. HEY!BOSS Auto-SSL Solution</h2>
+
+<p>We provide a complete SSL solution for all client websites:</p>
+
+<ul>
+<li><strong>Automatic Provisioning</strong> — SSL certificates from Let's Encrypt are automatically requested during deployment</li>
+<li><strong>Automatic Renewal</strong> — Certificates are renewed before expiration, so they never lapse</li>
+<li><strong>Forced Redirection</strong> — HTTP automatically redirects to HTTPS</li>
+<li><strong>Monitoring Alerts</strong> — If renewal fails, instant notification via Telegram</li>
+<li><strong>Zero Extra Cost</strong> — All of the above is included in our service</li>
+</ul>
+
+<p>For clients, SSL is a "set it and forget it" affair. No annual fees, no manual operations, no expiration risks.</p>
+
+<blockquote>"SSL isn't a technical issue — it's a trust issue. Whether your website has that padlock icon determines whether visitors trust your brand."</blockquote>
+
+<div class="article-cta">
+  <h3>Ready to transform your business digitally?</h3>
+  <p>HEY!BOSS provides free SSL + auto-renewal + HTTPS forced redirection for all websites, keeping your brand secure at all times.</p>
+  <a href="../../../#contact">Free Consultation</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">Back to Blog</a>
+</footer>
+
+</body>
+</html>
