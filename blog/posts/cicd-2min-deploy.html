@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI/CD 自動部署：2 分鐘網站上線的秘密 — HEY!BOSS Blog</title>
+<meta name="description" content="從 git push 到網站上線只要 2 分鐘。HEY!BOSS 用 Jenkins CI/CD Pipeline + Docker + Nginx Proxy Manager + Let's Encrypt 自動 SSL，實現一條指令零人工部署。完整技術架構大公開。">
+<meta name="keywords" content="CI/CD, 自動部署, Jenkins, Docker, Nginx Proxy Manager, Let's Encrypt, SSL, DevOps, HEY!BOSS, 銀月數位顧問, 網站部署">
+<link rel="canonical" href="https://hiboss.demosilvermoon.com.tw/blog/posts/cicd-2min-deploy.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="CI/CD 自動部署：2 分鐘網站上線的秘密">
+<meta property="og:description" content="一條指令，2 分鐘上線。Jenkins + Docker + 自動 SSL 的完整技術架構大公開。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hiboss.demosilvermoon.com.tw/blog/posts/cicd-2min-deploy.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="HEY!BOSS Blog">
+<meta property="article:published_time" content="2026-04-18">
+<meta property="article:author" content="Travis Chen">
+<meta property="article:section" content="DevOps">
+<meta name="author" content="HEY!BOSS 銀月數位顧問">
+<link rel="icon" href="../../heyboss/logos/logo_final.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CI/CD 自動部署：2 分鐘網站上線的秘密",
+  "description": "從 git push 到網站上線只要 2 分鐘。Jenkins CI/CD Pipeline + Docker + Nginx Proxy Manager + Let's Encrypt 自動 SSL 的完整技術架構。",
+  "datePublished": "2026-04-18",
+  "dateModified": "2026-04-18",
+  "author": {
+    "@type": "Person",
+    "name": "Travis Chen",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "銀月數位顧問股份有限公司"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HEY!BOSS 銀月數位顧問",
+    "url": "https://hiboss.demosilvermoon.com.tw/",
+    "logo": "https://hiboss.demosilvermoon.com.tw/heyboss/logos/logo_final.png"
+  },
+  "mainEntityOfPage": "https://hiboss.demosilvermoon.com.tw/blog/posts/cicd-2min-deploy.html",
+  "articleSection": "DevOps",
+  "wordCount": 1100,
+  "inLanguage": "zh-TW"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "CI/CD適合小公司嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "非常適合。CI/CD 不是大企業的專利。事實上，小公司更需要 CI/CD，因為小團隊沒有多餘的人力去處理手動部署、手動測試、手動設定 SSL 這些重複性工作。HEY!BOSS 的客戶從個人品牌到中型企業都有，全部使用同一套 CI/CD 基礎設施，每次部署都是 2 分鐘自動完成。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "自動部署安全嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "比手動部署更安全。手動部署容易出現人為錯誤（上傳錯檔案、忘記改設定、漏裝相依套件），而 CI/CD 每次都執行完全相同的流程，不會遺漏步驟。HEY!BOSS 的 pipeline 還包含自動測試環節，程式碼有問題會在部署前就被攔截。加上 Docker 容器化隔離和 Let's Encrypt 自動 SSL，安全性遠超手動部署。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "部署失敗怎麼辦？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HEY!BOSS 的 CI/CD pipeline 有完整的失敗處理機制：第一，部署失敗會立即推送 Telegram 通知，包含錯誤訊息和失敗的步驟；第二，Docker 容器化部署支援秒級回滾，一個指令就能恢復到上一個正常版本；第三，健康檢查機制會在部署後自動驗證網站是否正常運行，異常時自動觸發回滾。整個過程不需要人工介入。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="../" class="blog-nav-logo">
+      <img src="../../heyboss/logos/logo_final.png" alt="HEY!BOSS">
+      <span>HEY!BOSS</span>
+      <span class="blog-label">BLOG</span>
+    </a>
+    <div class="blog-nav-links">
+      <a href="../../#services">服務</a>
+      <a href="../../#portfolio">作品</a>
+      <a href="../../#contact">聯繫</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="blog-container">
+    <span class="category">DevOps</span>
+    <h1>CI/CD 自動部署：2 分鐘網站上線的秘密</h1>
+    <div class="article-meta">
+      <span>Travis Chen</span>
+      <span>2026-04-18</span>
+      <span>8 分鐘閱讀</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>你有沒有這種經驗：網站做好了，工程師說「部署需要一天」。改了一個 typo，又要等半天才能上線。更慘的是，上線之後才發現 SSL 憑證沒裝、某個頁面 404、手機版排版整個跑掉。</p>
+
+<p>這些問題的根源都一樣：<strong>手動部署</strong>。</p>
+
+<p>在 <strong>HEY!BOSS 銀月數位顧問</strong>，我們用 CI/CD 自動部署，從程式碼推送到網站上線，<strong>只要 2 分鐘，零人工介入</strong>。這篇文章公開我們的完整技術架構。</p>
+
+<h2>一、什麼是 CI/CD？</h2>
+
+<p><strong>CI（Continuous Integration，持續整合）</strong>是指每次程式碼變更都自動進行建置和測試，確保新的程式碼不會破壞現有功能。</p>
+
+<p><strong>CD（Continuous Deployment，持續部署）</strong>是指通過測試的程式碼自動部署到生產環境，不需要人工操作。</p>
+
+<p>兩者結合就是 <strong>CI/CD Pipeline</strong>：程式碼從開發者的電腦到使用者的瀏覽器，全程自動化、全程可追蹤、全程可重複。</p>
+
+<h2>二、HEY!BOSS 的 CI/CD Pipeline 完整流程</h2>
+
+<p>以下是我們實際運行的 Jenkins Pipeline，每次部署都會經過這 6 個階段：</p>
+
+<h3>Stage 1：Git Push — 觸發 Pipeline</h3>
+<p>工程師把程式碼 push 到 GitLab，GitLab 的 Webhook 自動通知 Jenkins：「有新的程式碼了，開始工作。」整個 pipeline 從這裡自動啟動，不需要任何人按任何按鈕。</p>
+
+<h3>Stage 2：Build — 建置專案</h3>
+<p>Jenkins 拉取最新程式碼，執行建置指令（npm build / yarn build）。如果是 Vue、React 等前端框架，這個階段會把 TypeScript 編譯成 JavaScript、壓縮 CSS、優化圖片、生成靜態檔案。</p>
+
+<h3>Stage 3：Test — 自動測試</h3>
+<p>建置成功後，自動執行測試套件。包含：</p>
+<ul>
+<li><strong>單元測試</strong> — 核心功能的邏輯驗證</li>
+<li><strong>整合測試</strong> — API 呼叫和資料流的正確性</li>
+<li><strong>Playwright E2E 測試</strong> — 模擬真實使用者操作，從瀏覽器層級驗證功能</li>
+</ul>
+<p>任何測試失敗，pipeline 立即中斷，不會有有問題的程式碼進入生產環境。</p>
+
+<h3>Stage 4：Deploy — Docker 容器部署</h3>
+<p>測試通過後，Jenkins 自動執行部署：</p>
+<ul>
+<li>打包 Docker Image</li>
+<li>推送到私有 Docker Registry</li>
+<li>在生產伺服器上拉取新的 Image</li>
+<li>用 docker-compose 重啟服務</li>
+</ul>
+<p>Docker 容器化的好處是<strong>環境一致性</strong>。開發環境能跑的，生產環境一定也能跑。不會出現「在我電腦上是好的啊」這種問題。</p>
+
+<h3>Stage 5：SSL — Let's Encrypt 自動憑證</h3>
+<p>網站部署完成後，如果是新的域名，<strong>Nginx Proxy Manager</strong> 會自動透過 Let's Encrypt 申請免費的 SSL 憑證。HTTPS 強制跳轉也是自動設定的。憑證到期前會自動續期，不需要記任何日期。</p>
+
+<h3>Stage 6：DNS — 自動域名設定</h3>
+<p>透過 AWS Route 53 API，新的子域名會自動建立 DNS 記錄，指向正確的伺服器 IP。從域名到 HTTPS 連線，全部自動完成。</p>
+
+<h2>三、Nginx Proxy Manager：反向代理的指揮中心</h2>
+
+<p>當你有數十個甚至上百個網站都部署在同一台伺服器上時，需要一個「流量指揮中心」來決定每個域名應該導向哪個 Docker Container。這就是 <strong>Nginx Proxy Manager</strong> 的角色。</p>
+
+<ul>
+<li><strong>反向代理</strong> — 根據域名自動將流量導向對應的容器</li>
+<li><strong>SSL 管理</strong> — 集中管理所有域名的 SSL 憑證</li>
+<li><strong>Access Control</strong> — 可以對特定站點設定 IP 白名單或密碼保護</li>
+<li><strong>Web UI</strong> — 圖形化介面管理所有代理規則，不用手寫 Nginx config</li>
+</ul>
+
+<p>HEY!BOSS 的 100 個品牌網站，全部透過同一個 Nginx Proxy Manager 管理。新增一個站點只要在 UI 上點幾下，或是透過 API 自動新增。</p>
+
+<h2>四、監控：部署完才是開始</h2>
+
+<p>很多公司的 DevOps 做到部署就結束了。但在 HEY!BOSS，我們認為<strong>部署完才是真正的開始</strong>。上線後的監控同樣重要：</p>
+
+<h3>Health Check 健康檢查</h3>
+<p>每 5 分鐘自動對所有網站發送 HTTP 請求，確認網站正常回應。如果連續三次失敗，立即推送 Telegram 警報，並附上錯誤訊息和伺服器狀態。</p>
+
+<h3>Cost Report 成本報告</h3>
+<p>每天自動計算 AWS 的使用成本，推送到 Telegram。當日費用超過設定的閾值會觸發警報，避免意外的費用暴增（例如被 DDoS 攻擊導致流量費用飆升）。</p>
+
+<h3>部署通知</h3>
+<p>每次 CI/CD Pipeline 完成（無論成功或失敗），都會推送 Telegram 通知，包含：部署的專案名稱、觸發者、耗時、成功/失敗狀態。如果失敗，還會附上錯誤 log 的關鍵行。</p>
+
+<h2>五、實際數據：HEY!BOSS 的部署效率</h2>
+
+<p>以下是我們實際的部署數據：</p>
+
+<ul>
+<li><strong>平均部署時間</strong> — 1 分 47 秒（含建置、測試、部署、SSL）</li>
+<li><strong>部署成功率</strong> — 98.5%（失敗的 1.5% 全部在測試階段被攔截，沒有影響到生產環境）</li>
+<li><strong>回滾時間</strong> — 15 秒（docker-compose 切回上一個 Image）</li>
+<li><strong>SSL 申請時間</strong> — 平均 23 秒（Let's Encrypt DNS 驗證）</li>
+<li><strong>零手動介入</strong> — 從 git push 到上線，沒有任何人工步驟</li>
+</ul>
+
+<p>這不是實驗室的理想數據，是我們每天實際在跑的生產環境數據。</p>
+
+<blockquote>「部署應該像呼吸一樣自然。你不會每次呼吸都要手動操作肺部，部署也不應該。CI/CD 讓部署變成一個不需要思考的動作。」</blockquote>
+
+<h2>六、為什麼這很重要？</h2>
+
+<p>CI/CD 不只是技術面的提升，更是<strong>商業面的競爭優勢</strong>：</p>
+
+<ul>
+<li><strong>速度</strong> — 產品更新從「每月一次」變成「隨時可以」，更快回應市場需求</li>
+<li><strong>品質</strong> — 自動測試攔截問題，用戶看到的永遠是穩定版本</li>
+<li><strong>成本</strong> — 省下的人工部署時間，可以投入更有價值的開發工作</li>
+<li><strong>信心</strong> — 不用擔心「部署會不會出事」，因為流程是可重複、可預測的</li>
+</ul>
+
+<p><strong>HEY!BOSS 銀月數位顧問</strong>的每一個客戶專案，都享有這套 CI/CD 基礎設施。不是加購選項，是標配。</p>
+
+<div class="article-cta">
+  <h3>想讓你的網站擁有 2 分鐘自動部署？</h3>
+  <p>HEY!BOSS 的建站和系統開發服務，標配 CI/CD 自動部署、SSL、監控和 Telegram 通知。</p>
+  <a href="../../#contact">免費諮詢</a>
+</div>
+
+</article>
+
+<footer class="blog-footer">
+  <a href="https://hiboss.demosilvermoon.com.tw/">HEY!BOSS</a> 銀月數位顧問股份有限公司 &copy; 2026 |
+  <a href="../">返回 Blog</a>
+</footer>
+
+</body>
+</html>

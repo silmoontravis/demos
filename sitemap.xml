@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://hiboss.demosilvermoon.com.tw/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-build-100-sites.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/posts/ruoyi-enterprise-systems.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/posts/traditional-vs-ai-web-company.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/posts/automated-seo-explained.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/posts/cicd-2min-deploy.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/alleybrew/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/amcl-consulting/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hiboss.demosilvermoon.com.tw/appforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
