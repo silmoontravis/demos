@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asian Man Tantric | Premium Tantric Massage London</title>
+    <meta name="description" content="London's premier tantric massage service for men. Experience deep relaxation, sensual healing and professional body-to-body massage by skilled Asian masseurs. Book your session today.">
+    <meta name="keywords" content="tantric massage London, male massage London, body to body massage, sensual massage, Asian masseur, gay massage London, deep tissue massage London, Swedish massage London">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Asian Man Tantric | Premium Tantric Massage London">
+    <meta property="og:description" content="London's premier tantric massage experience for men. Professional, discreet, transformative.">
+    <meta property="og:image" content="assets/sensual-massage.jpg">
+    <meta property="og:url" content="https://asianmantantric.com">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Asian Man Tantric Male Massage",
+        "image": "https://asianmantantric.com/assets/sensual-massage.jpg",
+        "telephone": "+44 7399784641",
+        "email": "booking@asianmantantric.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "London",
+            "addressCountry": "GB"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "10:00",
+            "closes": "22:00"
+        },
+        "url": "https://asianmantantric.com/",
+        "priceRange": "$$",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127"
+        }
+    }
+    </script>
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0a0a0a;
+            --gold: #c9a96e;
+            --gold-light: #d4b97a;
+            --gold-dark: #b8944f;
+            --gray-dark: #1a1a1a;
+            --gray-mid: #2a2a2a;
+            --gray-text: #999;
+            --cream: #f5f0e8;
+            --white: #ffffff;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --nav-height: 80px;
+            --section-padding: clamp(80px, 10vw, 140px);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--black);
+            color: var(--cream);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; border: none; font-family: inherit; }
+        input, select, textarea { font-family: inherit; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 4vw, 40px);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.2; }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .gold-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem 0;
+            position: relative;
+        }
+        .gold-divider::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* ===== REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(201, 169, 110, 0.15);
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            transition: opacity 0.3s;
+        }
+        .nav-logo:hover img { opacity: 0.8; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cream);
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--gold) !important;
+            color: var(--gold) !important;
+            padding: 0.6rem 1.5rem !important;
+            font-size: 0.8rem !important;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--black) !important;
+            box-shadow: 0 0 30px rgba(201, 169, 110, 0.3);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 1.5px;
+            background: var(--cream);
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(30px);
+                transition: right 0.4s ease;
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1.1rem; letter-spacing: 3px; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/slider-1.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1);
+            transition: transform 0.1s linear;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 10, 0.5) 0%,
+                rgba(10, 10, 10, 0.4) 40%,
+                rgba(10, 10, 10, 0.7) 100%
+            );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        .hero-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: heroFadeUp 1s ease 0.3s forwards;
+        }
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: heroFadeUp 1s ease 0.6s forwards;
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            color: rgba(245, 240, 232, 0.7);
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: heroFadeUp 1s ease 0.9s forwards;
+        }
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: heroFadeUp 1s ease 1.2s forwards;
+        }
+        .hero-cta:hover {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 50px rgba(201, 169, 110, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: heroFadeUp 1s ease 1.5s forwards;
+        }
+        .hero-scroll span {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.4);
+        }
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        /* ===== PHILOSOPHY ===== */
+        .philosophy {
+            padding: var(--section-padding) 0;
+            background: var(--black);
+        }
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(3rem, 6vw, 6rem);
+            align-items: center;
+        }
+        .philosophy-text p {
+            color: var(--gray-text);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .philosophy-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: transform 0.6s ease;
+        }
+        .philosophy-image:hover img { transform: scale(1.03); }
+        .philosophy-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            pointer-events: none;
+        }
+        .philosophy-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(201, 169, 110, 0.15);
+        }
+        .stat-item h3 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--gold);
+            font-weight: 300;
+        }
+        .stat-item p {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-top: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .philosophy-image { order: -1; }
+            .philosophy-image img { height: 350px; }
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: var(--section-padding) 0;
+            background: var(--gray-dark);
+        }
+        .services-header {
+            text-align: center;
+            margin-bottom: clamp(3rem, 5vw, 5rem);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--black);
+            border: 1px solid rgba(201, 169, 110, 0.1);
+            overflow: hidden;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        .service-card:hover {
+            border-color: rgba(201, 169, 110, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        .service-card-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+            filter: brightness(0.8);
+        }
+        .service-card:hover .service-card-image img {
+            transform: scale(1.08);
+            filter: brightness(0.9);
+        }
+        .service-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, var(--black), transparent);
+        }
+        .service-card-body {
+            padding: 2rem;
+        }
+        .service-card-body h3 {
+            font-size: 1.5rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+        .service-card-body p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .service-price {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .service-price span {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            font-family: var(--font-sans);
+        }
+        .service-btn {
+            display: inline-block;
+            padding: 0.7rem 2rem;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        .service-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .service-card-image { height: 250px; }
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: var(--section-padding) 0;
+            background: var(--black);
+        }
+        .gallery-header {
+            text-align: center;
+            margin-bottom: clamp(3rem, 5vw, 5rem);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: brightness(0.7) saturate(0.9);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.9) saturate(1);
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(201, 169, 110, 0);
+            transition: border-color 0.4s ease;
+            pointer-events: none;
+        }
+        .gallery-item:hover::after {
+            border-color: rgba(201, 169, 110, 0.4);
+        }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 10, 10, 0.5);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--gold);
+            stroke-width: 1;
+        }
+
+        .gallery-item.wide { grid-column: span 2; }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-item.wide { grid-column: span 1; }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(10, 10, 10, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            color: var(--cream);
+            font-size: 2rem;
+            font-weight: 200;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            transition: all 0.3s;
+        }
+        .lightbox-close:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: var(--section-padding) 0;
+            background: var(--gray-dark);
+            overflow: hidden;
+        }
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: clamp(3rem, 5vw, 5rem);
+        }
+        .testimonial-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+        }
+        .testimonial-card {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .testimonial-stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.3rem;
+            margin-bottom: 2rem;
+        }
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+        }
+        .testimonial-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        .testimonial-quote::before {
+            content: '\201C';
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-serif);
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            object-fit: cover;
+        }
+        .testimonial-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--cream);
+        }
+        .testimonial-location {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+            margin-top: 0.2rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .testimonial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(201, 169, 110, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0;
+        }
+        .testimonial-dot.active {
+            background: var(--gold);
+            box-shadow: 0 0 10px rgba(201, 169, 110, 0.4);
+        }
+        .testimonial-arrow {
+            background: none;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            color: var(--gold);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .testimonial-arrow:hover {
+            background: rgba(201, 169, 110, 0.1);
+            border-color: var(--gold);
+        }
+        .testimonial-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        /* ===== BOOKING ===== */
+        .booking {
+            padding: var(--section-padding) 0;
+            background: var(--black);
+            position: relative;
+        }
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+        }
+        .booking-header {
+            text-align: center;
+            margin-bottom: clamp(3rem, 5vw, 4rem);
+        }
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-bottom: 0.5rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.9rem 1rem;
+            background: var(--gray-dark);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            color: var(--cream);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+            -webkit-appearance: none;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(153, 153, 153, 0.5);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+        }
+        .form-group select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96e' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        .form-group select option {
+            background: var(--gray-dark);
+            color: var(--cream);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-submit {
+            display: block;
+            width: 100%;
+            padding: 1.1rem;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            transition: all 0.4s ease;
+            margin-top: 0.5rem;
+        }
+        .form-submit:hover {
+            background: transparent;
+            color: var(--gold);
+            box-shadow: 0 0 40px rgba(201, 169, 110, 0.15);
+        }
+        .form-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            letter-spacing: 1px;
+        }
+        .form-error {
+            font-size: 0.7rem;
+            color: #e74c3c;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #e74c3c;
+        }
+        .form-group.error .form-error { display: block; }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .form-success h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .form-success p { color: var(--gray-text); }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* ===== HOURS ===== */
+        .hours {
+            padding: clamp(60px, 8vw, 100px) 0;
+            background: var(--gray-dark);
+        }
+        .hours-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hours-schedule {
+            text-align: center;
+        }
+        .hours-schedule h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+        .hours-badge {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            margin-bottom: 1rem;
+        }
+        .hours-badge .days {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+        }
+        .hours-badge .time {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 300;
+        }
+        .hours-note {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+        .hours-contact h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .contact-info .label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray-text);
+        }
+        .contact-info .value {
+            font-size: 1rem;
+            color: var(--cream);
+            margin-top: 0.2rem;
+        }
+        .contact-info .value a {
+            color: var(--cream);
+            transition: color 0.3s;
+        }
+        .contact-info .value a:hover { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .hours-content { grid-template-columns: 1fr; text-align: center; }
+            .hours-contact { text-align: left; }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 4rem 0 2rem;
+            background: var(--black);
+            border-top: 1px solid rgba(201, 169, 110, 0.1);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand img {
+            height: 40px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            line-height: 1.8;
+            max-width: 300px;
+        }
+        .footer-links h4 {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-sans);
+            font-weight: 500;
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .footer-social a:hover {
+            background: rgba(201, 169, 110, 0.1);
+            border-color: var(--gold);
+        }
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--gold);
+        }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 169, 110, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(153, 153, 153, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { justify-content: center; text-align: center; }
+        }
+
+        /* ===== GOLD SHIMMER EFFECT ===== */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .gold-shimmer {
+            background: linear-gradient(90deg, var(--gold) 0%, #e8d5a3 40%, var(--gold) 60%, #e8d5a3 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <img src="assets/logo.png" alt="Asian Man Tantric">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#philosophy">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#booking" class="nav-cta">Book Now</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-label">London's Premier Male Massage</p>
+            <h1 class="hero-title">The Art of <em>Tantric</em> Healing</h1>
+            <p class="hero-subtitle">A sanctuary for the body, mind and spirit &mdash; where deep relaxation meets sensual awakening</p>
+            <a href="#booking" class="hero-cta">Book Your Session</a>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy" id="philosophy">
+        <div class="container">
+            <div class="philosophy-grid">
+                <div class="philosophy-text">
+                    <p class="section-label reveal">Our Philosophy</p>
+                    <h2 class="section-title reveal">Welcome to <span class="gold-shimmer">Asian Man Tantric</span></h2>
+                    <div class="gold-divider reveal"></div>
+                    <p class="reveal">Asian Man Tantric is a renowned tantric massage service in London, dedicated to providing the finest holistic experience for men. We believe that true relaxation transcends the physical &mdash; it is a journey that harmonises body, mind and spirit.</p>
+                    <p class="reveal">Our skilled masseurs are professionally trained in the ancient arts of tantric bodywork, combining Eastern wisdom with modern therapeutic techniques. Every session is conducted with the utmost discretion, respect, and attention to your individual needs.</p>
+                    <p class="reveal">Whether you seek relief from the pressures of modern life, a deeper connection with your own body, or a transformative sensual experience, our sanctuary in the heart of London awaits you.</p>
+                    <div class="philosophy-stats reveal">
+                        <div class="stat-item">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>2000+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>4.9</h3>
+                            <p>Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="philosophy-image reveal">
+                    <img src="assets/intro.jpg" alt="Asian Man Tantric - Professional Massage Environment" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <p class="section-label reveal">What We Offer</p>
+                <h2 class="section-title reveal">Our Signature Services</h2>
+                <div class="gold-divider reveal" style="margin: 2rem auto;"></div>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-card-image">
+                        <img src="assets/sweedish-massage.jpg" alt="Deep Tissue and Swedish Massage" loading="lazy">
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Deep Tissue &amp; Swedish Massage</h3>
+                        <p>A therapeutic blend of firm pressure and flowing strokes designed to release chronic tension, improve circulation, and restore your body's natural balance.</p>
+                        <span class="service-price">From &pound;150 <span>/ session</span></span>
+                        <a href="#booking" class="service-btn">Book Now</a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-card-image">
+                        <img src="assets/body-to-body.jpg" alt="Tantric Body-to-Body Massage" loading="lazy">
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Tantric Body-to-Body Massage</h3>
+                        <p>An intimate, deeply connecting experience where skilled touch and body-to-body contact awaken your senses and guide you into a profound state of relaxation and bliss.</p>
+                        <span class="service-price">From &pound;200 <span>/ session</span></span>
+                        <a href="#booking" class="service-btn">Book Now</a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-card-image">
+                        <img src="assets/sensual-massage.jpg" alt="Full Ultimate Tantric Journey" loading="lazy">
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Full Ultimate Tantric Journey</h3>
+                        <p>Our signature experience &mdash; a complete immersion combining breathwork, energy alignment, and the full spectrum of tantric techniques for total mind-body transformation.</p>
+                        <span class="service-price">From &pound;300 <span>/ session</span></span>
+                        <a href="#booking" class="service-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <p class="section-label reveal">Our Space</p>
+                <h2 class="section-title reveal">The Experience</h2>
+                <div class="gold-divider reveal" style="margin: 2rem auto;"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wide reveal">
+                    <img src="assets/slider-1.jpg" alt="Massage environment" loading="lazy">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="assets/slider-2.jpg" alt="Professional massage setting" loading="lazy">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="assets/slider-3.jpg" alt="Relaxation space" loading="lazy">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="assets/gay-london-massage.jpg" alt="London massage experience" loading="lazy">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="" alt="Gallery image" id="lightboxImg">
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <p class="section-label reveal">Client Stories</p>
+                <h2 class="section-title reveal">What Our Clients Say</h2>
+                <div class="gold-divider reveal" style="margin: 2rem auto;"></div>
+            </div>
+            <div class="testimonial-carousel reveal">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">Top relaxing, high quality! It was my first time and it was a truly relaxing experience from a highly qualified masseur. It felt like a short vacation. I will repeat as soon as possible.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Frank Roth" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Frank Roth</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">An extraordinary experience that left me feeling completely renewed. The professionalism and skill of the masseur was outstanding. The environment was immaculate and perfectly relaxing.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Florian J" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Florian J.</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">I have been to many massage places across Europe, but this was on a completely different level. The attention to detail, the ambiance, and the sheer skill of the therapist made it unforgettable.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Ken" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Ken</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">Truly a transformative session. I came in stressed and anxious, and left feeling like a completely different person. The tantric techniques used were genuine and deeply effective. Highly recommended.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Tony" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Tony</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">Best massage experience I have ever had in London. The body-to-body technique was performed with incredible professionalism. You can tell the masseur has years of dedicated training. Will definitely return.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Martin J" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Martin J.</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">I was nervous at first, but the warm welcome and professional approach immediately put me at ease. The experience was deeply healing and I felt completely safe throughout. Absolutely wonderful.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Sebastine" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Sebastine</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 7 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-quote">Exceptional from start to finish. The environment was spotlessly clean, the oils were premium quality, and the massage itself was a genuine work of art. This is luxury at its finest.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/user.png" alt="Manfred" class="testimonial-avatar">
+                                <div>
+                                    <p class="testimonial-name">Manfred</p>
+                                    <p class="testimonial-location">Verified Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-arrow" id="prevBtn" aria-label="Previous testimonial">
+                        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <div class="testimonial-dots" id="testimonialDots"></div>
+                    <button class="testimonial-arrow" id="nextBtn" aria-label="Next testimonial">
+                        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="booking-header">
+                <p class="section-label reveal">Reserve Your Session</p>
+                <h2 class="section-title reveal">Book Your Experience</h2>
+                <div class="gold-divider reveal" style="margin: 2rem auto;"></div>
+            </div>
+            <form class="booking-form reveal" id="bookingForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                        <span class="form-error">Please enter your name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        <span class="form-error">Please enter a valid email</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+44 ..." required>
+                        <span class="form-error">Please enter your phone number</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="deep-tissue">Deep Tissue / Swedish Massage &mdash; from &pound;150</option>
+                            <option value="body-to-body">Tantric Body-to-Body Massage &mdash; from &pound;200</option>
+                            <option value="ultimate">Full Ultimate Tantric Journey &mdash; from &pound;300</option>
+                        </select>
+                        <span class="form-error">Please select a service</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" required>
+                        <span class="form-error">Please select a date</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <select id="time" name="time" required>
+                            <option value="" disabled selected>Select a time</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                        </select>
+                        <span class="form-error">Please select a time</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group full">
+                        <label for="message">Message <span style="color: var(--gray-text); text-transform: none; letter-spacing: 0;">(optional)</span></label>
+                        <textarea id="message" name="message" placeholder="Any special requests or questions..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="form-submit">Book My Session</button>
+                <p class="form-note">We respond within 2 hours &mdash; Your privacy is guaranteed</p>
+            </form>
+            <div class="form-success" id="formSuccess">
+                <h3>Thank You</h3>
+                <p>Your booking request has been received. We will get back to you within 2 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOURS -->
+    <section class="hours" id="hours">
+        <div class="container">
+            <div class="hours-content">
+                <div class="hours-schedule reveal">
+                    <p class="section-label">Opening Hours</p>
+                    <h2>We Welcome You</h2>
+                    <div class="gold-divider" style="margin: 2rem auto;"></div>
+                    <div class="hours-badge">
+                        <p class="days">Monday &mdash; Sunday</p>
+                        <p class="time">10:00 &mdash; 22:00</p>
+                    </div>
+                    <p class="hours-note">Open 7 days a week &mdash; By appointment only</p>
+                </div>
+                <div class="hours-contact reveal">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-info">
+                            <p class="label">Phone</p>
+                            <p class="value"><a href="tel:+447399784641">+44 7399 784 641</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-info">
+                            <p class="label">Email</p>
+                            <p class="value"><a href="mailto:booking@asianmantantric.com">booking@asianmantantric.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-info">
+                            <p class="label">Location</p>
+                            <p class="value">Central London, UK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Asian Man Tantric">
+                    <p>London's premier tantric massage service for men. Professional, discreet, and dedicated to your well-being since 2019.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#philosophy">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                        <li><a href="#hours">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Deep Tissue Massage</a></li>
+                        <li><a href="#services">Swedish Massage</a></li>
+                        <li><a href="#services">Body-to-Body Massage</a></li>
+                        <li><a href="#services">Full Tantric Journey</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Asian Man Tantric. All rights reserved.</p>
+                <p>London, United Kingdom</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ===== NAVBAR SCROLL =====
+        const navbar = document.getElementById('navbar');
+        const heroBg = document.getElementById('heroBg');
+        let lastScroll = 0;
+
+        function onScroll() {
+            const scrollY = window.scrollY;
+
+            // Navbar background
+            if (scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Parallax hero
+            if (heroBg && scrollY < window.innerHeight) {
+                heroBg.style.transform = 'scale(1.1) translateY(' + (scrollY * 0.3) + 'px)';
+            }
+
+            lastScroll = scrollY;
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    var offset = 80;
+                    var top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== REVEAL ON SCROLL =====
+        var reveals = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        reveals.forEach(function(el) { observer.observe(el); });
+
+        // ===== TESTIMONIAL CAROUSEL =====
+        var track = document.getElementById('testimonialTrack');
+        var slides = track.querySelectorAll('.testimonial-slide');
+        var dotsContainer = document.getElementById('testimonialDots');
+        var prevBtn = document.getElementById('prevBtn');
+        var nextBtn = document.getElementById('nextBtn');
+        var currentSlide = 0;
+        var totalSlides = slides.length;
+        var autoRotateInterval;
+
+        // Create dots
+        for (var i = 0; i < totalSlides; i++) {
+            var dot = document.createElement('button');
+            dot.classList.add('testimonial-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+            dot.dataset.index = i;
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.dataset.index));
+            });
+            dotsContainer.appendChild(dot);
+        }
+
+        // Style dots container
+        dotsContainer.style.display = 'flex';
+        dotsContainer.style.gap = '0.5rem';
+        dotsContainer.style.alignItems = 'center';
+
+        function goToSlide(index) {
+            currentSlide = index;
+            track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            var dots = dotsContainer.querySelectorAll('.testimonial-dot');
+            dots.forEach(function(d, i) {
+                d.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % totalSlides);
+        }
+
+        function prevSlide() {
+            goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+        }
+
+        nextBtn.addEventListener('click', function() {
+            nextSlide();
+            resetAutoRotate();
+        });
+
+        prevBtn.addEventListener('click', function() {
+            prevSlide();
+            resetAutoRotate();
+        });
+
+        function startAutoRotate() {
+            autoRotateInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetAutoRotate() {
+            clearInterval(autoRotateInterval);
+            startAutoRotate();
+        }
+
+        startAutoRotate();
+
+        // Touch support for carousel
+        var touchStartX = 0;
+        var touchEndX = 0;
+        track.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        track.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) { nextSlide(); resetAutoRotate(); }
+            if (touchEndX - touchStartX > 50) { prevSlide(); resetAutoRotate(); }
+        }, { passive: true });
+
+        // ===== LIGHTBOX =====
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightboxImg');
+        var lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.gallery-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                var img = this.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== FORM VALIDATION =====
+        var form = document.getElementById('bookingForm');
+        var formSuccess = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var isValid = true;
+
+            // Clear previous errors
+            form.querySelectorAll('.form-group').forEach(function(g) {
+                g.classList.remove('error');
+            });
+
+            // Validate required fields
+            var name = document.getElementById('name');
+            var email = document.getElementById('email');
+            var phone = document.getElementById('phone');
+            var service = document.getElementById('service');
+            var date = document.getElementById('date');
+            var time = document.getElementById('time');
+
+            if (!name.value.trim()) { name.closest('.form-group').classList.add('error'); isValid = false; }
+            if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.closest('.form-group').classList.add('error'); isValid = false; }
+            if (!phone.value.trim()) { phone.closest('.form-group').classList.add('error'); isValid = false; }
+            if (!service.value) { service.closest('.form-group').classList.add('error'); isValid = false; }
+            if (!date.value) { date.closest('.form-group').classList.add('error'); isValid = false; }
+            if (!time.value) { time.closest('.form-group').classList.add('error'); isValid = false; }
+
+            if (isValid) {
+                form.style.display = 'none';
+                formSuccess.style.display = 'block';
+            }
+        });
+
+        // Set min date to today
+        var dateInput = document.getElementById('date');
+        var today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+    })();
+    </script>
+
+</body>
+</html>
