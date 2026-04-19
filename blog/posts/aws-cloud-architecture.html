@@ -220,15 +220,20 @@
 </footer>
 
 <script>
-let lang = 'zh';
-function toggleLang() {
-  lang = lang === 'zh' ? 'en' : 'zh';
+let lang = localStorage.getItem('blogLang') || 'zh';
+function applyLang() {
   document.querySelectorAll('[data-zh]').forEach(function(el) {
     el.textContent = el.getAttribute('data-' + lang);
   });
   var btn = document.getElementById('langToggleBtn');
-  btn.textContent = lang === 'zh' ? 'EN/\u4e2d' : '\u4e2d/EN';
+  if (btn) btn.textContent = lang === 'zh' ? 'EN/中' : '中/EN';
 }
+function toggleLang() {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('blogLang', lang);
+  applyLang();
+}
+if (lang !== 'zh') applyLang();
 </script>
 </body>
 </html>

@@ -47,13 +47,11 @@
       <span>HEY!BOSS</span>
       <span class="blog-label">BLOG</span>
     </a>
-        <div class="blog-nav-links">
+    <div class="blog-nav-links">
       <a href="../#services"><span data-zh="服務" data-en="Services">服務</span></a>
       <a href="../#portfolio"><span data-zh="作品" data-en="Portfolio">作品</span></a>
       <a href="../#contact"><span data-zh="聯繫" data-en="Contact">聯繫</span></a>
       <button onclick="toggleLang()" style="background:var(--hey-blue,#2563eb);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:14px;font-weight:600;margin-left:12px;white-space:nowrap;" id="langToggleBtn">EN/中</button>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px">
     </div>
   </div>
 </nav>
@@ -193,19 +191,20 @@
 </footer>
 
 <script>
-(function(){
-  var currentLang = 'zh';
-  window.toggleLang = function(){
-    currentLang = (currentLang === 'zh') ? 'en' : 'zh';
-    var els = document.querySelectorAll('[data-zh][data-en]');
-    els.forEach(function(el){
-      el.textContent = el.getAttribute('data-' + currentLang);
-    });
-    var btn = document.getElementById('lang-toggle');
-    btn.textContent = (currentLang === 'zh') ? 'EN/中' : '中/EN';
-    document.documentElement.lang = (currentLang === 'zh') ? 'zh-TW' : 'en';
-  };
-})();
+let lang = localStorage.getItem('blogLang') || 'zh';
+function applyLang() {
+  document.querySelectorAll('[data-zh]').forEach(function(el) {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  var btn = document.getElementById('langToggleBtn');
+  if (btn) btn.textContent = lang === 'zh' ? 'EN/中' : '中/EN';
+}
+function toggleLang() {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('blogLang', lang);
+  applyLang();
+}
+if (lang !== 'zh') applyLang();
 </script>
 </body>
 </html>
