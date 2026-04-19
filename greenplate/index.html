@@ -143,6 +143,14 @@ footer a{color:#aaa;text-decoration:underline}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
 .reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
 .reveal-right.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:1200px) and (min-width:769px){
+  .lang-toggle{top:auto!important;bottom:20px!important;right:20px!important;z-index:1000}
+}
+/* tablet-lang-fix */
+@media(max-width:1200px) and (min-width:769px){
+.lang-toggle{position:fixed!important;top:auto!important;bottom:20px!important;right:20px!important;z-index:9999!important}
+}
 </style>
 
 <script type="application/ld+json">

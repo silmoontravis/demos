@@ -177,6 +177,10 @@ footer{background:rgba(0,0,0,.5);color:rgba(232,224,212,.4);padding:40px 24px;te
   .shows-grid,.membership-grid,.box-info{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:1fr}
 }
+
+@media(max-width:1200px) and (min-width:769px){
+  .lang-toggle{top:auto!important;bottom:20px!important;right:20px!important;z-index:1000}
+}
 </style>
 
 <script type="application/ld+json">
@@ -400,7 +404,11 @@ function toggleLang(){currentLang=currentLang==='zh'?'en':'zh';document.getEleme
     <img src="https://silmoontravis.github.io/demos/heyboss/logos/logo_final.png" alt="HEY!BOSS" style="width:32px;height:32px;object-fit:contain;filter:brightness(10)">
   </button>
 </div>
-<style>@keyframes heybossFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style>
+<style>@keyframes heybossFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}/* tablet-lang-fix */
+@media(max-width:1200px) and (min-width:769px){
+.lang-toggle{position:fixed!important;top:auto!important;bottom:20px!important;right:20px!important;z-index:9999!important}
+}
+</style>
 
 
 <div style="text-align:center;padding:12px;font-size:11px;color:rgba(0,0,0,0.25);border-top:1px solid rgba(0,0,0,0.05);margin-top:8px">

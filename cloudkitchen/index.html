@@ -145,6 +145,14 @@ footer a:hover{color:var(--blue)}
   .delivery-stats{flex-direction:column;gap:16px}
   section{padding:60px 16px}
 }
+
+@media(max-width:1200px) and (min-width:769px){
+  .lang-toggle{top:auto!important;bottom:20px!important;right:20px!important;z-index:1000}
+}
+/* tablet-lang-fix */
+@media(max-width:1200px) and (min-width:769px){
+.lang-toggle{position:fixed!important;top:auto!important;bottom:20px!important;right:20px!important;z-index:9999!important}
+}
 </style>
 
 <script type="application/ld+json">

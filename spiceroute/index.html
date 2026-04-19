@@ -196,6 +196,10 @@ footer a:hover{text-decoration:underline}
 .heyboss-widget:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,99,235,.6)}
 .heyboss-widget .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #2563eb;animation:pulse-ring 2s infinite}
 @keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+
+@media(max-width:1200px) and (min-width:769px){
+  .lang-toggle{top:auto!important;bottom:20px!important;right:20px!important;z-index:1000}
+}
 </style>
 
 <script type="application/ld+json">
@@ -480,7 +484,11 @@ document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>obs.obs
     <img src="https://silmoontravis.github.io/demos/heyboss/logos/logo_final.png" alt="HEY!BOSS" style="width:32px;height:32px;object-fit:contain;filter:brightness(10)">
   </button>
 </div>
-<style>@keyframes heybossFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style>
+<style>@keyframes heybossFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}/* tablet-lang-fix */
+@media(max-width:1200px) and (min-width:769px){
+.lang-toggle{position:fixed!important;top:auto!important;bottom:20px!important;right:20px!important;z-index:9999!important}
+}
+</style>
 
 </body>
 </html>

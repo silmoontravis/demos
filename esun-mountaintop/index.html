@@ -1194,7 +1194,15 @@
             .tech-specs { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
-    </style>
+    
+@media(max-width:1200px) and (min-width:769px){
+  .lang-toggle{top:auto!important;bottom:20px!important;right:20px!important;z-index:1000}
+}
+/* tablet-lang-fix */
+@media(max-width:1200px) and (min-width:769px){
+.lang-toggle{position:fixed!important;top:auto!important;bottom:20px!important;right:20px!important;z-index:9999!important}
+}
+</style>
 </head>
 <body data-lang="en">
 
