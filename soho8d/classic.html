@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="甦活便利印 SOHO8D — 名片、DM傳單、貼紙、信封、大圖輸出、表單、創意商品，新北市永和區專業印刷服務">
+<meta name="keywords" content="名片印刷,DM傳單,貼紙印刷,信封印刷,大圖輸出,表單印刷,創意商品,新北市印刷,永和印刷,甦活便利印,SOHO8D">
+<meta name="author" content="甦活企業有限公司">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="甦活便利印 SOHO8D — 專業印刷服務">
+<meta property="og:description" content="名片、DM、貼紙、信封、大圖輸出，新北市永和區在地印刷廠，品質保證、價格實惠">
+<meta property="og:type" content="website">
+<title>甦活便利印 SOHO8D — 名片/DM/貼紙/信封/大圖輸出 專業印刷服務</title>
+<style>
+/* ===== Reset & Base ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  color: #333;
+  background: #f5f5f5;
+  line-height: 1.6;
+}
+a { color: #003366; text-decoration: none; }
+a:hover { color: #ff6600; text-decoration: underline; }
+
+/* ===== Top Info Bar ===== */
+.top-bar {
+  background: #e8e8e8;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  color: #666;
+  padding: 4px 0;
+}
+.top-bar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.top-bar-inner span { margin-right: 15px; }
+
+/* ===== Header ===== */
+.header {
+  background: #003366;
+  color: #fff;
+  border-bottom: 3px solid #ff6600;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.logo-area h1 {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #fff;
+}
+.logo-area h1 span.eng {
+  font-size: 16px;
+  color: #ffcc00;
+  margin-left: 8px;
+  font-weight: normal;
+}
+.logo-area .slogan {
+  font-size: 12px;
+  color: #aaccee;
+  margin-top: 2px;
+}
+.header-contact {
+  text-align: right;
+  font-size: 12px;
+  color: #ccddeeff;
+  line-height: 1.8;
+}
+.header-contact .phone-big {
+  font-size: 20px;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* ===== Navigation ===== */
+.nav-bar {
+  background: linear-gradient(to bottom, #004488, #003366);
+  border-bottom: 2px solid #002244;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-inner a {
+  display: block;
+  padding: 10px 18px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border-right: 1px solid #005599;
+  transition: background 0.2s;
+}
+.nav-inner a:first-child { border-left: 1px solid #005599; }
+.nav-inner a:hover, .nav-inner a.active {
+  background: #ff6600;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ===== Announcement Bar ===== */
+.announce-bar {
+  background: #fffde0;
+  border-bottom: 1px solid #e0d070;
+  padding: 6px 0;
+  font-size: 12px;
+  color: #996600;
+}
+.announce-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.announce-inner .marquee-text {
+  display: inline;
+}
+.announce-inner .marquee-text span {
+  color: #cc0000;
+  font-weight: bold;
+}
+
+/* ===== Main Layout ===== */
+.main-wrap {
+  max-width: 1100px;
+  margin: 10px auto;
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 180px 1fr 200px;
+  gap: 10px;
+}
+
+/* ===== Left Sidebar ===== */
+.sidebar-left {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.sidebar-title {
+  background: #003366;
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.sidebar-left ul {
+  list-style: none;
+}
+.sidebar-left ul li {
+  border-bottom: 1px dashed #ddd;
+}
+.sidebar-left ul li a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.sidebar-left ul li a:hover {
+  background: #e8f0ff;
+  color: #003366;
+  text-decoration: none;
+}
+.sidebar-left ul li a.active-sub {
+  background: #ff6600;
+  color: #fff;
+  font-weight: bold;
+}
+.sidebar-left ul li a::before {
+  content: "▸ ";
+  color: #ff6600;
+  font-size: 11px;
+}
+.sidebar-section {
+  margin-top: 0;
+}
+.sidebar-section + .sidebar-section {
+  border-top: 3px solid #003366;
+}
+
+/* ===== Center Content ===== */
+.content-center {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 12px;
+}
+
+/* Banner area */
+.banner-area {
+  background: linear-gradient(135deg, #003366, #005599);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 12px;
+  border: 2px solid #002244;
+  position: relative;
+}
+.banner-area h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.banner-area p {
+  font-size: 13px;
+  color: #aaddff;
+}
+.banner-area .banner-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff0000;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  transform: rotate(5deg);
+}
+
+/* Section header */
+.section-header {
+  background: #f0f4f8;
+  border-left: 4px solid #003366;
+  padding: 6px 12px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #003366;
+  margin: 15px 0 10px 0;
+}
+.section-header:first-of-type { margin-top: 0; }
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.product-card {
+  border: 1px solid #ddd;
+  background: #fff;
+  text-align: center;
+  padding: 10px 8px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+}
+.product-card:hover {
+  border-color: #ff6600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.product-icon {
+  font-size: 48px;
+  display: block;
+  margin: 8px auto;
+  line-height: 1;
+}
+.product-card h4 {
+  font-size: 13px;
+  color: #003366;
+  margin: 6px 0 4px;
+  font-weight: bold;
+}
+.product-card .desc {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 6px;
+  min-height: 28px;
+}
+.product-card .price-tag {
+  background: #ff6600;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.product-card .price-tag small {
+  font-size: 11px;
+  font-weight: normal;
+}
+.product-card .btn-order {
+  display: block;
+  background: #003366;
+  color: #fff;
+  padding: 5px 0;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.product-card .btn-order:hover {
+  background: #ff6600;
+  text-decoration: none;
+}
+.product-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #cc0000;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  font-weight: bold;
+}
+
+/* Info table */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 10px 0;
+}
+.info-table th {
+  background: #003366;
+  color: #fff;
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: bold;
+}
+.info-table td {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  background: #fafafa;
+}
+.info-table tr:nth-child(even) td {
+  background: #f0f0f0;
+}
+
+/* ===== Right Sidebar ===== */
+.sidebar-right {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.right-block {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.right-block:last-child { border-bottom: none; }
+.right-block-title {
+  background: #ff6600;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  margin: -10px -10px 10px -10px;
+  text-align: center;
+}
+.right-block ul {
+  list-style: none;
+  padding: 0;
+}
+.right-block ul li {
+  padding: 4px 0;
+  font-size: 12px;
+  border-bottom: 1px dotted #eee;
+}
+.right-block ul li:last-child { border-bottom: none; }
+.right-block ul li a { color: #003366; }
+.right-block ul li a:hover { color: #ff6600; }
+
+.promo-item {
+  background: #fff8f0;
+  border: 1px dashed #ff6600;
+  padding: 8px;
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+.promo-item .promo-price {
+  color: #cc0000;
+  font-size: 16px;
+  font-weight: bold;
+}
+.promo-item .promo-name {
+  font-weight: bold;
+  color: #003366;
+}
+
+.contact-block {
+  background: #f0f8ff;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 2;
+}
+.contact-block .phone {
+  font-size: 16px;
+  color: #cc0000;
+  font-weight: bold;
+}
+.contact-block .line-id {
+  background: #00b900;
+  color: #fff;
+  padding: 3px 10px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: #003366;
+  color: #aabbcc;
+  padding: 15px 0;
+  margin-top: 10px;
+  border-top: 3px solid #ff6600;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  font-size: 12px;
+}
+.footer-col h4 {
+  color: #ffcc00;
+  font-size: 13px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #335577;
+  padding-bottom: 4px;
+}
+.footer-col p, .footer-col li {
+  line-height: 1.8;
+  color: #99aabb;
+}
+.footer-col ul { list-style: none; }
+.footer-col a { color: #88bbdd; }
+.footer-col a:hover { color: #ffcc00; }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 10px auto 0;
+  padding: 10px 10px 0;
+  border-top: 1px solid #224466;
+  text-align: center;
+  font-size: 11px;
+  color: #667788;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+  .main-wrap {
+    grid-template-columns: 1fr;
+  }
+  .sidebar-left, .sidebar-right {
+    display: block;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-inner a {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .header-contact { text-align: center; }
+}
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .nav-inner a {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Top Info Bar ===== -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div>
+      <span>營業時間：週一～週五 09:00-18:00</span>
+      <span>|</span>
+      <span>服務電話：02-89230555</span>
+      <span>|</span>
+      <span>LINE：@jyz4323f</span>
+    </div>
+    <div>
+      <span>設為首頁</span>
+      <span>|</span>
+      <span>加入最愛</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <h1>甦活便利印<span class="eng">SOHO8D</span></h1>
+      <div class="slogan">專業印刷 ‧ 快速交件 ‧ 品質保證 ‧ 價格實惠</div>
+    </div>
+    <div class="header-contact">
+      <div class="phone-big">02-89230555</div>
+      <div>傳真：02-89230557</div>
+      <div>新北市永和區國中路4號</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Navigation ===== -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <a href="#" class="active">名片</a>
+    <a href="#">DM傳單</a>
+    <a href="#">貼紙</a>
+    <a href="#">信封</a>
+    <a href="#">大圖輸出</a>
+    <a href="#">表單</a>
+    <a href="#">創意商品</a>
+    <a href="#">最新消息</a>
+    <a href="#">檔案上傳</a>
+  </div>
+</div>
+
+<!-- ===== Announcement ===== -->
+<div class="announce-bar">
+  <div class="announce-inner">
+    <span>📢</span> 最新公告：<span class="marquee-text"><span>本月名片特惠 NT$8/盒起！</span> 歡迎來電洽詢或加 LINE 線上客服 @jyz4323f，滿千免運費！凡訂購大圖輸出滿 3000 元加贈裁切服務！</span>
+  </div>
+</div>
+
+<!-- ===== Main 3-Column Layout ===== -->
+<div class="main-wrap">
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar-left">
+    <div class="sidebar-section">
+      <div class="sidebar-title">名片印刷</div>
+      <ul>
+        <li><a href="#" class="active-sub">特價名片</a></li>
+        <li><a href="#">快速名片</a></li>
+        <li><a href="#">特殊名片</a></li>
+        <li><a href="#">3D立體名片</a></li>
+        <li><a href="#">局部上光名片</a></li>
+        <li><a href="#">透明名片</a></li>
+        <li><a href="#">燙金名片</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">DM傳單</div>
+      <ul>
+        <li><a href="#">經濟DM</a></li>
+        <li><a href="#">精緻DM</a></li>
+        <li><a href="#">摺頁DM</a></li>
+        <li><a href="#">騎馬釘</a></li>
+        <li><a href="#">膠裝</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">貼紙印刷</div>
+      <ul>
+        <li><a href="#">合成貼紙</a></li>
+        <li><a href="#">PVC貼紙</a></li>
+        <li><a href="#">透明貼紙</a></li>
+        <li><a href="#">模切貼紙</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">大圖輸出</div>
+      <ul>
+        <li><a href="#">海報輸出</a></li>
+        <li><a href="#">帆布輸出</a></li>
+        <li><a href="#">易拉展</a></li>
+        <li><a href="#">人形立牌</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">創意商品</div>
+      <ul>
+        <li><a href="#">直噴T恤</a></li>
+        <li><a href="#">團體服</a></li>
+        <li><a href="#">馬克杯</a></li>
+        <li><a href="#">帆布袋</a></li>
+        <li><a href="#">滑鼠墊</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Center Content -->
+  <main class="content-center">
+    <!-- Banner -->
+    <div class="banner-area">
+      <div class="banner-badge">HOT</div>
+      <h2>甦活便利印 — 您的印刷好夥伴</h2>
+      <p>名片最低 NT$8/盒起 ｜ 全台宅配 ｜ 當日急件服務 ｜ 二十年專業經驗</p>
+    </div>
+
+    <!-- Popular Products -->
+    <div class="section-header">熱門商品推薦</div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-badge">特惠</div>
+        <span class="product-icon">🃏</span>
+        <h4>特價名片</h4>
+        <div class="desc">銅版紙 350g<br>雙面彩色印刷</div>
+        <div class="price-tag">NT$8<small>/盒起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge">急件</div>
+        <span class="product-icon">⚡</span>
+        <h4>快速名片</h4>
+        <div class="desc">當日取件<br>急件專屬服務</div>
+        <div class="price-tag">NT$15<small>/盒起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">📄</span>
+        <h4>經濟DM</h4>
+        <div class="desc">A4單面彩色<br>銅版紙 150g</div>
+        <div class="price-tag">NT$0.3<small>/張起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">📋</span>
+        <h4>摺頁DM</h4>
+        <div class="desc">對摺/三摺<br>雙面彩色印刷</div>
+        <div class="price-tag">NT$0.8<small>/張起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">👕</span>
+        <h4>直噴T恤</h4>
+        <div class="desc">純棉圓領T恤<br>全彩數位直噴</div>
+        <div class="price-tag">NT$150<small>/件起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">👔</span>
+        <h4>團體服</h4>
+        <div class="desc">POLO衫/背心<br>10件以上優惠</div>
+        <div class="price-tag">NT$200<small>/件起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">🖼️</span>
+        <h4>大圖海報</h4>
+        <div class="desc">室內外皆可<br>防水材質可選</div>
+        <div class="price-tag">NT$9<small>/才起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">📎</span>
+        <h4>PVC貼紙輸出</h4>
+        <div class="desc">防水防曬<br>戶外耐候材質</div>
+        <div class="price-tag">NT$12<small>/才起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+    </div>
+
+    <div class="section-header">更多商品</div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <span class="product-icon">🏷️</span>
+        <h4>合成貼紙</h4>
+        <div class="desc">撕不破材質<br>防水防油</div>
+        <div class="price-tag">NT$0.5<small>/張起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">✉️</span>
+        <h4>中式信封</h4>
+        <div class="desc">標準 / 大號<br>中式紅包可選</div>
+        <div class="price-tag">NT$1.5<small>/個起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">👜</span>
+        <h4>帆布袋</h4>
+        <div class="desc">環保帆布材質<br>客製印刷</div>
+        <div class="price-tag">NT$35<small>/個起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-icon">☕</span>
+        <h4>馬克杯</h4>
+        <div class="desc">陶瓷馬克杯<br>全彩熱轉印</div>
+        <div class="price-tag">NT$99<small>/個起</small></div>
+        <a href="#" class="btn-order">立即訂購</a>
+      </div>
+
+    </div>
+
+    <!-- Why choose us -->
+    <div class="section-header">為什麼選擇甦活便利印？</div>
+    <table class="info-table">
+      <tr>
+        <th style="width:25%">服務項目</th>
+        <th style="width:40%">說明</th>
+        <th style="width:20%">交件時間</th>
+        <th style="width:15%">起訂量</th>
+      </tr>
+      <tr>
+        <td>名片印刷</td>
+        <td>銅版紙/萊妮紙/合成紙多種選擇</td>
+        <td>一般 3 個工作天</td>
+        <td>1 盒起</td>
+      </tr>
+      <tr>
+        <td>DM 傳單</td>
+        <td>A4/A5/B5 各式尺寸，單雙面皆可</td>
+        <td>一般 3-5 個工作天</td>
+        <td>100 張起</td>
+      </tr>
+      <tr>
+        <td>大圖輸出</td>
+        <td>海報/帆布/相紙，室內外防水材</td>
+        <td>一般 1-2 個工作天</td>
+        <td>1 才起</td>
+      </tr>
+      <tr>
+        <td>貼紙印刷</td>
+        <td>PVC/合成/透明/模切，多種材質</td>
+        <td>一般 3-5 個工作天</td>
+        <td>100 張起</td>
+      </tr>
+      <tr>
+        <td>創意商品</td>
+        <td>T恤/馬克杯/帆布袋，少量客製化</td>
+        <td>一般 5-7 個工作天</td>
+        <td>1 件起</td>
+      </tr>
+    </table>
+
+    <!-- Ordering process -->
+    <div class="section-header">訂購流程</div>
+    <div style="display:grid; grid-template-columns: repeat(5,1fr); gap:8px; text-align:center; margin:10px 0; font-size:12px;">
+      <div style="background:#e8f0ff; padding:10px; border:1px solid #ccd;">
+        <div style="font-size:24px;">1️⃣</div>
+        <b>選擇商品</b><br>瀏覽目錄選品
+      </div>
+      <div style="background:#e8f0ff; padding:10px; border:1px solid #ccd;">
+        <div style="font-size:24px;">2️⃣</div>
+        <b>上傳檔案</b><br>提供印刷稿件
+      </div>
+      <div style="background:#e8f0ff; padding:10px; border:1px solid #ccd;">
+        <div style="font-size:24px;">3️⃣</div>
+        <b>確認報價</b><br>客服回覆報價
+      </div>
+      <div style="background:#e8f0ff; padding:10px; border:1px solid #ccd;">
+        <div style="font-size:24px;">4️⃣</div>
+        <b>付款下單</b><br>匯款或貨到付款
+      </div>
+      <div style="background:#e8f0ff; padding:10px; border:1px solid #ccd;">
+        <div style="font-size:24px;">5️⃣</div>
+        <b>出貨配送</b><br>宅配或自取
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Right Sidebar -->
+  <aside class="sidebar-right">
+
+    <div class="right-block">
+      <div class="right-block-title">🔥 本月特惠</div>
+      <div class="promo-item">
+        <div class="promo-name">特價名片</div>
+        <div class="promo-price">NT$8/盒</div>
+        <div>銅版紙 350g 雙面彩印</div>
+      </div>
+      <div class="promo-item">
+        <div class="promo-name">經濟DM</div>
+        <div class="promo-price">NT$0.3/張</div>
+        <div>A4 150g銅版紙</div>
+      </div>
+      <div class="promo-item">
+        <div class="promo-name">馬克杯</div>
+        <div class="promo-price">NT$99/個</div>
+        <div>全彩熱轉印</div>
+      </div>
+    </div>
+
+    <div class="right-block">
+      <div class="right-block-title">📞 客服專線</div>
+      <div class="contact-block">
+        <div>電話</div>
+        <div class="phone">02-89230555</div>
+        <div>傳真：02-89230557</div>
+        <div style="margin-top:6px;">LINE 線上客服</div>
+        <div class="line-id">@jyz4323f</div>
+        <div style="margin-top:8px; font-size:11px; color:#666;">
+          週一～週五<br>09:00 - 18:00
+        </div>
+      </div>
+    </div>
+
+    <div class="right-block">
+      <div class="right-block-title">📋 注意事項</div>
+      <ul>
+        <li>● 檔案請轉外框</li>
+        <li>● 出血需留 2mm</li>
+        <li>● 接受 AI/PDF/PSD</li>
+        <li>● 色彩模式 CMYK</li>
+        <li>● 解析度 300dpi 以上</li>
+        <li>● 急件另加收費用</li>
+        <li>● 自取免運費</li>
+      </ul>
+    </div>
+
+    <div class="right-block">
+      <div class="right-block-title">🚚 滿千免運</div>
+      <div style="text-align:center; font-size:12px; padding:5px;">
+        <div style="font-size:36px; margin-bottom:4px;">📦</div>
+        <b style="color:#cc0000; font-size:14px;">訂單滿 NT$1,000</b><br>
+        全台宅配免運費！<br><br>
+        <div style="font-size:11px; color:#888;">
+          偏遠地區除外<br>
+          離島另計運費
+        </div>
+      </div>
+    </div>
+
+    <div class="right-block">
+      <div class="right-block-title">🏆 服務特色</div>
+      <ul>
+        <li>✔ 20年印刷經驗</li>
+        <li>✔ 少量也能印</li>
+        <li>✔ 急件當日取</li>
+        <li>✔ 免費打樣諮詢</li>
+        <li>✔ 全台宅配到府</li>
+        <li>✔ 品質穩定可靠</li>
+      </ul>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>甦活企業有限公司</h4>
+      <p>
+        地址：新北市永和區國中路4號<br>
+        電話：02-89230555<br>
+        傳真：02-89230557<br>
+        LINE：@jyz4323f<br>
+        Email：service@soho8d.com.tw
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>產品服務</h4>
+      <ul>
+        <li><a href="#">名片印刷</a></li>
+        <li><a href="#">DM傳單印刷</a></li>
+        <li><a href="#">貼紙印刷</a></li>
+        <li><a href="#">信封印刷</a></li>
+        <li><a href="#">大圖輸出</a></li>
+        <li><a href="#">表單印刷</a></li>
+        <li><a href="#">創意商品</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>常用連結</h4>
+      <ul>
+        <li><a href="#">檔案上傳</a></li>
+        <li><a href="#">製稿須知</a></li>
+        <li><a href="#">常見問題</a></li>
+        <li><a href="#">訂購流程</a></li>
+        <li><a href="#">付款方式</a></li>
+        <li><a href="#">配送說明</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    甦活企業有限公司 &copy; 版權所有 ｜ 新北市永和區國中路4號 ｜ 電話: 02-89230555 / 傳真: 02-89230557
+  </div>
+</footer>
+
+</body>
+</html>
