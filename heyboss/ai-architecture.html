@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEY!BOSS AI 技術架構圖</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC','Inter',sans-serif;background:#0a0e27;color:#e0e6ff;min-height:100vh;padding:40px 20px}
+h1{text-align:center;font-size:28px;color:#fff;margin-bottom:8px}
+.subtitle{text-align:center;color:#8892b0;font-size:14px;margin-bottom:40px}
+.diagram{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+
+/* Layer */
+.layer{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px}
+.layer-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8892b0;margin-bottom:16px;padding-left:4px}
+.layer-title span{color:#f0b429}
+
+/* Nodes */
+.nodes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.node{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 18px;min-width:140px;text-align:center;transition:all .3s;position:relative}
+.node:hover{border-color:#f0b429;transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,180,41,.15)}
+.node-icon{font-size:24px;margin-bottom:6px}
+.node-name{font-size:13px;font-weight:700;color:#fff}
+.node-desc{font-size:11px;color:#8892b0;margin-top:4px;line-height:1.4}
+.node-tag{position:absolute;top:-8px;right:-8px;background:#f0b429;color:#0a0e27;font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px}
+
+/* Colors */
+.node-ai{border-left:3px solid #6c63ff}
+.node-gcp{border-left:3px solid #4285f4}
+.node-aws{border-left:3px solid #ff9900}
+.node-dev{border-left:3px solid #00d1b2}
+.node-media{border-left:3px solid #e74c8b}
+.node-infra{border-left:3px solid #48c774}
+
+/* Connector */
+.connector{display:flex;justify-content:center;align-items:center;height:32px;position:relative}
+.connector::before{content:'';position:absolute;width:2px;height:100%;background:linear-gradient(180deg,rgba(240,180,41,.4),rgba(108,99,255,.4))}
+.connector-label{background:#0a0e27;padding:0 12px;font-size:11px;color:#f0b429;font-weight:600;z-index:1}
+
+/* Travis center */
+.travis-hub{background:linear-gradient(135deg,#1a1f4e,#0f1335);border:2px solid #f0b429;border-radius:20px;padding:24px;text-align:center;max-width:300px;margin:0 auto}
+.travis-hub .node-icon{font-size:40px}
+.travis-hub .node-name{font-size:18px;color:#f0b429}
+
+/* Two column */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.two-col{grid-template-columns:1fr}.nodes{gap:8px}.node{min-width:120px;padding:10px 14px}}
+</style>
+</head>
+<body>
+
+<h1>HEY!BOSS AI 技術架構圖</h1>
+<p class="subtitle">銀月數位顧問 — AI 驅動的全棧數位服務架構</p>
+
+<div class="diagram">
+
+<!-- Travis Hub -->
+<div class="travis-hub">
+  <div class="node-icon">👨‍💻</div>
+  <div class="node-name">Travis Chen — CEO</div>
+  <div class="node-desc">指揮中樞・Telegram 雙向控制</div>
+</div>
+
+<div class="connector"><span class="connector-label">Telegram Bot API</span></div>
+
+<!-- AI Agents -->
+<div class="layer">
+  <div class="layer-title"><span>★</span> AI 協作雙引擎</div>
+  <div class="two-col">
+    <div class="node node-ai">
+      <div class="node-icon">🏠</div>
+      <div class="node-name">家機 Claude</div>
+      <div class="node-desc">SEO・監控・訓練・行銷<br>Blog 自動發文・GEO</div>
+      <div class="node-tag">TravisChen</div>
+    </div>
+    <div class="node node-ai">
+      <div class="node-icon">🏢</div>
+      <div class="node-name">公司 Claude</div>
+      <div class="node-desc">建站・開發・部署<br>QA・後端工程</div>
+      <div class="node-tag">ASUS1</div>
+    </div>
+  </div>
+</div>
+
+<div class="connector"><span class="connector-label">Obsidian + GitHub 同步</span></div>
+
+<!-- AI Platforms -->
+<div class="layer">
+  <div class="layer-title"><span>★</span> AI 平台串接</div>
+  <div class="nodes">
+    <div class="node node-ai">
+      <div class="node-icon">🧠</div>
+      <div class="node-name">Anthropic Claude</div>
+      <div class="node-desc">核心開發引擎<br>Claude Code CLI</div>
+    </div>
+    <div class="node node-media">
+      <div class="node-icon">🎙️</div>
+      <div class="node-name">ElevenLabs</div>
+      <div class="node-desc">TTS 語音合成<br>STT 語音轉文字<br>SFX 音效生成</div>
+    </div>
+    <div class="node node-media">
+      <div class="node-icon">🎵</div>
+      <div class="node-name">Suno</div>
+      <div class="node-desc">AI 音樂生成<br>BGM 背景音樂</div>
+    </div>
+    <div class="node node-media">
+      <div class="node-icon">🎬</div>
+      <div class="node-name">D-ID</div>
+      <div class="node-desc">Talking Head<br>AI 影片生成</div>
+    </div>
+    <div class="node node-media">
+      <div class="node-icon">🎨</div>
+      <div class="node-name">Midjourney</div>
+      <div class="node-desc">遊戲美術生圖<br>AI 設計素材</div>
+    </div>
+  </div>
+</div>
+
+<div class="connector"><span class="connector-label">API 串接</span></div>
+
+<!-- Production Lines -->
+<div class="layer">
+  <div class="layer-title"><span>★</span> AI 產線</div>
+  <div class="nodes">
+    <div class="node node-dev">
+      <div class="node-icon">🏗️</div>
+      <div class="node-name">AI 建站</div>
+      <div class="node-desc">一日百站<br>Logo + BGM + 雙語</div>
+    </div>
+    <div class="node node-dev">
+      <div class="node-icon">⚙️</div>
+      <div class="node-name">後台開發</div>
+      <div class="node-desc">若依框架<br>ERP/CRM/CMS/WMS</div>
+    </div>
+    <div class="node node-dev">
+      <div class="node-icon">🔍</div>
+      <div class="node-name">SEO/GEO</div>
+      <div class="node-desc">自動化監控<br>每日報告 + 自動調整</div>
+    </div>
+    <div class="node node-dev">
+      <div class="node-icon">📝</div>
+      <div class="node-name">內容行銷</div>
+      <div class="node-desc">Blog 自動發文<br>中英雙語</div>
+    </div>
+    <div class="node node-dev">
+      <div class="node-icon">🎮</div>
+      <div class="node-name">遊戲開發</div>
+      <div class="node-desc">SuperAce / Goldslots<br>Node.js 後端引擎</div>
+    </div>
+    <div class="node node-dev">
+      <div class="node-icon">🎥</div>
+      <div class="node-name">影音製作</div>
+      <div class="node-desc">IG Reel<br>Talking Head 影片</div>
+    </div>
+  </div>
+</div>
+
+<div class="connector"><span class="connector-label">CI/CD 自動部署</span></div>
+
+<!-- Cloud Infrastructure -->
+<div class="layer">
+  <div class="layer-title"><span>★</span> 雲端基礎設施</div>
+  <div class="two-col">
+    <div class="layer" style="padding:16px">
+      <div class="layer-title" style="font-size:12px;color:#4285f4">GCP</div>
+      <div class="nodes" style="gap:8px">
+        <div class="node node-gcp" style="min-width:110px">
+          <div class="node-icon">🌐</div>
+          <div class="node-name">Cloud DNS</div>
+          <div class="node-desc">域名管理</div>
+        </div>
+        <div class="node node-gcp" style="min-width:110px">
+          <div class="node-icon">⚡</div>
+          <div class="node-name">Cloud Functions</div>
+          <div class="node-desc">SEO 報告</div>
+        </div>
+        <div class="node node-gcp" style="min-width:110px">
+          <div class="node-icon">⏰</div>
+          <div class="node-name">Scheduler</div>
+          <div class="node-desc">定時任務</div>
+        </div>
+        <div class="node node-gcp" style="min-width:110px">
+          <div class="node-icon">📊</div>
+          <div class="node-name">Search Console</div>
+          <div class="node-desc">SEO 數據</div>
+        </div>
+        <div class="node node-gcp" style="min-width:110px">
+          <div class="node-icon">📋</div>
+          <div class="node-name">Sheets API</div>
+          <div class="node-desc">QA 測試管理</div>
+        </div>
+        <div class="node node-gcp" style="min-width:110px">
+          <div class="node-icon">🔔</div>
+          <div class="node-name">Indexing API</div>
+          <div class="node-desc">加速索引</div>
+        </div>
+      </div>
+    </div>
+    <div class="layer" style="padding:16px">
+      <div class="layer-title" style="font-size:12px;color:#ff9900">AWS</div>
+      <div class="nodes" style="gap:8px">
+        <div class="node node-aws" style="min-width:110px">
+          <div class="node-icon">🖥️</div>
+          <div class="node-name">EC2</div>
+          <div class="node-desc">遊戲伺服器<br>DEV / UAT</div>
+        </div>
+        <div class="node node-aws" style="min-width:110px">
+          <div class="node-icon">🗄️</div>
+          <div class="node-name">RDS</div>
+          <div class="node-desc">PostgreSQL<br>主從架構</div>
+        </div>
+        <div class="node node-aws" style="min-width:110px">
+          <div class="node-icon">🔐</div>
+          <div class="node-name">IAM</div>
+          <div class="node-desc">權限管理</div>
+        </div>
+        <div class="node node-aws" style="min-width:110px">
+          <div class="node-icon">💰</div>
+          <div class="node-name">Cost Explorer</div>
+          <div class="node-desc">成本日報</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector"><span class="connector-label">部署 + 託管</span></div>
+
+<!-- DevOps -->
+<div class="layer">
+  <div class="layer-title"><span>★</span> DevOps 工具鏈</div>
+  <div class="nodes">
+    <div class="node node-infra">
+      <div class="node-icon">🐙</div>
+      <div class="node-name">GitHub</div>
+      <div class="node-desc">代碼託管<br>Pages + Actions</div>
+    </div>
+    <div class="node node-infra">
+      <div class="node-icon">🦊</div>
+      <div class="node-name">GitLab</div>
+      <div class="node-desc">FU7 遊戲前端<br>Webhook 觸發</div>
+    </div>
+    <div class="node node-infra">
+      <div class="node-icon">🔨</div>
+      <div class="node-name">Jenkins</div>
+      <div class="node-desc">遊戲 CI/CD<br>2 分鐘部署</div>
+    </div>
+    <div class="node node-infra">
+      <div class="node-icon">🐳</div>
+      <div class="node-name">Docker</div>
+      <div class="node-desc">容器化部署<br>Redis / Nginx</div>
+    </div>
+    <div class="node node-infra">
+      <div class="node-icon">🔄</div>
+      <div class="node-name">n8n</div>
+      <div class="node-desc">工作流自動化<br>音效生成 Pipeline</div>
+    </div>
+    <div class="node node-infra">
+      <div class="node-icon">🤖</div>
+      <div class="node-name">Telegram Bot</div>
+      <div class="node-desc">監控推送<br>雙向控制</div>
+    </div>
+  </div>
+</div>
+
+<!-- Output -->
+<div class="connector"><span class="connector-label">產出</span></div>
+<div class="layer" style="border-color:rgba(240,180,41,.3)">
+  <div class="layer-title"><span>★</span> 對外服務</div>
+  <div class="nodes">
+    <div class="node" style="border-left:3px solid #f0b429">
+      <div class="node-icon">🌍</div>
+      <div class="node-name">HEY!BOSS 官網</div>
+      <div class="node-desc">100+ 品牌作品集</div>
+    </div>
+    <div class="node" style="border-left:3px solid #f0b429">
+      <div class="node-icon">📰</div>
+      <div class="node-name">Blog</div>
+      <div class="node-desc">每日自動發文<br>中英雙語</div>
+    </div>
+    <div class="node" style="border-left:3px solid #f0b429">
+      <div class="node-icon">🎰</div>
+      <div class="node-name">遊戲平台</div>
+      <div class="node-desc">SuperAce / Goldslots<br>Zodiac 星座系列</div>
+    </div>
+    <div class="node" style="border-left:3px solid #f0b429">
+      <div class="node-icon">🏛️</div>
+      <div class="node-name">企業後台</div>
+      <div class="node-desc">RMRS / PMMS<br>若依框架系統</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<p style="text-align:center;color:#4b5563;font-size:12px;margin-top:40px">HEY!BOSS 銀月數位顧問 &copy; 2026 — AI Architecture v1.0</p>
+
+</body>
+</html>
