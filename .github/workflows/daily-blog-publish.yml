@@ -50,19 +50,23 @@ jobs:
           with open(filepath, 'r', encoding='utf-8') as f:
               html = f.read()
 
-          title_zh = re.search(r'<h1[^>]*>([^<]+)', html)
-          title_zh = title_zh.group(1) if title_zh else filename
-          title_en = ""
-          t_match = re.search(r'<h1[^>]*data-en="([^"]*)"', html)
-          if t_match:
-              title_en = t_match.group(1)
+          # Extract title (zh from text, en from data-en in span inside h1)
+          title_zh_match = re.search(r'<h1[^>]*>(?:<span[^>]*>)?([^<]+)', html)
+          title_zh = title_zh_match.group(1) if title_zh_match else filename
+          title_en_match = re.search(r'<h1[^>]*>.*?data-en="([^"]*)"', html, re.DOTALL)
+          title_en = title_en_match.group(1) if title_en_match else title_zh
 
+          # Extract description
           desc_match = re.search(r'name="description" content="([^"]*)"', html)
-          desc = desc_match.group(1)[:150] if desc_match else ""
+          desc_zh = desc_match.group(1)[:150] if desc_match else ""
+          # Try to get English desc from first article paragraph's data-en
+          desc_en_match = re.search(r'article-body.*?<p[^>]*>.*?data-en="([^"]*)"', html, re.DOTALL)
+          desc_en = desc_en_match.group(1)[:150] if desc_en_match else desc_zh
 
-          cat_match = re.search(r'<span class="category"[^>]*>([^<]+)', html)
-          cat_zh = cat_match.group(1) if cat_match else "Blog"
-          cat_en_match = re.search(r'<span class="category"[^>]*data-en="([^"]*)"', html)
+          # Extract category
+          cat_zh_match = re.search(r'class="category"[^>]*>(?:<span[^>]*>)?([^<]+)', html)
+          cat_zh = cat_zh_match.group(1) if cat_zh_match else "Blog"
+          cat_en_match = re.search(r'class="category".*?data-en="([^"]*)"', html, re.DOTALL)
           cat_en = cat_en_match.group(1) if cat_en_match else cat_zh
 
           # Extract first base64 image and resize for thumbnail
@@ -95,7 +99,7 @@ jobs:
                     <span data-zh="6 分鐘閱讀" data-en="6 min read">6 分鐘閱讀</span>
                   </div>
                   <h2><span data-zh="{title_zh}" data-en="{title_en or title_zh}">{title_zh}</span></h2>
-                  <p><span data-zh="{desc[:150]}" data-en="{desc[:150]}">{desc[:150]}</span></p>
+                  <p><span data-zh="{desc_zh}" data-en="{desc_en}">{desc_zh}</span></p>
                 </div>
                 {thumb_html}
               </a>
