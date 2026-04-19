@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RPG 語言教育平台 — 用 RPG 遊戲學英文、日文、韓文，沉浸式冒險學習體驗">
+<meta name="keywords" content="RPG,語言學習,英文,日文,韓文,遊戲教育,RPG Maker">
+<meta name="author" content="RPG Language Academy">
+<title>RPG 語言學院 — 用遊戲學語言，用冒險記單字</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#1a1b3a;--navy-light:#252755;--navy-dark:#12132a;
+--gold:#f0b429;--gold-light:#f5cc5d;--gold-dark:#d49e1f;
+--coral:#ff6b6b;--coral-light:#ff8e8e;
+--white:#f5f5f7;--gray:#a0a0b0;--dark-text:#e0e0e8;
+--card-bg:#1e2048;--card-border:#2a2c5a;
+--radius:12px;--radius-lg:20px;
+--shadow:0 4px 24px rgba(0,0,0,.3);
+--transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC',sans-serif;background:var(--navy-dark);color:var(--dark-text);line-height:1.6;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none;transition:var(--transition)}
+a:hover{color:var(--gold-light)}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:2rem;color:var(--white);margin-bottom:12px;position:relative;display:inline-block}
+.section-title h2::after{content:'';display:block;width:60px;height:3px;background:var(--gold);margin:12px auto 0;border-radius:2px}
+.section-title p{color:var(--gray);font-size:1.05rem;max-width:600px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:12px 32px;border:none;border-radius:var(--radius);font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--navy);box-shadow:0 4px 16px rgba(240,180,41,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(240,180,41,.45);color:var(--navy)}
+.btn-secondary{background:transparent;color:var(--gold);border:2px solid var(--gold)}
+.btn-secondary:hover{background:var(--gold);color:var(--navy)}
+.btn-coral{background:linear-gradient(135deg,var(--coral),#e05555);color:#fff;box-shadow:0 4px 16px rgba(255,107,107,.3)}
+.btn-coral:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,107,107,.45)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,27,58,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);transition:var(--transition)}
+nav.scrolled{background:rgba(18,19,42,.98);box-shadow:0 2px 20px rgba(0,0,0,.4)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 20px}
+.nav-logo{font-size:1.25rem;font-weight:800;color:var(--white);display:flex;align-items:center;gap:8px}
+.nav-logo .logo-icon{font-size:1.5rem}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--dark-text);font-size:.95rem;font-weight:500;padding:8px 0;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:var(--transition)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-login{min-height:44px;min-width:44px;padding:8px 20px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;min-width:44px;min-height:44px;align-items:center;justify-content:center;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:var(--transition);border-radius:2px}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:64px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(240,180,41,.08) 0%,transparent 60%),radial-gradient(ellipse at 70% 30%,rgba(255,107,107,.06) 0%,transparent 50%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:.3;animation:float-up linear infinite}
+@keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.4}90%{opacity:.4}100%{transform:translateY(-20px) scale(1);opacity:0}}
+.hero-content{position:relative;z-index:2;text-align:center;width:100%}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:var(--white);margin-bottom:16px;line-height:1.3}
+.hero h1 .highlight{color:var(--gold);position:relative}
+.hero h1 .highlight-coral{color:var(--coral)}
+.hero .subtitle{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--gray);margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-badge{display:inline-block;margin-bottom:20px;padding:6px 16px;background:rgba(240,180,41,.12);border:1px solid rgba(240,180,41,.25);border-radius:999px;font-size:.85rem;color:var(--gold)}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2rem;font-weight:800;color:var(--gold)}
+.hero-stat .label{font-size:.85rem;color:var(--gray);margin-top:4px}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.feature-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:var(--transition)}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(240,180,41,.12);border-color:rgba(240,180,41,.3)}
+.feature-card:hover::before{opacity:1}
+.feature-icon{width:72px;height:72px;margin:0 auto 20px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:linear-gradient(135deg,rgba(240,180,41,.15),rgba(255,107,107,.1))}
+.feature-card h3{font-size:1.2rem;color:var(--white);margin-bottom:10px}
+.feature-card p{color:var(--gray);font-size:.95rem;line-height:1.7}
+
+/* LANGUAGE CATEGORIES */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.lang-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition);cursor:pointer;position:relative;overflow:hidden}
+.lang-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius-lg);opacity:0;transition:var(--transition)}
+.lang-card.en::after{background:radial-gradient(circle at top right,rgba(59,130,246,.1),transparent 70%)}
+.lang-card.jp::after{background:radial-gradient(circle at top right,rgba(239,68,68,.1),transparent 70%)}
+.lang-card.kr::after{background:radial-gradient(circle at top right,rgba(16,185,129,.1),transparent 70%)}
+.lang-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.lang-card:hover::after{opacity:1}
+.lang-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;position:relative;z-index:1}
+.lang-flag{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.lang-card.en .lang-flag{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.lang-card.jp .lang-flag{background:linear-gradient(135deg,#ef4444,#dc2626)}
+.lang-card.kr .lang-flag{background:linear-gradient(135deg,#10b981,#059669)}
+.lang-title{font-size:1.3rem;color:var(--white);font-weight:700}
+.lang-subtitle{font-size:.85rem;color:var(--gray)}
+.lang-card p{color:var(--gray);font-size:.95rem;margin-bottom:16px;position:relative;z-index:1}
+.lang-meta{display:flex;gap:16px;position:relative;z-index:1}
+.lang-meta span{font-size:.85rem;color:var(--gold);display:flex;align-items:center;gap:4px}
+
+/* GAME SHOWCASE */
+#showcase{background:var(--navy)}
+.filter-bar{display:flex;gap:10px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+.filter-btn{min-height:44px;min-width:44px;padding:10px 24px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:999px;color:var(--dark-text);font-size:.9rem;cursor:pointer;transition:var(--transition)}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:600}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px}
+.game-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);cursor:pointer;position:relative}
+.game-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 16px 48px rgba(240,180,41,.15);border-color:rgba(240,180,41,.4)}
+.game-card:hover .game-overlay{opacity:1}
+.game-cover{height:200px;position:relative;overflow:hidden}
+.game-cover-bg{width:100%;height:100%;position:absolute;inset:0}
+.game-cover-bg.en-1{background:linear-gradient(135deg,#1e3a5f,#2d5a8e,#1e3a5f);background-size:200% 200%;animation:gradMove 6s ease infinite}
+.game-cover-bg.en-2{background:linear-gradient(135deg,#2d1b69,#5b3cc4,#2d1b69);background-size:200% 200%;animation:gradMove 6s ease infinite}
+.game-cover-bg.jp-1{background:linear-gradient(135deg,#5c1a1a,#c0392b,#5c1a1a);background-size:200% 200%;animation:gradMove 6s ease infinite}
+.game-cover-bg.jp-2{background:linear-gradient(135deg,#1a1a2e,#e94560,#1a1a2e);background-size:200% 200%;animation:gradMove 6s ease infinite}
+.game-cover-bg.kr-1{background:linear-gradient(135deg,#0d3b25,#27ae60,#0d3b25);background-size:200% 200%;animation:gradMove 6s ease infinite}
+.game-cover-bg.kr-2{background:linear-gradient(135deg,#4a1942,#e84393,#4a1942);background-size:200% 200%;animation:gradMove 6s ease infinite}
+@keyframes gradMove{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.game-cover-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;opacity:.25}
+.game-overlay{position:absolute;inset:0;background:rgba(26,27,58,.8);display:flex;align-items:center;justify-content:center;opacity:0;transition:var(--transition)}
+.game-info{padding:20px}
+.game-tags{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.tag{padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:600}
+.tag-lang{background:rgba(240,180,41,.15);color:var(--gold)}
+.tag-level{background:rgba(255,107,107,.15);color:var(--coral)}
+.tag-free{background:rgba(16,185,129,.15);color:#10b981}
+.tag-basic{background:rgba(59,130,246,.15);color:#3b82f6}
+.tag-premium{background:rgba(168,85,247,.15);color:#a855f7}
+.game-info h3{font-size:1.1rem;color:var(--white);margin-bottom:6px}
+.game-info p{font-size:.85rem;color:var(--gray);line-height:1.5}
+.game-card.hidden{display:none}
+
+/* PRICING */
+#pricing{background:var(--navy-dark)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:start}
+.price-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:36px;transition:var(--transition);position:relative}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.price-card.featured{border-color:var(--gold);transform:scale(1.04)}
+.price-card.featured:hover{transform:scale(1.06) translateY(-4px)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--navy);padding:4px 20px;border-radius:999px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.price-card h3{font-size:1.3rem;color:var(--white);margin-bottom:8px}
+.price-amount{font-size:2.5rem;font-weight:800;color:var(--gold);margin-bottom:4px}
+.price-amount span{font-size:.9rem;font-weight:400;color:var(--gray)}
+.price-desc{font-size:.9rem;color:var(--gray);margin-bottom:24px}
+.price-features{list-style:none;margin-bottom:28px}
+.price-features li{padding:8px 0;font-size:.95rem;color:var(--dark-text);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+.price-features li::before{content:'';display:inline-block;width:8px;height:8px;flex-shrink:0}
+.price-features li.included::before{background:var(--gold);border-radius:50%}
+.price-features li.excluded{color:var(--gray);opacity:.5}
+.price-features li.excluded::before{width:8px;height:2px;background:var(--gray);border-radius:2px}
+.price-card .btn{width:100%;justify-content:center}
+
+/* HOW IT WORKS */
+#how-it-works{background:var(--navy)}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:48px;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold),transparent);opacity:.2}
+.step{text-align:center;position:relative}
+.step-num{width:72px;height:72px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--navy);font-size:1.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+.step h3{font-size:1.1rem;color:var(--white);margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--gray)}
+.step-icon{font-size:2rem;margin-bottom:8px}
+
+/* CTA */
+#cta-section{background:linear-gradient(135deg,var(--navy),var(--navy-light));position:relative;overflow:hidden}
+#cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(240,180,41,.08),transparent 60%)}
+.cta-content{text-align:center;position:relative;z-index:2}
+.cta-content h2{font-size:clamp(1.5rem,4vw,2.5rem);color:var(--white);margin-bottom:16px}
+.cta-content p{font-size:1.1rem;color:var(--gray);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* FOOTER */
+footer{background:var(--navy-dark);border-top:1px solid rgba(255,255,255,.06);padding:40px 0}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap}
+.footer-links a{color:var(--gray);font-size:.9rem;min-height:44px;display:flex;align-items:center}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{color:var(--gray);font-size:.85rem}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:var(--transition);padding:20px}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{background:var(--navy-light);border:1px solid var(--card-border);border-radius:var(--radius-lg);max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:var(--transition);padding:36px}
+.modal-overlay.active .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:12px;right:12px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer;border-radius:8px;transition:var(--transition)}
+.modal-close:hover{background:rgba(255,255,255,.08);color:var(--white)}
+.modal h2{font-size:1.5rem;color:var(--white);margin-bottom:24px;text-align:center}
+.modal-tabs{display:flex;border-bottom:2px solid var(--card-border);margin-bottom:24px}
+.modal-tab{flex:1;padding:12px;text-align:center;cursor:pointer;color:var(--gray);font-weight:600;transition:var(--transition);min-height:44px;background:none;border:none;font-size:1rem}
+.modal-tab.active{color:var(--gold);border-bottom:2px solid var(--gold);margin-bottom:-2px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.9rem;color:var(--dark-text);margin-bottom:6px}
+.form-group input{width:100%;padding:12px 16px;background:var(--navy-dark);border:1px solid var(--card-border);border-radius:var(--radius);color:var(--white);font-size:1rem;min-height:44px;transition:var(--transition)}
+.form-group input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(240,180,41,.15)}
+.form-group input::placeholder{color:var(--gray)}
+.modal .btn{width:100%;margin-top:8px}
+.form-footer{text-align:center;margin-top:16px;font-size:.85rem;color:var(--gray)}
+
+/* GAME DETAIL MODAL */
+.modal-game{max-width:600px;padding:0}
+.modal-game .modal-close{z-index:3;color:var(--white)}
+.game-detail-cover{height:240px;position:relative}
+.game-detail-cover .game-cover-bg{border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.game-detail-cover .game-cover-icon{font-size:5rem}
+.game-detail-body{padding:28px}
+.game-detail-body h2{text-align:left;margin-bottom:12px}
+.game-detail-tags{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.game-detail-desc{color:var(--gray);line-height:1.8;margin-bottom:20px;font-size:.95rem}
+.game-detail-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.meta-item{background:var(--navy-dark);padding:12px;border-radius:var(--radius);text-align:center}
+.meta-item .meta-label{font-size:.75rem;color:var(--gray);margin-bottom:4px}
+.meta-item .meta-value{font-size:1rem;color:var(--white);font-weight:600}
+.game-screenshots{display:flex;gap:10px;margin-bottom:24px;overflow-x:auto;padding-bottom:8px}
+.screenshot-placeholder{width:140px;height:80px;flex-shrink:0;background:var(--navy-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--gray);border:1px dashed var(--card-border)}
+.upgrade-prompt{background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.25);border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:20px}
+.upgrade-prompt p{color:var(--gold);margin-bottom:12px;font-weight:600}
+
+/* SECTION REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:center;padding:20px;gap:16px;transform:translateY(-120%);transition:var(--transition);border-bottom:1px solid var(--card-border)}
+  .nav-links.open{transform:translateY(0)}
+  .hamburger{display:flex}
+  section{padding:60px 0}
+  .hero-stats{gap:24px}
+  .games-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+  .price-card.featured{transform:none}
+  .price-card.featured:hover{transform:translateY(-4px)}
+  .steps-grid::before{display:none}
+  .footer-inner{flex-direction:column;text-align:center}
+  .game-detail-meta{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .filter-bar{gap:6px}
+  .filter-btn{padding:8px 16px;font-size:.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span class="logo-icon">&#9876;</span> RPG 語言學院</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">平台特色</a></li>
+      <li><a href="#languages">語言課程</a></li>
+      <li><a href="#showcase">遊戲列表</a></li>
+      <li><a href="#pricing">方案價格</a></li>
+      <li><a href="#how-it-works">使用方式</a></li>
+      <li><button class="btn btn-primary nav-login" onclick="openLoginModal()">登入</button></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">&#127918; RPG Maker MZ 語言學習平台</div>
+    <h1>用<span class="highlight">遊戲</span>學語言<br>用<span class="highlight-coral">冒險</span>記單字</h1>
+    <p class="subtitle">透過沉浸式 RPG 冒險體驗，自然而然學會英文、日文、韓文。不再死背單字，讓學習成為一場精彩旅程。</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" onclick="openLoginModal('register')">&#128640; 免費體驗</button>
+      <a href="#showcase" class="btn btn-secondary">&#127918; 瀏覽遊戲</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">10+</div><div class="label">款 RPG 遊戲</div></div>
+      <div class="hero-stat"><div class="num">3</div><div class="label">種語言</div></div>
+      <div class="hero-stat"><div class="num">5000+</div><div class="label">學習者</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>為什麼選擇 RPG 語言學院？</h2>
+      <p>結合遊戲與教育的三大核心優勢</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#9876;</div>
+        <h3>RPG 沉浸式學習</h3>
+        <p>在精心設計的 RPG 世界中，與 NPC 對話學單字，完成任務練文法。遊戲即教室，冒險即學習。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#127760;</div>
+        <h3>多語言選擇</h3>
+        <p>英文、日文、韓文三大語言，每種語言都有專屬遊戲。從初級到高級，循序漸進提升語言能力。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128200;</div>
+        <h3>進度追蹤系統</h3>
+        <p>完整的學習進度記錄，包含已學單字、文法成就、遊戲通關率。清楚掌握每一步的成長。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGE CATEGORIES -->
+<section id="languages">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>選擇你的語言冒險</h2>
+      <p>三大語言課程，每個都有獨特的遊戲世界等你探索</p>
+    </div>
+    <div class="lang-grid">
+      <div class="lang-card en reveal">
+        <div class="lang-header">
+          <div class="lang-flag">&#127468;&#127463;</div>
+          <div>
+            <div class="lang-title">英文 English</div>
+            <div class="lang-subtitle">全球通用語言</div>
+          </div>
+        </div>
+        <p>從勇者學院到魔法城堡，在奇幻世界中學習日常英文對話、商業用語及進階寫作技巧。</p>
+        <div class="lang-meta">
+          <span>&#127918; 4 款遊戲</span>
+          <span>&#128218; 初級 ~ 高級</span>
+        </div>
+      </div>
+      <div class="lang-card jp reveal">
+        <div class="lang-header">
+          <div class="lang-flag">&#127471;&#127477;</div>
+          <div>
+            <div class="lang-title">日文 &#26085;&#26412;&#35486;</div>
+            <div class="lang-subtitle">動漫文化的語言</div>
+          </div>
+        </div>
+        <p>穿越到武士時代或現代東京，學習五十音、日常會話、敬語。邊玩邊學最道地的日文表達。</p>
+        <div class="lang-meta">
+          <span>&#127918; 3 款遊戲</span>
+          <span>&#128218; 初級 ~ 高級</span>
+        </div>
+      </div>
+      <div class="lang-card kr reveal">
+        <div class="lang-header">
+          <div class="lang-flag">&#127472;&#127479;</div>
+          <div>
+            <div class="lang-title">韓文 &#54620;&#44397;&#50612;</div>
+            <div class="lang-subtitle">韓流文化入門</div>
+          </div>
+        </div>
+        <p>成為韓國星探或美食冒險家，在韓流文化中自然學會韓文字母、基礎會話及流行用語。</p>
+        <div class="lang-meta">
+          <span>&#127918; 3 款遊戲</span>
+          <span>&#128218; 初級 ~ 高級</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAME SHOWCASE -->
+<section id="showcase">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>遊戲列表</h2>
+      <p>精選 RPG Maker MZ 語言學習遊戲</p>
+    </div>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">&#127912; 全部</button>
+      <button class="filter-btn" data-filter="en">&#127468;&#127463; 英文</button>
+      <button class="filter-btn" data-filter="jp">&#127471;&#127477; 日文</button>
+      <button class="filter-btn" data-filter="kr">&#127472;&#127479; 韓文</button>
+    </div>
+    <div class="games-grid" id="gamesGrid"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>選擇你的學習方案</h2>
+      <p>從免費體驗開始，隨時升級解鎖更多冒險</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <h3>免費體驗</h3>
+        <div class="price-amount">$0</div>
+        <p class="price-desc">體驗 RPG 語言學習的魅力</p>
+        <ul class="price-features">
+          <li class="included">試玩 1 款指定遊戲</li>
+          <li class="included">基本學習進度追蹤</li>
+          <li class="included">社群論壇參與</li>
+          <li class="excluded">進階遊戲解鎖</li>
+          <li class="excluded">優先體驗新遊戲</li>
+          <li class="excluded">一對一語言教練</li>
+        </ul>
+        <button class="btn btn-secondary" onclick="openLoginModal('register')">免費註冊</button>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-badge">&#11088; 最受歡迎</div>
+        <h3>基本會員</h3>
+        <div class="price-amount">$299 <span>/月</span></div>
+        <p class="price-desc">解鎖更多語言冒險</p>
+        <ul class="price-features">
+          <li class="included">選擇 5 款遊戲暢玩</li>
+          <li class="included">完整學習進度追蹤</li>
+          <li class="included">社群論壇參與</li>
+          <li class="included">每月 2 款新遊戲</li>
+          <li class="excluded">優先體驗新遊戲</li>
+          <li class="excluded">一對一語言教練</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openLoginModal('register')">立即訂閱</button>
+      </div>
+      <div class="price-card reveal">
+        <h3>高級會員</h3>
+        <div class="price-amount">$599 <span>/月</span></div>
+        <p class="price-desc">全方位語言學習體驗</p>
+        <ul class="price-features">
+          <li class="included">所有遊戲無限暢玩</li>
+          <li class="included">完整學習進度追蹤</li>
+          <li class="included">社群論壇參與</li>
+          <li class="included">無限新遊戲</li>
+          <li class="included">優先體驗新遊戲</li>
+          <li class="included">一對一語言教練</li>
+        </ul>
+        <button class="btn btn-coral" onclick="openLoginModal('register')">升級高級</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>四步驟開始冒險</h2>
+      <p>簡單四步，開啟你的語言學習旅程</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-icon">&#128221;</div>
+        <h3>免費註冊</h3>
+        <p>30 秒完成帳號建立，立即獲得免費試玩資格</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-icon">&#127760;</div>
+        <h3>選擇語言</h3>
+        <p>英文、日文、韓文，選擇你想征服的語言</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-icon">&#9876;</div>
+        <h3>開始冒險</h3>
+        <p>進入 RPG 世界，在遊戲中自然學習語言</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-icon">&#127942;</div>
+        <h3>學會語言</h3>
+        <p>通關即精通，遊戲成就就是你的語言實力證明</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-section">
+  <div class="container">
+    <div class="cta-content reveal">
+      <h2>準備好開始你的語言冒險了嗎？</h2>
+      <p>加入超過 5,000 名冒險者的行列，用最有趣的方式學語言</p>
+      <button class="btn btn-primary" onclick="openLoginModal('register')" style="font-size:1.1rem;padding:16px 48px">&#128640; 立即免費體驗</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-copy">&copy; 2026 RPG 語言學院. All Rights Reserved.</div>
+    <ul class="footer-links">
+      <li><a href="#">關於我們</a></li>
+      <li><a href="#">使用條款</a></li>
+      <li><a href="#">隱私權政策</a></li>
+      <li><a href="#">聯絡我們</a></li>
+      <li><a href="#">常見問題</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+    <h2>&#9876; RPG 語言學院</h2>
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login" onclick="switchTab('login')">登入</button>
+      <button class="modal-tab" data-tab="register" onclick="switchTab('register')">註冊</button>
+    </div>
+    <form id="loginForm" onsubmit="handleAuth(event)">
+      <div id="registerNameField" class="form-group" style="display:none">
+        <label for="regName">冒險者名稱</label>
+        <input type="text" id="regName" placeholder="輸入你的暱稱">
+      </div>
+      <div class="form-group">
+        <label for="authEmail">電子信箱</label>
+        <input type="email" id="authEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="authPassword">密碼</label>
+        <input type="password" id="authPassword" placeholder="輸入密碼" required>
+      </div>
+      <div id="registerConfirmField" class="form-group" style="display:none">
+        <label for="authConfirm">確認密碼</label>
+        <input type="password" id="authConfirm" placeholder="再次輸入密碼">
+      </div>
+      <button type="submit" class="btn btn-primary" id="authSubmitBtn">登入</button>
+      <div class="form-footer" id="authFooter">還沒有帳號？<a href="#" onclick="switchTab('register');return false">立即註冊</a></div>
+    </form>
+  </div>
+</div>
+
+<!-- GAME DETAIL MODAL -->
+<div class="modal-overlay" id="gameModal">
+  <div class="modal modal-game" id="gameModalContent"></div>
+</div>
+
+<script>
+// GAME DATA
+const games = [
+  {
+    id:1, name:'勇者英語學院', lang:'en', langLabel:'英文',
+    level:'初級', levelColor:'tag-free', membership:'免費', memberTag:'tag-free',
+    coverClass:'en-1', icon:'&#9876;',
+    desc:'扮演初出茅廬的勇者，在奇幻王國中展開冒險。透過與村民、商人、騎士的對話，學習基礎英文單字與日常會話。每完成一個任務，就解鎖新的英文詞彙！',
+    playtime:'8-12 小時', words:'500+ 單字'
+  },
+  {
+    id:2, name:'魔法英文城堡', lang:'en', langLabel:'英文',
+    level:'中級', levelColor:'tag-lang', membership:'基本會員', memberTag:'tag-basic',
+    coverClass:'en-2', icon:'&#127984;',
+    desc:'進入神秘的魔法城堡，破解英文謎題才能打開每一扇門。學習進階文法、片語和寫作技巧。適合已有基礎的學習者挑戰。',
+    playtime:'15-20 小時', words:'800+ 單字'
+  },
+  {
+    id:3, name:'日語武士道', lang:'jp', langLabel:'日文',
+    level:'初級', levelColor:'tag-free', membership:'免費', memberTag:'tag-free',
+    coverClass:'jp-1', icon:'&#128481;',
+    desc:'穿越到日本戰國時代，成為一名武士學徒。從五十音開始，學習基本日文問候、數字和日常用語。在武士道的修煉中掌握日文基礎。',
+    playtime:'10-15 小時', words:'400+ 單字'
+  },
+  {
+    id:4, name:'東京冒險日記', lang:'jp', langLabel:'日文',
+    level:'高級', levelColor:'tag-level', membership:'高級會員', memberTag:'tag-premium',
+    coverClass:'jp-2', icon:'&#127751;',
+    desc:'來到現代東京，體驗日本都會生活。閱讀報紙、觀看電視節目、與同事開會——全程日文。挑戰 N2~N1 程度的聽讀能力。',
+    playtime:'25-30 小時', words:'1500+ 單字'
+  },
+  {
+    id:5, name:'韓語星探養成', lang:'kr', langLabel:'韓文',
+    level:'中級', levelColor:'tag-lang', membership:'基本會員', memberTag:'tag-basic',
+    coverClass:'kr-1', icon:'&#11088;',
+    desc:'成為韓國娛樂公司的見習星探，學習韓文對話、面試技巧和娛樂產業用語。在追星的路上自然學會流利韓文。',
+    playtime:'12-18 小時', words:'600+ 單字'
+  },
+  {
+    id:6, name:'首爾美食RPG', lang:'kr', langLabel:'韓文',
+    level:'初級', levelColor:'tag-free', membership:'高級會員', memberTag:'tag-premium',
+    coverClass:'kr-2', icon:'&#127858;',
+    desc:'在首爾街頭展開美食冒險，從路邊攤到高級餐廳，學習點餐、食材名稱和飲食文化相關的韓文。吃遍韓國的同時學會實用韓文！',
+    playtime:'8-12 小時', words:'450+ 單字'
+  }
+];
+
+// RENDER GAME CARDS
+function renderGames(filter) {
+  const grid = document.getElementById('gamesGrid');
+  grid.innerHTML = '';
+  games.forEach(g => {
+    const show = filter === 'all' || g.lang === filter;
+    const card = document.createElement('div');
+    card.className = 'game-card reveal visible' + (show ? '' : ' hidden');
+    card.dataset.lang = g.lang;
+    card.onclick = () => openGameModal(g.id);
+    card.innerHTML = `
+      <div class="game-cover">
+        <div class="game-cover-bg ${g.coverClass}"></div>
+        <div class="game-cover-icon">${g.icon}</div>
+        <div class="game-overlay"><button class="btn btn-primary">&#127918; 開始遊玩</button></div>
+      </div>
+      <div class="game-info">
+        <div class="game-tags">
+          <span class="tag tag-lang">${g.langLabel}</span>
+          <span class="tag ${g.levelColor}">${g.level}</span>
+          <span class="tag ${g.memberTag}">${g.membership}</span>
+        </div>
+        <h3>${g.name}</h3>
+        <p>${g.desc.substring(0, 60)}...</p>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// FILTER
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    renderGames(this.dataset.filter);
+  });
+});
+
+// GAME DETAIL MODAL
+function openGameModal(id) {
+  const g = games.find(x => x.id === id);
+  if (!g) return;
+  const needUpgrade = g.membership !== '免費';
+  const content = document.getElementById('gameModalContent');
+  content.innerHTML = `
+    <button class="modal-close" onclick="closeGameModal()">&times;</button>
+    <div class="game-detail-cover">
+      <div class="game-cover-bg ${g.coverClass}"></div>
+      <div class="game-cover-icon">${g.icon}</div>
+    </div>
+    <div class="game-detail-body">
+      <h2>${g.name}</h2>
+      <div class="game-detail-tags">
+        <span class="tag tag-lang">${g.langLabel}</span>
+        <span class="tag ${g.levelColor}">${g.level}</span>
+        <span class="tag ${g.memberTag}">${g.membership}</span>
+      </div>
+      <p class="game-detail-desc">${g.desc}</p>
+      <div class="game-detail-meta">
+        <div class="meta-item"><div class="meta-label">預估遊玩時間</div><div class="meta-value">${g.playtime}</div></div>
+        <div class="meta-item"><div class="meta-label">收錄詞彙</div><div class="meta-value">${g.words}</div></div>
+        <div class="meta-item"><div class="meta-label">難度等級</div><div class="meta-value">${g.level}</div></div>
+        <div class="meta-item"><div class="meta-label">會員需求</div><div class="meta-value">${g.membership}</div></div>
+      </div>
+      <div style="margin-bottom:16px;font-size:.9rem;color:var(--gray);">遊戲截圖</div>
+      <div class="game-screenshots">
+        <div class="screenshot-placeholder">截圖 1</div>
+        <div class="screenshot-placeholder">截圖 2</div>
+        <div class="screenshot-placeholder">截圖 3</div>
+        <div class="screenshot-placeholder">截圖 4</div>
+      </div>
+      ${needUpgrade ? `
+      <div class="upgrade-prompt">
+        <p>&#128274; 此遊戲需要「${g.membership}」才能遊玩</p>
+        <button class="btn btn-primary" onclick="closeGameModal();document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">查看升級方案</button>
+      </div>` : `
+      <button class="btn btn-primary" style="width:100%" onclick="alert('Demo 模式：遊戲即將啟動！')">&#127918; 開始遊玩</button>`}
+    </div>`;
+  document.getElementById('gameModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeGameModal() {
+  document.getElementById('gameModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// LOGIN MODAL
+let currentTab = 'login';
+function openLoginModal(tab) {
+  if (tab) switchTab(tab);
+  document.getElementById('loginModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLoginModal() {
+  document.getElementById('loginModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  const isReg = tab === 'register';
+  document.getElementById('registerNameField').style.display = isReg ? 'block' : 'none';
+  document.getElementById('registerConfirmField').style.display = isReg ? 'block' : 'none';
+  document.getElementById('authSubmitBtn').textContent = isReg ? '註冊帳號' : '登入';
+  document.getElementById('authFooter').innerHTML = isReg
+    ? '已有帳號？<a href="#" onclick="switchTab(\'login\');return false">立即登入</a>'
+    : '還沒有帳號？<a href="#" onclick="switchTab(\'register\');return false">立即註冊</a>';
+}
+function handleAuth(e) {
+  e.preventDefault();
+  const action = currentTab === 'register' ? '註冊' : '登入';
+  alert(`Demo 模式：${action}成功！歡迎來到 RPG 語言學院！`);
+  closeLoginModal();
+}
+
+// CLOSE MODALS ON OVERLAY CLICK
+document.getElementById('loginModal').addEventListener('click', function(e) { if (e.target === this) closeLoginModal(); });
+document.getElementById('gameModal').addEventListener('click', function(e) { if (e.target === this) closeGameModal(); });
+
+// HAMBURGER
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('navLinks').classList.toggle('open');
+});
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('hamburger').classList.remove('active');
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// SECTION REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// PARTICLES
+(function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.width = (2 + Math.random() * 4) + 'px';
+    p.style.height = p.style.width;
+    container.appendChild(p);
+  }
+})();
+
+// KEYBOARD
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLoginModal();
+    closeGameModal();
+  }
+});
+
+// INIT
+renderGames('all');
+</script>
+</body>
+</html>
