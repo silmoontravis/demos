@@ -152,6 +152,11 @@ jobs:
           sed -i "s/\"datePublished\": \"[0-9-]*\"/\"datePublished\": \"${TODAY}\"/" "$FILE"
           sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"${TODAY}\"/" "$FILE"
 
+      - name: QA validation
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          python3 blog/qa_blog.py
+
       - name: Commit and push
         if: steps.check.outputs.has_draft == 'true'
         run: |
