@@ -90,12 +90,12 @@ jobs:
           card = f'''    <a href="posts/{filename}" class="post-card">
                 <div class="post-card-content">
                   <div class="post-card-meta">
-                    <span class="post-card-category" data-zh="{cat_zh}" data-en="{cat_en}">{cat_zh}</span>
+                    <span class="post-card-category"><span data-zh="{cat_zh}" data-en="{cat_en}">{cat_zh}</span></span>
                     <span>{today}</span>
                     <span data-zh="6 分鐘閱讀" data-en="6 min read">6 分鐘閱讀</span>
                   </div>
-                  <h2 data-zh="{title_zh}" data-en="{title_en or title_zh}">{title_zh}</h2>
-                  <p>{desc}</p>
+                  <h2><span data-zh="{title_zh}" data-en="{title_en or title_zh}">{title_zh}</span></h2>
+                  <p><span data-zh="{desc[:150]}" data-en="{desc[:150]}">{desc[:150]}</span></p>
                 </div>
                 {thumb_html}
               </a>
