@@ -14,13 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Remove demo page
+      - name: Set demo offline
         run: |
-          rm -rf asian-man-tantric/
+          mv asian-man-tantric/index.html asian-man-tantric/index.html.bak
+          echo '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Demo Offline</title><style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#1a1a2e;color:#c9a96e;text-align:center}p{color:#888;font-size:14px}</style></head><body><div><h1>This Demo Is Currently Offline</h1><p>Please contact us for more information.</p><p>HEY!BOSS</p></div></body></html>' > asian-man-tantric/index.html
           git config user.name "HEY!BOSS Bot"
           git config user.email "bot@hiboss.demosilvermoon.com.tw"
           git add -A
-          git commit -m "Auto takedown: Asian Man Tantric demo expired"
+          git commit -m "Auto offline: Asian Man Tantric demo (original preserved as .bak)"
           git push
 
       - name: Remove this workflow
