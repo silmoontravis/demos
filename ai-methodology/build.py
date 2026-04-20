@@ -78,7 +78,7 @@ body{{font-family:'Noto Sans TC','Inter',sans-serif;color:#2c3e50;background:#ff
 const H="{pwd_hash}";
 const D="{encoded}";
 async function sha256(m){{const e=new TextEncoder().encode(m);const h=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}}
-async function unlock(){{const p=document.getElementById('pwd').value;const h=await sha256(p);if(h===H){{document.getElementById('login').style.display='none';const c=document.getElementById('content');c.innerHTML=atob(D);c.style.display='block'}}else{{document.getElementById('err').style.display='block';document.getElementById('pwd').value=''}}}}
+async function unlock(){{const p=document.getElementById('pwd').value;const h=await sha256(p);if(h===H){{document.getElementById('login').style.display='none';const c=document.getElementById('content');c.innerHTML=new TextDecoder().decode(Uint8Array.from(atob(D),c=>c.charCodeAt(0)));c.style.display='block'}}else{{document.getElementById('err').style.display='block';document.getElementById('pwd').value=''}}}}
 </script>
 </body>
 </html>"""
