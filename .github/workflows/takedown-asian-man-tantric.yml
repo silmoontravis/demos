@@ -1,0 +1,31 @@
+name: Takedown Asian Man Tantric Demo
+
+on:
+  schedule:
+    - cron: '0 0 22 4 *'  # 2026-04-22 00:00 UTC = 08:00 UTC+8 Wednesday
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  takedown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove demo page
+        run: |
+          rm -rf asian-man-tantric/
+          git config user.name "HEY!BOSS Bot"
+          git config user.email "bot@hiboss.demosilvermoon.com.tw"
+          git add -A
+          git commit -m "Auto takedown: Asian Man Tantric demo expired"
+          git push
+
+      - name: Remove this workflow
+        run: |
+          rm .github/workflows/takedown-asian-man-tantric.yml
+          git add -A
+          git commit -m "Cleanup: remove takedown workflow"
+          git push
