@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈柏宇（Maki） — 游戏产品副总监</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#ffffff;
+    --navy-light:#f8f9fa;
+    --navy-mid:#2c3e6b;
+    --gold:#b8860b;
+    --gold-light:#ddc08e;
+    --gold-dim:rgba(201,169,110,.15);
+    --white:#f0f0f0;
+    --white-dim:rgba(240,240,240,.7);
+    --text:#e0e0e0;
+    --section-gap:100px;
+  }
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    font-family:'Inter','Noto Sans TC',sans-serif;
+    background:var(--navy);
+    color:var(--text);
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+
+  /* ---------- UTILITY ---------- */
+  .container{max-width:960px;margin:0 auto;padding:0 32px}
+  .section-label{
+    font-size:.75rem;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:12px;
+  }
+  .section-title{
+    font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:40px;
+    position:relative;display:inline-block;
+  }
+  .section-title::after{
+    content:'';position:absolute;left:0;bottom:-8px;
+    width:48px;height:3px;background:var(--gold);border-radius:2px;
+  }
+  section{padding:var(--section-gap) 0}
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ---------- HERO ---------- */
+  .hero { background: linear-gradient(135deg, #2c3e6b 0%, #1a5276 50%, #2c3e6b 100%);
+  }
+  .hero::before{
+    content:'';position:absolute;top:-120px;right:-120px;
+    width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:'';position:absolute;bottom:-80px;left:-80px;
+    width:400px;height:400px;border-radius:50%;
+    background:radial-gradient(circle,rgba(15,52,96,.4) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{text-align:center;position:relative;z-index:1}
+  .hero-avatar{
+    width:140px;height:140px;border-radius:50%;
+    border:3px solid var(--gold);
+    background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));
+    margin:0 auto 36px;display:flex;align-items:center;justify-content:center;
+    font-size:2.4rem;color:var(--gold);font-weight:700;letter-spacing:2px;
+    box-shadow:0 0 60px rgba(201,169,110,.12);
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;color:#fff;
+    letter-spacing:2px;margin-bottom:12px;
+  }
+  .hero h1 span{color:var(--gold)}
+  .hero-subtitle{
+    font-size:1.15rem;color:var(--gold-light);font-weight:500;
+    letter-spacing:6px;text-transform:uppercase;margin-bottom:32px;
+  }
+  .hero-contact{display:flex;flex-wrap:wrap;gap:20px 36px;justify-content:center;margin-top:12px}
+  .hero-contact a,.hero-contact span{
+    color:var(--white-dim);font-size:.88rem;text-decoration:none;
+    transition:color .3s;
+  }
+  .hero-contact a:hover{color:var(--gold)}
+  .hero-divider{
+    width:48px;height:1px;background:var(--gold);margin:28px auto 0;opacity:.5;
+  }
+  .hero-scroll{
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    color:var(--white-dim);font-size:.7rem;letter-spacing:3px;
+  }
+  .hero-scroll-line{width:1px;height:40px;background:var(--gold);opacity:.4;animation:scrollPulse 2s ease-in-out infinite}
+  @keyframes scrollPulse{0%,100%{opacity:.2;height:30px}50%{opacity:.6;height:40px}}
+
+  /* ---------- SUMMARY ---------- */
+  .summary-section{background:linear-gradient(180deg,var(--navy) 0%,#12122a 100%)}
+  .summary-text{
+    font-size:1.05rem;line-height:2;color:var(--white-dim);
+    max-width:800px;
+  }
+  .summary-text strong{color:var(--gold);font-weight:600}
+
+  /* ---------- TECH ADVANTAGE ---------- */
+  .tech-section{background:#12122a}
+  .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .tech-card{
+    background:rgba(255,255,255,.025);border:1px solid rgba(201,169,110,.12);
+    border-radius:12px;padding:28px 24px;
+    transition:border-color .3s,transform .3s,box-shadow .3s;
+  }
+  .tech-card:hover{
+    border-color:rgba(201,169,110,.35);
+    transform:translateY(-3px);
+    box-shadow:0 12px 40px rgba(0,0,0,.3);
+  }
+  .tech-card h4{color:var(--gold);font-size:.95rem;font-weight:600;margin-bottom:10px}
+  .tech-card p{font-size:.88rem;color:var(--white-dim);line-height:1.7}
+  .tech-quote{
+    margin-top:36px;padding:20px 28px;
+    border-left:3px solid var(--gold);
+    background:rgba(201,169,110,.04);border-radius:0 8px 8px 0;
+    font-size:.92rem;color:var(--gold-light);font-style:italic;
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline-section{background:linear-gradient(180deg,#12122a 0%,var(--navy) 100%)}
+  .timeline{position:relative;padding-left:40px}
+  .timeline::before{
+    content:'';position:absolute;left:11px;top:0;bottom:0;
+    width:2px;background:linear-gradient(180deg,var(--gold),rgba(201,169,110,.15));
+  }
+  .timeline-item{position:relative;margin-bottom:56px}
+  .timeline-item:last-child{margin-bottom:0}
+  .timeline-dot{
+    position:absolute;left:-40px;top:6px;
+    width:24px;height:24px;border-radius:50%;
+    border:2px solid var(--gold);
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .timeline-dot::after{
+    content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);
+  }
+  .timeline-header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:6px}
+  .timeline-role{font-size:1.15rem;font-weight:700;color:#fff}
+  .timeline-company{font-size:.9rem;color:var(--gold);font-weight:500}
+  .timeline-date{font-size:.8rem;color:var(--white-dim);font-weight:400}
+  .timeline-team{
+    display:inline-block;font-size:.72rem;color:var(--gold);
+    border:1px solid rgba(201,169,110,.3);border-radius:20px;
+    padding:2px 12px;margin-left:4px;
+  }
+  .timeline-summary{font-size:.9rem;color:var(--white-dim);margin:8px 0 14px;line-height:1.7}
+  .timeline-group{margin-bottom:12px}
+  .timeline-group-title{font-size:.82rem;color:var(--gold-light);font-weight:600;margin-bottom:6px}
+  .timeline-list{list-style:none;padding:0}
+  .timeline-list li{
+    font-size:.85rem;color:var(--white-dim);line-height:1.7;
+    padding-left:16px;position:relative;margin-bottom:4px;
+  }
+  .timeline-list li::before{
+    content:'';position:absolute;left:0;top:10px;
+    width:6px;height:1px;background:var(--gold);
+  }
+  .timeline-list li strong{color:#fff;font-weight:600}
+
+  /* ---------- GAMES TABLE ---------- */
+  .games-section{background:var(--navy)}
+  .games-table{width:100%;border-collapse:collapse;margin-top:8px}
+  .games-table th{
+    text-align:left;font-size:.75rem;letter-spacing:2px;
+    color:var(--gold);font-weight:600;padding:12px 16px;
+    border-bottom:2px solid rgba(201,169,110,.2);text-transform:uppercase;
+  }
+  .games-table td{
+    padding:14px 16px;font-size:.88rem;color:var(--white-dim);
+    border-bottom:1px solid rgba(255,255,255,.04);
+  }
+  .games-table tr:hover td{background:rgba(201,169,110,.03)}
+  .status-badge{
+    display:inline-block;font-size:.72rem;font-weight:600;
+    padding:3px 12px;border-radius:20px;letter-spacing:1px;
+    background:rgba(201,169,110,.12);color:var(--gold);
+  }
+
+  /* ---------- MATCH TABLE ---------- */
+  .match-section{background:linear-gradient(180deg,var(--navy) 0%,#12122a 100%)}
+  .match-table{width:100%;border-collapse:collapse}
+  .match-table th{
+    text-align:left;font-size:.75rem;letter-spacing:2px;
+    color:var(--gold);font-weight:600;padding:12px 16px;
+    border-bottom:2px solid rgba(201,169,110,.2);
+  }
+  .match-table td{
+    padding:14px 16px;font-size:.88rem;color:var(--white-dim);
+    border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;
+  }
+  .match-table td:first-child{color:#fff;font-weight:500;white-space:nowrap;width:220px}
+
+  /* ---------- TOOLS ---------- */
+  .tools-section{background:#12122a}
+  .tools-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+  .tools-cat-label{
+    font-size:.72rem;letter-spacing:2px;color:var(--gold);
+    font-weight:600;margin-bottom:10px;text-transform:uppercase;
+  }
+  .tool-badge{
+    display:inline-block;font-size:.82rem;color:var(--text);
+    background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.12);
+    padding:8px 18px;border-radius:6px;
+    transition:border-color .3s,background .3s;
+  }
+  .tool-badge:hover{border-color:var(--gold);background:rgba(201,169,110,.06)}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-section{background:linear-gradient(180deg,#12122a 0%,var(--navy) 100%)}
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .edu-card{
+    background:rgba(255,255,255,.02);border:1px solid rgba(201,169,110,.1);
+    border-radius:12px;padding:32px 28px;
+  }
+  .edu-card h4{color:#fff;font-size:1rem;font-weight:600;margin-bottom:6px}
+  .edu-card p{color:var(--white-dim);font-size:.88rem}
+  .edu-card .label{color:var(--gold);font-size:.75rem;letter-spacing:2px;font-weight:600;margin-bottom:12px}
+
+  /* ---------- LANG ---------- */
+  .lang-list{display:flex;gap:24px;margin-top:16px;flex-wrap:wrap}
+  .lang-item{
+    font-size:.88rem;color:var(--white-dim);
+    padding:8px 20px;border:1px solid rgba(201,169,110,.12);
+    border-radius:6px;
+  }
+  .lang-item strong{color:var(--gold);font-weight:500}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;padding:60px 32px 40px;
+    border-top:1px solid rgba(201,169,110,.1);
+    background:var(--navy);
+  }
+  footer .foot-name{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:8px}
+  footer .foot-title{font-size:.85rem;color:var(--gold);letter-spacing:3px;margin-bottom:20px}
+  footer .foot-contacts{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:center}
+  footer .foot-contacts a{color:var(--white-dim);text-decoration:none;font-size:.85rem;transition:color .3s}
+  footer .foot-contacts a:hover{color:var(--gold)}
+  footer .foot-copy{margin-top:36px;font-size:.72rem;color:rgba(255,255,255,.25)}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    *{color:#222!important;background:white!important;box-shadow:none!important;border-color:#ddd!important}
+    body{font-size:11pt;line-height:1.5}
+    .hero{min-height:auto;padding:40px 0}
+    section{padding:24px 0}
+    .hero-scroll,.hero::before,.hero::after{display:none}
+    .reveal{opacity:1!important;transform:none!important}
+    .tech-card,.edu-card{break-inside:avoid;page-break-inside:avoid}
+    .timeline-item{break-inside:avoid;page-break-inside:avoid}
+    .section-title::after{background:#b8860b!important}
+    .hero-avatar{border-color:#b8860b!important}
+    .hero-avatar,.timeline-dot::after{background:#b8860b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .status-badge{border:1px solid #b8860b!important}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:768px){
+    :root{--section-gap:64px}
+    .container{padding:0 20px}
+    .tech-grid,.edu-grid{grid-template-columns:1fr}
+    .hero-avatar{width:110px;height:110px;font-size:1.8rem}
+    .hero h1{letter-spacing:0}
+    .hero-subtitle{letter-spacing:3px;font-size:1rem}
+    .hero-contact{flex-direction:column;gap:8px}
+    .timeline{padding-left:32px}
+    .timeline-dot{left:-32px;width:20px;height:20px}
+    .timeline-dot::after{width:6px;height:6px}
+    .match-table td:first-child{white-space:normal;width:auto}
+    .games-table,.match-table{display:block;overflow-x:auto}
+    .section-title{font-size:1.4rem}
+    .tools-row{gap:8px}
+    .tool-badge{font-size:.78rem;padding:6px 14px}
+  }
+  @media(max-width:480px){
+    .hero-subtitle{font-size:.85rem;letter-spacing:2px}
+    .foot-contacts{flex-direction:column;align-items:center}
+  }
+
+        .hero { color: #fff !important; }
+        .hero h1, .hero h2, .hero p, .hero a, .hero span { color: #fff !important; }
+        .hero .hero-contact a { color: rgba(255,255,255,0.8) !important; }
+
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="avatar" style="width:140px;height:140px;border-radius:50%;overflow:hidden;border:3px solid #b8860b"><img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;border-radius:50%" alt="陈柏宇"></div>
+    <h1>陈柏宇<span>（Maki）</span></h1>
+    <div class="hero-subtitle">游戏产品副总监</div>
+    <div class="hero-contact">
+      <span>+886 0912-560-693</span>
+      <span>+63 0906-528-6769</span>
+      <a href="mailto:bobe0809@gmail.com">bobe0809@gmail.com</a>
+    </div>
+    <div class="hero-contact" style="margin-top:10px">
+      <span>台湾 | 远程工作</span>
+      <span>39岁</span>
+    </div>
+    <div class="hero-divider"></div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- ==================== SUMMARY ==================== -->
+<section class="summary-section">
+  <div class="container reveal">
+    <div class="section-label">About</div>
+    <h2 class="section-title">个人简介</h2>
+    <div class="summary-text">
+      <p>7 年游戏产品管理经验，专注老虎机、棋牌与娱乐化游戏领域。从产品经理成长至项目总经理，完整经历过<strong>产品从 0 到上线到持续优化</strong>的全链路，管理过 25 人跨职能团队（企划/前后端/QA），成功推动多款游戏产品在多国市场落地。</p>
+      <br>
+      <p>核心优势在于<strong>能同时驾驭产品逻辑、技术架构与运营策略</strong>&mdash;&mdash;不仅能规划 RTP 模型与水池机制，也能拆解开发任务、管理版本节奏、对接品牌与运营方。擅长在资源有限、需求模糊的环境中，快速建立制度、理顺流程、交付成果。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TECH ADVANTAGE ==================== -->
+<section class="tech-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Edge</div>
+      <h2 class="section-title">技术背景优势</h2>
+      <p style="font-size:.92rem;color:var(--white-dim);margin-bottom:36px;">多数产品经理只能写需求文档，我能直接深入技术层：</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card reveal">
+        <h4>RTP 数学建模</h4>
+        <p>亲自设计老虎机 RTP 模型、水池机制、赔率结构与波动控制算法，不是「提需求给数值策划」，而是「自己就是数值策划」</p>
+      </div>
+      <div class="tech-card reveal">
+        <h4>代码级沟通</h4>
+        <p>5 年 Java 后端开发经验，能阅读游戏引擎代码、追踪数据流、精准评估技术可行性与开发工时，与工程团队零翻译成本</p>
+      </div>
+      <div class="tech-card reveal">
+        <h4>自动化测试体系</h4>
+        <p>亲手搭建 Python/Node.js 自动化 QA 框架，覆盖 API 正确性、RTP 统计验证、回归测试，不依赖 QA 团队也能保证质量</p>
+      </div>
+      <div class="tech-card reveal">
+        <h4>技术风险预判</h4>
+        <p>能在需求阶段就识别技术瓶颈（并发、数据一致性、架构扩展性），避免开发中途踩坑</p>
+      </div>
+      <div class="tech-card reveal" style="grid-column:1/-1">
+        <h4>DevOps 理解</h4>
+        <p>熟悉 CI/CD、Docker、Jenkins 部署流程，能评估从开发到上线的完整技术链路</p>
+      </div>
+    </div>
+    <div class="tech-quote reveal">
+      这意味着：我做产品决策时，不只考虑「用户要什么」，还能同时考虑「技术能不能做、要多久、风险在哪」。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SCRUM ==================== -->
+<section style="padding:60px 0;background:#f0f4f8">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Methodology</div>
+      <h2 class="section-title">Scrum 敏捷开发实战经验</h2>
+    </div>
+    <div class="reveal" style="max-width:800px;margin:0 auto">
+      <p style="color:#555;line-height:1.8;margin-bottom:24px">不是照搬 Scrum 框架，而是<strong style="color:#b8860b">「改造 Scrum 让它适合游戏开发」</strong>——针对美术、动效、玩法调整等游戏特有环节做弹性调整，让团队稳定输出。</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px">
+        <div style="background:#fff;padding:20px;border-radius:12px;border-left:3px solid #b8860b">
+          <strong style="color:#2c3e50">Sprint Planning</strong>
+          <p style="color:#666;font-size:13px;margin-top:6px">2 周周期，Product Backlog 拆分为 User Story，与工程共同评估工时</p>
+        </div>
+        <div style="background:#fff;padding:20px;border-radius:12px;border-left:3px solid #b8860b">
+          <strong style="color:#2c3e50">Daily Stand-up</strong>
+          <p style="color:#666;font-size:13px;margin-top:6px">每日 9:15，控制 10-15 分钟，聚焦阻塞点当场拉人解决</p>
+        </div>
+        <div style="background:#fff;padding:20px;border-radius:12px;border-left:3px solid #b8860b">
+          <strong style="color:#2c3e50">Jira 看板管理</strong>
+          <p style="color:#666;font-size:13px;margin-top:6px">To Do → In Progress → QA → Done，QA 提前介入不是最后才测</p>
+        </div>
+        <div style="background:#fff;padding:20px;border-radius:12px;border-left:3px solid #b8860b">
+          <strong style="color:#2c3e50">Sprint Review</strong>
+          <p style="color:#666;font-size:13px;margin-top:6px">每 Sprint 结束 Demo，确认功能与需求一致</p>
+        </div>
+        <div style="background:#fff;padding:20px;border-radius:12px;border-left:3px solid #b8860b">
+          <strong style="color:#2c3e50">Retrospective</strong>
+          <p style="color:#666;font-size:13px;margin-top:6px">持续优化：需求文件标准化、换皮流程拆分、QA 介入时间前移</p>
+        </div>
+        <div style="background:#fff;padding:20px;border-radius:12px;border-left:3px solid #b8860b">
+          <strong style="color:#2c3e50">产能成果</strong>
+          <p style="color:#666;font-size:13px;margin-top:6px">模块化换皮产线，产能提升至<strong>每月 3-4 款游戏</strong></p>
+        </div>
+      </div>
+      <blockquote style="border-left:3px solid #b8860b;padding:12px 20px;background:#fff;border-radius:0 8px 8px 0;color:#555;font-style:italic;margin:0">
+        我不只是执行 Scrum，我是在「用 Scrum 管整个产品节奏」，包含人力配置、产能规划、以及如何让团队稳定输出。
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EXPERIENCE TIMELINE ==================== -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">工作经历</h2>
+    </div>
+    <div class="timeline">
+
+      <!-- Job 1 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">台湾区项目总经理</span>
+          <span class="timeline-company">马来西亚博彩集团</span>
+          <span class="timeline-date">2025/02 - 2026/02</span>
+          <span class="timeline-team">管理 25 人</span>
+        </div>
+        <p class="timeline-summary">负责多款老虎机与捕鱼机产品的整体规划与团队搭建，从零组建产品团队并推动多条产品线同步落地。</p>
+        <div class="timeline-group">
+          <div class="timeline-group-title">产品与数值设计</div>
+          <ul class="timeline-list">
+            <li>主导老虎机与捕鱼机<strong>核心机制设计</strong>：RTP 调控、击杀率分层、波动控制、特殊道具触发逻辑</li>
+            <li>设计高/中/低波动产品矩阵，帮助品牌方建立差异化产品定位</li>
+            <li>规划捕鱼机倍率分层、保底机制与穿甲概念，平衡玩家体验与平台收益</li>
+          </ul>
+        </div>
+        <div class="timeline-group">
+          <div class="timeline-group-title">团队建设与管理</div>
+          <ul class="timeline-list">
+            <li><strong>从 0 搭建 25 人团队</strong>：职位规划、JD 撰写、面试评估、人员配置一手包办</li>
+            <li>同时管理多条产品线，横跨前端、后端、QA、企划，明确里程碑与验收标准</li>
+            <li>培养新进 PM/QA，建立标准化工作流程与思考框架</li>
+          </ul>
+        </div>
+        <div class="timeline-group">
+          <div class="timeline-group-title">效率与质量提升</div>
+          <ul class="timeline-list">
+            <li>导入 <strong>Python/Node.js 自动化测试</strong>，建立可视化 Dashboard，QA 效率提升 40%</li>
+            <li>优化版本验收流程，线上回归 Bug 率降低 60%</li>
+          </ul>
+        </div>
+        <div class="timeline-group">
+          <div class="timeline-group-title">跨国协作</div>
+          <ul class="timeline-list">
+            <li>担任品牌方与技术端桥梁，将模糊需求转化为可执行规格</li>
+            <li>管理台湾与海外团队的远程协作，确保多时区项目如期交付</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">高级产品经理</span>
+          <span class="timeline-company">巨甚（菲律宾）</span>
+          <span class="timeline-date">2024/05 - 2025/01</span>
+        </div>
+        <p class="timeline-summary">负责多款博弈产品从 0 到 1 的完整产品规划与落地执行。</p>
+        <ul class="timeline-list">
+          <li>主导需求访谈、功能定义、流程设计与 MVP 拆解，产出标准化 PRD</li>
+          <li>使用 <strong>Axure</strong> 制作高保真原型，作为跨部门沟通标准</li>
+          <li>撰写完整 PRD（User Story / Flow / Edge Case / 验收条件），开发理解偏差降低 60%</li>
+          <li>规划 <strong>Sprint/Milestone</strong> 版本节奏，协调前后端、QA 与运营排程</li>
+          <li>主导 <strong>UAT 验收</strong>，定义测试案例并确保功能符合商业需求</li>
+          <li>追踪进度与风险，提前识别时程冲突并提出调整方案</li>
+        </ul>
+      </div>
+
+      <!-- Job 3 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">高级产品经理</span>
+          <span class="timeline-company">ST（台湾）</span>
+          <span class="timeline-date">2023/09 - 2024/04</span>
+        </div>
+        <p class="timeline-summary">负责博弈游戏产品的 Roadmap 规划与跨部门整合。</p>
+        <ul class="timeline-list">
+          <li>将商业目标拆解为可执行功能模块，建立需求评估机制（商业价值 x 开发成本 x 风险）</li>
+          <li>设计产品流程图、Wireframe 与 Prototype，作为开发依据</li>
+          <li>主导跨部门会议，整合运营、技术、客服等单位意见</li>
+          <li>建立标准化 PRD 与验收模板，团队开发效率提升 30%</li>
+          <li>参与产品上线后数据观察与用户回馈，驱动持续优化</li>
+        </ul>
+      </div>
+
+      <!-- Job 4 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">产品负责人 / CEO</span>
+          <span class="timeline-company">银月数位顾问（台湾）</span>
+          <span class="timeline-date">2021/05 - 2023/09</span>
+        </div>
+        <p class="timeline-summary">自营游戏与系统开发公司，主导多款棋牌与管理系统产品的规划与交付。</p>
+        <div class="timeline-group">
+          <div class="timeline-group-title">游戏产品</div>
+          <ul class="timeline-list">
+            <li><strong>CityPoker 棋牌后端管理系统</strong> &mdash; 产品规划、开发管理、线上运营（运行中）</li>
+            <li><strong>58Poker 全套棋牌系统</strong> &mdash; 从架构设计到上线部署的完整产品负责人</li>
+          </ul>
+        </div>
+        <div class="timeline-group">
+          <div class="timeline-group-title">企业级系统</div>
+          <ul class="timeline-list">
+            <li>调查局毒品管理系统（线上运行中）</li>
+            <li>永丰银行财税稽查系统（线上运行中）</li>
+            <li>舒芙亚连锁美业客户管理系统（线上运行中）</li>
+          </ul>
+        </div>
+        <ul class="timeline-list" style="margin-top:8px">
+          <li><strong>管理</strong>：公司运营、团队招募、项目管理、客户沟通、新业务拓展</li>
+        </ul>
+      </div>
+
+      <!-- Job 5 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">产品经理 / 技术组长</span>
+          <span class="timeline-company">AG 集团 - NWF 及 IVI（菲律宾）</span>
+          <span class="timeline-date">2019/06 - 2021/05</span>
+        </div>
+        <p class="timeline-summary">从技术骨干转型为产品经理，负责游戏产品需求管理与跨团队协调。</p>
+        <ul class="timeline-list">
+          <li>负责游戏产品需求分析、功能规划与开发跟进</li>
+          <li>建立菲籍开发团队管理制度，规范开发流程与代码规范</li>
+          <li>主导电话销售系统、VIP 客户服务系统等产品 0 到 1 开发</li>
+          <li>担任运营与技术团队的核心沟通节点，确保需求准确落地</li>
+          <li>具备 Java 后端开发经验（5 年），深度理解游戏系统架构与数据流</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LAUNCHED GAMES ==================== -->
+<section class="games-section">
+  <div class="container reveal">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">成功上线游戏产品</h2>
+    <table class="games-table">
+      <thead>
+        <tr><th>产品</th><th>类型</th><th>角色</th><th>状态</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>老虎机产品线（多款）</td><td>Slot</td><td>项目总经理</td><td><span class="status-badge">已上线</span></td></tr>
+        <tr><td>捕鱼机系列（多款）</td><td>捕鱼</td><td>项目总经理</td><td><span class="status-badge">已上线</span></td></tr>
+        <tr><td>CityPoker</td><td>棋牌</td><td>产品负责人</td><td><span class="status-badge">运行中</span></td></tr>
+        <tr><td>58Poker</td><td>棋牌</td><td>产品负责人</td><td><span class="status-badge">运行中</span></td></tr>
+        <tr><td>博弈产品（巨甚/ST）</td><td>Slot/棋牌</td><td>高级产品经理</td><td><span class="status-badge">已上线</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== JD MATCH ==================== -->
+<section class="match-section">
+  <div class="container reveal">
+    <div class="section-label">Alignment</div>
+    <h2 class="section-title">核心能力对照</h2>
+    <table class="match-table">
+      <thead>
+        <tr><th>JD 要求</th><th>匹配</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>5年以上游戏产品管理</td><td>7 年（2019至今）</td></tr>
+        <tr><td>熟悉老虎机、棋牌</td><td>RTP/水池/波动/机制设计全链路</td></tr>
+        <tr><td>团队管理</td><td>0 到 1 搭建 25 人团队</td></tr>
+        <tr><td>JIRA/Confluence/Trello</td><td>日常使用 + Axure/Miro/Figma</td></tr>
+        <tr><td>数据分析驱动</td><td>RTP 数据分析、用户行为优化、自建 Dashboard</td></tr>
+        <tr><td>跨部门协调</td><td>跨国（台/菲/马）、跨部门（研发/运营/品牌）</td></tr>
+        <tr><td>成功上线案例</td><td>老虎机 + 棋牌 + 捕鱼机，多款运行中</td></tr>
+        <tr><td>敏捷开发</td><td>Sprint/Milestone/PRD 标准化</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== TOOLS ==================== -->
+<section class="tools-section">
+  <div class="container reveal">
+    <div class="section-label">Toolkit</div>
+    <h2 class="section-title">工具</h2>
+
+    <div class="tools-cat-label">项目管理</div>
+    <div class="tools-row">
+      <span class="tool-badge">JIRA</span>
+      <span class="tool-badge">Confluence</span>
+      <span class="tool-badge">Trello</span>
+      <span class="tool-badge">Notion</span>
+    </div>
+
+    <div class="tools-cat-label">产品设计</div>
+    <div class="tools-row">
+      <span class="tool-badge">Axure</span>
+      <span class="tool-badge">Figma</span>
+      <span class="tool-badge">Miro</span>
+    </div>
+
+    <div class="tools-cat-label">数据分析</div>
+    <div class="tools-row">
+      <span class="tool-badge">Google Sheets</span>
+      <span class="tool-badge">SQL</span>
+      <span class="tool-badge">Dashboard (自建)</span>
+    </div>
+
+    <div class="tools-cat-label">协作</div>
+    <div class="tools-row">
+      <span class="tool-badge">Slack</span>
+      <span class="tool-badge">Telegram</span>
+      <span class="tool-badge">Teams</span>
+    </div>
+
+    <div class="tools-cat-label">技术理解</div>
+    <div class="tools-row">
+      <span class="tool-badge">Java</span>
+      <span class="tool-badge">Node.js</span>
+      <span class="tool-badge">PostgreSQL</span>
+      <span class="tool-badge">API 规格</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EDUCATION + CERT ==================== -->
+<section class="edu-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">教育与证照</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="label">EDUCATION</div>
+        <h4>亚东技术学院</h4>
+        <p>电子工程学系 | 四技</p>
+      </div>
+      <div class="edu-card reveal">
+        <div class="label">CERTIFICATION</div>
+        <h4>SCJP</h4>
+        <p>Sun Certified Java Programmer</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:40px">
+      <div class="tools-cat-label">语言能力</div>
+      <div class="lang-list">
+        <div class="lang-item"><strong>中文</strong> &mdash; 母语</div>
+        <div class="lang-item"><strong>英文</strong> &mdash; 工作沟通</div>
+        <div class="lang-item"><strong>闽南语</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="foot-name">陈柏宇（Maki）</div>
+  <div class="foot-title">游戏产品副总监</div>
+  <div class="foot-contacts">
+    <a href="mailto:bobe0809@gmail.com">bobe0809@gmail.com</a>
+    <a href="tel:+886912560693">+886 0912-560-693</a>
+    <a href="tel:+6309065286769">+63 0906-528-6769</a>
+  </div>
+  <div class="foot-copy">2026 Chen Po-Yu. All rights reserved.</div>
+</footer>
+
+<!-- ==================== SCROLL REVEAL JS ==================== -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('visible')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
