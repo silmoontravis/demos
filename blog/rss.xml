@@ -107,5 +107,14 @@
     <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/crm-customer-management.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/customer-service-ticket-system.html</link>
+    <description>客戶反映的問題用 LINE 回、email 回、電話回，結果漏掉了？客服工單系統幫你統一管理客戶問題，追蹤 SLA、建立知識庫，搭配 RuoYi 角色權限分派工單。</description>
+    <category></category>
+    <pubDate>Tue, 21 Apr 2026 04:11:25 +0000</pubDate>
+    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/customer-service-ticket-system.html</guid>
+  </item>
+
 </channel>
 </rss>
