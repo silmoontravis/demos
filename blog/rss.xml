@@ -2,118 +2,118 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>HEY!BOSS Blog</title>
-  <link>https://hiboss.demosilvermoon.com.tw/blog/</link>
+  <link>https://www.heyboss.com.tw/blog/</link>
   <description>AI 建站、數位轉型、企業系統開發的實戰經驗與技術分享 — HEY!BOSS 銀月數位顧問</description>
   <language>zh-TW</language>
   <lastBuildDate>Fri, 18 Apr 2026 12:00:00 +0800</lastBuildDate>
-  <atom:link href="https://hiboss.demosilvermoon.com.tw/blog/rss.xml" rel="self" type="application/rss+xml"/>
+  <atom:link href="https://www.heyboss.com.tw/blog/rss.xml" rel="self" type="application/rss+xml"/>
 
   <item>
     <title>如何用 AI 一天打造 100 個品牌網站？完整流程大公開</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-build-100-sites.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/ai-build-100-sites.html</link>
     <description>傳統網頁公司一個月做一個站，HEY!BOSS 用 AI 一天做 100 個品牌網站。從品牌設計、Logo 生成、BGM 音樂到雙語內容，全程自動化。</description>
     <category>AI 建站</category>
     <pubDate>Fri, 18 Apr 2026 09:00:00 +0800</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-build-100-sites.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/ai-build-100-sites.html</guid>
   </item>
 
   <item>
     <title>若依框架能做什麼？ERP、CRM、CMS 完整解析</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/ruoyi-enterprise-systems.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/ruoyi-enterprise-systems.html</link>
     <description>若依(RuoYi)是基於 Spring Boot + Vue 的企業級開發平台。帶你了解若依框架的核心能力，以及如何用它打造 ERP、CRM、會員管理等企業後台系統。</description>
     <category>系統開發</category>
     <pubDate>Fri, 18 Apr 2026 09:10:00 +0800</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/ruoyi-enterprise-systems.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/ruoyi-enterprise-systems.html</guid>
   </item>
 
   <item>
     <title>傳統網頁公司 vs AI 建站公司：5 大關鍵差異</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/traditional-vs-ai-web-company.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/traditional-vs-ai-web-company.html</link>
     <description>2026 年還在用傳統方式做網站？AI 建站不只是快，從部署、SSL、SEO 到品質稽核全部自動化。分析 5 大關鍵差異。</description>
     <category>產業觀點</category>
     <pubDate>Fri, 18 Apr 2026 09:20:00 +0800</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/traditional-vs-ai-web-company.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/traditional-vs-ai-web-company.html</guid>
   </item>
 
   <item>
     <title>自動化 SEO 是什麼？每日關鍵字報告怎麼做？</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/automated-seo-explained.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/automated-seo-explained.html</link>
     <description>SEO 不該是手動的苦差事。全自動 SEO 監控系統：每日追蹤關鍵字排名、自動調整 meta tags、報告直接推送 Telegram。</description>
     <category>SEO</category>
     <pubDate>Fri, 18 Apr 2026 09:30:00 +0800</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/automated-seo-explained.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/automated-seo-explained.html</guid>
   </item>
 
   <item>
     <title>CI/CD 自動部署：2 分鐘網站上線的秘密</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/cicd-2min-deploy.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/cicd-2min-deploy.html</link>
     <description>從程式碼 push 到網站上線只需 2 分鐘。Jenkins pipeline 自動建置、SSL 憑證自動設定、Nginx 反向代理自動配置。</description>
     <category>DevOps</category>
     <pubDate>Fri, 18 Apr 2026 09:40:00 +0800</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/cicd-2min-deploy.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/cicd-2min-deploy.html</guid>
   </item>
 
   <item>
     <title>AI 生成 Logo + BGM：品牌建置新革命</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-logo-bgm-revolution.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/ai-logo-bgm-revolution.html</link>
     <description>AI 生成 Logo 和背景音樂（BGM）正在改變品牌建置的遊戲規則。HEY!BOSS 銀月數位顧問解析 AI 品牌設計的品質、成本和效率優勢，以及與傳統人工設計的對比。</description>
     <category>AI 建站</category>
     <pubDate>Sat, 18 Apr 2026 14:45:16 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-logo-bgm-revolution.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/ai-logo-bgm-revolution.html</guid>
   </item>
 
   <item>
     <title>AI 建站 vs 模板建站（Wix/Squarespace）：該選哪個？</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-website-vs-template.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/ai-website-vs-template.html</link>
     <description>AI 客製建站和 Wix/Squarespace 模板建站，到底該選哪個？HEY!BOSS 銀月數位顧問從 SEO、擴展性、後台功能和長期成本四大面向完整比較，幫你做出最適合的選擇。</description>
     <category>產業觀點</category>
     <pubDate>Sat, 18 Apr 2026 15:56:23 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/ai-website-vs-template.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/ai-website-vs-template.html</guid>
   </item>
 
   <item>
     <title>AWS 雲端架構入門：EC2 + RDS 企業級部署指南</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/aws-cloud-architecture.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/aws-cloud-architecture.html</link>
     <description>AWS 雲端架構入門指南。從 EC2 虛擬機到 RDS PostgreSQL 資料庫、Security Groups 安全設定，了解 HEY!BOSS 如何用 AWS 打造企業級基礎設施。</description>
     <category>DevOps</category>
     <pubDate>Sat, 18 Apr 2026 23:45:49 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/aws-cloud-architecture.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/aws-cloud-architecture.html</guid>
   </item>
 
   <item>
     <title>雙語網站的商業價值：為什麼你需要中英文網站？</title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/bilingual-website-benefits.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/bilingual-website-benefits.html</link>
     <description>想拓展海外市場？雙語網站是第一步。了解中英文網站的商業價值、AI 自動翻譯技術，以及 HEY!BOSS 一鍵切換雙語的建站方案。</description>
     <category>AI 建站</category>
     <pubDate>Sun, 19 Apr 2026 00:17:26 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/bilingual-website-benefits.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/bilingual-website-benefits.html</guid>
   </item>
 
   <item>
     <title></title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/booking-reservation-system.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/booking-reservation-system.html</link>
     <description>還在用 LINE 接預約？線上預約系統幫你自動排程、即時通知、取消退費一條龍。診所、美容沙龍、才藝教室都適用，HEY!BOSS 用 RuoYi 快速開發。</description>
     <category></category>
     <pubDate>Sun, 19 Apr 2026 04:14:09 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/booking-reservation-system.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/booking-reservation-system.html</guid>
   </item>
 
   <item>
     <title></title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/crm-customer-management.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/crm-customer-management.html</link>
     <description>CRM 系統如何幫助企業管理客戶、追蹤商機、提升業績？從銷售漏斗到客戶維繫，HEY!BOSS 用 RuoYi 快速開發為你打造專屬 CRM 系統。</description>
     <category></category>
     <pubDate>Mon, 20 Apr 2026 04:19:50 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/crm-customer-management.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/crm-customer-management.html</guid>
   </item>
 
   <item>
     <title></title>
-    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/customer-service-ticket-system.html</link>
+    <link>https://www.heyboss.com.tw/blog/posts/customer-service-ticket-system.html</link>
     <description>客戶反映的問題用 LINE 回、email 回、電話回，結果漏掉了？客服工單系統幫你統一管理客戶問題，追蹤 SLA、建立知識庫，搭配 RuoYi 角色權限分派工單。</description>
     <category></category>
     <pubDate>Tue, 21 Apr 2026 04:11:25 +0000</pubDate>
-    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/customer-service-ticket-system.html</guid>
+    <guid>https://www.heyboss.com.tw/blog/posts/customer-service-ticket-system.html</guid>
   </item>
 
 </channel>
