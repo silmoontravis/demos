@@ -116,5 +116,14 @@
     <guid>https://www.heyboss.com.tw/blog/posts/customer-service-ticket-system.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html</link>
+    <description>Docker 容器化部署讓你的網站更穩定、更容易管理。HEY!BOSS 銀月數位顧問解析 Docker 的基本概念、容器化優勢，以及如何搭配 Nginx Proxy Manager 實現零停機部署。</description>
+    <category></category>
+    <pubDate>Wed, 22 Apr 2026 03:58:51 +0000</pubDate>
+    <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html</guid>
+  </item>
+
 </channel>
 </rss>
