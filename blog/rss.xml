@@ -125,5 +125,14 @@
     <guid>https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/ecommerce-website-seo.html</link>
+    <description>電商網站的 SEO 不只是關鍵字，更需要結構化資料。HEY!BOSS 銀月數位顧問完整教學 JSON-LD Product schema、麵包屑導航、FAQ schema、sitemap 和 Search Console 串接。</description>
+    <category></category>
+    <pubDate>Thu, 23 Apr 2026 04:12:37 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/ecommerce-website-seo.html</guid>
+  </item>
+
 </channel>
 </rss>
