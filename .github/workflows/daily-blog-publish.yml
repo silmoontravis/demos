@@ -108,13 +108,13 @@ jobs:
           with open('blog/index.html', 'r', encoding='utf-8') as f:
               index = f.read()
 
-          # Insert before </section> in post-grid
-          insert_point = index.find('</section>', index.find('post-grid'))
-          if insert_point > 0:
-              # Find the </div> before </section>
-              div_point = index.rfind('</div>', 0, insert_point)
-              if div_point > 0:
-                  index = index[:div_point] + card + '\n' + index[div_point:]
+          # Insert at TOP of post-grid (newest first)
+          grid_start = index.find('post-grid')
+          if grid_start > 0:
+              # Find the closing > of the post-grid div
+              insert_after = index.find('>', grid_start) + 1
+              if insert_after > 1:
+                  index = index[:insert_after] + '\n' + card + index[insert_after:]
 
           with open('blog/index.html', 'w', encoding='utf-8') as f:
               f.write(index)
