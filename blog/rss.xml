@@ -143,5 +143,14 @@
     <guid>https://heyboss.com.tw/blog/posts/enterprise-backend-2-weeks.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/erp-inventory-system.html</link>
+    <description>進銷存管理還在用 Excel？了解 ERP 系統如何幫助中小企業數位化管理採購、銷售、庫存，以及 RuoYi 快速開發框架如何大幅降低建置成本。</description>
+    <category></category>
+    <pubDate>Sat, 25 Apr 2026 03:51:52 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/erp-inventory-system.html</guid>
+  </item>
+
 </channel>
 </rss>
