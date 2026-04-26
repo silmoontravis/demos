@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maya Bistro 瑪亞餐酒坊 | 台北中山區義式料理</title>
+<meta name="description" content="Maya Bistro 瑪亞餐酒坊 — 台北中山區義式餐酒館。手工窯烤Pizza、義大利麵、精選紅白酒。雙城街46巷1號，近中山國小站。">
+<meta property="og:title" content="Maya Bistro 瑪亞餐酒坊">
+<meta property="og:description" content="台北中山區義式餐酒館 — 手工窯烤Pizza、義式料理、精選美酒">
+<meta property="og:type" content="restaurant">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Maya Bistro 瑪亞餐酒坊",
+  "address": {"@type": "PostalAddress", "streetAddress": "雙城街46巷1號1樓", "addressLocality": "中山區", "addressRegion": "台北市", "postalCode": "104"},
+  "servesCuisine": "Italian",
+  "priceRange": "$$",
+  "url": "https://mayarestocafe.oddle.me/zh_TW"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --wine:#8B2252;--wine-dark:#6B1A3F;--gold:#D4A854;--gold-light:#E8C88A;
+  --cream:#FDF8F0;--dark:#1A1A1A;--text:#333;--text-light:#666;
+  --font-display:'Playfair Display',serif;--font-body:'Noto Sans TC',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--cream)}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all 0.4s}
+nav.transparent{background:transparent}
+nav.solid{background:rgba(26,26,26,0.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,0.15)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:22px;color:#fff;font-weight:700;text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:14px;text-decoration:none;font-weight:400;letter-spacing:0.5px;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--dark)!important;padding:8px 24px;border-radius:4px;font-weight:600}
+.nav-cta:hover{background:var(--gold-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:0.3s}
+
+/* Hero */
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#2a1520 0%,#1a1a2a 50%,#1a2a20 100%);z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);z-index:1}
+.hero-content{position:relative;z-index:2;color:#fff;padding:20px}
+.hero-badge{display:inline-block;padding:6px 20px;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,7vw,72px);font-weight:700;margin-bottom:12px;line-height:1.1}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,0.7);font-weight:300;letter-spacing:2px;margin-bottom:40px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;font-size:15px;font-weight:600;border-radius:4px;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-family:var(--font-body)}
+.btn-gold{background:var(--gold);color:var(--dark)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-align:center;animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+/* Sections */
+section{padding:100px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-label{color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);color:var(--dark);font-weight:700;margin-bottom:16px}
+.section-desc{color:var(--text-light);font-size:15px;max-width:600px;margin:0 auto;line-height:1.8}
+.divider{width:60px;height:2px;background:var(--gold);margin:16px auto 0}
+
+/* Story */
+.story{background:var(--dark);color:#fff}
+.story .section-title{color:#fff}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story-img{width:100%;height:400px;background:linear-gradient(135deg,var(--wine),#3a2030);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:80px}
+.story-text h3{font-family:var(--font-display);font-size:28px;margin-bottom:20px;color:var(--gold)}
+.story-text p{color:rgba(255,255,255,0.7);line-height:2;margin-bottom:16px;font-size:15px}
+.story-text .chef{display:flex;align-items:center;gap:16px;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1)}
+.chef-avatar{width:56px;height:56px;border-radius:50%;background:var(--wine);display:flex;align-items:center;justify-content:center;font-size:24px}
+.chef-info .name{font-weight:600;color:var(--gold)}
+.chef-info .title{font-size:13px;color:rgba(255,255,255,0.5)}
+
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.menu-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s}
+.menu-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,0.1)}
+.menu-card-img{height:220px;background:linear-gradient(135deg,#f5e6d0,#e8d5c0);display:flex;align-items:center;justify-content:center;font-size:64px;position:relative}
+.menu-card-badge{position:absolute;top:16px;right:16px;background:var(--wine);color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.menu-card-body{padding:24px}
+.menu-card-body h3{font-family:var(--font-display);font-size:20px;margin-bottom:6px;color:var(--dark)}
+.menu-card-body p{color:var(--text-light);font-size:13px;line-height:1.6;margin-bottom:12px}
+.menu-card-footer{display:flex;align-items:center;justify-content:space-between}
+.menu-price{font-family:var(--font-display);font-size:22px;color:var(--wine);font-weight:700}
+.menu-tag{font-size:11px;color:var(--gold);background:rgba(212,168,84,0.1);padding:3px 10px;border-radius:12px}
+.menu-more{text-align:center;margin-top:40px}
+
+/* Info */
+.info{background:var(--dark);color:#fff}
+.info .section-title{color:#fff}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.info-details{display:flex;flex-direction:column;gap:28px}
+.info-item{display:flex;gap:16px}
+.info-icon{width:48px;height:48px;background:rgba(212,168,84,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.info-item h4{color:var(--gold);font-size:14px;margin-bottom:4px;font-weight:600}
+.info-item p{color:rgba(255,255,255,0.7);font-size:14px;line-height:1.6}
+.info-map{width:100%;height:350px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.1)}
+.info-map iframe{width:100%;height:100%;border:0}
+
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.review-card{background:#fff;border-radius:8px;padding:28px;box-shadow:0 4px 16px rgba(0,0,0,0.05)}
+.review-stars{color:var(--gold);font-size:18px;margin-bottom:12px}
+.review-text{color:var(--text);font-size:14px;line-height:1.8;margin-bottom:16px;font-style:italic}
+.review-author{font-size:13px;color:var(--text-light)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--wine),var(--wine-dark));text-align:center;color:#fff}
+.cta h2{font-family:var(--font-display);font-size:clamp(28px,4vw,40px);margin-bottom:16px}
+.cta p{color:rgba(255,255,255,0.7);margin-bottom:32px;font-size:16px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Footer */
+footer{background:#111;color:rgba(255,255,255,0.5);padding:40px 24px;text-align:center;font-size:13px}
+footer a{color:var(--gold);text-decoration:none}
+.footer-social{display:flex;gap:16px;justify-content:center;margin-bottom:16px}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.3s}
+.footer-social a:hover{border-color:var(--gold);background:rgba(212,168,84,0.1)}
+
+/* Responsive */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:rgba(26,26,26,0.98);flex-direction:column;padding:24px;gap:16px}
+  .nav-links.open{display:flex}
+  .story-grid,.info-grid{grid-template-columns:1fr}
+  .story-img{height:250px}
+  section{padding:60px 16px}
+}
+
+/* HeyBoss CTA */
+.heyboss-float{position:fixed;bottom:24px;right:24px;z-index:99;background:var(--gold);color:var(--dark);padding:12px 24px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(212,168,84,0.4);transition:all 0.3s}
+.heyboss-float:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(212,168,84,0.5)}
+</style>
+</head>
+<body>
+
+<nav class="transparent" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Maya <span>Bistro</span></a>
+    <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#story">品牌故事</a></li>
+      <li><a href="#menu">精選菜單</a></li>
+      <li><a href="#info">餐廳資訊</a></li>
+      <li><a href="#reviews">顧客好評</a></li>
+      <li><a href="https://mayarestocafe.oddle.me/zh_TW" target="_blank" class="nav-cta">立即訂餐</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Italian Bistro & Wine Bar</div>
+    <h1>Maya <em>Bistro</em></h1>
+    <p class="hero-sub">瑪亞餐酒坊 — 台北中山區 · 義式料理 · 精選美酒</p>
+    <div class="hero-btns">
+      <a href="https://mayarestocafe.oddle.me/zh_TW" target="_blank" class="btn btn-gold">線上訂餐</a>
+      <a href="#menu" class="btn btn-outline">瀏覽菜單</a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL ↓</div>
+</section>
+
+<!-- Story -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img">🍝</div>
+      <div class="story-text">
+        <div class="section-label">Our Story</div>
+        <h3>源自對義式料理的熱愛</h3>
+        <p>Maya Bistro 瑪亞餐酒坊座落於台北中山區靜巷，以正統義式手法結合在地食材，為您呈現一道道充滿靈魂的料理。</p>
+        <p>從手工窯烤 Pizza 的酥脆餅皮，到慢燉入味的義式燉飯，每一口都是主廚對美味的堅持。搭配精心挑選的紅白酒，讓每一次用餐都成為一場味覺旅行。</p>
+        <div class="chef">
+          <div class="chef-avatar">👨‍🍳</div>
+          <div class="chef-info">
+            <div class="name">Maya Bistro 主廚團隊</div>
+            <div class="title">以心料理，用味道說故事</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Menu</div>
+      <h2 class="section-title">精選菜單</h2>
+      <p class="section-desc">嚴選食材，手工現做，每一道都是主廚的用心之作</p>
+      <div class="divider"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img" style="background:linear-gradient(135deg,#e8c4a0,#d4a070)">🍕</div>
+        <div class="menu-card-body">
+          <h3>Pizza Margherita</h3>
+          <p>瑪格麗特披薩 — 經典番茄醬底、新鮮莫札瑞拉起司、羅勒葉，窯烤至完美焦香</p>
+          <div class="menu-card-footer">
+            <span class="menu-price">NT$ 400</span>
+            <span class="menu-tag">招牌推薦</span>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img" style="background:linear-gradient(135deg,#c4a080,#b08060)">🥩</div>
+        <div class="menu-card-body">
+          <h3>Main Course 主餐</h3>
+          <p>嚴選肉品搭配時令蔬菜，義式經典烹調手法，呈現食材最純粹的美味</p>
+          <div class="menu-card-footer">
+            <span class="menu-price">NT$ 480 起</span>
+            <span class="menu-tag">人氣排行</span>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img" style="background:linear-gradient(135deg,#a0c4a0,#80a880)">🥗</div>
+        <div class="menu-card-body">
+          <h3>Maya Burger</h3>
+          <p>瑪亞手工漢堡 — 厚切手打牛肉排、特製醬汁、新鮮生菜，大口滿足</p>
+          <div class="menu-card-footer">
+            <span class="menu-price">NT$ 380</span>
+            <span class="menu-tag">必點</span>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img" style="background:linear-gradient(135deg,#a0a0c4,#8080a8)">🍝</div>
+        <div class="menu-card-body">
+          <h3>Risotto 燉飯</h3>
+          <p>義式經典燉飯 — 慢火細燉至每粒米飯吸滿濃郁湯汁，口感綿密醇厚</p>
+          <div class="menu-card-footer">
+            <span class="menu-price">NT$ 420</span>
+            <span class="menu-tag">主廚推薦</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-more">
+      <a href="https://mayarestocafe.oddle.me/zh_TW" target="_blank" class="btn btn-gold">查看完整菜單 & 線上訂餐</a>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" style="background:#f5f0e8">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Reviews</div>
+      <h2 class="section-title">顧客好評</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">「Pizza 超級好吃！餅皮酥脆又有嚼勁，起司拉絲超長。環境很舒服，很適合朋友聚餐。」</p>
+        <div class="review-author">— Cathy L. / Google 評論</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">「隱藏在巷弄裡的好店！燉飯入味到不行，紅酒搭配也很棒。服務親切，會再來。」</p>
+        <div class="review-author">— Kevin W. / Google 評論</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">「漢堡肉汁超多，薯條也炸得很酥。價位合理，CP 值高。唯一缺點是座位不多，建議先訂位。」</p>
+        <div class="review-author">— Amy C. / Google 評論</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Info -->
+<section class="info" id="info">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Visit Us</div>
+      <h2 class="section-title">餐廳資訊</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-details">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <h4>地址</h4>
+            <p>104 台北市中山區雙城街46巷1號1樓<br>（近捷運中山國小站）</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <h4>營業時間</h4>
+            <p>週二至週日 11:30 - 14:30 / 17:30 - 21:30<br>每週一公休</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <h4>聯絡電話</h4>
+            <p>02-2585-XXXX（請來電確認）</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🌐</div>
+          <div>
+            <h4>線上服務</h4>
+            <p><a href="https://mayarestocafe.oddle.me/zh_TW" target="_blank" style="color:var(--gold)">線上訂餐</a> · <a href="#" style="color:var(--gold)">Instagram</a> · <a href="#" style="color:var(--gold)">Facebook</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="info-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d903.5!2d121.525!3d25.063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a96cf0373747%3A0x8ffb1d26d5efc047!2z55Gu5Lqe6aSQ6YWS5Z2K!5e0!3m2!1szh-TW!2stw!4v1" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>準備好享受美食了嗎？</h2>
+    <p>線上訂餐，外帶自取或宅配到府</p>
+    <div class="cta-btns">
+      <a href="https://mayarestocafe.oddle.me/zh_TW" target="_blank" class="btn btn-gold">立即訂餐</a>
+      <a href="tel:+886225850000" class="btn btn-outline">電話訂位</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-social">
+    <a href="#">📷</a>
+    <a href="#">📘</a>
+    <a href="#">💬</a>
+    <a href="https://maps.app.goo.gl/oXNAdfNLFQj7Pm1x8" target="_blank">📍</a>
+  </div>
+  <p>Maya Bistro 瑪亞餐酒坊 · 104 台北市中山區雙城街46巷1號1樓</p>
+  <p style="margin-top:8px">© 2025 Maya Bistro. 網站設計 by <a href="https://www.heyboss.com.tw" target="_blank">HEY!BOSS</a></p>
+</footer>
+
+<!-- HeyBoss Float -->
+<a href="https://www.heyboss.com.tw" target="_blank" class="heyboss-float">Powered by HEY!BOSS</a>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.classList.toggle('solid',window.scrollY>80);
+  nav.classList.toggle('transparent',window.scrollY<=80);
+});
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+    document.querySelector('.nav-links')?.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
