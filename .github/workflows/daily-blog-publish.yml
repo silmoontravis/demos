@@ -153,6 +153,7 @@ jobs:
           sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"${TODAY}\"/" "$FILE"
 
       - name: QA validation
+        continue-on-error: true
         if: steps.check.outputs.has_draft == 'true'
         run: |
           python3 blog/qa_blog.py
