@@ -170,5 +170,14 @@
     <guid>https://heyboss.com.tw/blog/posts/google-search-console-guide.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/hr-attendance-system.html</link>
+    <description>還在用紙本請假單和 Excel 算薪水？HR 人資系統幫你自動化考勤打卡、請假審核、薪資計算。HEY!BOSS 用 RuoYi RBAC 架構打造部門層級管理。</description>
+    <category></category>
+    <pubDate>Tue, 05 May 2026 04:16:16 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/hr-attendance-system.html</guid>
+  </item>
+
 </channel>
 </rss>
