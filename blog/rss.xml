@@ -188,5 +188,14 @@
     <guid>https://heyboss.com.tw/blog/posts/inventory-wms-system.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/json-ld-structured-data.html</link>
+    <description>什麼是 JSON-LD？為什麼 Google 推薦使用結構化資料？本文從 Organization、LocalBusiness、Article 到 FAQPage，完整教學如何讓搜尋引擎更懂你的網站內容。</description>
+    <category></category>
+    <pubDate>Thu, 07 May 2026 04:33:59 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/json-ld-structured-data.html</guid>
+  </item>
+
 </channel>
 </rss>
