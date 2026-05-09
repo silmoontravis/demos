@@ -206,5 +206,14 @@
     <guid>https://heyboss.com.tw/blog/posts/member-management-system.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/mobile-responsive-design.html</link>
+    <description>超過 70% 的網站流量來自手機。了解 Mobile-first 設計、viewport meta、CSS media queries 的實作，以及 HEY!BOSS 如何用 Playwright 自動化測試 100 個網站的行動裝置相容性。</description>
+    <category></category>
+    <pubDate>Sat, 09 May 2026 04:22:32 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/mobile-responsive-design.html</guid>
+  </item>
+
 </channel>
 </rss>
