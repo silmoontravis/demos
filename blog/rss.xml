@@ -215,5 +215,14 @@
     <guid>https://heyboss.com.tw/blog/posts/mobile-responsive-design.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/playwright-automated-qa.html</link>
+    <description>手動測試 100 個網站要花幾天？Playwright 自動化測試 2 小時搞定。了解 HEY!BOSS 如何用 Playwright 進行三輪品質稽核，確保每個網站零錯誤。</description>
+    <category></category>
+    <pubDate>Sun, 10 May 2026 04:43:36 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/playwright-automated-qa.html</guid>
+  </item>
+
 </channel>
 </rss>
