@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.heyboss.com.tw/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/ai-build-100-sites.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/ruoyi-enterprise-systems.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/traditional-vs-ai-web-company.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/automated-seo-explained.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/cicd-2min-deploy.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/ai-methodology/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/alleybrew/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/amcl-consulting/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/appforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -14,6 +9,7 @@
   <url><loc>https://www.heyboss.com.tw/aromalife/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/artisan/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/artwall/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/asian-man-tantric/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/autoedge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/babybloom/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/bakehaus/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -32,6 +28,7 @@
   <url><loc>https://www.heyboss.com.tw/dronesky/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/ecobag/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/elitewatch/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/esun-mountaintop/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/eterngem/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/farmbox/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/fitclub/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -47,6 +44,7 @@
   <url><loc>https://www.heyboss.com.tw/hanami-wagashi/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/heherb/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/herbgarden/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/homespa/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/inkverse/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/ironthread/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/ironwake/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -59,6 +57,7 @@
   <url><loc>https://www.heyboss.com.tw/lightframe/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/lightyear/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/lumiere/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/maya-bistro/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/mindforge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/mistlodge/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/morning-haze/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -82,10 +81,13 @@
   <url><loc>https://www.heyboss.com.tw/purestay/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/quickfix/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/raceway/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/rpg-edu-platform/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/securehome/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/silkroad/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/skylogistics/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/slotlab/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/smarttutor/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.heyboss.com.tw/soho8d/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/solarcraft/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/soundwave/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/spiceroute/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -107,25 +109,4 @@
   <url><loc>https://www.heyboss.com.tw/woodlife/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/zenflow/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.heyboss.com.tw/zenspace/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/ai-logo-bgm-revolution.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/ai-website-vs-template.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/aws-cloud-architecture.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/bilingual-website-benefits.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/booking-reservation-system.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/crm-customer-management.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.heyboss.com.tw/blog/posts/customer-service-ticket-system.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://hiboss.demosilvermoon.com.tw/blog/posts/docker-deployment-basics.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/ecommerce-website-seo.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/enterprise-backend-2-weeks.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/erp-inventory-system.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/geo-ai-search-optimization.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/google-search-console-guide.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/hr-attendance-system.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/inventory-wms-system.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/json-ld-structured-data.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/member-management-system.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/mobile-responsive-design.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/playwright-automated-qa.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/qa-to-deploy-30min.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://heyboss.com.tw/blog/posts/restaurant-website-guide.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
 </urlset>
