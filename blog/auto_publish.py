@@ -173,12 +173,12 @@ def generate_index(articles):
 <title>HEY!BOSS Blog — AI 建站・數位轉型・企業系統開發實戰分享</title>
 <meta name="description" content="HEY!BOSS 銀月數位顧問官方 Blog，分享 AI 建站實戰、若依框架企業系統開發、自動化 SEO、CI/CD 自動部署等數位轉型技術與案例。">
 <meta name="keywords" content="AI建站, 數位轉型, 若依框架, RuoYi, 企業系統開發, 自動化SEO, CI/CD, HEY!BOSS, 銀月數位顧問">
-<link rel="canonical" href="https://www.heyboss.com.tw/blog/">
+<link rel="canonical" href="https://www.blog.heyboss.com.tw/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta property="og:title" content="HEY!BOSS Blog — AI 建站・數位轉型實戰分享">
 <meta property="og:description" content="AI 建站實戰、企業系統開發、自動化 SEO 等數位轉型技術分享。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.heyboss.com.tw/blog/">
+<meta property="og:url" content="https://www.blog.heyboss.com.tw/">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="HEY!BOSS 銀月數位顧問">
 <link rel="icon" href="../heyboss/logos/logo_final.png" type="image/png">
@@ -193,7 +193,7 @@ def generate_index(articles):
   "@type": "Blog",
   "name": "HEY!BOSS Blog",
   "description": "AI 建站、數位轉型、企業系統開發實戰分享",
-  "url": "https://www.heyboss.com.tw/blog/",
+  "url": "https://www.blog.heyboss.com.tw/",
   "inLanguage": "zh-TW",
   "publisher": {{
     "@type": "Organization",

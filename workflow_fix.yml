@@ -126,7 +126,7 @@ jobs:
         if: steps.check.outputs.has_draft == 'true'
         run: |
           FILENAME="${{ steps.check.outputs.filename }}"
-          URL="https://blog.heyboss.com.tw/posts/${FILENAME}"
+          URL="https://heyboss.com.tw/blog/posts/${FILENAME}"
           sed -i "/<\/urlset>/i\\  <url><loc>${URL}</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>" sitemap.xml
 
       - name: Update RSS
@@ -138,7 +138,7 @@ jobs:
           DESC=$(grep -oP 'name="description" content="\K[^"]+' "$FILE" | head -1)
           CATEGORY=$(grep -oP '<span class="category">\K[^<]+' "$FILE" | head -1)
           DATE=$(date -R)
-          URL="https://blog.heyboss.com.tw/posts/${FILENAME}"
+          URL="https://heyboss.com.tw/blog/posts/${FILENAME}"
 
           ITEM="  <item>\n    <title>${TITLE}</title>\n    <link>${URL}</link>\n    <description>${DESC:0:200}</description>\n    <category>${CATEGORY}</category>\n    <pubDate>${DATE}</pubDate>\n    <guid>${URL}</guid>\n  </item>\n"
 
@@ -180,7 +180,7 @@ jobs:
           from googleapiclient.discovery import build
           creds = service_account.Credentials.from_service_account_file('/tmp/sa.json', scopes=['https://www.googleapis.com/auth/indexing'])
           svc = build('indexing', 'v3', credentials=creds)
-          url = 'https://blog.heyboss.com.tw/posts/${{ steps.check.outputs.filename }}'
+          url = 'https://heyboss.com.tw/blog/posts/${{ steps.check.outputs.filename }}'
           svc.urlNotifications().publish(body={'url': url, 'type': 'URL_UPDATED'}).execute()
           print(f'Indexed: {url}')
           "
@@ -194,7 +194,7 @@ jobs:
           TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           FILENAME="${{ steps.check.outputs.filename }}"
-          URL="https://blog.heyboss.com.tw/posts/${FILENAME}"
+          URL="https://heyboss.com.tw/blog/posts/${FILENAME}"
           python3 -c "
           import json, urllib.request
           data = json.dumps({
