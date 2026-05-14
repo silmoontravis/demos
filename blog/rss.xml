@@ -251,5 +251,14 @@
     <guid>https://heyboss.com.tw/blog/posts/sme-digital-transformation.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://heyboss.com.tw/blog/posts/telegram-business-monitoring.html</link>
+    <description>學會用 Telegram Bot API 打造自動化業務監控系統，每天推送 SEO 排名、AWS 費用、網站健康檢查報告。HEY!BOSS 完整技術架構公開。</description>
+    <category></category>
+    <pubDate>Thu, 14 May 2026 04:42:07 +0000</pubDate>
+    <guid>https://heyboss.com.tw/blog/posts/telegram-business-monitoring.html</guid>
+  </item>
+
 </channel>
 </rss>
