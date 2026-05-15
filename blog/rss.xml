@@ -260,5 +260,14 @@
     <guid>https://heyboss.com.tw/blog/posts/telegram-business-monitoring.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://blog.heyboss.com.tw/posts/website-speed-optimization.html</link>
+    <description>網站載入超過 3 秒，53% 的訪客直接離開。從 Core Web Vitals 到圖片壓縮、Lazy Loading、CDN 部署，HEY!BOSS 教你打造秒開網站。</description>
+    <category></category>
+    <pubDate>Fri, 15 May 2026 04:49:53 +0000</pubDate>
+    <guid>https://blog.heyboss.com.tw/posts/website-speed-optimization.html</guid>
+  </item>
+
 </channel>
 </rss>
