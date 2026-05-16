@@ -269,5 +269,14 @@
     <guid>https://blog.heyboss.com.tw/posts/website-speed-optimization.html</guid>
   </item>
 
+  <item>
+    <title></title>
+    <link>https://blog.heyboss.com.tw/posts/website-ssl-security.html</link>
+    <description>沒有 SSL 憑證的網站會被瀏覽器標示為「不安全」，直接嚇跑訪客。HEY!BOSS 銀月數位顧問完整解析 SSL 憑證的運作原理、Let's Encrypt 免費申請、自動續期設定和 HTTPS 強制跳轉。</description>
+    <category></category>
+    <pubDate>Sat, 16 May 2026 04:28:22 +0000</pubDate>
+    <guid>https://blog.heyboss.com.tw/posts/website-ssl-security.html</guid>
+  </item>
+
 </channel>
 </rss>
